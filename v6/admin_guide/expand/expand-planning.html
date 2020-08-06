@@ -1,0 +1,2075 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      规划Greenplum系统扩容 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_expand x6-0_admin_guide_expand_expand-planning has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    规划Greenplum系统扩容
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">规划Greenplum系统扩容</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">细心的规划将帮助确保一个成功的Greenplum扩容项目。</p>
+
+    <p class="p">这一节中的主题将帮助确保用户已经准备好执行一次系统扩容。</p>
+
+    <ul class="ul" id="expand-planning__ul_gdc_hp5_mr">
+      <li class="li">
+<a class="xref" href="#topic4">系统扩容检查列表</a>是一份用户可以用来准备和执行系统扩容处理的检查列表。</li>
+
+      <li class="li">
+<a class="xref" href="#topic5">规划新的硬件平台</a>包括为获得和设置新硬件做规划的内容。</li>
+
+      <li class="li">
+<a class="xref" href="#topic6">规划新Segment初始化</a>提供了有关规划使用<samp class="ph codeph">gpexpand</samp>初始化新的Segment主机的信息。</li>
+
+      <li class="li">
+<a class="xref" href="#topic10">规划表的重新分布</a>提供了有关规划在新Segment主机初始化完以后重新分布数据的信息。</li>
+
+    </ul>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../expand/expand-main.html" title="为了放大性能和存储能力，通过向集群增加主机来扩容用户的Greenplum系统。">扩容Greenplum系统</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic4">
+    <h2 class="title topictitle2">系统扩容检查列表</h2>
+
+    <div class="body">
+      <div class="p">这个检查列表摘要了一次Greenplum数据库系统扩容包括的任务。
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic4__table_pvq_yzl_2r" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. Greenplum数据库系统扩容检查列表</span></caption>
+            
+            
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" colspan="2" valign="top">
+<p class="p"><strong class="ph b">扩容前的在线任务</strong></p>
+
+                  <span class="ph">* 系统已启动并且可用</span>
+                </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_gr2_s1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">制定并执行订购，构建和联网新硬件平台或配置云资源的计划。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_ryl_s1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">设计一个数据库扩容计划。映射每个主机上的Segment数量、安排用于性能测试和创建扩容方案所需的停机时段并且安排用于表重新分布的时段。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_e2s_s1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">执行一个完整的方案转储。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_yq5_s1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">在新主机上安装Greenplum数据库的二进制文件。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_vxw_s1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">复制SSH密钥到新主机（<samp class="ph codeph">gpssh-exkeys</samp>）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_zrz_s1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">验证新旧硬件或者云资源的操作系统环境（<samp class="ph codeph">gpcheck</samp>）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_qkb_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">验证新硬件或者云资源的磁盘I/O和内存带宽（<samp class="ph codeph">gpcheckperf</samp>）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_ojd_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">验证Master的数据目录中在<samp class="ph codeph">pg_log</samp>或者<samp class="ph codeph">gpperfmon/data</samp>目录下面没有极大的文件。
+                </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="2" valign="top">
+<p class="p"><strong class="ph b">扩容前的离线任务</strong></p>
+
+                  <span class="ph">* 在此处理期间系统对所有用户活动不可用。</span>
+                </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_wch_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">验证没有catalog问题
+                  (<samp class="ph codeph">gpcheckcat</samp>)。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_hgm_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">验证组合的现有和新硬件或云资源的操作系统环境(<samp class="ph codeph">gpcheck</samp>)。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_q3q_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">验证组合的现有和新硬件或云资源的磁盘I/O和内存带宽(<samp class="ph codeph">gpcheckperf</samp>)。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="2" valign="top">
+<p class="p"><strong class="ph b">在线节点实例初始化</strong></p>
+<span class="ph">* 系统已启动并且可用</span>
+                </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_ct3_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">准备扩容输入文件(<samp class="ph codeph">gpexpand</samp>)。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_rcs_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">将新节点初始化为数组并创建扩容Schema
+                    (<samp class="ph codeph">gpexpand</samp><samp class="ph codeph">-i</samp>
+                  <var class="keyword varname">input_file</var>)。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="2" valign="top">
+<p class="p"><strong class="ph b">在线扩容和表重新分布</strong></p>
+
+                  <span class="ph">* 系统已启动并且可用</span>
+                </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_jzy_t1m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">在用户开始表重新分布之前，停止任何自动的快照处理或者其他消耗磁盘空间的进程。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_aq1_51m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">在扩容后的系统中重新分布表（<samp class="ph codeph">gpexpand</samp>）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_xjc_51m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">移除扩容方案(<samp class="ph codeph">gpexpand -c</samp>)。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%">
+                  <img class="image" id="topic4__image_sk2_51m_2r" src="../graphics/green-checkbox.jpg" width="29" height="28">
+                </td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">运行<samp class="ph codeph">analyze</samp>来更新分布统计信息。
+                  <p class="p">在扩容期间使用<samp class="ph codeph">gpexpand -a</samp>，在扩容之后使用<samp class="ph codeph">analyze</samp>。
+                    </p>
+</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="2" valign="top">
+<p class="p"><strong class="ph b">备份数据库</strong></p>
+<span class="ph">* 系统已启动并且可用</span>
+</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="11.173184357541901%"><img class="image" id="topic4__image_ogk_mj4_lhb" src="../graphics/green-checkbox.jpg" width="29" height="28"></td>
+
+                <td class="entry" valign="top" width="88.82681564245812%">使用<samp class="ph codeph">gpbackup</samp>工具备份数据库。
+                  在开始系统扩容之前创建的备份无法还原到新扩容的系统，因为<samp class="ph codeph">gprestore</samp>实用程序只能将备份还原到具有相同数量节点的Greenplum数据库系统。
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic5">
+    <h2 class="title topictitle2">规划新的硬件平台</h2>
+
+    <div class="body">
+      <p class="p">一个深思熟虑的、周密的部署兼容硬件的方法会大大地最小化扩容处理的风险。</p>
+
+      <p class="p">新节点主机的硬件资源和配置应该与现有主机一致。
+        
+        </p>
+
+      <p class="p">规划和设置新硬件平台的步骤在每一次部署中都有不同。下面是一些相关的考虑：</p>
+
+      <ul class="ul" id="topic5__ul_alt_tl5_mr">
+        <li class="li" id="topic5__no160455">为新硬件准备物理空间，考虑冷却、电力供应和其他物理因素。</li>
+
+        <li class="li" id="topic5__no160456">确定连接新旧硬件所需的物理网络和布线。</li>
+
+        <li class="li" id="topic5__no160457">为扩容后的系统映射现有的IP地址空间和开发中的网络规划。</li>
+
+        <li class="li" id="topic5__no160458">从现有的硬件捕捉系统配置（用户、配置文件、NIC等等），这将被用作订购新硬件时的清单。</li>
+
+        <li class="li" id="topic5__no160453">为在特定站点和环境中用期望的配置部署硬件创建一个自定义的建设计划。</li>
+
+      </ul>
+
+      <p class="p">在选择并且增加新硬件到网络环境中后，确保执行<a class="xref" href="expand-nodes.html#topic19">验证OS设置</a>中描述的任务。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic6">
+    <h2 class="title topictitle2">规划新Segment初始化</h2>
+
+    <div class="body">
+      <p class="p">当系统启动并可用时，可以执行扩容Greenplum数据库。
+          运行<samp class="ph codeph">gpexpand</samp>来初始化新节点到阵列中并创建扩容schema。
+        </p>
+
+      <p class="p">所需要的时间取决于Greenplum系统中的方案对象的数量以及其他与硬件性能相关的因素。
+        在大部分环境中，新Segment的初始化不超过30分钟。
+        </p>
+
+      <div class="p">下列工具不能在<samp class="ph codeph">gpexpand</samp>在做节点初始化期间执行。
+        <ul class="ul" id="topic6__ul_c3w_wdp_lgb">
+          <li class="li"><samp class="ph codeph">gpbackup</samp></li>
+
+          <li class="li"><samp class="ph codeph">gpcheck</samp></li>
+
+          <li class="li"><samp class="ph codeph">gpcheckcat</samp></li>
+
+          <li class="li"><samp class="ph codeph">gpconfig</samp></li>
+
+          <li class="li"><samp class="ph codeph">gppkg</samp></li>
+
+          <li class="li"><samp class="ph codeph">gprestore</samp></li>
+
+        </ul>
+</div>
+
+
+      <div class="note important">
+<span class="importanttitle">Important:</span> 在用户开始初始化新Segment之后，用户就不再能用扩容系统之前创建的备份文件来恢复系统。
+        当初始化成功完成后，扩容会被提交且不能被回滚。</div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic7">
+      <h3 class="title topictitle3">规划Mirror节点</h3>
+
+      <div class="body">
+        <p class="p">如果现有的阵列有Mirror节点，新的节点也必须有Mirror配置。
+          如果现有的节点没有配置Mirror，则不能用<samp class="ph codeph">gpexpand</samp>工具给新主机增加Mirror。
+          有关节点Mirror的更多信息，请参考<a class="xref" href="../intro/about_ha.html#about_ha__segment_mirroring">关于Segment镜像</a>。
+        </p>
+
+        <p class="p">对于带有Mirror节点的Greenplum数据库阵列，确保增加了足够的新主机来容纳新的Mirror节点。
+          所需的新主机数量取决于Mirror策略：</p>
+
+        <ul class="ul" id="topic7__ul_dnt_tl5_mr">
+          <li class="li" id="topic7__no165384">
+<strong class="ph b">散布镜像</strong> — 向阵列中增加比每个主机上的节点数量至少多一台的主机。
+            要确保平均散布，阵列中独立主机的数量必须大于每台主机上的节点实例数量。
+            散布镜像会把每台主机的镜像散布到集群中剩余的主机上并且要求集群中的主机数量比每个主机上的Primary节点数量更多。</li>
+
+          <li class="li" id="topic7__no165386">
+<strong class="ph b">组镜像</strong> — 增加至少两台新主机，这样第一台主机的镜像可以被放在第二台主机上，并且第二台主机的镜像可以被放在第一台上。
+            如果在系统初始化阶段启用了节点镜像，这是默认的Mirroring策略。
+            </li>
+
+          <li class="li">
+<strong class="ph b">块镜像</strong> — 添加一个或多个主机系统块。
+            例如，添加一个包含四个或八个主机的块。
+            块镜像是一种自定义镜像配置。
+            关于块镜像的更多信息请参考<cite class="cite">Greenplum数据库最佳实践指导</cite>中的<a class="xref" href="../../best_practices/ha.html#topic_cnm_vxc_54">Segment镜像</a>。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic8">
+      <h3 class="title topictitle3">对每个主机增加新节点</h3>
+
+      <div class="body">
+        <p class="p">默认情况下，新主机上初始化后会有和现有主机上数量相同的主节点。
+          可以增加每台主机上的节点或者向现有主机上增加新的节点。</p>
+
+        <p class="p">例如，如果现有主机当前在每台主机上有两个节点，可以使用<samp class="ph codeph">gpexpand</samp>在现有主机上初始化两个额外的节点来得到总共四个节点，这样将在新主机上有四个新的节点。</p>
+
+        <p class="p">创建扩容输入文件的交互式处理会提示这个选项，还可以在该输入配置文件中手工指定新节点的目录。
+          更多信息请参考<a class="xref" href="expand-initialize.html#topic23">为系统扩容创建一个输入文件</a>。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic9">
+      <h3 class="title topictitle3">关于扩容Schema</h3>
+
+      <div class="body">
+        <p class="p">在初始化阶段，<samp class="ph codeph">gpexpand</samp>工具在postgres数据库中创建扩容schema <em class="ph i">gpexpand</em>。</p>
+
+        <p class="p">扩容Schema存储了系统中每个表的元数据，因此在扩容处理的全过程中能跟踪其状态。
+          扩容Schema由两个表和一个跟踪扩容操作进度的视图组成：</p>
+
+        <ul class="ul" id="topic9__ul_ont_tl5_mr">
+          <li class="li" id="topic9__no165180">
+            <em class="ph i">gpexpand.status</em>
+          </li>
+
+          <li class="li" id="topic9__no165184">
+            <em class="ph i">gpexpand.status_detail</em>
+          </li>
+
+          <li class="li" id="topic9__no165207">
+            <em class="ph i">gpexpand.expansion_progress</em>
+          </li>
+
+        </ul>
+
+        <p class="p">通过修改<em class="ph i">gpexpand.status_detail</em>可以控制扩容处理的方方面面。
+          例如，从这个表中移除一个记录会阻止系统在新节点上扩容该表。
+          通过更新一个记录的rank值，可以控制表在重新分布过程中被处理的顺序。
+          更多信息请参考<a class="xref" href="expand-redistribute.html#topic29">表重分布排名</a>。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic10">
+    <h2 class="title topictitle2">规划表的重新分布</h2>
+
+    <div class="body">
+      <p class="p">表重新分布会在系统在线时被执行。
+        对于很多Greenplum系统，表重新分布会在一个安排在低利用率时期执行的单一<samp class="ph codeph">gpexpand</samp>会话中完成。
+        更大的系统可能会要求多个会话并且设置表重新分布的顺序来最小化对性能影响。
+        如果可能的话，尽量在一个会话中完成表重新分布。
+        </p>
+
+      <div class="note important">
+<span class="importanttitle">Important:</span> 要执行表重新分布，节点主机必须具有足够多的磁盘空间来临时地保存最大表的一份拷贝。
+        在重新分布期间，所有的表对于读写操作都不可用。</div>
+
+      <p class="p">表重新分布的性能影响取决于一个表的尺寸、存储类型以及分区设计。
+        对于任何给定的表，用<samp class="ph codeph">gpexpand</samp>重新分布需要消耗和一次<samp class="ph codeph">CREATE TABLE AS SELECT</samp>操作相同的时间。
+        在重新分布一个T级别的表时，扩容工具会使用许多可用的系统资源，这可能会影响其他数据库负载的查询性能。
+        </p>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic11">
+      <h3 class="title topictitle3">在大规模Greenplum系统中管理重新分布</h3>
+
+      <div class="body">
+        <p class="p">在规划重新分布阶段时，要考虑重新分布期间在每个表上取得的<samp class="ph codeph">ACCESS EXCLUSIVE</samp>锁的影响。
+          一个表上的用户活动可能会延迟它的重新分布，而且表在重新分布期间对用户活动不可用。</p>
+
+        <p class="p">可以通过调整ranking来控制表重分布的顺序。
+          参考<a class="xref" href="expand-redistribute.html#topic29">表重分布排名</a>。
+          操作重分布顺序有助于调整有限的磁盘空间，并尽快恢复高优先级查询的最佳查询性能。
+          </p>
+
+        <div class="section">
+<h4 class="title sectiontitle">表重分布方法</h4>
+          
+          <div class="p">Greenplum数据库扩容的时候有两种方法重分布数据。
+            <ul class="ul" id="topic11__ul_hkz_jdv_kgb">
+              <li class="li">
+<samp class="ph codeph">rebuild</samp> - 建立一个新表，把所有数据从旧表复制到新表，然后替换旧表。
+                这是默认行为。rebuild方法和使用<samp class="ph codeph">CREATE TABLE AS SELECT</samp>命令创建一个新表类似。
+                在数据重分布期间，会在表上加<samp class="ph codeph">ACCESS EXCLUSIVE</samp>锁。
+                </li>
+
+              <li class="li">
+<samp class="ph codeph">move</samp> - 扫描所有数据并做<samp class="ph codeph">UPDATE</samp>操作来移动需要移动的行到不同节点实例上。
+                在数据重分布过程中，会在表上加<samp class="ph codeph">ACCESS EXCLUSIVE</samp>锁。
+                一般来说，这个方法需要更少的磁盘空间，但是它在表里留下了很多被淘汰的行，可能在数据重分布后需要<samp class="ph codeph">VACUUM</samp>操作。
+                另外，此方法一次更新一行索引，这会使它比使用<samp class="ph codeph">CREATE INDEX</samp>命令重建索引更慢。
+                </li>
+
+            </ul>
+</div>
+
+        </div>
+
+        <div class="section">
+<h4 class="title sectiontitle">磁盘空间充裕的系统</h4>
+          
+          <p class="p">如果系统由充裕的空闲磁盘空间（要求用来存储最大表的一份拷贝），可以通过首先重新分布查询使用最多的重点表来尽快恢复最优的查询性能。
+            为这些表分配高的排名，并且在系统使用量低的时候安排重新分布操作。
+            一次运行一个重新分布处理，直到大的或者关键的表被重新分布完。</p>
+
+        </div>
+
+        <div class="section">
+<h4 class="title sectiontitle">磁盘空间有限的系统</h4>
+          
+          <p class="p">如果现有的主机磁盘空间有限，可以先重新分布较小的表（例如维度表）来腾出空间存储最大表的一份拷贝。
+            由于每个表会被重新分布到被扩容后的阵列上，在原始节点上的可用磁盘空间会增加。
+            当在所有节点上存在足够的空闲空间以存储最大表的一份拷贝后，就可以重新分布大的或者关键的表了。
+            大表的重新分布要求排他锁，请把这种过程安排在非峰值时段。
+            </p>
+
+        </div>
+
+        <div class="p">还要考虑下面的事情：<ul class="ul" id="topic11__ul_mjt_42r_g4">
+            <li class="li" id="topic11__no167009">在非峰值时段运行多个并行的重新分布处理以最大化可用的系统资源。</li>
+
+            <li class="li" id="topic11__no170138">在运行多个处理时，处理的数量不能高于Greenplum系统的连接限制。
+              有关限制并发连接的信息请见<a class="xref" href="../client_auth.html#topic4" title="Greenplum数据库以每个连接为基础分配资源，因此建议设置允许的最大连接数。">限制并发连接</a>。</li>
+
+          </ul>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic13">
+      <h3 class="title topictitle3">重新分布追加优化和压缩过的表</h3>
+
+      <div class="body">
+        <div class="p">
+<samp class="ph codeph">gpexpand</samp>以与堆表不同的速率重新分布未压缩和压缩的追加优化表。
+          压缩和解压数据所需的CPU能力会导致增加对系统性能影响。
+          对于具有类似数据的类似尺寸的表，可以发现如下的总体性能区别：
+          <ul class="ul" id="topic13__ul_ocf_3fr_g4">
+            <li class="li" id="topic13__no163863">扩展未压缩的追加优化表比堆表快10%。</li>
+
+            <li class="li" id="topic13__no170207">定义为使用数据压缩的追加优化表以比未压缩的追加优化表的扩展速率更慢，可能慢80％。</li>
+
+            <li class="li" id="topic13__no170253">使用了ZFS/LZJB等数据压缩的系统需要更长时间重新分布。</li>
+
+          </ul>
+</div>
+
+        <div class="note important">
+<span class="importanttitle">Important:</span> 如果系统节点使用数据压缩，在新结点上使用相同的压缩来避免磁盘空间短缺。</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic16">
+      <h3 class="title topictitle3">重新分布分区表</h3>
+
+      <div class="body">
+        <p class="p">因为该扩展工具可以处理一个大型表上的每个分区，一个有效的分区设计能降低表重新分布的性能影响。
+          只有一个分区表的子表会不被设置为随机分布策略。
+          一次只对一个子表应用重新分布所需的读/写锁。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="topic_qq2_x3r_g4">
+      <h3 class="title topictitle3">重新分布建有索引的表</h3>
+
+      <div class="body">
+        <p class="p">因为<samp class="ph codeph">gpexpand</samp>工具必须在重新分布之后重新索引每个被索引的表，一次高级的索引会带来很大的性能影响。
+          在有很多索引要建立的系统中，表的重新分布要慢很多。
+          </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

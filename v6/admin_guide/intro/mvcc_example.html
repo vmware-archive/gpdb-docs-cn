@@ -1,0 +1,2135 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      管理事务ID的例子 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_intro x6-0_admin_guide_intro_mvcc_example has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    管理事务ID的例子
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+   <h1 class="title topictitle1">管理事务ID的例子</h1>
+
+   <div class="body">
+      <div class="p">对于Greenplum数据库来说，事务ID（XID）值是一个自增的32位（2<sup class="ph sup">32</sup>）值。
+         最大的无符号32位置是4,294,967,295，或者说大约40亿。
+         当达到最大值后，XID值会重新从0开始。
+         Greenplum数据库以两种特性来处理XID值的限制：<ul class="ul" id="mvcc-overview__ul_nlb_ks5_vv">
+            <li class="li">使用模2<sup class="ph sup">32</sup>的算法来计算XID值，这允许Greenplum数据库重用XID值。
+               取模计算基于XID决定事务的顺序，即一个事务是在另一个之前还是之后发生。
+               <p class="p">每一个XID值可以有最多二十亿（2<sup class="ph sup">31</sup>）个XID值表示在它之前的事务，还有二十亿（2<sup class="ph sup">31</sup> -1 ）个XID值表示在它之后更新的事务。
+                  XID值可以被认为是一组循环没有终点的值，就像24小时的时钟一样。</p>
+
+               <p class="p">使用Greenplum数据库的取模计算，只要两个XID都在彼此的2<sup class="ph sup">31</sup>个事务范围之内，比较它们能够得到正确的结果。</p>
+
+            </li>
+
+            <li class="li">Greenplum数据库用一个冻结XID值作为当前（可见）数据行的XID。设置一行的XID为冻结XID完成了两个功能。<ul class="ul" id="mvcc-overview__ul_osq_cgj_wv">
+                  <li class="li">当Greenplum数据库使用取模计算比较XID时，比起任何其他XID来，冻结XID总是较小的一个、较早的一个。
+                     如果一行的XID没有被设置为冻结XID并且执行了2<sup class="ph sup">31</sup>个新的事务，从取模计算的角度来看，该行就像是一个在未来出现的行。</li>
+
+                  <li class="li">当该行的XID被设置为冻结XID时，原来的XID可以被使用而不会出现重复的XID。
+                     这将会保持磁盘上分配了XID的数据行数低于（2<sup class="ph sup">32</sup>）。</li>
+
+               </ul>
+</li>
+
+         </ul>
+</div>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> Greenplum数据库只给涉及DDL或者DML操作的事务分配XID值，它们通常是唯一需要XID的事务。</div>
+
+   </div>
+
+   <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../intro/about_mvcc.html" title="Greenplum数据库使用了PostgreSQL的多版本并发控制（MVCC）模型来管理对于堆表的并发事务。">关于Greenplum数据库中的并发控制</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_zsw_yck_wv">
+      <h2 class="title topictitle2">简单的MVCC例子</h2>
+
+      <div class="body">
+         <div class="p">这是一个简单例子，它展示了MVCC数据库中的概念以及如何用事务ID管理数据和事务。这个简单的MVCC数据库例子有一个单一表构成：<ul class="ul" id="topic_zsw_yck_wv__ul_btw_yck_wv">
+               <li class="li">该表是一个具有2列4行数据的简单表。</li>
+
+               <li class="li">合法的事务ID（XID）值从0到9，在9之后XID会重新从0开始。</li>
+
+               <li class="li">冻结XID是-2。这和Greenplum数据库的冻结XID不同。</li>
+
+               <li class="li">事务都在单一行上执行。</li>
+
+               <li class="li">只允许插入和更新操作执行。</li>
+
+               <li class="li">所有被更新的行都保留在磁盘上，不允许移除废弃的操作。</li>
+
+            </ul>
+</div>
+
+         <p class="p">该例子只更新amount值。不对表做其他更改。</p>
+
+         <div class="p">这个例子展示了这些概念。<ul class="ul" id="topic_zsw_yck_wv__ul_tt1_tj1_cw">
+               <li class="li"><a class="xref" href="#topic_zsw_yck_wv__transactions">如何用事务ID来管理一个表上的多个同时发生的事务。</a></li>
+
+               <li class="li"><a class="xref" href="#topic_zsw_yck_wv__managin_xid">如何用冻结XID来管理事务ID</a></li>
+
+               <li class="li"><a class="xref" href="#topic_zsw_yck_wv__table_itw_yck_wv">取模计算怎样基于事务ID决定事务的顺序</a></li>
+
+            </ul>
+</div>
+
+         <div class="section" id="topic_zsw_yck_wv__transactions">
+<h3 class="title sectiontitle">管理同时发生的事务</h3>
+            
+            <p class="p">这个表是磁盘上没有更新过的初始表数据。
+               该表包含两个用于事务ID的数据库列xmin（创建该行的事务）和xmax（更新该行的事务）。
+               在这个表中，更改会按照顺序增加到表的底端。</p>
+
+            
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_zsw_yck_wv__table_ctw_yck_wv" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. 示例表</span></caption>
+                  
+                  
+                  
+                  
+                  <thead class="thead" align="left">
+                     <tr class="row">
+                        <th class="entry" valign="top" width="25%" id="d34455e153">item</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e156">amount</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e159">xmin</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e162">xmax</th>
+
+                     </tr>
+
+                  </thead>
+
+                  <tbody class="tbody">
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e153 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e156 ">100</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e159 ">0</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e162 ">null</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e153 ">giblet</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e156 ">200</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e159 ">1</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e162 ">null</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e153 ">sprocket</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e156 ">300</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e159 ">2</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e162 ">null</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e153 ">gizmo</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e156 ">400</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e159 ">3</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e162 ">null</td>
+
+                     </tr>
+
+                  </tbody>
+
+               </table>
+</div>
+
+            <div class="p">下一个表展示了执行了对amount值的一些更新后的表数据。<ul class="sl simple">
+                  <li class="sli">xid = 4: <samp class="ph codeph">update tbl set amount=208 where item =
+                     'widget'</samp>
+</li>
+
+                  <li class="sli">xid = 5: <samp class="ph codeph">update tbl set amount=133 where item =
+                     'sprocket'</samp>
+</li>
+
+                  <li class="sli">xid = 6: <samp class="ph codeph">update tbl set amount=16 where item =
+                     'widget'</samp>
+</li>
+
+               </ul>
+</div>
+
+            <p class="p">在下一个表中，粗体项是该表的当前行。其他行是废弃行，即磁盘上不是当前数据的表数据。
+               使用xmax值，用户可以通过选择其值为null值的行来判断哪些是当前行。
+               Greenplum数据库使用了一种有点不同的方法来决定当前的表行。</p>
+
+            
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_zsw_yck_wv__table_dtw_yck_wv" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 2. 带更新的示例表</span></caption>
+                  
+                  
+                  
+                  
+                  <thead class="thead" align="left">
+                     <tr class="row">
+                        <th class="entry" valign="top" width="25%" id="d34455e276">item</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e279">amount</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e282">xmin</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e285">xmax</th>
+
+                     </tr>
+
+                  </thead>
+
+                  <tbody class="tbody">
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e276 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e279 ">100</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e282 ">0</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e285 ">4</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e276 "><strong class="ph b">giblet</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e279 "><strong class="ph b">200</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e282 ">1</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e285 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e276 ">sprocket</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e279 ">300</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e282 ">2</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e285 ">5</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e276 "><strong class="ph b">gizmo</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e279 "><strong class="ph b">400</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e282 ">3</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e285 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e276 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e279 ">208</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e282 ">4</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e285 ">6</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e276 "><strong class="ph b">sproket</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e279 "><strong class="ph b">133</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e282 ">5</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e285 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e276 "><strong class="ph b">widget</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e279 "><strong class="ph b">16</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e282 ">6</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e285 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                  </tbody>
+
+               </table>
+</div>
+
+            <div class="p">这个简单的MVCC数据库用XID值来判断该表的状态。例如，所有这些独立的事务并发执行。<ul class="ul" id="topic_zsw_yck_wv__ul_etw_yck_wv">
+                  <li class="li">更改sprocket的amount值为133的UPDATE命令（xmin值5）</li>
+
+                  <li class="li">返回sprocket的值的SELECT命令。</li>
+
+               </ul>
+</div>
+
+            <p class="p">在UPDATE事务期间，数据库会返回sprocket的值是300，直到UPDATE事务完成。</p>
+
+         </div>
+
+         <div class="section" id="topic_zsw_yck_wv__managin_xid">
+<h3 class="title sectiontitle">管理XID和冻结XID</h3>
+            
+            <div class="p">对于这个简单的例子，该数据库接近于耗尽可用的XID值。
+               当Greenplum数据库接近于耗尽可用XID值时，Greenplum数据库会采取这些行动。<ul class="ul" id="topic_zsw_yck_wv__ul_ftw_yck_wv">
+                  <li class="li">Greenplum数据库发出一个警告提示数据库快要耗尽XID值。
+                     <pre class="pre codeblock">WARNING: database "<var class="keyword varname">database_name</var>" must be vacuumed within <var class="keyword varname">number_of_transactions</var> transactions</pre>
+</li>
+
+                  <li class="li">在最后一个XID被分配前，Greenplum停止接受事务以防止把一个XID分配两次，并且发出下面的消息。
+                     <pre class="pre codeblock">FATAL: database is not accepting commands to avoid wraparound data loss in database "<var class="keyword varname">database_name</var>" </pre>
+</li>
+
+               </ul>
+</div>
+
+            <div class="p">为了管理事务ID以及存储在磁盘上的表数据，Greenplum数据库提供了VACUUM命令。<ul class="ul" id="topic_zsw_yck_wv__ul_fdf_k5q_wv">
+                  <li class="li">一次VACUUM操作会空出XID值，这样一个表可能有超过10行被修改xmin值为冻结XID。</li>
+
+                  <li class="li">一次VACUUM操作会处理磁盘上废弃的或者被删除的表行。
+                     这个数据库的VACUUM命令将XID值改为obsolete以表示废弃行。
+                     一次Greenplum数据库的VACUUM操作（不带FULL选项），会适时地以对性能和数据可用性最小的影响移除磁盘上的行。</li>
+
+               </ul>
+</div>
+
+            <div class="p">对于该示例表，一次VACUUM操作已经在该表上执行。
+               该命令更新了磁盘上的表数据。
+               这个版本的VACUUM命令与Greenplum数据库的命令有点不同，但是概念是相同的。<ul class="ul" id="topic_zsw_yck_wv__ul_gtw_yck_wv">
+                  <li class="li">对于磁盘上不再是当前行的widget和sprocket行，这些行会被标记为obsolete。</li>
+
+                  <li class="li">对于当前版本的giblet和gizmo行，其xmin已经被改为冻结XID。
+                     <p class="p">其值仍然是当前的表值（该行的xmax值为null）。
+                        不过，该表行对于所有事务是可见的，因为在执行取模计算时，其xmin值为比所有其他XID值更老的冻结XID。</p>
+</li>
+
+               </ul>
+</div>
+
+            <p class="p">在VACUUM操作之后，XID值0、 1、2和3可以被使用。</p>
+
+            
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_zsw_yck_wv__table_htw_yck_wv" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 3. VACUUM后的示例表</span></caption>
+                  
+                  
+                  
+                  
+                  <thead class="thead" align="left">
+                     <tr class="row">
+                        <th class="entry" valign="top" width="25%" id="d34455e505">item</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e508">amount</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e511">xmin</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e514">xmax</th>
+
+                     </tr>
+
+                  </thead>
+
+                  <tbody class="tbody">
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e505 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e508 ">100</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e511 ">obsolete</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e514 ">obsolete</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e505 "><strong class="ph b">giblet</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e508 "><strong class="ph b">200</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e511 ">-2</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e514 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e505 ">sprocket</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e508 ">300</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e511 ">obsolete</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e514 ">obsolete</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e505 "><strong class="ph b">gizmo</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e508 "><strong class="ph b">400</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e511 ">-2</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e514 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e505 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e508 ">208</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e511 ">4</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e514 ">6</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e505 "><strong class="ph b">sproket</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e508 "><strong class="ph b">133</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e511 ">5</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e514 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e505 "><strong class="ph b">widget</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e508 "><strong class="ph b">16</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e511 ">6</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e514 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                  </tbody>
+
+               </table>
+</div>
+
+            <p class="p">当一个具有xmin值为-2的行被更新后，其xmax值照例被替换为该事务的XID，在任何访问该行的并发事务结束之后这个位于磁盘上的行会被认为是被废弃。</p>
+
+            <p class="p">废弃的行可以被从磁盘删除。对于Greenplum数据库，带有FULL选项的 VACUUM命令会做更深入的处理来回收磁盘空间。</p>
+
+         </div>
+
+         <div class="section" id="topic_zsw_yck_wv__modulo_calc">
+<h3 class="title sectiontitle">XID取模计算实例</h3>
+            
+            <p class="p">下一个表展示了在经过了更多UPDATE事务后磁盘上的表数据。XID值已经回卷并且重新从0开始。此时并没有执行额外的VACUUM操作。</p>
+
+            
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_zsw_yck_wv__table_itw_yck_wv" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 4. 带有回卷XID的示例表</span></caption>
+                  
+                  
+                  
+                  
+                  <thead class="thead" align="left">
+                     <tr class="row">
+                        <th class="entry" valign="top" width="25%" id="d34455e678">item</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e681">amount</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e684">xmin</th>
+
+                        <th class="entry" valign="top" width="25%" id="d34455e687">xmax</th>
+
+                     </tr>
+
+                  </thead>
+
+                  <tbody class="tbody">
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">100</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">obsolete</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">obsolete</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">giblet</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">200</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">-2</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">1</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">sprocket</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">300</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">obsolete</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">obsolete</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">gizmo</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">400</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">-2</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">9</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">208</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">4</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">6</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 "><strong class="ph b">sproket</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 "><strong class="ph b">133</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">5</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">widget</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">16</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">6</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">7</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 "><strong class="ph b">widget</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 "><strong class="ph b">222</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">7</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">giblet</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">233</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">8</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">0</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 "><strong class="ph b">gizmo</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 "><strong class="ph b">18</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">9</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 ">giblet</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 ">88</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">0</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 ">1</td>
+
+                     </tr>
+
+                     <tr class="row">
+                        <td class="entry" valign="top" width="25%" headers="d34455e678 "><strong class="ph b">giblet</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e681 "><strong class="ph b">44</strong></td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e684 ">1</td>
+
+                        <td class="entry" valign="top" width="25%" headers="d34455e687 "><strong class="ph b">null</strong></td>
+
+                     </tr>
+
+                  </tbody>
+
+               </table>
+</div>
+
+            <p class="p">在执行比较XID的取模计算时，Greenplum数据库会考虑行的XID和当前可用的XID范围来判断行的XID是否已经发生了XID回卷。</p>
+
+            <p class="p">对于示例表来说XID回卷已经发生。按照XID的取模计算，giblet行的XID 1是一个比widget行的XID 7更晚出现的事务，虽然XID值7大于1。</p>
+
+            <p class="p">对于widget和sprocket行，XID回卷并没有发生并且XID 7是一个比XID 5更晚出现的事务。</p>
+
+         </div>
+
+      </div>
+
+   </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

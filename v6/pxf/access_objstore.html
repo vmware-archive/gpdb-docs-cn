@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      使用PXF访问Azure, Google Cloud Storage, Minio和S3对象存储 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_access_objstore has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    使用PXF访问Azure, Google Cloud Storage, Minio和S3对象存储
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#objstore_prereq">&#20808;&#20915;&#26465;&#20214;</a></li>
+<li><a href="#objstore_connectors">&#36830;&#25509;&#22120;&#12289;&#25968;&#25454;&#26684;&#24335;&#21644;&#37197;&#32622;&#25991;&#20214;</a></li>
+<li><a href="#sample_ddl">&#31034;&#20363;CREATE EXTERNAL TABLE&#21629;&#20196;</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>PXF安装了Azure Blob Storage, Azure Data Lake, Google Cloud Storage, Minio和S3对象存储的连接器</p>
+
+<h2 id="先决条件"><a id="objstore_prereq"></a>先决条件</h2>
+
+<p>在使用PXF处理对象存储数据之前，请确保：</p>
+
+<ul>
+<li>您已经配置并初始化了PXF，并且PXF正在每台主机上运行。有关其他信息，请参阅<a href="/6-0/pxf/instcfg_pxf.html">配置PXF</a></li>
+<li>您已经配置了计划使用的PXF对象存储连接器。有关说明，请参阅<a href="/6-0/pxf/objstore_cfg.html">配置Azure、Google云端存储、Minio和S3对象存储的连接器</a>。</li>
+<li>Greenplum数据库segment主机与外部对象存储系统之间的时间是同步的。</li>
+</ul>
+
+<h2 id="连接器、数据格式和配置文件"><a id="objstore_connectors"></a>连接器、数据格式和配置文件</h2>
+
+<p>PXF对象存储连接器提供内置配置文件支持以下数据格式：</p>
+
+<ul>
+<li>Text</li>
+<li>Avro</li>
+<li>JSON</li>
+<li>Parquet</li>
+<li>AvroSequenceFile</li>
+<li>SequenceFile</li>
+</ul>
+
+<p>与Azure、Google Cloud Storage、Minio和S3的PXF连接器提供了以下配置文件以读取、写入(在许多情况下)这些受支持的数据格式：</p>
+
+<table><thead>
+<tr>
+<th>数据格式</th>
+<th>Azure Blob Storage</th>
+<th>Azure Data Lake</th>
+<th>Google Cloud Storage</th>
+<th>S3 或 Minio</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>分隔的单行<a href="/6-0/pxf/objstore_text.html">纯文本</a></td>
+<td>wasbs:text</td>
+<td>adl:text</td>
+<td>gs:text</td>
+<td>s3:text</td>
+</tr>
+<tr>
+<td>分隔的<a href="/6-0/pxf/objstore_text.html">带引号的换行符文本</a></td>
+<td>wasbs:text:multi</td>
+<td>adl:text:multi</td>
+<td>gs:text:multi</td>
+<td>s3:text:multi</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/objstore_avro.html">Avro</a></td>
+<td>wasbs:avro</td>
+<td>adl:avro</td>
+<td>gs:avro</td>
+<td>s3:avro</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/objstore_json.html">JSON</a></td>
+<td>wasbs:json</td>
+<td>adl:json</td>
+<td>gs:json</td>
+<td>s3:json</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/objstore_parquet.html">Parquet</a></td>
+<td>wasbs:parquet</td>
+<td>adl:parquet</td>
+<td>gs:parquet</td>
+<td>s3:parquet</td>
+</tr>
+<tr>
+<td>AvroSequenceFile</td>
+<td>wasbs:AvroSequenceFile</td>
+<td>adl:AvroSequenceFile</td>
+<td>gs:AvroSequenceFile</td>
+<td>s3:AvroSequenceFile</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/objstore_seqfile.html">SequenceFile</a></td>
+<td>wasbs:SequenceFile</td>
+<td>adl:SequenceFile</td>
+<td>gs:SequenceFile</td>
+<td>s3:SequenceFile</td>
+</tr>
+</tbody></table>
+
+<p>在 <code>CREATE EXTERNAL TABLE</code> 命令中指定 <code>pxf</code> 协议以创建引用特定对象存储中的文件或目录的Greenplum数据库外部表时，可以提供配置文件名称。</p>
+
+<h2 id="示例create-external-table命令"><a id="sample_ddl"></a>示例CREATE EXTERNAL TABLE命令</h2>
+
+<p>以下命令创建了一个引用S3上的文本文件的外部表。指定名为 <code>s3:text</code> 的配置文件和名为 <code>s3srvcfg</code> 的服务配置：</p>
+
+<pre>
+CREATE EXTERNAL TABLE pxf_s3_text(location text, month text, num_orders int, total_sales float8)
+  LOCATION ('pxf://S3_BUCKET/pxf_examples/pxf_s3_simple.txt?<b>PROFILE=s3:text&SERVER=s3srvcfg</b>')
+FORMAT 'TEXT' (delimiter=E',');
+</pre>
+
+<p>以下命令创建了一个引用Azure Blob Storage上文本文件的外部表。 指定名为 <code>wasbs:text</code> 的配置文件和名为 <code>wasbssrvcfg</code> 的服务配置。 您将提供Azure Blob Storage 容器标识和您的 Azure Blob Storage 账户。</p>
+
+<pre>
+CREATE EXTERNAL TABLE pxf_wasbs_text(location text, month text, num_orders int, total_sales float8)
+  LOCATION ('pxf://<b>AZURE_CONTAINER@YOUR_AZURE_BLOB_STORAGE_ACCOUNT_NAME</b>.blob.core.windows.net/path/to/blob/file?<b>PROFILE=wasbs:text&SERVER=wasbssrvcfg</b>')
+FORMAT 'TEXT';
+</pre>
+
+<p>以下命令创建了一个引用Azure Data Lake上文本文件的外部表。 指定名为 <code>adl:text</code> 的配置文件和名为 <code>adlsrvcfg</code> 的服务配置。 您将提供您的Azure Data Lake 账户。</p>
+
+<pre>
+CREATE EXTERNAL TABLE pxf_adl_text(location text, month text, num_orders int, total_sales float8)
+  LOCATION ('pxf://<b>YOUR_ADL_ACCOUNT_NAME</b>.azuredatalakestore.net/path/to/file?<b>PROFILE=adl:text&SERVER=adlsrvcfg</b>')
+FORMAT 'TEXT';
+</pre>
+
+<p>以下命令创建了一个引用Google Cloud Storage上JSON文件的外部表。 指定名为 <code>gs:json</code> 的配置文件和名为 <code>gcssrvcfg</code> 的服务配置：</p>
+
+<pre>
+CREATE EXTERNAL TABLE pxf_gsc_json(location text, month text, num_orders int, total_sales float8)
+  LOCATION ('pxf://dir/subdir/file.json?<b>PROFILE=gs:json&SERVER=gcssrvcfg</b>')
+FORMAT 'CUSTOM' (FORMATTER='pxfwritable_import');
+</pre>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

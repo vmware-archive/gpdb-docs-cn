@@ -1,0 +1,2354 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      使用资源队列 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_workload_mgmt has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    使用资源队列
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">使用资源队列</h1>
+
+  <div class="body">
+    <p class="p">使用Greenplum数据库的工作负载管理根据业务需求对查询按照优先权分配资源，并且在资源不可用时阻止查询开始。</p>
+
+    <p class="p">资源队列是用来管理Greenplum数据库系统中并行的程度的工具。你可以使用<samp class="ph codeph">CREATE RESOURCE
+        QUEUE</samp>SQL声明创建资源队列这一数据库对象，你可以用资源队列来管理可能并行执行的活动查询，
+		控制它们的内存使用量，以及队列中的相对排序。资源队列同时也可以防止查询消耗太多资源进而降低系统性能。</p>
+
+    <p class="p">每个数据库角色都与一个单个资源队列关联；多个角色可以共享同一个资源队列，使用<samp class="ph codeph">RESOURCE QUEUE</samp>
+	中的<samp class="ph codeph">CREATE ROLE</samp>或<samp class="ph codeph">ALTER ROLE</samp>来将角色分配到资源队列中。如果没有指定资源队列，
+	则角色将会自动被关联到默认资源队列<samp class="ph codeph">pg_default</samp>。</p>
+
+    <p class="p">当用户提交了一个要执行的查询时，资源队列会根据其限制对查询进行评估，若该查询所需的资源没有超过限制，
+	它将会立即执行；若超过了限制（例如，如果目前所有活动声明槽位都已被占用），该查询则必须等到队列资源有
+	空闲时才能执行。对查询的评估将遵从先进先出的原则。如果启用了查询优先权，则将会预估系统当前的负载并根据
+	查询优先权（参考<a class="xref" href="#priorities">优先权如何起作用</a>）进行资源分配。拥有<samp class="ph codeph">SUPERUSER</samp>属性
+	的角色将会不受资源队列限制的限制，无论何时，超级用户的查询都会无视其所在资源队列的限制并立即执行。
+	</p>
+
+    <div class="fig fignone" id="topic1__iz153477">
+<span class="figcap">Figure 1. 资源队列进程</span>
+      
+      <br><img class="image" id="topic1__image_u4c_qxw_wq" src="graphics/resource_queues.jpg" width="443" height="173"><br>
+    </div>
+
+    <div class="p">资源队列会将资源需求相似的查询合并为Class，管理员应该根据组织中不同种类的负载创建资源队列。例如，参考以下不同的服务级别
+		，用户需要根据其所对应的的查询的Class创建资源组：<ul class="ul" id="topic1__ul_h3q_5qz_zp">
+        <li class="li">ETL查询</li>
+
+        <li class="li">报告查询</li>
+
+        <li class="li">执行查询</li>
+
+      </ul>
+</div>
+
+    <div class="p">拥有以下特性的资源组：<dl class="dl parml">
+        
+          <dt class="dt pt dlterm">MEMORY_LIMIT</dt>
+
+          <dd class="dd pd">队列（每个Segment）中所有查询所使用的的内存的量。例如，对ETL查询设置2GB的<var class="keyword varname">MEMORY_LIMIT</var>，
+		  这样每个Segment里的ETL查询最多使用2GB的内存。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">ACTIVE_STATEMENTS</dt>
+
+          <dd class="dd pd">队列中<em class="ph i">槽位</em>的数量；一个队列中最大可并行数，当所有槽位都占用时，新的查询必须等待。默认每个查询使用
+		  等量的内存，。</dd>
+
+          <dd class="dd pd">例如，<samp class="ph codeph">pg_default</samp>资源组的<var class="keyword varname">ACTIVE_STATEMENTS</var>为20。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">PRIORITY</dt>
+
+          <dd class="dd pd">查询使用的相对CPU使用量，可以设置为以下级别：<samp class="ph codeph">LOW</samp>、<samp class="ph codeph">MEDIUM</samp>、<samp class="ph codeph">HIGH</samp>
+              和<samp class="ph codeph">MAX</samp>。默认级别是<samp class="ph codeph">MEDIUM</samp>，查询优先权的机制会监控系统中所有正在运行的查询的CPU使用量，
+			  并根据其优先权别来调整其CPU使用量。例如，你可以为<samp class="ph codeph">执行</samp>资源队列设置<samp class="ph codeph">MAX</samp>优先权，为其他
+			  查询设置<samp class="ph codeph">MEDIUM</samp>优先权，确保执行查询可以获得比较多的CPU资源。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">MAX_COST</dt>
+
+          <dd class="dd pd">查询计划消耗限制。</dd>
+
+          <dd class="dd pd">Greenplum数据优化器会为每个查询分配数字型消耗，如果该消耗超过了资源队列的<samp class="ph codeph">MAX_COST</samp>的值，该查询就会被拒绝。</dd>
+
+          <dd class="dd pd">
+            <div class="note note">
+<span class="notetitle">Note:</span> GPORCA和Postgres查询优化器使用不同的查询消耗模型，因此同一个查询可能会得出不同的消耗，Greenplum数据库资源队列资源管理模式不会
+				采用GPORCA或Postgres优化器得出的消耗，而是使用根据优化器直接返还的消耗来限制查询。
+				<p class="p"> 当基于资源队列的资源管理系统激活时，会使用<samp class="ph codeph">MEMORY_LIMIT</samp>和<samp class="ph codeph">ACTIVE_STATEMENTS</samp>限制资源，
+				而不是配置基于消耗的限制。因为即便是使用GPORCA的时候，Greenplum数据库仍然可能会在特定查询中使用Postgres查询优化器从而导致未知的结果。</p>
+</div>
+
+          </dd>
+
+        
+      </dl>
+</div>
+
+    <p class="p">Greenplum数据库系统默认配置有一个默认资源队列，名为<samp class="ph codeph">pg_default</samp>，<samp class="ph codeph">pg_default</samp>资源队列的<samp class="ph codeph">ACTIVE_STATEMENTS</samp>
+	设置数值为20，没有<samp class="ph codeph">MEMORY_LIMIT</samp>和<samp class="ph codeph">MAX_COST</samp>，<samp class="ph codeph">PRIORITY</samp>为中。这意味所有查询都会被接受并立即执行，没有优先权划分
+	和内存限制；但是并行的查询最多是20个。</p>
+
+    <p class="p">一个资源队列所允许的并行查询的数量由是否有设置<samp class="ph codeph">MEMORY_LIMIT</samp>决定：</p>
+
+    <ul class="ul" id="topic1__ul_p5p_jxp_wq">
+      <li class="li">如果一个资源队列没有设置<samp class="ph codeph">MEMORY_LIMIT</samp>的话，每个资源所分配到的内存大小就是<samp class="ph codeph"><a class="xref" href="../ref_guide/config_params/guc-list.html#statement_mem">statement_mem</a></samp>的服务器配置参数，一个资源队列的可用内存大小是根据<samp class="ph codeph">statement_mem</samp>和<samp class="ph codeph">ACTIVE_STATEMENTS</samp>的计算结果。</li>
+
+      <li class="li">当资源队列有设置<samp class="ph codeph">MEMORY_LIMIT</samp>时，资源队列中可以并行执行的查询数将会受到该队列的可用内存限制。</li>
+
+    </ul>
+
+    <p class="p">提交到系统中的查询将会被分配一定量的内存，且系统会对其生成一个查询计划树。计划树的每个节点都是运算符，例如排序连接和哈希连接。每个运算符都是单独的执行线程，且被分配到了总陈述说明内存中的
+		一部分（至少100KB）。如果计划中含有大量的运算符，运算符所需的最小内存大小可能会超过可用内存，则该查询会因内存不足而被拒绝。运算符会确定能否使用分配到的内存量完成任务，否则就会
+		采取spill to disk的处理方式。这种分配和控制每个运算符使用的内存大小的机制被称为<em class="ph i">内存配额</em>。</p>
+
+    <p class="p">并不是所有提交到资源队列的SQL声明都会受到队列限制的评估，默认只会评估<samp class="ph codeph">SELECT</samp>、<samp class="ph codeph">SELECT INTO</samp>、<samp class="ph codeph">CREATE TABLE AS SELECT</samp>和
+	<samp class="ph codeph">DECLARE CURSOR</samp>声明。如果服务器配置的<samp class="ph codeph">resource_select_only</samp>参数为<em class="ph i">off</em>，那么<samp class="ph codeph">INSERT</samp><span class="ph">、<samp class="ph codeph">UPDATE</samp>
+	和<samp class="ph codeph">DELETE</samp></span>声明也会受评估。</p>
+
+    <p class="p">与此同时，在执行<samp class="ph codeph">EXPLAIN ANALYZE</samp>命令期间跑的SQL声明也会被资源队列排除。</p>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="wlmgmt.html" title="Greenplum数据为用户提供了根据业务需求对查询进行排序以及提供资源的功能， 该功能的主要目的是为了防止在资源不可用时仍然发起查询的行为。">管理资源</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic111">
+    <h2 class="title topictitle2">资源队列示例</h2>
+
+    <div class="body">
+      <p class="p">默认资源队列<samp class="ph codeph">pg_default</samp>允许最多20个活动查询平分内存以并行执行。一般来说这是不足以满足生产环境下的资源需求的。为了确保系统能够满足性能期望，用户可以定义查询的组并
+	  对其分配拥有相应的并行量、内存以及CPU的资源队列。</p>
+
+      <div class="p">如下展示了一个示例Greenplum数据库系统（<samp class="ph codeph">gp_vmem_protect_limit</samp>为8GB）的资源队列的配置：<div class="fig fignone" id="topic111__fig_p3y_mg5_1q">
+<span class="figcap">Figure 2. 资源队列配置示例</span>
+          
+          <img class="image" id="topic111__image_wnh_wpc_dq" src="graphics/resource_queue_examp.png" width="576">
+        </div>
+</div>
+
+      <div class="p">该示例有三个不同属性和服务等级协议的组，各个有对应的资源队列。其中预留有一部分内存作为冗余。 
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic111__table_kns_wg5_1q" class="table" frame="border" border="1" rules="all">
+            
+            
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="25%" id="d110276e324">资源队列名</th>
+
+                <th class="entry" valign="top" width="25%" id="d110276e327">活动声明</th>
+
+                <th class="entry" valign="top" width="25%" id="d110276e330">内存限制</th>
+
+                <th class="entry" valign="top" width="25%" id="d110276e333">每个查询的内存</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="25%" headers="d110276e324 ">ETL</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e327 ">3</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e330 ">2GB</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e333 ">667MB</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="25%" headers="d110276e324 ">报告</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e327 ">7</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e330 ">3GB</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e333 ">429MB</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="25%" headers="d110276e324 ">执行</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e327 ">1</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e330 ">1.4GB</td>
+
+                <td class="entry" valign="top" width="25%" headers="d110276e333 ">1.4GB</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+</div>
+
+      <p class="p">队列所分配的内存总量为6.4GB，也就是说<samp class="ph codeph">gp_vmem_protect_limit</samp>服务器配置参数所定义的总Segment内存的80%。剩余的20%是为了那些可能会需要更多内存的
+	  运算符和查询所预留的。</p>
+
+      <p class="p">关于命令语法帮助和详细参考信息请见<cite class="cite">Greenplum数据库参考指南</cite>中的<samp class="ph codeph">CREATE RESOURCE QUEUE</samp>和<samp class="ph codeph">CREATE/ALTER ROLE</samp>语句。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic113">
+    <h2 class="title topictitle2">内存限制如何工作
+</h2>
+
+    <div class="body">
+      <p class="p">一个资源队列上的<samp class="ph codeph">MEMORY_LIMIT</samp>为一个Segment实例设置通过该队列提交的所有活动查询可以消耗的最大内存量。拨给一个查询的内存量是队列内存限制除以活动语句限制（将内存限制与基于语句的队列而不是基于代价的队列）。例如，如果一个队列的内存限制是2000MB而活动语句限制是10，每个通过该队列提交的查询会默认拿到200MB内存。可以以每个查询为基础使用<samp class="ph codeph">statement_mem</samp>服务器配置参数覆盖默认的内存分配（最高到队列内存限制）。一旦一个查询开始执行，它会在队列中保持分拨给它的内存直至完成，即便在执行中它实际消耗的内存比分配到的内存少也是如此。</p>
+
+      <p class="p">用户可以使用<samp class="ph codeph">statement_mem</samp> 服务器配置参数来覆盖当前资源队列设置的内存限制。在会话级别，用户可以增加<samp class="ph codeph">statement_mem</samp>，最高到资源队列的<samp class="ph codeph">MEMORY_LIMIT</samp>。这将允许个别查询使用分配给整个队列的所有内存而不影响其他资源队列。</p>
+
+      <p class="p"><samp class="ph codeph">statement_mem</samp>的值会被<samp class="ph codeph">max_statement_mem</samp>配置参数（是一个超级用户参数）覆盖。对于一个设置有<samp class="ph codeph">MEMORY_LIMIT</samp>的资源队列中的查询，<samp class="ph codeph">statement_mem</samp>的最大值是<samp class="ph codeph">min(MEMORY_LIMIT, max_statement_mem)</samp>。当一个查询被允许进入时，分配给它的内存会被从MEMORY_LIMIT中减去。如果<samp class="ph codeph">MEMORY_LIMIT</samp>被耗尽，同一个资源队列中的新查询必须等待。即使<samp class="ph codeph">ACTIVE_STATEMENTS</samp>还没有达到时也会发生这种事情。注意只有当<samp class="ph codeph">statement_mem</samp>被用来覆盖资源队列分配的内存时才会发生这种情况。</p>
+
+      <div class="p">例如，考虑一个名为<samp class="ph codeph">adhoc</samp>的队列，它有下列设置：<ul class="ul" id="topic113__ul_dpr_vnd_dq">
+          <li class="li">
+<samp class="ph codeph">MEMORY_LIMIT</samp> 为 1.5GB </li>
+
+          <li class="li">
+<samp class="ph codeph">ACTIVE_STATEMENTS</samp> 为 3</li>
+
+        </ul>
+
+      </div>
+
+      <div class="p">默认每个被提交到队列的语句会被分配500MB内存。现在考虑下列一系列事件：<ol class="ol" id="topic113__ol_hjq_14d_dq">
+          <li class="li">用户<samp class="ph codeph">ADHOC_1</samp>提交查询<samp class="ph codeph">Q1</samp>，并且把<samp class="ph codeph">STATEMENT_MEM</samp>覆盖为800MB。<samp class="ph codeph">Q1</samp>语句被准许进入系统。</li>
+
+          <li class="li">用户<samp class="ph codeph">ADHOC_2</samp>提交查询<samp class="ph codeph">Q2</samp>，使用默认的500MB。</li>
+
+          <li class="li">当<samp class="ph codeph">Q1</samp>和<samp class="ph codeph">Q2</samp>仍在运行时，用户<samp class="ph codeph">ADHOC3</samp>提交查询<samp class="ph codeph">Q3</samp>，使用默认的500MB。</li>
+
+        </ol>
+</div>
+
+      <p class="p">查询<samp class="ph codeph">Q1</samp>和<samp class="ph codeph">Q2</samp>已经用掉了队列的1500MB中的1300MB。因此，<samp class="ph codeph">Q3</samp>在能运行前必须等待<samp class="ph codeph">Q1</samp>或<samp class="ph codeph">Q2</samp>完成。</p>
+
+      <p class="p">如果在一个队列上没有设置<samp class="ph codeph">MEMORY_LIMIT</samp>，查询都被准许进入，直到所有的<samp class="ph codeph">ACTIVE_STATEMENTS</samp>槽被用尽，并且每个查询可以设置一个任意高的<samp class="ph codeph">statement_mem</samp>这可能导致资源队列使用无限量的内存。</p>
+
+      <p class="p">更多有关在资源队列上配置内存限制以及其他内存利用控制的信息，请见<a class="xref" href="#topic12">创建带有内存限制的队列</a>.</p>
+
+    <div class="section" xml:lang="en" lang="en" id="topic113__topic113x">
+<h3 class="title sectiontitle">statement_mem和低内存查询</h3>
+      
+        <div class="p">经实践发现设置了低<samp class="ph codeph">statement_mem</samp>参数（比如1-3MB的范围内）的低内存需求的查询会有更好的性能表现。在单个查询的基础上使用<samp class="ph codeph">statement_mem</samp>服务器配置参数来覆盖队列的设置。例如：
+		<pre class="pre codeblock">SET statement_mem='2MB';</pre>
+</div>
+
+    </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="priorities">
+    <h2 class="title topictitle2">优先权如何起作用</h2>
+
+    <div class="body">
+      <p class="p">资源队列的<samp class="ph codeph">PRIORITY</samp>设置与<samp class="ph codeph">MEMORY_LIMIT</samp>和<samp class="ph codeph">ACTIVE_STATEMENTS</samp>设置不同，后两者决定一个查询是否将被准许进入该队列并且最终被执行。<samp class="ph codeph">PRIORITY</samp>设置对于活动查询适用。活动查询会按照其所在资源队列的优先权设置来共享可用的CPU资源。当一个来自高优先权队列的语句进入到活动运行语句分组中时，它可以得到可用CPU中较高的份额，同时也降低了具有较低优先权设置队列中已经在运行的语句得到的份额。</p>
+
+      <p class="p">查询的相对尺寸或复杂度不影响CPU的分配。如果一个简单的低代价的查询与一个大型的复杂查询同时运行，并且它们的优先权设置相同，它们将被分配同等份额的可用CPU资源。当一个新的查询变成活动时，CPU份额将会被重新计算，但是优先权相等的查询仍将得到等量的CPU。</p>
+
+      <div class="p">例如，管理员创建三个资源队列：<em class="ph i">adhoc</em>用于业务分析师提交的正在进行的查询，<em class="ph i">reporting</em>用于计划的报表任务，而<em class="ph i">executive</em>用于行政用户角色递交的查询。由于分析师可能临时提交查询，而这些查询的资源需求是不可预测的，管理员想要确保计划的报表任务不会受到这类查询的严重影响。还有，管理员想要确保行政角色递交的查询会被分配相当份额的CPU。相应地，资源队列的优先权被设置如下：<ul class="ul" id="priorities__ul_ppy_3cy_wq">
+          <li class="li" id="priorities__iz160250">
+<em class="ph i">adhoc</em> — 低优先权</li>
+
+          <li class="li" id="priorities__iz161065">
+<em class="ph i">reporting</em> — 高优先权</li>
+
+          <li class="li" id="priorities__iz161070">
+<em class="ph i">executive</em> — 最大优先权</li>
+
+        </ul>
+</div>
+
+      <p class="p">在运行时，活动语句的CPU份额由这些这些优先权设置决定。如果来自报表队列的查询1和2同时运行，它们有相等份额的CPU。当一个临时查询变成活动时，它会索取一个较小份额的CPU。报表查询所使用的准确份额会被调整，但仍然保持相等，因为它们的优先权设置相等：
+
+</p>
+
+      <div class="fig fignone" id="priorities__iz173993">
+<span class="figcap">Figure 3. 根据优先权重新调整CPU份额 </span>
+        
+        <br><img class="image" id="priorities__image_lgv_lcy_wq" src="graphics/gp_query_priority1.png" width="432" height="298"><br>
+      </div>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 
+        <p class="p">这些图中显示的百分数都是近似值。高、低和中优先权队列的CPU使用并不总是准确地用这些比例计算出来。</p>
+
+      </div>
+
+      <p class="p">当一个行政查询进入到运行语句组中时，CPU使用会被调整以说明其最大优先权设置。它可能是一个堪比分析师和报表查询的简单查询，但直到它完成前，它都将要求最大份额的CPU。</p>
+
+      <div class="fig fignone" id="priorities__iz160829">
+<span class="figcap">Figure 4. 为最大优先权查询重新调整CPU份额 </span>
+        
+        <br><img class="image" id="priorities__image_lrr_ddy_wq" src="graphics/gp_query_priority2.png" width="194" height="305"><br>
+      </div>
+
+      <p class="p">更多有关设置优先权的命令的信息，请见<a class="xref" href="#topic16">设置优先级</a>.</p>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic8">
+    <h2 class="title topictitle2">启用负载管理的步骤</h2>
+
+    <div class="body">
+      <p class="p">在Greenplum数据库中启用并且使用负载管理涉及下列高层任务：</p>
+
+      <ol class="ol" id="topic8__ol_ec5_4dy_wq">
+        <li class="li">配置负载管理，见<a class="xref" href="#topic9">配置负载管理</a>.</li>
+
+        <li class="li" id="topic8__iz153167">创建资源队列并且在其上设置限制。见<a class="xref" href="#topic10">创建资源队列</a> and <a class="xref" href="#topic19">修改资源队列</a>.</li>
+
+        <li class="li" id="topic8__iz153172">把队列分派给一个或者更多用户角色。见<a class="xref" href="#topic17">指派角色（用户）到资源队列</a>.</li>
+
+        <li class="li" id="topic8__iz153188">使用负载管理系统视图来监控并且管理资源队列。见<a class="xref" href="#topic22">检查资源队列状态</a>.</li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic9">
+    <h2 class="title topictitle2">配置负载管理</h2>
+
+    <div class="body">
+      <p class="p">在安装Greenplum数据库时默认会启用资源调度，资源调度对所有角色都是必需的。默认的资源队列<samp class="ph codeph">pg_default</samp>的活动语句限制是20，没有内存限制和中等的优先权设置。为各种类型的负载创建资源队列。</p>
+
+      <div class="section" id="topic9__iz169600">
+<h3 class="title sectiontitle">配置负载管理</h3>
+        
+        <ol class="ol">
+          <li class="li" id="topic9__iz169263">下列参数用于资源队列的一般配置：<ul class="ul" id="topic9__ul_gln_v3c_34">
+              <li class="li" id="topic9__iz152506">
+<samp class="ph codeph">max_resource_queues</samp> - 设置资源队列的最大数量。</li>
+
+              <li class="li" id="topic9__iz153405">
+<samp class="ph codeph">max_resource_portals_per_transaction</samp> - S设置每个事务允许同时打开的游标的最大数量。注意一个打开的游标将在资源队列中占有一个活动查询槽。</li>
+
+              <li class="li" id="topic9__iz154513">
+<samp class="ph codeph">resource_select_only</samp> - 如果被设置为<em class="ph i">on</em>，那么<samp class="ph codeph">SELECT</samp>，<samp class="ph codeph">SELECT INTO</samp>，<samp class="ph codeph">CREATE TABLE
+                  AS</samp><samp class="ph codeph">SELECT</samp>和<samp class="ph codeph">DECLARE CURSOR</samp>命令会被评估。如果被设置为<em class="ph i">off</em>，<samp class="ph codeph">INSERT</samp><span class="ph">，                    <samp class="ph codeph">UPDATE</samp>和<samp class="ph codeph">DELETE</samp></span>也将被评估。</li>
+
+              <li class="li" id="topic9__iz157925">
+<samp class="ph codeph">resource_cleanup_gangs_on_wait</samp> - 在资源队列中取得一个槽之前清除空转的Segment工作者进程。</li>
+
+              <li class="li" id="topic9__iz156657">
+<samp class="ph codeph">stats_queue_level</samp> - 在资源队列使用上启用统计信息收集，然后可以通过查询pg_stat_resqueues系统视图来查看收集到的信息。</li>
+
+            </ul>
+</li>
+
+          <li class="li" id="topic9__iz169478">下列参数与内存利用有关：<ul class="ul" id="topic9__ul_ehc_w3c_34">
+              <li class="li" id="topic9__iz172344">
+<samp class="ph codeph">gp_resqueue_memory_policy</samp> - 启用Greenplum数据库的内存管理特性。
+在<p class="p">Greenplum数据库4.2<span class="ph">和其后的版本中，</span>分布算法<samp class="ph codeph">eager_free</samp> 会利用并非所有操作符都会同时执行这一事实。查询计划被划分成阶段并且Greenplum数据库会饥渴地在上一阶段执行结束时释放分配给上一阶段的内存，然后将释放出来的内存饥渴地分配给新的阶段。</p>
+<p class="p"><span class="ph">当被设置为<samp class="ph codeph">none</samp>时，内存管理与4.1之前Greenplum数据库发行版相同。</span>当被设置为<samp class="ph codeph">auto</samp>时，查询内存使用由<samp class="ph codeph">statement_mem</samp>和资源队列内存限制所控制。</p>
+</li>
+
+              <li class="li" id="topic9__iz172366">
+<samp class="ph codeph">statement_mem</samp>和<samp class="ph codeph">max_statement_mem</samp> - 被用来在运行时给一个特定查询分配内存（覆盖资源队列指派的默认分配）。<samp class="ph codeph">max_statement_mem</samp>被数据库超级用户设置以防止常规数据库用户过度分配。</li>
+
+              <li class="li" id="topic9__iz169494">
+<samp class="ph codeph">gp_vmem_protect_limit</samp> - 设置所有查询处理能消耗的上界并且不应超过Segment主机的物理内存量。当一台Segment主机在查询执行时达到这一限制，导致超过限制的查询将被取消。</li>
+
+              <li class="li" id="topic9__iz169556">
+<samp class="ph codeph">gp_vmem_idle_resource_timeout</samp>和<samp class="ph codeph">gp_vmem_protect_segworker_cache_limit</samp> -被用来释放Segment主机上由闲置数据库进程持有的内存。管理员可能想要在有大量并发的系统上调整这些设置。</li>
+
+              <li class="li">
+<samp class="ph codeph">shared_buffers</samp> - 设置Greenplum服务器实例用作共享内存缓冲区的内存量。这个设置必须至少为128千字节并且至少为16千字节乘以<samp class="ph codeph">max_connections</samp>。该值不能超过操作系统共享内存最大分配请求尺寸，该尺寸由Linux上的<samp class="ph codeph">shmmax</samp>控制。推荐的OS内存设置请见 <em class="ph i">Greenplum 数据库安装指南</em>。</li>
+
+            </ul>
+</li>
+
+          <li class="li" id="topic9__iz169487">下列参数与查询优先有关。注意下列参数都是<em class="ph i">本地</em>参数，意味着它们必须在Master和所有Segment的<samp class="ph codeph">postgresql.conf</samp>文件中设置：<ul class="ul" id="topic9__ul_lm2_x3c_34">
+              <li class="li" id="topic9__iz158643">
+<samp class="ph codeph">gp_resqueue_priority</samp> - 查询优先特性默认被启用。</li>
+
+              <li class="li" id="topic9__iz158644">
+<samp class="ph codeph">gp_resqueue_priority_sweeper_interval</samp> - 设置所有活动语句重新计算CPU使用的时间间隔。这个参数的默认值应该足够用于通常的数据库操作。</li>
+
+              <li class="li" id="topic9__iz174445">
+<samp class="ph codeph">gp_resqueue_priority_cpucores_per_segment</samp> -
+                指定每个Segment实例分配的CPU核数。Master和Segment的默认值是4。对于Greenplum Data Computing Appliance Version 2，Segment的默认值是4而Master默认值是25。<p class="p">每台主机会在其自己的<samp class="ph codeph">postgresql.conf</samp>文件中检查这个参数的值。这个参数也影响Master节点，在Master节点上它应该被设置为一个反映CPU核数更高比率的值。例如，在每台主机有10个CPU核以及4个Segment的集群上，用户可以为<samp class="ph codeph">gp_resqueue_priority_cpucores_per_segment</samp>指定这些值：</p>
+<p class="p">为Master和后备Master指定10。通常，在Master主机上只有Master实例。</p>
+<p class="p">为Segment主机上的每个Segment实例指定2.5。</p>
+<p class="p">如果参数值未被设置正确，要么是CPU可能不会被完全利用，要么是查询优先可能无法按照预期工作。例如，如果Greenplum数据库集群在Segment主机上每个CPU核低于一个Segment实例，确保要相应地调整这个值。</p>
+<p class="p">实际的CPU核利用取决于Greenplum数据库并行化查询的能力以及执行查询要求的资源。</p>
+<p class="p">注意：操作系统任何可用的CPU核都会被包括在CPU核数中。例如，虚拟CPU核会被包括在CPU核数中。</p>
+</li>
+
+            </ul>
+</li>
+
+          <li class="li" id="topic9__iz171977">如果用户希望查看或者更改任何负载管理参数值，可以使用<samp class="ph codeph">gpconfig</samp> 工具。</li>
+
+          <li class="li" id="topic9__iz169849">例如，要查看一个特定参数的设置：<div class="p">
+              <pre class="pre codeblock">$ gpconfig --show gp_vmem_protect_limit
+</pre>
+
+            </div>
+</li>
+
+          <li class="li" id="topic9__iz169838">例如，要在所有的Segment实例上设置一个值并且在Master上设置一个不同的值：
+<div class="p">
+              <pre class="pre codeblock">$ gpconfig -c gp_resqueue_priority_cpucores_per_segment -v 2 -m 8
+</pre>
+
+            </div>
+</li>
+
+          <li class="li" id="topic9__iz169522">重启Greenplum数据库让配置更改生效：<div class="p">
+              <pre class="pre codeblock">$ gpstop -r
+</pre>
+
+            </div>
+</li>
+
+        </ol>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic10">
+    <h2 class="title topictitle2">创建资源队列</h2>
+
+    <div class="body">
+      <p class="p">创建一个资源队列涉及到给它一个名称、设置一个活动查询限制并且可选地在该资源队列上设置一个查询优先权。使用<samp class="ph codeph">CREATE RESOURCE QUEUE</samp>命令来创建新的资源队列。</p>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic11">
+      <h3 class="title topictitle3">创建带有活动查询限制的队列</h3>
+
+      <div class="body">
+        <p class="p" id="topic11__iz152723">带有<samp class="ph codeph">ACTIVE_STATEMENTS</samp>设置的资源队列会限制指派给该队列的角色所执行的查询数量。例如，要创建一个名为<em class="ph i">adhoc</em>且活动查询限制为3的资源队列：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# CREATE RESOURCE QUEUE adhoc WITH (ACTIVE_STATEMENTS=3);
+</pre>
+
+        </div>
+
+        <p class="p">这意味着对于所有被分配到<em class="ph i">adhoc</em>资源队列的角色，在任意给定时刻只能有三个活动查询被运行在这个系统上。如果这个队列已经有三个查询在运行并且一个角色在该队列中提交第四个查询，则第四个查询只有等到一个槽被释放出来后才能运行。
+
+</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic12">
+      <h3 class="title topictitle3">创建带有内存限制的队列</h3>
+
+      <div class="body">
+        <p class="p">带有<samp class="ph codeph">MEMORY_LIMIT</samp><span class="ph">设置的资源队列控制所有通过该队列提交的查询的总内存。总内存不应超过每个Segment可用的物理内存。以每个Segment为基础，设置</span><samp class="ph codeph">MEMORY_LIMIT</samp>为90%的可用内存。例如，如果一台主机有48GB物理内存和6个Segment实例，那么每个Segment实例可用的内存是8GB。可以为单个队列按照0.90*8=7.2 GB来计算推荐的<samp class="ph codeph">MEMORY_LIMIT</samp>。如果在系统上创建有多个队列，它们的总内存限制加起来也必须为7.2 GB。</p>
+
+        <p class="p">在与<samp class="ph codeph">ACTIVE_STATEMENTS</samp>联合使用时，每个查询被分配的默认内存量为：<samp class="ph codeph">MEMORY_LIMIT</samp><samp class="ph codeph"> /</samp><samp class="ph codeph">ACTIVE_STATEMENTS</samp>。在与<samp class="ph codeph">MAX_COST</samp>联合使用时，每个查询被分配的默认内存量为：<samp class="ph codeph">MEMORY_LIMIT * (query_cost <samp class="ph codeph">/ </samp>MAX_COST)</samp>。将
+            <samp class="ph codeph">MEMORY_LIMIT</samp>与<samp class="ph codeph">ACTIVE_STATEMENTS</samp>而不是与<samp class="ph codeph">MAX_COST</samp>一起使用。</p>
+
+        <p class="p">例如，要创建一个活动查询限制为10且总内存限制为2000MB的资源队列（每个查询将在执行时被分配200MB的Segment主机内存）：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# CREATE RESOURCE QUEUE myqueue WITH (ACTIVE_STATEMENTS=20, 
+MEMORY_LIMIT='2000MB');
+</pre>
+
+        </div>
+
+        <p class="p">可以使用<samp class="ph codeph">statement_mem</samp>服务器配置参数针对每个查询覆盖默认的内存分配，前提是没有超过<samp class="ph codeph">MEMORY_LIMIT</samp>或者<samp class="ph codeph">max_statement_mem</samp> 。例如，要对一个特定查询分配更多内存：</p>
+
+        <pre class="pre codeblock">=&gt; SET statement_mem='2GB';
+=&gt; SELECT * FROM my_big_table WHERE column='value' ORDER BY id;
+=&gt; RESET statement_mem;
+</pre>
+
+        <p class="p">作为一种一般性的指导方针，对于所有资源队列的<samp class="ph codeph">MEMORY_LIMIT</samp>不应超过一台Segment主机的物理内存量。如果负载在多个队列之间交错安排，超额分配一些内存可能是OK的，但要记住，如果执行期间Segment主机的内存限制（<samp class="ph codeph">gp_vmem_protect_limit</samp>）被超过，查询可能会被取消。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic16">
+      <h3 class="title topictitle3">设置优先级</h3>
+
+      <div class="body">
+        <p class="p">为了控制一个资源队列对可用CPU资源的消耗，管理员可以指派一个合适的优先级。当高并发导致对CPU资源的竞争时，与较高优先权资源队列相关的查询和语句将会比较低优先权的查询和语句得到更大份额的可用CPU。</p>
+
+        <p class="p">优先权设置使用命令<samp class="ph codeph">CREATE RESOURCE QUEUE</samp>和<samp class="ph codeph">ALTER RESOURCE QUEUE</samp>的<samp class="ph codeph">WITH</samp>参数创建或修改。例如，要为<em class="ph i">adhoc</em>和<em class="ph i">reporting</em>队列指定优先权设置，管理员会使用下列命令：</p>
+
+        <pre class="pre codeblock">=# ALTER RESOURCE QUEUE adhoc WITH (PRIORITY=LOW);
+=# ALTER RESOURCE QUEUE reporting WITH (PRIORITY=HIGH);</pre>
+
+        <p class="p">要以最大优先权创建<em class="ph i">executive</em>队列，管理员可以使用下列命令：</p>
+
+        <pre class="pre codeblock">=# CREATE RESOURCE QUEUE executive WITH (ACTIVE_STATEMENTS=3, PRIORITY=MAX);</pre>
+
+        <p class="p">当查询优先特性被启用时，如果没有显式地指派，默认会为资源队列给出一个<samp class="ph codeph">MEDIUM</samp>优先权。更多有关运行时如何评估优先权设置的信息，请见<a class="xref" href="#priorities">优先权如何起作用</a>.</p>
+
+        <div class="note important">
+<span class="importanttitle">Important:</span> 为了在活动查询负载上实施资源队列优先级，用户必须通过设置相关服务器配置参数来启用查询优先特性。请见<a class="xref" href="#topic9">配置负载管理</a>.</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic17">
+    <h2 class="title topictitle2">指派角色（用户）到资源队列</h2>
+
+    <div class="body">
+      <p class="p" id="topic17__iz172211">一旦创建了一个资源队列，用户必须把角色（用户）指派到它们合适的资源队列。如果没有显式地把角色指派给资源队列，它们将进入默认资源队列<samp class="ph codeph">pg_default</samp>。默认资源队列的活动语句限制是20，没有代价限制，优先权设置是中等。</p>
+
+      <p class="p">使用<samp class="ph codeph">ALTER ROLE</samp>或者<samp class="ph codeph">CREATE ROLE</samp>命令来指派角色到资源队列。例如：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# ALTER ROLE <samp class="ph codeph">name</samp> RESOURCE QUEUE <samp class="ph codeph">queue_name</samp>;
+=# CREATE ROLE <samp class="ph codeph">name</samp> WITH LOGIN RESOURCE QUEUE <samp class="ph codeph">queue_name</samp>;
+</pre>
+
+      </div>
+
+      <p class="p">任一给定时间，一个角色只能被指派给一个资源队列，因此用户可以使用<samp class="ph codeph">ALTER ROLE</samp>命令来初始指派角色的资源队列或者更改角色的资源队列。</p>
+
+      <p class="p">资源队列必须按逐用户的方式指派。如果有一个角色层次（例如，组级别角色），那么把资源队列指派给组将不会传播到组中的用户。</p>
+
+      <p class="p" id="topic17__iz153606">超级用户总是被免除资源队列限制。超级用户查询将总是被运行，而不管它们被指派的队列上的限制。</p>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic18">
+      <h3 class="title topictitle3">从资源队列移除角色</h3>
+
+      <div class="body">
+        <p class="p">所有用户都<em class="ph i">必须</em>被指派到资源队列。如果没有被显式指派到一个特定队列，用户将会进入到默认的资源队列<samp class="ph codeph">pg_default</samp>。如果用户想要从一个资源队列移除一个角色并且把它们放在默认队列中，可以将该角色的队列指派改成<samp class="ph codeph">none</samp>。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# ALTER ROLE <samp class="ph codeph">role_name</samp> RESOURCE QUEUE none;
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic19">
+    <h2 class="title topictitle2">修改资源队列</h2>
+
+    <div class="body">
+      <p class="p">在资源队列被创建后，用户可以使用<samp class="ph codeph">ALTER RESOURCE QUEUE</samp>命令更改或者重置队列限制。用户可以使用<samp class="ph codeph">DROP RESOURCE QUEUE</samp>命令移除一个资源队列。要更改指派到资源队列的用户，请见<a class="xref" href="#topic17">指派角色（用户）到资源队列</a>.</p>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic20">
+      <h3 class="title topictitle3">修改资源队列</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">ALTER RESOURCE QUEUE</samp>命令更改资源队列的限制。要更改一个资源队列的限制，可以为该队列指定想要的新值。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# ALTER RESOURCE QUEUE <em class="ph i">adhoc</em> WITH (ACTIVE_STATEMENTS=5);
+=# ALTER RESOURCE QUEUE <em class="ph i">exec</em> WITH (PRIORITY=MAX);
+</pre>
+
+        </div>
+
+        <p class="p">要重置活动语句或者内存限制为没有限制，输入值<samp class="ph codeph">-1</samp>。要重置最大查询代价为无限制，输入值<samp class="ph codeph">-1.0</samp>。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# ALTER RESOURCE QUEUE <em class="ph i">adhoc</em> WITH (MAX_COST=-1.0, MEMORY_LIMIT='2GB');
+</pre>
+
+        </div>
+
+        <p class="p">用户可以使用<samp class="ph codeph">ALTER RESOURCE QUEUE</samp>命令更改一个资源队列相关查询的优先权。例如，要把一个队列设置为中等优先级：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER RESOURCE QUEUE <em class="ph i">webuser</em> WITH (PRIORITY=MIN);
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic21">
+      <h3 class="title topictitle3">删除资源队列</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">DROP RESOURCE QUEUE</samp>命令可以删除资源队列。要删除一个资源队列，该队列不能有指派给它的角色，也不能有任何语句在其中等待。关于清空一个资源队列的指导请见<a class="xref" href="#topic18">从资源队列移除角色</a>和<a class="xref" href="#topic27">从资源队列清除等待语句</a>。要删除一个资源队列：
+
+</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# DROP RESOURCE QUEUE <em class="ph i">name</em>;
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic22">
+    <h2 class="title topictitle2">检查资源队列状态</h2>
+
+    <div class="body">
+      <p class="p">检查资源队列状态涉及下列任务：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic22__iz153671">
+          <a class="xref" href="#topic23">查看队列中的语句和资源队列状态</a>
+        </li>
+
+        <li class="li" id="topic22__iz156749">
+          <a class="xref" href="#topic24">查看资源队列统计信息</a>
+        </li>
+
+        <li class="li" id="topic22__iz153679">
+          <a class="xref" href="#topic25">查看指派到资源队列的角色</a>
+        </li>
+
+        <li class="li" id="topic22__iz153684">
+          <a class="xref" href="#topic26">查看资源队列的等待查询</a>
+        </li>
+
+        <li class="li" id="topic22__iz153700">
+          <a class="xref" href="#topic27">从资源队列清除等待语句</a>
+        </li>
+
+        <li class="li" id="topic22__iz159212">
+          <a class="xref" href="#topic28">查看活动语句的优先权</a>
+        </li>
+
+        <li class="li" id="topic22__iz159217">
+          <a class="xref" href="#topic29">重置活动语句的优先权</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic23">
+      <h3 class="title topictitle3">查看队列中的语句和资源队列状态</h3>
+
+      <div class="body">
+        <p class="p">The <samp class="ph codeph">gp_toolkit.gp_resqueue_status</samp>视图允许管理员查看一个负载管理资源队列的状态和活动。对于一个特定资源队列，它展示有多少查询在等待运行以及系统中当前有多少查询是活动的。要查看系统中创建的资源队列、它们的限制属性和当前状态：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM gp_toolkit.gp_resqueue_status;
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic24">
+      <h3 class="title topictitle3">查看资源队列统计信息</h3>
+
+      <div class="body">
+        <p class="p">如果想要持续跟踪资源队列的统计信息和性能，可以为资源队列启用统计收集。这可以通过在Master的<samp class="ph codeph">postgresql.conf</samp>文件中设置下列服务器配置参数实现：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">stats_queue_level = on
+</pre>
+
+        </div>
+
+        <p class="p">一旦统计收集被启用，用户可以使用<samp class="ph codeph">pg_stat_resqueues</samp>系统视图来查看在资源队列使用上收集的统计信息。注意启用这一特性确实会引发一点点性能开销，因为每个通过资源队列提交的查询都必须被跟踪。可以先在资源队列上启用统计收集用于初始的诊断和管理规划，然后再连续使用中禁用该特性。</p>
+
+        <p class="p">更多有关Greenplum数据库中收集统计信息的内容，可参考PostgreSQL文档中的统计收集器部分。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic25">
+      <h3 class="title topictitle3">查看指派到资源队列的角色</h3>
+
+      <div class="body">
+        <p class="p">要查看指派给资源队列的角色，执行下列在<samp class="ph codeph">pg_roles</samp>和<samp class="ph codeph">gp_toolkit.</samp><samp class="ph codeph">gp_resqueue_status</samp>系统目录表上的查询：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT rolname, rsqname FROM pg_roles, 
+          gp_toolkit.gp_resqueue_status 
+   WHERE pg_roles.rolresqueue=gp_toolkit.gp_resqueue_status.queueid;
+</pre>
+
+        </div>
+
+        <p class="p">用户可能想用这个查询创建一个视图来简化未来的查询。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# CREATE VIEW role2queue AS
+   SELECT rolname, rsqname FROM pg_roles, pg_resqueue 
+   WHERE pg_roles.rolresqueue=gp_toolkit.gp_resqueue_status.queueid;
+</pre>
+
+        </div>
+
+        <p class="p">然后就可以只查询该视图：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM role2queue;
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic26">
+      <h3 class="title topictitle3">查看资源队列的等待查询</h3>
+
+      <div class="body">
+        <p class="p">当资源队列的一个槽被使用时，它被记录在<samp class="ph codeph">pg_locks</samp>系统目录表中。在其中用户可以看到所有资源队列的所有当前活跃的以及在等待的查询。要检查被放入队列中的语句（甚至不在等待的语句），用户还可以使用<samp class="ph codeph">gp_toolkit</samp>.gp_locks_on_resqueue视图。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM gp_toolkit.gp_locks_on_resqueue WHERE lorwaiting='true';
+</pre>
+
+        </div>
+
+        <p class="p">如果这个查询不返回结果，那就意味着当前没有语句在资源队列中等待。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic27">
+      <h3 class="title topictitle3">从资源队列清除等待语句</h3>
+
+      <div class="body">
+        <p class="p">在某些情况下，用户可能想要从资源队列中清除等待的语句。例如，用户可能想移除在队列中等待但还未被执行的语句。用户可能还想停止已经被启动但是执行时间太久的查询，或者是在事务中闲置并且占据其他用户所需的资源队列槽的查询。要做到这一点，用户必须标识出想要清除的语句，确定它的进程ID（pid），然后使用<samp class="ph codeph">pg_cancel_backend</samp>和进程ID来结束该进程（如下所示）。可以选择对被结束的进程发送一个消息来告诉用户原因，该消息作为第二个参数传入。</p>
+
+        <p class="p">例如，要查看在所有资源队列中当前活动的或者在等待的语句，运行下列查询：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT rolname, rsqname, pid, granted,
+          current_query, datname 
+   FROM pg_roles, gp_toolkit.gp_resqueue_status, pg_locks,
+        pg_stat_activity 
+   WHERE pg_roles.rolresqueue=pg_locks.objid 
+   AND pg_locks.objid=gp_toolkit.gp_resqueue_status.queueid
+   AND pg_stat_activity.procpid=pg_locks.pid
+   AND pg_stat_activity.usename=pg_roles.rolname;
+</pre>
+
+        </div>
+
+        <p class="p">如果这个查询不返回结果，那就意味着当前没有语句在资源队列中等待。例如，下面的资源队列在结果中有两个语句：</p>
+
+        <pre class="pre codeblock">rolname | rsqname |  pid  | granted |     current_query      | datname 
+----------------------------------------------------------------------- 
+  sammy | webuser | 31861 | t       | &lt;IDLE&gt; in transaction  | namesdb
+  daria | webuser | 31905 | f       | SELECT * FROM topten;  | namesdb</pre>
+
+        <p class="p">使用这一输出来标识出想要从资源队列中清除的语句的进程ID（pid）。要清除语句，用户可以在Master主机上打开一个终端窗口（作为<samp class="ph codeph">gpadmin</samp>数据库超级用户或者root）并且取消对应的进程。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# pg_cancel_backend(31905)
+</pre>
+
+        </div>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 
+          <p class="p">不要使用任何的操作系统<samp class="ph codeph">KILL</samp>命令。</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic28">
+      <h3 class="title topictitle3">查看活动语句的优先权</h3>
+
+      <div class="body">
+        <p class="p"><em class="ph i">gp_toolkit</em>管理方案有一个名为<em class="ph i">gp_resq_priority_statement</em>的视图，它列出了当前正在被执行的语句并且提供优先权、会话ID和其他信息。</p>
+
+        <p class="p">T这个视图只有通过<samp class="ph codeph">gp_toolkit</samp>管理方案才可用。<span class="ph">更多信息请见<em class="ph i">Greenplum数据库参考指南</em>。</span></p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic29">
+      <h3 class="title topictitle3">重置活动语句的优先权</h3>
+
+      <div class="body">
+        <p class="p">超级用户可以使用内建函数<samp class="ph codeph">gp_adjust_priority(session_id,statement_count,priority)</samp>调整当前正在被执行的语句的优先权。使用这个函数，超级用户可以提升或者降低任意查询的优先权。例如：</p>
+
+        <p class="p">
+          <samp class="ph codeph">=# SELECT gp_adjust_priority(752, 24905, 'HIGH')</samp>
+        </p>
+
+        <p class="p">为了获得这个函数所需的会话ID和语句计数参数，超级用户可以使用<samp class="ph codeph">gp_toolkit</samp>管理方案的视图<em class="ph i">gp_resq_priority_statement</em>。从该视图用户可以把这些值用作该函数的参数。</p>
+
+        <ul class="ul">
+          <li class="li" id="topic29__iz174657">
+<samp class="ph codeph">rqpsession</samp>列的值用作<samp class="ph codeph">session_id</samp>参数</li>
+
+          <li class="li" id="topic29__iz174658">
+<samp class="ph codeph">rqpcommand</samp>列的值用作<samp class="ph codeph">statement_count</samp>参数</li>
+
+          <li class="li" id="topic29__iz174659">
+<samp class="ph codeph">rqppriority</samp>列的值是当前优先权。可以指定字符串值<samp class="ph codeph">MAX</samp>，<samp class="ph codeph">HIGH</samp>，<samp class="ph codeph">MEDIUM</samp>或者<samp class="ph codeph">LOW</samp>作为<samp class="ph codeph">priority</samp>。
+          </li>
+
+        </ul>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> <samp class="ph codeph">gp_adjust_priority()</samp>函数只影响指定的语句。同一资源队列中后续的语句还是使用该队列正常指派的优先权执行。</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

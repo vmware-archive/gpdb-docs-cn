@@ -1,0 +1,954 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      配置客户端认证 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_security-guide x6-0_security-guide_topics x6-0_security-guide_topics_Authenticate has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/security-guide/topics/preface.html">安全性配置指南</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/SecuringGPDB.html">保护数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/ports_and_protocols.html">Greenplum数据库端口和协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authenticate.html">配置客户端认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authorization.html">配置数据库授权</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Auditing.html">审计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/BestPractices.html">安全性最佳实践</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    配置客户端认证
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">配置客户端认证</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">描述认证Greenplum数据库客户端的可用方法。</p>
+
+    <div class="p">在Greenplum数据库系统第一次被初始化时，系统含有一个预定义的超级用户角色。这个角色将具有与初始化该Greenplum数据库系统的操作系统用户相同的名称。这个角色被称作gpadmin。默认情况下，系统被配置为只允许来自gpadmin角色的对数据库的本地连接。如果用户想要允许任<ul class="ul" id="topic_n5w_gtd_jr__ul_kpg_sgq_kr">
+        <li class="li"><a class="xref" href="#topic_ln1_ptd_jr">允许到Greenplum数据库的连接</a></li>
+
+        <li class="li"><a class="xref" href="#topic_xwr_rvd_jr">编辑pg_hba.conf文件</a></li>
+
+        <li class="li"><a class="xref" href="#topic_nyh_gwd_jr">认证方法</a></li>
+
+        <li class="li"><a class="xref" href="#topic_hwn_bk2_jr">限制并发连接</a></li>
+
+        <li class="li"><a class="xref" href="#topic_ibc_nl2_jr">加密客户端/服务器连接</a></li>
+
+      </ul>
+</div>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../topics/preface.html">安全性配置指南</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_ln1_ptd_jr">
+    <h2 class="title topictitle2">允许到Greenplum数据库的连接</h2>
+
+    <div class="body">
+      <p class="p">客户端访问和认证受到配置文件<samp class="ph codeph">pg_hba.conf</samp>（标准的PostgreSQL基于主机认证文件）的控制。有关该文件的详细信息请见PostgreSQL文档中的<a class="xref" href="https://www.postgresql.org/docs/9.1/auth-pg-hba-conf.html" target="_blank">pg_hba.conf文件</a> </p>
+
+      <p class="p">在Greenplum数据库中，Master实例的<samp class="ph codeph">pg_hba.conf</samp>文件控制着对Greenplum系统的客户端访问和认证。Segment也有自己的<samp class="ph codeph">pg_hba.conf</samp>文件，但是它们已经被正确地配置为仅允许来自Master主机的客户端连接。Segment从不接受外部的客户端连接，因此没有必要修改Segment上的<samp class="ph codeph">pg_hba.conf</samp>文件。</p>
+
+      <div class="p">
+<samp class="ph codeph">pg_hba.conf</samp>文件的一般格式是一组记录，每个记录一行。空行会被忽略，任何#号注释字符之后的文本也同样会被忽略。记录由若干个被空格或者制表符分隔的域构成。如果域值被加上引号，其中可以包含空格。记录不能跨行。每个远程客户端访问记录都是如下格式：
+        <pre class="pre codeblock">host   database   role   address   authentication-method
+</pre>
+</div>
+
+      <div class="p">每个UNIX域套接字访问记录是如下格式：
+        <pre class="pre codeblock">local   database   role   authentication-method
+</pre>
+</div>
+
+      <div class="p">
+<samp class="ph codeph">pg_hba.conf</samp>域的含义如下：<dl class="dl parml">
+          
+            <dt class="dt pt dlterm">local</dt>
+
+            <dd class="dd pd"> 匹配使用UNIX域套接字的连接尝试。如果没有这类记录，就不允许UNIX域套接字连接。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">host</dt>
+
+            <dd class="dd pd">匹配使用TCP/IP的连接尝试。除非服务器使用服务器配置参数<samp class="ph codeph">listen_addresses</samp>的合适值启动，远程TCP/IP连接将不可能成功。 </dd>
+
+          
+          
+            <dt class="dt pt dlterm">hostssl</dt>
+
+            <dd class="dd pd">匹配使用TCP/IP的连接尝试，但是只匹配使用SSL加密建立的连接。SSL必须在服务器启动时通过设置<samp class="ph codeph">ssl</samp>配置参数来启用。对SSL认证的要求可以在<samp class="ph codeph">postgresql.conf</samp>中配置。见<a class="xref" href="#topic_fzv_wb2_jr__ssl_postgresql">为SSL认证配置postgresql.conf</a>. </dd>
+
+          
+          
+            <dt class="dt pt dlterm">hostnossl</dt>
+
+            <dd class="dd pd"> 匹配使用TCP/IP但不用SSL的连接尝试。对SSL认证的要求可以在<samp class="ph codeph">postgresql.conf</samp>中配置。见<a class="xref" href="#topic_fzv_wb2_jr__ssl_postgresql">为SSL认证配置postgresql.conf</a>.</dd>
+
+          
+          
+            <dt class="dt pt dlterm">database</dt>
+
+            <dd class="dd pd">指定这个记录匹配哪些数据库名。值all指定它匹配所有数据库。通过用逗号分隔数据库名，可以提供多个数据库名。可以指定一个包含数据库名的单独文件，方法是在这个域中给出加上前缀<samp class="ph codeph">@</samp>的文件名。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"> role </dt>
+
+            <dd class="dd pd">指定这个记录匹配哪些数据库角色名。值all指定它匹配所哟角色。如果指定的角色是一个组并且想包括其中的所有成员，可在角色名前面放一个<samp class="ph codeph">+</samp>。通过用逗号分隔角色名，可以提供多个角色名。可以指定一个包含角色名的单独文件，方法是在这个域中给出加上前缀<samp class="ph codeph">@</samp>的文件名。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"> address </dt>
+
+            <dd class="dd pd">指定这个记录匹配的客户端机器地址。该字段可以包含IP地址，IP地址范围或主机名。</dd>
+
+            <dd class="dd pd">IP地址范围是使用标准点分指定范围的起始地址，然后是斜杠（<samp class="ph codeph">/</samp>）和CIDR掩码长度。掩码长度表明客户端IP地址必须匹配的高位二进制位数。给定IP地址中在这一长度右边的二进制位必须为零。在IP地址、<samp class="ph codeph">/</samp>、CIDR掩码长度之间不能有任何空格。</dd>
+
+            <dd class="dd pd">IPv4地址范围的典型例子有
+                <samp class="ph codeph">172.20.143.89/32</samp> 是单台主机, 或
+                <samp class="ph codeph">172.20.143.0/24</samp> 是一个小型网络, 或
+                <samp class="ph codeph">10.6.0.0/16</samp> 是一个大型网络. 对于单个主机，IPv6地址范围可能类似于<samp class="ph codeph">::1/128</samp>（在本例中为IPv6环回地址）或<samp class="ph codeph">fe80::7a31:c1ff:0000:0000/96</samp>用于小型网络。
+                <samp class="ph codeph">0.0.0.0/0</samp> 代表所有IPv4地址, <samp class="ph codeph">::0/0</samp>
+             代表所有IPv6地址。要指定单台主机，对于IPv4和IPv6分别使用CIDR掩码32和128.在网络地址中，不要省略拖尾的零。</dd>
+
+            <dd class="dd pd">以IPv4格式给出的条目将仅匹配IPv4连接，以IPv6格式给出的条目将仅匹配IPv6连接，即使所表示的地址在IPv4-in-IPv6范围内。
+              <div class="note note">
+<span class="notetitle">Note:</span> 如果主机系统C库不支持IPv6地址，则IPv6格式的条目将被拒绝。</div>
+</dd>
+
+            <dd class="dd pd">如果指定了主机名（将非IP地址或IP范围的地址视为主机名），则将该名称与反向名称的结果进行比较客户端IP地址的分辨率（例如，如果使用DNS，则为反向DNS查找）。 主机名比较不区分大小写。 如果匹配，则转发名称对主机名执行解析（例如，正向DNS查找）以检查其解析为的地址是否等于客户端IP地址。如果两个方向都匹配，则认为该条目匹配。</dd>
+
+            <dd class="dd pd">某些主机名数据库允许将IP地址与多个主机名相关联，但是当要求系统解析IP时，操作系统仅返回一个主机名地址。<samp class="ph codeph">pg_hba.conf</samp>中使用的主机名必须是客户端IP地址的地址到名称解析返回的主机名，否则行将不被视为匹配项。</dd>
+
+            <dd class="dd pd">在<samp class="ph codeph">pg_hba.conf </samp>中指定了主机名时，应确保名称解析相当快。设置本地名称解析缓存（例如<samp class="ph codeph">nscd</samp>）可能是有利的。另外，用户可以启用服务器配置参数<samp class="ph codeph">log_hostname</samp>以查看客户端主机名而不是日志中的IP地址。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">IP-地址</dt>
+
+            <dt class="dt pt dlterm">IP-掩码 </dt>
+
+            <dd class="dd pd">这些域可以被用作CIDR-地址记法的替换选择。与指定掩码长度不同，真实的掩码在一个单独的列中指定。例如，<samp class="ph codeph">255.0.0.0</samp>表示一个IPv4的CIDR掩码长度8，而<samp class="ph codeph">255.255.255.255</samp>表示CIDR掩码长度32。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"> authentication-method </dt>
+
+            <dd class="dd pd"> 指定连接时要使用的认证方法。详见 <a class="xref" href="#topic_nyh_gwd_jr">认证方法</a>
+</dd>
+
+          
+        </dl>
+</div>
+
+      <div class="cautiontitle">CAUTION:</div>
+<div class="note caution">对于一个更安全的系统，考虑从Master的<samp class="ph codeph">pg_hba.conf</samp>中移除所有使用trust认证的连接。trust认证意味着不做任何认证就授予角色访问，因此会绕过所有安全性。如果系统具有可用的ident服务，可以把trust项替换为ident认证。</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_xwr_rvd_jr">
+    <h2 class="title topictitle2">编辑pg_hba.conf文件</h2>
+
+    <div class="body">
+      <p class="p">最初，<samp class="ph codeph">pg_hba.conf</samp>文件被设置成gpadmin用户对数据库具有完全访问权限，而其他Greenplum Database角色则没有数据库访问权限。用户需要编辑<samp class="ph codeph">pg_hba.conf</samp>文件，以使用户能够访问数据库并保证gpadmin用户的安全。需要考虑删除具有信任身份验证的条目，因为它们允许有权访问服务器的任何人以他们选择的任何角色进行连接。对于本地（UNIX套接字）连接，可使用ident身份验证，这要求操作系统用户匹配指定的角色。对于本地和远程TCP连接，身份验证要求客户端的主机运行ident服务。用户可以在主控主机上安装ident服务，然后对本地TCP连接使用ident身份验证，例如<samp class="ph codeph">127.0.0.1/28</samp>。将身份验证用于远程TCP连接的安全性较差，因为它要求用户信任客户端主机上身份服务的完整性。</p>
+
+      <p class="p">这个例子展示如何编辑Master的<samp class="ph codeph">pg_hba.conf</samp>文件来允许对从所有角色访问所有数据库的远程客户端使用加密口令认证。 </p>
+
+      <div class="p">要编辑<samp class="ph codeph">pg_hba.conf</samp>：<ol class="ol" id="topic_xwr_rvd_jr__ol_krz_zvd_jr">
+          <li class="li">在一个文本编辑器中打开文件<samp class="ph codeph">$MASTER_DATA_DIRECTORY/pg_hba.conf</samp>。</li>
+
+          <li class="li">为想要允许的每一类连接在文件中增加一行。记录会被顺序读取，因此记录的顺序是有意义的。通常，较早出现的记录将有比较严格的连接匹配参数以及较弱的认证方法，而较晚出现的记录将有较宽松的匹配参数和较强的认证方法。例如：<pre class="pre codeblock"># 允许gpadmin用户使用ident认证本地访问所有数据库
+local   all   gpadmin   ident         sameuser
+host    all   gpadmin   127.0.0.1/32  ident
+host    all   gpadmin   ::1/128       ident
+# 允许'dba'角色从任何具有IP地址192.168.x.x的主机访问任何数据库
+# 并且是用md5加密的口令来认证用户
+# 注意要使用SHA-256加密，用password替换下面行中的md5
+host    all   dba   192.168.0.0/32  md5
+</pre>
+</li>
+
+        </ol>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_nyh_gwd_jr">
+    <h2 class="title topictitle2">认证方法</h2>
+
+    <div class="body">
+      <ul class="ul" id="topic_nyh_gwd_jr__ul_qgp_1jq_kr">
+        <li class="li">
+          <a class="xref" href="#topic_nyh_gwd_jr__basic_auth">基本认证</a>
+        </li>
+
+        <li class="li">
+          <a class="xref" href="#topic_nyh_gwd_jr__kerberos_auth">Kerberos认证</a>
+        </li>
+
+        <li class="li">
+          <a class="xref" href="#topic_nyh_gwd_jr__ldap_auth">LDAP认证</a>
+        </li>
+
+        <li class="li">
+          <a class="xref" href="#topic_fzv_wb2_jr">SSL客户端认证</a>
+        </li>
+
+        <li class="li">
+          <a class="xref" href="#topic_yxp_5h2_jr">基于PAM的认证</a>
+        </li>
+
+        <li class="li">
+          <a class="xref" href="#topic_ed4_d32_jr">Radius认证</a>
+        </li>
+
+      </ul>
+
+      <div class="section" id="topic_nyh_gwd_jr__basic_auth">
+<h3 class="title sectiontitle">基本认证</h3>
+        
+        <div class="p">支持下列基本认证方法： <dl class="dl parml" id="topic_nyh_gwd_jr__ul_zsk_kwd_jr">
+            
+              <dt class="dt pt dlterm">Password 或者 MD5</dt>
+
+              <dd class="dd pd">要求客户端提供一个口令，可以为两者之一：<ul class="ul" id="topic_nyh_gwd_jr__ul_m21_nwd_jr">
+                  <li class="li">Md5 – 口令作为MD5哈希传输。</li>
+
+                  <li class="li">Password – 口令以明文传输。传输过程中应该总是使用SSL连接来防止口令嗅探。这是可配置的，更多信息请见<em class="ph i">Greenplum数据库管理员指南</em>中的“加密口令”。</li>
+
+                </ul>
+</dd>
+
+            
+            
+              <dt class="dt pt dlterm">Reject</dt>
+
+              <dd class="dd pd">拒绝有匹配参数的连接。用户通常应该使用这种方法来限制来自特定主机或者不安全连接的访问。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">Ident</dt>
+
+              <dd class="dd pd">基于客户端的操作系统用户名的认证。用户只对本地连接使用这种方法。对来自远程主机的TCP连接使用ident要求客户端的主机正在运行ident服务。身份认证方法仅应与受信任的封闭网络上的远程主机一起使用。</dd>
+
+            
+          </dl>
+</div>
+
+        <div class="p">下面是<samp class="ph codeph">pg_hba.conf</samp>基本认证项的一些例子：
+          entries:<pre class="pre codeblock">hostnossl    all   all        0.0.0.0   reject
+hostssl      all   testuser   0.0.0.0/0 md5
+local        all   gpuser               ident
+</pre>
+</div>
+
+      </div>
+
+      <div class="section" id="topic_nyh_gwd_jr__kerberos_auth">
+<h3 class="title sectiontitle">Kerberos认证</h3>
+        
+        <p class="p">用户可以用一台Kerberos服务器（RFC 2743, 1964）认证。</p>
+
+        <div class="p">
+<samp class="ph codeph">pg_hba.conf</samp> 文件中Kerberos认证的格式是：
+            <pre class="pre codeblock">servicename/hostname@realm</pre>
+</div>
+
+        <div class="p">可以把下列选项加到该项中：<dl class="dl parml">
+            
+              <dt class="dt pt dlterm">Map</dt>
+
+              <dd class="dd pd">映射系统和数据库用户。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">Include_realm</dt>
+
+              <dd class="dd pd">在ident映射文件中指定系统用户名中包括的realm名称的选项。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">Krb_realm</dt>
+
+              <dd class="dd pd">为匹配的主体指定realm名称。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">Krb_server_hostname</dt>
+
+              <dd class="dd pd">服务主体的主机名。</dd>
+
+            
+          </dl>
+</div>
+
+        <div class="p">下面是一个<samp class="ph codeph">pg_hba.conf</samp>的Kerberos项的例子：
+            <pre class="pre codeblock">host    all all 0.0.0.0/0   krb5
+                       hostssl all all 0.0.0.0/0   krb5 map=krbmap
+            </pre>
+</div>
+
+          <div class="p">下列Kerberos服务器设置在<samp class="ph codeph">postgresql.conf</samp>中被指定：<dl class="dl parml">
+            
+              <dt class="dt pt dlterm"><samp class="ph codeph">krb_server_key <em class="ph i">file</em></samp></dt>
+
+              <dd class="dd pd">设置Kerberos服务器密钥文件的位置。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">
+                <samp class="ph codeph">krb_srvname <em class="ph i">string</em></samp>
+</dt>
+
+              <dd class="dd pd">Kerberos服务名。</dd>
+
+            
+            
+              <dt class="dt pt dlterm"><samp class="ph codeph">krb_caseins_users <em class="ph i">boolean</em></samp></dt>
+
+              <dd class="dd pd">大小写敏感性。默认为off。</dd>
+
+            
+          </dl>
+</div>
+
+        <div class="p">下面的客户端设置作为连接参数被指定：<dl class="dl parml">
+            
+              <dt class="dt pt dlterm">
+                <samp class="ph codeph">Krbsrvname</samp>
+</dt>
+
+              <dd class="dd pd">要用于认证的Kerberos服务名。</dd>
+
+            
+          </dl>
+
+        </div>
+
+      </div>
+
+      <div class="section" id="topic_nyh_gwd_jr__ldap_auth">
+<h3 class="title sectiontitle">LDAP认证</h3>
+        
+        <p class="p">用户可以用一个LDAP目录认证。</p>
+
+        <ul class="ul">
+          <li class="li">LDAPS和TLS上的LDAP选项可以加密到LDAP服务器的连接。</li>
+
+          <li class="li">除非SSL被启用，从客户端到服务器的连接不会被加密。配置客户端连接以使用SSL加密来自该客户端的连接。</li>
+
+          <li class="li">要配置或者自定义LDAP设置，将<samp class="ph codeph">LDAPCONF</samp> 环境变量设置为到<samp class="ph codeph">ldap.conf</samp>文件的路径并且将它加入到<samp class="ph codeph">greenplum_path.sh</samp>脚本。</li>
+
+        </ul>
+
+        <div class="p">下面是为用户系统配置LDAP认证的推荐步骤： <ol class="ol">
+            <li class="li">用要通过LDAP认证的数据库用户/角色设置LDAP服务器。</li>
+
+            <li class="li">在数据库上：<ol class="ol" type="a">
+                <li class="li">验证要通过LDAP认证的数据库用户存在于数据库上。LDAP仅被用于验证用户名/口令对，因此角色应该存在于数据库中。</li>
+
+                <li class="li">更新<samp class="ph codeph">$MASTER_DATA_DIRECTORY</samp>中的<samp class="ph codeph">pg_hba.conf</samp>文件为相应的用户使用LDAP作为认证方法。注意<samp class="ph codeph">pg_hba.conf</samp>文件中第一个匹配用户/角色的项将被用作认证机制，因此项在该文件中的位置很重要。</li>
+
+                <li class="li">重载服务器让<samp class="ph codeph">pg_hba.conf</samp>配置设置生效(<samp class="ph codeph">gpstop -u</samp>)。</li>
+
+              </ol>
+
+            </li>
+
+          </ol>
+</div>
+
+        <div class="p">在<samp class="ph codeph">auth-options</samp>中指定下面的参数。<dl class="dl parml">
+            
+              <dt class="dt pt dlterm">ldapserver</dt>
+
+              <dd class="dd pd">要连接的LDAP服务器的名称或者IP地址。可以指定多个服务器，用空格分隔。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldapprefix</dt>
+
+              <dd class="dd pd">在做简单绑定认证时，形成要绑定为的DN时自动加在用户名前面的字符串。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldapsuffix</dt>
+
+              <dd class="dd pd">在做简单绑定认证时，形成要绑定为的DN时自动加在用户名后面的字符串。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldapport</dt>
+
+              <dd class="dd pd">要连接的LDAP服务器上的端口号。如果没有指定端口，将使用LDAP库的默认端口设置。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldaptls</dt>
+
+              <dd class="dd pd">设置为1让PostgreSQL和LDAP服务器之间的连接是用TLS加密。注意这只加密到LDAP服务器的流量 — 到客户端的连接仍将是未加密的（除非使用了SSL）。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldapbasedn</dt>
+
+              <dd class="dd pd">在做搜索+绑定认证时，要开始在其中搜索用户的根DN。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldapbinddn</dt>
+
+              <dd class="dd pd">在做搜索+绑定认证时，绑定到目录以执行搜索的用户的DN。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldapbindpasswd</dt>
+
+              <dd class="dd pd">在做搜索+绑定认证时，绑定到目录以执行搜索的用户的口令。</dd>
+
+            
+            
+              <dt class="dt pt dlterm">ldapsearchattribute</dt>
+
+              <dd class="dd pd">在做搜索+绑定认证时，匹配正在搜索的用户名的属性。</dd>
+
+            
+          </dl>
+
+        </div>
+
+        <div class="p">Example:
+          <pre class="pre codeblock">ldapserver=ldap.greenplum.com prefix="cn=" suffix=", dc=greenplum, dc=com"</pre>
+</div>
+
+        <div class="p">下面是LDAP认证的<samp class="ph codeph">pg_hba.conf</samp>文件项的例子：
+          <pre class="pre codeblock">host all testuser 0.0.0.0/0 ldap ldap
+ldapserver=ldapserver.greenplum.com ldapport=389 ldapprefix="cn=" ldapsuffix=",ou=people,dc=greenplum,dc=com"
+hostssl   all   ldaprole   0.0.0.0/0   ldap
+ldapserver=ldapserver.greenplum.com ldaptls=1 ldapprefix="cn=" ldapsuffix=",ou=people,dc=greenplum,dc=com"          
+        </pre>
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_fzv_wb2_jr">
+    <h2 class="title topictitle2">SSL客户端认证</h2>
+
+    <div class="body">
+      <p class="p">SSL认证将正在连接的客户端在SSL握手期间提供的SSL证书的公用名（cn）属性与被请求的数据库用户名进行比较。数据库用户应该在数据库中存在。映射文件可以被用来在系统用户名和数据库用户名之间进行映射。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">SSL认证参数</h3>
+        
+        <div class="p">认证方法：<ul class="ul" id="topic_fzv_wb2_jr__ul_fr4_fc2_jr">
+            <li class="li">Cert<div class="p">认证选项：<dl class="dl parml">
+                  
+                    <dt class="dt pt dlterm">Hostssl</dt>
+
+                    <dd class="dd pd">连接类型必须是hostssl。</dd>
+
+                  
+                  
+                    <dt class="dt pt dlterm">map=<var class="keyword varname">mapping</var>
+</dt>
+
+                    <dd class="dd pd">映射。</dd>
+
+                    <dd class="dd pd">这在<samp class="ph codeph">pg_ident.conf</samp>文件中被指定，或者在<samp class="ph codeph">ident_file</samp>服务器设置中指定的文件中指定。</dd>
+
+                  
+                </dl>
+</div>
+<div class="p">下面是SSL客户端认证的<samp class="ph codeph">pg_hba.conf</samp>项的例子：
+                <pre class="pre codeblock">Hostssl testdb certuser 192.168.0.0/16 cert
+                           Hostssl testdb all 192.168.0.0/16 cert map=gpuser
+                </pre>
+</div>
+</li>
+
+          </ul>
+</div>
+
+      </div>
+
+      <div class="section" id="topic_fzv_wb2_jr__openssl_config">
+<h3 class="title sectiontitle">OpenSSL配置</h3>
+        
+        <p class="p">Greenplum数据库默认会读取<samp class="ph codeph">$GP_HOME/etc/openssl.cnf</samp>中指定的OpenSSL配置文件。用户可以通过修改或者更新这个文件并且重启服务器对OpenSSL的默认配置做更改。</p>
+
+      </div>
+
+      <div class="section" id="topic_fzv_wb2_jr__create_a_cert">
+<h3 class="title sectiontitle">创建一个自签名证书</h3>
+        
+        <p class="p">自签名证书可以被用来测试，但是生产中应该使用由证书颁发机构（CA）（全球CA或者本地CA）签发的证书，这样客户端就能够验证服务器的身份。如果所有的客户端都是组织本地的，推荐使用本地CA。 </p>
+
+        <div class="p">要为服务器创建一个自签名证书：<ol class="ol" id="topic_fzv_wb2_jr__ol_qpr_p4x_kr">
+            <li class="li">输入下列<samp class="ph codeph">openssl</samp>命令：
+              command:<pre class="pre codeblock">openssl req -new -text -out server.req</pre>
+</li>
+
+            <li class="li">在提示中输入要求的信息。<p class="p">确保为公共名输入本地主机名。挑战口令可以留空。</p>
+</li>
+
+            <li class="li">这个程序生成受口令保护的密钥，它不接受短于四字符的口令。要移除口令（如果想让服务器自动启动还必须移除），运行下面的命令:
+                <pre class="pre codeblock">openssl rsa -in privkey.pem -out server.key rm privkey.pem</pre>
+</li>
+
+            <li class="li">输入旧口令解锁现有的密钥。然后输入下面的命令：
+                <pre class="pre codeblock">openssl req -x509 -in server.req -text -key server.key -out server.crt</pre>
+
+                <p class="p">这会把证书转变成一个自签名的证书并且把密钥和证书拷贝到服务器将查找它们的地方。</p>
+</li>
+
+            <li class="li">最后，运行下列命令：
+              command:<pre class="pre codeblock">chmod og-rwx server.key</pre>
+</li>
+
+          </ol>
+</div>
+
+        <p class="p">更多如何创建服务器私钥和证书的细节，请参考OpenSSL的文档。</p>
+
+      </div>
+
+      <div class="section" id="topic_fzv_wb2_jr__ssl_postgresql">
+<h3 class="title sectiontitle">为SSL认证配置postgresql.conf</h3>
+        
+        <div class="p">下面的服务器设置需要在<samp class="ph codeph">postgresql.conf</samp>配置文件中被指定：
+             <ul class="ul" id="topic_fzv_wb2_jr__ul_bzs_b22_jr">
+            <li class="li">
+<samp class="ph codeph">ssl</samp>
+              <em class="ph i">boolean</em>。 启用SSL连接。</li>
+
+            <li class="li">
+<samp class="ph codeph">ssl_renegotiation_limit</samp>
+              <em class="ph i">integer</em>。 指定密钥重新协商之前的数据限制。</li>
+
+            <li class="li">
+<samp class="ph codeph">ssl_ciphers</samp>
+              <em class="ph i">string</em>。 列出允许的SSL加密算法。</li>
+
+          </ul>
+</div>
+
+        <div class="p">下列SSL服务器文件可以在Master的数据目录下找到： <ul class="ul" id="topic_fzv_wb2_jr__ul_gzs_b22_jr">
+            <li class="li">
+<samp class="ph codeph">server.crt</samp>。 服务器证书。</li>
+
+            <li class="li">
+<samp class="ph codeph">server.key</samp>。服务器私钥。</li>
+
+            <li class="li">
+<samp class="ph codeph">root.crt</samp>。可信的证书机构。</li>
+
+            <li class="li">
+<samp class="ph codeph">root.crl</samp>。被证书机构撤销的证书。</li>
+
+          </ul>
+</div>
+
+      </div>
+
+      <div class="section" id="topic_fzv_wb2_jr__config_ssl_client_conn">
+<h3 class="title sectiontitle">配置SSL客户端连接</h3>
+        
+      </div>
+
+      <div class="p">SSL选项：<dl class="dl parml">
+          
+            <dt class="dt pt dlterm">
+              <samp class="ph codeph">require</samp>
+            </dt>
+
+            <dd class="dd pd">仅使用SSL连接。如果存在一个根CA文件，以指定<samp class="ph codeph">verify-ca</samp>时同样的方式验证证书。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">
+              <samp class="ph codeph">verify-ca</samp>
+            </dt>
+
+            <dd class="dd pd">仅使用SSL连接。验证服务器证书由一个可信的CA发出。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">
+              <samp class="ph codeph">verify-full</samp>
+            </dt>
+
+            <dd class="dd pd">仅使用SSL连接。验证服务器证书由一个可信的CA发出并且该服务器主机名匹配证书中的名称。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">sslcert</dt>
+
+            <dd class="dd pd">客户端SSL证书的文件名。默认是<samp class="ph codeph">~/.postgresql/postgresql.crt</samp>。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">sslkey</dt>
+
+            <dd class="dd pd">用于客户端证书的密钥。默认是<samp class="ph codeph">~/.postgresql/postgresql.key</samp>。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">sslrootcert</dt>
+
+            <dd class="dd pd">包含SSL证书机构证书的文件名。默认是<samp class="ph codeph">~/.postgresql/root.crt</samp>。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">sslcrl</dt>
+
+            <dd class="dd pd">SSL证书撤销列表的名称。默认是<samp class="ph codeph">~/.postgresql/root.crl</samp>。</dd>
+
+          
+        </dl>
+</div>
+
+      <div class="p">客户端连接参数可以使用下列环境变量设置：<ul class="ul" id="topic_fzv_wb2_jr__ul_yph_5g2_jr">
+          <li class="li">
+<samp class="ph codeph">sslmode</samp> – <samp class="ph codeph">PGSSLMODE</samp>
+</li>
+
+          <li class="li">
+<samp class="ph codeph">sslkey</samp> – <samp class="ph codeph">PGSSLKEY</samp>
+</li>
+
+          <li class="li">
+<samp class="ph codeph">sslrootcert</samp> – <samp class="ph codeph">PGSSLROOTCERT</samp>
+</li>
+
+          <li class="li">
+<samp class="ph codeph">sslcert</samp> – <samp class="ph codeph">PGSSLCERT</samp>
+</li>
+
+          <li class="li">
+<samp class="ph codeph">sslcrl</samp> – <samp class="ph codeph">PGSSLCRL</samp> </li>
+
+        </ul>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_yxp_5h2_jr">
+    <h2 class="title topictitle2">基于PAM的认证</h2>
+
+    <div class="body">
+      <p class="p">“PAM”（可插拔认证模块）被用来验证用户名/口令对，类似于基本认证。PAM认证只在用户已经在数据库中存在时才有用。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">参数</h3>
+        
+        <div class="p">
+          <dl class="dl parml">
+            
+              <dt class="dt pt dlterm">
+                <samp class="ph codeph">pamservice</samp>
+              </dt>
+
+              <dd class="dd pd">默认的PAM服务是<samp class="ph codeph">postgresql</samp>。注意如果PAM被设置为读取<samp class="ph codeph">/etc/shadow</samp>，认证将会失败因为PostgreSQL服务器由一个非根用户启动。</dd>
+
+            
+          </dl>
+
+        </div>
+
+          <div class="p">下面是PAM客户端认证的<samp class="ph codeph">pg_hba.conf</samp>项的例子：
+            <pre class="pre codeblock">local    all gpuser am pamservice=postgresql</pre>
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_ed4_d32_jr">
+    <h2 class="title topictitle2">Radius认证</h2>
+
+    <div class="body">
+      <p class="p">RADIUS（远程认证拨号用户服务）认证通过向一台配置好的RADIUS服务器发送'Authenticate Only'类型的Access Request消息工作。它包括用于用户名、口令（加密）以及网络访问服务器（NAS）标识符的参数。这个请求使用由<samp class="ph codeph">radiussecret</samp>选项中指定的共享秘密加密。RADIUS服务器会响应<samp class="ph codeph">Access Accept</samp>或者<samp class="ph codeph">Access Reject</samp>。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 不支持RADIUS计费。</div>
+
+      <p class="p">只有用户已经在数据库中存在时，RADIUS认证才有用。</p>
+
+      <p class="p">为了强密码，RADIUS加密向量要求SSL被启用。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">RADIUS认证选项</h3>
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">radiusserver</dt>
+
+            <dd class="dd pd">RADIUS服务器的名称。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">radiussecret</dt>
+
+            <dd class="dd pd">RADIUS共享秘密。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">radiusport</dt>
+
+            <dd class="dd pd">RADIUS服务器上要连接的端口。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">radiusidentifier</dt>
+
+            <dd class="dd pd">RADIUS请求中的NAS标识符。</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="p">下面是RADIUS客户端认证的<samp class="ph codeph">pg_hba.conf</samp>项的例子：
+          <pre class="pre codeblock">hostssl  all all 0.0.0.0/0 radius radiusserver=servername radiussecret=<var class="keyword varname">sharedsecret</var></pre>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_hwn_bk2_jr">
+    <h2 class="title topictitle2">限制并发连接</h2>
+
+    <div class="body">
+      <p class="p">要限制对Greenplum数据库系统的活动并发会话的数量，用户可以配置<samp class="ph codeph">max_connections</samp>服务器配置参数。这是一个本地参数，意味着用户必须在Master、后备Master和每个Segment实例（主Segment和镜像Segment）的<samp class="ph codeph">postgresql.conf</samp>文件中设置它。Segment上<samp class="ph codeph">max_connections</samp>的值必须是Master上该值的5-10倍。</p>
+
+      <p class="p">在用户设置<samp class="ph codeph">max_connections</samp>时，还必须设置依赖参数<samp class="ph codeph">max_prepared_transactions</samp>。在Master上，这个值必须被设置为至少和<samp class="ph codeph">max_connections</samp>值一样大，而在Segment实例上应该设置为和Master上一样的值。</p>
+
+      <div class="p">在<samp class="ph codeph">$MASTER_DATA_DIRECTORY/postgresql.conf</samp>（包括后备Master）中：
+        <pre class="pre codeblock">max_connections=100
+max_prepared_transactions=100</pre>
+</div>
+
+      <div class="p">在所有Segment实例的<samp class="ph codeph">SEGMENT_DATA_DIRECTORY/postgresql.conf</samp>中：
+        <pre class="pre codeblock">max_connections=500
+max_prepared_transactions=100</pre>
+</div>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 注意： 调高这些参数的值可能会导致Greenplum数据库请求更多共享内存。为了缓和这种影响，考虑降低其他内存相关的参数，例如 <samp class="ph codeph">gp_cached_segworkers_threshold</samp>。</div>
+
+      <div class="p">要更改允许的连接数：<ol class="ol" id="topic_hwn_bk2_jr__ol_etb_rk2_jr">
+          <li class="li">停止Greenplum数据库系统：<pre class="pre codeblock">$ gpstop</pre>
+</li>
+
+          <li class="li">在Master主机上，编辑<samp class="ph codeph">$MASTER_DATA_DIRECTORY/postgresql.conf</samp>并且更改下面两个参数：
+              <ul class="ul" id="topic_hwn_bk2_jr__ul_e5k_vk2_jr">
+              <li class="li">
+<samp class="ph codeph">max_connections</samp> – 想要允许的活动用户会话数加上<samp class="ph codeph">superuser_reserved_connections</samp>的数量</li>
+
+              <li class="li">
+<samp class="ph codeph">max_prepared_transactions</samp> – 必须大于等于
+                  <samp class="ph codeph">max_connections</samp>.</li>
+
+            </ul>
+</li>
+
+          <li class="li">在每个Segment实例上，编辑<samp class="ph codeph">SEGMENT_DATA_DIRECTORY/postgresql.conf</samp>并且更改下面两个参数：
+              <ul class="ul" id="topic_hwn_bk2_jr__ul_iwf_1l2_jr">
+              <li class="li">
+<samp class="ph codeph">max_connections</samp> – 必须是Master上值的5-10倍。</li>
+
+              <li class="li">
+<samp class="ph codeph">max_prepared_transactions</samp> – 必须等于Master上的值。</li>
+
+            </ul>
+</li>
+
+          <li class="li">重启Greenplum数据库系统：<pre class="pre codeblock">$ gpstart</pre>
+</li>
+
+        </ol>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_ibc_nl2_jr">
+    <h2 class="title topictitle2">加密客户端/服务器连接</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库对于客户端和Master服务器之间的SSL连接有原生支持。SSL连接可以防止第三方进行包嗅探，还能防止中间人攻击。只要客户端连接会通过不安全的链接，就应该使用SSL，并且只要使用客户端证书认证也应该使用SSL。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 有关在<samp class="ph codeph">gpfdist</samp>服务器和Greenplum数据库Segment主机之间加密数据的信息，请见<a class="xref" href="Encryption.html#gpfdist_connections">加密gpfdist连接</a>. </div>
+
+      <p class="p">启用SSL要求在客户端和Master服务器系统上都安装OpenSSL。可通过在Master的<samp class="ph codeph">postgresql.conf</samp>中设置服务器配置参数<samp class="ph codeph">ssl=on</samp>让Greenplum以启用SSL的方式启动。在以SSL模式启动时，服务器将在Master的数据目录中查找<samp class="ph codeph">server.key</samp>（服务器私钥）文件和<samp class="ph codeph">server.crt</samp>（服务器证书）文件。在启用SSL的Greenplum系统能启动之前，这些文件必须被正确地设置好。</p>
+
+      <div class="note important">
+<span class="importanttitle">Important:</span> 不要用口令保护私钥。服务器不会为私钥提示要求口令，而不提供口令数据库启动会失败并且报出错误。</div>
+
+      <p class="p">自签名证书可以被用来测试，但是生产中应该使用由证书颁发机构（CA）（全球CA或者本地CA）签发的证书，这样客户端就能够验证服务器的身份。如果所有的客户端都是组织本地的，推荐使用本地CA。创建自签名证书的步骤请见 <a class="xref" href="#topic_fzv_wb2_jr__create_a_cert">创建一个自签名证书</a></p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      配置PXF客户端主机和端口(可选) |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_cfghostport has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    配置PXF客户端主机和端口(可选)
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul><li><a href="#proc">&#36807;&#31243;</a></li></ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>默认情况下，在segment主机上启动的PXF代理侦听localhost上的5888端口。您可以将PXF配置为从其他端口号启动，或使用其他主机名或IP地址。要更改默认配置，您将设置以下标识的一个或两个环境变量：</p>
+
+<table><thead>
+<tr>
+<th>Environment Variable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PXF_HOST</td>
+<td>主机名或IP地址。 默认主机名是<code>localhost</code></td>
+</tr>
+<tr>
+<td>PXF_PORT</td>
+<td>PXF代理用来侦听主机上的请求的端口号。 默认端口号是<code>5888</code></td>
+</tr>
+</tbody></table>
+
+<p>在每个segment主机上的gpadmin用户的.bashrc shell登录文件中设置环境变量。</p>
+
+<div class="note">以这种方式配置代理程序主机(和/或)端口时，必须重新启动Greenplum数据库和PXF。考虑在计划的停机时间内执行此配置。</div>
+
+<h2 id="过程"><a id="proc"></a>过程</h2>
+
+<p>执行以下过程以在一台或多台Greenplum数据库主机上配置PXF代理主机(和/或)端口号：</p>
+
+<ol>
+<li><p>登录到您的Greenplum数据库主节点</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>对于每个Greenplum数据库segment主机</p>
+
+<ol>
+<li>指定PXF代理的主机名或IP地址。</li>
+<li>指定要在其上运行PXF代理的端口号。</li>
+<li><p>登录到Greenplum segment主机：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;seghost&gt;
+</code></pre></li>
+<li><p>使用编辑器中打开<code>~/.bashrc</code>文件</p></li>
+<li><p>设置<code>PXF_HOST</code>(和/或)<code>PXF_PORT</code>环境变量。例如，要将PXF代理端口号设置为5998，请将以下内容添加到<code>.bashrc</code>文件中</p>
+<pre class="highlight shell"><code><span class="nb">export </span><span class="nv">PXF_PORT</span><span class="o">=</span>5998
+</code></pre></li>
+<li><p>保存修改并退出。</p></li>
+</ol></li>
+<li><p>重启数据库。参阅<a href="/6-0/admin_guide/managing/startstop.html#task_gpdb_restart">Restarting Greenplum Database</a>.</p></li>
+<li><p>重启每个segment上部署的PXF,参阅<a href="/6-0/pxf/cfginitstart_pxf.html#restart_pxf">Restarting PXF</a>.</p></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

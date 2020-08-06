@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      授权用户访问PXF |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_using_pxf has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    授权用户访问PXF
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#enable-pxf-ext">&#22312;&#25968;&#25454;&#24211;&#20013;&#21551;&#29992;PXF</a></li>
+<li><a href="#disable-pxf-ext">&#22312;&#25968;&#25454;&#24211;&#20013;&#31105;&#29992;PXF</a></li>
+<li><a href="#access_pxf">&#25480;&#26435;&#19968;&#20010;&#29992;&#25143;&#35775;&#38382;PXF</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>Greenplum平台扩展框架(PXF)实现了一个名为<code>pxf</code>的协议，您可以使用该协议创建引用外部数据存储中数据的外部表。PXF协议和Java服务打包作为Greenplum数据库扩展。</p>
+
+<p>您必须在将要使用框架访问外部数据的每个数据库实例中启用PXF扩展。您还必须向需要访问权限的用户/角色明确授予<code>pxf</code>协议的<code>GRANT</code>权限。</p>
+
+<h2 id="在数据库中启用pxf"><a id="enable-pxf-ext"></a>在数据库中启用PXF</h2>
+
+<p>您必须在计划使用该扩展的每个Greenplum数据库中显式注册PXF扩展。您必须具有Greenplum数据库管理员权限才能注册扩展。</p>
+
+<p>对要在其中使用PXF的<strong>每个</strong>数据库执行以下过程：</p>
+
+<ol>
+<li><p>使用<code>gpadmin</code>用户连接数据库</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>psql -d &lt;database-name&gt; -U gpadmin
+</code></pre></li>
+<li><p>创建PXF扩展名。您必须具有Greenplum数据库管理员权限才能创建扩展。 例如：</p>
+<pre class="highlight sql"><code><span class="k">database</span><span class="o">-</span><span class="n">name</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pxf</span><span class="p">;</span>
+</code></pre>
+
+<p>创建<code>pxf</code>扩展来注册<code>pxf</code>协议和PXF访问外部数据所需的调用处理程序。</p></li>
+</ol>
+
+<h2 id="在数据库中禁用pxf"><a id="disable-pxf-ext"></a>在数据库中禁用PXF</h2>
+
+<p>当您不再希望在特定数据库上使用PXF时，必须显式删除该数据库的PXF扩展名。您必须具有Greenplum数据库管理员权限才能删除扩展。</p>
+
+<ol>
+<li><p>使用<code>gpadmin</code>用户连接数据库</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>psql -d &lt;database-name&gt; -U gpadmin
+</code></pre></li>
+<li><p>删除pxf扩展</p>
+<pre class="highlight sql"><code><span class="k">database</span><span class="o">-</span><span class="n">name</span><span class="o">=#</span> <span class="k">DROP</span> <span class="n">EXTENSION</span> <span class="n">pxf</span><span class="p">;</span>
+</code></pre>
+
+<p>如果当前使用<code>pxf</code>协议定义了任何外部表，则<code>DROP</code>命令将失败。 如果选择强制删除这些外部表，请添加<code>CASCADE</code>选项。</p></li>
+</ol>
+
+<h2 id="授权一个用户访问pxf"><a id="access_pxf"></a>授权一个用户访问PXF</h2>
+
+<p>要使用PXF读取外部数据，请使用<code>CREATE EXTERNAL TABLE</code>命令创建一个外部表，该命令指定<code>pxf</code>协议。您必须向所有需要此类访问权限的非<code>SUPERUSER</code>的Greenplum数据库角色明确授予对pxf协议的<code>SELECT</code>权限。</p>
+
+<p>要授予特定角色对<code>pxf</code>协议的访问权限，请使用<code>GRANT</code>命令。例如，要授予名为<code>bill</code>的角色对使用<code>pxf</code>协议创建的外部表引用的数据的读取访问权限，请执行以下操作：</p>
+<pre class="highlight sql"><code><span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="n">PROTOCOL</span> <span class="n">pxf</span> <span class="k">TO</span> <span class="n">bill</span><span class="p">;</span>
+</code></pre>
+
+<p>要使用PXF将数据写入外部数据存储，请使用<code>CREATE WRITABLE EXTERNAL TABLE</code>命令创建一个外部表，该命令指定<code>pxf</code>协议。您必须向需要此类访问的所有非<code>SUPERUSER</code>的Greenplum数据库角色明确授予对<code>pxf</code>协议的<code>INSERT</code>权限。 例如：</p>
+<pre class="highlight sql"><code><span class="k">GRANT</span> <span class="k">INSERT</span> <span class="k">ON</span> <span class="n">PROTOCOL</span> <span class="n">pxf</span> <span class="k">TO</span> <span class="n">bill</span><span class="p">;</span>
+</code></pre>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

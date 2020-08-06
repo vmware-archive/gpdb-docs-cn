@@ -1,0 +1,2112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      pgbouncer-admin |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_pgbouncer-admin has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    pgbouncer-admin
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">pgbouncer-admin</h1>
+
+  <div class="body">
+    <p class="p">PgBouncer管理控制台命令</p>
+
+    <div class="section">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock">psql -p <var class="keyword varname">port</var> pgbouncer</pre>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p">PgBouncer管理控制台可以通过<samp class="ph codeph">psql</samp>操作。
+        通过连接到PgBouncer <samp class="ph codeph"><var class="keyword varname">port</var></samp>和
+        虚拟数据库名<samp class="ph codeph">pgbouncer</samp>来登陆控制台。</p>
+
+      <p class="p">列在<samp class="ph codeph">pgbouncer.ini</samp>配置文件中的配置参数<samp class="ph codeph">admin_users</samp>
+        和<samp class="ph codeph">stats_users</samp>的用户有访问PgBouncer管理控制台的权限。
+         </p>
+
+        <p class="p">可以从控制台控制PgBouncer和Greenplum数据库之间的连接。
+          也可以进行PgBouncer配置参数设置。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">选项</h2>
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">-p <var class="keyword varname">port</var> </dt>
+
+            <dd class="dd pd">PgBouncer端口号。</dd>
+
+          
+        </dl>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" id="topic_bk3_3jc_dt">
+    <h2 class="title topictitle2">命令行语法</h2>
+
+    <div class="body">
+      <pre class="pre codeblock">pgbouncer=# SHOW help;
+NOTICE:  Console usage
+DETAIL:  
+    SHOW HELP|CONFIG|DATABASES|POOLS|CLIENTS|SERVERS|VERSION
+    SHOW FDS|SOCKETS|ACTIVE_SOCKETS|LISTS|MEM
+    SHOW DNS_HOSTS|DNS_ZONES
+    SHOW STATS|STATS_TOTALS|STATS_AVERAGES
+    SET key = arg
+    RELOAD
+    PAUSE [&lt;db&gt;]
+    RESUME [&lt;db&gt;]
+    DISABLE &lt;db&gt;
+    ENABLE &lt;db&gt;
+    KILL &lt;db&gt;
+    SUSPEND
+    SHUTDOWN</pre>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" id="topic_bf5_jcl_gs">
+    <h2 class="title topictitle2">管理命令</h2>
+
+    <div class="body">
+      <p class="p">以下PgBouncer管理命令控制<samp class="ph codeph">pgbouncer</samp>进程。</p>
+
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">PAUSE [<var class="keyword varname">db</var>]</dt>
+
+          <dd class="dd pd">如果没有指定数据库，PgBouncer将尝试从所有服务器断开连接，首先等待所有查询完成。
+            在所有查询完成之前，该命令不会返回。这个命令是用来准备重启数据库的。
+            </dd>
+
+          <dd class="dd pd">如果指定了数据库名称，则只有该数据库被暂停。</dd>
+
+          <dd class="dd pd">如果运行一个<samp class="ph codeph">PAUSE <var class="keyword varname">db</var></samp>数据库命令，
+            然后运行<samp class="ph codeph">PAUSE</samp>命令暂停所有数据库，则必须执行两个<samp class="ph codeph">RESUME</samp>命令，
+            一个用于所有数据库，一个用于指定的数据库。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">SUSPEND</dt>
+
+          <dd class="dd pd">所有套接字缓冲区都被刷新，PgBouncer停止监听数据。在所有缓冲区为空之前，
+            该命令不会返回。 在线重新启动PgBouncer时使用。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">RESUME [ <var class="keyword varname">db</var> ]</dt>
+
+          <dd class="dd pd">从之前的<samp class="ph codeph">PAUSE</samp>或者<samp class="ph codeph">SUSPEND</samp>命令恢复工作。</dd>
+
+          <dd class="dd pd">如果用<samp class="ph codeph">PAUSE</samp>命令指定了数据库，则还必须使用<samp class="ph codeph">RESUME</samp>命令指定数据库。
+            </dd>
+
+          <dd class="dd pd">使用<samp class="ph codeph">PAUSE</samp>命令暂停所有数据库之后，不支持使用
+            <samp class="ph codeph">RESUME <var class="keyword varname">db</var></samp>恢复单个数据库。
+            </dd>
+
+        
+        
+          <dt class="dt pt dlterm">DISABLE <var class="keyword varname">db</var>
+</dt>
+
+          <dd class="dd pd">拒绝数据库上的所有新客户端连接。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">ENABLE <var class="keyword varname">db</var>
+</dt>
+
+          <dd class="dd pd">在数据库上允许新的客户端连接。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">KILL <var class="keyword varname">db</var>
+</dt>
+
+          <dd class="dd pd">立即删除所有的客户端和服务器到指定数据库的连接。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">SHUTDOWN</dt>
+
+          <dd class="dd pd">停止PgBouncer进程。从<samp class="ph codeph">psql</samp>命令会话中退出，请输入<samp class="ph codeph">\q</samp>。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">RELOAD</dt>
+
+          <dd class="dd pd">TPgBouncer进程重新加载当前的配置文件并更新可更改的设置。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">SET <var class="keyword varname">key</var> = <var class="keyword varname">value</var>
+</dt>
+
+          <dd class="dd pd">覆盖指定的配置设置。请参见<a class="xref" href="#CONFIG"><samp class="ph codeph">SHOW CONFIG;</samp></a>命令。</dd>
+
+        
+      </dl>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_zfh_2dl_gs">
+    <h2 class="title topictitle2">SHOW命令</h2>
+
+    <div class="body">
+      <div class="p">
+<samp class="ph codeph">SHOW <var class="keyword varname">category</var></samp>命令显示不同类型的PgBouncer信息。
+        用户可以指定以下类别之一：<ul class="ul" id="topic_zfh_2dl_gs__ul_ims_tgl_gs">
+          <li class="li"><a class="xref" href="#ACTIVE_SOCKETS">ACTIVE_SOCKETS</a></li>
+
+          <li class="li"><a class="xref" href="#CLIENTS">CLIENTS</a></li>
+
+          <li class="li"><a class="xref" href="#CONFIG">CONFIG</a></li>
+
+          <li class="li"><a class="xref" href="#DATABASES">DATABASES</a></li>
+
+          <li class="li"><a class="xref" href="#DNS_HOSTS">DNS_HOSTS</a></li>
+
+          <li class="li"><a class="xref" href="#DNS_ZONES">DNS_ZONES</a></li>
+
+          <li class="li"><a class="xref" href="#FDS">FDS</a></li>
+
+          <li class="li"><a class="xref" href="#POOLS">POOLS</a></li>
+
+          <li class="li"><a class="xref" href="#SERVERS">SERVERS</a></li>
+
+          <li class="li"><a class="xref" href="#SOCKETS">SOCKETS</a></li>
+
+          <li class="li"><a class="xref" href="#STATS">STATS</a></li>
+
+          <li class="li"><a class="xref" href="#STATS_TOTALS">STATS_TOTALS</a></li>
+
+          <li class="li"><a class="xref" href="#STATS_AVERAGES">STATS_AVERAGES</a></li>
+
+          <li class="li">
+            <a class="xref" href="#LISTS">LISTS</a>
+</li>
+
+          <li class="li">
+            <a class="xref" href="#MEM">MEM</a>
+</li>
+
+          <li class="li"><a class="xref" href="#USERS">USERS</a></li>
+
+          <li class="li"><a class="xref" href="#VERSION">VERSION</a></li>
+
+        </ul>
+</div>
+
+    </div>
+
+    <div class="topic nested2" id="ACTIVE_SOCKETS">
+      <h3 class="title topictitle3">ACTIVE_SOCKETS</h3>
+
+      <div class="body">
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="ACTIVE_SOCKETS__table_smh_1hl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. 活动套接字信息</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e393">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e396">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">type</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">S为服务器，C为客户端。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">user</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">
+<samp class="ph codeph">pgbouncer</samp>使用该用户名连接到服务器。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">database</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">数据库名字。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">state</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">服务器连接的状态，处于<samp class="ph codeph">active</samp>状态、<samp class="ph codeph">used</samp>
+                  状态或<samp class="ph codeph">idle</samp>状态。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">addr</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">PostgreSQL服务器的IP地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">port</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">PostgreSQL 服务器端口。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">local_addr</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">本地机器上的连接起始地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">local_port</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">本地机器上的连接起始端口。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">connect_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">连接建立的时间。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">request_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">最后一次发出请求的时间。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">wait</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">等待时间。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">wait_us</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">等待时间。（微秒）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">ptr</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">该连接的内部对象的地址。用作唯一的ID。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">link</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">服务器和客户端匹配的地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">remote_pid</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">后台服务进程的定位符。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">tls</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">TLS文本。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">recv_pos</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">在I/O缓冲区中的接收位置。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">pkt_pos</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">在I/O 缓冲区中的解析位置。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">pkt_remain</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">套接字上剩余的包数量。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">send_pos</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">包中的发送位置。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">send_remain</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">剩余要发送的包的总长度。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">pkt_avail</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">剩余要解析的I/O缓冲区量。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e393 ">send_avail</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e396 ">剩余要发送的I/O缓冲区量。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="CLIENTS">
+      <h3 class="title topictitle3">CLIENTS</h3>
+
+      <div class="body">
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="CLIENTS__table_dkj_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 2. 客户端</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e651">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e654">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">type</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">C为客户端。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">user</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">客户端连接的用户。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">database</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">数据库名字。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">state</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">客户端连接状态，状态可以为<samp class="ph codeph">active</samp>、
+                    <samp class="ph codeph">used</samp>、<samp class="ph codeph">waiting</samp>或
+                  <samp class="ph codeph">idle</samp>。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">addr</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">客户端的IP地址，或套接字连接的<samp class="ph codeph">unix</samp>域。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">port</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">客户端连接的端口。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">local_addr</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">本地机器上的连接结束地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">local_port</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">本地机器上的连接结束端口。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">connect_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">连接时间的时间戳。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">request_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">上次客户端请求的时间戳。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">wait</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">等待时间。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">wait_us</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">等待时间。（微秒）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">ptr</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">该连接的内部对象的地址。用作唯一的ID。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">link</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">客户端与服务器连接的地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">remote_pid</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">进程ID，如果客户端连接到Unix套接字，并且操作系统支持获取它。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e651 ">tls</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e654 ">客户端TLS内容。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="CONFIG">
+      <h3 class="title topictitle3">CONFIG</h3>
+
+      <div class="body">
+        <p class="p">当前PgBouncer参数设置的列表。</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="CONFIG__table_d2j_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 3. 配置</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e852">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e855">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e852 ">key</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e855 ">配置变量名</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e852 ">value</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e855 ">配置值</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e852 ">changeable</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e855 ">
+<samp class="ph codeph">yes</samp>或<samp class="ph codeph">no</samp>。
+                  显示变量在运行时是否可以改变。如果为<samp class="ph codeph">no</samp>，则该变量只能在启动时改变。
+                  </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="DATABASES">
+      <h3 class="title topictitle3">DATABASES</h3>
+
+      <div class="body">
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="DATABASES__table_gfj_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 4. 数据库</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e925">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e928">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">name</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">配置好的数据库项的名字</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">host</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">pgbouncer连接到的主机。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">port</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">pgbouncer连接到的端口</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">database</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">pgbouncer连接到的实际数据库名称。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">force_user </td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">当用户是连接字符串的一部分时，pgbouncer和数据库服务器之间的连接被强制为给定的用户，
+                  无论用什么客户端用户都是这样。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">pool_size</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">服务器连接的最大数量。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">reserve_pool</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">如果池达到<samp class="ph codeph">pool_size</samp>，可以创建的额外连接数。
+                  </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">pool_mode</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">数据库的覆盖<samp class="ph codeph">pool_mode</samp>，或者NULL使用默认值。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">max_connections</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">此数据库的所有池的最大连接数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">current_connections</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">此数据库的所有池的连接总数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">paused</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">数据库的停顿/非停顿状态。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e925 ">disabled</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e928 ">数据库的启用/停用状态。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+        <p class="p"></p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="DNS_HOSTS">
+      <h3 class="title topictitle3">DNS_HOSTS</h3>
+
+      <div class="body">
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="DNS_HOSTS__table_r4k_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 5. DNS主机</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e1080">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e1083">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1080 ">hostname</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1083 ">主机名</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1080 ">ttl</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1083 ">下次查询间隔多少秒。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1080 ">addrs</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1083 ">逗号分隔的地址列表。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="DNS_ZONES">
+      <h3 class="title topictitle3">DNS_ZONES</h3>
+
+      <div class="body">
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="DNS_ZONES__table_r4k_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 6. 缓冲中的DNS区域</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e1144">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e1147">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1144 ">zonename</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1147 ">区域名字</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1144 ">serial</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1147 ">当前DNS序列号</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1144 ">count</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1147 ">属于该区域的主机名。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="FDS">
+      <h3 class="title topictitle3">FDS</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">SHOW FDS</samp>是用于联机重启的内部命令，例如升级到新的PgBouncer版本时。
+          它显示正在使用的文件描述符列表以及附加其上的内部状态。这个命令阻塞内部事件循环，
+          因此在PGBouncer被使用的时候不应该使用它。</p>
+
+        <p class="p">当连接的用户拥有用户名“pgbouncer”，通过一个Unix套接字连接，并具有与正在运行的
+          进程相同的UID时，实际的文件描述符将通过连接传递。</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="FDS__table_ugj_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 7. FDS</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e1216">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e1219">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">fd</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">文件描述符的数值。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">task</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">任务为以下之一<samp class="ph codeph">pooler</samp>、<samp class="ph codeph">client</samp>或
+                    <samp class="ph codeph">server</samp>。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">user</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">使用文件描述符的连接的用户。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">database</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">使用文件描述符的连接的数据库。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">addr</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">使用文件描述符的连接的IP地址，如果使用Unix套接字，则为“unix”。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">port</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">使用文件描述符的连接使用的端口。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">cancel</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">该连接的取消键。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">link</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">相应的服务器/客户端的文件描述符。空闲时为NULL。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">client_encoding</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">数据库使用的字符集。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">std_strings</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">这将控制普通字符串（'...'）是否按照SQL标准中的规定按字面意思处理反斜线。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">datestyle</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">显示日期和时间值的格式。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">timezone</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">用于解释和显示时间戳的时区。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1216 ">password</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1219 ">
+<samp class="ph codeph">auth_user</samp>的密码。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="LISTS">
+      <h3 class="title topictitle3">LISTS</h3>
+
+      <div class="body">
+        <p class="p">在两列中显示以下PgBouncer统计信息：项标签和值。</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="LISTS__table_sqj_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 8. PgBouncer项的计数</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e1386">条目</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e1389">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">databases</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">数据库的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">users</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">用户的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">pools</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">池的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">free_clients</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">空闲客户端的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">used_clients</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">在用客户端的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">login_clients</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">处于<samp class="ph codeph">login</samp>状态的客户端计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">free_servers</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">空闲服务器的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">used_servers</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">在用服务器的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">dns_names</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">DNS名字的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">dns_zones </td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">DNS区域的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">dns_queries</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">DNS查询的计数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1386 ">dns_pending</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1389 ">正在进行的DNS查询的计数。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="MEM">
+      <h3 class="title topictitle3">MEM</h3>
+
+      <div class="body">
+        <div class="p">显示这些PgBouncer缓存的缓存内存信息：<ul class="ul" id="MEM__ul_uzj_2dl_gs">
+            <li class="li">user_cache</li>
+
+            <li class="li">db_cache </li>
+
+            <li class="li">pool_cache </li>
+
+            <li class="li">server_cache </li>
+
+            <li class="li">client_cache </li>
+
+            <li class="li">iobuf_cache </li>
+
+          </ul>
+</div>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="MEM__table_ghk_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 9. 内存缓存</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e1560">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e1563">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1560 ">name</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1563 ">缓存的名字。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1560 ">size</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1563 ">缓存中单个缓存槽的大小。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1560 ">used</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1563 ">缓存中在用的插槽数量。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1560 ">free</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1563 ">缓存中可用插槽的数量。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1560 ">memtotal</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1563 ">缓存使用的总字节数。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="POOLS">
+      <h3 class="title topictitle3">POOLS</h3>
+
+      <div class="body">
+        <p class="p">为每对（数据库，用户）创建一个新的池项。</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="POOLS__table_n3j_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 10. 池</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e1646">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e1649">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">database</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">数据库名字。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">user</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">用户名。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">cl_active</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">链接到服务器并且可以处理查询的客户端连接。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">cl_waiting</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">已发送查询但尚未获得服务器连接的客户端连接。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">sv_active</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">链接到客户端的服务器连接。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">sv_idle</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">还没有使用且可立即用于客户端查询的服务器连接。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">sv_used</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">空闲时间已经超过<samp class="ph codeph">server_check_delay</samp>的服务器连接。
+                  在它们被使用前，必须先运行<samp class="ph codeph">server_check_query</samp>。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">sv_tested</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">当前正在运行<samp class="ph codeph">server_reset_query</samp>或
+                  <samp class="ph codeph">server_check_query</samp>的服务器连接。
+                  </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">sv_login</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">目前正在登陆的服务器连接。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">maxwait</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">队列中第一个（最老的）客户端等待了多长时间，以秒为单位。 如果这个开始增加，
+                  那么当前的服务器池不能足够快地处理请求。 
+                  原因可能是服务器超载或<samp class="ph codeph">pool_size</samp>设置太小。
+               </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">maxwait_us</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">
+<samp class="ph codeph">max_wait</samp>（微秒）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e1646 ">pool_mode</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e1649 ">正在使用的池模式。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="SERVERS">
+      <h3 class="title topictitle3">SERVERS</h3>
+
+      <div class="body">
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="SERVERS__table_imj_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 11. 服务器</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="26.45502645502646%" id="d27705e1810">列</th>
+
+                <th class="entry" valign="top" width="73.54497354497354%" id="d27705e1813">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">type</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">S，为服务器。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">user</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">
+<samp class="ph codeph">pgbouncer</samp>用来连接到服务器的用户ID。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">database</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">数据库名。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">state</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">pgbouncer服务器连接的状态，可以是<samp class="ph codeph">active</samp>、
+                    <samp class="ph codeph">used</samp>或<samp class="ph codeph">idle</samp>。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">addr</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">Greenplum或PostgreSQL服务器的IP地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">port</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">Greenplum或PostgreSQL服务器的端口。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">local_addr</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">本地机器上的连接开始地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">local_port</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">本地机器上的连接开始端口。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">connect_time</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">连接建立的时间。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">request_time</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">最后一次请求发送的时间。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">wait</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">等待时间。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">wait_us</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">等待时间。（微秒）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">ptr</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">此连接的内部对象的地址。用作唯一的ID。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">link</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">与服务器配对的客户端连接的地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">remote_pid</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">后端服务器进程的PID。如果连接是通过Unix套接字进行的，
+                  并且操作系统支持获取进程ID信息，则它是OS的pid。否则，它将从
+                  服务器发送的取消包中提取出来，在服务器是PostgreSQL的情况下应该是PID，
+                  但是如果服务器是另一个PgBouncer，则它是一个随机数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="26.45502645502646%" headers="d27705e1810 ">tls</td>
+
+                <td class="entry" valign="top" width="73.54497354497354%" headers="d27705e1813 ">TLS内容。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="STATS">
+      <h3 class="title topictitle3">STATS</h3>
+
+      <div class="body">
+        <p class="p">显示统计数据。</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="STATS__table_ubj_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 12. 统计</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e2007">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e2010">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">database</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">为每个数据库呈现的统计信息。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">total_xact_count</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">PgBouncer池化的SQL事务总数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">total_query_count</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">PgBouncer池化的SQL查询总数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">total_received</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">
+<samp class="ph codeph">pgbouncer</samp>收到的网络流量的总字节数。
+                    </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">total_sent</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">
+<samp class="ph codeph">pgbouncer</samp>发送的网络流量的总字节数。
+                    </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">total_xact_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">一个事务中，通过PgBouncer连接到Greenplum数据库的微秒数，包括idle事务和执行查询。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">total_query_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">当主动连接到数据库服务器时，<samp class="ph codeph">pgbouncer</samp>花费的总微秒数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">total_wait_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">客户端等待服务器的时间（微秒）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">avg_xact_count</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">PgBouncer池化的SQL事务平均数量。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">avg_query_count</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">最后一个统计周期的每秒平均查询数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">avg_recv</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">每秒平均收到（来自客户端）的字节数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">avg_sent</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">每秒平均发送（到客户端）的字节数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">avg_xact_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">平均事务时长（微秒）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">avg_query_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">平均查询时长（微秒）。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2007 ">avg_wait_time</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2010 ">平均等待时长（微秒）。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="STATS_AVERAGES">
+      <h3 class="title topictitle3">STATS_AVERAGES</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">SHOW STATS</samp>的子集，展示已选择的统计信息的平均值。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="STATS_TOTALS">
+      <h3 class="title topictitle3">STATS_TOTALS</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">SHOW STATS</samp>的子集，展示已选择的统计信息的总值。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="USERS">
+      <h3 class="title topictitle3">USERS</h3>
+
+      <div class="body">
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="USERS__table_fyj_2dl_gs" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 13. 用户</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="27.027027027027025%" id="d27705e2216">列</th>
+
+                <th class="entry" valign="top" width="72.97297297297297%" id="d27705e2219">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2216 ">name</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2219 ">用户名。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="27.027027027027025%" headers="d27705e2216 ">pool_mode</td>
+
+                <td class="entry" valign="top" width="72.97297297297297%" headers="d27705e2219 ">用户的覆盖pool_mode，如果将使用默认值，则为NULL。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="VERSION">
+      <h3 class="title topictitle3">VERSION</h3>
+
+      <div class="body">
+        <p class="p">显示PgBouncer版本的信息</p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 该参考文档基于PgBouncer 1.8.1文档。</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="seealso">
+    <h2 class="title topictitle2">另见</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph"><a class="xref" href="pgbouncer.html#topic1">pgbouncer</a></samp>、
+          <samp class="ph codeph"><a class="xref" href="pgbouncer-ini.html#topic1">pgbouncer.ini</a></samp></p>
+
+      </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

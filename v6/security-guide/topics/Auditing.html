@@ -1,0 +1,1270 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      审计 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_security-guide x6-0_security-guide_topics x6-0_security-guide_topics_Auditing has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/security-guide/topics/preface.html">安全性配置指南</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/SecuringGPDB.html">保护数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/ports_and_protocols.html">Greenplum数据库端口和协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authenticate.html">配置客户端认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authorization.html">配置数据库授权</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Auditing.html">审计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/BestPractices.html">安全性最佳实践</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    审计
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">审计</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">描述被记录并且应该被监控以检测安全性威胁的Greenplum数据库事件。</p>
+
+    <p class="p">Greenplum数据库有能力审计很多事件，包括系统的启动和关闭、Segment数据库失效、导致错误的SQL语句以及所有的连接尝试和断开连接。Greenplum数据库还记录SQL语句和关于SQL语句的信息，并且可以以多种方式配置来记录不同细节的审计信息。<samp class="ph codeph">log_error_verbosity</samp>配置参数控制写入到服务器日志中的每一条消息的细节多少。类似地，<samp class="ph codeph">log_min_error_statement</samp>参数允许管理员配置为SQL语句记录的细节层次，而<samp class="ph codeph">log_statement</samp>参数确定要被审计的SQL语句的种类。当可审计事件由Greenplum数据库外部的主体发起时，Greenplum数据库会为所有可审计事件记录用户名。</p>
+
+    <p class="p">Greenplum数据库通过只允许具有适当角色的管理员在日志文件上执行操作来防止对审计记录的未授权修改和删除。日志以一种使用逗号分隔值（CSV）的专有格式存储。每个Segment和Master都存储有自己的日志文件，不过这些都可以由管理员从远程访问。Greenplum数据库还通过<samp class="ph codeph">log_truncate_on_rotation</samp>参数授权对旧日志文件的覆盖。这是一个本地参数并且必须在每个Segment和Master的配置文件中设置。</p>
+
+      <p class="p">Greenplum提供了一个名为<samp class="ph codeph">gp_toolkit</samp>的管理方案，用户可以用它来查询日志文件、系统目录和操作环境得到系统状态信息。包括用法在内的更多信息，请参考<em class="ph i">Greenplum数据库参考指南</em>中的<em class="ph i">gp_tookit管理方案</em>附录。</p>
+
+    <div class="section">
+<h2 class="title sectiontitle">查看数据库服务器的日志文件</h2>
+      
+      <p class="p">Greenplum数据库中的每一个数据库实例（Master和Segment）都是一个运行着的PostgreSQL数据库服务器，它们都有自己的服务器日志文件。每天的日志文件被创建在Master和每个Segment的数据目录下的<samp class="ph codeph">pg_log</samp>目录中。</p>
+
+      <p class="p">服务器日志文件被写为逗号分隔值（CSV）格式。不是所有的日志项在所有的日志域中都有值。例如，只有与查询工作者进程相关的日志项才会有<samp class="ph codeph">slice_id</samp>值。一个特定查询的相关日志项可以通过其会话标识符（<samp class="ph codeph">gp_session_id</samp>）和命令标识符（<samp class="ph codeph">gp_command_count</samp>）确定。</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" align="left" valign="top" width="11.76470588235294%" id="d26e83">
+                <p class="p"> # </p>
+
+              </th>
+
+              <th class="entry" align="left" valign="top" width="23.52941176470588%" id="d26e89">
+                <p class="p"> 域名 </p>
+
+              </th>
+
+              <th class="entry" align="left" valign="top" width="23.52941176470588%" id="d26e95">
+                <p class="p"> 数据类型 </p>
+
+              </th>
+
+              <th class="entry" align="left" valign="top" width="41.17647058823529%" id="d26e101">
+                <p class="p"> 描述 </p>
+
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 1 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> event_time </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> timestamp with time zone </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 日志项被写到日志中的时间 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 2 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> user_name </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(100) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 数据库用户名 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 3 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> database_name </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(100) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 数据库名 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 4 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> process_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(10) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 系统进程ID（带前缀"p"） </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 5 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> thread_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(50) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 线程计数（带前缀"th"） </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 6 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> remote_host </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(100) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 在Master上，是客户端机器的主机名/地址。在Segment上，是Master的主机名/地址。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 7 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> remote_port </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(10) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> Segment或Master的端口号 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 8 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> session_start_time </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> timestamp with time zone </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 会话连接打开的时间 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 9 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> transaction_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> int </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> Master上的顶层事务ID。这个ID是任何子事务的父级。 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 10 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> gp_session_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 会话标识符号（带前缀"con"）</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 11 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> gp_command_count </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 会话内部的命令编号（带前缀"cmd"）</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 12 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> gp_segment </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> Segment内容标识符（对主Segment带前缀"seg"，镜像Segment带前缀"mir"）。Master的内容id总是-1。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 13 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> slice_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 切片id（查询计划被执行的部分） </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 14 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> distr_tranx_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 分布式事务ID </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 15 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> local_tranx_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 本地事务ID </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 16 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> sub_tranx_id </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 子事务ID </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 17 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> event_severity </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(10) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 值包括：LOG、ERROR、FATAL、PANIC、DEBUG1、DEBUG2 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 18 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> sql_state_code </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> varchar(10) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 与日志消息相关的SQL状态代码 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 19 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> event_message </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 日志或者错误消息文本 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 20 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> event_detail </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 与错误或者警告消息相关的详细消息文本 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 21 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> event_hint </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 与错误或者警告消息相关的提示消息文本 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 22 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> internal_query </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 内部产生的查询文本 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 23 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> internal_query_pos </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> int </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 指向内部产生的查询文本中的光标 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 24 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> event_context </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 产生消息的上下文 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 25 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> debug_query_string </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 带有完整细节的用户提供的查询字符串，用于调试。这个字符串可能会由于内部使用而修改。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 26 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> error_cursor_pos </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> int </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 指向查询字符串中的光标 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 27 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> func_name </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 产生这个消息的函数 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 28 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> file_name </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 产生消息的内部代码文件 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 29 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> file_line </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> int </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 产生消息的内部代码文件的行号 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="11.76470588235294%" headers="d26e83 ">
+                <p class="p"> 30 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e89 ">
+                <p class="p"> stack_trace </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.52941176470588%" headers="d26e95 ">
+                <p class="p"> text </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="41.17647058823529%" headers="d26e101 ">
+                <p class="p"> 与这个消息相关的栈跟踪文本 </p>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <div class="p">Greenplum提供一个名为<samp class="ph codeph">gplogfilter</samp>的工具，它能被用来在一个Greenplum数据库日志文件中搜索匹配指定条件的项。这个工具默认会搜索位于默认日志位置的Greenplum的Master日志文件。例如，要显示Master日志文件的最后三行：
+        <pre class="pre codeblock">$ gplogfilter -n 3</pre>
+</div>
+
+      <div class="p"> 用户还可以通过<samp class="ph codeph">gpssh</samp>工具运行<samp class="ph codeph">gplogfilter</samp>来立刻搜索所有的Segment日志文件。例如，要显示每个Segment日志文件的最后三行：<pre class="pre codeblock">$ gpssh -f seg_host_file
+  =&gt; source /usr/local/greenplum-db/greenplum_path.sh
+  =&gt; gplogfilter -n 3 /gpdata/gp*/pg_log/gpdb*.csv</pre>
+</div>
+
+      <p class="p"> 下面是Greenplum与安全相关的审计（或者日志）服务器配置参数，它们可以在postgresql.conf配置文件中设置：</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" align="left" valign="top" width="23.076923076923077%" id="d26e969">
+                <p class="p"> 域名 </p>
+
+              </th>
+
+              <th class="entry" align="left" valign="top" width="23.076923076923077%" id="d26e975">
+                <p class="p"> 值范围 </p>
+
+              </th>
+
+              <th class="entry" align="left" valign="top" width="15.384615384615385%" id="d26e981">
+                <p class="p"> 默认 </p>
+
+              </th>
+
+              <th class="entry" align="left" valign="top" width="38.46153846153847%" id="d26e987">
+                <p class="p"> 描述 </p>
+
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_connections </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> Boolean </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> off </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 这会对服务器日志输出一行详细描述每个成功的连接。某些客户端程序（如psql）在决定是否要求口令时会尝试连接两次，因此重复的“connection received”消息并非总是表示问题。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_disconnections </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> Boolean </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> off </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 在一个客户端会话终止时，这会在服务器日志中输出一行，其中会包括该会话的持续时间。 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_statement </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> NONE </p>
+
+                <p class="p"> DDL </p>
+
+                <p class="p"> MOD </p>
+
+                <p class="p"> ALL </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> ALL </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 控制那些SQL语句会被记录。DDL记录所有数据定义命令，如CREATE、ALTER和DROP命令。MOD记录所有DDL语句外加INSERT、UPDATE、DELETE、TRUNCATE以及COPY FROM。如果PREPARE和EXPLAIN ANALYZE语句中如果包含有适当类型的命令，它们也会被日志记录。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_hostname </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> Boolean </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> off </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 连接日志消息默认只显示连接主机的IP地址。把这个选项打开会导致主机名也被记录。注意这依赖于用户的主机名解析设置，而且这有可能会带来不可忽视的性能损失。 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_duration </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> Boolean </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> off </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 致使每一个满足log_statement的完成语句的持续时间被记录。 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_error_verbosity </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> TERSE </p>
+
+                <p class="p"> DEFAULT </p>
+
+                <p class="p"> VERBOSE </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> DEFAULT </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 为被记录的每条消息控制写入到服务器日志的细节多少。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_min_duration_statement </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> number of milliseconds, 0, -1 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> -1 </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 如果语句的持续时间大于等于指定的毫秒数，则在一个日志行中记录该语句和它的持续时间。将这个参数设置为0将打印出所有的语句及其持续时间。-1禁用这一特性。例如，如果用户将它设置为250，那么所有运行时间大于等于250ms的SQL语句将被记录。在跟踪应用中的未优化查询时，启用这一选项非常有用。 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_min_messages </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> DEBUG5 </p>
+
+                <p class="p"> DEBUG4 </p>
+
+                <p class="p"> DEBUG3 </p>
+
+                <p class="p"> DEBUG2 </p>
+
+                <p class="p"> DEBUG1 </p>
+
+                <p class="p"> INFO </p>
+
+                <p class="p"> NOTICE </p>
+
+                <p class="p"> WARNING </p>
+
+                <p class="p"> ERROR </p>
+
+                <p class="p"> LOG </p>
+
+                <p class="p"> FATAL </p>
+
+                <p class="p"> PANIC </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> NOTICE </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 控制哪些消息级别会被写入到服务器日志。每个级别包括其后的所有级别。级别越靠后，发送到日志的消息就越少。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p">log_rotation_size</p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">0 - INT_MAX/1024 kilobytes</td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">1048576</td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p">大于0时，将这个千字节数写入日志后，将创建一个新的日志文件。设置为零可禁用基于大小的新日志文件的创建。 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_rotation_age </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> Any valid time expression (number and unit) </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> 1d </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 决定个体日志文件的最大生存时间。在这个时间过去之后，一个新的日志文件将被创建。设置为零可禁用新日志文件基于时间创建。</p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_statement_stats </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> Boolean </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> off </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 对每个查询，写入查询解析器、规划器和执行器的整体性能统计信息到服务器日志中。这是一种粗糙的画像手段。 </p>
+
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e969 ">
+                <p class="p"> log_truncate_on_rotation </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="23.076923076923077%" headers="d26e975 ">
+                <p class="p"> Boolean </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="15.384615384615385%" headers="d26e981 ">
+                <p class="p"> off </p>
+
+              </td>
+
+              <td class="entry" align="left" valign="top" width="38.46153846153847%" headers="d26e987 ">
+                <p class="p"> 截断（重写）而不是追加到任何现存的同名日志文件。仅当一个新文件由于基于时间的轮转而被打开时，截断才会发生。例如，使用这个设置配合gpseg#-%H.log这样的log_filename会导致产生24个每小时的日志文件，然后循环地重写它们。关闭这一设置时，预先已经存在的文件在所有的情况下都会被追加内容。</p>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../topics/preface.html">安全性配置指南</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

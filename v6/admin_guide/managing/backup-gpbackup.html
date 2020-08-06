@@ -1,0 +1,2538 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      使用gpbackup和gprestore并行备份 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_managing x6-0_admin_guide_managing_backup-gpbackup has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    使用gpbackup和gprestore并行备份
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">使用gpbackup和gprestore并行备份</h1>
+
+  <div class="body">
+    <p class="p"><samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>是Greenplum数据库工具，可为Greenplum数据库创建和恢复备份集。
+        默认情况下，<samp class="ph codeph">gpbackup</samp>仅在Greenplum数据库master数据目录中存储备份的对象元数据文件和DDL文件。
+        Greenplum数据库节点使用<samp class="ph codeph">COPY ... ON SEGMENT</samp>命令将备份表的数据存储在位于每个节点的<span class="ph filepath">backups</span>目录中的压缩CSV数据文件中。
+        </p>
+
+    <p class="p">元数据备份文件包含<samp class="ph codeph">gprestore</samp>并行恢复完整备份集所需的所有信息。
+        备份元数据还提供了在<samp class="ph codeph">gprestore</samp>的未来版本中仅用于还原数据集中的单个对象以及任何依赖对象的框架。
+        （参考<a class="xref" href="#topic_xnj_b4c_tbb">理解备份文件</a>获取更新信息。）
+        将表数据存储在CSV文件中还提供了使用其他恢复工具（如<samp class="ph codeph">gpload</samp>）在同一群集或其他群集中加载数据的机会。
+        默认情况下，为节点上的每个表创建一个文件。
+        您可以使用<samp class="ph codeph">gpbackup</samp>指定<samp class="ph codeph">--leaf-partition-data</samp>选项，以便为分区表的每个叶子分区创建一个数据文件，而不是单个文件。
+        此选项还允许您按叶分区筛选备份集。
+        </p>
+
+    <p class="p">每个<samp class="ph codeph">gpbackup</samp>任务都使用Greenplum数据库中的单个事务。
+        在此事务期间，元数据将在master主机上备份，并且每个节点主机上的每个表的数据将使用<samp class="ph codeph">COPY ... ON SEGMENT</samp>命令并行写入CSV备份文件。
+        备份进程在备份的每个表上获取<samp class="ph codeph">ACCESS SHARE</samp>锁。
+        </p>
+
+    <p class="p">关于<samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>工具的更多选项，
+      参考<a class="xref" href="../../utility_guide/admin_utilities/gpbackup.html">gpbackup</a>和
+        <a class="xref" href="../../utility_guide/admin_utilities/gprestore.html">gprestore</a>。</p>
+
+  </div>
+
+  <div class="related-links">
+<ul class="ullinks">
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-plugins.html">使用gpbackup存储插件</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="../managing/backup-plugin-api.html">备份/恢复存储插件API（Beta版）</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/backup-main.html" title="这个主题描述如何使用Greenplum的备份和恢复特性。">备份和恢复数据库</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_vh5_1hd_tbb">
+    <h2 class="title topictitle2">需求和限制</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>工具在Greenplum数据库5.5.0和之后的版本可用。</p>
+
+      <div class="p">
+<samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>有如下限制：<ul class="ul" id="topic_vh5_1hd_tbb__ul_uqh_hhd_tbb">
+          <li class="li">如果在父分区表上创建索引，则<samp class="ph codeph">gpbackup</samp>不会在父分区的子分区表上备份相同的索引，因为在子分区上创建相同的索引会导致错误。
+              但是，如果您交换分区，则<samp class="ph codeph">gpbackup</samp>不会检测到交换分区上的索引是从新父表继承的。
+              在这种情况下，<samp class="ph codeph">gpbackup</samp>备份冲突的<samp class="ph codeph">CREATE INDEX</samp>语句，这会在还原备份集时导致错误。
+              </li>
+
+          <li class="li">您可以执行<samp class="ph codeph">gpbackup</samp>的多个实例，但每次执行都需要不同的时间戳。</li>
+
+          <li class="li">数据库对象过滤目前仅限于schema和表。</li>
+
+          <li class="li">如果使用<samp class="ph codeph">gpbackup --single-data-file</samp>选项将表备份组合到每个节点的单个文件中，
+              则无法使用<samp class="ph codeph">gprestore</samp>执行并行还原操作（无法将<samp class="ph codeph">--jobs</samp>设置为大于1的值）。
+              </li>
+
+          <li class="li">您不能将<samp class="ph codeph">--exclude-table-file</samp>与<samp class="ph codeph">--leaf-partition-data</samp>一起使用。
+              虽然您可以在使用<samp class="ph codeph">--exclude-table-file</samp>指定的文件中指定叶子分区名称，但<samp class="ph codeph">gpbackup</samp>会忽略分区名称。
+              </li>
+
+          <li class="li">在运行DDL命令的同时使用<samp class="ph codeph">gpbackup</samp>备份数据库可能会导致<samp class="ph codeph">gpbackup</samp>失败，以确保备份集内的一致性。
+              例如，如果在备份操作开始后删除了表，则<samp class="ph codeph">gpbackup</samp>将退出并显示错误消息<samp class="ph codeph">ERROR:
+                  relation &lt;<var class="keyword varname">schema.table</var>&gt; does not exist</samp>。
+              <p class="p">由于表锁定问题，在备份操作期间删除表时，<samp class="ph codeph">gpbackup</samp>可能会失败。
+                  <samp class="ph codeph">gpbackup</samp>生成要备份的表列表，并在表上获取<samp class="ph codeph">ACCESS SHARED</samp>锁。
+                  如果表上保留了<samp class="ph codeph">EXCLUSIVE LOCK</samp>，则<samp class="ph codeph">gpbackup</samp>会在释放现有锁后获取<samp class="ph codeph">ACCESS SHARED</samp>锁。
+                  如果<samp class="ph codeph">gpbackup</samp>尝试获取表上的锁时表不再存在，则<samp class="ph codeph">gpbackup</samp>将退出并显示错误消息。
+                  </p>
+
+              <p class="p">对于可能在备份期间删除的表，可以使用<samp class="ph codeph">gpbackup</samp>表过滤选项（例如<samp class="ph codeph">--exclude-table</samp>或<samp class="ph codeph">--exclude-schema</samp>）从备份中排除表。
+                  </p>
+</li>
+
+          <li class="li">使用<samp class="ph codeph">gpexpand</samp>创建的备份只能还原到与源集群具有相同数量的节点实例的Greenplum数据库集群。
+              如果运行gpexpand将节点添加到集群，则在扩容完成后无法恢复在扩容之前所做的备份。
+              </li>
+
+        </ul>
+</div>
+
+    </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="topic nested1" id="topic_x3s_lqj_tbb">
+    <h2 class="title topictitle2">备份或还原中包含的对象</h2>
+
+    <div class="body">
+      <div class="p">下表列出了使用<samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>备份和还原的对象。
+          使用<samp class="ph codeph">--dbname</samp>选项为您指定备份的数据库对象。
+          默认情况下也会备份全局对象（Greenplum数据库系统对象），但只有在<samp class="ph codeph">gprestore</samp>中包含<samp class="ph codeph">--with-globals</samp>选项时才会还原它们。
+          
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_x3s_lqj_tbb__table_vqq_3rj_tbb" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. 备份和还原的对象</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="50%" id="d49683e334">数据库(使用<samp class="ph codeph">--dbname</samp>指定的数据库)</th>
+
+                <th class="entry" valign="top" width="50%" id="d49683e340">全局(需要指定<samp class="ph codeph">--with-globals</samp>选项来还原)</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d49683e334 ">
+                  <ul class="ul" id="topic_x3s_lqj_tbb__ul_kpk_yrj_tbb">
+                    <li class="li">会话级别的配置参数设置(GUCs)</li>
+
+                    <li class="li">Schemas，参考<a class="xref" href="#topic_x3s_lqj_tbb__schema_note">Note</a>
+</li>
+
+                    <li class="li">过程语言扩展</li>
+
+                    <li class="li">序列</li>
+
+                    <li dir="ltr" class="li">注释</li>
+
+                    <li dir="ltr" class="li">表</li>
+
+                    <li class="li">Indexes</li>
+
+                    <li dir="ltr" class="li">所有者</li>
+
+                    <li dir="ltr" class="li">可写外部表(DDL only) </li>
+
+                    <li dir="ltr" class="li">可读外部表(DDL only) </li>
+
+                    <li dir="ltr" class="li">函数</li>
+
+                    <li dir="ltr" class="li">聚合</li>
+
+                    <li dir="ltr" class="li">类型转换</li>
+
+                    <li dir="ltr" class="li">类型</li>
+
+                    <li dir="ltr" class="li">视图</li>
+
+                    <li dir="ltr" class="li">协议</li>
+
+                    <li dir="ltr" class="li">触发器。（虽然Greenplum数据库不支持触发器，但会备份和恢复任何存在的触发器定义。）</li>
+
+                    <li dir="ltr" class="li">规则</li>
+
+                    <li dir="ltr" class="li">域</li>
+
+                    <li dir="ltr" class="li">运算符，运算符族和运算符类</li>
+
+                    <li dir="ltr" class="li">转换</li>
+
+                    <li class="li">扩展</li>
+
+                    <li dir="ltr" class="li">文本搜索解析器，词典，模板和配置</li>
+
+                  </ul>
+
+                </td>
+
+                <td class="entry" valign="top" width="50%" headers="d49683e340 ">
+                  <ul class="ul" id="topic_x3s_lqj_tbb__ul_d2t_wrj_tbb">
+                    <li class="li">表空间</li>
+
+                    <li class="li">数据库</li>
+
+                    <li class="li">数据库范围的配置参数设置(GUCs)</li>
+
+                    <li class="li">Resource group定义</li>
+
+                    <li class="li">Resource queue定义</li>
+
+                    <li class="li">角色</li>
+
+                    <li class="li">
+<samp class="ph codeph">GRANT</samp>分配给数据库的角色</li>
+
+                  </ul>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+</div>
+
+      <div class="note note" id="topic_x3s_lqj_tbb__schema_note">
+<span class="notetitle">Note:</span> 这些schemas不包含在备份中。<ul class="ul" id="topic_x3s_lqj_tbb__ul_xly_1jv_bdb">
+          <li class="li"><samp class="ph codeph">gp_toolkit</samp></li>
+
+          <li class="li"><samp class="ph codeph">information_schema</samp></li>
+
+          <li class="li"><samp class="ph codeph">pg_aoseg</samp></li>
+
+          <li class="li"><samp class="ph codeph">pg_bitmapindex</samp></li>
+
+          <li class="li"><samp class="ph codeph">pg_catalog</samp></li>
+
+          <li class="li"><samp class="ph codeph">pg_toast*</samp></li>
+
+          <li class="li"><samp class="ph codeph">pg_temp*</samp></li>
+
+        </ul>
+<p class="p">还原到已存在数据库时，<samp class="ph codeph">gprestore</samp>假定在将对象还原到<samp class="ph codeph">public</samp> schema时存在<samp class="ph codeph">public</samp> schema。
+          还原到新数据库（使用<samp class="ph codeph">--create-db</samp>选项）时，<samp class="ph codeph">gprestore</samp>会在使用<samp class="ph codeph">CREATE DATABASE</samp>命令创建数据库时自动创建<samp class="ph codeph">public</samp> schema。
+          该命令使用包含<samp class="ph codeph">public</samp> schema的<samp class="ph codeph">template0</samp>数据库。
+          </p>
+</div>
+
+      <p class="p">也可以参考<a class="xref" href="#topic_xnj_b4c_tbb">理解备份文件</a>。</p>
+
+    </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="topic nested1" id="topic_qgj_b3d_tbb">
+    <h2 class="title topictitle2">执行基本备份和还原操作</h2>
+
+    <div class="body">
+      <div class="p">要执行数据库的完整备份以及Greenplum数据库系统元数据，请使用以下命令：
+          <pre class="pre codeblock">$ gpbackup --dbname &lt;database_name&gt;</pre>
+</div>
+
+      <div class="p">例如：<pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo</strong>
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Starting backup of database demo
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Backup Timestamp = 20180105112754
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Backup Database = demo
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Backup Type = Unfiltered Compressed Full Backup
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Gathering list of tables for backup
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Acquiring ACCESS SHARE locks on tables
+Locks acquired:  6 / 6 [================================================================] 100.00% 0s
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Gathering additional table metadata
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Writing global database metadata
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Global database metadata backup complete
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Writing pre-data metadata
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Pre-data metadata backup complete
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Writing post-data metadata
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Post-data metadata backup complete
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Writing data to file
+Tables backed up:  3 / 3 [==============================================================] 100.00% 0s
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Data backup complete
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Found neither /usr/local/greenplum-db/./bin/gp_email_contacts.yaml nor /home/gpadmin/gp_email_contacts.yaml
+20180105:11:27:54 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Email containing gpbackup report /gpmaster/seg-1/backups/20180105/20180105112754/gpbackup_20180105112754_report will not be sent
+20180105:11:27:55 gpbackup:gpadmin:centos6.localdomain:002182-[INFO]:-Backup completed successfully</pre>
+</div>
+
+      <div class="p">上面的命令在Greenplum数据库master主机的默认目录中创建一个包含全局和数据库特定元数据的文件，
+          <samp class="ph codeph">$MASTER_DATA_DIRECTORY/backups/&lt;YYYYMMDD&gt;/&lt;YYYYMMDDHHMMSS&gt;/</samp>。
+          例如：<pre class="pre codeblock">$ <strong class="ph b">ls /gpmaster/gpsne-1/backups/20180105/20180105112754</strong>
+gpbackup_20180105112754_config.yaml   gpbackup_20180105112754_report
+gpbackup_20180105112754_metadata.sql  gpbackup_20180105112754_toc.yaml</pre>
+</div>
+
+      <div class="p">默认情况下，每个节点用一个独立的压缩CSV文件在<samp class="ph codeph">&lt;seg_dir&gt;/backups/&lt;YYYYMMDD&gt;/&lt;YYYYMMDDHHMMSS&gt;/</samp>存储备份的每个表的数据：
+          <pre class="pre codeblock">$ <strong class="ph b">ls /gpdata1/gpsne0/backups/20180105/20180105112754/</strong>
+gpbackup_0_20180105112754_17166.gz  gpbackup_0_20180105112754_26303.gz
+gpbackup_0_20180105112754_21816.gz</pre>
+</div>
+
+      <div class="p">要将所有备份文件合并到一个目录中，请包含<samp class="ph codeph">--backup-dir</samp>选项。
+          请注意，您必须使用此选项指定绝对路径：
+          <pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo --backup-dir /home/gpadmin/backups</strong>
+20171103:15:31:56 gpbackup:gpadmin:0ee2f5fb02c9:017586-[INFO]:-Starting backup of database demo
+...
+20171103:15:31:58 gpbackup:gpadmin:0ee2f5fb02c9:017586-[INFO]:-Backup completed successfully
+$ <strong class="ph b">find /home/gpadmin/backups/ -type f</strong>
+/home/gpadmin/backups/gpseg0/backups/20171103/20171103153156/gpbackup_0_20171103153156_16543.gz
+/home/gpadmin/backups/gpseg0/backups/20171103/20171103153156/gpbackup_0_20171103153156_16524.gz
+/home/gpadmin/backups/gpseg1/backups/20171103/20171103153156/gpbackup_1_20171103153156_16543.gz
+/home/gpadmin/backups/gpseg1/backups/20171103/20171103153156/gpbackup_1_20171103153156_16524.gz
+/home/gpadmin/backups/gpseg-1/backups/20171103/20171103153156/gpbackup_20171103153156_config.yaml
+/home/gpadmin/backups/gpseg-1/backups/20171103/20171103153156/gpbackup_20171103153156_predata.sql
+/home/gpadmin/backups/gpseg-1/backups/20171103/20171103153156/gpbackup_20171103153156_global.sql
+/home/gpadmin/backups/gpseg-1/backups/20171103/20171103153156/gpbackup_20171103153156_postdata.sql
+/home/gpadmin/backups/gpseg-1/backups/20171103/20171103153156/gpbackup_20171103153156_report
+/home/gpadmin/backups/gpseg-1/backups/20171103/20171103153156/gpbackup_20171103153156_toc.yaml</pre>
+</div>
+
+      <p class="p">执行备份操作时，可以在多个文件的额外开销可能过高的情况下使用<samp class="ph codeph">--single-data-file</samp>。
+          例如，如果您使用第三方存储解决方案，例如带备份的Data Domain。
+          </p>
+
+      <div class="section">
+<h3 class="title sectiontitle">从备份恢复</h3>
+        
+        <div class="p">使用<samp class="ph codeph">gprestore</samp>从备份集合恢复，必须使用<samp class="ph codeph">--timestamp</samp>选项指定准确的时间戳值(<samp class="ph codeph">YYYYMMDDHHMMSS</samp>)。
+            包括<samp class="ph codeph">--create-db</samp>选项，如果数据库未在集群中创建。
+            例如：<pre class="pre codeblock">$ <strong class="ph b">dropdb demo</strong>
+$ <strong class="ph b">gprestore --timestamp 20171103152558 --create-db</strong>
+20171103:15:45:30 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Restore Key = 20171103152558
+20171103:15:45:31 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Creating database
+20171103:15:45:44 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Database creation complete
+20171103:15:45:44 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Restoring pre-data metadata from /gpmaster/gpsne-1/backups/20171103/20171103152558/gpbackup_20171103152558_predata.sql
+20171103:15:45:45 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Pre-data metadata restore complete
+20171103:15:45:45 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Restoring data
+20171103:15:45:45 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Data restore complete
+20171103:15:45:45 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Restoring post-data metadata from /gpmaster/gpsne-1/backups/20171103/20171103152558/gpbackup_20171103152558_postdata.sql
+20171103:15:45:45 gprestore:gpadmin:0ee2f5fb02c9:017714-[INFO]:-Post-data metadata restore complete</pre>
+</div>
+
+        <div class="p">如果指定自定义的<samp class="ph codeph">--backup-dir</samp>来合并备份文件，使用<samp class="ph codeph">gprestore</samp>时指定相同的<samp class="ph codeph">--backup-dir</samp>选项来定位备份文件：
+          <pre class="pre codeblock">$ <strong class="ph b">dropdb demo</strong>
+$ <strong class="ph b">gprestore --backup-dir /home/gpadmin/backups/ --timestamp 20171103153156 --create-db</strong>
+20171103:15:51:02 gprestore:gpadmin:0ee2f5fb02c9:017819-[INFO]:-Restore Key = 20171103153156
+...
+20171103:15:51:17 gprestore:gpadmin:0ee2f5fb02c9:017819-[INFO]:-Post-data metadata restore complete</pre>
+</div>
+
+        <p class="p"><samp class="ph codeph">gprestore</samp>默认不会为Greenplum系统尝试恢复全局元数据。
+            如果这个是必须的，需要<samp class="ph codeph">--with-globals</samp>参数。
+            </p>
+
+        <div class="p">默认情况下，<samp class="ph codeph">gprestore</samp>使用一个连接去恢复表数据和元数据。
+            如果备份集非常大，可以使用<samp class="ph codeph">--jobs</samp>选项来提高并发连接数从而提升恢复性能。
+            例如：<pre class="pre codeblock">$ <strong class="ph b">gprestore --backup-dir /home/gpadmin/backups/ --timestamp 20171103153156 --create-db --jobs 8</strong></pre>
+</div>
+
+        <p class="p">测试备份集的并行连接数，以确定快速数据恢复的理想数量。</p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 如果备份使用<samp class="ph codeph">gpbackup</samp>的<samp class="ph codeph">--single-data-file</samp>选项将表备份组合到每个节点的单个文件中，则无法使用<samp class="ph codeph">gprestore</samp>执行并行还原操作。
+            </div>
+
+      </div>
+
+      <div class="section" id="topic_qgj_b3d_tbb__report_files">
+<h3 class="title sectiontitle">报告文件</h3>
+          <p class="p">当执行备份和恢复操作时，<samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>会生成一个报告文件。
+              当配置了邮件通知，发送的邮件内容会包含报告文件。
+              关于邮件通知的信息，参考<a class="xref" href="#topic_qwd_d5d_tbb">配置邮件通知</a>。</p>
+
+          <p class="p">报告文件在Greenplum数据库master的备份目录中。
+              报告文件名包含操作的时间戳。
+              这些是<samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>报告文件名的格式。
+              </p>
+<pre class="pre codeblock">gpbackup_&lt;backup_timestamp&gt;_report
+gprestore_&lt;backup_timestamp&gt;_&lt;restore_timesamp&gt;_report</pre>
+
+                对于这些报告文件名的样例，<samp class="ph codeph">20180213114446</samp>是备份的时间戳，<samp class="ph codeph">20180213115426</samp>是恢复操作的时间戳。
+          <pre class="pre codeblock">gpbackup_20180213114446_report
+gprestore_20180213114446_20180213115426_report</pre>
+
+          <p class="p">这个在Greenplum数据库master主机上的备份目录包含了<samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>的报告文件。
+              </p>
+<pre class="pre codeblock">$ <strong class="ph b">ls -l /gpmaster/seg-1/backups/20180213/20180213114446</strong>
+total 36
+-r--r--r--. 1 gpadmin gpadmin  295 Feb 13 11:44 gpbackup_20180213114446_config.yaml
+-r--r--r--. 1 gpadmin gpadmin 1855 Feb 13 11:44 gpbackup_20180213114446_metadata.sql
+-r--r--r--. 1 gpadmin gpadmin 1402 Feb 13 11:44 gpbackup_20180213114446_report
+-r--r--r--. 1 gpadmin gpadmin 2199 Feb 13 11:44 gpbackup_20180213114446_toc.yaml
+-r--r--r--. 1 gpadmin gpadmin  404 Feb 13 11:54 gprestore_20180213114446_20180213115426_report</pre>
+
+          <p class="p">报告文件的内容类似。
+              这是<samp class="ph codeph">gprestore</samp>报告文件内容的示例。
+              </p>
+<pre class="pre codeblock">Greenplum Database Restore Report
+
+Timestamp Key: 20180213114446
+GPDB Version: 5.4.1+dev.8.g9f83645 build commit:9f836456b00f855959d52749d5790ed1c6efc042
+gprestore Version: 1.0.0-alpha.3+dev.73.g0406681
+
+Database Name: test
+Command Line: gprestore --timestamp 20180213114446 --with-globals --createdb
+
+Start Time: 2018-02-13 11:54:26
+End Time: 2018-02-13 11:54:31
+Duration: 0:00:05
+
+Restore Status: Success</pre>
+</div>
+
+      <div class="section">
+<h3 class="title sectiontitle">历史文件</h3>
+        
+        <p class="p">执行备份操作时，<samp class="ph codeph">gpbackup</samp>会将备份信息附加到Greenplum数据库master数据目录中的gpbackup历史文件<samp class="ph codeph">gpbackup_history.yaml</samp>中。
+            该文件包含备份时间戳，有关备份选项的信息以及增量备份的备份集信息。
+            <samp class="ph codeph">gpbackup</samp>不备份此文件。
+            </p>
+
+        <p class="p">使用<samp class="ph codeph">--incremental</samp>选项运行<samp class="ph codeph">gpbackup</samp>时，
+            <samp class="ph codeph">gpbackup</samp>使用文件中的信息查找增量备份的匹配备份，
+            并且不指定<samp class="ph codeph">--from-timesamp</samp>选项以指示要用作最新备份的备份在增量备份集中。
+            有关增量备份的信息，参考<a class="xref" href="backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>。</p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">返回值</h3>
+        
+        <div class="p">在<samp class="ph codeph">gpbackup</samp>或<samp class="ph codeph">gprestore</samp>完成时会返回下面的一个返回值。
+            <ul class="ul" id="topic_qgj_b3d_tbb__ul_hhb_sqp_n4">
+            <li class="li">
+<strong class="ph b">0</strong> – 备份或恢复完成没有问题</li>
+
+            <li class="li">
+<strong class="ph b">1</strong> – 备份或恢复完成，但有非致命错误。查看日志文件获取更多信息。</li>
+
+            <li class="li">
+<strong class="ph b">2</strong> – 备份或恢复因为致命错误失败。查看日志文件获取更多信息。</li>
+
+          </ul>
+</div>
+
+      </div>
+
+    </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="topic nested1" id="topic_et4_b5d_tbb">
+    <h2 class="title topictitle2">过滤备份或恢复的内容</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">gpbackup</samp>备份指定数据库中的所有schema和表，除非您使用schema级别或表级别过滤器选项排除或包含单个schema或表对象。</p>
+
+      <div class="p">schema级别选项是<samp class="ph codeph">--include-schema</samp>或<samp class="ph codeph">--exclude-schema</samp>命令行选项到<samp class="ph codeph">gpbackup</samp>。
+          例如，如果“demo”数据库仅包含两个schema “wikipedia”和“twitter”，则以下两个命令仅备份“wikipedia” schema：
+          <pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo --include-schema wikipedia</strong>
+$ <strong class="ph b">gpbackup --dbname demo --exclude-schema twitter</strong></pre>
+</div>
+
+      <div class="p">你可以在<samp class="ph codeph">gpbackup</samp>中包含多个<samp class="ph codeph">--include-schema</samp>选项，或多个<samp class="ph codeph">--exclude-schema</samp>选项。
+          例如：<pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo --include-schema wikipedia --include-schema twitter</strong></pre>
+</div>
+
+      <p class="p">要筛选包含在备份集中的表或从备份集中排除表，请使用<samp class="ph codeph">--include-table</samp>选项或<samp class="ph codeph">--exclude-table</samp>选项指定各个表。
+          该表必须是限定schema的，<samp class="ph codeph">&lt;schema-name&gt;.&lt;table-name&gt;</samp>。
+          可以多次指定各个表过滤选项。
+          但是，<samp class="ph codeph">--include-table</samp>和<samp class="ph codeph">--exclude-table</samp>不能同时用于同一命令。
+        </p>
+
+      <div class="p">您可以在文本文件中创建指定的表名称列表。
+          列出文件中的表时，文本文件中的每一行都必须使用格式<samp class="ph codeph">&lt;schema-name&gt;.&lt;table-name&gt;</samp>定义单个表。
+          该文件不得包含尾随行。 例如：
+          <pre class="pre codeblock">wikipedia.articles
+twitter.message</pre>
+</div>
+
+      <div class="p">如果表或schema名称使用小写字母，数字或下划线字符以外的任何字符，则必须在双引号中包含该名称。例如：
+          <pre class="pre codeblock">beer."IPA"
+"Wine".riesling
+"Wine"."sauvignon blanc"
+water.tonic</pre>
+</div>
+
+      <div class="p">创建文件后，您可以使用<samp class="ph codeph">gpbackup</samp>选项<samp class="ph codeph">--include-table-file</samp>或<samp class="ph codeph">--exclude-table-file</samp>来包含或排除表。例如：
+          <pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo --include-table-file /home/gpadmin/table-list.txt</strong></pre>
+</div>
+
+      <p class="p">您可以将<samp class="ph codeph">-include schema</samp>与<samp class="ph codeph">--exclude-table</samp>或<samp class="ph codeph">--exclude-table-file</samp>结合使用以进行备份。
+          此示例使用<samp class="ph codeph">--include-schema</samp>和<samp class="ph codeph">--exclude-table</samp>来备份除单个表之外的schema。
+          </p>
+
+      <pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo --include-schema mydata --exclude-table mydata.addresses</strong></pre>
+
+      <p class="p">您不能将<samp class="ph codeph">--include-schema</samp>与<samp class="ph codeph">--include-table</samp>或<samp class="ph codeph">--include-table-file</samp>结合使用，
+          并且不能将<samp class="ph codeph">--exclude-schema</samp>与任何表过滤选项（如<samp class="ph codeph">--exclude-table</samp>或<samp class="ph codeph">--include-table</samp>）结合使用。
+          </p>
+
+      <p class="p">使用<samp class="ph codeph">--include-table</samp>或<samp class="ph codeph">--include-table-file</samp>时，不会自动备份或还原依赖对象，您必须显式指定所需的依赖对象。
+          例如，如果备份或还原视图，则还必须指定视图使用的表。
+          如果备份或还原使用序列的表，则还必须指定序列。
+          </p>
+
+      <div class="section" id="topic_et4_b5d_tbb__section_ddf_gyn_5bb">
+<h3 class="title sectiontitle">根据叶子分区过滤</h3>
+          <div class="p">默认情况下，<samp class="ph codeph">gpbackup</samp>为节点上的每个表创建一个文件。
+              您可以指定<samp class="ph codeph">--leaf-partition-data</samp>选项，以便为分区表的每个叶子分区创建一个数据文件，而不是单个文件。
+              您还可以通过在包含的文本文件中列出叶子分区名称来过滤备份特定叶子分区。
+              例如，考虑使用以下语句创建的表：
+              <pre class="pre codeblock">demo=# <strong class="ph b">CREATE TABLE sales (id int, date date, amt decimal(10,2))
+DISTRIBUTED BY (id)
+PARTITION BY RANGE (date)
+( PARTITION Jan17 START (date '2017-01-01') INCLUSIVE ,
+PARTITION Feb17 START (date '2017-02-01') INCLUSIVE ,
+PARTITION Mar17 START (date '2017-03-01') INCLUSIVE ,
+PARTITION Apr17 START (date '2017-04-01') INCLUSIVE ,
+PARTITION May17 START (date '2017-05-01') INCLUSIVE ,
+PARTITION Jun17 START (date '2017-06-01') INCLUSIVE ,
+PARTITION Jul17 START (date '2017-07-01') INCLUSIVE ,
+PARTITION Aug17 START (date '2017-08-01') INCLUSIVE ,
+PARTITION Sep17 START (date '2017-09-01') INCLUSIVE ,
+PARTITION Oct17 START (date '2017-10-01') INCLUSIVE ,
+PARTITION Nov17 START (date '2017-11-01') INCLUSIVE ,
+PARTITION Dec17 START (date '2017-12-01') INCLUSIVE
+END (date '2018-01-01') EXCLUSIVE );</strong>
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_jan17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_feb17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_mar17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_apr17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_may17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_jun17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_jul17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_aug17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_sep17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_oct17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_nov17" for table "sales"
+NOTICE:  CREATE TABLE will create partition "sales_1_prt_dec17" for table "sales"
+CREATE TABLE</pre>
+</div>
+
+          <div class="p">要仅备份一年中最后一个季度的数据，首先要创建一个文本文件，列出那些叶子分区名称而不是完整的表名称：
+              <pre class="pre codeblock">public.sales_1_prt_oct17
+public.sales_1_prt_nov17
+public.sales_1_prt_dec17 </pre>
+</div>
+
+          <div class="p">然后使用<samp class="ph codeph">--include-table-file</samp>选项指定文件，以便为每个叶子分区生成一个数据文件：
+              <pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo --include-table-file last-quarter.txt --leaf-partition-data</strong></pre>
+
+          </div>
+指定<samp class="ph codeph">--leaf-partition-data</samp>时，<samp class="ph codeph">gpbackup</samp>在备份分区表时为每个叶子分区生成一个数据文件。
+            例如，此命令为每个叶子分区生成一个数据文件：
+          <pre class="pre codeblock">$ <strong class="ph b">gpbackup --dbname demo --include-table public.sales --leaf-partition-data</strong></pre>
+
+          <p class="p">备份叶子分区时，将备份叶子分区数据以及整个分区表的元数据。</p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 您不能将<samp class="ph codeph">--exclude-table-file</samp>选项与<samp class="ph codeph">--leaf-partition-data</samp>一起使用。
+            虽然您可以在使用<samp class="ph codeph">--exclude-table-file</samp>指定的文件中指定叶子分区名称，但<samp class="ph codeph">gpbackup</samp>会忽略分区名称。
+            </div>
+</div>
+
+      <div class="section">
+<h3 class="title sectiontitle">使用gprestore过滤</h3>
+        
+        <div class="p">使用<samp class="ph codeph">gpbackup</samp>创建备份集后，
+            可以使用<samp class="ph codeph">gprestore</samp>的<samp class="ph codeph">--include-schema</samp>和<samp class="ph codeph">--include-table-file</samp>选项过滤要从备份集还原的schema和表。
+            这些选项的工作方式与其<samp class="ph codeph">gpbackup</samp>对应方式相同，但具有以下限制：
+            <ul class="ul" id="topic_et4_b5d_tbb__ul_hts_clc_ccb">
+            <li class="li">您尝试还原的表不能存在于数据库中。</li>
+
+            <li class="li">如果尝试还原备份集中不存在的schema或表，则<samp class="ph codeph">gprestore</samp>不会执行。</li>
+
+            <li class="li">如果使用<samp class="ph codeph">--include-schema</samp>选项，则<samp class="ph codeph">gprestore</samp>无法还原对多个schema具有依赖性的对象。</li>
+
+            <li class="li">如果使用<samp class="ph codeph">--include-table-file</samp>选项，则<samp class="ph codeph">gprestore</samp>不会创建角色或设置表的所有者。
+                该工具恢复表索引和规则。
+                触发器也被恢复，但Greenplum数据库不支持。
+                </li>
+
+            <li class="li">使用<samp class="ph codeph">--include-table-file</samp>指定的文件不能包含叶子分区名称，因为在使用<samp class="ph codeph">gpbackup</samp>指定此选项时可以使用该名称。
+                如果在备份集中指定了叶子分区，请指定分区表以还原叶子分区数据。
+                <p class="p">还原包含来自分区表的某些叶子分区的数据的备份集时，将恢复分区表以及叶子分区的数据。
+                    例如，使用<samp class="ph codeph">gpbackup</samp>选项<samp class="ph codeph">--include-table-file</samp>创建备份，文本文件列出分区表的一些叶子分区。
+                    还原备份会创建分区表，并仅为文件中列出的叶分区还原数据。
+                    </p>
+</li>
+
+          </ul>
+</div>
+
+      </div>
+
+    </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="topic nested1" id="topic_qwd_d5d_tbb">
+    <h2 class="title topictitle2">配置邮件通知</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>可以在备份或还原完成后发送邮件通知。</p>
+
+      <p class="p">要让<samp class="ph codeph">gpbackup</samp>或<samp class="ph codeph">gprestore</samp>发送状态电子邮件通知，
+          您必须将名为<samp class="ph codeph">gp_email_contacts.yaml</samp>的文件放在运行<samp class="ph codeph">gpbackup</samp>或<samp class="ph codeph">gprestore</samp>的用户的主目录中，
+          与工具（<samp class="ph codeph">$GPHOME/bin</samp>）位于同一目录中。
+          如果工具无法在任一位置找到<samp class="ph codeph">gp_email_contacts.yaml</samp>文件，则会发出消息。
+          如果两个位置都包含<samp class="ph codeph">.yaml</samp>文件，则该工具将使用用户<samp class="ph codeph">$HOME</samp>中的文件。
+        </p>
+
+      <p class="p">电子邮件主题行包括工具名称，时间戳，状态和Greenplum数据库master的名称。
+          这是<samp class="ph codeph">gpbackup</samp>电子邮件的示例主题行。
+        </p>
+
+      <div class="p">
+        <pre class="pre codeblock">gpbackup 20180202133601 on gp-master completed</pre>
+
+      </div>
+
+      <p class="p">该电子邮件包含有关操作的摘要信息，包括选项，持续时间以及备份或还原的对象数。
+          有关通知电子邮件内容的信息，参考<a class="xref" href="#topic_qgj_b3d_tbb__report_files">报告文件</a>。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> UNIX邮件实用程序必须在Greenplum数据库主机上运行，并且必须配置为允许Greenplum超级用户（<samp class="ph codeph">gpadmin</samp>）发送电子邮件。
+          还要确保通过<samp class="ph codeph">gpadmin</samp>用户的<samp class="ph codeph">$PATH</samp>可以找到邮件程序可执行文件。</div>
+
+    </div>
+
+    <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+</div>
+</div>
+</div>
+<div class="topic nested2" id="topic_uq5_v5v_scb">
+      <h3 class="title topictitle3">gpbackup和gprestore邮件文件格式</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>电子邮件通知的YAML文件<samp class="ph codeph">gp_email_contacts.yaml</samp>使用缩进（空格）来确定文档层次结构以及这些部分之间的关系。
+            使用空白区域非常重要。
+            不应仅将白色空间用于格式化目的，并且根本不应使用制表符。
+            </p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 如果未正确指定<samp class="ph codeph">status</samp>参数，则工具不会发出警告。
+            例如，如果<samp class="ph codeph">success</samp>参数拼写错误并设置为true，则不会发出警告，并且在成功操作后不会向电子邮件地址发送电子邮件。
+            要确保正确配置电子邮件通知，请运行配置了电子邮件通知的测试。
+            </div>
+
+        <p class="p">这是<samp class="ph codeph">gpbackup</samp>电子邮件通知的<samp class="ph codeph">gp_email_contacts.yaml</samp> YAML文件的格式：
+            </p>
+
+        <pre class="pre codeblock"><a class="xref" href="#topic_uq5_v5v_scb__contacts_yml">contacts</a>:
+  <a class="xref" href="#topic_uq5_v5v_scb__gpbackup_yml">gpbackup</a>:
+  - <a class="xref" href="#topic_uq5_v5v_scb__address_yml">address</a>: <var class="keyword varname">user</var>@<var class="keyword varname">domain</var>
+    <a class="xref" href="#topic_uq5_v5v_scb__status_yml">status</a>:
+         <a class="xref" href="#topic_uq5_v5v_scb__success_yml">success</a>: [true | false]
+         <a class="xref" href="#topic_uq5_v5v_scb__success1_yml">success_with_errors</a>: [true | false]
+         <a class="xref" href="#topic_uq5_v5v_scb__failure_yml">failure</a>: [true | false]
+  <a class="xref" href="#topic_uq5_v5v_scb__gprestore_yml">gprestore</a>:
+  - <a class="xref" href="#topic_uq5_v5v_scb__address_yml">address</a>: <var class="keyword varname">user</var>@<var class="keyword varname">domain</var>
+    <a class="xref" href="#topic_uq5_v5v_scb__status_yml">status</a>:
+         <a class="xref" href="#topic_uq5_v5v_scb__success_yml">success</a>: [true | false]
+         <a class="xref" href="#topic_uq5_v5v_scb__success1_yml">success_with_errors</a>: [true | false]
+         <a class="xref" href="#topic_uq5_v5v_scb__failure_yml">failure</a>: [true | false]</pre>
+
+        <div class="section">
+<h4 class="title sectiontitle">电子邮件YAML文件部分</h4>
+          
+          <dl class="dl parml">
+            
+              <dt class="dt pt dlterm" id="topic_uq5_v5v_scb__contacts_yml"><strong class="ph b">contacts</strong></dt>
+
+              <dd class="dd pd">必须的。包含<samp class="ph codeph">gpbackup</samp>和<samp class="ph codeph">gprestore</samp>部分的部分。
+                  YAML文件可以包含<samp class="ph codeph">gpbackup</samp>部分，<samp class="ph codeph">gprestore</samp>部分或每个部分中的一个。
+                  </dd>
+
+            
+            
+              <dt class="dt pt dlterm" id="topic_uq5_v5v_scb__gpbackup_yml"><strong class="ph b">gpbackup</strong></dt>
+
+              <dd class="dd pd">可选的。 开始<samp class="ph codeph">gpbackup</samp>电子邮件部分。<dl class="dl parml">
+                  
+                    <dt class="dt pt dlterm" id="topic_uq5_v5v_scb__address_yml"><strong class="ph b">address</strong></dt>
+
+                    <dd class="dd pd">必须的。必须至少指定一个电子邮件地址。可以指定多个电子邮件地址参数。每个地址都需要一个<samp class="ph codeph">status</samp>部分。</dd>
+
+                    <dd class="dd pd">
+<var class="keyword varname">user</var>@<var class="keyword varname">domain</var>是一个有效的电子邮件地址。</dd>
+
+                  
+                  
+                    <dt class="dt pt dlterm"><strong class="ph b">status</strong></dt>
+
+                    <dd class="dd pd">必须的。指定工具何时向指定的电子邮件地址发送电子邮件。默认设置是不发送电子邮件通知。</dd>
+
+                    <dd class="dd pd">您可以根据备份或还原操作的完成状态指定发送电子邮件通知。
+                        必须至少指定其中一个参数，每个参数最多只能出现一次。
+                        <dl class="dl parml">
+                        
+                          <dt class="dt pt dlterm"><strong class="ph b">success</strong></dt>
+
+                          <dd class="dd pd">可选的。如果操作完成且没有错误，请指定是否发送电子邮件。
+                              如果值为<samp class="ph codeph">true</samp>，则在操作完成且没有错误的情况下发送电子邮件。
+                              如果值为<samp class="ph codeph">false</samp>（默认值），则不会发送电子邮件。
+                            </dd>
+
+                        
+                        
+                          <dt class="dt pt dlterm"><strong class="ph b">success_with_errors</strong></dt>
+
+                          <dd class="dd pd">可选的。如果操作完成但有错误，请指定是否发送电子邮件。
+                              如果值为<samp class="ph codeph">true</samp>，则在操作完成且出错时将发送电子邮件。
+                              如果值为<samp class="ph codeph">false</samp>（默认值），则不会发送电子邮件。
+                            </dd>
+
+                        
+                        
+                          <dt class="dt pt dlterm"><strong class="ph b">failure</strong></dt>
+
+                          <dd class="dd pd">可选的。指定操作失败时是否发送电子邮件。
+                              如果值为<samp class="ph codeph">true</samp>，则在操作失败时发送电子邮件。
+                              如果值为<samp class="ph codeph">false</samp>（默认值），则不会发送电子邮件。
+                            </dd>
+
+                        
+                      </dl>
+</dd>
+
+                  
+                </dl>
+</dd>
+
+            
+            
+              <dt class="dt pt dlterm" id="topic_uq5_v5v_scb__gprestore_yml"><strong class="ph b">gprestore</strong></dt>
+
+              <dd class="dd pd">可选的。开始<samp class="ph codeph">gprestore</samp>电子邮件部分。
+                  此部分包含用于在gprestore操作后发送电子邮件通知的<samp class="ph codeph"><a class="xref" href="#topic_uq5_v5v_scb__address_yml">address</a></samp>和<samp class="ph codeph"><a class="xref" href="#topic_uq5_v5v_scb__status_yml">status</a></samp>参数。
+                  语法与<samp class="ph codeph"><a class="xref" href="#topic_uq5_v5v_scb__gpbackup_yml">gpbackup</a></samp>部分相同。
+                </dd>
+
+            
+          </dl>
+
+        </div>
+
+        <div class="section">
+<h4 class="title sectiontitle">示例</h4>
+          
+          <div class="p">此示例YAML文件指定根据操作的成功或失败向电子邮件地址发送电子邮件。
+              对于备份操作，根据备份操作的成功或失败，将电子邮件发送到不同的地址。
+              对于还原操作，仅当操作成功或带错完成时才会向<samp class="ph codeph">gpadmin@example.com</samp>发送电子邮件。
+              <pre class="pre codeblock">contacts:
+  gpbackup:
+  - address: gpadmin@example.com
+    status:
+      success:true
+  - address: my_dba@example.com
+    status:
+      success_with_errors: true
+      failure: true
+  gprestore:
+  - address: gpadmin@example.com
+    status:
+      success: true
+      success_with_errors: true</pre>
+</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_xnj_b4c_tbb">
+    <h2 class="title topictitle2">理解备份文件</h2>
+
+    <div class="body">
+      <div class="note warning">
+<span class="warningtitle">Warning:</span> 所有<samp class="ph codeph">gpbackup</samp>元数据文件都是使用只读权限创建的。
+          切勿删除或修改<samp class="ph codeph">gpbackup</samp>备份集的元数据文件。
+          这样做会使备份文件无法正常运行。
+        </div>
+
+      <p class="p"><samp class="ph codeph">gpbackup</samp>的完整备份集包括多个元数据文件，支持文件和CSV数据文件，每个文件都指定了创建备份的时间戳。
+          </p>
+
+      <div class="p">默认情况下，元数据和支持文件存储在Greenplum数据库master主机上<span class="ph filepath">$MASTER_DATA_DIRECTORY/backups/YYYYMMDD/YYYYMMDDHHMMSS/</span>目录中。
+          如果指定自定义备份目录，则会将此相同文件路径创建为备份目录的子目录。
+          下表描述了元数据和支持文件的名称和内容。
+          
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_xnj_b4c_tbb__table_nrz_4gj_tbb" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 2. gpbackup元文件(master)</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="50%" id="d49683e1540">文件名</th>
+
+                <th class="entry" valign="top" width="50%" id="d49683e1543">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d49683e1540 "><span class="ph filepath">gpbackup_&lt;YYYYMMDDHHMMSS&gt;_metadata.sql</span></td>
+
+                <td class="entry" valign="top" width="50%" headers="d49683e1543 ">包含全局和数据库特定的元数据：<ul class="ul" id="topic_xnj_b4c_tbb__ul_l2c_dtv_scb">
+                    <li class="li">用于Greenplum数据库集群全局对象的DDL，不属于集群中的特定数据库。</li>
+
+                    <li class="li">用于备份数据库中的对象的DDL（使用<samp class="ph codeph">--dbname指定</samp>），必须在还原实际数据之前创建，以及在还原数据后必须创建的对象的DDL。</li>
+
+                  </ul>
+全局对象包括：<ul class="ul" id="topic_xnj_b4c_tbb__ul_f1b_dhj_tbb">
+                    <li class="li">表空间</li>
+
+                    <li class="li">数据库</li>
+
+                    <li class="li">数据库范围的配置参数设置(GUCs)</li>
+
+                    <li class="li">Resource group定义</li>
+
+                    <li class="li">Resource queue定义</li>
+
+                    <li class="li">Roles</li>
+
+                    <li class="li">
+<samp class="ph codeph">GRANT</samp>分配给数据库的角色</li>
+
+                  </ul>
+<p class="p"><strong class="ph b">Note:</strong>默认情况下不会还原全局元数据。
+                    必须在<samp class="ph codeph">gprestore</samp>命令中包含<samp class="ph codeph">--with-globals</samp>选项才能还原全局元数据。
+                    </p>
+在还原实际数据之前必须创建的数据库特定的对象包括：<ul class="ul" id="topic_xnj_b4c_tbb__ul_vqn_vsv_scb">
+                    <li class="li">Session级别的配置参数设置(GUCs)</li>
+
+                    <li class="li">Schemas</li>
+
+                    <li class="li">过程语言扩展</li>
+
+                    <li class="li">类型</li>
+
+                    <li class="li">序列</li>
+
+                    <li class="li">函数</li>
+
+                    <li class="li">表</li>
+
+                    <li class="li">协议</li>
+
+                    <li class="li">操作符和操作符类</li>
+
+                    <li class="li">转换</li>
+
+                    <li class="li">聚合</li>
+
+                    <li class="li">类型转换</li>
+
+                    <li class="li">视图</li>
+
+                    <li class="li">约束</li>
+
+                  </ul>
+在还原实际数据之后必须创建的数据库特定的对象包括：<ul class="ul" id="topic_xnj_b4c_tbb__ul_br4_wsv_scb">
+                    <li dir="ltr" class="li">索引</li>
+
+                    <li dir="ltr" class="li">规则</li>
+
+                    <li dir="ltr" class="li">触发器。(虽然Greenplum数据库不支持触发器，但会备份和恢复任何存在的触发器定义。)</li>
+
+                  </ul>
+</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d49683e1540 "><span class="ph filepath">gpbackup_&lt;YYYYMMDDHHMMSS&gt;_toc.yaml</span></td>
+
+                <td class="entry" valign="top" width="50%" headers="d49683e1543 ">包含用于在<span class="ph filepath">_predata.sql</span>和<span class="ph filepath">_postdata.sql</span>文件中查找对象DDL的元数据。
+                    此文件还包含用于在每个节点上创建的CSV数据文件中查找相应表数据的表名和OID。
+                    参考<a class="xref" href="#topic_xnj_b4c_tbb__section_oys_cpj_tbb">节点数据文件</a>。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d49683e1540 "><span class="ph filepath">gpbackup_&lt;YYYYMMDDHHMMSS&gt;_report</span></td>
+
+                <td class="entry" valign="top" width="50%" headers="d49683e1543 ">包含有关用于填充备份完成后发送的电子邮件通知（如果已配置）的备份操作的信息。
+                    此文件包含以下信息：
+                    <ul class="ul" id="topic_xnj_b4c_tbb__ul_bjr_2kj_tbb">
+                    <li class="li">提供的命令行选项</li>
+
+                    <li class="li">备份的数据库</li>
+
+                    <li class="li">数据库版本</li>
+
+                    <li class="li">备份类型</li>
+
+                  </ul>
+参考<a class="xref" href="#topic_qwd_d5d_tbb">配置邮件通知</a>。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d49683e1540 "><span class="ph filepath">gpbackup_&lt;YYYYMMDDHHMMSS&gt;_config.yaml</span></td>
+
+                <td class="entry" valign="top" width="50%" headers="d49683e1543 ">包含有关特定备份任务执行的元数据，包括：
+                    <ul class="ul" id="topic_xnj_b4c_tbb__ul_ids_vgj_tbb">
+                    <li dir="ltr" class="li">
+<samp class="ph codeph">gpbackup</samp>版本</li>
+
+                    <li dir="ltr" class="li">数据库名称</li>
+
+                    <li dir="ltr" class="li">Greenplum数据库版本</li>
+
+                    <li dir="ltr" class="li">附加选项配置，如
+                        <samp class="ph codeph">--no-compression</samp>, <samp class="ph codeph">--compression-level</samp>,
+                        <samp class="ph codeph">--metadata-only</samp>, <samp class="ph codeph">--data-only</samp>和
+                        <samp class="ph codeph">--with-stats</samp>。</li>
+
+                  </ul>
+</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="50%" headers="d49683e1540 "><span class="ph filepath">gpbackup_history.yaml</span></td>
+
+                <td class="entry" valign="top" width="50%" headers="d49683e1543 ">包含有关使用<samp class="ph codeph">gpbackup</samp>创建备份时使用的选项的信息，以及有关增量备份的信息。
+                    <p class="p">存储在Greenplum数据库master数据目录中的Greenplum数据库主机上。</p>
+
+                    <p class="p">这个文件不是通过<samp class="ph codeph">gpbackup</samp>备份的。</p>
+
+                    <p class="p">关于增量备份的信息，参考<a class="xref" href="backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>。</p>
+</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+</div>
+
+      <div class="section" id="topic_xnj_b4c_tbb__section_oys_cpj_tbb">
+<h3 class="title sectiontitle">节点数据文件</h3>
+        
+        <p class="p">默认情况下，每个节点为在节点上备份的每个表创建一个压缩CSV文件。
+            您可以选择指定<samp class="ph codeph">--single-data-file</samp>选项，以在每个节点上创建单个数据文件。
+            文件存储在<span class="ph filepath">&lt;seg_dir&gt;/backups/YYYYMMDD/YYYYMMDDHHMMSS/</span>。</p>
+
+        <p class="p">如果指定自定义备份目录，则节点数据文件将复制到与备份目录的子目录相同的文件路径中。
+            如果包含<samp class="ph codeph">--leaf-partition-data</samp>选项，则<samp class="ph codeph">gpbackup</samp>为分区表的每个叶子分区创建一个数据文件，而不是为表创建一个文件。
+            </p>
+
+        <div class="p">每个数据文件使用文件吗格式
+            <span class="ph filepath">gpbackup_&lt;content_id&gt;_&lt;YYYYMMDDHHMMSS&gt;_&lt;oid&gt;.gz</span>，其中：<ul class="ul" id="topic_xnj_b4c_tbb__ul_cdb_jpj_tbb">
+            <li class="li">
+<span class="ph filepath">&lt;content_id&gt;</span>是节点的content ID。</li>
+
+            <li class="li">
+<span class="ph filepath">&lt;YYYYMMDDHHMMSS&gt;</span>是<samp class="ph codeph">gpbackup</samp>操作的时间戳。</li>
+
+            <li class="li">
+<span class="ph filepath">&lt;oid&gt;</span>是表的object ID。
+                元数据文件<span class="ph filepath">gpbackup_&lt;YYYYMMDDHHMMSS&gt;_toc.yaml</span>引用此<span class="ph filepath">&lt;oid&gt;</span>以查找schema中特定的表的数据。</li>
+
+          </ul>
+</div>
+
+        <p class="p">您可以选择使用<samp class="ph codeph">--compression-level</samp>选项指定gzip压缩级别（1-9），或使用<samp class="ph codeph">--no-compression</samp>完全禁用压缩。
+            如果未指定压缩级别，则<samp class="ph codeph">gpbackup</samp>默认使用压缩级别1。
+            </p>
+
+      </div>
+
+    </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+</div>
+</div>
+</div>
+</div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

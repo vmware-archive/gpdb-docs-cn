@@ -1,0 +1,717 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpconfig |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpconfig has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpconfig
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">gpconfig</h1>
+
+  <div class="body">
+    <p class="p">在Greenplum数据库系统中所有的Segment上设置服务器配置参数。</p>
+
+    <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock"><strong class="ph b">gpconfig</strong> <strong class="ph b">-c</strong> <var class="keyword varname">param_name</var> <strong class="ph b">-v</strong> <var class="keyword varname">value</var> [<strong class="ph b">-m</strong> <var class="keyword varname">master_value</var> | <strong class="ph b">--masteronly</strong>]
+               | <strong class="ph b">-r</strong> <var class="keyword varname">param_name</var> [<strong class="ph b">--masteronly</strong> | <strong class="ph b">-l</strong>
+               [<strong class="ph b">--skipvalidation</strong>] [<strong class="ph b">--verbose</strong>] [<strong class="ph b">--debug</strong>]
+        
+        <strong class="ph b">gpconfig</strong> <strong class="ph b">-s</strong> <var class="keyword varname">param_name</var> [<strong class="ph b">--file</strong> | <strong class="ph b">--file-compare</strong>] [<strong class="ph b">--verbose</strong>] [<strong class="ph b">--debug</strong>]
+        
+        <strong class="ph b">gpconfig</strong> <strong class="ph b">--help</strong></pre>
+
+    </div>
+
+    <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p"><samp class="ph codeph">gpconfig</samp>工具允许用户在Greenplum数据库系统中所有实例
+        （Master、Segment和镜像）的<samp class="ph codeph">postgresql.conf</samp>文件中设置、
+        复原或查看配置参数。设置参数时，如果需要，还可以为Master指定一个不同的值。
+        例如，诸如<samp class="ph codeph">max_connections</samp>之类的参数要求Master的设置
+        不同于Segment的设置。如果要设置或复原全局参数或仅可对Master设置的参数，
+        请使用<samp class="ph codeph">--masteronly</samp>选项。</p>
+
+      <p class="p"><samp class="ph codeph">gpconfig</samp>只能用来管理某些参数。例如，用户不能使用它来设置
+        <samp class="ph codeph">port</samp>等参数，这些参数对每个Segment实例都不同。使用<samp class="ph codeph">-l</samp>
+        （list）选项查看<samp class="ph codeph">gpconfig</samp>支持的配置参数的完整列表。</p>
+
+      <p class="p">当<samp class="ph codeph">gpconfig</samp>在Segment的<samp class="ph codeph">postgresql.conf</samp>
+        文件中设置配置参数时，新的参数设置将总是显示在该文件的底部。当用户使用
+        <samp class="ph codeph">gpconfig</samp>移除配置参数时，<samp class="ph codeph">gpconfig</samp>会在所有
+        Segment的<samp class="ph codeph">postgresql.conf</samp>文件中把该参数注释掉，从而恢复系统
+        默认设置。例如，如果使用<samp class="ph codeph">gpconfig </samp>删除（注释掉）一个参数，并且
+        稍后把它添加回来（设置新值），则该参数会有两个实例，一个被注释掉，另一个被启用并
+        添加到<samp class="ph codeph">postgresql.conf</samp>文件的底部。
+      </p>
+
+      <p class="p">设置参数之后，用户必须重新启动其Greenplum数据库系统，或者重新加载<samp class="ph codeph">postgresql.conf</samp>
+        文件以使得更改生效。是否需要重新启动或者加载取决于被设置的参数。
+      </p>
+
+      <p class="p">有关服务器配置参数的更多信息，请参阅<em class="ph i">Greenplum数据库参考指南</em>。
+      </p>
+
+      <p class="p">要显示系统中当前参数的设置值，请使用<samp class="ph codeph">-s</samp>选项。</p>
+
+      <p class="p"><samp class="ph codeph">gpconfig</samp>使用以下环境变量连接到Greenplum数据库的
+        Master实例并获取系统配置信息：
+      </p>
+
+      <ul class="ul">
+        <li class="li" id="topic1__kq141888">
+          <samp class="ph codeph">PGHOST</samp>
+        </li>
+
+        <li class="li" id="topic1__kq141742">
+          <samp class="ph codeph">PGPORT</samp>
+        </li>
+
+        <li class="li" id="topic1__kq141743">
+          <samp class="ph codeph">PGUSER</samp>
+        </li>
+
+        <li class="li" id="topic1__kq141744">
+          <samp class="ph codeph">PGPASSWORD</samp>
+        </li>
+
+        <li class="li" id="topic1__kq141745">
+          <samp class="ph codeph">PGDATABASE</samp>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+      
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">-c | --change <var class="keyword varname">param_name</var>
+</dt>
+
+          <dd class="dd pd">通过在<samp class="ph codeph">postgresql.conf</samp>文件的底部添加新的设置来改变配置参数的设置。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-v | --value <var class="keyword varname">value</var>
+</dt>
+
+          <dd class="dd pd">用于由<samp class="ph codeph">-c</samp>选项指定的配置参数的值。默认情况下，此值将应用于所有
+            Segment及其镜像、Master和后备Master。</dd>
+
+          <dd class="dd pd">非单个字符或数字的参数值必须用单引号包裹（<samp class="ph codeph">'</samp>）。例如，包括空格或特殊字符的字符串
+            必须用单引号包裹。如果要在字符串参数重嵌入单引号，需要用2个单引号或反斜杠进行转移（<samp class="ph codeph">\'</samp>）。
+          </dd>
+
+          <dd class="dd pd">工具会在将值写入<samp class="ph codeph">postgresql.conf</samp>时带着单引号。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-m | --mastervalue <var class="keyword varname">master_value</var>
+</dt>
+
+          <dd class="dd pd">用于由<samp class="ph codeph">-c</samp>选项指定的配置参数的Master值。如果指定，则该值仅适用于Master
+            和后备Master。该选项只能与<samp class="ph codeph">-v</samp>一起使用。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--masteronly</dt>
+
+          <dd class="dd pd">当被指定时，<samp class="ph codeph">gpconfig</samp>将仅编辑Master的<samp class="ph codeph">postgresql.conf</samp>文件。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-r | --remove <var class="keyword varname">param_name</var>
+</dt>
+
+          <dd class="dd pd">通过注释掉<samp class="ph codeph">postgresql.conf</samp>文件中的项删除配置参数。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-l | --list</dt>
+
+          <dd class="dd pd">列出所有被<samp class="ph codeph">gpconfig</samp>工具支持的配置参数。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-s | --show <var class="keyword varname">param_name</var>
+</dt>
+
+          <dd class="dd pd">显示在Greenplum数据库系统中所有实例（Master和Segment）上使用的配置参数的值。
+            如果实例中参数值存在差异，则工具将显示错误消息。使用<samp class="ph codeph">-s</samp>选项运行
+            <samp class="ph codeph">gpconfig</samp>将直接从数据库中读取参数值，而不是从<samp class="ph codeph">postgresql.conf</samp>
+            文件中读取。如果用户使用<samp class="ph codeph">gpconfig</samp>在所有Segment中设置配置参数，
+            然后运行<samp class="ph codeph">gpconfig -s</samp>来验证更改，用户仍可能会看到以前的（旧）值。
+            用户必须重新加载配置文件（<samp class="ph codeph">gpstop -u</samp>）或重新启动系统（<samp class="ph codeph">gpstop -r</samp>）
+            以使更改生效。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">--file</dt>
+
+          <dd class="dd pd">对于配置参数，显示在Greenplum数据库系统中的所有Segment（Master和Segment）上的<samp class="ph codeph">postgresql.conf</samp>
+            文件中的值。如果实例中的参数值存在差异，则工具会显示一个消息。必须与<samp class="ph codeph">-s</samp>选项一起指定。
+          </dd>
+
+          <dd class="dd pd">例如，使用<samp class="ph codeph">ALTER ROLE</samp>为用户设置配置参数<samp class="ph codeph">statement_mem</samp>为64MB，
+            而<samp class="ph codeph">postgresql.conf</samp>文件中的值为128MB。运行命令<samp class="ph codeph">gpconfig -s statement_mem --file</samp>显示
+            128MB。用户运行的命令<samp class="ph codeph">gpconfig -s
+              statement_mem</samp>显示64MB。</dd>
+
+          <dd class="dd pd">与<samp class="ph codeph">--file-compare</samp>选项一起指定时无效。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--file-compare</dt>
+
+          <dd class="dd pd">对于配置参数，将当前Greenplum数据库值与主机（Master和Segment）上<samp class="ph codeph">postgresql.conf</samp>
+            文件中的值进行比较。<samp class="ph codeph">postgresql.conf files</samp>文件中的值表示重新启动Greenplum数据库时的值。
+          </dd>
+
+          <dd class="dd pd">如果值不一样，该工具显示来自所有主机的值，如果所有主机的值一样，则该程序显示摘要报告。</dd>
+
+          <dd class="dd pd">与<samp class="ph codeph">--file</samp>选项一起指定时无效。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--skipvalidation</dt>
+
+          <dd class="dd pd">覆盖<samp class="ph codeph">gpconfig</samp>的系统验证检查，并允许用户对任何服务器配置参数进行操作，
+            包括隐藏参数和<samp class="ph codeph">gpconfig</samp>无法更改的受限参数。当与<samp class="ph codeph">-l</samp>选项
+            （列表）一起使用时，它显示受限参数的列表。
+            <div class="note warning">
+<span class="warningtitle">Warning:</span> 使用此选项设置配置参数时要格外小心。</div>
+</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--verbose </dt>
+
+          <dd class="dd pd">在<samp class="ph codeph">gpconfig</samp>命令执行期间显示额外的日志信息。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--debug</dt>
+
+          <dd class="dd pd">设置日志输出级别为调试级别。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-? | -h | --help</dt>
+
+          <dd class="dd pd">显示在线帮助。</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">示例</h2>
+      
+      <p class="p">设置所有Segment上的<samp class="ph codeph">max_connections</samp>为100，而Master上为10。
+      </p>
+
+      <pre class="pre codeblock">gpconfig -c max_connections -v 100 -m 10</pre>
+
+      <p class="p">该示例展示bash shell字符串处理的语法要求。</p>
+
+      <pre class="pre codeblock">gpconfig -c search_path -v '"\$user",public'
+        gpconfig -c dynamic_library_path -v '\$libdir'</pre>
+
+      <p class="p">配置参数增加到<samp class="ph codeph">postgresql.conf</samp>文件的格式如下。</p>
+
+      <pre class="pre codeblock">search_path='"$user",public'
+        dynamic_library_path='$libdir'</pre>
+
+      <p class="p">注释掉<samp class="ph codeph">default_statistics_target</samp>配置参数的所有实例，并恢复系统默认值：
+      </p>
+
+      <pre class="pre codeblock">gpconfig -r default_statistics_target</pre>
+
+      <p class="p">列出所有<samp class="ph codeph">gpconfig</samp>支持的配置参数：</p>
+
+      <pre class="pre codeblock">gpconfig -l</pre>
+
+      <p class="p">显示系统中一个特定配置参数的值：</p>
+
+      <pre class="pre codeblock">gpconfig -s max_connections</pre>
+
+    </div>
+
+    <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">另见</h2>
+      
+      <p class="p">
+        <samp class="ph codeph">
+          <a class="xref" href="gpstop.html#topic1">gpstop</a>
+        </samp>
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

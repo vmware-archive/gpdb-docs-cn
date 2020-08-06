@@ -1,0 +1,369 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      采用资源组管理内存和资源 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_resgroups has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    采用资源组管理内存和资源
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">采用资源组管理内存和资源</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">采用资源组管理Greenplum数据库资源。</p>
+
+    <p class="p">在Greenplum数据库集群中，内存、CPU和并发事务管理对性能影响非常巨大。资源组是Greenplum数据库
+      提供的用来强制限制内存、CPU和并发事务的全新资源管理模式。</p>
+
+    <ul class="ul" id="topic_hhc_z5w_r4__ul_agm_sbl_zt">
+      <li class="li">
+        <a class="xref" href="#topic_hhc_z5w_r4__section_r52_rbl_zt">配置Greenplum数据库内存</a>
+      </li>
+
+      <li class="li">
+        <a class="xref" href="#topic_hhc_z5w_r4__configuring_rg">配置资源组</a>
+      </li>
+
+      <li class="li">
+        <a class="xref" href="#topic_hhc_z5w_r4__section113x">低内存查询</a>
+      </li>
+
+      <li class="li">
+        <a class="xref" href="#topic_hhc_z5w_r4__section177x">管理工具和admin_group并行</a>
+      </li>
+
+    </ul>
+
+    <div class="section" id="topic_hhc_z5w_r4__section_r52_rbl_zt">
+<h2 class="title sectiontitle">配置Greenplum数据库内存</h2>
+      
+      <p class="p">一直增加系统内存是不可能的，客户可以通过配置资源组来管理可预期的工作负载，这样能够避免
+        内存溢出的情况发生。</p>
+
+      <p class="p">以下操作系统和Greenplum数据库内存设置对采用资源组来管理日常工作是非常有用的：</p>
+
+      <ul class="ul" id="topic_hhc_z5w_r4__ul_xv2_phn_1s">
+        <li class="li">
+          <strong class="ph b">vm.overcommit_memory</strong>
+          <p class="p">该Linux内核参数在<samp class="ph codeph">/etc/sysctl.conf</samp>文件中设置，用来指定操作系统
+            分配给系统进程使用多少内存的方法。<samp class="ph codeph">vm.overcommit_memory</samp>在
+            Greenplum数据库所在的机器上必须设置为2。
+          </p>
+
+        </li>
+
+        <li class="li">
+          <strong class="ph b">vm.overcommit_ratio</strong>
+          <p class="p">该Linux内核参数在<samp class="ph codeph">/etc/sysctl.conf</samp>文件中设置，用来执行应用进程
+            可以使用的内存百分比；剩余的内存留给操作系统。操作系统默认值（Red Hat上默认是50）对于
+            部署Greenplum数据库集群基于资源组的管理方式是一个不错的初始值。如果感觉内存利用率太低，
+            便可以提高该值；如果内存或交换分区使用太高，就减少该设置。</p>
+
+        </li>
+
+        <li class="li">
+          <strong class="ph b">gp_resource_group_memory_limit</strong>
+          <p class="p">系统分配给Greenplum数据库的内存百分比。默认值为.7(70%)。</p>
+ 
+        </li>
+
+        <li class="li">
+          <strong class="ph b">gp_workfile_limit_files_per_query</strong>
+          <p class="p">设置<samp class="ph codeph">gp_workfile_limit_files_per_query</samp>以限制每个查询允许使用的临时溢出文件
+            （工作文件）的最大数量。当查询要求的内存比它能分配的更多时，它将创建溢出文件。当上述限制被超过时，查询
+            会被中止。默认值为零，允许无限多的溢出文件并且可能会填满文件系统。</p>
+
+        </li>
+
+        <li class="li">
+          <p class="p">
+            <strong class="ph b">gp_workfile_compression</strong>
+          </p>
+
+          <p class="p">如果有很多溢出文件，则设置<samp class="ph codeph">gp_workfile_compression</samp>来压缩这些溢出文件。
+            压缩溢出文件可能有助于避免IO操作导致磁盘子系统过载。</p>
+
+        </li>
+
+      </ul>
+
+      <p class="p">其他考虑因素：</p>
+
+      <ul class="ul" id="topic_hhc_z5w_r4__ul_xv2_phn_2z">
+        <li class="li">不要启用操作系统大页配置。</li>
+
+        <li class="li">当您配置资源组内存时，提前考虑出现segment实例或segment主机宕机时，镜像segment变成
+          主segment对系统内存的占用。
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="section" id="topic_hhc_z5w_r4__configuring_rg">
+<h2 class="title sectiontitle">配置资源组</h2>
+      
+      <p class="p">Greenplum数据库资源组能提供管理集群负载的强有力手段。当您在系统中配置资源组时，考虑以下常规指导方法：</p>
+
+      <ul class="ul" id="topic_hhc_z5w_r4__ul_svy_b3n_1s">
+        <li class="li">任何具有<samp class="ph codeph">SUPERUSER</samp>权限的用户提交的事务都在默认资源组
+          <samp class="ph codeph">admin_group</samp>下运行。在调度和运行任何Greenplum管理工具
+          时都要牢记这一点。</li>
+
+        <li class="li">确保为每一个非管理员用户分配一个用户组。如果不给用户分配资源组，那么该用户
+          提交的查询会被默认资源组<samp class="ph codeph">default_group</samp>处理。</li>
+
+        <li class="li">采用资源组参数<samp class="ph codeph">CONCURRENCY</samp>来限制某个资源组可以并发
+          运行的活动查询的数量。</li>
+
+        <li class="li">采用<samp class="ph codeph">MEMORY_LIMIT</samp>和<samp class="ph codeph">MEMORY_SHARED_QUOTA</samp>参数
+          控制运行在资源组中的查询可以申请的最大内存数量。</li>
+
+        <li class="li">Greenplum数据库会将无保留内存（100-（所有资源组<samp class="ph codeph">MEMORY_LIMIT</samp>总和））
+          全部分配给全局共享内存池。该内存本着一视同仁的原则，先到先得。</li>
+
+        <li class="li">基于实时需求和负载的变化来动态调整资源组满足业务要求。</li>
+
+        <li class="li">采用<samp class="ph codeph">gptoolkit</samp>视图检查资源组使用情况，来监控资源组工作良好。</li>
+
+        
+      </ul>
+
+    </div>
+
+    <div class="section" xml:lang="en" lang="en" id="topic_hhc_z5w_r4__section113x">
+<h2 class="title sectiontitle">低内存查询</h2>
+      
+      <div class="p">
+<samp class="ph codeph">memory_spill_ratio</samp>设置为较低值时（例如，在0-2%之间）能够提升低内存要求
+        查询的性能。我们可以在每个查询之前让<samp class="ph codeph">memory_spill_ratio</samp>生效来覆盖系统默认
+        设置。例如：
+        <pre class="pre codeblock">SET memory_spill_ratio=0;</pre>
+</div>
+
+    </div>
+
+    <div class="section" xml:lang="en" lang="en" id="topic_hhc_z5w_r4__section177x">
+<h2 class="title sectiontitle">管理工具和admin_group并行</h2>
+      
+      <p class="p">Greenplum数据库用户<samp class="ph codeph">SUPERUSER</samp>s的默认资源组是<samp class="ph codeph">admin_group</samp>。
+        <samp class="ph codeph">admin_group</samp>资源组的默认<samp class="ph codeph">CONCURRENCY</samp>值为10。</p>
+
+      <div class="p">某些Greenplum数据库管理工具可能会同时使用多个<samp class="ph codeph">CONCURRENCY</samp>槽，例如
+        使用<samp class="ph codeph">gpbackup</samp>带有<samp class="ph codeph">--jobs</samp>选项时。如果客户运行的工具
+        要求的并发事务数比<samp class="ph codeph">admin_group</samp>的多，可以考虑临时增加该资源组的
+        <samp class="ph codeph">MEMORY_LIMIT</samp>和<samp class="ph codeph">CONCURRENCY</samp>，以满足工具的要求，
+        但一定要记得在工具执行完后及时将这些设置恢复原样。
+        <div class="note note">
+<span class="notetitle">Note:</span> 通过修改<samp class="ph codeph">ALTER RESOURCE GROUP</samp>达到的内存改变并不能立刻影响到正在运行的
+          查询。所以尽量选择在维护窗口时间修改资源组参数。</div>
+</div>
+
+    </div>
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

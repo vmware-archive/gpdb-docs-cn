@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      将多行文本文件读入单个表行 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_hdfs_fileasrow has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    将多行文本文件读入单个表行
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#prereq">&#21069;&#25552;&#26465;&#20214;</a></li>
+<li>
+<a href="#fileasrow">&#35835;&#21462;&#22810;&#34892;&#25991;&#26412;&#21644;JSON&#25991;&#20214;</a><ul><li><a href="#example_fileasrow">&#31034;&#20363;&#65306;&#23558;HDFS&#25991;&#26412;&#25991;&#20214;&#35835;&#20837;&#21333;&#20010;&#34920;&#34892;</a></li></ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>您可以使用PXF HDFS连接器以单个表行的形式读取HDFS中的一个或多个多行文本文件。当您想将多个文件读入同一Greenplum数据库外部表时，例如当每个JSON文件各自包含单独的记录时，这可能很有用。</p>
+
+<p>PXF支持以这种方式仅读取文本和JSON文件。</p>
+
+<p><strong>Note</strong>: 如果要使用PXF读取包含多个记录的JSON文件，请参考<a href="/6-0/pxf/hdfs_json.html">从HDFS读取JSON数据</a>主题。</p>
+
+<h2 id="前提条件"><a id="prereq"></a>前提条件</h2>
+
+<p>尝试从HDFS读取文件之前，请确保已满足PXF Hadoop <a href="/6-0/pxf/access_hdfs.html#hadoop_prereq">前提条件</a>。</p>
+
+<h2 id="读取多行文本和json文件"><a id="fileasrow"></a>读取多行文本和JSON文件</h2>
+
+<p>您可以将单行和多行文件读取到单个表行中，包括具有嵌入式换行符的文件。如果要读取多个JSON文件，则每个文件必须是完整的记录，并且每个文件必须包含相同的记录类型。</p>
+
+<p>PXF将完整的文件数据读取到单个行和列中。创建外部表以读取多个文件时，必须确保要读取的所有文件都具有相同的类型（文本或JSON）。您还必须指定一个<code>text</code>或<code>json</code>列，具体取决于文件类型。</p>
+
+<p>以下语法创建了Greenplum数据库可读的外部表，该表引用HDFS上的一个或多个文本或JSON文件：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="n">text</span><span class="o">|</span><span class="n">json</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+  <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-files&gt;?PROFILE=hdfs:text:multi[&amp;SERVER=&lt;server_name&gt;]&amp;FILE_AS_ROW=true'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">);</span>
+</code></pre>
+
+<p>下表描述了此<a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>命令中使用的关键字和值。</p>
+
+<table><thead>
+<tr>
+<th>关键词</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;files&gt;</td>
+<td>HDFS数据存储中目录或文件的绝对路径。</td>
+</tr>
+<tr>
+<td>PROFILE</td>
+<td><code>PROFILE</code>关键字必须指定<code>hdfs:text:multi</code>。</td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>FILE_AS_ROW=true</td>
+<td>指示PXF将每个文件读入单个表行的必需选项。</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td><code>FORMAT</code>必须指定为<code>&#39;CSV&#39;</code>。</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note</strong>: 当您指定<code>FILE_AS_ROW=true</code>选项时，<code>hdfs:text:multi</code>配置文件不支持其他格式选项。</p>
+
+<p>例如，如果<code>/data/pxf_examples/jdir</code>标识了包含多个JSON文件的HDFS目录，则以下语句将创建一个Greenplum数据库外部表，该表引用该目录中的所有文件：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_readjfiles</span><span class="p">(</span><span class="n">j1</span> <span class="n">json</span><span class="p">)</span>
+  <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/jdir?PROFILE=hdfs:text:multi&amp;FILE_AS_ROW=true'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+</code></pre>
+
+<p>当您使用<code>SELECT</code>语句查询<code>pxf_readjfiles</code>表时，PXF将<code>jdir/</code>中的每个JSON文件的内容作为外部表中的单独行返回。</p>
+
+<p>读取JSON文件时，可以使用Greenplum数据库中提供的JSON函数来访问JSON记录中的各个数据字段。例如，如果上面的<code>pxf_readjfiles</code>外部表读取包含此JSON记录的JSON文件：</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"root"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"record_obj"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"MonSep3004:04:53+00002013"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id_str"</span><span class="p">:</span><span class="s2">"384529256681725952"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"user"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">31424214</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"COLUMBUS"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"coordinates"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>您可以使用<code>json_array_elements()</code>函数从表行中提取特定的JSON字段。例如，以下命令显示<code>user-&gt;id</code>字段：</p>
+<pre class="highlight sql"><code><span class="k">SELECT</span> <span class="n">json_array_elements</span><span class="p">(</span><span class="n">j1</span><span class="o">-&gt;</span><span class="s1">'root'</span><span class="p">)</span><span class="o">-&gt;</span><span class="s1">'record_obj'</span><span class="o">-&gt;</span><span class="s1">'user'</span><span class="o">-&gt;</span><span class="s1">'id'</span>
+  <span class="k">AS</span> <span class="n">userid</span> <span class="k">FROM</span> <span class="n">pxf_readjfiles</span><span class="p">;</span>
+
+  <span class="n">userid</span>  
+<span class="c1">----------</span>
+ <span class="mi">31424214</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre>
+
+<p>有关使用Greenplum数据库操作JSON数据的特定信息，请参考<a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>。</p>
+
+<h3 id="示例：将hdfs文本文件读入单个表行"><a id="example_fileasrow"></a>示例：将HDFS文本文件读入单个表行</h3>
+
+<p>执行以下过程在HDFS目录中创建3个示例文本文件，并使用PXF<code>hdfs:text:multi</code>配置文件和默认的PXF服务器在单个外部表查询中读取所有这些文本文件。</p>
+
+<ol>
+<li><p>为文本文件创建一个HDFS目录。例如：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -mkdir -p /data/pxf_examples/tdir
+</code></pre></li>
+<li><p>创建一个名为<code>file1.txt</code>的文本数据文件：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span><span class="nb">echo</span> <span class="s1">'text file with only one line'</span> &gt; /tmp/file1.txt
+</code></pre></li>
+<li><p>创建另一个名为<code>file2.txt</code>的文本数据文件：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span><span class="nb">echo</span> <span class="s1">'Prague,Jan,101,4875.33
+Rome,Mar,87,1557.39
+Bangalore,May,317,8936.99
+Beijing,Jul,411,11600.67'</span> &gt; /tmp/file2.txt
+</code></pre>
+
+<p>这个文件有多行。</p></li>
+<li><p>创建一个名为<code>/tmp/file3.txt</code>的第三个文本文件：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span><span class="nb">echo</span> <span class="s1">'"4627 Star Rd.
+San Francisco, CA  94107":Sept:2017
+"113 Moon St.
+San Diego, CA  92093":Jan:2018
+"51 Belt Ct.
+Denver, CO  90123":Dec:2016
+"93114 Radial Rd.
+Chicago, IL  60605":Jul:2017
+"7301 Brookview Ave.
+Columbus, OH  43213":Dec:2018'</span> &gt; /tmp/file3.txt
+</code></pre>
+
+<p>该文件包括嵌入式换行符。</p></li>
+<li><p>保存文件并退出编辑器。</p></li>
+<li><p>将文本文件复制到HDFS：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -put /tmp/file1.txt /data/pxf_examples/tdir
+<span class="gp">$ </span>hdfs dfs -put /tmp/file2.txt /data/pxf_examples/tdir
+<span class="gp">$ </span>hdfs dfs -put /tmp/file3.txt /data/pxf_examples/tdir
+</code></pre></li>
+<li><p>登录到Greenplum数据库系统并启动<code>psql</code>子系统。</p></li>
+<li><p>使用<code>hdfs:text:multi</code>配置文件来创建引用<code>tdir</code> HDFS目录的外部表。例如：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_readfileasrow</span><span class="p">(</span><span class="n">c1</span> <span class="n">text</span><span class="p">)</span>
+  <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/tdir?PROFILE=hdfs:text:multi&amp;FILE_AS_ROW=true'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+</code></pre></li>
+<li><p>打开扩展显示并查询<code>pxf_readfileasrow</code>表：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="err">\</span><span class="n">x</span> <span class="k">on</span>
+<span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_readfileasrow</span><span class="p">;</span>
+</code></pre>
+<pre class="highlight plaintext"><code>-[ RECORD 1 ]---------------------------
+c1 | Prague,Jan,101,4875.33
+   | Rome,Mar,87,1557.39
+   | Bangalore,May,317,8936.99
+   | Beijing,Jul,411,11600.67
+-[ RECORD 2 ]---------------------------
+c1 | text file with only one line
+-[ RECORD 3 ]---------------------------
+c1 | "4627 Star Rd.
+   | San Francisco, CA  94107":Sept:2017
+   | "113 Moon St.
+   | San Diego, CA  92093":Jan:2018
+   | "51 Belt Ct.
+   | Denver, CO  90123":Dec:2016
+   | "93114 Radial Rd.
+   | Chicago, IL  60605":Jul:2017
+   | "7301 Brookview Ave.
+   | Columbus, OH  43213":Dec:2018
+</code></pre></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

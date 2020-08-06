@@ -1,0 +1,666 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gppkg |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gppkg has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gppkg
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    
+    <h1 class="title topictitle1">gppkg</h1>
+
+    <div class="body">
+        <p class="p">在整个集群中安装<samp class="ph codeph">.gppkg</samp>格式的Greenplum数据库扩展
+            （例如PL/Java、PL/R和MADlib）
+            及其依赖项。
+        </p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock"><strong class="ph b">gppkg</strong> [<strong class="ph b">-i</strong> <var class="keyword varname">package</var> | <strong class="ph b">-u</strong> <var class="keyword varname">package</var> | <strong class="ph b">-r </strong> <var class="keyword varname">name</var>-<var class="keyword varname">version</var> | <strong class="ph b">-c</strong>] 
+                [<strong class="ph b">-d</strong> <var class="keyword varname">master_data_directory</var>] [<strong class="ph b">-a</strong>] [<strong class="ph b">-v</strong>]
+                
+                <strong class="ph b">gppkg --migrate</strong> <var class="keyword varname">GPHOME_old</var> <var class="keyword varname">GPHOME_new</var> [<strong class="ph b">-a</strong>] [<strong class="ph b">-v</strong>]
+                
+                <strong class="ph b">gppkg</strong> [<strong class="ph b">-q</strong> | <strong class="ph b">--query</strong>] <var class="keyword varname">query_option</var>
+                
+                <strong class="ph b">gppkg</strong> <strong class="ph b">-?</strong> | <strong class="ph b">--help</strong> |<strong class="ph b"> -h</strong> 
+                
+                <strong class="ph b">gppkg</strong> <strong class="ph b">--version</strong></pre>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p">Greenplum软件包管理器（<samp class="ph codeph">gppkg</samp>）工具在集群中的所有主机上安装
+                Greenplum数据库扩展以及任何依赖项。在系统扩展和Segment恢复的情况下，它也将自动
+                在新主机上安装扩展。
+            </p>
+
+            <div class="note note">
+<span class="notetitle">Note:</span> 在Greenplum数据库重要升级之后，用户必须再次下载并安装所有
+                <samp class="ph codeph">gppkg</samp>扩展。</div>
+
+            
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+            
+            <dl class="dl parml">
+                
+                    <dt class="dt pt dlterm">-a（不要提示）</dt>
+
+                    <dd class="dd pd">不要提示用户确认。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-c | --clean</dt>
+
+                    <dd class="dd pd">协调集群的包状态以匹配Master主机的状态。在失败或部分的安装/卸载后运行此
+                        选项可确保软件包安装状态在集群间保持一致。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-d <var class="keyword varname">master_data_directory</var>
+</dt>
+
+                    <dd class="dd pd">如果未指定，则使用为<samp class="ph codeph">$MASTER_DATA_DIRECTORY</samp>设置的值。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-i <var class="keyword varname">package</var> | --install=<var class="keyword varname">package</var>
+</dt>
+
+                    <dd class="dd pd">安装给定的包。这包括任何前/后安装步骤以及任何依赖关系的安装。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--migrate <var class="keyword varname">GPHOME_old</var>
+                        <var class="keyword varname">GPHOME_new</var>
+</dt>
+
+                    <dd class="dd pd">从单独的<samp class="ph codeph">$GPHOME</samp>迁移软件包。将包从一个版本的Greenplum数据库运输
+                        到另一个版本。</dd>
+
+                    <dd class="dd pd">例如：<samp class="ph codeph">gppkg --migrate
+                        /usr/local/greenplum-db-&lt;old-version&gt;
+                        /usr/local/greenplum-db-&lt;new-version&gt;</samp>
+</dd>
+
+                    <dd class="dd pd">当迁移包时，要求满足以下条件。
+                        <ul class="ul" id="topic1__ul_sx3_hwx_41b">
+                            <li class="li">至少目标数据库集群的Master实例要启动（实例安装在<var class="keyword varname">GPHOME_new</var>）。
+                                在运行<samp class="ph codeph">gppkg</samp>命令之前执行<samp class="ph codeph">gpstart -m</samp>命令启动
+                                Master实例。</li>
+
+                            <li class="li">运行<var class="keyword varname">GPHOME_new</var>安装目录下的<samp class="ph codeph">gppkg</samp>工具。</li>
+
+                        </ul>
+</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-q | --query <var class="keyword varname">query_option</var>
+</dt>
+
+                    <dd class="dd pd">提供有关已安装软件包的<samp class="ph codeph">query_option</samp>指定的信息。一次只能指定一个<samp class="ph codeph">query_option</samp>。
+                        下表列出了query_option的可能值。<samp class="ph codeph">&lt;package_file&gt;</samp>是一个包的名字。
+                        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic1__jt142509" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. gppkg的查询选项</span></caption>
+                                
+                                
+                                <thead class="thead" align="left">
+                                    <tr class="row">
+                                        <th class="entry" valign="top" width="144pt" id="d18186e265">query_option</th>
+
+                                        <th class="entry" valign="top" width="165pt" id="d18186e268">返回</th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody class="tbody">
+                                    <tr class="row">
+                                        <td class="entry" valign="top" width="144pt" headers="d18186e265 "><samp class="ph codeph">&lt;package_file&gt;</samp></td>
+
+                                        <td class="entry" valign="top" width="165pt" headers="d18186e268 ">是否安装了指定的软件包。</td>
+
+                                    </tr>
+
+                                    <tr class="row">
+                                        <td class="entry" valign="top" width="144pt" headers="d18186e265 "><samp class="ph codeph">--info
+                                            &lt;package_file&gt;</samp></td>
+
+                                        <td class="entry" valign="top" width="165pt" headers="d18186e268 ">关于指定软件包的名称、版本和其他信息。</td>
+
+                                    </tr>
+
+                                    <tr class="row">
+                                        <td class="entry" valign="top" width="144pt" headers="d18186e265 "><samp class="ph codeph">--list
+                                            &lt;package_file&gt;</samp></td>
+
+                                        <td class="entry" valign="top" width="165pt" headers="d18186e268 ">指定包的文件内容。</td>
+
+                                    </tr>
+
+                                    <tr class="row">
+                                        <td class="entry" valign="top" width="144pt" headers="d18186e265 "><samp class="ph codeph">--all</samp></td>
+
+                                        <td class="entry" valign="top" width="165pt" headers="d18186e268 ">列出所有已安装的包。</td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+</div>
+</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-r <var class="keyword varname">name-version</var> |
+                        --remove=<var class="keyword varname">name-version</var>
+</dt>
+
+                    <dd class="dd pd">删除指定的包。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-u <var class="keyword varname">package</var> | --update=<var class="keyword varname">package</var>
+</dt>
+
+                    <dd class="dd pd">更新给定的包。
+                        <div class="note warning">
+<span class="warningtitle">Warning:</span> 更新程序包的过程包括删除与程序包相关的系统对象的所有先前版本。
+                            例如，以前版本的共享库被删除。更新过程之后，如果函数引用已被删除的包文件，
+                            则数据库函数在调用时将失败。</div>
+</dd>
+
+                    <dd class="dd pd"> </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--version（显示工具版本）</dt>
+
+                    <dd class="dd pd">显示此工具的版本。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-v | --verbose</dt>
+
+                    <dd class="dd pd">将日志记录级别设置为详细。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-? | -h | --help</dt>
+
+                    <dd class="dd pd">显示在线帮助。</dd>
+
+                
+            </dl>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

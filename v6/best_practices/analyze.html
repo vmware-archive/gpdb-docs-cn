@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      用ANALYZE更新统计信息 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_analyze has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    用ANALYZE更新统计信息
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">用ANALYZE更新统计信息</h1>
+
+  <div class="body">
+    <p class="p">良好查询性能的最重要的先决条件是从表的正确统计信息开始。用<samp class="ph codeph">ANALYZE</samp>语句更新统计信息
+      让查询规划器能生成最优的查询计划。当表被分析时，有关数据的信息被存储在系统目录表中。如果存储的信息过时，
+      规划器可能会生成低效的执行计划。</p>
+
+    <div class="section">
+<h2 class="title sectiontitle">有选择地生成统计信息</h2>
+      
+      <p class="p">不带参数运行<samp class="ph codeph"><a class="xref" href="../ref_guide/sql_commands/ANALYZE.html">ANALYZE</a></samp>
+        会为数据库中所有的表更新统计信息。这样操作运行时间可能会非常长，因此不推荐这样做。当数据被改变时，使用者
+        应该有选择地<samp class="ph codeph">ANALYZE</samp>表或者使用<samp class="ph codeph"><a class="xref" href="../utility_guide/admin_utilities/analyzedb.html">analyzedb</a></samp>工具。</p>
+
+      <p class="p">在大型表上运行<samp class="ph codeph">ANALYZE</samp>可能需要很长时间。如果在非常大的表的所有列上运行<samp class="ph codeph">ANALYZE</samp>
+        行不通，使用者可以只使用<samp class="ph codeph">ANALYZE table(column,...)</samp>为选择的列生成统计信息。确保包括用在
+        连接、<samp class="ph codeph">WHERE</samp>子句、<samp class="ph codeph">SORT</samp>子句、<samp class="ph codeph">GROUP BY</samp>子句或者
+        <samp class="ph codeph">HAVING</samp>子句中的列都被收集了统计信息。</p>
+
+      <div class="p">对于一个分区表，使用者可以只在更改过的分区（例如，使用者增加一个分区）上运行<samp class="ph codeph">ANALYZE</samp>。
+        注意对于分区表，使用者可以在父（主）表上或者叶子节点（实际存储数据和统计信息的分区文件）上运行<samp class="ph codeph">ANALYZE</samp>。
+        子分区表的中间文件没有存储数据或统计信息，因此在其上运行<samp class="ph codeph">ANALYZE</samp>没有效果。使用者可以在
+        <samp class="ph codeph">pg_partitions</samp>系统目录中寻找分区表的名字：
+        <pre class="pre codeblock">SELECT partitiontablename from pg_partitions WHERE tablename='<em class="ph i">parent_table</em>;</pre>
+</div>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">提升统计信息质量</h2>
+      
+      <p class="p">在生成统计信息所花的时间和统计信息的质量或者准确性之间存在着权衡。</p>
+
+      <p class="p">为了允许大型表能在合理的时间内被分析完，<samp class="ph codeph">ANALYZE</samp>会对表内容做随机采样而不是检查每一行。
+        要对所有表列增加采样，可调整<samp class="ph codeph">default_statistics_target</samp>配置参数。其目标值取值范围从
+        1到1000，默认的目标值是100。<samp class="ph codeph">default_statistics_target</samp>变量默认会被应用到所有的列。
+        更大的目标值会增加执行ANALYZE所需的时间，但是可以提升查询规划器的评估质量。对于带有不规则数据模式的列尤
+        其如此。<samp class="ph codeph">default_statistics_target</samp>可以在master或者会话级别设置，并且要求重新载入
+        配置。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">何时运行ANALYZE</h2>
+      
+    </div>
+
+    <div class="p">在下列时机运行<samp class="ph codeph">ANALYZE</samp>：
+      <ul class="ul" id="analyze__ul_f5c_gnj_bp">
+        <li class="li">装载数据后；</li>
+
+        <li class="li">
+<samp class="ph codeph">CREATE INDEX</samp>操作后；</li>
+
+        <li class="li">在显著更改底层数据的<samp class="ph codeph">INSERT</samp>、<samp class="ph codeph">UPDATE</samp>以及<samp class="ph codeph">DELETE</samp>
+          操作之后。</li>
+
+      </ul>
+<samp class="ph codeph">ANALYZE</samp>仅在表上要求一个读锁，因此它可以与其他数据库活动并行运行。但不要在执行
+      装载、<samp class="ph codeph">INSERT</samp>、<samp class="ph codeph">UPDATE</samp>、<samp class="ph codeph">DELETE</samp>以及<samp class="ph codeph">CREATE INDEX</samp>
+      操作期间运行<samp class="ph codeph">ANALYZE</samp>。</div>
+
+    <div class="section">
+<h2 class="title sectiontitle">配置统计信息自动收集</h2>
+      
+      <p class="p"><samp class="ph codeph">gp_autostats_mode</samp>配置参数与<samp class="ph codeph">gp_autostats_on_change_threshold</samp>
+        参数一起决定何时触发自动分析操作。当自动统计信息收集被触发时，规划器会为查询增加一个<samp class="ph codeph">ANALYZE</samp>
+        步骤。</p>
+
+      <p class="p"><samp class="ph codeph">gp_autostats_mode</samp>默认为<samp class="ph codeph">on_no_stats</samp>，这会为任何没有统计
+        信息的表上的<samp class="ph codeph">CREATE TABLE AS SELECT</samp>、<samp class="ph codeph">INSERT</samp>或者<samp class="ph codeph">COPY</samp>
+        操作触发统计信息收集。</p>
+
+      <p class="p">把<samp class="ph codeph">gp_autostats_mode</samp>设置为<samp class="ph codeph">on_change</samp>时，只有当受影响的行数超过由
+        <samp class="ph codeph">gp_autostats_on_change_threshold</samp>定义的阈值时才会触发统计信息收集，该阈值参数的默认
+        值为2147483647。<samp class="ph codeph">on_change</samp>设置下能触发自动统计信息收集的操作有：
+        CREATE TABLE AS SELECT、UPDATE、DELETE、INSERT以及COPY。
+        <samp class="ph codeph">CREATE TABLE AS SELECT</samp>、<samp class="ph codeph">UPDATE</samp>、<samp class="ph codeph">DELETE</samp>、
+        <samp class="ph codeph">INSERT</samp>以及<samp class="ph codeph">COPY</samp>。</p>
+
+      <p class="p">将<samp class="ph codeph">gp_autostats_mode</samp>设置为<samp class="ph codeph">none</samp>会禁用自动统计信息收集。</p>
+
+      <p class="p">对于分区表，如果数据从分区表的顶层父表插入，则自动统计信息收集不会被触发。但是如果数据直接被插入在
+        分区表的叶子表（存储数据的地方）中，则自动统计信息收集会被触发。</p>
+
+    </div>
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="maintenance.html" title="本节介绍日常运维相关的最佳实践，关注这些内容可以确保Greenplum数据库日常高可用性和性能保持 最佳状态。">系统监控和维护</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

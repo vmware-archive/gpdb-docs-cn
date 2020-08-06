@@ -1,0 +1,1637 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      pgbouncer.ini |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_pgbouncer-ini has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    pgbouncer.ini
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">pgbouncer.ini</h1>
+
+  <div class="body">
+    <p class="p">PgBouncer的配置文件。</p>
+
+    <div class="section">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock">[databases]
+db = ...
+
+[pgbouncer]
+...
+
+[users]
+...</pre>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p">可以在配置文件<samp class="ph codeph">pgbouncer.ini</samp>中指定PgBouncer配置参数并指定用户相关的配置参数。</p>
+
+      <p class="p">PgBouncer的配置文件（通常是<samp class="ph codeph">pgbouncer.ini</samp>）是<samp class="ph codeph">.ini</samp>格式。
+        <samp class="ph codeph">.ini</samp>格式的文件通常由小节、参数和参数值组成。小节名称封闭在方括号中，
+        例如，<samp class="ph codeph">[<var class="keyword varname">section_name</var>]</samp>。参数和值通常以
+        <samp class="ph codeph"><var class="keyword varname">key</var>=<var class="keyword varname">value</var></samp>的方式展示。
+        以";"或"#"开头的行被注释或者忽略。当该";"和"#" 字符出现在行后面时候不被识别。
+        </p>
+
+      <div class="p">PgBouncer配置文件包含<samp class="ph codeph">%include</samp>路由符，它指定了用来读取和处理的其他文件。
+        这让我们可以将配置文件拆分为多个部分。例如：
+       <pre class="pre codeblock">%include filename</pre>
+</div>
+
+      <p class="p">如果提供的文件名不是绝对路径，当前操作系统工作路径被作为相对路径。</p>
+
+      <div class="p">PgBouncer的配置文件包括以下小节，详细信息如下：<ul class="ul" id="topic1__ul_kwg_vll_gs">
+        <li class="li"><a class="xref" href="#topic_fmd_ckd_gs">[databases]小节</a></li>
+
+        <li class="li"><a class="xref" href="#topic_orc_gkd_gs">[pgbouncer]小节</a></li>
+
+        <li class="li"><a class="xref" href="#topic_lzk_zjd_gs">[users]小节</a></li>
+
+      </ul>
+</div>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" id="topic_fmd_ckd_gs">
+    <h2 class="title topictitle2">[databases]小节</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">[databases]</samp>小节包含<samp class="ph codeph"><var class="keyword varname">key</var>=<var class="keyword varname">value</var></samp>
+        键值对，其中键（<samp class="ph codeph"><var class="keyword varname">key</var></samp>）是数据库名称，值（<samp class="ph codeph"><var class="keyword varname">value</var></samp>）
+        是<samp class="ph codeph"><var class="keyword varname">key</var></samp>=<samp class="ph codeph"><var class="keyword varname">value</var></samp>对的<samp class="ph codeph">libpq</samp>连接字符串列表。
+        </p>
+
+      <div class="p">数据库名称可以包含不带引号的字符<samp class="ph codeph">[0-9A-Za-z_.-]</samp>。包含其他字符的名称必须使用标准SQL标识符引用：
+       <ul class="ul" id="topic_fmd_ckd_gs__ul_wzm_b4p_ts">
+         <li class="li">名字用双引号括起来（<samp class="ph codeph">" "</samp>）。</li>
+
+         <li class="li">用两个连续的双引号字符在一个标识符内表示一个双引号。</li>
+
+        </ul>
+</div>
+
+      <p class="p">数据库名<samp class="ph codeph">*</samp>是回退数据库。此键的值是所请求数据库的连接字符串。
+        如果自动创建的数据库项的空闲时间超过<samp class="ph codeph">autodb_idle_timeout</samp>参数中指定的时间，
+        则会自动清理这些数据库项。
+        </p>
+
+      <div class="section">
+<h3 class="title sectiontitle">数据库连接参数</h3>
+        
+        <p class="p">该值中可能包含以下参数以指定数据库的位置。</p>
+
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">dbname</dt>
+
+            <dd class="dd pd">目标数据库名称。<p class="p">默认值：与客户端数据库名称相同。</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">host</dt>
+
+            <dd class="dd pd">Greenplum的Master主机的名称或IP地址。主机名在连接时被解析。如果DNS返回多个结果，
+              则以循环方式使用它们。DNS结果会被缓存，并且<samp class="ph codeph">dns_max_ttl</samp>参数确定
+              缓存项何时过期。</dd>
+
+            <dd class="dd pd">
+              <p class="p">默认值：未设置，表示通过Unix套接字进行连接。</p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">port</dt>
+
+            <dd class="dd pd">Greenplum数据库的Master端口。</dd>
+
+            <dd class="dd pd">
+<p class="p">默认：5432</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">user, password</dt>
+
+            <dd class="dd pd">如果设置了<samp class="ph codeph">user=</samp>，则用指定的用户建立到目标数据库的所有连接。
+              这意味着数据库将只有一个池。
+              <p class="p">如果未设置<samp class="ph codeph">user=</samp>参数，将尝试使用客户端传递的用户名登录到目标数据库。
+                这意味着每个连接到数据库的用户都会有一个池。
+                </p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">auth_user</dt>
+
+            <dd class="dd pd">如果设置了<samp class="ph codeph">auth_user</samp>，任何未在<samp class="ph codeph">auth_file</samp>文件中指定的用户，
+              通过以<samp class="ph codeph">auth_user</samp>身份查询数据库中的<samp class="ph codeph">pg_shadow</samp>表来认证。
+              <samp class="ph codeph">auth_user</samp>的口令必须在<samp class="ph codeph">auth_file</samp>中设置。
+             </dd>
+
+          
+          
+            <dt class="dt pt dlterm">client_encoding</dt>
+
+            <dd class="dd pd">从服务器要求特定的<samp class="ph codeph">client_encoding</samp>。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">datestyle</dt>
+
+            <dd class="dd pd">从服务器要求特定的<samp class="ph codeph">datestyle</samp>。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">timezone</dt>
+
+            <dd class="dd pd">从服务器要求特定的<samp class="ph codeph">timezone</samp>。</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">连接池配置</h3>
+        
+        <p class="p">可以使用以下数据库连接池配置</p>
+
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">pool_size</dt>
+
+            <dd class="dd pd">设置该数据库的最大池数。如果没有设置，则使用<samp class="ph codeph">default_pool_size</samp>。
+                 </dd>
+
+          
+          
+            <dt class="dt pt dlterm">connect_query</dt>
+
+            <dd class="dd pd">在任何用户连接建立之后，允许执行查询。如果查询引发错误，则会被记录，否则将被忽略。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">pool_mode</dt>
+
+            <dd class="dd pd">为此数据库设置池模式。如果未设置，则使用默认的<samp class="ph codeph">pool_mode</samp>。
+                 </dd>
+
+          
+          
+            <dt class="dt pt dlterm">max_db_connections</dt>
+
+            <dd class="dd pd">为此数据库设置数据库范围内的最大连接数。此数据库的所有池连接总数不会超过此值。
+            </dd>
+
+          
+        </dl>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" id="topic_orc_gkd_gs">
+    <h2 class="title topictitle2">[pgbouncer]小节</h2>
+
+    <div class="body">
+      <div class="section">
+<h3 class="title sectiontitle">一般设置</h3>
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">logfile</dt>
+
+            <dd class="dd pd">指定日志文件的位置。日志文件保持打开状态。日志轮转后在PgBouncer管理控制台中执行
+              <samp class="ph codeph">kill -HUP pgbouncer</samp>或运行<samp class="ph codeph">RELOAD;</samp>命令。
+              <p class="p">默认：未设置。</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">pidfile</dt>
+
+            <dd class="dd pd">pid文件的名字。没有pid文件，PgBouncer不能作为后台进程（守护进程）运行。
+              <p class="p">默认：未设置。</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">listen_addr</dt>
+
+            <dd class="dd pd">PgBouncer侦听TCP连接的接口地址列表。用户也可以使用<samp class="ph codeph">*</samp>，
+              表示在所有接口上进行监听。如果没有设置，则仅允许Unix套接字连接。
+              <p class="p">地址可以用数字（IPv4/IPv6）或名称来指定。
+              </p>
+
+              <p class="p">默认：未设置。</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">listen_port</dt>
+
+            <dd class="dd pd">要监听的端口。应用到TCP和UNIX套接字。<p class="p">默认：6432</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">unix_socket_dir</dt>
+
+            <dd class="dd pd">指定Unix套接字的位置。适用于监听套接字和服务器连接。如果设置为空字符串，
+              则禁用Unix套接字。在线重新启动（<samp class="ph codeph">-R</samp>选项）才能正常工作。
+              <p class="p">默认值：<samp class="ph codeph">/tmp</samp></p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">unix_socket_mode</dt>
+
+            <dd class="dd pd">Unix套接字的文件系统模式。<p class="p">默认为：0777</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">unix_socket_group</dt>
+
+            <dd class="dd pd">用于Unix套接字的组名。<p class="p">默认：未设置。</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">user</dt>
+
+            <dd class="dd pd">如果设置，则指定启动后要更改的Unix用户。这只有在PgBouncer作为root启动或
+              <samp class="ph codeph">user</samp>与当前用户相同时才有效。
+              <p class="p">默认：未设置。</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">auth_file</dt>
+
+            <dd class="dd pd">包含要加载的用户名和口令的文件的名称。文件格式与Greenplum数据库的
+              <span class="ph filepath">pg_auth</span>文件相同，因此可以将此参数设置为其中一个后端文件。
+              <p class="p">默认：未设置</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">auth_hba_file</dt>
+
+            <dd class="dd pd">当<samp class="ph codeph">auth_type</samp>为<samp class="ph codeph">hba</samp>时使用的HBA配置文件。
+             HBA文件格式请参阅<a class="xref" href="https://pgbouncer.github.io/config.html#hba-file-format" target="_blank">https://pgbouncer.github.io/config.html#hba-file-format</a>PgBouncer文档中PgBouncer支持的HBA授权文件格式的讨论部分。<p class="p">默认：未设置</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">auth_type</dt>
+
+            <dd class="dd pd">如何认证用户<dl class="dl parml">
+                
+                  <dt class="dt pt dlterm">pam</dt>
+
+                  <dd class="dd pd">使用PAM作为客户授权。<samp class="ph codeph">auth_file</samp>被忽略。
+                    该方法与<samp class="ph codeph">auth_user</samp>选项一起使用。
+                    报告给PAM的服务名为“pgbouncer”。PAM在HBA配置文件中不支持。
+                    </dd>
+
+                
+                
+                  <dt class="dt pt dlterm">hba</dt>
+
+                  <dd class="dd pd">实际授权类型从<samp class="ph codeph">auth_hba_file</samp>文件中加载。
+                    该设置允许不同的访问方法访问不同的路径。
+                    </dd>
+
+                
+                
+                  <dt class="dt pt dlterm">cert</dt>
+
+                  <dd class="dd pd">客户端必须使用有效的客户端证书连接到TLS。客户端的用户名取自证书中的CommonName字段。</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">md5</dt>
+
+                  <dd class="dd pd">使用基于MD5的口令检查。<samp class="ph codeph">auth_file</samp>可能包含MD5加密或纯文本的口令。
+                    这是默认的身份认证方法。
+                     </dd>
+
+                
+                
+                  <dt class="dt pt dlterm">plain</dt>
+
+                  <dd class="dd pd">通过网络发送明文口令。<em class="ph i">已废弃</em>。</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">trust</dt>
+
+                  <dd class="dd pd">不做认证。用户名仍然必须存在于<samp class="ph codeph">auth_file</samp>中。
+                      </dd>
+
+                
+                
+                  <dt class="dt pt dlterm">any</dt>
+
+                  <dd class="dd pd">像<samp class="ph codeph">trust</samp>方法一样，但提供的用户名被忽略。要求将所有数据库配置为使
+                    用特定用户登录。另外，控制台数据库允许任何用户以admin登录。</dd>
+
+                
+              </dl>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">auth_query</dt>
+
+            <dd class="dd pd">从数据库加载用户口令的查询。如果用户不存在于<samp class="ph codeph">auth_file</samp>中并且数据库项包含
+              <samp class="ph codeph">auth_user</samp>，则该查询作为<samp class="ph codeph">auth_user</samp>在数据库中运行以查找用户。
+              <p class="p">注意查询会在每个数据库中都执行，如果要运行函数，那么该函数需要在每个数据库中都安装。</p>
+
+              <p class="p">默认值：<samp class="ph codeph">SELECT
+                  usename, passwd FROM pg_shadow WHERE usename=$1</samp></p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">auth_user</dt>
+
+            <dd class="dd pd">如果设置了<samp class="ph codeph">auth_user</samp>，任何未在<samp class="ph codeph">auth_file</samp>文件中指定的用户，
+              通过以<samp class="ph codeph">auth_user</samp>身份查询数据库中的<samp class="ph codeph">pg_shadow</samp>表来认证。
+              <samp class="ph codeph">auth_user</samp>的口令必须在<samp class="ph codeph">auth_file</samp>中设置。
+              <p class="p">直接访问<samp class="ph codeph">pg_shadow</samp>要求有Greenplum数据库的管理员权限。
+                推荐使用非管理员用户并调用函数来代替。</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">pool_mode</dt>
+
+            <dd class="dd pd">指定服务器连接何时可以被其他客户端重用。<dl class="dl parml">
+                
+                  <dt class="dt pt dlterm">session</dt>
+
+                  <dd class="dd pd">当客户端断开连接时，连接返回到池。默认。</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">transaction</dt>
+
+                  <dd class="dd pd">事务结束后，连接返回到池。</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">statement</dt>
+
+                  <dd class="dd pd">当前查询完成后，连接返回到池。具有多个语句的长事务在此模式下被禁止。</dd>
+
+                
+              </dl>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">max_client_conn</dt>
+
+            <dd class="dd pd">允许的最大客户端连接数。当增加时，文件描述符限制也应该增加。使用的文件描述符的实际数量大于
+              <samp class="ph codeph">max_client_conn</samp>。当每个用户使用自己的用户名连接到服务器时，
+              使用的理论最大值是：
+             <pre class="pre codeblock">max_client_conn + (max_pool_size * total_databases * total_users)</pre>
+<p class="p">
+               如果在连接字符串中指定了数据库用户，则所有用户使用相同的用户名连接。那么理论上的最大连接是：
+             </p>
+<pre class="pre codeblock">max_client_conn + (max_pool_size * total_databases)</pre>
+
+              <p class="p">（应该永远不要达到理论上的最大值，除非有人刻意为它加上负荷。但是，这意味着用户应该将文件
+                描述符的数量设置为一个安全的较高数字。在用户的操作系统文档中搜索<samp class="ph codeph">ulimit</samp>。）
+              </p>
+<p class="p">默认：100</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">default_pool_size</dt>
+
+            <dd class="dd pd">允许每个用户/数据库对的服务器连接数量。这可以在每个数据库配置中被覆盖。
+              <p class="p">默认：20</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">min_pool_size</dt>
+
+            <dd class="dd pd">当池中连接数低于这个数字时，将更多的服务器连接添加到池中。当平常的负载下降然后在一段时间
+              的不活跃期之后突然恢复到平常的负载时，这会改善行为。
+              <p class="p">默认值：0（禁用）</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">reserve_pool_size</dt>
+
+            <dd class="dd pd">对池允许的额外连接的数量。0 禁用。
+              <p class="p">默认： 0（禁用）</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">reserve_pool_timeout</dt>
+
+            <dd class="dd pd">如果客户端在这段时间内没有被服务，PgBouncer允许使用来自保留池的额外连接。0禁用。
+              <p class="p">默认值：5.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">max_db_connections</dt>
+
+            <dd class="dd pd">每个数据库的最大连接数。如果达到限制，关闭到池的客户端连接不会立即允许对另一个池建立服务器连接，
+              因为第一个池的服务器连接仍处于打开状态。一旦服务器连接关闭（由于空闲超时），
+              将为等待池打开一个新的服务器连接。
+              <p class="p">默认：没限制</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">max_user_connections</dt>
+
+            <dd class="dd pd">每个用户的最大连接数。当用户达到限制时，关闭到池的客户端连接不会立即允许对另一个池建立服务器连接，
+              因为第一个池的服务器连接仍处于打开状态。一旦服务器连接关闭（由于空闲超时），
+              将为等待池打开一个新的服务器连接。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_round_robin</dt>
+
+            <dd class="dd pd">默认情况下，PgBouncer以LIFO（后进先出）顺序重用服务器连接，这样少数连接获得最大的负载。
+              这在单个服务器提供数据库时提供最佳性能。但是如果数据库IP后面有TCP循环，那么最好是PgBouncer
+              也以这种方式使用连接来实现均衡的负载。
+              <p class="p">默认值：0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">ignore_startup_parameters</dt>
+
+            <dd class="dd pd">默认情况下，PgBouncer只允许它在启动包中可以跟踪的参数：
+              <samp class="ph codeph">client_encoding</samp>、<samp class="ph codeph">datestyle</samp>、
+                <samp class="ph codeph">timezone</samp>和
+              <samp class="ph codeph">standard_conforming_strings</samp>。<p class="p">所有其他参数都会产生错误。
+                要允许其他参数，在这里指定它们，这样PgBouncer可以忽略它们。</p>
+
+              <p class="p">默认值：空</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">disable_pqexec</dt>
+
+            <dd class="dd pd">禁用简单查询协议（PQexec）。与扩展查询协议不同，简单查询协议允许在一个数据包中进行多个查询，
+              这允许某些种类的SQL注入攻击。禁用它可以提高安全性。这意味着只有专门使用扩展查询协议的客户端
+              才能工作。<p class="p">默认值：0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">application_name_add_host</dt>
+
+            <dd class="dd pd">将客户端主机地址和端口添加到连接启动时设置的应用程序名称设置。这有助于识别不良查询的来源。
+              如果应用程序在连接后执行了<samp class="ph codeph">SET application_name</samp>，则设置将被覆盖而不被检测到。
+              <p class="p">默认值：1</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">conffile</dt>
+
+            <dd class="dd pd">显示当前配置文件位置。改变该参数会导致PgBouncer在下次RELOAD/SIGHUP后使用另外的配置文件。
+                <p class="p">默认值：文件来自命令行</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">service_name</dt>
+
+            <dd class="dd pd">仅在win32服务注册时使用。
+                <p class="p">默认值：pgbouncer</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">job_name</dt>
+
+            <dd class="dd pd">
+<samp class="ph codeph">service_name</samp>的代称。</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">日志设置</h3>
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">syslog</dt>
+
+            <dd class="dd pd">切换syslog开启和关闭。<p class="p">默认值：0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">syslog_ident</dt>
+
+            <dd class="dd pd">以什么名字发送日志到syslog。<p class="p">默认值：
+                <samp class="ph codeph">pgbouncer</samp></p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">syslog_facility</dt>
+
+            <dd class="dd pd">在什么设施下发送日志到系统日志。一些可能是：
+                <samp class="ph codeph">auth</samp>、<samp class="ph codeph">authpriv</samp>、<samp class="ph codeph">daemon</samp>、
+                <samp class="ph codeph">user</samp>、<samp class="ph codeph">local0-7</samp>
+              <p class="p">默认值：
+                  <samp class="ph codeph">daemon</samp></p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">log_connections</dt>
+
+            <dd class="dd pd">记录成功的登陆。<p class="p">默认值：1</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">log_disconnections</dt>
+
+            <dd class="dd pd">记录连接失败的原因。<p class="p">默认值：1</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">log_pooler_errors</dt>
+
+            <dd class="dd pd">记录池中发送给客户端的错误消息。<p class="p">默认值：1</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">stats_period</dt>
+
+            <dd class="dd pd">将汇总的统计信息写入日志的频率。<p class="p">默认值：60</p>
+</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">控制台访问控制</h3>
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">admin_users</dt>
+
+            <dd class="dd pd">允许连接并在控制台上运行所有命令的数据库用户列表，用逗号分隔。
+              当<samp class="ph codeph">auth_type=any</samp>时候，忽略该列表。在这种情况下，任何用户名都被允许作为admin。
+              <p class="p">默认值：空</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">stats_users</dt>
+
+            <dd class="dd pd">逗号分隔的数据库用户列表，允许它们在控制台上连接并运行只读查询。这意味着除了<samp class="ph codeph">SHOW FDS</samp>
+              之外的所有<samp class="ph codeph">SHOW</samp>命令。
+              <p class="p">默认值：空</p>
+</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">C连接健康检查、超时</h3>
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">server_reset_query</dt>
+
+            <dd class="dd pd">在连接释放时且没有对其他客户端可用之前，发送到服务器的查询。在那一刻没有事务正在进行，
+              所以它不应该包括<samp class="ph codeph">ABORT</samp>或<samp class="ph codeph">ROLLBACK</samp>。
+              <p class="p">该查询会清理任何改变模式为数据库会话，以保证下一个客户端连接获取更好的状态。默认为
+                <samp class="ph codeph">DISCARD ALL</samp></p>
+ 
+              <p class="p">当使用事务池时，<samp class="ph codeph">server_reset_query</samp>应该是空的，
+                因为客户端不能使用任何事务特性。如果客户端使用了事务特性，操作将会失败，因为事务池
+                不能保证下次运行相同的连接。</p>
+<p class="p">默认为：
+                  <samp class="ph codeph">DISCARD ALL;</samp></p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_reset_query_always</dt>
+
+            <dd class="dd pd">
+              <p class="p"><samp class="ph codeph">server_reset_query</samp>是否应该在所有池模式下运行。如果此设置处于关闭状态
+                （默认），则<samp class="ph codeph">server_reset_query</samp>将仅在处于会话池模式的池中运行。
+                事务池模式下的连接不应该有任何重置查询的需要。
+                </p>
+
+              <p class="p">默认值：0</p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_check_delay</dt>
+
+            <dd class="dd pd">保持被释放连接可重用而不运行健康检查查询的时间。如果为0，则查询始终运行。
+              <p class="p">默认值：30.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_check_query</dt>
+
+            <dd class="dd pd">用来测试服务器连接的一个简单的无所作为的查询。<p class="p">如果是一个空字符串，则禁用健康检查。
+            </p>
+<p class="p">默认值：SELECT 1;</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_lifetime</dt>
+
+            <dd class="dd pd">池会尝试关闭连接时间超过这个秒数的服务器连接。将其设置为0意味着连接只能使用一次，
+              然后关闭。<p class="p">默认值：3600.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_idle_timeout</dt>
+
+            <dd class="dd pd">如果服务器连接闲置超过这么多秒钟，它将被丢弃。如果此参数设置为0，则禁用超时。
+              <p class="p">默认值：
+              600.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_connect_timeout</dt>
+
+            <dd class="dd pd">如果在此秒数内连接和登录无法完成，则连接将被关闭。<p class="p">默认值：15.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">server_login_retry</dt>
+
+            <dd class="dd pd">如果登陆由于<samp class="ph codeph">connect()</samp>或认证失败而失败，则在重新尝试连接之前，
+              池会等待几秒钟。
+              <p class="p">默认值：15.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">client_login_timeout</dt>
+
+            <dd class="dd pd">如果客户端在此秒数内连接但无法登录，则会断开连接。需要这来避免死连接卡住
+              <samp class="ph codeph">SUSPEND</samp>，从而导致在线重新启动。<p class="p">默认值：60.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">autodb_idle_timeout</dt>
+
+            <dd class="dd pd">如果（通过<samp class="ph codeph">*</samp>）自动创建的数据库池已经有这么多秒没有使用，
+              则它们将被释放。并且也放弃对它们的统计。
+              <p class="p">默认值： 3600.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">dns_max_ttl</dt>
+
+            <dd class="dd pd">缓存DNS查找结果多少秒。如果一个DNS查找返回几个答案，那么PgBouncer会在它们之间循环往复。实际的DNS TTL被忽略。
+              <p class="p">默认值：15.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">dns_nxdomain_ttl</dt>
+
+            <dd class="dd pd">可以缓存错误和NXDOMAIN DNS查找多长时间。以秒为单位。
+              <p class="p">默认值：15.0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">dns_zone_check_period</dt>
+
+            <dd class="dd pd">检查区域序列号是否改变的周期。
+              <p class="p">PgBouncer可以从主机名（第一个点之后的所有内容）收集DNS区域，然后定期检查区域序列号是否更改。
+                如果检测到更改，则会再次查找该区域中的所有主机名。如果任何主机IP发生更改，则其连接将失效。
+              </p>
+<p class="p">只适用于UDNS后端（用<samp class="ph codeph">--with-udns</samp>或<samp class="ph codeph">--with-cares</samp>配置）。
+              </p>
+<p class="p">默认值：0.0（禁用）</p>
+</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">TLS设置</h3>
+        
+        <dl class="dl parml">
+          <dt class="dt pt dlterm">client_tls_sslmode</dt>
+
+            <dd class="dd pd">TLS模式主要给客户端连接使用。TLS连接默认不启用。当启用时，必须同时配置
+              <samp class="ph codeph">client_tls_key_file</samp>和<samp class="ph codeph">client_tls_cert_file</samp>
+              参数，以使PgBouncer能够接受客户端连接。<ul class="ul" id="topic_orc_gkd_gs__ul_dgn_drd_bt">
+            <li class="li">
+<samp class="ph codeph">disable</samp>: plain TCP。如果客户端请求TLS。他会被忽略。默认配置。</li>
+
+            <li class="li">
+<samp class="ph codeph">allow</samp>: 如果客户端请求TLS，他被使用。如果没请求，使用plain TCP。
+              如果客户端使用client-certificate，不会验证改值。</li>
+
+            <li class="li">
+<samp class="ph codeph">prefer</samp>: 与<samp class="ph codeph">allow</samp>相同</li>
+
+            <li class="li">
+<samp class="ph codeph">require</samp>: 客户端必须使用TLS。如果不使用，客户端连接被拒绝。
+              如果客户端使用client-certificate，他不被验证。</li>
+
+            <li class="li">
+<samp class="ph codeph">verify-ca</samp>: 客户端必须使用TLS并验证客户端授权。</li>
+
+            <li class="li">
+<samp class="ph codeph">verify-full</samp>: 与<samp class="ph codeph">verify-ca</samp>相同。</li>
+</ul>
+</dd>
+
+          
+          <dt class="dt pt dlterm">client_tls_key_file</dt>
+
+            <dd class="dd pd">PgBouncer使用私有密钥接受客户端连接</dd>
+<dd class="dd pd">
+<p class="p">默认值：不设置。</p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">client_tls_cert_file</dt>
+
+            <dd class="dd pd">根证书授权验证客户端授权。</dd>
+<dd class="dd pd">
+<p class="p">默认值：未设置。</p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">client_tls_ca_file</dt>
+
+            <dd class="dd pd">根证书授权验证客户端授权。</dd>
+<dd class="dd pd">
+<p class="p">默认值：未设置。</p>
+</dd>
+
+          <dt class="dt pt dlterm">client_tls_protocols</dt>
+
+            <dd class="dd pd">那种TLS协议被允许。</dd>
+<dd class="dd pd">有效值为：<samp class="ph codeph">tlsv1.0</samp>、<samp class="ph codeph">tlsv1.1</samp>
+              、<samp class="ph codeph">tlsv1.2</samp>。</dd>
+
+            <dd class="dd pd">快捷方式：<samp class="ph codeph">all</samp>（<samp class="ph codeph">tlsv1.0</samp>、<samp class="ph codeph">tlsv1.1</samp>、<samp class="ph codeph">tlsv1.2</samp>）、<samp class="ph codeph">secure</samp>（<samp class="ph codeph">tlsv1.2</samp>）、<samp class="ph codeph">legacy</samp>（<samp class="ph codeph">all</samp>）。</dd>
+<dd class="dd pd">
+              <p class="p">默认值：<samp class="ph codeph">all</samp></p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">client_tls_ciphers</dt>
+<dd class="dd pd">
+<p class="p">默认值：<samp class="ph codeph">fast</samp></p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">client_tls_ecdhcurve</dt>
+
+            <dd class="dd pd">ECDH key交换使用的Elliptic Curve名称。</dd>
+
+            <dd class="dd pd">可用值：<samp class="ph codeph">none</samp>（DH禁用）、<samp class="ph codeph">auto</samp>（256-bit ECDH）、curve name。</dd>
+<dd class="dd pd">
+              <p class="p">默认值：<samp class="ph codeph">auto</samp></p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">client_tls_dheparams</dt>
+
+            <dd class="dd pd">DHE key交换类型。</dd>
+
+            <dd class="dd pd">可用值：<samp class="ph codeph">none</samp>（DH禁用）、<samp class="ph codeph">auto</samp>（2048-bit ECDH）、 <samp class="ph codeph">legacy</samp>（1024-bit ECDH）。
+            </dd>
+<dd class="dd pd">
+<p class="p">默认值：<samp class="ph codeph">auto</samp></p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">server_tls_sslmode</dt>
+
+            <dd class="dd pd">连接到Greenplum数据库和PostgreSQL数据库的TLS模式。TLS连接默认被禁用。<ul class="ul" id="topic_orc_gkd_gs__ul_hyh_1td_bt">
+              <li class="li">
+<samp class="ph codeph">disable</samp>: plain TCP。如果客户端请求TLS。他会被忽略。默认配置。</li>
+
+              <li class="li">
+<samp class="ph codeph">allow</samp>: 如果客户端请求TLS，他被使用。如果没请求，使用plain TCP。
+                如果客户端使用client-certificate，不会验证改值。</li>
+
+              <li class="li">
+<samp class="ph codeph">prefer</samp>: 与<samp class="ph codeph">allow</samp>相同</li>
+
+              <li class="li">
+<samp class="ph codeph">require</samp>: 客户端必须使用TLS。如果不使用，客户端连接被拒绝。
+                如果客户端使用client-certificate，他不被验证。</li>
+
+              <li class="li">
+<samp class="ph codeph">verify-ca</samp>: 客户端必须使用TLS并验证客户端授权。</li>
+
+              <li class="li">
+<samp class="ph codeph">verify-full</samp>: 与<samp class="ph codeph">verify-ca</samp>相同。</li>
+</ul>
+</dd>
+
+          
+          <dt class="dt pt dlterm">server_tls_ca_file</dt>
+
+            <dd class="dd pd">用于验证Greenplum和PostgreSQL数据库服务证书的证书验证文件。
+            </dd>
+<dd class="dd pd">
+<p class="p">默认值：不设置。</p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">server_tls_key_file</dt>
+
+            <dd class="dd pd">依赖于Greenplum或PostgreSQL的PgBouncer私有密钥。</dd>
+<dd class="dd pd">
+<p class="p">默认值：不设置。</p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">server_tls_cert_file</dt>
+
+            <dd class="dd pd">私有密钥证书。Greenplum或PostgreSQL数据库会验证它。 
+              </dd>
+<dd class="dd pd">
+<p class="p">默认值：不设置。</p>
+</dd>
+
+          
+          <dt class="dt pt dlterm">server_tls_protocols</dt>
+
+            <dd class="dd pd">允许使用的TLS协议版本。</dd>
+
+            <dd class="dd pd">有效值为：<samp class="ph codeph">tlsv1.0</samp>、<samp class="ph codeph">tlsv1.1</samp>、
+              <samp class="ph codeph">tlsv1.2</samp>。</dd>
+
+            <dd class="dd pd">快捷方式：<samp class="ph codeph">all</samp>（<samp class="ph codeph">tlsv1.0</samp>、<samp class="ph codeph">tlsv1.1</samp>、<samp class="ph codeph">tlsv1.2</samp>）、<samp class="ph codeph">secure</samp>（<samp class="ph codeph">tlsv1.2</samp>）、<samp class="ph codeph">legacy</samp>（<samp class="ph codeph">all</samp>）。</dd>
+
+          
+          <dt class="dt pt dlterm">server_tls_ciphers</dt>
+
+            <dd class="dd pd">
+<p class="p">默认值：<samp class="ph codeph">fast</samp></p>
+</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">危险超时</h3>
+        
+        <p class="p">设置以下超时可能会导致意外的错误。</p>
+
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">query_timeout</dt>
+
+            <dd class="dd pd">运行时间超过这个秒数的查询被取消。此参数只能与较小的服务器端
+              <samp class="ph codeph">statement_timeout</samp>一起使用，以捕获出现网络问题的查询。
+              <p class="p">默认值：0.0（禁用）</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">query_wait_timeout</dt>
+
+            <dd class="dd pd">允许查询等待执行的最长时间（以秒为单位）。如果在此期间查询未分配连接，
+              则客户端将断开连接。 这用于防止无响应的服务器强占连接。
+              <p class="p">默认值：0.0（禁用）</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">client_idle_timeout</dt>
+
+            <dd class="dd pd">客户端连接空闲的时间超过了这么多秒钟就会被关闭。 这应该大于客户端连接的生命周期设置，
+              并且仅用于网络问题。<p class="p">默认值：0.0（禁用）</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">idle_transaction_timeout</dt>
+
+            <dd class="dd pd">如果客户端处于“事务空闲”状态的时间超过这个秒数，则它被断开。
+              <p class="p">默认值：0.0（禁用）</p>
+</dd>
+
+          
+        </dl>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">低层网络设置</h3>
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">pkt_buf</dt>
+
+            <dd class="dd pd">包的内部缓冲区大小。影响发送的TCP包的尺寸和一般内存使用情况。 
+              实际的<samp class="ph codeph">libpq</samp>包可能比这个大，所以没有必要把它设置的很大。
+              <p class="p">默认值：4096</p>
+</dd>
+
+              
+          
+            <dt class="dt pt dlterm">max_packet_size</dt>
+
+            <dd class="dd pd">PgBouncer接受的包的最大尺寸。包是一个查询或一个结果集行。完整的结果集可以更大。
+              <p class="p">默认值：
+              2147483647</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">listen_backlog</dt>
+
+            <dd class="dd pd">
+<samp class="ph codeph">listen(2)</samp>系统调用的backlog参数。它表示有多少新的未答复的连接尝试被保留在队列中。
+              当队列已满时，进一步的新连接尝试被丢弃。<p class="p">默认值：128</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">sbuf_loopcnt</dt>
+
+            <dd class="dd pd">在继续之前，在一个连接上处理数据多少次。没有这个限制，一个大的结果集的连接可能会使
+              PgBouncer停顿很长时间。一个循环处理一个<samp class="ph codeph">pkt_buf</samp>数量的数据。0表示没有限制。
+              <p class="p">默认值：5</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">suspend_timeout</dt>
+
+            <dd class="dd pd">等待<samp class="ph codeph">SUSPEND</samp>或reboot（<samp class="ph codeph">-R</samp>）期间的缓冲区刷写多少秒钟。
+              如果刷写不成功，连接将被丢弃。<p class="p">默认值：10</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">tcp_defer_accept</dt>
+
+            <dd class="dd pd">有关此选项和其他TCP选项的详细信息，请参阅tcp（7）手册页。
+              <p class="p">默认值：Linux上是45，其他为0</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">tcp_socket_buffer</dt>
+
+            <dd class="dd pd">
+<p class="p">默认值：不设置</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">tcp_keepalive</dt>
+
+            <dd class="dd pd">用OS默认值启用基本的keepalive。<p class="p">Linux上，系统默认为 
+                  <samp class="ph codeph">tcp_keepidle=7200</samp>、<samp class="ph codeph">tcp_keepintvl=75</samp>、
+                  <samp class="ph codeph">tcp_keepcnt=9</samp>。
+            </p>
+<p class="p">默认值：1</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">tcp_keepcnt</dt>
+
+            <dd class="dd pd">
+<p class="p">默认值：未设置</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">tcp_keepidle</dt>
+
+            <dd class="dd pd">
+<p class="p">默认值：未设置</p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">tcp_keepintvl</dt>
+
+            <dd class="dd pd">
+<p class="p">默认值：未设置</p>
+</dd>
+
+          
+        </dl>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" id="topic_lzk_zjd_gs">
+    <h2 class="title topictitle2">[users]小节</h2>
+
+    <div class="body">
+      <p class="p">这部分包含<samp class="ph codeph"><var class="keyword varname">key</var></samp>=<samp class="ph codeph"><var class="keyword varname">value</var></samp>对，
+        其中<samp class="ph codeph"><var class="keyword varname">key</var></samp>是用户名，<samp class="ph codeph"><var class="keyword varname">value</var></samp>是
+        <samp class="ph codeph"><var class="keyword varname">key</var></samp>=<samp class="ph codeph"><var class="keyword varname">value</var></samp>对的
+        <samp class="ph codeph">libpq</samp>连接字符串列表。</p>
+
+      <p class="p">
+        <strong class="ph b">池配置</strong>
+      </p>
+
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">pool_mode</dt>
+
+          <dd class="dd pd">设置池模式用于来自此用户的所有连接。如果未设置，则使用数据库或默认<samp class="ph codeph">pool_mode</samp>。
+            </dd>
+
+        
+      </dl>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" id="topic_xw4_dtc_gs">
+    <h2 class="title topictitle2">示例配置文件</h2>
+
+    <div class="body">
+      <p class="p">
+        <strong class="ph b">最小配置</strong>
+      </p>
+
+      <pre class="pre codeblock">[databases]
+postgres = host=127.0.0.1 dbname=postgres auth_user=gpadmin
+
+[pgbouncer]
+pool_mode = session
+listen_port = 6543
+listen_addr = 127.0.0.1
+auth_type = md5
+auth_file = users.txt
+logfile = pgbouncer.log
+pidfile = pgbouncer.pid
+admin_users = someuser
+stats_users = stat_collector
+</pre>
+
+      <p class="p">使用客户端传递的连接参数：</p>
+
+        <pre class="pre codeblock">[databases]
+* =
+
+[pgbouncer]
+listen_port = 6543
+listen_addr = 0.0.0.0
+auth_type = trust
+auth_file = bouncer/users.txt
+logfile = pgbouncer.log
+pidfile = pgbouncer.pid
+ignore_startup_parameters=options</pre>
+
+        <p class="p">
+          <strong class="ph b">数据库默认</strong>
+        </p>
+
+        <pre class="pre codeblock">[databases]
+
+; foodb over unix socket
+foodb =
+
+; redirect bardb to bazdb on localhost
+bardb = host=127.0.0.1 dbname=bazdb
+
+; access to destination database will go with single user
+forcedb = host=127.0.0.1 port=300 user=baz password=foo client_encoding=UNICODE datestyle=ISO
+</pre>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="seealso">
+    <h2 class="title topictitle2">另见</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph"><a class="xref" href="pgbouncer.html#topic1">pgbouncer</a></samp>、
+          <samp class="ph codeph"><a class="xref" href="pgbouncer-admin.html#topic1">pgbouncer-admin</a></samp>、
+        <a class="xref" href="https://pgbouncer.github.io/config.html" target="_blank">PgBouncer配置页面</a></p>
+
+      </div>
+
+  </div>
+
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

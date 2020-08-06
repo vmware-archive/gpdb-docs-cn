@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      使用S3 Select从S3读取CSV和Parquet数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_read_s3_s3select has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    使用S3 Select从S3读取CSV和Parquet数据
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#s3_select_enable">&#21551;&#29992;PXF&#20197;&#20351;&#29992;S3 Select</a></li>
+<li>
+<a href="#s3_select_parquet">&#20351;&#29992;S3 Select&#35835;&#21462;Parquet&#25968;&#25454;</a><ul>
+<li><a href="#parquet_compress">&#25351;&#23450;Parquet&#21015;&#30340;&#21387;&#32553;&#31867;&#22411;</a></li>
+<li><a href="#parquet_cet">&#21019;&#24314;&#22806;&#37096;&#34920;</a></li>
+</ul>
+</li>
+<li>
+<a href="#s3_select_csv">&#20351;&#29992;S3 Select&#35835;&#21462;CSV&#25991;&#20214;</a><ul>
+<li><a href="#csv_header">&#22788;&#29702;CSV&#25991;&#20214;&#22836;</a></li>
+<li><a href="#csv_compress">&#25351;&#23450;CSV&#25991;&#20214;&#21387;&#32553;&#31867;&#22411;</a></li>
+<li><a href="#csv_cet">&#21019;&#24314;&#22806;&#37096;&#34920;</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>PXF S3连接器支持使用Amazon S3 Select服务从S3读取某些CSV和Parquet格式的数据。 S3 Select提供了对Amazon S3中存储的数据的直接就地查询功能。</p>
+
+<p>启用它后，PXF使用S3 Select过滤S3对象的内容以检索您请求的数据子集。 这样通常可以减少传输到Greenplum数据库的数据量和查询时间。</p>
+
+<p>可以将PXF S3连接器与S3选择一起使用以读取：</p>
+
+<ul>
+<li><code>gzip</code>或<code>bzip2</code>压缩的CSV文件</li>
+<li>带有<code>gzip</code>或<code>snappy</code>压缩列的<code>Parquet</code>文件</li>
+</ul>
+
+<p>数据必须是<code>UTF-8</code>编码的，并且可能是服务器端加密的。</p>
+
+<p>当使用S3 Select时，PXF支持列投影以及<code>AND</code>和<code>OR</code>或<code>NOT</code>运算符的谓词下推。</p>
+
+<div class="note">使用Amazon S3 Select服务可能会增加数据访问和检索的成本。 在启用PXF使用S3 Select服务之前，请务必考虑相关开销。</div>
+
+<h2 id="启用pxf以使用s3-select"><a id="s3_select_enable"></a>启用PXF以使用S3 Select</h2>
+
+<p>在访问S3对象存储库时，<code>S3_SELECT</code>外部表自定义选项将控制PXF对S3 Select的使用。 设置<code>S3_SELECT</code>选项时，可以提供以下值：</p>
+
+<table><thead>
+<tr>
+<th>S3-SELECT值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>OFF</td>
+<td>PXF不使用S3 Select。 默认值。</td>
+</tr>
+<tr>
+<td>ON</td>
+<td>PXF始终使用S3 Select。</td>
+</tr>
+<tr>
+<td>AUTO</td>
+<td>PXF将在有利于访问或性能的情况下使用S3 Select。</td>
+</tr>
+</tbody></table>
+
+<p>默认情况下，PXF不使用S3 Select（<code>S3_SELECT = OFF</code>）。 您可以使PXF始终使用S3 Select，或者仅在PXF确定它可能对性能有利时才使用S3 Select。 例如，当<code>S3_SELECT = AUTO</code>时，当外部表上的查询使用列投影或谓词下推时，或者当引用的CSV文件具有标题行时，PXF会自动使用S3 Select。</p>
+
+<h2 id="使用s3-select读取parquet数据"><a id="s3_select_parquet"></a>使用S3 Select读取Parquet数据</h2>
+
+<p>PXF支持从S3读取Parquet数据，如<a href="/6-0/pxf/objstore_parquet.html">在对象存储中读取和写入Parquet数据</a>中所述。 如果您希望PXF在读取Parquet数据时使用S3 Select，则将<code>S3_SELECT</code>自定义选项和值添加到<code>CREATE EXTERNAL TABLE</code> <code>LOCATION</code> URI中。</p>
+
+<h3 id="指定parquet列的压缩类型"><a id="parquet_compress"></a>指定Parquet列的压缩类型</h3>
+
+<p>如果Parquet文件中的列是<code>gzip</code>或<code>snappy</code>压缩的，请在<code>LOCATION</code> URI中使用<code>COMPRESSION_CODEC</code>自定义选项来标识压缩编解码器别名。 例如：</p>
+<pre class="highlight plaintext"><code>&amp;COMPRESSION_CODEC=gzip
+</code></pre>
+
+<p>或，</p>
+<pre class="highlight plaintext"><code>&amp;COMPRESSION_CODEC=snappy
+</code></pre>
+
+<h3 id="创建外部表"><a id="parquet_cet"></a>创建外部表</h3>
+
+<p>使用以下语法在您希望PXF使用S3 Select服务访问的S3上引用一个Parquet文件的情况下，创建Greenplum数据库外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+  <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-file&gt;?PROFILE=s3:parquet[&amp;SERVER=&lt;server_name&gt;]&amp;S3_SELECT=ON|AUTO[&amp;&lt;other-custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+</code></pre>
+
+<div class="note">当您启用PXF以使用S3 Select来访问S3上Parquet文件的外部表时，<i>必须</i>指定<code>FORMAT 'CSV'</code>。</div>
+
+<p>例如，使用以下命令让PXF使用S3在最佳时机访问S3上的Parquet文件：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">parquet_on_s3</span> <span class="p">(</span> <span class="k">LIKE</span> <span class="n">table1</span> <span class="p">)</span>
+  <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://bucket/file.parquet?PROFILE=s3:parquet&amp;SERVER=s3srvcfg&amp;S3_SELECT=AUTO'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+</code></pre>
+
+<h2 id="使用s3-select读取csv文件"><a id="s3_select_csv"></a>使用S3 Select读取CSV文件</h2>
+
+<p>PXF支持从S3读取CSV数据，如<a href="/6-0/pxf/objstore_text.html">在对象存储中读取和写入文本数据</a>中所述。 如果您希望PXF在读取CSV数据时使用S3 Select，则可以将<code>S3_SELECT</code>自定义选项和值添加到<code>CREATE EXTERNAL TABLE</code> <code>LOCATION</code> URI中。 您也可以指定定界符，文件头和压缩自定义选项。</p>
+
+<h3 id="处理csv文件头"><a id="csv_header"></a>处理CSV文件头</h3>
+
+<p>当您启用PXF以使用S3 Select访问CSV格式的文件时，可以在<code>LOCATION</code> URI中使用<code>FILE_HEADER</code>自定义选项来标识CSV文件是否具有标题行，如果有的话，还可以确定PXF如何处理标题 <code>FILE_HEADER</code>选项采用以下值：</p>
+
+<table><thead>
+<tr>
+<th>FILE_HEADER值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NONE</td>
+<td>该文件没有标题行； 默认值。</td>
+</tr>
+<tr>
+<td>IGNORE</td>
+<td>该文件具有标题行； 忽略标题。</td>
+</tr>
+<tr>
+<td>USE</td>
+<td>该文件具有标题行； 读取标题。</td>
+</tr>
+</tbody></table>
+
+<p>默认的<code>FILE_HEADER</code>值为<code>NONE</code>。 您还可以指示PXF忽略或读取文件头。 例如，要让PXF忽略标题，请将以下内容添加到<code>CREATE EXTERNAL TABLE</code> <code>LOCATION</code> URI中：</p>
+<pre class="highlight plaintext"><code>&amp;FILE_HEADER=IGNORE
+</code></pre>
+
+<div class="note">仅当S3连接器使用Amazon S3 Select服务访问S3上的文件时，PXF可以读取带标题行的CSV文件。 PXF不支持从任何其他外部数据存储中读取包含头行的CSV文件。</div>
+
+<h3 id="指定csv文件压缩类型"><a id="csv_compress"></a>指定CSV文件压缩类型</h3>
+
+<p>如果CSV文件是<code>gzip</code>或<code>bzip2</code>压缩文件，请使用<code>LOCATION</code> URI中的<code>COMPRESSION_CODEC</code>自定义选项来标识压缩编解码器别名。 例如：</p>
+<pre class="highlight plaintext"><code>&amp;COMPRESSION_CODEC=gzip
+</code></pre>
+
+<p>或，</p>
+<pre class="highlight plaintext"><code>&amp;COMPRESSION_CODEC=bzip2
+</code></pre>
+
+<h3 id="创建外部表"><a id="csv_cet"></a>创建外部表</h3>
+
+<p>使用以下语法创建Greenplum数据库外部表，该表引用您希望PXF使用S3 Select服务访问的S3上的CSV文件：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-file&gt;
+    ?PROFILE=s3:text[&amp;SERVER=&lt;server_name&gt;]&amp;S3_SELECT=ON|AUTO[&amp;FILE_HEADER=IGNORE|USE][&amp;COMPRESSION_CODEC=gzip|bzip2][&amp;&lt;other-custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CSV'</span> <span class="p">[(</span><span class="k">delimiter</span> <span class="s1">'&lt;delim_char&gt;'</span><span class="p">)];</span>
+</code></pre>
+
+<p>例如，使用以下命令使PXF始终使用S3 Select来访问S3上的<code>gzip</code>压缩文件，其中字段分隔符是竖线（&rsquo;|&lsquo;）字符，并且您想读取标题行：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">gzippedcsv_on_s3</span> <span class="p">(</span> <span class="k">LIKE</span> <span class="n">table2</span> <span class="p">)</span>
+  <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://bucket/file.csv.gz?PROFILE=s3:text&amp;SERVER=s3srvcfg&amp;S3_SELECT=ON&amp;FILE_HEADER=USE'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CSV'</span> <span class="p">(</span><span class="k">delimiter</span> <span class="s1">'|'</span><span class="p">);</span>
+</code></pre>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

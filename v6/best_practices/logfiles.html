@@ -1,0 +1,394 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      监控Greenplum数据库日志文件 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_logfiles has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    监控Greenplum数据库日志文件
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">监控Greenplum数据库日志文件</h1>
+
+  <div class="body">
+    <p class="p">了解系统日志文件的位置和内容并且定期监控它们而不是在问题发生时才监控。</p>
+
+    <p class="p">下面的表格展示了各种Greenplum数据库日志文件的位置。在文件路径中：</p>
+<ul class="ul">
+      <li class="li">
+<samp class="ph codeph">$GPADMIN_HOME</samp> 是操作系统用户<samp class="ph codeph">gpadmin</samp>的家目录
+        路径。</li>
+
+        <li class="li">
+<samp class="ph codeph">$MASTER_DATA_DIRECTORY</samp>是Greenplum数据库master主机的数据目录。</li>
+
+      <li class="li">
+<samp class="ph codeph">$GPDATA_DIR</samp>是Greenplum数据库segment主机的数据目录。</li>
+
+        <li class="li">
+<samp class="ph codeph"><var class="keyword varname">host</var></samp>表示segment主机的主机名。</li>
+
+        <li class="li">
+<samp class="ph codeph"><var class="keyword varname">segprefix</var></samp>是segment前缀。</li>
+
+        <li class="li">
+<samp class="ph codeph"><var class="keyword varname">N</var></samp>是segment实例数量。</li>
+
+      <li class="li">
+<samp class="ph codeph"><var class="keyword varname">date</var></samp>是<samp class="ph codeph">YYYYMMDD</samp>格式的日期。</li>
+
+      </ul>
+
+    <p class="p"> </p>
+
+    
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_crh_2fc_3r__table_mkp_cgc_3r" class="table" frame="border" border="1" rules="all">
+        
+        
+        <thead class="thead" align="left">
+          <tr class="row">
+            <th class="entry" valign="top" id="d4576e80">路径</th>
+
+            <th class="entry" valign="top" id="d4576e83">描述</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPADMIN_HOME/gpAdminLogs/*</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">很多不同种类的日志文件，每台服务器都有的目录。<samp class="ph codeph">$GPADMIN_HOME</samp>是<samp class="ph codeph">gpAdminLogs/</samp>目录的
+              默认存放位置。用户也可以在运行管理工具命令时指定一个另外的位置。</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPADMIN_HOME/gpAdminLogs/gpinitsystem_<var class="keyword varname">date</var>.log</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">系统初始化日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPADMIN_HOME/gpAdminLogs/gpstart_<var class="keyword varname">date</var>.log</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">启动日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPADMIN_HOME/gpAdminLogs/gpstop_<var class="keyword varname">date</var>.log</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">停止日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPADMIN_HOME/gpAdminLogs/gpsegstart.py_<var class="keyword varname">host</var>:gpadmin_<var class="keyword varname">date</var>.log</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">segment主机启动日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPADMIN_HOME/gpAdminLogs/gpsegstop.py_<var class="keyword varname">host</var>:gpadmin_<var class="keyword varname">date</var>.log</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">segment主机停止日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$MASTER_DATA_DIRECTORY/pg_log/startup.log</samp>,
+              <samp class="ph codeph">$GPDATA_DIR/<var class="keyword varname">segprefixN</var>/pg_log/startup.log</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">segment实例启动日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$MASTER_DATA_DIRECTORY/gpperfmon/logs/gpmon.*.log</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">gpperfmon日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$MASTER_DATA_DIRECTORY/pg_log/*.csv</samp>,
+              <samp class="ph codeph">$GPDATA_DIR/<var class="keyword varname">segprefixN</var>/pg_log/*.csv</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">master和segment数据库日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPDATA_DIR/mirror/<var class="keyword varname">segprefixN</var>/pg_log/*.csv</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">镜像segment数据库日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">$GPDATA_DIR/primary/<var class="keyword varname">segprefixN</var>/pg_log/*.csv</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">主segment数据库日志</td>
+
+          </tr>
+
+          <tr class="row">
+            <td class="entry" valign="top" headers="d4576e80 ">
+              <samp class="ph codeph">/var/log/messages</samp>
+            </td>
+
+            <td class="entry" valign="top" headers="d4576e83 ">Linux系统消息</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+</div>
+
+    <p class="p">首先使用<samp class="ph codeph">gplogfilter -t</samp>（<samp class="ph codeph">--trouble</samp>）在master日志中搜索以
+      <samp class="ph codeph">ERROR:</samp>、<samp class="ph codeph">FATAL:</samp>或者<samp class="ph codeph">PANIC:</samp>开始的消息。
+      以<samp class="ph codeph">WARNING</samp>开始的消息也可能提供有用的信息。</p>
+
+    <p class="p">要在segment主机上搜索日志文件，可以用<samp class="ph codeph">gpssh</samp>从master主机连接到segment主机使用
+      Greenplum的<samp class="ph codeph">gplogfilter</samp>工具。用户可以通过<samp class="ph codeph">statement_id</samp>在
+      segment日志中定位对应的日志项。</p>
+
+    <p class="p">Greenplum数据库可以基于文件大小或当前日志文件年龄配置数据库日志的循环复写周期。<samp class="ph codeph">log_rotation_size</samp>
+      配置参数设置单独一个日志文件的循环触发大小。当前日志文件大小大于等于该值时，该文件被关闭并新建另一个
+      日志文件。<samp class="ph codeph">log_rotation_age</samp>配置参数指定当前日志文件的循环触发年龄。当从该文件
+      创建到目前的时间达到该设置时，创建一个新的日志文件。默认的<samp class="ph codeph">log_rotation_age</samp>为1d（1天），
+      当前日志文件写完后，会创建一个新的以天为单位的文件。</p>
+
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="maintenance.html" title="本节介绍日常运维相关的最佳实践，关注这些内容可以确保Greenplum数据库日常高可用性和性能保持 最佳状态。">系统监控和维护</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

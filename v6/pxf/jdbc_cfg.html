@@ -1,0 +1,809 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      配置JDBC连接器（可选） |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_jdbc_cfg has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    配置JDBC连接器（可选）
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#about_cfg">&#20851;&#20110;JDBC&#37197;&#32622;</a></li>
+<li><a href="#cfg_jar">JDBC&#39537;&#21160;&#31243;&#24207;JAR&#27880;&#20876;</a></li>
+<li>
+<a href="#cfg_server">JDBC&#26381;&#21153;&#22120;&#37197;&#32622;</a><ul>
+<li><a href="#connprop">&#36830;&#25509;&#32423;&#23646;&#24615;</a></li>
+<li><a href="#conntransiso">&#36830;&#25509;&#20107;&#21153;&#38548;&#31163;&#23646;&#24615;</a></li>
+<li><a href="#stateprop">&#35821;&#21477;&#32423;&#23646;&#24615;</a></li>
+<li><a href="#sessprop">&#20250;&#35805;&#32423;&#23646;&#24615;</a></li>
+<li><a href="#jdbcimpers">&#20851;&#20110;JDBC&#29992;&#25143;&#27169;&#25311;</a></li>
+<li><a href="#jdbcconpool">&#20851;&#20110;JDBC&#36830;&#25509;&#27744;</a></li>
+</ul>
+</li>
+<li>
+<a href="#namedquery">JDBC&#21629;&#21517;&#26597;&#35810;&#37197;&#32622;</a><ul>
+<li><a href="#namedquery_define">&#23450;&#20041;&#21629;&#21517;&#26597;&#35810;</a></li>
+<li><a href="#namedquery_pub">&#26597;&#35810;&#21629;&#21517;</a></li>
+</ul>
+</li>
+<li><a href="#cfg_override">&#35206;&#30422;JDBC&#26381;&#21153;&#22120;&#37197;&#32622;</a></li>
+<li><a href="#cfg_proc">&#31034;&#20363;&#37197;&#32622;&#36807;&#31243;</a></li>
+<li>
+<a href="#hive_cfg">&#37197;&#32622;Hive&#35775;&#38382;</a><ul>
+<li><a href="#hive_cfg_server">JDBC&#26381;&#21153;&#22120;&#37197;&#32622;</a></li>
+<li><a href="#hive_cfg_server_proc">&#31034;&#20363;&#37197;&#32622;&#27493;&#39588;</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>您可以使用PXF访问外部SQL数据库，包括MySQL，ORACLE，PostgreSQL，Hive和Apache Ignite。本主题描述如何配置PXF JDBC连接器以访问这些外部数据源。</p>
+
+<p><em>如果您不打算使用PXF JDBC连接器，则不需要执行此过程。</em></p>
+
+<h2 id="关于jdbc配置"><a id="about_cfg"></a>关于JDBC配置</h2>
+
+<p>要使用PXF JDBC连接器访问外部SQL数据库中的数据，您必须：</p>
+
+<ul>
+<li>注册兼容的JDBC驱动程序JAR文件</li>
+<li>指定JDBC驱动程序类名称，数据库URL和客户端凭据</li>
+</ul>
+
+<p>在以前的Greenplum数据库版本中，您可能已通过<code>CREATE EXTERNAL TABLE</code>命令中的选项指定了JDBC驱动程序类名称，数据库URL和客户端凭据。PXF现在支持JDBC连接器的基于文件的服务器配置。如下所述，此配置使您可以在文件中指定这些选项和凭据。</p>
+
+<p><strong>注意</strong>: 您先前创建的直接指定JDBC连接选项的PXF外部表将继续起作用。如果要移动这些表以使用基于JDBC文件的服务器配置，则必须创建服务器配置，删除外部表，然后重新创建表，并指定适当的<code>SERVER=&lt;server_name&gt;</code>子句。</p>
+
+<h2 id="jdbc驱动程序jar注册"><a id="cfg_jar"></a>JDBC驱动程序JAR注册</h2>
+
+<p>PXF JDBC连接器随<code>postgresql-42.2.5.jar</code> JAR文件一起安装。如果您需要其他JDBC驱动程序，请确保在每个segment主机的<code>$PXF_CONF/lib</code>目录中为外部SQL数据库安装JDBC驱动程序JAR文件。确保安装与您的JRE版本兼容的JDBC驱动程序JAR文件。有关更多信息，请参见<a href="/6-0/pxf/reg_jar_depend.html">注册PXF JAR依赖项</a>。</p>
+
+<h2 id="jdbc服务器配置"><a id="cfg_server"></a>JDBC服务器配置</h2>
+
+<p>配置PXF JDBC连接器时，请为连接器添加至少一个名为PXF服务器的配置，如<a href="/6-0/pxf/cfg_server.html">配置PXF服务器</a>中所述。您还可以配置一个或多个静态定义的查询以对远程SQL数据库运行。</p>
+
+<p>PXF提供了JDBC连接器的模板配置文件。该服务器模板配置文件位于<code>$PXF_CONF/templates/jdbc-site.xml</code>中，标识可以配置以建立与外部SQL数据库的连接的属性。该模板还包括可选属性，您可以在执行查询或在外部数据库会话中插入命令之前设置这些可选属性。</p>
+
+<p>服务器模板文件<code>jdbc-site.xml</code>中的必需属性如下：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jdbc.driver</td>
+<td>JDBC驱动类名称</td>
+<td>JDBC驱动程序Java类名；例如<code>org.postgresql.Driver</code>。</td>
+</tr>
+<tr>
+<td>jdbc.url</td>
+<td>JDBC驱动程序用于连接数据库的URL</td>
+<td>数据库连接URL(特定于数据库)，例如：<code>jdbc:postgresql://phost:pport/pdatabase</code>。</td>
+</tr>
+<tr>
+<td>jdbc.user</td>
+<td>数据库用户名</td>
+<td>连接数据库的用户名。</td>
+</tr>
+<tr>
+<td>jdbc.password</td>
+<td><code>jdbc.user</code>的密码</td>
+<td>连接数据库的密码。</td>
+</tr>
+</tbody></table>
+
+<div class="note">配置PXF JDBC服务器时，可以在配置文件中以明文形式为PXF指定外部数据库用户凭据。</div>
+
+<h3 id="连接级属性"><a id="connprop"></a>连接级属性</h3>
+
+<p>要设置其他JDBC连接级别的属性，请将<code>jdbc.connection.property.&lt;CPROP_NAME&gt;</code>属性添加到<code>jdbc-site.xml</code>中。当PXF建立到外部SQL数据库（<code>DriverManager.getConnection()</code>）的连接时，会将这些属性传递给JDBC驱动程序。</p>
+
+<p>将<code>&lt;CPROP_NAME&gt;</code>替换为连接属性名称，并指定其值：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jdbc.connection.property.&lt;CPROP_NAME&gt;</td>
+<td>当PXF建立与外部SQL数据库的连接时，传递给JDBC驱动程序的属性名称(&lt;CPROP_NAME&gt;)。</td>
+<td>&lt;CPROP_NAME&gt;属性的值。</td>
+</tr>
+</tbody></table>
+
+<p>示例：要在与PostgreSQL数据库的JDBC连接上设置<code>createDatabaseIfNotExist</code>连接属性，请在<code>jdbc-site.xml</code>中包含以下属性块：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.connection.property.createDatabaseIfNotExist<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+ <span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>确保外部SQL数据库的JDBC驱动程序支持您指定的任何连接级属性。</p>
+
+<h3 id="连接事务隔离属性"><a id="conntransiso"></a>连接事务隔离属性</h3>
+
+<p>SQL标准定义了四个事务隔离级别。您为与外部SQL数据库的给定连接指定的级别决定了对另一连接如何和何时可见在该连接上执行的一个事务所做的更改。</p>
+
+<p>PXF JDBC连接器公开了一个名为<code>jdbc.connection.transactionIsolation</code>的可选服务器配置属性，该属性使您可以指定事务隔离级别。建立与外部SQL数据库的连接后，PXF会设置级别（<code>setTransactionIsolation()</code>）。</p>
+
+<p>JDBC连接器支持以下<code>jdbc.connection.transactionIsolation</code>属性值：</p>
+
+<table><thead>
+<tr>
+<th>SQL 级别</th>
+<th>PXF属性值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>未提交读</td>
+<td>READ_UNCOMMITTED</td>
+</tr>
+<tr>
+<td>已提交读</td>
+<td>READ_COMMITTED</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>REPEATABLE_READ</td>
+</tr>
+<tr>
+<td>可串行化</td>
+<td>SERIALIZABLE</td>
+</tr>
+</tbody></table>
+
+<p>例如，要将事务隔离级别设置为<em>未提交读</em>，请将以下属性块添加到<code>jdbc-site.xml</code>文件中：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.connection.transactionIsolation<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>READ_UNCOMMITTED<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>不同的SQL数据库支持不同的事务隔离级别。确保外部数据库支持您指定的级别。</p>
+
+<h3 id="语句级属性"><a id="stateprop"></a>语句级属性</h3>
+
+<p>PXF JDBC连接器通过<em>语句</em>在外部SQL数据库表上执行查询或插入命令。连接器公开的属性使您可以在外部数据库中执行命令之前配置语句的某些方面。连接器支持以下语句级属性：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jdbc.statement.batchSize</td>
+<td>批量写入外部数据库表的行数。</td>
+<td>行数。默认的写入批处理大小为100。</td>
+</tr>
+<tr>
+<td>jdbc.statement.fetchSize</td>
+<td>从外部数据库表读取时要提取/缓冲的行数。</td>
+<td>行数。默认读取大小为1000。</td>
+</tr>
+<tr>
+<td>jdbc.statement.queryTimeout</td>
+<td>JDBC驱动程序等待语句执行的时间（以秒为单位）。此超时适用于为读取和写入操作创建的语句。</td>
+<td>超时时间（以秒为单位）。默认等待时间是无限的。</td>
+</tr>
+</tbody></table>
+
+<p>对于您未明确配置的任何语句级属性，PXF使用默认值。</p>
+
+<p>示例：要将读取获取大小设置为5000，请将以下属性块添加到<code>jdbc-site.xml</code>中：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.statement.fetchSize<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>5000<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>确保外部SQL数据库的JDBC驱动程序支持您指定的任何语句级属性。</p>
+
+<h3 id="会话级属性"><a id="sessprop"></a>会话级属性</h3>
+
+<p>要设置会话级别的属性，请在<code>jdbc-site.xml</code>中添加<code>jdbc.session.property。&lt;SPROP_NAME&gt;</code>属性。在执行查询之前，PXF将在外部数据库中<code>SET</code>这些属性。</p>
+
+<p>将<code>&lt;SPROP_NAME&gt;</code>替换为会话属性名称，并指定其值：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jdbc.session.property.&lt;SPROP_NAME&gt;</td>
+<td>在执行查询之前要设置的会话属性的名称(&lt;SPROP_NAME&gt;)。</td>
+<td>&lt;SPROP_NAME&gt;属性的值。</td>
+</tr>
+</tbody></table>
+
+<p><strong>注意</strong>: PXF JDBC连接器完全按照<code>jdbc-site.xml</code>服务器配置文件中的指定，将会话属性名和属性值都传递给外部SQL数据库。为了限制SQL注入的潜在威胁，连接器拒绝包含<code>;</code>, <code>\n</code>, <code>\b</code>, 或 <code>\0</code>字符的任何属性名称或值。</p>
+
+<p>PXF JDBC连接器为所有支持的外部SQL数据库处理会话属性<code>SET</code>语法。</p>
+
+<p>示例：要在PostgreSQL数据库中运行查询之前设置<code>search_path</code>参数，请将以下属性块添加到<code>jdbc-site.xml</code>中：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.session.property.search_path<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>public<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>确保外部SQL数据库的JDBC驱动程序支持您指定的任何属性。</p>
+
+<h3 id="关于jdbc用户模拟"><a id="jdbcimpers"></a>关于JDBC用户模拟</h3>
+
+<p>PXF JDBC连接器使用<code>jdbc.user</code>设置或<code>jdbc.url</code>中的信息来确定连接到外部数据存储的用户身份。禁用PXF JDBC用户模拟时（默认设置），JDBC连接器的行为进一步取决于外部数据存储。例如，如果您使用JDBC连接器访问Hive，则连接器将使用某些Hive身份验证和模拟属性的设置来确定用户。您可能需要提供<code>jdbc.user</code>设置，或在服务器<code>jdbc-site.xml</code>文件中的<code>jdbc.url</code>设置中添加属性。</p>
+
+<p>启用PXF JDBC用户模拟时，PXF JDBC连接器代表Greenplum数据库最终用户访问外部数据存储。连接器使用访问PXF外部表的Greenplum数据库用户的名称来尝试连接到外部数据存储。</p>
+
+<p><code>pxf.impersonation.jdbc</code>属性控制JDBC用户模拟。默认情况下，禁用JDBC用户模拟。要为服务器配置启用JDBC用户模拟，请将属性设置为true：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>pxf.impersonation.jdbc<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>为PXF服务器启用JDBC用户模拟时，PXF会覆盖在<code>jdbc-site.xml</code>或<code>&lt;greenplum_user_name&gt;-user.xml</code>中定义或在外部表DDL中指定的<code>jdbc.user</code>属性设置的值，以及Greenplum数据库用户名。为了在外部数据存储区需要密码来验证连接用户的身份时有效地模拟用户，必须为可以模拟在该用户的<code>&lt;greenplum_user_name&gt;-user.xml</code>属性覆盖文件中的每个用户指定<code>jdbc.password</code>设置。有关每个服务器，每个Greenplum用户配置的更多信息，请参考<a href="/6-0/pxf/cfg_server.html#usercfg">配置PXF用户</a>。</p>
+
+<h3 id="关于jdbc连接池"><a id="jdbcconpool"></a>关于JDBC连接池</h3>
+
+<p>PXF JDBC连接器使用由[HikariCP]（<a href="https://github.com/brettwooldridge/HikariCP%EF%BC%89%E5%AE%9E%E7%8E%B0%E7%9A%84JDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0%E3%80%82%E5%BD%93%E7%94%A8%E6%88%B7%E6%9F%A5%E8%AF%A2%E6%88%96%E5%86%99%E5%85%A5%E5%A4%96%E9%83%A8%E8%A1%A8%E6%97%B6%EF%BC%8C%E8%BF%9E%E6%8E%A5%E5%99%A8%E5%9C%A8%E9%A6%96%E6%AC%A1%E9%81%87%E5%88%B0%60jdbc.url%60">https://github.com/brettwooldridge/HikariCP）实现的JDBC连接池。当用户查询或写入外部表时，连接器在首次遇到`jdbc.url`</a>, <code>jdbc.user</code>, <code>jdbc.password</code>，连接属性和池属性设置的唯一组合时，将为关联的服务器配置建立连接池。连接器会根据某些连接和超时设置重用池中的连接。</p>
+
+<p>对于给定的服务器配置，可能存在一个或多个连接池，并且用户访问指定同一服务器的不同外部表可能会共享一个连接池。</p>
+
+<p><strong>注意</strong>: 如果在服务器配置中启用了JDBC用户模拟，则JDBC连接器将为每个Greenplum数据库用户创建一个单独的连接池，该用户访问指定该服务器配置的任何外部表。</p>
+
+<p><code>jdbc.pool.enabled</code>属性控制着服务器配置的JDBC连接池。默认情况下启用连接池。要为服务器配置禁用JDBC连接池，请将属性设置为false：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.pool.enabled<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>false<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>如果为服务器配置禁用JDBC连接池，则PXF不会为该服务器重用JDBC连接。PXF为每个分区的查询创建到远程数据库的连接，并在该分区的查询完成时关闭该连接。</p>
+
+<p>PXF公开了可以在JDBC服务器定义中配置的连接池属性。这些属性以<code>jdbc.pool.property.</code>前缀命名，并且<em>应用于每个PXF JVM</em>。JDBC连接器自动设置以下连接池属性和默认值：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jdbc.pool.property.maximumPoolSize</td>
+<td>与数据库后端的最大连接数。</td>
+<td>5</td>
+</tr>
+<tr>
+<td>jdbc.pool.property.connectionTimeout</td>
+<td>等待来自池的连接的最长时间（以毫秒为单位）。</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>jdbc.pool.property.idleTimeout</td>
+<td>最长时间（以毫秒为单位），在此时间之后，不活动的连接被视为空闲。</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>jdbc.pool.property.minimumIdle</td>
+<td>连接池中维护的最小空闲连接数。</td>
+<td>0</td>
+</tr>
+</tbody></table>
+
+<p>您可以通过指定<code>jdbc.pool.property。&lt;HIKARICP_PROP_NAME&gt;</code>以及服务器的<code>jdbc-site.xml</code>配置文件中的所需值来为服务器配置设置其他HikariCP特定的连接池属性。还要注意，当JDBC连接器请求来自JDBC<code>DriverManager</code>的连接时，它会传递您用<code>jdbc.connection.property.</code>前缀指定的任何属性。请参考上面的<a href="#connprop">连接级属性</a>。</p>
+
+<h4 id="调整最大连接池大小"><a id="jdbcconpool_tune"></a>调整最大连接池大小</h4>
+
+<p>为了不超过目标数据库所允许的最大连接数，并同时确保每个PXF JVM服务公平共享的JDBC连接，请根据Greenplum数据库集群的大小确定<code>maxPoolSize</code>的最大值。如下：</p>
+<pre class="highlight plaintext"><code>max_conns_allowed_by_remote_db / #_greenplum_segment_hosts
+</code></pre>
+
+<p>例如，如果您的Greenplum数据库集群具有16个segment主机，并且目标数据库允许160个并发连接，则按以下方式计算<code>maxPoolSize</code>：</p>
+<pre class="highlight plaintext"><code>160 / 16 = 10
+</code></pre>
+
+<p>实际上，您可以选择将<code>maxPoolSize</code>设置为较低的值，因为每个JDBC查询的并发连接数取决于查询中使用的分区数。当查询不使用分区时，单个PXF JVM将为查询提供服务。如果查询使用12个分区，则PXF将建立与远程数据库的12个并发JDBC连接。理想情况下，这些连接在PXF JVM之间平均分配，但这不能保证。</p>
+
+<h2 id="jdbc命名查询配置"><a id="namedquery"></a>JDBC命名查询配置</h2>
+
+<p>PXF*命名查询*是您配置的静态查询，并且PXF在远程SQL数据库中运行。</p>
+
+<p>要配置和使用PXF JDBC命名查询：</p>
+
+<ol>
+<li>您<a href="#namedquery_define">定义查询</a>在文本文件中。</li>
+<li>您向Greenplum数据库用户提供<a href="#namedquery_pub">查询名称</a>。</li>
+<li>Greenplum数据库用户在Greenplum数据库外部表定义中<a href="#namedquery_ref">引用查询</a>。</li>
+</ol>
+
+<p>每当用户在Greenplum数据库外部表上调用<code>SELECT</code>命令时，PXF都会运行查询。</p>
+
+<h3 id="定义命名查询"><a id="namedquery_define"></a>定义命名查询</h3>
+
+<p>通过将查询语句添加到具有以下命名格式的文本文件中来创建命名查询：<code>&lt;query_name&gt;.sql</code>。您可以为JDBC服务器配置定义一个或多个命名查询。每个查询必须驻留在单独的文本文件中。</p>
+
+<p>您必须将查询文本文件放置在PXF JDBC服务器配置目录中，从该目录可以访问该查询文本文件。如果要使查询可用于多个JDBC服务器配置，则必须将查询文本文件复制到每个JDBC服务器的配置目录中。</p>
+
+<p>查询文本文件必须包含要在远程SQL数据库中运行的单个查询。您必须根据数据库支持的语法来构造查询。</p>
+
+<p>例如，如果一个MySQL数据库有一个<code>customers</code>表和一个<code>orders</code>表，则可以在查询文本文件中包含以下SQL语句：</p>
+<pre class="highlight sql"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">city</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total</span><span class="p">,</span> <span class="n">o</span><span class="p">.</span><span class="k">month</span>
+  <span class="k">FROM</span> <span class="n">customers</span> <span class="k">c</span> <span class="k">JOIN</span> <span class="n">orders</span> <span class="n">o</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">o</span><span class="p">.</span><span class="n">customer_id</span>
+  <span class="k">WHERE</span> <span class="k">c</span><span class="p">.</span><span class="k">state</span> <span class="o">=</span> <span class="s1">'CO'</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">city</span><span class="p">,</span> <span class="n">o</span><span class="p">.</span><span class="k">month</span>
+</code></pre>
+
+<p>您可以选择为SQL语句提供结尾分号(<code>;</code>)。</p>
+
+<h3 id="查询命名"><a id="namedquery_pub"></a>查询命名</h3>
+
+<p>Greenplum数据库用户通过指定不带扩展名的查询文件名来引用命名查询。例如，如果您在名为<code>report.sql</code>的文件中定义查询，则该查询的名称为<code>report</code>。</p>
+
+<p>命名查询与特定的JDBC服务器配置相关联。您将向Greenplum数据库用户提供可用的查询名称，允许您使用服务器配置创建外部表。</p>
+
+<h4 id="引用命名查询"><a id="namedquery_ref"></a>引用命名查询</h4>
+
+<p>当创建外部表时，Greenplum数据库用户指定<code>query:&lt;query_name&gt;</code>而不是远程SQL数据库表的名称。例如，如果查询在文件<code>$PXF_CONF/servers/mydb/report.sql</code>中定义，则<code>CREATE EXTERNAL TABLE</code> <code>LOCATION</code>子句将包含以下组件：</p>
+<pre class="highlight sql"><code><span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://query:report?PROFILE=JDBC&amp;SERVER=mydb ...'</span><span class="p">)</span>
+</code></pre>
+
+<p>有关使用PXF JDBC命名查询的信息，请参考<a href="/6-0/pxf/jdbc_pxf.html#about_nq">关于使用命名查询</a>。</p>
+
+<h2 id="覆盖jdbc服务器配置"><a id="cfg_override"></a>覆盖JDBC服务器配置</h2>
+
+<p>您可以通过在<code>CREATE EXTERNAL TABLE</code>命令<code>LOCATION</code>子句中通过自定义选项直接指定某些JDBC属性来覆盖JDBC服务器配置。有关其他信息，请参考<a href="/6-0/pxf/jdbc_pxf.html#jdbc_override">通过DDL覆盖JDBC服务器配置</a>。</p>
+
+<h2 id="示例配置过程"><a id="cfg_proc"></a>示例配置过程</h2>
+
+<p>在配置JDBC连接器服务器之前，请确保已初始化PXF。</p>
+
+<p>在此过程中，您将命名并添加PostgreSQL数据库的PXF JDBC服务器配置，并将服务器配置同步到Greenplum数据库集群。</p>
+
+<ol>
+<li><p>登录到您的Greenplum数据库主节点：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>选择JDBC服务器的名称。您将名称提供给Greenplum用户，您可以选择这些用户允许其以配置用户身份引用外部SQL数据库中的表。</p>
+
+<p><strong>注意</strong>: 服务器名称<code>default</code>已保留。</p></li>
+<li><p>创建<code>$PXF_HOME/servers/&lt;server_name&gt;</code>目录。例如，使用以下命令来创建名为<code>pg_user1_testdb</code>的JDBC服务器配置：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>mkdir <span class="nv">$PXF_CONF</span>/servers/pg_user1_testdb
+</code></pre></li>
+<li><p>将PXF JDBC服务器模板文件复制到服务器配置目录。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>cp <span class="nv">$PXF_CONF</span>/templates/jdbc-site.xml <span class="nv">$PXF_CONF</span>/servers/pg_user1_testdb/
+</code></pre></li>
+<li><p>在您选择的编辑器中打开模板服务器配置文件，并为您的环境提供适当的属性值。例如，如果要在名为<code>pgserverhost</code>的主机上运行的PostgreSQL实例上为名为<code>user1</code>的用户配置对名为<code>testdb</code>的PostgreSQL数据库的访问：</p>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>jdbc.driver<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>org.postgresql.Driver<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>jdbc.url<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>jdbc:postgresql://pgserverhost:5432/testdb<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>jdbc.user<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>user1<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;name&gt;</span>jdbc.password<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;value&gt;</span>changeme<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></li>
+<li><p>保存更改并退出编辑器。</p></li>
+<li><p>使用<code>pxf cluster sync</code>命令将新的服务器配置复制到Greenplum数据库集群。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre></li>
+</ol>
+
+<h2 id="配置hive访问"><a id="hive_cfg"></a>配置Hive访问</h2>
+
+<p>您可以使用PXF JDBC连接器从Hive检索数据。您还可以使用JDBC命名查询向Hive提交自定义SQL查询，并使用JDBC连接器检索结果。</p>
+
+<p>本主题描述如何配置PXF JDBC连接器以访问Hive。使用JDBC配置Hive访问时，必须考虑Hive用户模拟设置，以及是否使用Kerberos保护Hadoop群集。</p>
+
+<h3 id="jdbc服务器配置"><a id="hive_cfg_server"></a>JDBC服务器配置</h3>
+
+<p>PXF JDBC连接器安装了通过JDBC访问Hive所需的JAR文件，<code>hive-jdbc-&lt;version&gt;.jar</code>和<code>hive-service-&lt;version&gt;.jar</code>，并自动注册了这些JAR。</p>
+
+<p>为Hive访问配置PXF JDBC服务器时，必须像配置与SQL数据库的客户端连接时一样指定JDBC驱动程序类名称，数据库URL和客户端凭据。</p>
+
+<p>要通过JDBC访问Hive，您必须在<code>jdbc-site.xml</code>服务器配置文件中指定以下属性和值：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jdbc.driver</td>
+<td>org.apache.hive.jdbc.HiveDriver</td>
+</tr>
+<tr>
+<td>jdbc.url</td>
+<td>jdbc:hive2://&lt;hiveserver2_host&gt;:&lt;hiveserver2_port&gt;/&lt;database&gt;</td>
+</tr>
+</tbody></table>
+
+<p>HiveServer2身份验证(<code>hive.server2.authentication</code>)和模拟(<code>hive.server2.enable.doAs</code>)属性的值以及Hive服务是否正在使用Kerberos身份验证将通知其他JDBC服务器的设置配置属性。这些属性在Hadoop集群的<code>hive-site.xml</code>配置文件中定义。您将需要获取这些属性的值。</p>
+
+<p>下表枚举了PXF JDBC连接器支持的Hive2身份验证和模拟组合。它标识可能的Hive用户身份以及每个身份所需的JDBC服务器配置。</p>
+
+<p>表标题键：</p>
+
+<ul>
+<li><em>authentication</em> -&gt; Hive hive.server2.authentication设置</li>
+<li><em>enable.doAs</em> -&gt; Hive hive.server2.enable.doAs设置</li>
+<li><em>User Identity</em> -&gt; HiveServer2将用于访问数据的身份</li>
+<li><em>Configuration Required</em> -&gt; <em>User Identity</em>需要的PXF JDBC连接器或Hive配置</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>authentication</th>
+<th>enable.doAs</th>
+<th>User Identity</th>
+<th>Configuration Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>NOSASL</code></td>
+<td>n/a</td>
+<td>无认证</td>
+<td>必须设置成 <code>jdbc.connection.property.auth</code> = <code>noSasl</code></td>
+</tr>
+<tr>
+<td><code>NONE</code>, 或未指定</td>
+<td><code>TRUE</code></td>
+<td>您提供的用户名</td>
+<td>设置 <code>jdbc.user</code></td>
+</tr>
+<tr>
+<td><code>NONE</code>, 或未指定</td>
+<td><code>TRUE</code></td>
+<td>Greenplum用户名</td>
+<td>设置 <code>pxf.impersonation.jdbc</code> = <code>true</code></td>
+</tr>
+<tr>
+<td><code>NONE</code>, 或未指定</td>
+<td><code>FALSE</code></td>
+<td>启动Hive的用户名，通常是<code>hive</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>KERBEROS</code></td>
+<td><code>TRUE</code></td>
+<td>PXF Kerberos主体中提供的身份，通常是<code>gpadmin</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>KERBEROS</code></td>
+<td><code>TRUE</code></td>
+<td>您提供的用户名</td>
+<td>设置 <code>hive.server2.proxy.user</code> 中的 <code>jdbc.url</code></td>
+</tr>
+<tr>
+<td><code>KERBEROS</code></td>
+<td><code>TRUE</code></td>
+<td>Greenplum用户名</td>
+<td>设置 <code>pxf.impersonation.jdbc</code> = <code>true</code></td>
+</tr>
+<tr>
+<td><code>KERBEROS</code></td>
+<td><code>FALSE</code></td>
+<td>PXF Kerberos主体中提供的身份，通常是<code>gpadmin</code></td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<p><strong>注意</strong>: Hive利用Kerberos身份验证时，还需要其他配置步骤。</p>
+
+<h3 id="示例配置步骤"><a id="hive_cfg_server_proc"></a>示例配置步骤</h3>
+
+<p>执行以下过程为Hive配置PXF JDBC服务器：</p>
+
+<ol>
+<li><p>登录到您的Greenplum数据库主节点：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>选择JDBC服务器的名称。</p></li>
+<li><p>创建<code>$PXF_HOME/servers/&lt;server_name&gt;</code>目录。例如，使用以下命令创建名为<code>hivejdbc1</code>的JDBC服务器配置：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>mkdir <span class="nv">$PXF_CONF</span>/servers/hivejdbc1
+</code></pre></li>
+<li><p>将PXF JDBC服务器模板文件复制到服务器配置目录。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>cp <span class="nv">$PXF_CONF</span>/templates/jdbc-site.xml <span class="nv">$PXF_CONF</span>/servers/hivejdbc1/
+</code></pre></li>
+<li><p>在您选择的编辑器中打开<code>jdbc-site.xml</code>文件，并设置<code>jdbc.driver</code>和<code>jdbc.url</code>属性。确保指定您的Hive主机，端口和数据库名称：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.driver<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>org.apache.hive.jdbc.HiveDriver<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.url<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>jdbc:hive2://<span class="nt">&lt;hiveserver2_host&gt;</span>:<span class="nt">&lt;hiveserver2_port&gt;</span>/<span class="nt">&lt;database&gt;&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></li>
+<li><p>从Hadoop群集中获取<code>hive-site.xml</code>文件并检查该文件。</p></li>
+<li><p>如果<code>hive-site.xml</code>中的<code>hive.server2.authentication</code>属性设置为<code>NOSASL</code>，则HiveServer2不执行身份验证。将以下连接级别属性添加到<code>jdbc-site.xml</code>中：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.connection.property.auth<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>noSasl<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>或者，您可以选择将<code>;auth=noSasl</code>添加到<code>jdbc.url</code>中。</p></li>
+<li><p>如果<code>hive-site.xml</code>中的<code>hive.server2.authentication</code>属性设置为<code>NONE</code>，或者未指定该属性，则必须设置<code>jdbc.user</code>属性。设置<code>jdbc.user</code>属性的值取决于<code>hive-site.xml</code>中的<code>hive.server2.enable.doAs</code>模拟设置：</p>
+
+<ol>
+<li><p>如果将<code>hive.server2.enable.doAs</code>设置为<code>TRUE</code>（默认值），则Hive代表连接到Hive的用户运行Hadoop操作。<em>选择/执行以下选项之一</em>：</p>
+
+<p><strong>设置</strong><code>jdbc.user</code>以指定对Greenplum数据库访问的所有Hive数据具有读取权限的用户。例如，要连接到Hive并以<code>gpadmin</code>用户身份运行所有请求：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>jdbc.user<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>gpadmin<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p><strong>或</strong>，打开JDBC级用户模拟，以便PXF自动使用Greenplum数据库用户名连接到Hive：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>pxf.impersonation.jdbc<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>如果以这种方式启用JDBC模拟，则既不能指定<code>jdbc.user</code>也不能在<code>jdbc.url</code>中包含设置。</p></li>
+<li><p>如果需要，创建一个PXF用户配置文件来管理密码设置。</p></li>
+<li><p>如果将<code>hive.server2.enable.doAs</code>设置为<code>FALSE</code>，则Hive将以启动HiveServer2进程的用户（通常是用户<code>hive</code>）运行Hadoop操作。在这种情况下，PXF会忽略<code>jdbc.user</code>设置。</p></li>
+</ol></li>
+<li><p>如果<code>hive-site.xml</code>中的<code>hive.server2.authentication</code>属性设置为<code>KERBEROS</code>：</p>
+
+<ol>
+<li>确保按照<a href="/6-0/pxf/pxf_kerbhdfs.html">为安全HDFS配置PXF</a>中的说明为PXF启用了Kerberos身份验证。</li>
+<li>确保已将Hadoop集群配置为<code>default</code>PXF服务器。</li>
+<li><p>确保<code>$PXF_CONF/servers/default/core-site.xml</code>文件包含以下设置：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>hadoop.security.authentication<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>kerberos<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></li>
+<li><p>在<code>jdbc.url</code>中添加<code>saslQop</code>属性，并将其设置为与<code>hive-site.xml</code>中的<code>hive.server2.thrift.sasl.qop</code>属性设置匹配。例如，如果<code>hive-site.xml</code>文件包含以下属性设置：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>hive.server2.thrift.sasl.qop<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>auth-conf<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>你可以将<code>;saslQop=auth-conf</code>添加到<code>jdbc.url</code>。</p></li>
+<li><p>将HiverServer2 <code>principal</code>名称添加到<code>jdbc.url</code>中。例如：</p>
+
+<pre>
+jdbc:hive2://hs2server:10000/default;<b>principal=hive/hs2server@REALM</b>;saslQop=auth-conf
+</pre></li>
+<li><p>如果将<code>hive.server2.enable.doAs</code>设置为<code>TRUE</code>（默认值），则Hive代表连接到Hive的用户运行Hadoop操作。<em>选择/执行以下选项之一</em>：</p>
+
+<p><strong>不要</strong>指定任何其他属性。在这种情况下，PXF使用PXF Kerberos主体（通常是<code>gpadmin</code>）中提供的身份来启动所有Hadoop访问。</p>
+
+<p><strong>或</strong>，在<code>jdbc.url</code>中设置<code>hive.server2.proxy.user</code>属性，以指定对所有Hive数据具有读取权限的用户。例如，要连接到Hive并以名为<code>integration</code>的用户身份运行所有请求，请使用以下<code>jdbc.url</code>：</p>
+
+<pre>
+jdbc:hive2://hs2server:10000/default;principal=hive/hs2server@REALM;saslQop=auth-conf;<b>hive.server2.proxy.user=integration</b>
+</pre>
+
+<p><strong>或</strong>，在<code>jdbc-site.xml</code>文件中启用PXF JDBC模拟，以便PXF自动使用Greenplum数据库用户名连接到Hive。例如：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>pxf.impersonation.jdbc<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>如果启用JDBC模拟，则不得在<code>jdbc.url</code>中显式指定<code>hive.server2.proxy.user</code>。</p></li>
+<li><p>如果需要，创建一个PXF用户配置文件来管理密码设置。</p></li>
+<li><p>如果将<code>hive.server2.enable.doAs</code>设置为<code>FALSE</code>，则Hive将使用PXF Kerberos主体提供的身份（通常为<code>gpadmin</code>）运行Hadoop操作。</p></li>
+</ol></li>
+<li><p>保存更改并退出编辑器。</p></li>
+<li><p>使用<code>pxf cluster sync</code>命令将新的服务器配置复制到Greenplum数据库集群。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

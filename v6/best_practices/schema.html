@@ -1,0 +1,731 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      模式设计 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_schema has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    模式设计
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">模式设计</h1>
+
+  
+
+  <div class="body">
+<p class="shortdesc">这一节包含设计Greenplum数据库模式的最佳实践。</p>
+
+    <p class="p">Greenplum数据库是一种分析型的shared-nothing数据库，它和高度规范化的事务型SMP数据库有很大不同。
+      Greenplum数据库使用非规范化的模式设计会工作得最好，例如带有大型事实表和多个较小维度表的星形模式或者雪花
+      模式。</p>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="data_types">
+    <h2 class="title topictitle2">数据类型</h2>
+
+    <div class="body">
+      <div class="section">
+<h3 class="title sectiontitle">使用一致的数据类型</h3>
+        
+        <p class="p">为表之间的连接列使用相同的数据类型。如果数据类型不同，Greenplum数据库必须动态地转换其中一列的数据类型，
+          这样数据值才能被正确地比较。出于这种考虑，用户可能需要增加数据类型尺寸以便与其他常用对象进行连接操作。</p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">选择使用最小空间的数据类型</h3>
+        
+        <p class="p">通过选择最有效的数据类型存储数据，用户可以增加数据库容量并且改进查询执行能力。</p>
+
+        <p class="p">使用<samp class="ph codeph">TEXT</samp>或者<samp class="ph codeph">VARCHAR</samp>而不是<samp class="ph codeph">CHAR</samp>。
+          在这些字符数据类型之间没有性能差异，但使用<samp class="ph codeph">TEXT</samp>或<samp class="ph codeph">VARCHAR</samp>
+          能够降低使用的存储空间。</p>
+
+        <p class="p">使用能容纳数据的最小数字数据类型。对适合于<samp class="ph codeph">INT</samp>或<samp class="ph codeph">SMALLINT</samp>
+          的数据使用<samp class="ph codeph">BIGINT</samp>会浪费存储空间。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="storage_model">
+    <h2 class="title topictitle2">存储模型</h2>
+
+    <div class="body">
+      <p class="p">在创建表时，Greenplum数据库提供了一些存储选项。非常有必要了解何时使用堆存储或追加优化（AO）存储，
+        还有何时使用行存储或列存储。在堆和AO以及行和列之间做出正确的选择对于大型的事实表来说极其重要，但是
+        对于小的维度表就不那么重要。</p>
+
+      <div class="p">确定存储模型的最佳实践是：<ol class="ol" id="storage_model__ol_fvc_wdy_gr">
+        <li class="li">设计并且构建一种只插入的模型，在装载前截断每天的分区。</li>
+
+        <li class="li">对于大型的分区事实表，为不同的分区评估并且使用最优的存储选项。一种存储选项对于整个分区表并不总是
+          正确的。例如，有些分区可以是行存的而其他分区是列存的。</li>
+
+        <li class="li">在使用面向列的存储时，每一列在<em class="ph i">每个</em>Greenplum数据库Segment上都是一个单独的文件。对于具有
+          大量列的表，对经常访问的数据（热数据）考虑列存，对不经常访问的数据（冷数据）考虑面向行的存储。</li>
+
+        <li class="li">存储选项应该在分区级别设置。</li>
+
+        <li class="li">如果需要，压缩大型表以提升I/O性能并且在集群中腾出空间。</li>
+
+        </ol>
+</div>
+
+      <div class="section" id="storage_model__heap_vs_ao">
+<h3 class="title sectiontitle">堆存储还是追加优化存储</h3>
+        
+        <p class="p">堆存储是默认存储模型，并且是PostgreSQL为所有数据库表使用的模型。为频繁进行<samp class="ph codeph">UPDATE</samp>、
+          <samp class="ph codeph">DELETE</samp>以及单个<samp class="ph codeph">INSERT</samp>操作的表和分区使用堆存储。为将收到并发
+          <samp class="ph codeph">UPDATE</samp>、<samp class="ph codeph">DELETE</samp>以及<samp class="ph codeph">INSERT</samp>操作的表和分区
+          使用堆存储。</p>
+
+        <p class="p">为初始装载后就很少被更新并且后续只会以批操作执行插入的表和分区使用追加优化存储。绝不要在追加优化表上
+          执行单个<samp class="ph codeph">INSERT</samp>、<samp class="ph codeph">UPDATE</samp>或者<samp class="ph codeph">DELETE</samp>操作。
+          并发的批量<samp class="ph codeph">INSERT</samp>操作可以被执行但是<em class="ph i">绝不</em>执行并发的批量<samp class="ph codeph">UPDATE</samp>
+          或者<samp class="ph codeph">DELETE</samp>操作。</p>
+
+        <p class="p">追加优化表中被更新和删除的行所占用的空间不会像堆表那样被有效地回收及重用，因此追加优化存储模型不适合
+          于频繁更新的表。它的设计目标是用于一次装载、很少更新且频繁进行分析查询处理的大型表。</p>
+
+      </div>
+
+
+      <div class="section" id="storage_model__row_vs_column">
+<h3 class="title sectiontitle">行存还是列存</h3>
+        
+        <p class="p">按行存储数据是传统的存储数据库元组的方式。组成一行的列被连续地存储在磁盘上，因此整个行可以被以
+          单次I/O的形式从磁盘上读出。</p>
+
+        <p class="p">面向列的方式把列值在磁盘上存在一起。对每一列都会创建一个单独的文件。如果表被分区，则会对每个列
+          和分区的组合创建一个单独的文件。当一个查询在一个有很多列的列存表中访问少量列时，I/O代价会比行存
+          表要减少很多，因为不必从磁盘上检索没有被引用的列。</p>
+
+        <p class="p">对于包含要求更新并且频繁执行插入的事务的交易型负载，推荐使用面向行的存储。当对表的选择很宽
+          （即查询中需要单个行的很多列）时，应该使用面向行的存储。如果大部分列出现在查询的 <samp class="ph codeph">SELECT</samp>
+          列表或者<samp class="ph codeph">WHERE</samp>子句中，请使用行存储。对一般目的或者混合负载使用面向行的存储，
+          因为它能提供灵活性和性能的最佳组合。</p>
+
+        <p class="p">面向列的存储是为了读操作而优化，但它并未对写操作优化，一行的列值必须被写入到磁盘上的不同位置。
+          对于有很多列的大型表，当查询中只访问列的一个小集合时，列存表可以提供最优查询性能。</p>
+
+        <p class="p">列存的另一个好处是，同一种数据类型的值集合可以用比混合类型值集合更少的空间存储在一起，因此列存表
+          比行存表使用的磁盘空间更少（进而导致需要更少的磁盘I/O）。列存表的压缩效果也比行存表更好。</p>
+
+        <p class="p">对于数据仓库的分析型负载，其中的选择很窄或者在少量列上计算数据聚集，请使用面向列的存储。对于定期
+          更新单个列但不修改行中其他列的表，使用面向列的存储。在一个很宽的列存表中读取一个完整的行比在行存表
+          中读取同样一行需要更多时间。有必要理解每个列都是Greenplum数据库中<em class="ph i">每个</em>segment上一个单独
+          的物理文件。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_ebd_khx_z4">
+    <h2 class="title topictitle2">压缩</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库提供了多种选项以压缩追加优化表和分区。压缩数据允许在每次磁盘读取操作中读取更多的数据，
+        这样就能提高系统的I/O。最佳实践是在数据所在的层次设置列的压缩设置。</p>
+
+      <p class="p">注意被增加到分区表的新分区不会自动继承表级定义的压缩，在增加新分区时，用户必须<em class="ph i">明确地</em>定义压缩。</p>
+
+      <p class="p">Run-length encoding (RLE)压缩提供了最好的压缩级别。较高的压缩级别通常会使数据在磁盘上更加紧凑的存储，
+        但是写入时的数据压缩和读取时的数据解压会要求额外的时间和CPU周期。排序数据并且结合多种压缩选项可以实现
+        最高的压缩级别。</p>
+
+      <p class="p">绝不要对存储在压缩文件系统上的数据使用数据压缩。</p>
+
+      <p class="p">测试不同的压缩类型和排序方法以确定对用户特定数据的最佳压缩方式。例如，客户可以从zstd 8级或9级压缩开始，
+        然后调整参数达到最理想的结果。RLE压缩在存储文件中包含大量重复数据时工作效果最好。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="distribution">
+    <h2 class="title topictitle2">分布</h2>
+
+    <div class="body">
+      <p class="p">能让数据被均匀分布的最优分布方式是Greenplum数据库使用过程中的一个重要因素。在一个MPP无共享环境中，
+        一个查询的总体响应时间由所有segment的完成时间度量。整个系统的响应速度和最慢的segment正相关。如果
+        数据发生倾斜，拥有更多数据的segment将需要更多时间完成，因此每一个segment必须有大约相同数据量的行
+        并且执行大概相同量级的处理。如果一个Segment比其他segment有明显更多的数据要处理，将会导致糟糕的性能
+        和内存不足的情况。</p>
+
+      <div class="p">在决定分布策略时，考虑下列最佳实践：<ul class="ul" id="distribution__ul_nry_4lf_hr">
+        <li class="li">为所有的表明确定义一个分布列或者随机分布。不要使用默认分布。</li>
+
+        <li class="li">理想情况下，使用单个将数据在所有Segment之间均匀分布的列作为分布列。</li>
+
+        <li class="li">不要将查询的<samp class="ph codeph">WHERE</samp>子句中将要使用的列作为分布列。</li>
+
+        <li class="li">不要在日期或者时间戳上分布。</li>
+
+        <li class="li">分布键列数据应该含有唯一值或者非常高的可辨别性。</li>
+
+        <li class="li">如果单个列无法实现均匀分布，则使用多列分布键，但不要超过两列。额外的列值通常不会得到更均匀的分布，
+          而且它们要求额外的哈希处理时间。</li>
+
+        <li class="li">如果两个列的分布键无法实现数据的均匀分布，则使用随机分布。大部分情况中的多列分布键都要求移动操作
+          来连接表，因此它们对于随机分布来说没有优势。</li>
+
+        </ul>
+</div>
+
+      <p class="p">Greenplum数据库的随机分布不是循环的，因此无法保证每个segment上的记录数相等。随机分布通常会落在变化
+        低于10个百分点的目标范围中。</p>
+
+      <p class="p">在连接大型表时，最优分布非常关键。为了执行连接，匹配的行必须位于同一个segment上。如果数据没有按照同
+        一个连接列分布，其中一个表中需要的行会被动态重新分布到其他segment上。在一些情况下会执行一次广播移动而
+        不是执行重新分布移动，在这种情况下每个segment都会重新对数据进行哈希操作并根据哈希键将对应的行发送到
+        合适的segment上。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">本地（局内）连接</h3>
+        
+        <p class="p">使用在所有segment之间均匀分布表行并且达到本地连接的哈希分布能够提供可观的性能受益。当被连接的行在
+          同一个segment上时，很多处理都可以在该segment实例内完成。这被称为<em class="ph i">本地</em>或者<em class="ph i">局内</em>连接。
+          本地连接能最小化数据移动，每一个segment都独立于其他segment操作，不需要segment之间的网络流量或通信。</p>
+
+        <p class="p">为了在常被连接在一起的大型表上实现本地连接，请在相同的列上分布这些表。本地连接要求连接的两边都被按照
+          相同的列（以及相同的顺序）分布<em class="ph i">并且</em>连接表时使用分布子句中的所有列。分布列还必须是同样的数据类型
+          ——虽然一些具有不同数据类型的值看起来有相同的表现形式，但它们的存储方式不同并且会被哈希为不同的值，因此
+          它们会被存放在不同的segment上。</p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">数据倾斜</h3>
+        
+        <p class="p">数据倾斜通常是糟糕查询和内存不足的根源。倾斜的数据会影响扫描（读取）性能，但它还影响所有其他的执行操作，
+          例如操作执行的连接和分组。</p>
+
+        <p class="p">有必要<em class="ph i">验证</em>分布以<em class="ph i">确保</em>数据在初始装载之后被均匀地分布。在增量装载之后<em class="ph i">继续</em>验证分布
+          也同等重要。</p>
+
+        <p class="p">下列查询显示每个segment的行数以及与最大、最小行数之间的差异：</p>
+
+        <pre class="pre codeblock">SELECT 'Example Table' AS "Table Name", 
+    max(c) AS "Max Seg Rows", min(c) AS "Min Seg Rows", 
+    (max(c)-min(c))*100.0/max(c) AS "Percentage Difference Between Max &amp; Min" 
+FROM (SELECT count(*) c, gp_segment_id FROM facts GROUP BY 2) AS a;</pre>
+
+        <div class="p">
+<samp class="ph codeph">gp_toolkit</samp>模式有两个可以用来检查倾斜的视图。 
+          <ul class="ul" id="distribution__ul_cg4_1vp_y4">
+            <li class="li">
+<samp class="ph codeph">gp_toolkit.gp_skew_coefficients</samp>视图通过计算存储在每个segment上的数据
+              的变异系数（CV）来显示数据分布倾斜。<samp class="ph codeph">skccoeff</samp>列显示变异系数（CV），它由标准
+              偏差除以均值算出。它同时考虑均值和围绕一个数据序列的均值的变化性。值越低，情况就越好。值越高表明
+              数据倾斜越严重。</li>
+
+            <li class="li">
+<samp class="ph codeph">gp_toolkit.gp_skew_idle_fractions</samp>视图通过计算一次表扫描期间系统空闲的
+              百分数来显示数据分布倾斜，这种数据是计算性倾斜的指示器。<samp class="ph codeph">siffraction</samp>列显示在
+              一次表扫描期间系统处于空闲的百分数。这是一种非均匀数据分布或者查询处理倾斜的指示器。例如，值为0.1
+              表示10%的倾斜，值为0.5表示50%的倾斜等等。如果表的倾斜超过10%，就应该评估其分布策略。</li>
+
+          </ul>
+</div>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">处理倾斜</h3>
+        
+        <p class="p">当不成比例的数据量流入一个或者少数segment并被它们处理时，处理倾斜就会发生。它常常就是Greenplum数据库
+          性能和稳定性问题背后的罪人。它可能随着连接、排序、聚集和多种OLAP操作而发生。查询倾斜在查询执行时才会发生，
+          因此并不如数据倾斜那么容易检测，数据倾斜由于错误的分布键选择导致的非均匀数据分布而产生。数据倾斜存在于表
+          级别，因此它可以被很容易地检测到并且通过选择最优的分布键来避免。</p>
+
+        <p class="p">如果单个segment故障（也就是说并非主机上所有segment失效），可能就会是一个处理倾斜问题。当前确定处理倾斜
+          还是一种手工处理。首先查看溢出文件。如果有倾斜但还不足以导致溢出，这将不会成为一种性能问题。如果使用者确定
+          倾斜存在，接着查找对该倾斜负责的查询。下面是这个处理过程要使用的步骤和命令（请相应地更改传递给<samp class="ph codeph">gpssh</samp>
+          的主机文件名之类的东西）：</p>
+
+        <ol class="ol" id="distribution__ol_hqj_2mh_hr">
+          <li class="li">查找要在其中监控倾斜处理的数据库的OID：
+            <pre class="pre codeblock">SELECT oid, datname FROM pg_database;</pre>
+<div class="p">其输出的例子：
+              <pre class="pre codeblock">  oid  |  datname
+-------+-----------
+ 17088 | gpadmin
+ 10899 | postgres
+     1 | template1
+ 10898 | template0
+ 38817 | pws
+ 39682 | gpperfmon
+(6 rows)
+</pre>
+</div>
+</li>
+
+          <li class="li">运行一个<samp class="ph codeph">gpssh</samp>命令以在系统中所有的Segment节点间检查文件尺寸。把<samp class="ph codeph">&lt;OID&gt;</samp>
+            用前一个命令中得到的数据库OID替换：
+            <pre class="pre codeblock">[gpadmin@mdw kend]$ gpssh -f ~/hosts -e \
+    "du -b /data[1-2]/primary/gpseg*/base/<var class="keyword varname">&lt;OID&gt;</var>/pgsql_tmp/*" | \
+    grep -v "du -b" | sort | awk -F" " '{ arr[$1] = arr[$1] + $2 ; tot = tot + $2 }; END \
+    { for ( i in arr ) print "Segment node" i, arr[i], "bytes (" arr[i]/(1024**3)" GB)"; \
+    print "Total", tot, "bytes (" tot/(1024**3)" GB)" }' -</pre>
+<div class="p">其输出的例子：
+      <pre class="pre codeblock">Segment node[sdw1] 2443370457 bytes (2.27557 GB)
+Segment node[sdw2] 1766575328 bytes (1.64525 GB)
+Segment node[sdw3] 1761686551 bytes (1.6407 GB)
+Segment node[sdw4] 1780301617 bytes (1.65804 GB)
+Segment node[sdw5] 1742543599 bytes (1.62287 GB)
+Segment node[sdw6] 1830073754 bytes (1.70439 GB)
+Segment node[sdw7] 1767310099 bytes (1.64594 GB)
+Segment node[sdw8] 1765105802 bytes (1.64388 GB)
+Total 14856967207 bytes (13.8366 GB)</pre>
+</div>
+
+            <p class="p">如果在磁盘使用上有<em class="ph i">显著</em>且持续的差别，那么应该研究正在被执行的查询看看有没有倾斜（上面的输出
+              例子并未表明明显的倾斜）。在被监控的系统中，总是会有一点倾斜，但通常它们是<em class="ph i">短暂的</em>并且将会
+              <em class="ph i">持续很短</em>的时间。</p>
+</li>
+
+          <li class="li">如果显著且持久的倾斜出现，下一个任务就是确定导致问题的查询。
+            <p class="p">前一步的命令已经摘要了整个节点。这一次，要找到实际的segment目录。使用者可以从master或者通过登入
+              前一步确定的特定节点来做这些。下面是一个从master运行的例子。
+            </p>
+
+            <div class="p">这个例子专门地查找排序文件。并非所有的溢出文件或者倾斜情况都由排序文件导致，因此使用者将需要自定义
+              这个命令：<pre class="pre codeblock">$ gpssh -f ~/hosts -e 
+    "ls -l /data[1-2]/primary/gpseg*/base/19979/pgsql_tmp/*" 
+    | grep -i sort | awk '{sub(/base.*tmp\//, ".../", $10); print $1,$6,$10}' | sort -k2 -n</pre>
+</div>
+
+            <div class="p">下面是来自这个命令的输出：
+              <pre class="pre codeblock">[sdw1] 288718848
+      /data1/primary/gpseg2/.../pgsql_tmp_slice0_sort_17758_0001.0[sdw1] 291176448
+      /data2/primary/gpseg5/.../pgsql_tmp_slice0_sort_17764_0001.0[sdw8] 924581888
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0010.9[sdw4] 980582400
+      /data1/primary/gpseg18/.../pgsql_tmp_slice10_sort_29425_0001.0[sdw6] 986447872
+      /data2/primary/gpseg35/.../pgsql_tmp_slice10_sort_29602_0001.0...[sdw5] 999620608
+      /data1/primary/gpseg26/.../pgsql_tmp_slice10_sort_28637_0001.0[sdw2] 999751680
+      /data2/primary/gpseg9/.../pgsql_tmp_slice10_sort_3969_0001.0[sdw3] 1000112128
+      /data1/primary/gpseg13/.../pgsql_tmp_slice10_sort_24723_0001.0[sdw5] 1000898560
+      /data2/primary/gpseg28/.../pgsql_tmp_slice10_sort_28641_0001.0...[sdw8] 1008009216
+      /data1/primary/gpseg44/.../pgsql_tmp_slice10_sort_15671_0001.0[sdw5] 1008566272
+      /data1/primary/gpseg24/.../pgsql_tmp_slice10_sort_28633_0001.0[sdw4] 1009451008
+      /data1/primary/gpseg19/.../pgsql_tmp_slice10_sort_29427_0001.0[sdw7] 1011187712
+      /data1/primary/gpseg37/.../pgsql_tmp_slice10_sort_18526_0001.0[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0001.0[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0002.1[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0003.2[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0004.3[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0005.4[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0006.5[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0007.6[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0008.7[sdw8] 1573741824
+      /data2/primary/gpseg45/.../pgsql_tmp_slice10_sort_15673_0009.8</pre>
+</div>
+
+            <p class="p">扫描这一输出将会揭示出主机<samp class="ph codeph">sdw8</samp>上的名为<samp class="ph codeph">gpseg45</samp>
+              的segment是罪魁祸首。</p>
+</li>
+
+          <li class="li">用<samp class="ph codeph">ssh</samp>登入导致问题的节点并且成为root。使用<samp class="ph codeph">lsof</samp>命令查找
+            拥有排序文件的进程的PID：
+            <pre class="pre codeblock">[root@sdw8 ~]# lsof /data2/primary/gpseg45/base/19979/pgsql_tmp/pgsql_tmp_slice10_sort_15673_0002.1
+COMMAND  PID    USER    FD   TYPE DEVICE  SIZE        NODE        NAME
+postgres 15673  gpadmin 11u  REG  8,48    1073741824  64424546751 /data2/primary/gpseg45/base/19979/pgsql_tmp/pgsql_tmp_slice10_sort_15673_0002.1</pre>
+The
+            PID <samp class="ph codeph">15673</samp>也是文件名的一部分，但并不总是这样。</li>
+
+          <li class="li">用该PID作为参数运行<samp class="ph codeph">ps</samp>命令以确定数据库和连接信息：
+            <pre class="pre codeblock">[root@sdw8 ~]# ps -eaf | grep 15673
+gpadmin  15673 27471 28 12:05 ?        00:12:59 postgres: port 40003, sbaskin bdw
+        172.28.12.250(21813) con699238 seg45 cmd32 slice10 MPPEXEC SELECT
+root     29622 29566  0 12:50 pts/16   00:00:00 grep 15673</pre>
+
+          </li>
+
+          <li class="li">在master上，在<samp class="ph codeph">pg_log</samp>日志文件中查找上一个命令中的用户（<samp class="ph codeph">sbaskin</samp>）、
+            连接（<samp class="ph codeph">con699238</samp>）以及命令编号（<samp class="ph codeph">cmd32</samp>）。日志文件中含有这三个
+            值的行<em class="ph i">应该</em>是包含该查询的行，但偶尔命令编号可能会略有不同。例如，<samp class="ph codeph">ps</samp>输出可能
+            显示<samp class="ph codeph">cmd32</samp>，但在日志文件中是<samp class="ph codeph">cmd34</samp>。如果该查询仍在运行，该用户
+            和连接的最后一个查询就是导致该问题的原因。
+          </li>
+
+        </ol>
+
+        <p class="p">对于处理倾斜的纠正几乎都是重写该查询。创建临时表可以消除倾斜。临时表可以被随机地分布以强制一种两阶段的聚集。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_fmc_lx1_3r">
+    <h2 class="title topictitle2">分区</h2>
+
+    <div class="body">
+      <p class="p">一种好的分区策略可以通过只读取满足查询所需的分区来降低被扫描的数据量。</p>
+
+      <p class="p">每个分区在<em class="ph i">每一个</em>segment上都是一个单独的物理文件或文件集合（这种情况出现在列寸表上）。就像在
+        宽列存表中读取一整行比从堆表读取同一行需要更多时间一样，<em class="ph i">在分区表中读取所有分区比从非分区表中读取相同
+          的数据要求更多的时间。</em></p>
+
+      <div class="p">下面是分区的最佳实践：<ul class="ul" id="topic_fmc_lx1_3r__ul_wfh_bbb_3r">
+        <li class="li">只分区大型表，不要分区小型表。</li>
+
+        <li class="li">
+<em class="ph i">仅</em>当可以基于查询条件实现分区消除（分区裁剪）并且可以基于查询谓词对表分区来完成分区消除时
+          才在大型表上使用分区。无论何时，优先使用范围分区而不是列表分区。</li>
+
+        <li class="li">只有当查询中where选择条件包含表的分区列使用不可变操作符（例如<samp class="ph codeph">=</samp>、<samp class="ph codeph">&lt;</samp>、
+          <samp class="ph codeph">&lt;= </samp> 、<samp class="ph codeph">&gt;</samp>、<samp class="ph codeph">&gt;=</samp>以及<samp class="ph codeph">&lt;&gt;</samp>）
+          时，查询规划器才能有选择地扫描分区表。</li>
+
+        <li class="li">选择性扫描会识别<samp class="ph codeph">STABLE</samp>和<samp class="ph codeph">IMMUTABLE</samp>函数，但是不识别查询中的
+          <samp class="ph codeph">VOLATILE</samp>函数。例如，<pre class="pre codeblock">date &gt; CURRENT_DATE</pre>
+之类的<samp class="ph codeph">WHERE</samp>
+          子句会导致查询规划器选择性地扫描分区表，但<pre class="pre codeblock">time &gt; TIMEOFDAY</pre>
+之类的<samp class="ph codeph">WHERE</samp>
+          子句却不行。有必要通过<samp class="ph codeph">EXPLAIN</samp>检查执行计划来验证查询是否选择性地扫描分区表（分区被裁剪）。</li>
+
+        <li class="li">不要使用默认分区。默认分区总是会被扫描，但是更重要的是，在很多情况下它们会被填得太满导致糟糕的性能。</li>
+
+        <li class="li">
+<em class="ph i">绝不</em>在相同的列上对表分区和分布。</li>
+
+        <li class="li">不要使用多级分区。虽然支持子分区，但并不推荐使用这种特性，因为通常子分区包含很少的数据或者不包含数据。
+          分区或者子分区数量增加时性能也增加简直就是天方夜谭。维护很多分区和子分区的管理工作将会压过得到的性能收益。
+          为了性能、可扩展性以及可管理性，请在分区扫描性能和总体分区数量之间做出平衡。</li>
+
+        <li class="li">谨防对列式存储使用太多分区。</li>
+
+        <li class="li">考虑负载并发性以及为所有并发查询打开并且扫描的平均分区数。</li>
+
+        </ul>
+</div>
+
+      <div class="section">
+<h3 class="title sectiontitle">分区和列存文件的数量</h3>
+        
+        <p class="p">Greenplum数据库支持的文件数的唯一硬限制是操作系统的打开文件限制。但是，有必要考虑集群中文件的总数、
+          每个segment上的文件数以及一台主机上的文件总数。在一个MPP无共享环境中，每一个节点都独立于其他节点操作。
+          每个节点受到其磁盘、CPU和内存的约束。CPU和I/O约束对Greenplum数据库并不常见，但内存常常是一种限制因素，
+          因为查询执行模型会在内存中优化查询性能。</p>
+
+        <p class="p">每个segment上的最优文件数也基于该节点上的segment数量、集群的大小、SQL访问、并发、负载和倾斜等因素
+          而变化。通常在每台主机上有六到八个segment，大的集群中每台主机可能有很少的segment。当使用分区和列存时，
+          <em class="ph i">更重要</em>的是考虑每个segment的文件数和节点上的文件总数。</p>
+
+        <p class="p">例子 DCA V2 每节点64GB内存</p>
+
+        <ul class="ul" id="topic_fmc_lx1_3r__ul_nyy_tgb_3r">
+          <li class="li">节点数：16</li>
+
+          <li class="li">每节点的segment数：8</li>
+
+          <li class="li">每个segment的平均文件数：10,000</li>
+
+        </ul>
+
+        <p class="p">每节点上的文件总数是<samp class="ph codeph">8*10,000 = 80,000</samp>，而该集群的文件总数是
+          <samp class="ph codeph">8*16*10,000 = 1,280,000</samp>。随着分区数和列数的增加，文件数会快速增加。</p>
+
+        <p class="p">作为最佳实践最推荐的设置，请把每节点的文件总数限制为低于100,000。如上一个例子所示，每个
+          segment的最优文件数和每节点的文件总数取决于节点的硬件配置（主要是内存）、集群的大小、SQL
+          访问、并发性、负载以及倾斜。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="indexes">
+    <h2 class="title topictitle2">索引</h2>
+
+
+    <div class="body">
+      <p class="p">在Greenplum数据库中通常不需要索引。大部分分析型查询会在大体量数据上操作，而索引是用于从多行数据中定位
+        某一行或某几行。在Greenplum数据库中，顺序扫描是一种读取数据的有效方法，因为每个segment都含有数据同等
+        大小的一部分并且所有的segment都并行工作以读取数据。</p>
+
+      <p class="p">如果增加索引不能获得性能提升，马上删掉它。验证您创建的每个索引都被优化器使用到。</p>
+
+      <p class="p">对于具有高选择性的查询，索引可能会提升查询性能。对于选择性查询所要求的高基数表，在一个列式表的单列上
+        创建用于钻透目的的索引。</p>
+
+      <p class="p">不要在频繁更新的列上创建索引。在频繁被更新的列上创建索引会增加更新时所需的写次数。</p>
+
+      <p class="p">只有当表达式被频繁地使用在查询中时，才应该在表达式上建立索引。</p>
+
+      <p class="p">带有谓词的索引会创建一个部分索引，它可以被用来从大型表中选择少量行。</p>
+
+      <p class="p">避免重叠的索引。具有相同前导列的索引是冗余的。</p>
+
+      <p class="p">对于返回一个定向行集合的查询来说，索引能够提高在压缩追加优化表上的性能。对于压缩数据，采用索引访问
+        方法意味着只有必要的页面会被解压缩。</p>
+
+      <p class="p">创建有选择性的B-树索引。索引选择度是一列中的唯一值数量除以表中的行数。例如，如果一个表有1000行并且
+        有一列中有800个唯一值，那么该索引的选择度就是0.8，这被认为是中不错的索引使用情形。</p>
+
+      <p class="p">总是在向表中装载数据前删除索引。这样装载的运行速度将会比在带有索引的表中装载数据快一个数量级。
+        在装载之后，重新创建索引。</p>
+
+      <p class="p">位图索引适合于查询但不适合于更新。当列具有较低的基数（100到100,000个唯一值）时位图索引表现得最好。
+        不要为唯一列、基数非常高或者非常低的数据使用位图索引。不要为事务性负载使用位图索引。</p>
+
+      <p class="p">通常，不要索引分区表。如果需要索引，索引列必须不同于分区列。索引分区表的一个好处是因为当B-树尺寸增长时
+        其性能呈指数下降，在分区表上创建索引可以得到很多较小的B-树，其性能比未分区表上的B-树更好。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="column_sequence">
+    <h2 class="title topictitle2">列顺序与字节对齐</h2>
+
+    <div class="body">
+
+      <div class="p">为了最优性能，请布置表列以实现数据类型的字节对齐。以下面的顺序布置堆表中的列：
+        <ol class="ol">
+          <li class="li">分布列和分区列</li>
+
+          <li class="li">固定的数字类型</li>
+
+          <li class="li">可变的数据类型</li>
+
+        </ol>
+</div>
+
+
+
+      <p class="p">从大到小布置数据类型，这样<samp class="ph codeph">BIGINT</samp>和<samp class="ph codeph">TIMESTAMP</samp>会在<samp class="ph codeph">INT</samp>
+        和<samp class="ph codeph">DATE</samp>的前面，而所有这些类型都在<samp class="ph codeph">TEXT</samp>、<samp class="ph codeph">VARCHAR</samp>或者
+        <samp class="ph codeph">NUMERIC(x,y)</samp>之前。例如，首先是8字节类型（<samp class="ph codeph">BIGINT</samp>、<samp class="ph codeph">TIMESTAMP</samp>），
+        接着是4字节类型（<samp class="ph codeph">INT</samp>、<samp class="ph codeph">DATE</samp>），再后面是2字节类型（<samp class="ph codeph">SMALLINT</samp>），
+        而可变数据类型在最后（<samp class="ph codeph">VARCHAR</samp>）。</p>
+
+      <p class="p">不要以这种顺序定义列：</p>
+
+      <p class="p"><samp class="ph codeph">Int</samp>, <samp class="ph codeph">Bigint</samp>, <samp class="ph codeph">Timestamp</samp>,
+          <samp class="ph codeph">Bigint</samp>, <samp class="ph codeph">Timestamp</samp>, <samp class="ph codeph">Int</samp> （分布键）
+        , <samp class="ph codeph">Date</samp>（分区键）, <samp class="ph codeph">Bigint</samp>,
+          <samp class="ph codeph">Smallint</samp></p>
+
+      <p class="p">以这种顺序定义列：</p>
+
+      <p class="p"><samp class="ph codeph">Int</samp>（分布键）, <samp class="ph codeph">Date</samp>（分区键）,
+          <samp class="ph codeph">Bigint</samp>, <samp class="ph codeph">Bigint</samp>, <samp class="ph codeph">Timestamp</samp>,
+          <samp class="ph codeph">Bigint</samp>, <samp class="ph codeph">Timestamp</samp>, <samp class="ph codeph">Int</samp>,
+          <samp class="ph codeph">Smallint</samp></p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

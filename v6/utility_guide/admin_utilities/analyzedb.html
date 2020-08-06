@@ -1,0 +1,807 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      analyzedb |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_analyzedb has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    analyzedb
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">analyzedb</h1>
+
+  <div class="body">
+    <p class="p">一个提供对表的递增和并发<samp class="ph codeph">ANALYZE</samp>操作的工具。<span class="ph">对追加优化表来说，
+      <span class="keyword cmdname">analyzedb</span>只在统计数据不是最新的时候才更新统计信息。</span>
+    </p>
+
+    <div class="section">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock"><strong class="ph b">analyzedb</strong> <strong class="ph b">-d</strong> <var class="keyword varname">dbname</var>
+        { <strong class="ph b">-s</strong> <var class="keyword varname">schema</var>  | 
+        { <strong class="ph b">-t</strong> <var class="keyword varname">schema</var>.<var class="keyword varname">table</var> 
+        [ <strong class="ph b">-i</strong> <var class="keyword varname">col1</var>[, <var class="keyword varname">col2</var>, ...] | 
+        <strong class="ph b">-x</strong> <var class="keyword varname">col1</var>[, <var class="keyword varname">col2</var>, ...] ] } |
+        { <strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">config-file</var> }
+        [ <strong class="ph b">-l</strong> | <strong class="ph b">--list</strong> ]
+        [ <strong class="ph b">--gen_profile_only</strong> ]   
+        [ <strong class="ph b">-p</strong> <var class="keyword varname">parallel-level</var> ]
+        [ <strong class="ph b">--full</strong> ]
+        [ <strong class="ph b">-v</strong> | <strong class="ph b">--verbose</strong> ]
+        [ <strong class="ph b">--debug</strong> ]
+        [ <strong class="ph b">-a</strong> ]
+        
+        <strong class="ph b">analyzedb</strong> { <strong class="ph b">--clean_last</strong> | <strong class="ph b">--clean_all</strong> }
+        <strong class="ph b">analyzedb</strong> <strong class="ph b">--version</strong>
+        <strong class="ph b">analyzedb</strong> { <strong class="ph b">-?</strong> | <strong class="ph b">-h</strong> | <strong class="ph b">--help</strong> }</pre>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p"><span class="keyword cmdname">analyzedb</span>工具递增并发地更新Greenplum数据库中指定表的表数据的统计信息。
+      </p>
+
+      <p class="p">在执行<samp class="ph codeph"><a class="xref" href="../../ref_guide/sql_commands/ANALYZE.html">ANALYZE</a></samp>操作时，<span class="keyword cmdname">analyzedb</span>创建了表元数据的快照并将它
+        存储在Master主机的磁盘上。只有在表格被修改的情况下才执行<samp class="ph codeph">ANALYZE</samp>操作。如果
+        表或者分区自从上次分区依赖没有被修改过，则<span class="keyword cmdname">analyzedb</span>会自动跳过表或分区，
+        因为它已经包含了最新的统计信息。
+      </p>
+
+      <ul class="ul" id="topic1__ul_vgw_25c_3r">
+        <li class="li">对追加优化表来说，<span class="keyword cmdname">analyzedb</span>如果统计数据数据不是最新的，则会逐渐分析统计数据。
+          例如，如果表数据在表的统计数据收集之后改变了。如果没有该表的统计数据，则收集统计数据。
+        </li>
+
+        <li class="li">对于堆表，统计信息总是被更新。</li>
+
+      </ul>
+
+      <p class="p">即使表格统计信息是新的，也可以指定<samp class="ph codeph">--full</samp>选项来更新追加优化表的统计信息。
+      </p>
+
+      <p dir="ltr" class="p">默认情况下，<span class="keyword cmdname">analyzedb</span>最多创建5个并发会话来并行分析表。
+        对于每个会话，<span class="keyword cmdname">analyzedb</span>发出一个<span class="keyword cmdname">ANALYZE</span>命令到
+        数据库并指定不同的表名。<samp class="ph codeph">-p</samp>选项控制最大并发会话数。
+      </p>
+
+      <div class="sectiondiv">
+        <strong class="ph b">分区追加优化表</strong>
+        <p class="p">对于一个分区的追加优化表<span class="keyword cmdname">analyzedb</span>检查分区表的根分区和叶子分区。
+          如果需要，该工具将更新非当前分区和根分区的统计信息。
+        </p>
+
+        <p dir="ltr" class="p">GPORCA需要根分区统计信息。默认情况下，如果统计信息不存在，那么<span class="keyword cmdname">analyzedb</span>
+          工具将收集分区表的根分区的统计信息。如果任何叶子节点有陈旧的统计信息，那么,<span class="keyword cmdname">analyzedb</span>
+          也会刷新根分区的统计信息。刷新根节点的统计信息的成本和分析一个叶子分区相当。用户可以指定
+          <samp class="ph codeph">--skip_root_stats</samp>来禁用分区表的根分区的统计信息的收集。
+        </p>
+
+      </div>
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">注意</h2>
+      <p class="p">如果表已经由DML或DDL命令（包括<span class="keyword cmdname">INSERT</span>, <span class="keyword cmdname">DELETE</span>, <span class="keyword cmdname">UPDATE</span>,
+        <span class="keyword cmdname">CREATE TABLE</span>, <span class="keyword cmdname">ALTER TABLE</span> 和
+        <span class="keyword cmdname">TRUNCATE</span>）修改，则<span class="keyword cmdname">analyzedb</span>工具会更新追加优化表的统计信息。
+        该工具通过比较表的元数据和之前<span class="keyword cmdname">analyzedb</span>操作中所保存的快照目录元数据来确定表是否已经被修改。表元数据的快照
+        作为状态文件存储在Greenplum数据库主数据目录中的<samp class="ph codeph">db_analyze/&lt;<var class="keyword varname">db_name</var>&gt;/&lt;<var class="keyword varname">timestamp</var>&gt;</samp>
+        目录中。
+      </p>
+该工具不会自动删除旧的快照信息。时间久了，这些快照会占用大量的磁盘空间。为了回收磁盘空间，您可以
+      保留最近的快照信息，将旧的快照删掉。
+      用户可以指定<samp class="ph codeph">--clean_last</samp>或者<samp class="ph codeph">--clean_all</samp>选项来删除由
+      <span class="keyword cmdname">analyzedb</span>生成的状态文件。
+      <p class="p">如果用户未指定表，一组表或模式，那么<span class="keyword cmdname">analyzedb</span>工具会根据需要收集所有系统
+        目录表和用户定义的表中的统计信息。
+      </p>
+
+      <p class="p">外部表不受<span class="keyword cmdname">analyzedb</span>的影响。</p>
+
+      <p class="p">包含空格的表名是不支持的。</p>
+
+      <p class="p">在表上运行<samp class="ph codeph">ANALYZE</samp>命令，（不使用<samp class="ph codeph">analyzedb</samp>工具），不会更新表的元数据，
+        <samp class="ph codeph">analyzedb</samp>工具通常使用这些元数据通常来确定表的统计信息是否是最新的表的元数据。
+      </p>
+</div>
+
+    <div class="section">
+<h2 class="title sectiontitle">选项</h2>
+      
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">--clean_last</dt>
+
+          <dd class="dd pd">删除由上一次<span class="keyword cmdname">analyzedb</span>操作生成的状态文件。所有的其他选项，
+            除了<span class="keyword cmdname">-d</span>都会被忽略。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--clean_all</dt>
+
+          <dd class="dd pd">删除由<span class="keyword cmdname">analyzedb</span>生成的所有状态文件。
+            所有其他操作除了<span class="keyword cmdname">-d</span>都会被忽略。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-d <var class="keyword varname">dbname</var>
+</dt>
+
+          <dd class="dd pd">指定包含要分析的表的数据库的名称。如果未指定此选项，则从环境变量<samp class="ph codeph">PGDATABASE</samp>
+            中读取数据库名称。如果未设置<samp class="ph codeph">PGDATABASE</samp>，则使用连接指定的用户名。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"> --debug</dt>
+
+          <dd class="dd pd">如果指定，则将日志级别设置为调试。在执行命令期间，调试级别信息被写入日志文件和命令行。
+            这些信息包括公用程序执行的命令和每个<samp class="ph codeph">ANALYZE</samp>操作的持续时间。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-f <var class="keyword varname">config-file</var> | --file <var class="keyword varname">config-file</var>
+</dt>
+
+          <dd class="dd pd">包含要分析的表的列表的文本文件。可以指定当前目录的相对文件路径。
+          </dd>
+
+          <dd class="dd pd">该文件每行列出一个表。表名必须使用模式名称进行限定。或者，可以使用<span class="keyword cmdname">-i</span>或
+            <span class="keyword cmdname">-x</span>来指定列名。文件中国不允许其他选项。其他诸如<samp class="ph codeph">--full</samp>
+            的选项必须在命令行中指定。
+          </dd>
+
+          <dd class="dd pd">只有一个选项可用于指定要分析的文件：<samp class="ph codeph">-f</samp>或<samp class="ph codeph">--file</samp>, <samp class="ph codeph">-t</samp> ,或
+            <samp class="ph codeph">-s</samp>。</dd>
+
+          <dd class="dd pd">当在多个表上执行<span class="keyword cmdname">ANALYZE</span>操作时候，<span class="keyword cmdname">analyzedb</span>
+            会创建并行会话来并行分析表。该<samp class="ph codeph">-p</samp>选项控制并发会话的最大数目。
+          </dd>
+
+          <dd class="dd pd">在下面的示例中，第一行施加了一个<span class="keyword cmdname">ANALYZE</span>操作对表<samp class="ph codeph">public.nation</samp>，
+            第二行仅对<samp class="ph codeph">public.lineitem</samp>表的<samp class="ph codeph">l_shipdate</samp>和
+            <samp class="ph codeph">l_receiptdate</samp>列施加了一个<span class="keyword cmdname">ANALYZE</span>操作。
+            <pre class="pre codeblock">public.nation
+              public.lineitem -i l_shipdate, l_receiptdate </pre>
+</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--full</dt>
+
+          <dd class="dd pd">对所有指定的表执行<span class="keyword cmdname">ANALYZE</span>操作。即使统计数据是最新的，也会执行该操作。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">--gen_profile_only</dt>
+
+          <dd class="dd pd">不执行<samp class="ph codeph">ANALYZE</samp>操作，但是更新<samp class="ph codeph">analyzedb</samp>收集的表统计信息快照。
+            如果有其他选项制定了表或者模式名，该工具仅更新指定表的快照信息。</dd>
+
+          <dd class="dd pd">如果<samp class="ph codeph">ANALYZE</samp>命令在数据库表上运行并且您想更新<samp class="ph codeph">analyzedb</samp>该表
+            的快照信息，请指定该选项。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-i <var class="keyword varname">col1</var>, <var class="keyword varname">col2</var>, ...</dt>
+
+          <dd class="dd pd">可选的，必须用<span class="keyword cmdname">-t</span>选项指定。对于使用<span class="keyword cmdname">-t</span>选项指定的表，
+            仅收集指定列的统计信息。
+          </dd>
+
+          <dd class="dd pd">只能指定<span class="keyword cmdname">-i</span>, 或<span class="keyword cmdname">-x</span>。这两个选项不能同时指定。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-l | --list</dt>
+
+          <dd class="dd pd">列出将用指定选项进行分析的表格。<span class="keyword cmdname">ANALYZE</span>操作不执行。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-p <var class="keyword varname">parallel-level</var>
+</dt>
+
+          <dd class="dd pd">并行分析的表的数量。<var class="keyword varname">并行级别</var>可以是1到10之间的整数，包含首尾值。默认值是5.
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-s <var class="keyword varname">schema</var>
+</dt>
+
+          <dd class="dd pd">指定要分析的模式。模式中的所有表将被分析。只能在命令行中指定一个模式名称。
+          </dd>
+
+          <dd class="dd pd">只有一个选项可用于指定要分析的文件：<samp class="ph codeph">-f</samp>或<samp class="ph codeph">--file</samp>, <samp class="ph codeph">-t</samp>,或
+            <samp class="ph codeph">-s</samp>。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-t <var class="keyword varname">schema</var>.<var class="keyword varname">table</var>
+</dt>
+
+          <dd class="dd pd">只收集<var class="keyword varname">schema</var>.<var class="keyword varname">table</var>的统计信息。
+            表名称必须使用模式名称进行限定。在命令行上只能指定一个表名。用户可以指定<samp class="ph codeph">-f</samp>
+            选项来指定文件中的多个表，或者指定<samp class="ph codeph">-s</samp>选项来指定模式中的所有表。
+          </dd>
+
+          <dd class="dd pd">只有其中一个选项可用于指定要分析的文件:<samp class="ph codeph">-f</samp>或<samp class="ph codeph">--file</samp>, <samp class="ph codeph">-t</samp>，或
+            <samp class="ph codeph">-s</samp>。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-x <var class="keyword varname">col1</var>, <var class="keyword varname">col2</var>, ...</dt>
+
+          <dd class="dd pd">可选的，必须用<span class="keyword cmdname">-t</span>选项来指定。对于使用<span class="keyword cmdname">-t</span>选项指定的表，
+            请排除指定列上的收集的统计信息。统计信息只收集在未列出的列上。
+          </dd>
+
+          <dd class="dd pd">只能指定<span class="keyword cmdname">-i</span>, 或<span class="keyword cmdname">-x</span>。这两个选项不能同时指定。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-a</dt>
+
+          <dd class="dd pd">静默模式，不提示用户确认。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-h | -? | --help </dt>
+
+          <dd class="dd pd">展示在线帮助。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"> -v | --verbose</dt>
+
+          <dd class="dd pd">如果指定，则将日志记录级别设置为verbose，以在命令执行过程中向日志文件和命令行写入附加信息。
+            这些信息包括所有要分析的表的列表（包括分区表的子叶子分区）。输出还包括每个<samp class="ph codeph">ANALYZE</samp>
+            操作操作的持续时间。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">--version</dt>
+
+          <dd class="dd pd">显示此工具的版本。</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">示例</h2>
+      
+      <p class="p">仅收集一组表格列的统计信息的示例。在数据库<samp class="ph codeph">mytest</samp>中，收集表
+        <samp class="ph codeph">public.orders</samp>上的<samp class="ph codeph">shipdate</samp>和<samp class="ph codeph">receiptdate</samp>
+        列的统计信息：</p>
+
+      <pre class="pre codeblock">analyzedb -d mytest -t public.orders -i shipdate, receiptdate</pre>
+
+      <p class="p">一个在表上收集统计信息并排除一组列的示例。在数据库<samp class="ph codeph">mytest</samp>中，收集表<samp class="ph codeph">public.foo</samp>
+        的统计数据，并且不收集<samp class="ph codeph">bar</samp>和<samp class="ph codeph">test2</samp>列的统计信息。
+      </p>
+
+      <pre class="pre codeblock">analyzedb -d mytest -t public.foo -x bar, test2</pre>
+
+      <p class="p">指定包含表列表的文件的示例。此命令收集名为<samp class="ph codeph">mytest</samp>的数据库中文件
+        <samp class="ph codeph">analyze-tables</samp>列出的表的统计信息。</p>
+
+      <pre class="pre codeblock">analyzedb -d mytest -f analyze-tables</pre>
+
+      <p class="p">如果用户未指定表，一组表或模式，则<span class="keyword cmdname">analyzedb</span>实用程序会根据需要收集所有目录表
+        和用户定义的表上的统计信息。此命令刷新数据库<samp class="ph codeph">mytest</samp>中的系统目录表和用户定义的表上
+        的表统计信息。</p>
+
+      <pre class="pre codeblock">analyzedb -d mytest</pre>
+
+      <div class="p">用户可以创建一个PL/Python函数来运行<samp class="ph codeph">analyzedb</samp>程序作为Greenplum的数据库函数。
+        这个例子<samp class="ph codeph">CREATE FUNCTION</samp>命令创建一个用户定义的PL/ Python函数，运行
+        <samp class="ph codeph">analyzedb</samp>工具并在命令行上显示输出。指定<samp class="ph codeph">analyzedb</samp>选项作为函数参数。
+        <pre class="pre codeblock">CREATE OR REPLACE FUNCTION analyzedb(params TEXT)
+          RETURNS VOID AS
+          $BODY$
+          import subprocess
+          cmd = ['analyzedb', '-a' ] + params.split()
+          p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+          
+          # verbose output of process
+          for line in iter(p.stdout.readline, ''):
+          plpy.info(line);
+          
+          p.wait()
+          $BODY$
+          LANGUAGE plpythonu VOLATILE;</pre>
+</div>
+
+      <p class="p">当这个<samp class="ph codeph">SELECT</samp>命令由gpadmin用户运行时，该<samp class="ph codeph">analyzedb</samp>工具对
+        数据库<samp class="ph codeph">mytest</samp>中的<samp class="ph codeph">public.mytable</samp>表执行一个分析操作。
+      </p>
+
+      <pre class="pre codeblock">SELECT analyzedb('-d mytest -t public.mytable') ;</pre>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 注意：要创建一个PL/Python函数，该PL/Python程序语言必须在数据库中注册。例如，以管理员运行的
+        <samp class="ph codeph">CREATE LANGUAGE</samp>命令将吧PL/Python注册成不受信任的语言：
+        <pre class="pre codeblock">CREATE LANGUAGE plpythonu;</pre>
+</div>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">另见</h2>
+      
+      <p class="p">
+        
+        <span class="ph">
+          <samp class="ph codeph">
+            <a class="xref" href="../../ref_guide/sql_commands/ANALYZE.html#topic1">ANALYZE</a>
+          </samp>
+        </span>
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

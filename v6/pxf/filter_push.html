@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      PXF谓词下推 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_filter_push has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    PXF谓词下推
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+根据一项或多项贡献者许可协议获得了Apache Software Foundation(ASF)的许可。有关版权拥有权的其他信息，请参见随本作品分发的NOTICE文件。ASF根据Apache许可2.0版(“许可”)向您授予此文件的许可;除非遵守许可，否则不得使用此文件。您可以在以下位置获得许可的副本：
+  http://www.apache.org/licenses/LICENSE-2.0
+除非适用法律要求或书面同意，否则根据“许可”分发的软件将按“原样”分发，没有任何明示或暗示的保证或条件。请参阅许可证，以了解许可证下管理权限和限制的特定语言。
+-->
+
+<p>PXF支持谓词下推。启用谓词下推时,可以提取SELECT查询中WHERE子句的约束并将其传递到外部数据源进行过滤。此过程可以提高查询性能，还可以减少传输到Greenplum数据库的数据量。</p>
+
+<p>通过设置<code>gp_external_enable_filter_pushdown</code>服务器配置参数，可以为所有外部表协议(包括pxf)启用或禁用谓词下推。此配置参数的默认值为on;将其设置为关闭以禁用谓词下推。例如：</p>
+<pre class="highlight sql"><code><span class="k">SHOW</span> <span class="n">gp_external_enable_filter_pushdown</span><span class="p">;</span>
+<span class="k">SET</span> <span class="n">gp_external_enable_filter_pushdown</span> <span class="k">TO</span> <span class="s1">'on'</span><span class="p">;</span>
+</code></pre>
+
+<p><strong>Note:</strong> 某些外部数据源不支持谓词下推。此外，某些数据类型或运算符可能不支持谓词下推。如果查询访问不支持谓词下推的数据源，则执行查询时不进行谓词下推(数据传输到Greenplum数据库后进行过滤)</p>
+
+<p>PXF使用不同的连接器访问数据源，谓词下推支持由特定的连接器实现方式决定。以下PXF连接器支持谓词下推：</p>
+
+<ul>
+<li>Hive Connector, all profiles</li>
+<li>HBase Connector</li>
+<li>JDBC Connector</li>
+<li>S3 Connector using the Amazon S3 Select service to access CSV and Parquet data</li>
+</ul>
+
+<p>PXF谓词下推可与这些数据类型一起使用(特定连接器)：</p>
+
+<ul>
+<li><code>INT2</code>, <code>INT4</code>, <code>INT8</code></li>
+<li><code>CHAR</code>, <code>TEXT</code></li>
+<li><code>FLOAT</code></li>
+<li><code>NUMERIC</code> (使用S3 Select时，不适用于S3连接器)</li>
+<li><code>BOOL</code></li>
+<li><code>DATE</code>, <code>TIMESTAMP</code> (使用S3 Select时仅适用于JDBC连接器和S3连接器)</li>
+</ul>
+
+<p>您可以通过以下运算符使用PXF过滤器下推功能：</p>
+
+<ul>
+<li><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&gt;</code></li>
+<li><code>&lt;&gt;</code>, <code>=</code></li>
+<li><code>AND</code>, <code>OR</code>, <code>NOT</code></li>
+<li>数组<code>INT</code>和<code>TEXT</code>的运算符<code>IN</code> (仅JDBC连接器)</li>
+<li><code>LIKE</code> (<code>TEXT</code>字段，仅JDBC连接器)</li>
+</ul>
+
+<p>总而言之，必须满足以下所有条件才能进行谓词下推：</p>
+
+<ul>
+<li>将<code>gp_external_enable_filter_pushdown</code>服务配置参数设置为<code>&#39;on&#39;</code>来启用外部表谓词下推</li>
+<li>访问外部数据源的Greenplum数据库协议必须支持谓词下推.PXF外部表协议支持下推</li>
+<li>访问的外部数据源必须支持下推。 例如，HBase和Hive支持下推</li>
+<li><p>使用pxf协议创建的外部表查询，基础PXF连接器还必须支持谓词下推。例如，PXF Hive，HBase和JDBC连接器支持下推。</p>
+
+<ul>
+<li>有关Hive支持此功能的更多信息，请参考Hive<a href="/6-0/pxf/hive_pxf.html#partitionfiltering">分区过滤器下推</a>。</li>
+</ul></li>
+</ul>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

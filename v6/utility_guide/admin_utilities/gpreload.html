@@ -1,0 +1,607 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpreload |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpreload has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpreload
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">gpreload</h1>
+
+  <div class="body">
+    <p class="p">重新装载Greenplum数据库表数据，根据指定的列对数据进行排序。</p>
+
+    <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+<pre class="pre codeblock"><strong class="ph b">gpreload</strong> <strong class="ph b">-d</strong> <var class="keyword varname">database</var> [<strong class="ph b">-p</strong> <var class="keyword varname">port</var>] {<strong class="ph b">-t</strong> | <strong class="ph b">--table-file</strong>} <var class="keyword varname">path_to_file</var> [<strong class="ph b">-a</strong>]
+        
+        <strong class="ph b">gpreload</strong> <strong class="ph b">-h</strong> 
+        
+        <strong class="ph b">gpreload</strong> <strong class="ph b">--version</strong></pre>
+</div>
+
+    <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p"><samp class="ph codeph">gpreload</samp>工具重新装载列数据被排序过的表数据。对于使用表存储选项
+        <samp class="ph codeph">appendoptimized=TRUE</samp>并启用压缩创建的表，使用排序数据重新装载数据
+        可以改善表压缩。用户在一个文本文件中指定要重新装载的表要排序的表列列表。
+      </p>
+
+      <p class="p">当列中的数据的不同值与行总数相比来说相对较小时，压缩可以通过对数据进行排序来改进。
+      </p>
+
+      <p class="p">对于正在重新装载的表，要排序的列顺序可能会影响压缩。具有最少不同值的列应该首先列出。
+        例如，列出州和城市一般会获得比列出城市和州更好的压缩。</p>
+
+      <pre class="pre codeblock">public.cust_table: state, city
+        public.cust_table: city, state</pre>
+
+      <p class="p">有关<samp class="ph codeph">gpreload</samp>使用的文件格式的信息，请参阅<samp class="ph codeph">--table-file</samp>选项。</p>
+
+    </div>
+
+    <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">注解</h2>
+      
+      <p class="p">为了提高重载性能，在重载数据之前，应该删除正在重载的表上的索引。</p>
+
+      <p class="p">重新装载表数据后运行<samp class="ph codeph">ANALYZE</samp>命令可能会因为重新装载
+        数据的数据分布发生更改而查询性能。</p>
+
+      <p class="p">对所有的表，该工具都会将数据复制到临时表，然后将实际表清空，再从临时表按照指定顺序插入到实际表。
+        每个表的重载操作都在一个单一的事务中处理。</p>
+
+      <p class="p">对于分区表来说，可以单独重载子分区的数据。但是无论如何，数据都会从根分区表插入，这会在整个表上产生
+        <samp class="ph codeph">ROW EXCLUSIVE</samp>锁。
+      </p>
+</div>
+
+    <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">选项</h2>
+<dl class="dl parml">
+      
+        <dt class="dt pt dlterm">-a（不提示）</dt>
+
+        <dd class="dd pd">可选。如果指定，则<samp class="ph codeph">gpreload</samp>工具不会提示用户进行确认。</dd>
+
+      
+      
+        <dt class="dt pt dlterm">-d <var class="keyword varname">database</var>
+</dt>
+
+        <dd class="dd pd">包含要重新装载的表的数据库。<samp class="ph codeph">gpreload</samp>工具以运行该工具的用户的身份连接到数据库。
+        </dd>
+
+      
+      
+        <dt class="dt pt dlterm">-p <var class="keyword varname">port</var>
+</dt>
+
+        <dd class="dd pd">Greenplum数据库的Master端口。如果未指定，则使用<samp class="ph codeph">PGPORT</samp>环境变量的值。
+          如果该值不可用，则返回错误。</dd>
+
+      
+      
+        <dt class="dt pt dlterm">{-t | --table-file } <var class="keyword varname">path_to_file</var>
+</dt>
+
+        <dd class="dd pd">包含要重新装载的方案限定的表名列表的文件位置和名称，该文件中还有要从Greenplum数据库重新排序的列名。
+          仅支持用户定义的表。视图或系统目录表不受支持。
+        </dd>
+
+        <dd class="dd pd">如果在文件中列出的表上定义有索引，<samp class="ph codeph">gpreload</samp>会提示继续。
+        </dd>
+
+        <dd class="dd pd">每一行都指定一个表名和要排序的列的列表。这是文件中每一行的格式：</dd>
+
+        <dd class="dd pd">
+<pre class="pre codeblock">schema.table_name: column [desc] [, column2 [desc] ... ]</pre>
+</dd>
+
+        <dd class="dd pd">表名后跟一个冒号（:），然后至少一个列名。如果指定多个列，请使用逗号分隔列名称。列按升序排序。
+          在列名后面指定关键字<samp class="ph codeph">desc</samp>以降序对列进行排序。</dd>
+
+        <dd class="dd pd">通配符不受支持。</dd>
+
+        <dd class="dd pd">如果文件中有错误，<samp class="ph codeph">gpreload</samp>会报告第一个错误并退出。
+        </dd>
+
+        <dd class="dd pd">以下例子展示了重载三个表：
+          <pre class="pre codeblock">public.clients: region, state, rep_id desc
+            public.merchants: region, state
+            test.lineitem: group, assy, whse </pre>
+</dd>
+
+        <dd class="dd pd">在第一个表<samp class="ph codeph">public.clients</samp>中，<samp class="ph codeph">rep_id</samp>列中的数据
+          被按照降序排序。其他列中的数据被按照升序排序。
+        </dd>
+
+      
+      
+        <dt class="dt pt dlterm">--version（显示工具版本）</dt>
+
+        <dd class="dd pd">列出工具版本。</dd>
+
+      
+      
+        <dt class="dt pt dlterm">-?（帮助）</dt>
+
+        <dd class="dd pd">提供在线帮助。</dd>
+
+      
+    </dl>
+</div>
+
+    <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">示例</h2>
+      
+      <p class="p">此示例命令将重新装载文件<samp class="ph codeph">data-tables.txt</samp>中列出的数据库
+        <samp class="ph codeph">mytest</samp>中的表。
+      </p>
+<pre class="pre codeblock">gpreload -d mytest --table-file data-tables.txt</pre>
+</div>
+
+    <div class="section" id="topic1__section7">
+<h2 class="title sectiontitle">另见</h2>
+      <p class="p">
+        <em class="ph i">Greenplum数据库参考指南</em>中的<samp class="ph codeph">CREATE TABLE</samp>。</p>
+</div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

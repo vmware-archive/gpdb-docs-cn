@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      配置用户模拟和代理 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_pxfuserimpers has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    配置用户模拟和代理
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#pxf_cfg_proc">&#37197;&#32622;PXF&#29992;&#25143;&#27169;&#25311;</a></li>
+<li><a href="#hadoop">&#37197;&#32622;Hadoop&#20195;&#29702;</a></li>
+<li><a href="#hive">Hive&#29992;&#25143;&#27169;&#25311;</a></li>
+<li><a href="#hbase">Hbase&#29992;&#25143;&#27169;&#25311;</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>PXF使用Greenplum数据库最终用户访问Hadoop服务。默认情况下，PXF尝试使用经过GPDB身份验证的用户身份并且通过PXF连接器配置去访问数据源服务(HDFS, Hive, HBase)。注意，PXF在访问Hadoop服务时仅使用用户的登录身份。例如，如果用户以jane身份登录Greenplum数据库，然后执行SET ROLE或SET SESSION AUTHORIZATION来假定其他用户身份，则所有PXF请求仍将使用jane身份来访问Hadoop服务。</p>
+
+<p>使用默认的PXF配置，您必须显式配置每个Hadoop数据源(HDFS，Hive，HBase)来允许PXF进程所有者(通常为<code>gpadmin</code>)充当模拟用户或组的代理。详情参阅<a href="#hadoop">Configuring Hadoop Proxying</a>, <a href="#hive">Hive User Impersonation</a>, and <a href="#hbase">HBase User Impersonation</a>。</p>
+
+<p>或者，您可以禁用PXF用户模拟功能。禁用用户模拟后，PXF将使用PXF进程的所有者(通常为<code>gpadmin</code>)来执行所有Hadoop服务请求。此行为与PXF的早期版本相匹配，但是它没有提供任何方法来控制Hadoop中不同于Greenplum数据库用户对Hadoop服务的访问。它要求<code>gpadmin</code>用户有权访问HDFS中的所有文件和目录，以及在PXF外部表定义中引用的Hive和HBase中的所有表的权限。参照<a href="#pxf_cfg_proc">Configuring PXF User Impersonation</a> for information about disabling user impersonation。</p>
+
+<h2 id="配置pxf用户模拟"><a id="pxf_cfg_proc"></a>配置PXF用户模拟</h2>
+
+<p>执行以下流程在你的GPDB集群上打开或者关闭用户模拟功能。如果你第一次配置PXF，默认用户模拟是打开的。你不需要执行这个过程。</p>
+
+<ol>
+<li><p>以管理员用户身份登录GPDB master节点</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>重新进入PXF用户配置目录<code>$PGF_CONF</code>。用文本编辑器打开配置文件<code>$PXF_CONF/conf/pxf-env.sh</code>。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>vi <span class="nv">$PXF_CONF</span>/conf/pxf-env.sh
+</code></pre></li>
+<li><p>在<code>pxf-env.sh</code>文件中找到<code>PXF_USER_IMPERSONATION</code>设置。 将该值设置为true可打开PXF用户模拟，或将其设置为false可将其关闭。 例如：</p>
+<pre class="highlight shell"><code><span class="nv">PXF_USER_IMPERSONATION</span><span class="o">=</span><span class="s2">"true"</span>
+</code></pre></li>
+<li><p>使用<code>pxf cluster sync</code>命令拷贝更新的文件<code>pxf-env.sh</code>文件到Greenplum数据库集群。例如</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre></li>
+<li><p>如果先前已启动PXF，请按照<a href="/6-0/pxf/cfginitstart_pxf.html#restart_pxf">Restarting PXF</a>中的说明在每个Greenplum数据库segment主机上重新启动它来使新设置生效。</p></li>
+</ol>
+
+<h2 id="配置hadoop代理"><a id="hadoop"></a>配置Hadoop代理</h2>
+
+<p>启用PXF用户角色(默认设置)后，您必须配置Hadoop<code>core-site.xml</code>配置文件以打开用户模拟PXF。 步骤如下：</p>
+
+<ol>
+<li><p>在你的Hadoop集群中，使用文本编辑器打开<code>core-site.xml</code>配置文件，或者使用Ambari添加或编辑此过程中描述的Hadoop属性值。</p></li>
+<li><p>设置属性值<code>hadoop.proxyuser.&lt;name&gt;.hosts</code>指定允许代理请求的PXF主机名列表。将PXF代理用户(通常为<code>gpadmin</code>)替换为<name>，并在用逗号分隔的列表中提供多个PXF主机名。 例如：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>hadoop.proxyuser.gpadmin.hosts<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>pxfhost1,pxfhost2,pxfhost3<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></li>
+<li><p>设置属性值<code>hadoop.proxyuser.&lt;name&gt;.groups</code>指定能被PXF模拟的HDFS组列表。您应该将此列表限制为仅需要从PXF访问HDFS数据的那些组。 例如：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>hadoop.proxyuser.gpadmin.groups<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>group1,group2<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></li>
+<li><p>在修改过<code>core-site.xml</code>配置文件之后，你必须重启Hadoop使你的配置生效。</p></li>
+<li><p>将更新后的<code>core-site.xml</code>文件复制到master服务器上的PXF Hadoop服务器配置目录<code>$PXF_CONF/servers/default</code>中，并将配置同步到standby服务器和每个Greenplum数据库segment主机。</p></li>
+</ol>
+
+<h2 id="hive用户模拟"><a id="hive"></a>Hive用户模拟</h2>
+
+<p>PXF Hive连接器使用Hive MetaStore确定Hive表的HDFS位置，然后直接访问基础HDFS文件。Hive不需要特定的模拟配置，因为<code>core-site.xml</code>中的Hadoop代理配置也适用于以这种方式访问的Hive表。</p>
+
+<h2 id="hbase用户模拟"><a id="hbase"></a>Hbase用户模拟</h2>
+
+<p>为了使用户模拟功能能够与HBase一起使用，必须在HBase配置中启用<code>AccessController</code>并重新启动群集。有关<code>hbase-site.xml</code>配置设置，请参阅《Apache HBase参考指南》中的<a href="http://hbase.apache.org/book.html#hbase.secure.configuration">61.3 Server-side Configuration for Simple User Access Operation</a>以进行简单的用户访问操作。</p>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

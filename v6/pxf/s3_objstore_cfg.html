@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      配置Minio和S3对象存储的连接器（可选） |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_s3_objstore_cfg has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    配置Minio和S3对象存储的连接器（可选）
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#about_cfg">&#20851;&#20110;&#23545;&#35937;&#23384;&#20648;&#37197;&#32622;</a></li>
+<li><a href="#minio_cfg">Minio&#26381;&#21153;&#22120;&#37197;&#32622;</a></li>
+<li>
+<a href="#s3_cfg">S3&#26381;&#21153;&#22120;&#37197;&#32622;</a><ul><li><a href="#s3-sse">&#37197;&#32622;S3&#26381;&#21153;&#22120;&#31471;&#21152;&#23494;</a></li></ul>
+</li>
+<li><a href="#cfg_proc">&#31034;&#20363;&#26381;&#21153;&#22120;&#37197;&#32622;&#36807;&#31243;</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>您可以使用PXF访问S3兼容的对象存储。 本主题描述如何将PXF连接器配置为这些外部数据源。</p>
+
+<p><em>如果您不打算使用这些PXF对象存储连接器，则不需要执行此过程。</em></p>
+
+<h2 id="关于对象存储配置"><a id="about_cfg"></a>关于对象存储配置</h2>
+
+<p>要访问对象存储中的数据，必须提供服务器位置和客户端凭据。 配置PXF对象库连接器时，请为连接器添加至少一个名为PXF服务器的配置，如<a href="/6-0/pxf/cfg_server.html">配置PXF服务器</a>中所述。</p>
+
+<p>PXF为每个对象存储连接器提供了一个模板配置文件。 这些模板文件位于<code>$PXF_CONF/templates/</code>目录中。</p>
+
+<h2 id="minio服务器配置"><a id="minio_cfg"></a>Minio服务器配置</h2>
+
+<p>Minio的模板配置文件为<code>$PXF_CONF/templates/minio-site.xml</code>。 配置Minio服务器时，必须提供以下服务器配置属性，并用凭据替换模板值：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fs.s3a.endpoint</td>
+<td>要连接的Minio S3端点。</td>
+<td>您的端点。</td>
+</tr>
+<tr>
+<td>fs.s3a.access.key</td>
+<td>Minio帐户访问密钥ID。</td>
+<td>您的访问密钥。</td>
+</tr>
+<tr>
+<td>fs.s3a.secret.key</td>
+<td>与Minio访问密钥ID相关联的密钥。</td>
+<td>您的密钥。</td>
+</tr>
+</tbody></table>
+
+<h2 id="s3服务器配置"><a id="s3_cfg"></a>S3服务器配置</h2>
+
+<p>S3的模板配置文件为<code>$PXF_CONF/templates/s3-site.xml</code>。 配置S3服务器时，必须提供以下服务器配置属性，并用凭据替换模板值：</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fs.s3a.access.key</td>
+<td>AWS账户访问密钥ID。</td>
+<td>您的访问密钥。</td>
+</tr>
+<tr>
+<td>fs.s3a.secret.key</td>
+<td>与AWS访问密钥ID关联的密钥。</td>
+<td>您的密钥。</td>
+</tr>
+</tbody></table>
+
+<p>如果需要，可以通过指定<code>s3-site.xml</code>服务器配置文件中的Hadoop-AWS模块文档的<a href="https://hadoop.apache.org/docs/current/hadoop-aws/tools/hadoop-aws/index.html#S3A">S3A</a>部分来调优PXF S3连接。</p>
+
+<p>您可以通过CREATE EXTERNAL TABLE命令LOCATION子句中的自定义选项直接指定S3访问ID和密钥，从而覆盖S3服务器配置的凭据。 有关其他信息，请参考<a href="/6-0/pxf/access_s3.html#s3_override">使用DDL覆盖S3服务器配置</a>。</p>
+
+<h3 id="配置s3服务器端加密"><a id="s3-sse"></a>配置S3服务器端加密</h3>
+
+<p>PXF支持使用可读写的Greenplum数据库外部表（指定<code>pxf</code>协议和<code>s3:*</code>配置文件）访问的S3文件的Amazon Web Service S3服务器端加密（SSE）。 AWS S3服务器端加密可安静地保护您的数据； 它会在将对象数据写入磁盘时对其进行加密，并在您访问数据时为您透明地解密数据。</p>
+
+<p>PXF支持以下AWS SSE加密密钥管理方案：</p>
+
+<ul>
+<li>具有S3受管密钥的SSE(SSE-S3) - Amazon管理数据和master加密密钥。</li>
+<li>具有密钥管理服务托管密钥的SSE(SSE-KMS) - Amazon管理数据密钥，而您在AWS KMS中管理加密密钥。</li>
+<li>SSE与客户提供的密钥(SSE-C) - 您设置和管理加密密钥。</li>
+</ul>
+
+<p>无论数据是否经过加密，您的S3访问密钥和加密密钥都将控制您对所有S3存储桶对象的访问。</p>
+
+<p>在您通过指定<code>pxf</code>协议和<code>s3:*</code>配置文件创建的可读外部表访问的加密文件的读取操作期间，S3透明地解密数据。 无需其他配置。</p>
+
+<p>要加密通过这种类型的外部表写入S3的数据，您有两个选择：</p>
+
+<ul>
+<li>通过AWS控制台或命令行工具（建议），在每个S3存储桶的基础上配置默认的SSE加密密钥管理方案。</li>
+<li>在PXF S3服务器的<code>s3-site.xml</code>配置文件中配置SSE加密选项。</li>
+</ul>
+
+<h4 id="通过s3存储桶策略配置sse（推荐）"><a id="s3-sse-bucket"></a>通过S3存储桶策略配置SSE（推荐）</h4>
+
+<p>您可以创建S3<i>桶策略&lt;/ i&gt;，以标识要加密的对象，加密密钥管理方案以及在这些对象上允许的写入操作。 请参阅AWS S3文档中的<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html">使用服务器端加密保护数据</a>，以获取有关SSE加密密钥管理方案的更多信息。 <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/default-bucket-encryption.html">如何为S3存储桶启用默认加密？</a>介绍了如何设置默认加密存储桶策略 。</p>
+
+<h4 id="在pxf-s3服务器配置中指定sse选项"><a id="s3-sse-pxfs3cfg"></a>在PXF S3服务器配置中指定SSE选项</h4>
+
+<p>您必须在<code>s3-site.xml</code>中包含某些属性，才能在PXF S3服务器配置中配置服务器端加密。 您添加到文件中的属性和值取决于SSE加密密钥管理方案。</p>
+
+<p><strong>SSE-S3</strong></p>
+
+<p>要在写入任何S3存储桶的任何文件上启用SSE-S3，请在<code>s3-site.xml</code>文件中设置以下加密算法属性和值：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.server-side-encryption-algorithm<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>AES256<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>要为特定的S3存储桶启用SSE-S3，请使用包含存储桶名称的属性名称变体。 例如：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.bucket.YOUR_BUCKET1_NAME.server-side-encryption-algorithm<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>AES256<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>将<code>YOUR_BUCKET1_NAME</code>替换为S3存储桶的名称。</p>
+
+<p><strong>SSE-KMS</strong></p>
+
+<p>要在您写入任何S3存储桶的任何文件上启用SSE-KMS，请同时设置加密算法和加密密钥ID。 要在<code>s3-site.xml</code>文件中设置这些属性：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.server-side-encryption-algorithm<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>SSE-KMS<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.server-side-encryption.key<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>YOUR_AWS_SSE_KMS_KEY_ARN<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>用您的密钥资源名称替换<code>YOUR_AWS_SSE_KMS_KEY_ARN</code>。 如果您未指定加密密钥，则使用Amazon KMS中定义的默认密钥。 KMS密钥示例：<code>arn:aws:kms:us-west-2:123456789012:key/1a23b456-7890-12cc-d345-6ef7890g12f3</code>。</p>
+
+<p><strong>注意</strong>: 确保在同一Amazon可用区中创建存储桶和密钥。</p>
+
+<p>要为特定的S3存储桶启用SSE-KMS，请使用包含存储桶名称的属性名称变体。 例如：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.bucket.YOUR_BUCKET2_NAME.server-side-encryption-algorithm<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>SSE-KMS<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.bucket.YOUR_BUCKET2_NAME.server-side-encryption.key<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>YOUR_AWS_SSE_KMS_KEY_ARN<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>将<code>YOUR_BUCKET2_NAME</code>替换为S3存储桶的名称。</p>
+
+<p><strong>SSE-C</strong></p>
+
+<p>要在写入任何S3存储桶的任何文件上启用SSE-C，请同时设置加密算法和加密密钥（base-64编码）。 所有客户端必须共享相同的密钥。</p>
+
+<p>要在<code>s3-site.xml</code>文件中设置这些属性：</p>
+<pre class="highlight xml"><code><span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.server-side-encryption-algorithm<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>SSE-C<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.s3a.server-side-encryption.key<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>YOUR_BASE64-ENCODED_ENCRYPTION_KEY<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre>
+
+<p>要为特定的S3存储桶启用SSE-C，请使用包含存储桶名称的属性名称变体，如SSE-KMS示例中所述。</p>
+
+<h2 id="示例服务器配置过程"><a id="cfg_proc"></a>示例服务器配置过程</h2>
+
+<p>在配置对象存储连接器服务器之前，请确保已初始化PXF。</p>
+
+<p>在此过程中，您将在S3云存储连接器的Greenplum数据库master主机上的<code>$PXF_CONF/servers</code>目录中命名并添加PXF服务器配置。 然后，您可以使用<code>pxf cluster sync</code>命令将服务器配置同步到Greenplum数据库集群。</p>
+
+<ol>
+<li><p>登录到您的Greenplum数据库主节点：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>选择服务器的名称。 您将为需要引用对象存储中文件的最终用户提供名称。</p></li>
+<li><p>创建<code>$PXF_HOME/servers/&lt;server_name&gt;</code>目录。 例如，使用以下命令为名为<code>s3_user1cfg</code>的S3服务器创建服务器配置：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>mkdir <span class="nv">$PXF_CONF</span>/servers/s3_user1cfg
+</code></pre></li>
+<li><p>将S3的PXF模板文件复制到服务器配置目录。 例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>cp <span class="nv">$PXF_CONF</span>/templates/s3-site.xml <span class="nv">$PXF_CONF</span>/servers/s3_user1cfg/
+</code></pre></li>
+<li><p>在您选择的编辑器中打开模板服务器配置文件，并为您的环境提供适当的属性值。 例如：</p>
+<pre class="highlight plaintext"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.s3a.access.key&lt;/name&gt;
+        &lt;value&gt;access_key_for_user1&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.s3a.secret.key&lt;/name&gt;
+        &lt;value&gt;secret_key_for_user1&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.s3a.fast.upload&lt;/name&gt;
+        &lt;value&gt;true&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre></li>
+<li><p>保存更改并退出编辑器。</p></li>
+<li><p>使用<code>pxf cluster sync</code>命令将新的服务器配置复制到Greenplum数据库集群。 例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

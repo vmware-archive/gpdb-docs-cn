@@ -1,0 +1,784 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpfdist |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpfdist has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpfdist
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">gpfdist</h1>
+
+  <div class="body">
+    <p class="p">将数据文件载入Greenplum数据库Segment或从其中写出数据文件到文件系统。</p>
+
+    <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock"><strong class="ph b">gpfdist</strong> [<strong class="ph b">-d</strong> <var class="keyword varname">directory</var>] [<strong class="ph b">-p</strong> <var class="keyword varname">http_port</var>] [<strong class="ph b">-P</strong> <var class="keyword varname">last_http_port</var>] [<strong class="ph b">-l</strong> <var class="keyword varname">log_file</var>]
+        [<strong class="ph b">-t</strong> <var class="keyword varname">timeout</var>] [<strong class="ph b">-S</strong>] [<strong class="ph b">-w</strong> <var class="keyword varname">time</var>] [<strong class="ph b">-v</strong> | <strong class="ph b">-V</strong>] [<strong class="ph b">-s</strong>] [<strong class="ph b">-m</strong> <var class="keyword varname">max_length</var>]
+        [<strong class="ph b">--ssl</strong> <var class="keyword varname">certificate_path</var> [<strong class="ph b">--sslclean</strong> <var class="keyword varname">wait_time</var>] ]
+        [<strong class="ph b">-c</strong> <var class="keyword varname">config.yml</var>]
+        
+        <strong class="ph b">gpfdist -?</strong> | <strong class="ph b">--help</strong> 
+        
+        <strong class="ph b">gpfdist --version</strong></pre>
+
+    </div>
+
+    <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p"><samp class="ph codeph">gpfdist</samp>是Greenplum数据库并行文件分发程序。它可以被外部表和<samp class="ph codeph">gpload</samp>
+        用来并行地将外部表文件提供给所有的Greenplum数据库Segment。它由可写外部表使用，并行接受来自Greenplum数据库
+        Segment的输出流，并将它们写出到文件中。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> <samp class="ph codeph">gpfdist</samp>和<samp class="ph codeph">gpload</samp>是在Greenplum的主版本级别有效的。
+        例如，Greenplum 4.x版本的<samp class="ph codeph">gpfdist</samp>不能用于Greenplum 5.x或6.x版本。</div>
+
+      <p class="p">为了使外部表使用<samp class="ph codeph">gpfdist</samp>，外部表定义的<samp class="ph codeph">LOCATION</samp>子句必须使用
+        <samp class="ph codeph">gpfdist://</samp>协议（参见Greenplum数据库命令<samp class="ph codeph">CREATE EXTERNAL TABLE</samp>）。
+      </p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span>  如果<samp class="ph codeph">--ssl</samp>选项被指定来启用SSL安全性，请使用<samp class="ph codeph">gpfdists://</samp>协议创建外部表。
+      </div>
+
+      <p class="p">使用<samp class="ph codeph">gpfdist</samp>的好处是在读取或写入外部表时可以保证最大的并行性，从而提供最佳的性能，
+        并且更容易管理外部表。
+      </p>
+
+      <p class="p">对于只读外部表，当用户在外部表中<samp class="ph codeph">SELECT</samp>时，<samp class="ph codeph">gpfdist</samp>
+        将数据文件均匀地分析并提供给Greenplum数据库系统的所有Segment实例。对于可写的外部表，
+        <samp class="ph codeph">gpfdist</samp>在用户<samp class="ph codeph">INSERT</samp>外部表时接受来自Segment的
+        并行输出流，并写入输出文件。</p>
+
+      <p class="p">对于可读外部表，如果被加载的文件使用<samp class="ph codeph">gzip</samp>或<samp class="ph codeph">bzip2</samp>
+        （具有<samp class="ph codeph">.gz</samp>或<samp class="ph codeph">.bz2</samp>的文件扩展名），<samp class="ph codeph">gpfdist</samp>
+        会在装载之前自动解压文件，前提是<samp class="ph codeph">gunzip</samp>或<samp class="ph codeph">bunzip2</samp>在用户的
+        可执行文件路径中。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 目前，可读外部表不支持在Windows平台上的压缩，可写外部表不支持任何平台上的压缩。
+      </div>
+
+      <p class="p">当使用<samp class="ph codeph">gpfdist</samp>或<samp class="ph codeph">gpfdists</samp>协议读写数据时，Greenplum数据库
+        在HTTP请求头部中包含<samp class="ph codeph">X-GP-PROTO</samp>，以指示该请求来自Greenplum数据库。该工具拒绝
+        请求头部中不包含<samp class="ph codeph">X-GP-PROTO</samp>的HTTP请求。</p>
+
+      <p class="p">大多数情况下，用户很可能希望在ETL机器而不是安装Greenplum数据库的主机上运行<samp class="ph codeph">gpfdist</samp>。
+        要在其他主机上安装<samp class="ph codeph">gpfdist</samp>，只需简单的将该程序复制到该主机上，然后将<samp class="ph codeph">gpfdist</samp>
+        添加到用户的<samp class="ph codeph">$PATH</samp>路径中。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 使用IPv6时，请始终将数字IP地址包裹在括号内。</div>
+
+    </div>
+
+    <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+      
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">-d <var class="keyword varname">directory</var>
+</dt>
+
+          <dd class="dd pd">指定一个目录，<samp class="ph codeph">gpfdist</samp>将从该目录中为可读外部表提供文件，或为可写外部表创建
+            输出文件。如果没有指定，默认为当前目录。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-l <var class="keyword varname">log_file</var>
+</dt>
+
+          <dd class="dd pd">要记录标准输出消息的完全限定路径和日志文件名称。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-p <var class="keyword varname">http_port</var>
+</dt>
+
+          <dd class="dd pd">
+<samp class="ph codeph">gpfdist</samp>提供文件要使用的HTTP端口。默认为8080。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-P <var class="keyword varname">last_http_port</var>
+</dt>
+
+          <dd class="dd pd">
+<samp class="ph codeph">gpfdist</samp>将会提供文件服务的端口号范围
+            （<var class="keyword varname">http_port</var>到<var class="keyword varname">last_http_port</var>
+            包含岂止号码）中最后一个HTTP端口号号码。<samp class="ph codeph">gpfdist</samp>会
+            以端口号设定范围内第一个成功绑定的端口号作为服务端口。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-t <var class="keyword varname">timeout</var>
+</dt>
+
+          <dd class="dd pd">设置Greenplum数据库建立与<samp class="ph codeph">gpfdist</samp>进程的连接所允许的时间。默认值是5秒。
+            允许的值是2到7200秒（2小时）。在网络流量大的系统上可能要增加。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-m <var class="keyword varname">max_length</var>
+</dt>
+
+          <dd class="dd pd">设置以字节为单位的最大数据行长度。默认值是32768。当用户数据包含非常宽的行时
+            （或者当<samp class="ph codeph">line too long</samp>错误消息发生时）应该使用，否则不应该使用，
+            因为它会增加资源分配。有效范围是32K到256MB（Windows系统上限为1MB）。
+          </dd>
+
+          <dd class="dd pd">
+            <div class="note note">
+<span class="notetitle">Note:</span> 如果用户指定较大的最大行长度并运行大量的<samp class="ph codeph">gpfdist</samp>并发连接，
+              则可能会发生内存问题。例如，使用96个并行<samp class="ph codeph">gpfdist</samp>进程需要大约
+              24GB的内存（<samp class="ph codeph">(96 + 1) x
+                246MB</samp>）。</div>
+
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-s</dt>
+
+          <dd class="dd pd">
+            <p class="p">启用简化的日志记录。指定此选项时，只有具有<samp class="ph codeph">WARN</samp>级别或者更高级别的消息才
+              会写入<samp class="ph codeph">gpfdist</samp>日志文件。<samp class="ph codeph">INFO</samp>级别的消息不写入日志文件。
+              如果未指定这一选项，则所有<samp class="ph codeph">gpfdist</samp>消息都写入日志文件。</p>
+
+          </dd>
+
+          <dd class="dd pd">用户可以指定此选项以减少写入日志文件的信息。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-S (use O_SYNC)</dt>
+
+          <dd class="dd pd">使用<samp class="ph codeph">O_SYNC</samp>标志打开同步I/O的文件。任何对结果文件描述的写都会阻塞<samp class="ph codeph">gpfdist</samp>，
+            直到数据被物理地写到底层硬件。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-w <var class="keyword varname">time</var>
+</dt>
+
+          <dd class="dd pd">设置关闭目标文件（如命名管道）之前Greenplum数据库延迟的秒数。 默认值是0，没有延迟。最大值是7200秒（2小时）。
+          </dd>
+
+          <dd class="dd pd">对于具有多个Segment的Greenplum数据库，在将不同Segment中的数据写入文件时，Segment之间可能会有延迟。
+            用户可以指定Greenplum数据库关闭文件之前要等待的时间，以确保所有数据都被写入文件。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">--ssl <var class="keyword varname">certificate_path</var>
+</dt>
+
+          <dd class="dd pd">将SSL加密添加到使用<samp class="ph codeph">gpfdist</samp>传输的数据。使用<samp class="ph codeph">--ssl
+            <var class="keyword varname">certificate_path</var></samp>选项执行<samp class="ph codeph">gpfdist</samp>之后，
+            从此文件服务器加载数据的唯一方法是使用<samp class="ph codeph">gpfdist://</samp>协议。<span class="ph">
+              有关<samp class="ph codeph">gpfdist://</samp>
+              协议的信息，请参阅<em class="ph i">Greenplum数据库管理员指南</em>中的“装载和卸载数据”部分。
+            </span>
+</dd>
+
+          <dd class="dd pd">在<var class="keyword varname">certificate_path</var>中指定的位置必须包含以下文件：
+            <ul class="ul" id="topic1__ul_dyp_eqt_mo">
+              <li class="li" id="topic1__ku140282">服务器证书文件，<samp class="ph codeph">server.crt</samp>
+</li>
+
+              <li class="li" id="topic1__ku140283">服务器私钥文件，<samp class="ph codeph">server.key</samp>
+</li>
+
+              <li class="li" id="topic1__ku140284">可信证书机构，<samp class="ph codeph">root.crt</samp>
+</li>
+
+            </ul>
+<p class="p">根目录（<samp class="ph codeph">/</samp>）不能指定为<var class="keyword varname">certificate_path</var>。
+            </p>
+</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--sslclean <var class="keyword varname">wait_time</var>
+</dt>
+
+          <dd class="dd pd">使用<samp class="ph codeph">--ssl</samp>选项运行该工具时，设置该工具完成向Greenplum数据库Segment读写数据
+            后关闭SSL会话和清除SSL资源之前要延迟的秒数。默认值是0，没有延迟。最大值是500秒。如果延迟增加，
+            传输速度降低。
+          </dd>
+
+          <dd class="dd pd">在某些情况下，复制大量数据时可能会发生此错误：<samp class="ph codeph">gpfdist server closed connection</samp>。
+            为了避免这类错误，用户可以增加一个延迟，例如<samp class="ph codeph">--sslclean 5</samp>。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-c <var class="keyword varname">config.yaml</var>
+</dt>
+
+          <dd class="dd pd">指定<samp class="ph codeph">gpfdist</samp>在装载或抽取数据时，用来选择要应用的转换的规则。
+            <samp class="ph codeph">gpfdist</samp>配置文件是一个YAML1.1文档。
+          </dd>
+
+          <dd class="dd pd">有关文件格式的信息，请参阅<cite class="cite">Greenplum数据库管理员指南</cite>中的<a class="xref" href="../../admin_guide/load/topics/transforming-xml-data.html#topic83">配置文件格式</a>配置件格式。
+            有关用<samp class="ph codeph">gpfdist</samp>配置数据转换的信息，请参阅<cite class="cite">Greenplum数据库管理员指南</cite>
+            中的<a class="xref" href="../../admin_guide/load/topics/transforming-xml-data.html#topic75" title="gpfdist并行文件服务器允许用户设置转换，使Greenplum数据库外部表能够以CREATE EXTERNAL TABLE命令的FORMAT子句不支持的格式读取和写入文件。input转换以外部数据格式读取文件，并以CSV或外部表的FORMAT子句中指定的其他文本格式将行输出到gpfdist。output转换以文本格式从gpfdist接收行，并将它们转换为外部数据格式。">使用gpfdist和gpload转换外部数据</a>转换XML数据。
+          </dd>
+
+          <dd class="dd pd">该选项在windows平台中不可用。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-v（详细模式）</dt>
+
+          <dd class="dd pd">显示进度和状态信息的详细模式。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-V（非常详细模式）</dt>
+
+          <dd class="dd pd">显示由该工具生成的所有输出信息的详细模式。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-?（帮助）</dt>
+
+          <dd class="dd pd">显示在线帮助。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--version</dt>
+
+          <dd class="dd pd">显示该工具的版本。</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">注解</h2>
+      
+      <div class="p">服务器配置文件<samp class="ph codeph"><a class="xref" href="../../ref_guide/config_params/guc-list.html#verify_gpfdists_cert">verify_gpfdists_cert</a></samp>用来控制Greenplum数据库与<samp class="ph codeph">gpfdist</samp>
+        工具沟通进行读写数据时是否启用SSL授权。当在进行Greenplum数据库外部表与<samp class="ph codeph">gpfdist</samp>
+        工具测试时，客户可以设置该参数值为<samp class="ph codeph">false</samp>来禁用授权。如果参数设置为<samp class="ph codeph">false</samp>，
+        以下SSL异常会被忽略：
+        <ul class="ul" id="topic1__ul_vvb_5lj_mdb">
+          <li class="li">
+<samp class="ph codeph">gpfdist</samp>使用的自有签名SSL证书授权不被Greenplum信任。</li>
+
+          <li class="li">SSL证书中包含的主机名与<samp class="ph codeph">gpfdist</samp>主机名不匹配。</li>
+
+        </ul>
+<div class="note warning">
+<span class="warningtitle">Warning:</span> 禁用SSL证书授权会暴露安全风险，因为<samp class="ph codeph">gpfdist</samp>
+          SSL不会再进行验证。</div>
+</div>
+
+      <p class="p">如果<samp class="ph codeph">gpfdist</samp>工具在读写操作中hang住，客户可以在下次hang住时生成一个
+        core dump文件来帮助调试问题原因。在<samp class="ph codeph">gpfdist</samp>强制退出之前，
+        设置环境变量<samp class="ph codeph">GPFDIST_WATCHDOG_TIMER</samp>为异常时间段的秒数。
+        当客户设置了该环境变量，并且<samp class="ph codeph">gpfdist</samp> hang住时，工具会在特定秒数后停止并创建
+        core dump文件，发送相关信息到日志文件。</p>
+
+      <div class="p">例子中设置的Linux系统环境变量为<samp class="ph codeph">gpfdist</samp>在无活动操作后300秒（5分钟）退出。
+        <pre class="pre codeblock">export GPFDIST_WATCHDOG_TIMER=300</pre>
+</div>
+
+    </div>
+
+    <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">示例</h2>
+      
+      <p class="p">使用端口8081从指定目录提供文件（并在后台启动<samp class="ph codeph">gpfdist</samp>）：</p>
+
+      <pre class="pre codeblock">gpfdist -d /var/load_files -p 8081 &amp;</pre>
+
+      <p class="p">在后台启动<samp class="ph codeph">gpfdist</samp>并将输出和错误重定向到日志文件：</p>
+
+      <pre class="pre codeblock">gpfdist -d /var/load_files -p 8081 -l /home/gpadmin/log &amp;</pre>
+
+      <p class="p">停止在后台运行的<samp class="ph codeph">gpfdist</samp>：
+      </p>
+
+      <p class="p">--首先找到它的进程ID：</p>
+
+      <pre class="pre codeblock">ps ax | grep gpfdist</pre>
+
+      <p class="p">--然后杀死该进程，例如：</p>
+
+      <pre class="pre codeblock">kill 3456</pre>
+
+    </div>
+
+    <div class="section" id="topic1__section7">
+<h2 class="title sectiontitle">另见</h2>
+      
+      <p class="p"><samp class="ph codeph"><a class="xref" href="gpload.html#topic1">gpload</a></samp>、
+        <span class="ph"><em class="ph i">Greenplum数据库管理员指南</em></span>中的<samp class="ph codeph">CREATE EXTERNAL TABLE</samp></p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

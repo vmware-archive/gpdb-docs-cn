@@ -1,0 +1,5802 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Greenplum Partner Connector API |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_ref_guide x6-0_ref_guide_extensions x6-0_ref_guide_extensions_gppc has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/ref_guide.html">参考指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/sql_commands/sql_ref.html">SQL Command Reference</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/GPReferenceSQLSummaryLOP.html">SQL Syntax Summary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ABORT.html">ABORT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_AGGREGATE.html">ALTER AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_COLLATION.html">ALTER COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_CONVERSION.html">ALTER CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DATABASE.html">ALTER DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DEFAULT_PRIVILEGES.html">ALTER DEFAULT PRIVILEGES</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DOMAIN.html">ALTER DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_EXTENSION.html">ALTER EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_EXTERNAL_TABLE.html">ALTER EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FOREIGN_DATA_WRAPPER.html">ALTER FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FOREIGN_TABLE.html">ALTER FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FUNCTION.html">ALTER FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_GROUP.html">ALTER GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_INDEX.html">ALTER INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_LANGUAGE.html">ALTER LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR.html">ALTER OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR_CLASS.html">ALTER OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR_FAMILY.html">ALTER OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_PROTOCOL.html">ALTER PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_RESOURCE_GROUP.html">ALTER RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_RESOURCE_QUEUE.html">ALTER RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_ROLE.html">ALTER ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SCHEMA.html">ALTER SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SEQUENCE.html">ALTER SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SERVER.html">ALTER SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TABLE.html">ALTER TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TABLESPACE.html">ALTER TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_CONFIGURATION.html">ALTER TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_DICTIONARY.html">ALTER TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_PARSER.html">ALTER TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_TEMPLATE.html">ALTER TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TYPE.html">ALTER TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_USER.html">ALTER USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_USER_MAPPING.html">ALTER USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_VIEW.html">ALTER VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ANALYZE.html">ANALYZE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/BEGIN.html">BEGIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CHECKPOINT.html">CHECKPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CLOSE.html">CLOSE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CLUSTER.html">CLUSTER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COMMENT.html">COMMENT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COMMIT.html">COMMIT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COPY.html">COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_AGGREGATE.html">CREATE AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_CAST.html">CREATE CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_COLLATION.html">CREATE COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_CONVERSION.html">CREATE CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_DATABASE.html">CREATE DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_DOMAIN.html">CREATE DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_EXTENSION.html">CREATE EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FOREIGN_DATA_WRAPPER.html">CREATE FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FOREIGN_TABLE.html">CREATE FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FUNCTION.html">CREATE FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_GROUP.html">CREATE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_INDEX.html">CREATE INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_LANGUAGE.html">CREATE LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR.html">CREATE OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR_CLASS.html">CREATE OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR_FAMILY.html">CREATE OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_PROTOCOL.html">CREATE PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RESOURCE_GROUP.html">CREATE RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RESOURCE_QUEUE.html">CREATE RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_ROLE.html">CREATE ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RULE.html">CREATE RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SCHEMA.html">CREATE SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SEQUENCE.html">CREATE SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SERVER.html">CREATE SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLE.html">CREATE TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLE_AS.html">CREATE TABLE AS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLESPACE.html">CREATE TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_CONFIGURATION.html">CREATE TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_DICTIONARY.html">CREATE TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_PARSER.html">CREATE TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_TEMPLATE.html">CREATE TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TYPE.html">CREATE TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_USER.html">CREATE USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_USER_MAPPING.html">CREATE USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_VIEW.html">CREATE VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DEALLOCATE.html">DEALLOCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DECLARE.html">DECLARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DELETE.html">DELETE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DISCARD.html">DISCARD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DO.html">DO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_AGGREGATE.html">DROP AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_CAST.html">DROP CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_COLLATION.html">DROP COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_CONVERSION.html">DROP CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_DATABASE.html">DROP DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_DOMAIN.html">DROP DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_EXTENSION.html">DROP EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_EXTERNAL_TABLE.html">DROP EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FOREIGN_DATA_WRAPPER.html">DROP FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FOREIGN_TABLE.html">DROP FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FUNCTION.html">DROP FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_GROUP.html">DROP GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_INDEX.html">DROP INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_LANGUAGE.html">DROP LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR.html">DROP OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR_CLASS.html">DROP OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR_FAMILY.html">DROP OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OWNED.html">DROP OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_PROTOCOL.html">DROP PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RESOURCE_GROUP.html">DROP RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RESOURCE_QUEUE.html">DROP RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_ROLE.html">DROP ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RULE.html">DROP RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SCHEMA.html">DROP SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SEQUENCE.html">DROP SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SERVER.html">DROP SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TABLE.html">DROP TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TABLESPACE.html">DROP TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_CONFIGURATION.html">DROP TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_DICTIONARY.html">DROP TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_PARSER.html">DROP TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_TEMPLATE.html">DROP TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TYPE.html">DROP TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_USER.html">DROP USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_USER_MAPPING.html">DROP USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_VIEW.html">DROP VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/END.html">END</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/EXECUTE.html">EXECUTE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/EXPLAIN.html">EXPLAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/FETCH.html">FETCH</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/GRANT.html">GRANT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/INSERT.html">INSERT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/LOAD.html">LOAD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/LOCK.html">LOCK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/MOVE.html">MOVE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/PREPARE.html">PREPARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REASSIGN_OWNED.html">REASSIGN OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REINDEX.html">REINDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/RELEASE_SAVEPOINT.html">RELEASE SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/RESET.html">RESET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REVOKE.html">REVOKE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ROLLBACK.html">ROLLBACK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ROLLBACK_TO_SAVEPOINT.html">ROLLBACK TO SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SAVEPOINT.html">SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SELECT.html">SELECT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SELECT_INTO.html">SELECT INTO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET.html">SET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_CONSTRAINTS.html">SET CONSTRAINTS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_ROLE.html">SET ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_SESSION_AUTHORIZATION.html">SET SESSION AUTHORIZATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_TRANSACTION.html">SET TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SHOW.html">SHOW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/START_TRANSACTION.html">START TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/TRUNCATE.html">TRUNCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/UPDATE.html">UPDATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/VACUUM.html">VACUUM</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/VALUES.html">VALUES</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/SQL2008_support.html">SQL 2008可选特性兼容性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/env_var_ref.html">Greenplum环境变量</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql-keywords.html">保留标识符和SQL关键字</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref.html#topic1">系统目录参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-tables.html#topic1">系统表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-views.html#topic1">系统视图</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-html.html#topic1">系统目录定义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_data_wrapper_options.html">foreign_data_wrapper_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_data_wrappers.html">foreign_data_wrappers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_server_options.html">foreign_server_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_servers.html">foreign_servers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_table_options.html">foreign_table_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_tables.html">foreign_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_configuration_history.html">gp_configuration_history</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distributed_log.html">gp_distributed_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distributed_xacts.html">gp_distributed_xacts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distribution_policy.html">gp_distribution_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gpexpand_expansion_progress.html">gpexpand.expansion_progress</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_expansion_status.html">gpexpand.status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_expansion_tables.html">gpexpand.status_detail</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_fastsequence.html">gp_fastsequence</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_id.html">gp_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_pgdatabase.html">gp_pgdatabase</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_config.html">gp_resgroup_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status.html">gp_resgroup_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status_per_host.html">gp_resgroup_status_per_host</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status_per_segment.html">gp_resgroup_status_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resqueue_status.html">gp_resqueue_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_stat_replication.html">gp_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_segment_configuration.html">gp_segment_configuration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_transaction_log.html">gp_transaction_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_version_at_initdb.html">gp_version_at_initdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_aggregate.html">pg_aggregate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_am.html">pg_am</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_amop.html">pg_amop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_amproc.html">pg_amproc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_appendonly.html">pg_appendonly</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attrdef.html">pg_attrdef</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attribute.html">pg_attribute</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attribute_encoding.html">pg_attribute_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_auth_members.html">pg_auth_members</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_authid.html">pg_authid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_available_extension_versions.html">pg_available_extension_versions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_available_extensions.html">pg_available_extensions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_cast.html">pg_cast</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_class.html">pg_class</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_compression.html">pg_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_constraint.html">pg_constraint</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_conversion.html">pg_conversion</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_database.html">pg_database</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_db_role_setting.html">pg_db_role_setting</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_depend.html">pg_depend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_description.html">pg_description</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_enum.html">pg_enum</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_extension.html">pg_extension</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_exttable.html">pg_exttable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_data_wrapper.html">pg_foreign_data_wrapper</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_server.html">pg_foreign_server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_table.html">pg_foreign_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_index.html">pg_index</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_inherits.html">pg_inherits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_language.html">pg_language</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_largeobject.html">pg_largeobject</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_listener.html">pg_listener</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_locks.html">pg_locks</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_max_external_files.html">pg_max_external_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_namespace.html">pg_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_opclass.html">pg_opclass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_operator.html">pg_operator</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_opfamily.html">pg_opfamily</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition.html">pg_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_columns.html">pg_partition_columns</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_encoding.html">pg_partition_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_rule.html">pg_partition_rule</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_templates.html">pg_partition_templates</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partitions.html">pg_partitions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_pltemplate.html">pg_pltemplate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_proc.html">pg_proc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resgroup.html">pg_resgroup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resgroupcapability.html">pg_resgroupcapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resourcetype.html">pg_resourcetype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueue.html">pg_resqueue</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueue_attributes.html">pg_resqueue_attributes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueuecapability.html">pg_resqueuecapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_rewrite.html">pg_rewrite</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_roles.html">pg_roles</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_shdepend.html">pg_shdepend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_shdescription.html">pg_shdescription</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_activity.html">pg_stat_activity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_last_operation.html">pg_stat_last_operation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_last_shoperation.html">pg_stat_last_shoperation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_operations.html">pg_stat_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_partition_operations.html">pg_stat_partition_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_replication.html">pg_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_statistic.html">pg_statistic</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stats_resqueue.html">pg_stat_resqueues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_tablespace.html">pg_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_trigger.html">pg_trigger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_type.html">pg_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_type_encoding.html">pg_type_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_user_mapping.html">pg_user_mapping</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_user_mappings.html">pg_user_mappings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/user_mapping_options.html">user_mapping_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/user_mappings.html">user_mappings</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/gp_toolkit.html">gp_toolkit管理模式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic2">检查需要例行维护的表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic5">检查锁</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic8">检查追加优化表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic16">查看Greenplum数据库服务器日志文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic21">检查服务器配置文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic24">检查失败的segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic26x">检查资源组活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic26">检查资源队列活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic32">检查查询磁盘溢出空间使用情况</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic36">查看用户和组（角色）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic38">检查数据库对象大小和磁盘空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic49">检查数据分布不均</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/gpperfmon/dbref.html">gpperfmon 数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-database.html"> database_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-diskspace.html"> diskspace_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-interface-stats.html"> interface_stats_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-log-alert.html"> log_alert_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-queries.html">queries_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-segment.html"> segment_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-socket-stats.html">socket_stats_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-system.html">system_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-dynamic-memory-info.html">dynamic_memory_info 视图</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-memory-info.html"> memory_info 视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/data_types.html">Greenplum 数据库数据类型</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-datetime.html">日期&#x2F;时间类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-pseudo.html">伪类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-textsearch.html">全文搜索类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-range.html">范围类型</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/character_sets.html">字符集支持</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc_config.html">服务器配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_config.html#topic_vsn_22l_z4">参数类型和值</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_config.html#topic_cyz_p2l_z4">设置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html">参数类别</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic12">连接和验证参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic15">系统资源消耗参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic57">GPORCA参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic21">查询调优参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic29">错误报告和日志参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic33">系统监控参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic37">运行时统计信息收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic38">自动统计收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic39">客户端连接默认参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic43">锁管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic44">资源管理参数（资源队列）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic444">资源管理参数（资源组）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic45">外部表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic46">数据库表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic48">历史版本兼容性参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic49">Greenplum数据库阵列配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic55">master和segment的Greenplum镜像参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic56">Greenplum数据库扩展参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc-list.html">配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#application_name">application_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#array_nulls">array_nulls</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#authentication_timeout">authentication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#backslash_quote">backslash_quote</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#block_size">block_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#bonjour_name">bonjour_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#check_function_bodies">check_function_bodies</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#client_encoding">client_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#client_min_messages">client_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_index_tuple_cost">cpu_index_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_operator_cost">cpu_operator_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_tuple_cost">cpu_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cursor_tuple_fraction">cursor_tuple_fraction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#data_checksums">data_checksums</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#DateStyle">DateStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#db_user_namespace">db_user_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#deadlock_timeout">deadlock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_assertions">debug_assertions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_pretty_print">debug_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_parse">debug_print_parse</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_plan">debug_print_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_prelim_plan">debug_print_prelim_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_rewritten">debug_print_rewritten</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_slice_table">debug_print_slice_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_statistics_target">default_statistics_target</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_tablespace">default_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_text_search_config">default_text_search_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_deferrable">default_transaction_deferrable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_isolation">default_transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_read_only">default_transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#dynamic_library_path">dynamic_library_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#effective_cache_size">effective_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_bitmapscan">enable_bitmapscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_groupagg">enable_groupagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_hashagg">enable_hashagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_hashjoin">enable_hashjoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_indexscan">enable_indexscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_mergejoin">enable_mergejoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_nestloop">enable_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_seqscan">enable_seqscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_sort">enable_sort</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_tidscan">enable_tidscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#escape_string_warning">escape_string_warning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#explain_pretty_print">explain_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#extra_float_digits">extra_float_digits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#from_collapse_limit">from_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_adjust_selectivity_for_outerjoins">gp_adjust_selectivity_for_outerjoins</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_appendonly_compaction">gp_appendonly_compaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_appendonly_compaction_threshold">gp_appendonly_compaction_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_mode">gp_autostats_mode</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_mode_in_functions">gp_autostats_mode_in_functions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_on_change_threshold">gp_autostats_on_change_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_cached_segworkers_threshold">gp_cached_segworkers_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_command_count">gp_command_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_connection_send_timeout">gp_connection_send_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_content">gp_content</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_create_table_random_default_distribution">gp_create_table_random_default_distribution</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_dbid">gp_dbid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_debug_linger">gp_debug_linger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_default_storage_options">gp_default_storage_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_dynamic_partition_pruning">gp_dynamic_partition_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_adaptive_nestloop">gp_enable_adaptive_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct">gp_enable_agg_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct_pruning">gp_enable_agg_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_direct_dispatch">gp_enable_direct_dispatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_exchange_default_partition">gp_enable_exchange_default_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_fast_sri">gp_enable_fast_sri</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_gpperfmon">gp_enable_gpperfmon</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_gather">gp_enable_groupext_distinct_gather</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_pruning">gp_enable_groupext_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_multiphase_agg">gp_enable_multiphase_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_predicate_propagation">gp_enable_predicate_propagation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_preunique">gp_enable_preunique</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_query_metrics">gp_enable_query_metrics</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_relsize_collection">gp_enable_relsize_collection</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_segment_copy_checking">gp_enable_segment_copy_checking</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_sort_distinct">gp_enable_sort_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_sort_limit">gp_enable_sort_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_enable_exec">gp_external_enable_exec</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_max_segs">gp_external_max_segs</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_enable_filter_pushdown">gp_external_enable_filter_pushdown</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_interval">gp_fts_probe_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_retries">gp_fts_probe_retries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_threadcount">gp_fts_probe_threadcount</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_timeout">gp_fts_probe_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_global_deadlock_detector_period">gp_global_deadlock_detector_period</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_gpperfmon_send_interval">gp_gpperfmon_send_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gpperfmon_log_alert_level">gpperfmon_log_alert_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_hashjoin_tuples_per_bucket">gp_hashjoin_tuples_per_bucket</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_ignore_error_table">gp_ignore_error_table (不推荐使用)</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#topic_lvm_ttc_3p">gp_initial_bad_row_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_instrument_shmem_size">gp_instrument_shmem_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_debug_retry_interval">gp_interconnect_debug_retry_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_fc_method">gp_interconnect_fc_method</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_hash_multiplier">gp_interconnect_hash_multiplier</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_queue_depth">gp_interconnect_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_setup_timeout">gp_interconnect_setup_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_snd_queue_depth">gp_interconnect_snd_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_type">gp_interconnect_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_format">gp_log_format</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_fts">gp_log_fts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_gang">gp_log_gang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_interconnect">gp_log_interconnect</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_local_distributed_cache">gp_max_local_distributed_cache</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_packet_size">gp_max_packet_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_plan_size">gp_max_plan_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_slices">gp_max_slices</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#memory_spill_ratio">memory_spill_ratio</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_motion_cost_per_row">gp_motion_cost_per_row</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_recursive_cte">gp_recursive_cte</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_reject_percent_threshold">gp_reject_percent_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_reraise_signal">gp_reraise_signal</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_memory_policy">gp_resqueue_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority">gp_resqueue_priority</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority_cpucores_per_segment">gp_resqueue_priority_cpucores_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority_sweeper_interval">gp_resqueue_priority_sweeper_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resgroup_memory_policy">gp_resgroup_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_bypass">gp_resource_group_bypass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_cpu_limit">gp_resource_group_cpu_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_memory_limit">gp_resource_group_memory_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_manager">gp_resource_manager</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_role">gp_role</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_safefswritesize">gp_safefswritesize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_segment_connect_timeout">gp_segment_connect_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_segments_for_planner">gp_segments_for_planner</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_server_version">gp_server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_server_version_num">gp_server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_session_id">gp_session_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_set_proc_affinity">gp_set_proc_affinity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_set_read_only">gp_set_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_statistics_pullup_from_child_partition">gp_statistics_pullup_from_child_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_statistics_use_fkeys">gp_statistics_use_fkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_use_legacy_hashops">gp_use_legacy_hashops</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_idle_resource_timeout">gp_vmem_idle_resource_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_protect_limit">gp_vmem_protect_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_protect_segworker_cache_limit">gp_vmem_protect_segworker_cache_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_compression">gp_workfile_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_files_per_query">gp_workfile_limit_files_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_query">gp_workfile_limit_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_segment">gp_workfile_limit_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gpperfmon_port">gpperfmon_port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ignore_checksum_failure">ignore_checksum_failure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#integer_datetimes">integer_datetimes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#IntervalStyle">IntervalStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#join_collapse_limit">join_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#keep_wal_segments">keep_wal_segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#krb_caseins_users">krb_caseins_users</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#krb_server_keyfile">krb_server_keyfile</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_collate">lc_collate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_ctype">lc_ctype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_messages">lc_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_monetary">lc_monetary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_numeric">lc_numeric</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_time">lc_time</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#listen_addresses">listen_addresses</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#local_preload_libraries">local_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lock_timeout">lock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_autostats">log_autostats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_connections">log_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_disconnections">log_disconnections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_dispatch_stats">log_dispatch_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_duration">log_duration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_error_verbosity">log_error_verbosity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_executor_stats">log_executor_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_hostname">log_hostname</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_duration_statement">log_min_duration_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_error_statement">log_min_error_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_messages">log_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_parser_stats">log_parser_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_planner_stats">log_planner_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_rotation_age">log_rotation_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_rotation_size">log_rotation_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_statement">log_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_statement_stats">log_statement_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_temp_files">log_temp_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_timezone">log_timezone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_truncate_on_rotation">log_truncate_on_rotation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#maintenance_work_mem">maintenance_work_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_appendonly_tables">max_appendonly_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_connections">max_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_files_per_process">max_files_per_process</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_function_args">max_function_args</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_identifier_length">max_identifier_length</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_index_keys">max_index_keys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_locks_per_transaction">max_locks_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_prepared_transactions">max_prepared_transactions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_resource_portals_per_transaction">max_resource_portals_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_resource_queues">max_resource_queues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_stack_depth">max_stack_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_statement_mem">max_statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer">optimizer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_array_expansion_threshold">optimizer_array_expansion_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_analyze_root_partition">optimizer_analyze_root_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_control">optimizer_control</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_cte_inlining_bound">optimizer_cte_inlining_bound</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_enable_associativity">optimizer_enable_associativity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_enable_master_only_queries">optimizer_enable_master_only_queries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_agg_skew_avoidance">optimizer_force_agg_skew_avoidance</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_multistage_agg">optimizer_force_multistage_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_three_stage_scalar_dqa">optimizer_force_three_stage_scalar_dqa</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_arity_for_associativity_commutativity">optimizer_join_arity_for_associativity_commutativity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_order">optimizer_join_order</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_order_threshold">optimizer_join_order_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_mdcache_size">optimizer_mdcache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_metadata_caching">optimizer_metadata_caching</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_minidump">optimizer_minidump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_nestloop_factor">optimizer_nestloop_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_parallel_union">optimizer_parallel_union</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_print_missing_stats">optimizer_print_missing_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_print_optimization_stats">optimizer_print_optimization_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_sort_factor">optimizer_sort_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#password_encryption">password_encryption</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#password_hash_algorithm">password_hash_algorithm</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_classpath">pljava_classpath</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_classpath_insecure">pljava_classpath_insecure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_statement_cache_size">pljava_statement_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_release_lingering_savepoints">pljava_release_lingering_savepoints</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_vmoptions">pljava_vmoptions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#port">port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#random_page_cost">random_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#readable_external_table_timeout">readable_external_table_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#repl_catchup_within_range">repl_catchup_within_range</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#replication_timeout">replication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#regex_flavor">regex_flavor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#resource_cleanup_gangs_on_wait">resource_cleanup_gangs_on_wait</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#resource_select_only">resource_select_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#runaway_detector_activation_percent">runaway_detector_activation_percent</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#search_path">search_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#seq_page_cost">seq_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_encoding">server_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_version">server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_version_num">server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#shared_buffers">shared_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#shared_preload_libraries">shared_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ssl">ssl</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ssl_ciphers">ssl_ciphers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#standard_conforming_strings">standard_conforming_strings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#statement_mem">statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#statement_timeout">statement_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#stats_queue_level">stats_queue_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#superuser_reserved_connections">superuser_reserved_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_count">tcp_keepalives_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_idle">tcp_keepalives_idle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_interval">tcp_keepalives_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#temp_buffers">temp_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#TimeZone">TimeZone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#timezone_abbreviations">timezone_abbreviations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#track_activity_query_size">track_activity_query_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transaction_isolation">transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transaction_read_only">transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transform_null_equals">transform_null_equals</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_directory">unix_socket_directory</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_group">unix_socket_group</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_permissions">unix_socket_permissions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#update_process_title">update_process_title</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_delay">vacuum_cost_delay</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_limit">vacuum_cost_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_dirty">vacuum_cost_page_dirty</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_hit">vacuum_cost_page_hit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_miss">vacuum_cost_page_miss</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_freeze_min_age">vacuum_freeze_min_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#validate_previous_free_tid">validate_previous_free_tid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#verify_gpfdists_cert">verify_gpfdists_cert</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vmem_process_interrupt">vmem_process_interrupt</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#wal_receiver_status_interval">wal_receiver_status_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#writable_external_table_bufsize">writable_external_table_bufsize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#xid_stop_limit">xid_stop_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#xid_warn_limit">xid_warn_limit</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/function-summary.html">内置函数摘要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/yaml_spec.html">Greenplum MapReduce规范</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_sql.html">Greenplum PL&#x2F;pgSQL过程语言</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_r.html">Greenplum PL&#x2F;R 语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_python.html">Greenplum PL&#x2F;Python语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_container.html">Greenplum PL&#x2F;Container语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_java.html">Greenplum的PL&#x2F;Java语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_perl.html">Greenplum的PL&#x2F;Perl语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/madlib.html">用于分析的Greenplum MADlib扩展</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/modules/intro.html">附加提供的模块</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/citext.html">citext</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/dblink.html">dblink</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/fuzzystrmatch.html">fuzzystrmatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://github.com/greenplum-db/gpdb/tree/master/gpcontrib/gp_sparse_vector/README">gp_sparse_vector</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/hstore.html">hstore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/orafce_ref.html">orafce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pageinspect.html">pageinspect</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/pgcrypto.html">pgcrypto</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/gppc.html">Greenplum Partner Connector API</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/bgworker.html">后台工作进程</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/feature_summary.html">Greenplum 特点概要</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    Greenplum Partner Connector API
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">Greenplum Partner Connector API</h1>
+
+  <div class="body">
+      <p class="p">使用Greenplum Partner Connector API（GPPC API），
+        您可以使用C和C++编程语言编写可移植的Greenplum数据库用户定义函数（UDF）。
+        使用GPPC API开发的函数不需要重新编译或修改即可使用较旧或较新的Greenplum数据库版本。
+        </p>
+
+      <p class="p">可以使用Greenplum数据库中的SQL调用您写入GPPC API的函数。
+        API提供了一组函数和宏，可用于通过服务器编程接口（SPI）发出SQL命令，操作简单和复合数据类型函数参数和返回值，管理内存和处理数据。
+        </p>
+
+      <p class="p">您将使用GPPC API开发的C/C++函数编译到共享库中。
+        在Greenplum数据库群集中安装共享库并将GPPC函数注册为SQL UDF之后，Greenplum数据库用户可以使用GPPC函数。
+        </p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> Greenplum Partner Connector支持Greenplum数据库版本4.3.5.0及更高版本。</div>
+
+    <p class="p">本主题包含以下信息：</p>
+
+    <ul class="ul">
+      <li class="li" id="topic1__py219392">
+        <a class="xref" href="#topic_dev">使用GPPC API</a><ul class="ul">
+          <li class="li"><a class="xref" href="#topic_reqs">要求</a></li>
+
+          <li class="li"><a class="xref" href="#topic_files">头文件和库文件</a></li>
+
+          <li class="li"><a class="xref" href="#topic_data">数据类型</a></li>
+
+          <li class="li"><a class="xref" href="#topic_argres">函数声明，参数和结果</a></li>
+
+          <li class="li"><a class="xref" href="#topic_mem">内存处理</a></li>
+
+          <li class="li"><a class="xref" href="#topic_varlentext">使用可变长度文本类型</a></li>
+
+          <li class="li"><a class="xref" href="#topic_errrpt">错误报告和记录</a></li>
+
+          <li class="li"><a class="xref" href="#topic_spi">SPI函数</a></li>
+
+          <li class="li"><a class="xref" href="#topic_tuple">关于元组描述符和元组</a></li>
+
+          <li class="li"><a class="xref" href="#topic_srf">Set-Returning函数</a></li>
+
+          <li class="li"><a class="xref" href="#topic_tblfunc">表函数</a></li>
+
+          <li class="li"><a class="xref" href="#topic_limits">限制</a></li>
+
+          <li class="li"><a class="xref" href="#topic_samplecode">样例代码</a></li>
+
+        </ul>
+
+      </li>
+
+      <li class="li" id="topic1__py219393">
+        <a class="xref" href="#topic_build">使用PGXS构建GPPC共享库</a>
+      </li>
+
+      <li class="li" id="topic1__py219391">
+        <a class="xref" href="#topic_reg">使用Greenplum数据库注册GPPC函数</a>
+      </li>
+
+      <li class="li" id="topic1__py219394">
+        <a class="xref" href="#topic_deploy">打包和部署注意事项</a>
+      </li>
+
+      <li class="li" id="topic1__py219396">
+        <a class="xref" href="#topic_example_text">GPPC文本函数示例</a>
+      </li>
+
+      <li class="li" id="topic1__py219397">
+        <a class="xref" href="#topic_example_srf">GPPC Set-Returning函数示例</a>
+      </li>
+
+    </ul>
+
+  </div>
+
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../ref_guide.html" title="Greenplum数据库系统的参考信息，包括SQL命令，系统catalog，环境变量，服务器配置参数，字符集支持，数据类型和Greenplum数据库扩展。">Greenplum数据库参考指南</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic_dev">
+    <h2 class="title topictitle2">使用GPPC API</h2>
+
+    <div class="body">
+      <p class="p">GPPC API与PostgreSQL定义的C语言函数共享一些概念。
+        有关开发C语言函数的详细信息，请参阅PostgreSQL文档中的<a class="xref" href="https://www.postgresql.org/docs/9.4/xfunc-c.html" target="_blank">C语言函数</a>。
+        </p>
+
+      <p class="p">GPPC API是一个包装器，它使C/C++函数可以在Greenplum数据库中调用SQL。
+        这个包装器通过API定义的函数和宏对表和数据操作以及SPI操作进行规范化来屏蔽您从Greenplum数据库更改中编写的GPPC函数。
+        </p>
+
+      <p class="p">GPPC API包括以下函数和宏：</p>
+<ul class="ul">
+        <li class="li">对基础和复合数据类型进行操作。</li>
+
+        <li class="li">处理函数参数和返回值。</li>
+
+        <li class="li">分配和释放内存。</li>
+
+        <li class="li">记录并向客户报告错误。</li>
+
+        <li class="li">发出SPI查询。</li>
+
+        <li class="li">返回一个表或一组行。</li>
+
+        <li class="li">将表作为函数输入参数。</li>
+
+      </ul>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_reqs">
+      <h3 class="title topictitle3">要求</h3>
+
+      <div class="body">
+        <p class="p">使用GPPC API进行开发时：</p>
+<ul class="ul">
+          <li class="li">您必须在具有与Greenplum数据库主机相同的硬件和软件体系结构的系统上开发代码。
+            </li>
+
+          <li class="li">您必须使用C或C++编程语言编写GPPC函数。</li>
+
+          <li class="li">函数代码必须使用GPPC API，数据类型和宏。</li>
+
+          <li class="li">函数代码不得使用PostgreSQL C语言函数API，头文件，函数或宏。
+            </li>
+
+          <li class="li">函数代码不能<samp class="ph codeph">#include</samp> <samp class="ph codeph">postgres.h</samp>头文件或使用<samp class="ph codeph">PG_MODULE_MAGIC</samp>。
+            </li>
+
+          <li class="li">您必须仅使用GPPC包装的内存函数来分配和释放内存。
+            请参阅<a class="xref" href="#topic_mem">内存处理</a>。
+            </li>
+
+          <li class="li">目标文件中的符号名称不得相互冲突，也不得与Greenplum数据库服务器中定义的符号冲突。
+            如果收到此类错误消息，则必须重命名函数或变量。
+            </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_files">
+      <h3 class="title topictitle3">头文件和库文件</h3>
+
+      <div class="body">
+        <p class="p">GPPC头文件和库文件安装在<samp class="ph codeph">$GPHOME</samp>中：</p>
+
+        <ul class="ul">
+          <li class="li">$GPHOME/include/gppc.h - 主要的GPPC头文件</li>
+
+          <li class="li">$GPHOME/include/gppc_config.h - 定义GPPC版本的头文件</li>
+
+          <li class="li">$GPHOME/lib/libgppc.[a, so, so.1, so.1.2] - GPPC存档和共享库</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_data">
+      <h3 class="title topictitle3">数据类型</h3>
+
+      <div class="body">
+        <p class="p">您创建的GPPC函数将对驻留在Greenplum数据库中的数据进行操作。
+          GPPC API包含等效Greenplum数据库SQL数据类型的数据类型定义。
+          您必须在GPPC函数中使用这些类型。
+          </p>
+
+        <div class="p">GPPC API定义了可用于表示任何GPPC类型的通用数据类型。
+          此数据类型名为<samp class="ph codeph">GppcDatum</samp>，定义如下：
+          <pre class="pre codeblock">typedef int64_t GppcDatum;</pre>
+</div>
+
+        <p class="p">下表标识了每个GPPC数据类型以及它映射到的SQL类型。</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_data__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="30.923694779116467%" id="d117155e310">SQL类型</th>
+
+              <th class="entry" valign="top" width="34.53815261044177%" id="d117155e313">GPPC类型</th>
+
+              <th class="entry" valign="top" width="34.53815261044177%" id="d117155e316">GPPC类型的Oid</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">boolean</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcBool</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidBool</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">char (single byte)</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcChar</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidChar</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">int2/smallint</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcInt2</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidInt2</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">int4/integer</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcInt4</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidInt4</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">int8/bigint</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcInt8</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidInt8</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">float4/real</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcFloat4</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidFloat4</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">float8/double</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcFloat8</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidFloat8</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">text</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">*GppcText</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidText</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">varchar</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">*GppcVarChar</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidVarChar</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">char</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">*GppcBpChar</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidBpChar</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">bytea</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">*GppcBytea</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidBytea</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">numeric</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">*GppcNumeric</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidNumeric</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">date</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcDate</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidDate</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">time</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcTime</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidTime</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">timetz</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">*GppcTimeTz</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidTimeTz</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">timestamp</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcTimestamp</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidTimestamp</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">timestamptz</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcTimestampTz</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidTimestampTz</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">anytable</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcAnyTable</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 ">GppcOidAnyTable</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="30.923694779116467%" headers="d117155e310 ">oid</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e313 ">GppcOid</td>
+
+              <td class="entry" valign="top" width="34.53815261044177%" headers="d117155e316 "> </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+        <p class="p"> </p>
+
+        <p class="p">GPPC API专门处理文本，数字和时间戳数据类型，提供对这些类型进行操作的函数。
+          </p>
+
+        <div class="p">示例GPPC基本数据类型声明：<pre class="pre codeblock">GppcText       message;
+GppcInt4       arg1;
+GppcNumeric    total_sales;</pre>
+</div>
+
+        <div class="p">GPPC API定义了在通用<samp class="ph codeph">GppcDatum</samp>类型和GPPC特定类型之间进行转换的函数。
+          例如，要从整数转换为datum：
+          <pre class="pre codeblock">
+GppcInt4 num = 13;
+GppcDatum num_dat = GppcInt4GetDatum(num);</pre>
+</div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic_composite">
+        <h4 class="title topictitle4">符合类型</h4>
+
+        <div class="body">
+          <p class="p">复合数据类型表示行或记录的结构，由字段名称列表及其数据类型组成。
+            该结构信息通常被称为元组描述符。
+            复合类型的实例通常称为元组或行。
+            元组没有固定的布局，可以包含空字段。
+            </p>
+
+          <p class="p">GPPC API提供了一个界面，您可以使用该界面定义元组的结构，访问和设置元组。
+            当GPPC函数将表作为输入参数或返回表或记录类型集时，将使用此接口。
+            本主题后面将介绍使用表中的元组和设置返回函数。
+            </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_argres">
+      <h3 class="title topictitle3">函数声明，参数和结果</h3>
+
+      <div class="body">
+        <p class="p">GPPC API依赖于宏来声明函数并简化函数参数和结果的传递。
+          这些宏包括：
+          </p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_argres__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="25.0814332247557%" id="d117155e618">任务</th>
+
+              <th class="entry" valign="top" width="28.013029315960914%" id="d117155e621">宏签名</th>
+
+              <th class="entry" valign="top" width="46.90553745928339%" id="d117155e624">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="25.0814332247557%" headers="d117155e618 ">使函数SQL-可调用</td>
+
+              <td class="entry" valign="top" width="28.013029315960914%" headers="d117155e621 "><samp class="ph codeph">GPPC_FUNCTION_INFO(<var class="keyword varname">function_name</var>)</samp></td>
+
+              <td class="entry" valign="top" width="46.90553745928339%" headers="d117155e624 ">粘贴使函数<samp class="ph codeph"><var class="keyword varname">function_name</var></samp>SQL-可调用。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.0814332247557%" headers="d117155e618 ">声明一个函数</td>
+
+              <td class="entry" valign="top" width="28.013029315960914%" headers="d117155e621 "><samp class="ph codeph">GppcDatum <var class="keyword varname">function_name</var>(GPPC_FUNCTION_ARGS)</samp></td>
+
+              <td class="entry" valign="top" width="46.90553745928339%" headers="d117155e624 ">声明名为<samp class="ph codeph"><var class="keyword varname">function_name</var></samp>的GPPC函数; 每个函数都必须具有相同的签名。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.0814332247557%" headers="d117155e618 ">返回参数的数量</td>
+
+              <td class="entry" valign="top" width="28.013029315960914%" headers="d117155e621 "><samp class="ph codeph">GPPC_NARGS()</samp></td>
+
+              <td class="entry" valign="top" width="46.90553745928339%" headers="d117155e624 ">返回传递给函数的参数数量。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.0814332247557%" headers="d117155e618 ">获取参数</td>
+
+              <td class="entry" valign="top" width="28.013029315960914%" headers="d117155e621 "><samp class="ph codeph">GPPC_GETARG_&lt;ARGTYPE&gt;(<var class="keyword varname">arg_num</var>)</samp></td>
+
+              <td class="entry" valign="top" width="46.90553745928339%" headers="d117155e624 ">获取参数编号<var class="keyword varname">arg_num</var>的值（从0开始），其中<samp class="ph codeph">&lt;ARGTYPE&gt;</samp>标识参数的数据类型。
+                例如，<samp class="ph codeph">GPPC_GETARG_FLOAT8(0)</samp>。
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.0814332247557%" headers="d117155e618 ">获取并创建文本类型参数的副本</td>
+
+              <td class="entry" valign="top" width="28.013029315960914%" headers="d117155e621 "><samp class="ph codeph">GPPC_GETARG_&lt;ARGTYPE&gt;_COPY(<var class="keyword varname">arg_num</var>)</samp></td>
+
+              <td class="entry" valign="top" width="46.90553745928339%" headers="d117155e624 ">获取并复制参数号<var class="keyword varname">arg_num</var>的值（从0开始）。
+                <samp class="ph codeph">&lt;ARGTYPE&gt;</samp>标识文本类型（text，varchar，bpchar，bytea）。
+                例如，<samp class="ph codeph">GPPC_GETARG_BYTEA_COPY(1)</samp>。
+                </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.0814332247557%" headers="d117155e618 ">确定参数是否为NULL</td>
+
+              <td class="entry" valign="top" width="28.013029315960914%" headers="d117155e621 "><samp class="ph codeph">GPPC_ARGISNULL(<var class="keyword varname">arg_num</var>)</samp></td>
+
+              <td class="entry" valign="top" width="46.90553745928339%" headers="d117155e624 ">返回参数编号<samp class="ph codeph"><var class="keyword varname">arg_num</var></samp>是否为NULL。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="25.0814332247557%" headers="d117155e618 ">返回结果</td>
+
+              <td class="entry" valign="top" width="28.013029315960914%" headers="d117155e621 "><samp class="ph codeph">GPPC_RETURN_&lt;ARGTYPE&gt;(<var class="keyword varname">return_val</var>)</samp></td>
+
+              <td class="entry" valign="top" width="46.90553745928339%" headers="d117155e624 ">返回值<samp class="ph codeph"><var class="keyword varname">return_val</var></samp>，其中<samp class="ph codeph">&lt;ARGTYPE&gt;</samp>标识返回值的数据类型。
+                例如，<samp class="ph codeph">GPPC_RETURN_INT4(131)</samp>。
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+        <p class="p">  </p>
+
+         <div class="p">定义和实现GPPC函数时，必须使用上面标识的两个声明使用GPPC API声明它。
+           例如，要声明名为<samp class="ph codeph">add_int4s()</samp>的GPPC函数：
+           <pre class="pre codeblock">GPPC_FUNCTION_INFO(add_int4s);
+GppcDatum add_int4s(GPPC_FUNCTION_ARGS);
+
+GppcDatum
+add_int4s(GPPC_FUNCTION_ARGS)
+{
+  // code here
+}</pre>
+</div>
+
+        <div class="p">如果<samp class="ph codeph">add_int4s()</samp>函数接受两个<samp class="ph codeph">int4</samp>类型的输入参数，则使用<samp class="ph codeph">GPPC_GETARG_INT4(<var class="keyword varname">arg_num</var>)</samp>宏来访问参数值。
+          参数索引从0开始。例如：
+          <pre class="pre codeblock">GppcInt4  first_int = GPPC_GETARG_INT4(0);
+GppcInt4  second_int = GPPC_GETARG_INT4(1);</pre>
+  </div>
+
+        <div class="p">如果<samp class="ph codeph">add_int4s()</samp>返回两个输入参数的总和，则使用<samp class="ph codeph">GPPC_RETURN_INT8(<var class="keyword varname">return_val</var>)</samp>宏来返回此总和。
+          例如：
+          <pre class="pre codeblock">GppcInt8  sum = first_int + second_int;
+GPPC_RETURN_INT8(sum);</pre>
+  </div>
+
+         <div class="p">完整的GPPC函数：<pre class="pre codeblock">GPPC_FUNCTION_INFO(add_int4s);
+GppcDatum add_int4s(GPPC_FUNCTION_ARGS);
+
+GppcDatum
+add_int4s(GPPC_FUNCTION_ARGS)
+{
+  // get input arguments
+  GppcInt4    first_int = GPPC_GETARG_INT4(0);
+  GppcInt4    second_int = GPPC_GETARG_INT4(1);
+
+  // add the arguments
+  GppcInt8    sum = first_int + second_int;
+
+  // return the sum
+  GPPC_RETURN_INT8(sum);
+}</pre>
+</div>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_mem">
+      <h3 class="title topictitle3">内存处理</h3>
+
+      <div class="body">
+        <p class="p">GPPC API提供用于分配和释放内存的函数，包括文本内存。
+          必须将这些函数用于所有内存操作。
+          </p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_mem__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="52.760736196319016%" id="d117155e858">函数名</th>
+
+              <th class="entry" valign="top" width="47.239263803680984%" id="d117155e861">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="52.760736196319016%" headers="d117155e858 ">void *GppcAlloc( size_t <var class="keyword varname">num</var> )</td>
+
+              <td class="entry" valign="top" width="47.239263803680984%" headers="d117155e861 ">分配<var class="keyword varname">num</var>个字节的未初始化内存。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="52.760736196319016%" headers="d117155e858 ">void *GppcAlloc0( size_t <var class="keyword varname">num</var> )</td>
+
+              <td class="entry" valign="top" width="47.239263803680984%" headers="d117155e861 ">分配<var class="keyword varname">num</var>个字节的初始化为0内存。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="52.760736196319016%" headers="d117155e858 ">void *GppcRealloc( void *<var class="keyword varname">ptr</var>, size_t <var class="keyword varname">num</var> )</td>
+
+              <td class="entry" valign="top" width="47.239263803680984%" headers="d117155e861 ">调整预分配的内存大小。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="52.760736196319016%" headers="d117155e858 ">void GppcFree( void *<var class="keyword varname">ptr</var> )</td>
+
+              <td class="entry" valign="top" width="47.239263803680984%" headers="d117155e861 ">释放分配的内存。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+        <p class="p">分配内存后，可以使用<samp class="ph codeph">memcpy()</samp>等系统函数来设置数据。
+          </p>
+
+        <div class="p">以下示例分配<samp class="ph codeph">GppcDatum</samp>数组并将数组设置为函数输入参数的datum版本：
+          <pre class="pre codeblock">GppcDatum  *values;
+int attnum = GPPC_NARGS();
+
+// allocate memory for attnum values
+values = GppcAlloc( sizeof(GppcDatum) * attnum );
+
+// set the values
+for( int i=0; i&lt;attnum; i++ ) {
+    GppcDatum d = GPPC_GETARG_DATUM(i);
+    values[i] = d;
+}</pre>
+</div>
+
+
+        <p class="p">为GPPC函数分配内存时，可以在当前上下文中分配它。
+          GPPC API包括返回，创建，切换和重置内存上下文的函数。
+          </p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_mem__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="61.34969325153374%" id="d117155e958">函数名</th>
+
+              <th class="entry" valign="top" width="38.65030674846626%" id="d117155e961">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="61.34969325153374%" headers="d117155e958 ">GppcMemoryContext GppcGetCurrentMemoryContext(void)</td>
+
+              <td class="entry" valign="top" width="38.65030674846626%" headers="d117155e961 ">返回当前内存上下文。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="61.34969325153374%" headers="d117155e958 ">GppcMemoryContext GppcMemoryContextCreate(GppcMemoryContext <var class="keyword varname">parent</var>)</td>
+
+              <td class="entry" valign="top" width="38.65030674846626%" headers="d117155e961 ">在<var class="keyword varname">parent</var>下创建新的内存上下文。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="61.34969325153374%" headers="d117155e958 ">GppcMemoryContext GppcMemoryContextSwitchTo(GppcMemoryContext <var class="keyword varname">context</var>)</td>
+
+              <td class="entry" valign="top" width="38.65030674846626%" headers="d117155e961 ">切换到内存上下文<var class="keyword varname">context</var>。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="61.34969325153374%" headers="d117155e958 ">void GppcMemoryContextReset(GppcMemoryContext <var class="keyword varname">context</var>)</td>
+
+              <td class="entry" valign="top" width="38.65030674846626%" headers="d117155e961 ">在内存上下文<var class="keyword varname">context</var>中重置（释放）内存。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+        <p class="p">Greenplum数据库通常在每元组上下文中调用一个SQL调用的函数，它在每次服务器后端处理表行时创建和删除。
+          不要假设在当前内存上下文中分配的内存在多个函数调用中可用。
+          </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_varlentext">
+      <h3 class="title topictitle3">使用可变长度文本类型</h3>
+
+      <div class="body">
+        <p class="p">GPPC API支持可变长度文本，varchar，空白填充和字节数组类型。
+          在对这些数据类型进行操作时，必须使用GPPC API提供的函数。
+          GPPC API中提供的可变文本操作函数包括为其分配内存，确定字符串长度，获取字符串指针以及访问这些类型的函数：
+          </p>
+
+          
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_varlentext__in201681" class="table" frame="border" border="1" rules="all">
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="58.333333333333336%" id="d117155e1052">函数名</th>
+
+                <th class="entry" valign="top" width="41.66666666666667%" id="d117155e1055">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="58.333333333333336%" headers="d117155e1052 ">GppcText GppcAllocText( size_t <var class="keyword varname">len</var> )<p class="p">GppcVarChar GppcAllocVarChar( size_t <var class="keyword varname">len</var> )</p>
+<p class="p">GppcBpChar GppcAllocBpChar( size_t <var class="keyword varname">len</var> )</p>
+<p class="p">GppcBytea GppcAllocBytea( size_t <var class="keyword varname">len</var> )</p>
+</td>
+
+              <td class="entry" valign="top" width="41.66666666666667%" headers="d117155e1055 ">为不同长度类型分配<var class="keyword varname">len</var>个字节的内存。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="58.333333333333336%" headers="d117155e1052 ">size_t GppcGetTextLength( GppcText <var class="keyword varname">s</var> )<p class="p">size_t GppcGetVarCharLength( GppcVarChar <var class="keyword varname">s</var> )</p>
+<p class="p">size_t GppcGetBpCharLength( GppcBpChar <var class="keyword varname">s</var> )</p>
+<p class="p">size_t GppcGetByteaLength( GppcBytea <var class="keyword varname">b</var> )</p>
+</td>
+
+              <td class="entry" valign="top" width="41.66666666666667%" headers="d117155e1055 ">返回内存块中的字节数。</td>
+
+            </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="58.333333333333336%" headers="d117155e1052 ">char *GppcGetTextPointer( GppcText <var class="keyword varname">s</var> )<p class="p">char *GppcGetVarCharPointer( GppcVarChar <var class="keyword varname">s</var> )</p>
+<p class="p">char *GppcGetBpCharPointer( GppcBpChar <var class="keyword varname">s</var> )</p>
+<p class="p">char *GppcGetByteaPointer( GppcBytea <var class="keyword varname">b</var> )</p>
+</td>
+
+                <td class="entry" valign="top" width="41.66666666666667%" headers="d117155e1055 ">返回一个指向内存块头部的字符串指针。该字符串不以空值终止。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="58.333333333333336%" headers="d117155e1052 ">char *GppcTextGetCString( GppcText <var class="keyword varname">s</var> )<p class="p">char *GppcVarCharGetCString( GppcVarChar <var class="keyword varname">s</var> )</p>
+<p class="p">char *GppcBpCharGetCString( GppcBpChar <var class="keyword varname">s</var> )</p>
+</td>
+
+                <td class="entry" valign="top" width="41.66666666666667%" headers="d117155e1055 ">返回一个指向内存块头部的字符串指针。该字符串以空值终止。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="58.333333333333336%" headers="d117155e1052 ">GppcText *GppcCStringGetText( const char *<var class="keyword varname">s</var> )<p class="p">GppcVarChar *GppcCStringGetVarChar( const char *<var class="keyword varname">s</var> )</p>
+<p class="p">GppcBpChar *GppcCStringGetBpChar( const char *<var class="keyword varname">s</var> )</p>
+</td>
+
+                <td class="entry" valign="top" width="41.66666666666667%" headers="d117155e1055 ">从字符串构建变长类型。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+          <p class="p"><samp class="ph codeph">GppcGet&lt;VLEN_ARGTYPE&gt;Pointer()</samp>函数返回的内存可能指向实际的数据库内容。
+            请勿修改内存内容。
+            GPPC API提供了在需要时为这些类型分配内存的函数。
+            分配内存后，可以使用<samp class="ph codeph">memcpy()</samp>等系统函数来设置数据。
+            </p>
+
+          <div class="p">以下示例处理文本输入参数，并为文本字符串连接操作分配和设置结果内存：
+            <pre class="pre codeblock">GppcText first_textstr = GPPC_GETARG_TEXT(0);
+GppcText second_textstr = GPPC_GETARG_TEXT(1);
+
+// determine the size of the concatenated string and allocate
+// text memory of this size
+size_t arg0_len = GppcGetTextLength(first_textstr);
+size_t arg1_len = GppcGetTextLength(second_textstr);
+GppcText retstring = GppcAllocText(arg0_len + arg1_len);
+
+// construct the concatenated return string; copying each string
+// individually
+memcpy(GppcGetTextPointer(retstring), GppcGetTextPointer(first_textstr), arg0_len);
+memcpy(GppcGetTextPointer(retstring) + arg0_len, GppcGetTextPointer(second_textstr), arg1_len);
+</pre>
+</div>
+
+        </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_errrpt">
+      <h3 class="title topictitle3">错误报告和记录</h3>
+
+      <div class="body">
+        <div class="p">GPPC API提供错误报告和日志记录函数。
+          API定义的报告级别与Greenplum数据库中的级别相同：
+          <pre class="pre codeblock">typedef enum GppcReportLevel
+{
+        GPPC_DEBUG1                             = 10,
+        GPPC_DEBUG2                             = 11,
+        GPPC_DEBUG3                             = 12,
+        GPPC_DEBUG4                             = 13,
+        GPPC_DEBUG                              = 14,
+        GPPC_LOG                                = 15,
+        GPPC_INFO                               = 17,
+        GPPC_NOTICE                             = 18,
+        GPPC_WARNING                    	= 19,
+        GPPC_ERROR                              = 20,
+} GppcReportLevel;
+</pre>
+（Greenplum数据库<a class="xref" href="../config_params/guc-list.html#client_min_messages"><samp class="ph codeph">client_min_messages</samp></a>服务器配置参数控制当前客户端日志记录级别。
+          <a class="xref" href="../config_params/guc-list.html#client_min_messages"><samp class="ph codeph">log_min_messages</samp></a>配置参数控制当前日志到日志文件级别。）
+          </div>
+
+        <p class="p">GPPC报告包括报告级别，报告消息和可选的报告回调函数。
+          </p>
+
+        <p class="p">GPPC API提供的报告和处理函数包括：</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_errrpt__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="49.079754601226995%" id="d117155e1249">函数名</th>
+
+              <th class="entry" valign="top" width="50.920245398773%" id="d117155e1252">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="49.079754601226995%" headers="d117155e1249 ">GppcReport()</td>
+
+              <td class="entry" valign="top" width="50.920245398773%" headers="d117155e1252 ">格式化并打印/记录指定报告级别的字符串。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="49.079754601226995%" headers="d117155e1249 ">GppcInstallReportCallback()</td>
+
+              <td class="entry" valign="top" width="50.920245398773%" headers="d117155e1252 ">注册/安装报告回调函数。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="49.079754601226995%" headers="d117155e1249 ">GppcUninstallReportCallback()</td>
+
+              <td class="entry" valign="top" width="50.920245398773%" headers="d117155e1252 ">卸载报告回调函数。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="49.079754601226995%" headers="d117155e1249 ">GppcGetReportLevel()</td>
+
+              <td class="entry" valign="top" width="50.920245398773%" headers="d117155e1252 ">从错误报告中检索级别。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="49.079754601226995%" headers="d117155e1249 ">GppcGetReportMessage()</td>
+
+              <td class="entry" valign="top" width="50.920245398773%" headers="d117155e1252 ">从错误报告中检索消息。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="49.079754601226995%" headers="d117155e1249 ">GppcCheckForInterrupts()</td>
+
+              <td class="entry" valign="top" width="50.920245398773%" headers="d117155e1252 ">如果中断挂起则出错。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+        <p class="p"> </p>
+
+        <div class="p">
+<samp class="ph codeph">GppcReport()</samp>函数签名是：<pre class="pre codeblock">void GppcReport(GppcReportLevel elevel, const char *fmt, ...);</pre>
+</div>
+
+        <div class="p">
+<samp class="ph codeph">GppcReport()</samp>采用类似于<samp class="ph codeph">printf()</samp>的格式化字符串输入参数。
+          以下示例生成格式化GPPC文本参数的错误级别报告消息：
+          <pre class="pre codeblock">GppcText  uname = GPPC_GETARG_TEXT(1);
+GppcReport(GPPC_ERROR, "Unknown user name: %s", GppcTextGetCString(uname));</pre>
+</div>
+
+        <p class="p">有关示例报告回调处理程序，请参阅<a class="xref" href="https://github.com/greenplum-db/gpdb/tree/master/src/interfaces/gppc/test" target="_blank">GPPC示例代码</a>。
+          </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_spi">
+      <h3 class="title topictitle3">SPI函数</h3>
+
+      <div class="body">
+        <p class="p">Greenplum数据库服务器编程接口（SPI）为C/C++函数的编写者提供了在GPPC函数中运行SQL命令的能力。
+          有关SPI函数的其他信息，请参阅PostgreSQL文档中的<a class="xref" href="https://www.postgresql.org/docs/9.4/spi.html" target="_blank">服务器编程接口</a>。
+          </p>
+
+       <p class="p">GPPC API公开了PostgreSQL SPI函数的子集。
+         通过该子集，您可以在GPPC函数中发出SPI查询并检索SPI结果值。
+         GPPC SPI包装器函数是：
+         </p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_spi__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="NaN%" id="d117155e1378">SPI函数名</th>
+
+              <th class="entry" valign="top" width="57" id="d117155e1381">GPPC函数名</th>
+
+              <th class="entry" valign="top" width="NaN%" id="d117155e1384">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1378 ">SPI_connect()</td>
+
+              <td class="entry" valign="top" width="57" headers="d117155e1381 ">GppcSPIConnect()</td>
+
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1384 ">连接到Greenplum数据库服务器编程接口。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1378 ">SPI_finish()</td>
+
+              <td class="entry" valign="top" width="57" headers="d117155e1381 ">GppcSPIFinish()</td>
+
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1384 ">断开与Greenplum数据库服务器编程接口的连接。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1378 ">SPI_exec()</td>
+
+              <td class="entry" valign="top" width="57" headers="d117155e1381 ">GppcSPIExec()</td>
+
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1384 ">执行SQL语句，返回行数。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" rowspan="4" valign="top" width="NaN%" headers="d117155e1378 ">SPI_getvalue()</td>
+
+              <td class="entry" valign="top" width="57" headers="d117155e1381 ">GppcSPIGetValue()</td>
+
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1384 ">从SQL结果中按编号检索特定属性的值作为字符串。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="57" headers="d117155e1381 ">GppcSPIGetDatum()</td>
+
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1384 ">从SQL结果中按编号检索特定属性的值作为<samp class="ph codeph">GppcDatum</samp>。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="57" headers="d117155e1381 ">GppcSPIGetValueByName()</td>
+
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1384 ">按名称从SQL结果中检索特定属性的值作为字符串。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="57" headers="d117155e1381 ">GppcSPIGetDatumByName()</td>
+
+              <td class="entry" valign="top" width="NaN%" headers="d117155e1384 ">按名称从SQL结果中检索特定属性的值作为<samp class="ph codeph">GppcDatum</samp>。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+        <p class="p">  </p>
+
+        <div class="p">创建访问服务器编程接口的GPPC函数时，您的函数应符合以下流程：
+          <pre class="pre codeblock">GppcSPIConnect();
+GppcSPIExec(...)
+// process the results - GppcSPIGetValue(...), GppcSPIGetDatum(...)
+GppcSPIFinish()</pre>
+</div>
+
+        <div class="p">您可以使用<samp class="ph codeph">GppcSPIExec()</samp>在GPPC函数中执行SQL语句。
+          调用此函数时，还可以标识要返回的最大行数。
+          <samp class="ph codeph">GppcSPIExec()</samp>的函数签名是：
+          <pre class="pre codeblock">GppcSPIResult GppcSPIExec(const char *sql_statement, long rcount);</pre>
+</div>
+
+        <div class="p">
+<samp class="ph codeph">GppcSPIExec()</samp>返回<samp class="ph codeph">GppcSPIResult</samp>结构。
+          该结构表示SPI结果数据。
+          它包括指向数据的指针，有关处理的行数的信息，计数器和结果代码。
+          GPPC API定义此结构如下：
+          <pre class="pre codeblock">typedef struct GppcSPIResultData
+{
+    struct GppcSPITupleTableData   *tuptable;
+    uint32_t                       processed;
+    uint32_t                       current;
+    int                            rescode;
+} GppcSPIResultData;
+typedef GppcSPIResultData *GppcSPIResult;</pre>
+</div>
+
+        <p class="p">您可以设置和使用<samp class="ph codeph">GppcSPIResult</samp>结构中的<samp class="ph codeph">current</samp>字段来检查<samp class="ph codeph">tuptable</samp>结果数据的每一行。
+          </p>
+
+        <div class="p">以下代码摘录使用GPPC API连接到SPI，执行简单查询，循环查询结果并完成处理：
+          <pre class="pre codeblock">GppcSPIResult   result;
+char            *attname = "id";
+char            *query = "SELECT i, 'foo' || i AS val FROM generate_series(1, 10)i ORDER BY 1";
+bool            isnull = true;
+
+// connect to SPI
+if( GppcSPIConnect() &lt; 0 ) {
+    GppcReport(GPPC_ERROR, "cannot connect to SPI");
+}
+
+// execute the query, returning all rows
+result = GppcSPIExec(query, 0);
+
+// process result
+while( result-&gt;current &lt; result-&gt;processed ) {
+    // get the value of attname column as a datum, making a copy
+    datum = GppcSPIGetDatumByName(result, attname, &amp;isnull, true);
+
+    // do something with value
+
+    // move on to next row
+    result-&gt;current++;
+}
+
+// complete processing
+GppcSPIFinish();
+</pre>
+</div>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_tuple">
+      <h3 class="title topictitle3">关于元组描述符和元组</h3>
+
+      <div class="body">
+        <div class="p">表或一组记录包含一个或多个元组（行）。
+          元组的每个属性的结构由元组描述符定义。
+          元组描述符为元组中的每个属性定义以下内容：
+          <ul class="ul">
+           <li class="li">属性名称</li>
+
+           <li class="li">属性数据类型的对象标识符</li>
+
+           <li class="li">属性数据类型的字节长度</li>
+
+           <li class="li">属性修饰符的对象标识符</li>
+
+        </ul>
+</div>
+
+        <p class="p">GPPC API定义了一个抽象类型<samp class="ph codeph">GppcTupleDesc</samp>来表示元组/行描述符。
+          API还提供了可用于创建，访问和设置元组描述符的函数：
+          </p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_tuple__in201681" class="table" frame="border" border="1" rules="all">
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="38.23529411764706%" id="d117155e1567">函数名称</th>
+
+                <th class="entry" valign="top" width="61.76470588235294%" id="d117155e1570">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1567 ">GppcCreateTemplateTupleDesc()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1570 ">创建具有指定数量的属性的空元组描述符。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1567 ">GppcTupleDescInitEntry()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1570 ">在指定位置向元组描述符添加属性。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1567 ">GppcTupleDescNattrs()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1570 ">获取元组描述符中的属性数。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1567 ">GppcTupleDescAttrName()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1570 ">获取元组描述符中特定位置（从0开始）的属性名称。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1567 ">GppcTupleDescAttrType()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1570 ">获取元组描述符中特定位置（从0开始）的属性的类型对象标识符。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1567 ">GppcTupleDescAttrLen()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1570 ">获取元组描述符中特定位置（从0开始）的属性的类型长度。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1567 ">GppcTupleDescAttrTypmod()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1570 ">获取元组描述符中特定位置（从0开始）的属性的类型修饰符对象标识符。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+             <p class="p">  </p>
+
+             <div class="p">要构造元组描述符，首先要创建一个模板，然后为每个属性填写描述符字段。
+               这些函数的签名是：
+               <pre class="pre codeblock">GppcTupleDesc GppcCreateTemplateTupleDesc(int natts);
+void GppcTupleDescInitEntry(GppcTupleDesc desc, uint16_t attno,
+                            const char *attname, GppcOid typid, int32_t typmod);</pre>
+</div>
+
+             <div class="p">在某些情况下，您可能希望从现有元组中的属性定义初始化元组描述符条目。
+               以下函数获取元组描述符中的属性数，以及描述符中特定属性（按编号）的定义：
+               <pre class="pre codeblock">int GppcTupleDescNattrs(GppcTupleDesc tupdesc);
+const char *GppcTupleDescAttrName(GppcTupleDesc tupdesc, int16_t attno);
+GppcOid GppcTupleDescAttrType(GppcTupleDesc tupdesc, int16_t attno);
+int16_t GppcTupleDescAttrLen(GppcTupleDesc tupdesc, int16_t attno);
+int32_t GppcTupleDescAttrTypmod(GppcTupleDesc tupdesc, int16_t attno);</pre>
+</div>
+
+             <div class="p">以下示例初始化两个属性元组描述符。
+               第一个属性使用来自不同描述符的属性定义进行初始化，第二个属性初始化为布尔类型属性：
+               <pre class="pre codeblock">GppcTupleDesc       tdesc;
+GppcTupleDesc       indesc = some_input_descriptor;
+
+// initialize the tuple descriptor with 2 attributes
+tdesc = GppcCreateTemplateTupleDesc(2);
+
+// use third attribute from the input descriptor
+GppcTupleDescInitEntry(tdesc, 1, 
+	       GppcTupleDescAttrName(indesc, 2),
+	       GppcTupleDescAttrType(indesc, 2),
+	       GppcTupleDescAttrTypmod(indesc, 2));
+
+// create the boolean attribute
+GppcTupleDescInitEntry(tdesc, 2, "is_active", GppcOidBool, 0);
+</pre>
+</div>
+
+        <p class="p">GPPC API定义了一个抽象类型<samp class="ph codeph">GppcHeapTuple</samp>来表示元组/记录/行。
+          元组由其元组描述符定义，每个元组属性的值以及每个值是否为NULL的指示符。
+          </p>
+
+        <p class="p">GPPC API提供了可用于设置和访问元组及其属性的函数：
+          </p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_tuple__in201681" class="table" frame="border" border="1" rules="all">
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="38.23529411764706%" id="d117155e1684">函数名称</th>
+
+                <th class="entry" valign="top" width="61.76470588235294%" id="d117155e1687">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1684 ">GppcHeapFormTuple()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1687 ">从<samp class="ph codeph">GppcDatum</samp>数组中形成一个元组。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1684 ">GppcBuildHeapTupleDatum()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1687 ">从<samp class="ph codeph">GppcDatum</samp>数组中形成一个<samp class="ph codeph">GppcDatum</samp>元组。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1684 ">GppcGetAttributeByName()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1687 ">按名称从元组中获取属性。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="38.23529411764706%" headers="d117155e1684 ">GppcGetAttributeByNum()</td>
+
+                <td class="entry" valign="top" width="61.76470588235294%" headers="d117155e1687 ">从数字中获取元组的属性（从1开始）。</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+             <p class="p">  </p>
+
+             <div class="p">构建元组GPPC函数的签名是：<pre class="pre codeblock">GppcHeapTuple GppcHeapFormTuple(GppcTupleDesc tupdesc, GppcDatum *values, bool *nulls);
+GppcDatum    GppcBuildHeapTupleDatum(GppcTupleDesc tupdesc, GppcDatum *values, bool *nulls);</pre>
+</div>
+
+             <div class="p">以下代码摘录从上面的代码示例中的元组描述符构造<samp class="ph codeph">GppcDatum</samp>元组，并从函数的整数和布尔输入参数构造：
+               <pre class="pre codeblock">GppcDatum intarg = GPPC_GETARG_INT4(0);
+GppcDatum boolarg = GPPC_GETARG_BOOL(1);
+GppcDatum result, values[2];
+bool nulls[2] = { false, false };
+
+// construct the values array
+values[0] = intarg;
+values[1] = boolarg;
+result = GppcBuildHeapTupleDatum( tdesc, values, nulls );
+</pre>
+</div>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_srf">
+        <h3 class="title topictitle3">Set-Returning函数</h3>
+
+        <div class="body">
+          <p class="p">其签名包括<samp class="ph codeph">RETURNS SETOF RECORD</samp>或<samp class="ph codeph">RETURNS TABLE( ... )</samp>的Greenplum数据库UDF是set-returning函数。
+            </p>
+
+          <p class="p">GPPC API为GPPC函数返回集（例如，多行/元组）提供支持。
+            Greenplum数据库为每个行或项目调用一次set-returning函数（SRF）。
+            该函数必须保存足够的状态以记住它正在做什么并返回每次调用的下一行。
+            您在SRF上下文中分配的内存必须在多个函数调用中存活。
+            </p>
+
+          <p class="p">GPPC API提供宏和函数，以帮助跟踪和设置此上下文，并分配SRF内存。
+            他们包括：
+            </p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_srf__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="40%" id="d117155e1796">函数/宏名称</th>
+
+              <th class="entry" valign="top" width="60%" id="d117155e1799">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GPPC_SRF_RESULT_DESC()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">获取此SRF的输出行元组描述符。结果元组描述符由输出表定义或<samp class="ph codeph">DESCRIBE</samp>函数确定。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GPPC_SRF_IS_FIRSTCALL()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">确定这是否是对SRF的第一次调用。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GPPC_SRF_FIRSTCALL_INIT()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">初始化SRF上下文。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GPPC_SRF_PERCALL_SETUP()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">在每次调用SRF时恢复上下文。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GPPC_SRF_RETURN_NEXT()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">从SRF返回值并继续处理。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GPPC_SRF_RETURN_DONE()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">SRF处理完成的信号。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GppSRFAlloc()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">在此SRF上下文中分配内存。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GppSRFAlloc0()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">在此SRF上下文中分配内存并将其初始化为零。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GppSRFSave()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">在此SRF上下文中保存用户状态。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1796 ">GppSRFRestore()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1799 ">在此SRF上下文中还原用户状态。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+        <p class="p">  </p>
+
+        <div class="p">
+<samp class="ph codeph">GppcFuncCallContext</samp>结构提供SRF的上下文。
+          您在第一次调用SRF时创建此上下文。
+          您的set-returning GPPC函数必须在每次调用时检索函数上下文。
+          例如：
+          <pre class="pre codeblock">// set function context
+GppcFuncCallContext fctx;
+if (GPPC_SRF_IS_FIRSTCALL()) {
+    fctx = GPPC_SRF_FIRSTCALL_INIT();
+}
+fctx = GPPC_SRF_PERCALL_SETUP();
+// process the tuple
+</pre>
+</div>
+
+         <div class="p">GPPC函数必须在返回元组结果时提供上下文或指示处理已完成。
+           例如：
+           <pre class="pre codeblock">GPPC_SRF_RETURN_NEXT(fctx, result_tuple);
+// or
+GPPC_SRF_RETURN_DONE(fctx);</pre>
+</div>
+
+
+        <p class="p">使用<samp class="ph codeph">DESCRIBE</samp>函数定义使用<samp class="ph codeph">RETURNS SETOF RECORD</samp>子句的函数的输出元组描述符。
+          使用<samp class="ph codeph">GPPC_SRF_RESULT_DESC()</samp>宏获取使用<samp class="ph codeph">RETURNS TABLE( ... )</samp>子句的函数的输出元组描述符。
+          </p>
+
+        <p class="p">有关set-returning函数代码和部署示例，请参阅<a class="xref" href="#topic_example_srf">GPPC Set-Returning函数示例</a>。
+          </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_tblfunc">
+      <h3 class="title topictitle3">表函数</h3>
+
+      <div class="body">
+        <p class="p">GPPC API提供<samp class="ph codeph">GppcAnyTable</samp>类型以将表作为输入参数传递给函数，或者将表作为函数结果返回。
+          </p>
+
+        <p class="p">GPPC API中提供的与表相关的函数和宏包括：</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_tblfunc__in201681" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="40%" id="d117155e1971">函数/宏名称</th>
+
+              <th class="entry" valign="top" width="60%" id="d117155e1974">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1971 ">GPPC_GETARG_ANYTABLE()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1974 ">获取任何表函数参数。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1971 ">GPPC_RETURN_ANYTABLE()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1974 ">返回表。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1971 ">GppcAnyTableGetTupleDesc()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1974 ">获取表的元组描述符。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="40%" headers="d117155e1971 ">GppcAnyTableGetNextTuple()</td>
+
+              <td class="entry" valign="top" width="60%" headers="d117155e1974 ">获取表中的下一行。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <p class="p">  </p>
+
+      <div class="p">您可以使用<samp class="ph codeph">GPPC_GETARG_ANYTABLE()</samp>宏来检索表输入参数。
+        当您有权访问该表时，可以使用<samp class="ph codeph">GppcAnyTableGetTupleDesc()</samp>函数检查该表的元组描述符。
+        该函数的签名是：
+        <pre class="pre codeblock">GppcTupleDesc GppcAnyTableGetTupleDesc(GppcAnyTable t);</pre>
+</div>
+
+       <div class="p">例如，要检索作为函数的第一个输入参数的表的元组描述符：
+         <pre class="pre codeblock">GppcAnyTable     intbl;
+GppcTupleDesc    in_desc;
+
+intbl = GPPC_GETARG_ANYTABLE(0);
+in_desc = GppcAnyTableGetTupleDesc(intbl);</pre>
+</div>
+
+      <div class="p">
+<samp class="ph codeph">GppcAnyTableGetNextTuple()</samp>函数从表中获取下一行。
+        同样，要从上表中检索下一个元组：
+        <pre class="pre codeblock">GppcHeapTuple    ntuple;
+
+ntuple = GppcAnyTableGetNextTuple(intbl);</pre>
+</div>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_limits">
+      <h3 class="title topictitle3">限制</h3>
+
+      <div class="body">
+        <p class="p">使用Greenplum数据库版本5.0.x的GPPC API不支持以下运算符：</p>
+<ul class="ul">
+          <li class="li">integer || integer</li>
+
+          <li class="li">integer = text</li>
+
+          <li class="li">text &lt; integer</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_samplecode">
+      <h3 class="title topictitle3">样例代码</h3>
+
+      <div class="body">
+        <p class="p">Greenplum数据库github存储库中的<a class="xref" href="https://github.com/greenplum-db/gpdb/tree/master/src/interfaces/gppc/test" target="_blank">gppc test</a>目录包含示例GPPC代码：
+          </p>
+<ul class="ul">
+          <li class="li">
+<samp class="ph codeph">gppc_demo/</samp> - 示例代码，用于执行GPPC SPI函数，错误报告，数据类型参数和返回宏，set-returning函数和编码函数</li>
+
+          <li class="li">
+<samp class="ph codeph">tabfunc_gppc_demo/</samp> - 示例代码执行GPPC表和set-returning函数</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic_build">
+      <h2 class="title topictitle2">使用PGXS构建GPPC共享库</h2>
+
+      <div class="body">
+        <p class="p">您可以将使用GPPC API编写的函数编译到Greenplum数据库服务器按需加载的一个或多个共享库中。
+          </p>
+
+        <p class="p">您可以使用PostgreSQL构建扩展基础结构（PGXS）根据Greenplum数据库安装为您的GPPC函数构建源代码。
+          该框架自动化简单模块的通用构建规则。
+          如果您有一个更复杂的用例，则需要编写自己的构建系统。
+          </p>
+
+        <p class="p">要使用PGXS基础结构为使用GPPC API创建的函数生成共享库，请创建一个设置PGXS特定变量的简单<samp class="ph codeph">Makefile</samp>。
+          </p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 有关PGXS支持的<samp class="ph codeph">Makefile</samp>变量的信息，
+          请参阅PostgreSQL文档中的<a class="xref" href="https://www.postgresql.org/docs/9.4/extend-pgxs.html" target="_blank">扩展的构建基础设施</a>。
+          </div>
+
+        <div class="p">例如，以下<samp class="ph codeph">Makefile</samp>从名为<samp class="ph codeph">src1.c</samp>和<samp class="ph codeph">src2.c</samp>的两个C源文件生成名为<samp class="ph codeph">sharedlib_name.so</samp>的共享库：
+          <pre class="pre codeblock">MODULE_big = sharedlib_name
+OBJS = src1.o src2.o
+PG_CPPFLAGS = -I$(shell $(PG_CONFIG) --includedir)
+SHLIB_LINK = -L$(shell $(PG_CONFIG) --libdir) -lgppc
+
+PG_CONFIG = pg_config
+PGXS := $(shell $(PG_CONFIG) --pgxs)
+include $(PGXS)</pre>
+</div>
+
+
+        <p class="p"><samp class="ph codeph">MODULE_big</samp>标识<samp class="ph codeph">Makefile</samp>生成的共享库的基本名称。
+          </p>
+
+        <p class="p"><samp class="ph codeph">PG_CPPFLAGS</samp>将Greenplum数据库安装包含目录添加到编译器头文件搜索路径中。
+          </p>
+
+        <p class="p"><samp class="ph codeph">SHLIB_LINK</samp>将Greenplum数据库安装库目录添加到链接器搜索路径。
+          此变量还将GPPC库（<samp class="ph codeph">-lgppc</samp>）添加到link命令。
+          </p>
+
+        <p class="p"><samp class="ph codeph">PG_CONFIG</samp>和<samp class="ph codeph">PGXS</samp>变量设置和<samp class="ph codeph">include</samp>语句是必需的，
+          通常位于<samp class="ph codeph">Makefile</samp>的最后三行。
+          </p>
+
+      </div>
+
+  </div>
+
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic_reg">
+      <h2 class="title topictitle2">使用Greenplum数据库注册GPPC函数</h2>
+
+      <div class="body">
+        <p class="p">在用户可以从SQL调用GPPC函数之前，必须使用Greenplum数据库注册该函数。
+          </p>
+
+        <p class="p">注册GPPC函数涉及将GPPC函数签名映射到SQL用户定义的函数。
+          您可以使用<samp class="ph codeph">CREATE FUNCTION .. AS </samp>命令定义此映射，以指定GPPC共享库名称。
+          您可以选择为GPPC和SQL函数使用相同的名称或不同的名称。
+          </p>
+
+        <div class="p">示例<samp class="ph codeph">CREATE FUNCTION ... AS </samp>语法如下：
+          <pre class="pre codeblock">CREATE FUNCTION <var class="keyword varname">sql_function_name</var>(<var class="keyword varname">arg</var>[, ...]) RETURNS <var class="keyword varname">return_type</var>
+  AS '<var class="keyword varname">shared_library_path</var>'[, '<var class="keyword varname">gppc_function_name</var>']
+LANGUAGE C STRICT [WITH (DESCRIBE=<var class="keyword varname">describe_function</var>)];</pre>
+</div>
+
+         <p class="p">指定<samp class="ph codeph"><var class="keyword varname">shared_library_path</var></samp>时，可以省略共享库<samp class="ph codeph">.so</samp>扩展名。
+           </p>
+
+        <div class="p">如果GPPC函数在名为<samp class="ph codeph">gppc_try.so</samp>的共享库中编译和链接，
+          则以下命令将本主题前面引用的示例<samp class="ph codeph">add_int4s()</samp>函数注册到名为<samp class="ph codeph">add_two_int4s_gppc()</samp>的SQL UDF：
+          <pre class="pre codeblock">CREATE FUNCTION add_two_int4s_gppc(int4, int4) RETURNS int8
+  AS 'gppc_try.so', 'add_int4s'
+LANGUAGE C STRICT;</pre>
+</div>
+
+      </div>
+
+
+  <div class="topic nested2" xml:lang="en" lang="en" id="topic_dynload">
+    <h3 class="title topictitle3">关于动态加载</h3>
+
+    <div class="body">
+      <p class="p">您可以在<samp class="ph codeph">CREATE FUNCTION ... AS</samp>命令中指定GPPC共享库的名称，
+        以在Greenplum数据库的共享库中注册GPPC函数。
+        Greenplum数据库动态加载程序在用户第一次调用在该共享库中链接的用户定义函数时将GPPC共享库文件加载到内存中。
+        如果在<samp class="ph codeph">CREATE FUNCTION ... AS</samp>命令中未提供共享库的绝对路径，
+        Greenplum数据库将尝试使用以下有序步骤找到库：
+        </p>
+<ol class="ol">
+        <li class="li">如果共享库文件路径以字符串<samp class="ph codeph">$libdir</samp>开头，
+          则Greenplum数据库将在PostgreSQL包库目录中查找该文件。
+          运行<samp class="ph codeph">pg_config --pkglibdir</samp>命令以确定此目录的位置。
+          </li>
+
+        <li class="li">如果指定了没有目录前缀的共享库文件名，
+          则Greenplum数据库将在<samp class="ph codeph">dynamic_library_path</samp>服务器配置参数值标识的目录中搜索该文件。
+          </li>
+
+        <li class="li">当前的工作目录。</li>
+</ol>
+
+    </div>
+
+  </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic_deploy">
+      <h2 class="title topictitle2">打包和部署注意事项</h2>
+
+      <div class="body">
+        <p class="p">您必须以适合Greenplum集群中Greenplum数据库管理员部署的形式打包GPPC共享库和SQL函数注册脚本。
+          提供GPPC包的特定部署说明。
+          </p>
+
+        <p class="p">构建程序包和部署说明时，请考虑以下事项：
+          </p>
+<ul class="ul">
+          <li class="li">考虑提供Greenplum数据库管理员运行的shell脚本或程序，以便将共享库安装到所需的文件系统位置并注册GPPC函数。
+            </li>
+
+          <li class="li">必须将GPPC共享库安装到master主机上的相同文件系统位置以及Greenplum数据库群集中的每个segment主机上。
+            </li>
+
+          <li class="li">
+<samp class="ph codeph">gpadmin</samp>用户必须具有遍历GPPC共享库文件的完整文件系统路径的权限。
+            </li>
+
+         <li class="li">安装在Greenplum数据库部署中后，
+           GPPC共享库的文件系统位置决定了在使用<samp class="ph codeph">CREATE FUNCTION ... AS</samp>命令在库中注册函数时如何引用共享库。
+           </li>
+
+          <li class="li">创建一个<samp class="ph codeph">.sql</samp>脚本文件，为GPPC共享库中的每个GPPC函数注册一个SQL UDF。
+            您在<samp class="ph codeph">.sql</samp>注册脚本中创建的函数必须引用GPPC共享库的部署位置。
+            在GPPC部署包中包含此脚本。
+            </li>
+
+          <li class="li">记录运行GPPC包部署脚本的说明（如果提供）。
+            </li>
+
+          <li class="li">如果未在程序包部署脚本中包含此任务，请记录有关安装GPPC共享库的说明。
+            </li>
+
+          <li class="li">如果未在程序包部署脚本中包含此任务，请记录有关安装和运行函数注册脚本的说明。
+            </li>
+
+        </ul>
+
+      </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic_example_text">
+    <h2 class="title topictitle2">GPPC文本函数示例</h2>
+
+    <div class="body">
+      <p class="p">在此示例中，您将开发，构建和部署GPPC共享库，并注册并运行名为<samp class="ph codeph">concat_two_strings</samp>的GPPC函数。
+        此函数使用GPPC API连接两个字符串参数并返回结果。
+        </p>
+
+      <p class="p">您将在Greenplum数据库主控主机上开发GPPC函数。
+        部署您在此示例中创建的GPPC共享库需要对Greenplum数据库集群的管理访问权限。
+        </p>
+
+      <p class="p">执行以下过程以运行该示例：</p>
+<ol class="ol">
+        <li class="li">登录Greenplum数据库主控主机并设置您的环境。例如：
+          <pre class="pre codeblock">$ ssh gpadmin@&lt;gpmaster&gt;
+gpadmin@gpmaster$ . /usr/local/greenplum-db/greenplum_path.sh</pre>
+</li>
+
+        <li class="li">创建工作目录并导航到新目录。例如：<pre class="pre codeblock">gpadmin@gpmaster$ mkdir gppc_work
+gpadmin@gpmaster$ cd gppc_work</pre>
+</li>
+
+        <li class="li">通过在您选择的编辑器中打开文件，为GPPC源代码准备文件。
+          例如，要使用<samp class="ph codeph">vi</samp>打开名为<samp class="ph codeph">gppc_concat.c</samp>的文件：
+          <pre class="pre codeblock">gpadmin@gpmaster$ vi gppc_concat.c</pre>
+</li>
+
+        <li class="li">将以下代码复制/粘贴到文件中：<pre class="pre codeblock">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include "gppc.h"
+
+// make the function SQL-invokable
+GPPC_FUNCTION_INFO(concat_two_strings);
+
+// declare the function
+GppcDatum concat_two_strings(GPPC_FUNCTION_ARGS);
+
+GppcDatum
+concat_two_strings(GPPC_FUNCTION_ARGS)
+{
+    // retrieve the text input arguments
+    GppcText arg0 = GPPC_GETARG_TEXT(0);
+    GppcText arg1 = GPPC_GETARG_TEXT(1);
+
+    // determine the size of the concatenated string and allocate
+    // text memory of this size
+    size_t arg0_len = GppcGetTextLength(arg0);
+    size_t arg1_len = GppcGetTextLength(arg1);
+    GppcText retstring = GppcAllocText(arg0_len + arg1_len);
+
+    // construct the concatenated return string
+    memcpy(GppcGetTextPointer(retstring), GppcGetTextPointer(arg0), arg0_len);
+    memcpy(GppcGetTextPointer(retstring) + arg0_len, GppcGetTextPointer(arg1), arg1_len);
+
+    GPPC_RETURN_TEXT( retstring );
+}</pre>
+<p class="p">代码声明并实现了<samp class="ph codeph">concat_two_strings()</samp>函数。
+          它使用GPPC数据类型，宏和函数来获取函数参数，
+          为连接的字符串分配内存，将参数复制到新字符串中，然后返回结果。
+          </p>
+</li>
+
+        <li class="li">保存文件并退出编辑器。</li>
+
+        <li class="li">在您选择的编辑器中打开名为<samp class="ph codeph">Makefile</samp>的文件。
+          将以下文本复制/粘贴到文件中：
+          <pre class="pre codeblock">MODULE_big = gppc_concat
+OBJS = gppc_concat.o
+
+PG_CONFIG = pg_config
+PGXS := $(shell $(PG_CONFIG) --pgxs)
+
+PG_CPPFLAGS = -I$(shell $(PG_CONFIG) --includedir)
+SHLIB_LINK = -L$(shell $(PG_CONFIG) --libdir) -lgppc
+include $(PGXS)</pre>
+</li>
+
+        <li class="li">保存文件并退出编辑器。</li>
+
+        <li class="li">为<samp class="ph codeph">concat_two_strings()</samp>函数构建GPPC共享库。例如：<pre class="pre codeblock">gpadmin@gpmaster$ make all</pre>
+
+          <p class="p"><samp class="ph codeph">make</samp>命令在当前工作目录中生成名为<samp class="ph codeph">gppc_concat.so</samp>的共享库文件。</p>
+
+          </li>
+
+        <li class="li">将共享库复制到Greenplum数据库安装。
+          您必须具有Greenplum数据库管理权限才能复制该文件。
+          例如：
+          <pre class="pre codeblock">gpadmin@gpmaster$ cp gppc_concat.so /usr/local/greenplum-db/lib/postgresql/</pre>
+</li>
+
+        <li class="li">将共享库复制到Greenplum数据库安装中的每个主机。
+          例如，如果<samp class="ph codeph">seghostfile</samp>包含Greenplum数据库集群中segment主机的列表，每个主机行：
+          <pre class="pre codeblock">gpadmin@gpmaster$ gpscp -v -f seghostfile /usr/local/greenplum-db/lib/postgresql/gppc_concat.so =:/usr/local/greenplum-db/lib/postgresql/gppc_concat.so</pre>
+</li>
+
+        <li class="li">打开<samp class="ph codeph">psql</samp>会话。例如：
+          <pre class="pre codeblock">gpadmin@gpmaster$ psql -d testdb</pre>
+</li>
+
+        <li class="li">使用Greenplum数据库注册名为<samp class="ph codeph">concat_two_strings()</samp>的GPPC函数。
+          例如，将Greenplum数据库函数<samp class="ph codeph">concat_with_gppc()</samp>映射到GPPC <samp class="ph codeph">concat_two_strings()</samp>函数：
+          <pre class="pre codeblock">testdb=# CREATE FUNCTION concat_with_gppc(text, text) RETURNS text
+  AS 'gppc_concat', 'concat_two_strings'
+LANGUAGE C STRICT;</pre>
+</li>
+
+        <li class="li">运行<samp class="ph codeph">concat_with_gppc()</samp>函数。例如：
+          <pre class="pre codeblock">testdb=# SELECT concat_with_gppc( 'happy', 'monday' );
+ concat_with_gppc
+------------------
+ happymonday
+(1 row)
+</pre>
+</li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic_example_srf">
+    <h2 class="title topictitle2">GPPC Set-Returning函数示例</h2>
+
+    <div class="body">
+      <p class="p">在此示例中，您将开发，构建和部署GPPC共享库。
+        您还可以为名为<samp class="ph codeph">return_tbl()</samp>的GPPC函数创建并运行<samp class="ph codeph">.sql</samp>注册脚本。
+        此函数使用GPPC API获取带有整数和文本列的输入表，确定整数列是否大于13，
+        并返回带有输入整数列的结果表和一个标识整数是否为的整数的布尔列<samp class="ph codeph">return_tbl()</samp>使用GPPC API报告和SRF函数和宏。
+        </p>
+
+      <p class="p">您将在Greenplum数据库master主机上开发GPPC函数。
+        部署您在此示例中创建的GPPC共享库需要对Greenplum数据库集群的管理访问权限。
+        </p>
+
+      <p class="p">执行以下过程以运行该示例：</p>
+<ol class="ol">
+        <li class="li">登录Greenplum数据库master主机并设置您的环境。例如：<pre class="pre codeblock">$ ssh gpadmin@&lt;gpmaster&gt;
+gpadmin@gpmaster$ . /usr/local/greenplum-db/greenplum_path.sh</pre>
+</li>
+
+        <li class="li">创建工作目录并导航到新目录。例如：<pre class="pre codeblock">gpadmin@gpmaster$ mkdir gppc_work
+gpadmin@gpmaster$ cd gppc_work</pre>
+</li>
+
+        <li class="li">通过在您选择的编辑器中打开文件，为GPPC代码准备源文件。
+          例如，要使用<samp class="ph codeph">vi</samp>打开名为<samp class="ph codeph">gppc_concat.c</samp>的文件：
+          <pre class="pre codeblock">gpadmin@gpmaster$ vi gppc_rettbl.c</pre>
+</li>
+
+        <li class="li">将以下代码复制/粘贴到文件中：<pre class="pre codeblock">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include "gppc.h"
+
+// initialize the logging level
+GppcReportLevel level = GPPC_INFO;
+
+// make the function SQL-invokable and declare the function
+GPPC_FUNCTION_INFO(return_tbl);
+GppcDatum return_tbl(GPPC_FUNCTION_ARGS);
+
+GppcDatum
+return_tbl(GPPC_FUNCTION_ARGS)
+{
+    GppcFuncCallContext	fctx;
+    GppcAnyTable	intbl;
+    GppcHeapTuple	intuple;
+    GppcTupleDesc	in_tupdesc, out_tupdesc;
+    GppcBool  		resbool = false;
+    GppcDatum  		result, boolres, values[2];
+    bool		nulls[2] = {false, false};
+
+    // single input argument - the table
+    intbl = GPPC_GETARG_ANYTABLE(0);
+
+    // set the function context
+    if (GPPC_SRF_IS_FIRSTCALL()) {
+        fctx = GPPC_SRF_FIRSTCALL_INIT();
+    }
+    fctx = GPPC_SRF_PERCALL_SETUP();
+
+    // get the tuple descriptor for the input table
+    in_tupdesc  = GppcAnyTableGetTupleDesc(intbl);
+
+    // retrieve the next tuple
+    intuple = GppcAnyTableGetNextTuple(intbl);
+    if( intuple == NULL ) {
+      // no more tuples, conclude
+      GPPC_SRF_RETURN_DONE(fctx);
+    }
+
+    // get the output tuple descriptor and verify that it is
+    // defined as we expect
+    out_tupdesc = GPPC_SRF_RESULT_DESC();
+    if (GppcTupleDescNattrs(out_tupdesc) != 2                ||
+        GppcTupleDescAttrType(out_tupdesc, 0) != GppcOidInt4 ||
+        GppcTupleDescAttrType(out_tupdesc, 1) != GppcOidBool) {
+        GppcReport(GPPC_ERROR, "INVALID out_tupdesc tuple");
+    }
+
+    // log the attribute names of the output tuple descriptor
+    GppcReport(level, "output tuple descriptor attr0 name: %s", GppcTupleDescAttrName(out_tupdesc, 0));
+    GppcReport(level, "output tuple descriptor attr1 name: %s", GppcTupleDescAttrName(out_tupdesc, 1));
+
+    // retrieve the attribute values by name from the tuple
+    bool text_isnull, int_isnull;
+    GppcDatum intdat = GppcGetAttributeByName(intuple, "id", &amp;int_isnull);
+    GppcDatum textdat = GppcGetAttributeByName(intuple, "msg", &amp;text_isnull);
+
+    // convert datum to specific type
+    GppcInt4 intarg = GppcDatumGetInt4(intdat);
+    GppcReport(level, "id: %d", intarg);
+    GppcReport(level, "msg: %s", GppcTextGetCString(GppcDatumGetText(textdat)));
+
+    // perform the &gt;13 check on the integer
+    if( !int_isnull &amp;&amp; (intarg &gt; 13) ) {
+        // greater than 13?
+        resbool = true;
+        GppcReport(level, "id is greater than 13!");
+    }
+
+    // values are datums; use integer from the tuple and
+    // construct the datum for the boolean return
+    values[0] = intdat;
+    boolres = GppcBoolGetDatum(resbool);
+    values[1] = boolres;
+
+    // build a datum tuple and return
+    result = GppcBuildHeapTupleDatum(out_tupdesc, values, nulls);
+    GPPC_SRF_RETURN_NEXT(fctx, result);
+
+}</pre>
+<p class="p">代码声明并实现了<samp class="ph codeph">return_tbl()</samp>函数。
+          它使用GPPC数据类型，宏和函数来获取函数参数，检查元组描述符，构建返回元组，并返回结果。
+          该函数还使用SRF宏来跟踪函数调用之间的元组上下文。
+          </p>
+</li>
+
+        <li class="li">保存文件并退出编辑器。</li>
+
+        <li class="li">在您选择的编辑器中打开名为<samp class="ph codeph">Makefile</samp>的文件。
+          将以下文本复制/粘贴到文件中：
+          <pre class="pre codeblock">MODULE_big = gppc_rettbl
+OBJS = gppc_rettbl.o
+
+PG_CONFIG = pg_config
+PGXS := $(shell $(PG_CONFIG) --pgxs)
+
+PG_CPPFLAGS = -I$(shell $(PG_CONFIG) --includedir)
+SHLIB_LINK = -L$(shell $(PG_CONFIG) --libdir) -lgppc
+include $(PGXS)</pre>
+</li>
+
+        <li class="li">保存文件并退出编辑器。</li>
+
+        <li class="li">为<samp class="ph codeph">return_tbl()</samp>函数构建GPPC共享库。例如：<pre class="pre codeblock">gpadmin@gpmaster$ make all</pre>
+
+          <p class="p"><samp class="ph codeph">make</samp>命令在当前工作目录中生成名为<samp class="ph codeph">gppc_rettbl.so</samp>的共享库文件。</p>
+</li>
+
+        <li class="li">将共享库复制到Greenplum数据库安装。
+          您必须具有Greenplum数据库管理权限才能复制该文件。
+          例如：
+          <pre class="pre codeblock">gpadmin@gpmaster$ cp gppc_rettbl.so /usr/local/greenplum-db/lib/postgresql/</pre>
+
+          <p class="p">此命令将共享库复制到<samp class="ph codeph">$libdir</samp></p>
+</li>
+
+        <li class="li">将共享库复制到Greenplum数据库安装中的每个主机。
+          例如，如果<samp class="ph codeph">seghostfile</samp>包含Greenplum数据库集群中segment主机的列表，每个主机一行：
+          <pre class="pre codeblock">gpadmin@gpmaster$ gpscp -v -f seghostfile /usr/local/greenplum-db/lib/postgresql/gppc_rettbl.so =:/usr/local/greenplum-db/lib/postgresql/gppc_rettbl.so</pre>
+</li>
+
+        <li class="li">创建<samp class="ph codeph">.sql</samp>文件以注册GPPC <samp class="ph codeph">return_tbl()</samp>函数。
+          在您选择的编辑器中打开名为<samp class="ph codeph">gppc_rettbl_reg.sql</samp>的文件。
+          </li>
+
+        <li class="li">将以下文本复制/粘贴到文件中：<pre class="pre codeblock">CREATE FUNCTION rettbl_gppc(anytable) RETURNS TABLE(id int4, thirteen bool)
+  AS 'gppc_rettbl', 'return_tbl'
+LANGUAGE C STRICT;</pre>
+</li>
+
+        <li class="li">通过运行刚刚创建的脚本来注册GPPC功能。
+          例如，要在名为<samp class="ph codeph">testdb</samp>的数据库中注册该函数：
+          <pre class="pre codeblock">gpadmin@gpmaster$ psql -d testdb -f gppc_rettbl_reg.sql</pre>
+</li>
+
+        <li class="li">打开<samp class="ph codeph">psql</samp>会话。例如：<pre class="pre codeblock">gpadmin@gpmaster$ psql -d testdb</pre>
+</li>
+
+        <li class="li">创建包含一些测试数据的表。例如：<pre class="pre codeblock">CREATE TABLE gppc_testtbl( id int, msg text );
+INSERT INTO gppc_testtbl VALUES (1, 'f1');
+INSERT INTO gppc_testtbl VALUES (7, 'f7');
+INSERT INTO gppc_testtbl VALUES (10, 'f10');
+INSERT INTO gppc_testtbl VALUES (13, 'f13');
+INSERT INTO gppc_testtbl VALUES (15, 'f15');
+INSERT INTO gppc_testtbl VALUES (17, 'f17');</pre>
+</li>
+
+        <li class="li">运行<samp class="ph codeph">rettbl_gppc()</samp>函数。例如：<pre class="pre codeblock">testdb=# SELECT * FROM rettbl_gppc(TABLE(SELECT * FROM gppc_testtbl));
+ id | thirteen 
+----+----------
+  1 | f
+  7 | f
+ 13 | f
+ 15 | t
+ 17 | t
+ 10 | f
+(6 rows)
+</pre>
+</li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

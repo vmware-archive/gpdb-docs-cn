@@ -1,0 +1,2199 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      使用gpfdist和gpload转换外部数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_load x6-0_admin_guide_load_topics x6-0_admin_guide_load_topics_transforming-xml-data has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    使用gpfdist和gpload转换外部数据
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+   <h1 class="title topictitle1">使用gpfdist和gpload转换外部数据</h1>
+
+   
+   <div class="body">
+<p class="shortdesc"><samp class="ph codeph">gpfdist</samp>并行文件服务器允许用户设置转换，使Greenplum数据库外部表能够以<samp class="ph codeph">CREATE EXTERNAL TABLE</samp>命令的<samp class="ph codeph">FORMAT</samp>子句不支持的格式读取和写入文件。<em class="ph i">input</em>转换以外部数据格式读取文件，并以CSV或外部表的FORMAT子句中指定的其他文本格式将行输出到<samp class="ph codeph">gpfdist</samp>。<em class="ph i">output</em>转换以文本格式从<samp class="ph codeph">gpfdist</samp>接收行，并将它们转换为外部数据格式。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> <samp class="ph codeph">gpfdist</samp>和<samp class="ph codeph">gpload</samp>仅与发布它们的Greenplum数据库主要版本兼容。例如，与Greenplum Database 4.x一起安装的<samp class="ph codeph">gpfdist</samp>工具不能与Greenplum Database 5.x或6.x一起使用。</div>
+
+      <p class="p">本节介绍了设置数据转换的任务，以使<samp class="ph codeph">gpfdist</samp>使用Greenplum数据库不支持的格式读取或写入外部数据文件。</p>
+
+      <ul class="ul" id="topic75__ul_xlm_13m_pbb">
+         <li class="li"><a class="xref" href="#topic_mdl_thm_pbb">关于gpfdist转换</a></li>
+
+         <li class="li"><a class="xref" href="#topic_el5_k12_pbb">确定转换方案</a></li>
+
+         <li class="li"><a class="xref" href="#topic77">编写转换</a></li>
+
+         <li class="li"><a class="xref" href="#topic78">编写gpfdist配置文件</a></li>
+
+         <li class="li"><a class="xref" href="#topic80">传输数据</a></li>
+
+         <li class="li"><a class="xref" href="#topic83">配置文件格式</a></li>
+
+         <li class="li"><a class="xref" href="#topic91">XML转换示例</a></li>
+
+      </ul>
+
+   </div>
+
+   <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../../load/topics/g-loading-and-unloading-data.html" title="这一节中的主题描述了Greenplum数据库中将数据装载进来和写出去的方法，以及如何格式化数据文件。">装载和卸载数据</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_mdl_thm_pbb">
+      <h2 class="title topictitle2">关于gpfdist转换</h2>
+
+      <div class="body">
+         <p class="p">要设置数据格式转换，用户需要提供一个可执行命令，该命令可以被<samp class="ph codeph">gpfdist</samp>以包含数据的文件名调用。例如，用户可以编写一个shell脚本，该脚本在XML文件上运行XSLT转换，以输出具有以竖线(<samp class="ph codeph">|</samp>)字符分隔的列和使用换行符分隔的行的行。</p>
+
+         <p class="p">转换是在以命令行方式传递给<samp class="ph codeph">gpfdist</samp>的YAML格式的配置文件中配置的。</p>
+
+         <p class="p">如果要将外部数据加载到Greenplum数据库的表中，可以使用<samp class="ph codeph">gpload</samp>工具自动执行创建外部表的任务，运行<samp class="ph codeph">gpfdist</samp>并将转换后的数据加载到数据库表中。</p>
+
+         <p class="p">从数据库中访问外部XML文件中的数据是常见的需要转换的示例。下图展示了对ETL服务器上的XML文件执行转换的<em class="ph i">gpfdist</em>。</p>
+
+         <div class="fig fignone" id="topic_mdl_thm_pbb__du185408">
+<span class="figcap">Figure 1. 使用XML转换的外部表</span>
+            
+            <br><img class="image" id="topic_mdl_thm_pbb__image_xbp_whm_pbb" src="../../graphics/ext-tables-xml.png"><br>
+         </div>
+
+         <p class="p">以下是为外部数据文件设置<samp class="ph codeph">gpfdist</samp>转换的高级步骤。该过程用XML示例说明。</p>
+
+         <ol class="ol" id="topic_mdl_thm_pbb__ol_d4f_4wf_pbb">
+            <li class="li">
+<a class="xref" href="#topic_el5_k12_pbb">Determine the transformation
+                  schema</a>.</li>
+
+            <li class="li">
+<a class="xref" href="#topic77">Write a transformation</a>.</li>
+
+            <li class="li">
+<a class="xref" href="#topic78">Write the gpfdist configuration
+               file</a>.</li>
+
+            <li class="li">
+<a class="xref" href="#topic80">Transfer the data</a>.</li>
+
+         </ol>
+
+      </div>
+
+   </div>
+
+   <div class="topic nested1" id="topic_el5_k12_pbb">
+      <h2 class="title topictitle2">确定转换方案</h2>
+
+      <div class="body">
+         <p class="p">要为转换项目做准备：</p>
+
+         <ol class="ol" id="topic_el5_k12_pbb__ol_fl5_k12_pbb">
+            <li class="li">确定该项目的目标，例如索引数据、分析数据、组合数据等等。</li>
+
+            <li class="li">检查源文件并标记文件结构和元素名称。</li>
+
+            <li class="li">选择要导入的元素并且决定是否需要其他适当的限制。</li>
+
+         </ol>
+
+         <p class="p">例如，下面的XML文件<em class="ph i">prices.xml</em>是一个简短的包含价格记录的文件。每个价格记录包含两个字段：项目编号和价格。</p>
+
+         <pre class="pre codeblock">&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;
+&lt;prices&gt;
+  &lt;pricerecord&gt;
+    &lt;itemnumber&gt;708421&lt;/itemnumber&gt;
+    &lt;price&gt;19.99&lt;/price&gt;
+  &lt;/pricerecord&gt;
+  &lt;pricerecord&gt;
+    &lt;itemnumber&gt;708466&lt;/itemnumber&gt;
+    &lt;price&gt;59.25&lt;/price&gt;
+  &lt;/pricerecord&gt;
+  &lt;pricerecord&gt;
+    &lt;itemnumber&gt;711121&lt;/itemnumber&gt;
+    &lt;price&gt;24.99&lt;/price&gt;
+  &lt;/pricerecord&gt;
+&lt;/prices&gt;
+</pre>
+
+         <p class="p">目的是把所有的数据导入到一个具有一个整数列<samp class="ph codeph">itemnumber</samp>和一个小数列<samp class="ph codeph">price</samp>的Greenplum数据库表中。</p>
+
+      </div>
+
+   </div>
+
+   <div class="topic nested1" id="topic77">
+      <h2 class="title topictitle2">编写转换</h2>
+
+      <div class="body">
+         <p class="p">转换指定从数据中抽取什么。用户可以使用适合其项目的任何创作环境和语言。对于XML转换，基于项目的目标和范围选择一种如XSLT、Joost（STX）、Java、Python或者Perl的技术。</p>
+
+         <p class="p">在price的例子中，下一步是转换XML数据成一个简单的分隔成两列的格式。</p>
+
+         <div class="p">
+            <pre class="pre codeblock">708421|19.99
+708466|59.25
+711121|24.99
+</pre>
+
+         </div>
+
+         <p class="p">下面的称为<em class="ph i">input_transform.stx</em>的STX转换完成了这种数据转换。</p>
+
+         <pre class="pre codeblock">&lt;?xml version="1.0"?&gt;
+&lt;stx:transform version="1.0"
+   xmlns:stx="http://stx.sourceforge.net/2002/ns"
+   pass-through="none"&gt;
+  &lt;!-- declare variables --&gt;
+  &lt;stx:variable name="itemnumber"/&gt;
+  &lt;stx:variable name="price"/&gt;
+  &lt;!-- match and output prices as columns delimited by | --&gt;
+  &lt;stx:template match="/prices/pricerecord"&gt;
+    &lt;stx:process-children/&gt;
+    &lt;stx:value-of select="$itemnumber"/&gt;    
+&lt;stx:text&gt;|&lt;/stx:text&gt;
+    &lt;stx:value-of select="$price"/&gt;      &lt;stx:text&gt;
+&lt;/stx:text&gt;
+  &lt;/stx:template&gt;
+  &lt;stx:template match="itemnumber"&gt;
+    &lt;stx:assign name="itemnumber" select="."/&gt;
+  &lt;/stx:template&gt;
+  &lt;stx:template match="price"&gt;
+    &lt;stx:assign name="price" select="."/&gt;
+  &lt;/stx:template&gt;
+&lt;/stx:transform&gt;
+</pre>
+
+         <p class="p">此STX转换声明两个临时变量<samp class="ph codeph">itemnumber</samp> 和<samp class="ph codeph">price</samp>，以及以下规则。</p>
+
+         <ol class="ol" id="topic77__ol_u5s_l12_pbb">
+            <li class="li" id="topic77__du186530">当找到满足XPath表达式<samp class="ph codeph">/prices/pricerecord</samp>的元素时，检查子元素并生成包含<samp class="ph codeph">itemnumber</samp>变量值，一个<samp class="ph codeph">|</samp>字符，price变量值和一个新行的输出。</li>
+
+            <li class="li" id="topic77__du186531">当找到<samp class="ph codeph">&lt;itemnumber&gt;</samp>元素时，将该元素的内容存储在变量<samp class="ph codeph">itemnumber</samp>中。</li>
+
+            <li class="li" id="topic77__du186677">当找到&lt;price&gt;元素后，将该元素的内容存储在变量<samp class="ph codeph">price</samp>中。</li>
+
+         </ol>
+
+      </div>
+
+   </div>
+
+   <div class="topic nested1" id="topic78">
+      <h2 class="title topictitle2">编写gpfdist配置文件</h2>
+
+      <div class="body">
+         <p class="p"><span class="keyword cmdname">gpfdist</span>配置是一个YAML 1.1文档。它指定在装载或者抽取数据时<span class="keyword cmdname">gpfdist</span>用来选择一种转换并应用的规则。</p>
+
+         <p class="p">这个<span class="keyword cmdname">gpfdist</span> 配置的例子包含下列项：</p>
+
+         <ul class="ul" id="topic78__ul_lct_m12_pbb">
+            <li class="li" id="topic78__du219363">定义<samp class="ph codeph">TRANSFORMATIONS</samp>的<samp class="ph codeph">config.yaml</samp>文件</li>
+
+            <li class="li" id="topic78__du219364">
+<samp class="ph codeph">config.yaml</samp>文件中引用的<samp class="ph codeph">input_transform.sh</samp>包装器脚本</li>
+
+            <li class="li" id="topic78__du219365">
+<samp class="ph codeph">input_transform.sh</samp>中调用的joost转换<samp class="ph codeph">input_transform.stx</samp>
+</li>
+
+         </ul>
+
+         <p class="p">除普通的YAML规则（如文档用三个破折号开始（<samp class="ph codeph">---</samp>））之外，<span class="keyword cmdname">gpfdist</span>配置必须符合下列限制：</p>
+
+         <ol class="ol" id="topic78__ol_mct_m12_pbb">
+             <li class="li" id="topic78__du186770">
+<samp class="ph codeph">VERSION</samp>设置必须出现并且值为<samp class="ph codeph">1.0.0.1</samp>。</li>
+
+            <li class="li" id="topic78__du186771">
+<samp class="ph codeph">TRANSFORMATIONS</samp>设置必须出现并且包含一个或者更多个映射。</li>
+
+            <li class="li" id="topic78__du186772">
+<samp class="ph codeph">TRANSFORMATION</samp>中的每一个映射必须包含：<ul class="ul" id="topic78__ul_ass_j31_34">
+                  <li class="li" id="topic78__du186773">一个值为'input'或者'output'的<samp class="ph codeph">TYPE</samp>
+</li>
+
+                  <li class="li" id="topic78__du186774">一个表明转换如何运行的<samp class="ph codeph">COMMAND</samp>。</li>
+
+               </ul>
+
+            </li>
+
+            <li class="li" id="topic78__du186775">
+<samp class="ph codeph">TRANSFORMATION</samp>中的每一个映射可以包含可选的<samp class="ph codeph">CONTENT</samp>、<samp class="ph codeph">SAFE</samp>以及<samp class="ph codeph">STDERR</samp>设置。</li>
+
+         </ol>
+
+         <p class="p">下面这个称为<samp class="ph codeph">config.yaml</samp>的<span class="keyword cmdname">gpfdist</span>配置适用于prices的例子。每一行开始的缩进是有意义的，它们反映了该说明的层级性。下面例子中的名称<samp class="ph codeph">prices_input</samp>将在后面用SQL创建该表时引用。</p>
+
+         <pre class="pre codeblock">---
+VERSION: 1.0.0.1
+TRANSFORMATIONS:
+  prices_input:
+    TYPE:     input
+    COMMAND:  /bin/bash input_transform.sh %filename%
+</pre>
+
+         <p class="p"><samp class="ph codeph">COMMAND</samp>设置使用了一个名为<samp class="ph codeph">input_transform.sh</samp>的包装器脚本，它带有一个<samp class="ph codeph">%filename%</samp>占位符。当<span class="keyword cmdname">gpfdist</span>运行该<samp class="ph codeph">prices_input</samp>转换时，它用<samp class="ph codeph">/bin/bash</samp>调用<samp class="ph codeph">input_transform.sh</samp> ，并且将<samp class="ph codeph">%filename%</samp>占位符替换为要转换的输入文件的路径。名为<samp class="ph codeph">input_transform.sh</samp>的包装器脚本包含调用STX转换并返回其输出的逻辑。</p>
+
+         <p class="p">如果使用了Joost，则必须安装Joost STX引擎。</p>
+
+         <pre class="pre codeblock">#!/bin/bash
+# input_transform.sh - sample input transformation, 
+# demonstrating use of Java and Joost STX to convert XML into
+# text to load into Greenplum Database.
+# java arguments:
+#   -jar joost.jar         joost STX engine
+#   -nodecl                  don't generate a &lt;?xml?&gt; declaration
+#   $1                        filename to process
+#   input_transform.stx    the STX transformation
+#
+# the AWK step eliminates a blank line joost emits at the end
+java \
+    -jar joost.jar \
+    -nodecl \
+    $1 \
+    input_transform.stx \
+ | awk 'NF&gt;0
+</pre>
+
+         <p class="p"><samp class="ph codeph">input_transform.sh</samp>文件使用带有AWK解释器的Joost STX引擎。下面的图表展示了<span class="keyword cmdname">gpfdist</span>运行该转换的处理流程。</p>
+
+         <br><img class="image" id="topic78__image_nct_m12_pbb" src="../../graphics/02-pipeline.png" width="462" height="190"><br>
+      </div>
+
+   </div>
+
+   <div class="topic nested1" id="topic80">
+      <h2 class="title topictitle2">传输数据</h2>
+
+      <div class="body">
+         <p class="p">使用基于相应模式的SQL语句创建目标数据库表。</p>
+
+         <p class="p">对于保存已加载数据的Greenplum数据库表没有特殊要求。在<samp class="ph codeph">prices</samp>示例中，以下命令创建要加载数据的<samp class="ph codeph">prices</samp>表。</p>
+
+         <pre class="pre codeblock">CREATE TABLE prices (
+  itemnumber integer,       
+  price       decimal        
+) 
+DISTRIBUTED BY (itemnumber);
+</pre>
+
+         <p class="p">接下来，使用其中一种方法用<span class="keyword cmdname">gpfdist</span>转换数据。</p>
+
+         <ul class="ul" id="topic80__ul_jfr_h32_pbb">
+            <li class="li" id="topic80__du224442">
+               <samp class="ph codeph">GPLOAD</samp>只支持输入转换，但是在很多情况下更容易实现。</li>
+
+            <li class="li" id="topic80__du224443">
+               <samp class="ph codeph">INSERT INTO SELECT FROM</samp>支持输入和输出转换，但是会暴露更多细节。</li>
+
+         </ul>
+
+      </div>
+
+      <div class="topic nested2" id="topic81">
+         <h3 class="title topictitle3">用GPLOAD转换</h3>
+
+         <div class="body">
+            <p class="p">Greenplum数据库<samp class="ph codeph">gpload</samp>工具使用<samp class="ph codeph">gpfdist</samp>并行文件服务器和YAML格式的配置文件来编排数据加载操作。<samp class="ph codeph">gpload</samp>自动执行以下任务：</p>
+
+            <ul class="ul" id="topic81__ul_rt1_jnk_pbb">
+               <li class="li">在数据库中创建可读的外部表。</li>
+
+               <li class="li">使用包含转换的配置文件启动<samp class="ph codeph">gpfdist</samp>实例。</li>
+
+               <li class="li">运行<samp class="ph codeph">INSERT INTO <var class="keyword varname">table_name</var> SELECT FROM <var class="keyword varname">external_table</var></samp>以加载数据。</li>
+
+               <li class="li">删除外部表定义。</li>
+
+            </ul>
+
+            <p class="p">Transforming data with 用<samp class="ph codeph">gpload</samp> 转换数据要求出现在<samp class="ph codeph">gpload</samp> 控制文件的INPUT节中的设置<samp class="ph codeph">TRANSFORM</samp>和<samp class="ph codeph">TRANSFORM_CONFIG</samp>。</p>
+
+            <p class="p">有关在<samp class="ph codeph">gpload</samp>控制文件中这些设置的语法和布置，请见<em class="ph i">Greenplum数据库参考指南</em>。</p>
+
+            <ul class="ul" id="topic81__ul_sy3_l32_pbb">
+               <li class="li" id="topic81__du187470">
+                  <samp class="ph codeph">TRANSFORM_CONFIG</samp>指定<span class="keyword cmdname">gpfdist</span>配置文件的名称。</li>
+
+               <li class="li" id="topic81__du200069">
+<samp class="ph codeph">The TRANSFORM</samp>设置表示<samp class="ph codeph">TRANSFORM_CONFIG</samp>中提到的文件中描述的转换名称。</li>
+
+            </ul>
+
+            <pre class="pre codeblock">---
+VERSION: 1.0.0.1
+DATABASE: ops
+USER: gpadmin
+GPLOAD:
+  INPUT:
+    - TRANSFORM_CONFIG: config.yaml
+    - TRANSFORM: prices_input
+    - SOURCE:
+        FILE: prices.xml</pre>
+
+            <p class="p">转换名称必须出现在两个位置：在<span class="keyword cmdname">gpfdist</span>配置文件的<samp class="ph codeph">TRANSFORM</samp>设置中以及在<samp class="ph codeph">TRANSFORM_CONFIG</samp>节提到的文件的<samp class="ph codeph">TRANSFORMATIONS</samp>节中。</p>
+
+            <p class="p">在<samp class="ph codeph">gpload</samp>控制文件中，可选的参数<samp class="ph codeph">MAX_LINE_LENGTH</samp>指定被传递给<samp class="ph codeph">gpload</samp>的XML转换数据中一行的最大长度。</p>
+
+            <p class="p">下面的图表展示了<samp class="ph codeph">gpload</samp>控制文件、<span class="keyword cmdname">gpfdist</span>配置文件以及XML数据文件之间的关系。</p>
+
+            <br><img class="image" id="topic81__image_ty3_l32_pbb" src="../../graphics/03-gpload-files.jpg" width="415" height="258"><br>
+         </div>
+
+      </div>
+
+      <div class="topic nested2" id="topic82">
+         <h3 class="title topictitle3">用INSERT INTO SELECT FROM转换</h3>
+
+         <div class="body">
+            <p class="p">使用此加载方法，用户可以执行<samp class="ph codeph">gpload</samp>自动执行的每个任务。用户启动<samp class="ph codeph">gpfdist</samp>，创建一个外部表，加载数据，然后通过删除表并停止<samp class="ph codeph">gpfdist</samp>来清理。</p>
+
+            <p class="p">在<samp class="ph codeph">CREATE EXTERNAL TABLE</samp>定义的<samp class="ph codeph">LOCATION</samp>子句中指定转换。例如，在下面的命令中转换被显示为粗体（使用命令<samp class="ph codeph">gpfdist -c config.yaml</samp>先运行<span class="keyword cmdname">gpfdist</span>）。</p>
+
+            <pre class="pre codeblock">CREATE READABLE EXTERNAL TABLE prices_readable (LIKE prices)
+   LOCATION ('gpfdist://hostname:8080/prices.xml<strong class="ph b">#transform=prices_input</strong>')
+   FORMAT 'TEXT' (DELIMITER '|')
+   LOG ERRORS SEGMENT REJECT LIMIT 10;
+</pre>
+
+            <p class="p">在上面的命令中，把<samp class="ph codeph">hostname</samp>改成实际的主机名。<samp class="ph codeph">prices_input</samp>来自于<samp class="ph codeph">gpfdist</samp>配置文件。
+
+</p>
+
+            <p class="p">下面的查询装载数据到<samp class="ph codeph">prices</samp>表中。</p>
+
+            <pre class="pre codeblock">INSERT INTO prices SELECT * FROM prices_readable;</pre>
+
+         </div>
+
+      </div>
+
+      <div class="topic nested2" id="topic83">
+         <h3 class="title topictitle3">配置文件格式</h3>
+
+         <div class="body">
+            <p class="p"><span class="keyword cmdname">gpfdist</span>配置文件使用YAML 1.1文档格式并且实现了一种定义转换参数的方案。配置文件必须是一个合法的YAML文档。</p>
+
+            <p class="p"><span class="keyword cmdname">gpfdist</span>程序会按照顺序处理该文档并且使用缩进（空格）来判断文档的层次以及小节之间的关系。空白的使用很重要。不要使用空白来进行格式化也不要用制表符。</p>
+
+            <p class="p">下面是一个配置文件的基本结构。</p>
+
+            <pre class="pre codeblock">---
+VERSION:   1.0.0.1
+TRANSFORMATIONS: 
+  transformation_name1:
+    TYPE:      input | output
+    COMMAND:   command
+    CONTENT:   data | paths
+    SAFE:      posix-regex
+    STDERR:    server | console
+  transformation_name2:
+    TYPE:      input | output
+    COMMAND:   command 
+...</pre>
+
+            <dl class="dl parml">
+               
+                  <dt class="dt pt dlterm">
+<a name="topic83__p_version"><!-- --></a>VERSION</dt>
+
+                  <dd class="dd pd">必需。<span class="keyword cmdname">gpfdist</span>配置文件方案的版本。当前版本是1.0.0.1。</dd>
+
+               
+               
+                  <dt class="dt pt dlterm">
+<a name="topic83__p_transformations"><!-- --></a>TRANSFORMATIONS</dt>
+
+                  <dd class="dd pd">必需。开始转换说明小节。一个配置文件必须有至少一个转换。当<span class="keyword cmdname">gpfdist</span>收到一个转换请求时，它会在这个小节查找具有匹配的转换名称的项。 </dd>
+
+               
+               
+                  <dt class="dt pt dlterm">
+<a name="topic83__p_type"><!-- --></a>TYPE</dt>
+
+                  <dd class="dd pd">必须。指定转换的方向。值是input或者output。值为
+                        <samp class="ph codeph">input</samp> 或者 <samp class="ph codeph">output</samp>. <ul class="ul" id="topic83__ul_f3p_j3q_34">
+                        <li class="li" id="topic83__du198814">
+                           <samp class="ph codeph">input</samp>：<span class="keyword cmdname">gpfdist</span>把转换处理的标准输出当做是要载入到Greenplum数据库的一个记录流。</li>
+
+                        <li class="li" id="topic83__du198815">
+                           <samp class="ph codeph">output</samp>
+                           <span class="ph">: </span>
+                           <span class="keyword cmdname">gpfdist</span> 把转换处理的标准输入当作是来自于Greenplum数据库的一个记录流并且写出到适当的输出。</li>
+
+                     </ul>
+
+                  </dd>
+
+               
+               
+                  <dt class="dt pt dlterm">
+<a name="topic83__p_command"><!-- --></a>COMMAND</dt>
+
+                  <dd class="dd pd">
+                     <p class="p">必须。指定将被<span class="keyword cmdname">gpfdist</span>执行来做转换的命令。</p>
+
+                     <p class="p">对于输入转换，<span class="keyword cmdname">gpfdist</span>调用<samp class="ph codeph">CONTENT</samp>设置中指定的命令。该命令应该会以适当的方式打开底层文件并且为每一行产生一个<samp class="ph codeph">TEXT</samp>行以载入到Greenplum数据库。输入转换决定整个内容是应该被转换为一个行还是多个行。</p>
+
+                     <p class="p">对于输出转换，<span class="keyword cmdname">gpfdist</span>调用在<samp class="ph codeph">CONTENT</samp>设置中指定的命令。输出命令应该会以适当的方式打开底层文件并且向其中写入。输出转换决定转换好的输出的最终安置。</p>
+
+                  </dd>
+
+               
+               
+                  <dt class="dt pt dlterm">
+<a name="topic83__p_content"><!-- --></a>CONTENT</dt>
+
+                  <dd class="dd pd">
+                     <p class="p">可选。值是<samp class="ph codeph">data</samp> 和 <samp class="ph codeph">paths</samp>。默认值是<samp class="ph codeph">data</samp>。</p>
+
+                     <ul class="ul" id="topic83__ul_wzg_43q_34">
+                        <li class="li" id="topic83__du219653">当<samp class="ph codeph">CONTENT</samp>指定<samp class="ph codeph">data</samp>时，<samp class="ph codeph">COMMAND</samp>小节中的文本<samp class="ph codeph">%filename%</samp>会被替换为要读写的文件路径。</li>
+
+                        <li class="li" id="topic83__du199214">当<samp class="ph codeph">CONTENT</samp>指定<samp class="ph codeph">paths</samp>时，<samp class="ph codeph">COMMAND</samp>小节中的文本<samp class="ph codeph">%filename%</samp>会被替换为包含要读写的文件列表的临时文件路径。</li>
+
+                     </ul>
+
+                     <p class="p">下面是一个<samp class="ph codeph">COMMAND</samp>小节的例子，它展示了被替换掉的文本<samp class="ph codeph">%filename%</samp>。</p>
+
+                     <div class="p">
+                        <pre class="pre codeblock">COMMAND: /bin/bash input_transform.sh %filename%</pre>
+
+                     </div>
+
+                  </dd>
+
+               
+               
+                  <dt class="dt pt dlterm">
+<a name="topic83__p_safe"><!-- --></a>SAFE</dt>
+
+                  <dd class="dd pd">
+                     <p class="p">可选。一个<samp class="ph codeph">POSIX</samp> 正则表达式，路径必须匹配它才能被传递给转换。在担心传递给命令的路径被注入或者被不正确解读时指定<samp class="ph codeph">SAFE</samp>。默认对路径没有限制。</p>
+
+                  </dd>
+
+               
+               
+                  <dt class="dt pt dlterm">
+<a name="topic83__p_stderr"><!-- --></a>STDERR</dt>
+
+                  <dd class="dd pd">
+                     <p class="p">可选。值是<samp class="ph codeph">server</samp> 和
+                           <samp class="ph codeph">console</samp>。
+
+</p>
+
+                     <p class="p">这个设置指定如何处理来自于转换的标准错误输出。默认值<samp class="ph codeph">server</samp>，指定 <span class="keyword cmdname">gpfdist</span>将捕捉来自于转换的标准错误输出放在一个临时文件中，并且把该文件的前8k字节发送到Greenplum数据库作为一个错误消息。该错误消息将作为一个SQL错误出现。<samp class="ph codeph">Console</samp>指定<span class="keyword cmdname">gpfdist</span>不会重定向或者转换来自于转换的标准错误输出。</p>
+
+                  </dd>
+
+               
+            </dl>
+
+         </div>
+
+      </div>
+
+   </div>
+
+   <div class="topic nested1" id="topic91">
+      <h2 class="title topictitle2">XML转换示例</h2>
+
+      <div class="body">
+<p class="p">下面的例子展示了对不同类型的XML数据以及STX转换的完整处理。与这些例子相关的文件和详细用法在GitHub仓库<samp class="ph codeph">github.com://greenplum-db/gpdb</samp> <a class="xref" href="https://github.com/greenplum-db/gpdb/blob/master/gpMgmt/demo/gpfdist_transform" target="_blank">gpMgmt/demo/gpfdist_transform</a>目录中。在运行这些例子之前，请阅读<em class="ph i">开始之前</em>小节中的README文件。README文件解释了如何下载这些例子中用到的示例数据文件。</p>
+
+      </div>
+
+      <div class="topic nested2" id="topic32">
+         <h3 class="title topictitle3">基于命令的外部Web表</h3>
+
+         <div class="body">
+            <p class="p">一个shell命令或者脚本的输出可定义基于命令的Web表数据。在<samp class="ph codeph">CREATE EXTERNAL WEB TABLE</samp>的<samp class="ph codeph">EXECUTE</samp>子句中指定该命令。<samp class="ph codeph">EXECUTE</samp>子句会在指定的Master以及（一个或者多个）Segment主机上运行该shell命令或脚本。该命令或脚本必须位于<samp class="ph codeph">EXECUTE</samp>子句中定义的主机上。</p>
+
+            <p class="p">默认情况下，当活动Segment有输出行要处理时，该命令运行在Segment主机上。例如，如果每一个Segment主机运行四个有输出行要处理的主Segment实例，该命令在每个Segment主机上会运行四次。用户可以有选择地限制执行Web表命令的Segment实例的数量。<samp class="ph codeph">ON</samp>子句中Web表定义里包括的所有Segment会并行运行该命令。</p>
+
+            <p class="p">用户在外部表定义中指定的命令从数据库中执行并且不能访问来自<samp class="ph codeph">.bashrc</samp> 或者
+                  <samp class="ph codeph">.profile</samp>的环境变量。可在<samp class="ph codeph">EXECUTE</samp>子句中设置环境变量。例如：</p>
+
+            <div class="p">
+               <pre class="pre codeblock">=# CREATE EXTERNAL WEB TABLE output (output text)
+    EXECUTE 'PATH=/home/gpadmin/programs; export PATH; myprogram.sh' 
+    FORMAT 'TEXT';
+</pre>
+
+            </div>
+
+            <p class="p">脚本必须对<samp class="ph codeph">gpadmin</samp>用户可执行并且在Master或者Segment主机上位于同一位置。</p>
+
+            <p class="p">下列命令定义一个运行脚本的Web表。该脚本在每一台有需要处理输出行的Segment的Segment主机上运行。 </p>
+
+            <div class="p">
+               <pre class="pre codeblock">=# CREATE EXTERNAL WEB TABLE log_output 
+    (linenum int, message text) 
+    EXECUTE '/var/load_scripts/get_log_data.sh' ON HOST 
+    FORMAT 'TEXT' (DELIMITER '|');
+</pre>
+
+            </div>
+
+         </div>
+
+      </div>
+
+      <div class="topic nested2" id="topic93">
+         <h3 class="title topictitle3">IRS MeF XML 文件（在demo目录中）</h3>
+
+         <div class="body">
+            <p class="p">这个例子展示了使用一种Joost STX转换装载一份IRS Modernized eFile tax return数据样例。该数据是一种复杂的XML文件形式。</p>
+
+            <p class="p">美国国内税务署（IRS）在对XML进行了可观的投资并且指定在其现代化电子文件（MeF）系统中使用它。在MeF中，每一份纳税申报表都是一个具有深层次结构的XML文档，该层次结构仔细地反映了底层纳税代码的特定形式。</p>
+
+            <p class="p">XML、XML Schema和样式表在他们的数据表达和业务工作流中扮演了重要角色。实际的XML数据被从一个附加了MIME “transimission file”消息的ZIP文件中抽取。更多有关MeF的信息，请见IRS网站上的<a class="xref" href="https://www.irs.gov/uac/modernized-e-file-overview" target="_blank">Modernized e-File (Overview)</a>。</p>
+
+            <p class="p">样例XML文档<em class="ph i">RET990EZ_2006.xml</em>大约有350KB大小，它有两个元素：</p>
+
+            <ul class="ul" id="topic93__ul_egs_y42_pbb">
+               <li class="li" id="topic93__du202262">ReturnHeader</li>
+
+               <li class="li" id="topic93__du202263">ReturnData</li>
+
+            </ul>
+
+            <p class="p">&lt;ReturnHeader&gt; 元素包含了有关纳税申报表的一般细节，例如纳税人的姓名、纳税年份以及preparer。&lt;ReturnData&gt; 元素包含了多个小节，它们含有关于纳税申报表及相关计划表的特定细节。
+
+</p>
+
+            <p class="p">下面是该XML文件的一个被删节过的例子。</p>
+
+            <pre class="pre codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt; 
+&lt;Return returnVersion="2006v2.0"
+   xmlns="https://www.irs.gov/efile" 
+   xmlns:efile="https://www.irs.gov/efile"
+   xsi:schemaLocation="https://www.irs.gov/efile"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt; 
+   &lt;ReturnHeader binaryAttachmentCount="1"&gt;
+     &lt;ReturnId&gt;AAAAAAAAAAAAAAAAAAAA&lt;/ReturnId&gt;
+     &lt;Timestamp&gt;1999-05-30T12:01:01+05:01&lt;/Timestamp&gt;
+     &lt;ReturnType&gt;990EZ&lt;/ReturnType&gt;
+     &lt;TaxPeriodBeginDate&gt;2005-01-01&lt;/TaxPeriodBeginDate&gt;
+     &lt;TaxPeriodEndDate&gt;2005-12-31&lt;/TaxPeriodEndDate&gt;
+     &lt;Filer&gt;
+       &lt;EIN&gt;011248772&lt;/EIN&gt;
+       ... more data ...
+     &lt;/Filer&gt;
+     &lt;Preparer&gt;
+       &lt;Name&gt;Percy Polar&lt;/Name&gt;
+       ... more data ...
+     &lt;/Preparer&gt;
+     &lt;TaxYear&gt;2005&lt;/TaxYear&gt;
+   &lt;/ReturnHeader&gt;
+   ... more data ..
+</pre>
+
+            <p class="p">目标是把所有数据导入到一个Greenplum数据库。首先，将该XML文档转换为文本形式，其中的新行已被转义过并且有两个列： <samp class="ph codeph">ReturnId</samp>和末尾的一个用于整个MeF纳税申报表的列。例如：</p>
+
+            <div class="p">
+               <pre class="pre codeblock">AAAAAAAAAAAAAAAAAAAA|&lt;Return returnVersion="2006v2.0"... 
+</pre>
+
+            </div>
+
+            <p class="p">载入数据到Greenplum数据库。</p>
+
+         </div>
+
+      </div>
+
+      <div class="topic nested2" id="topic94">
+         <h3 class="title topictitle3"> WITSML™ 文件 （在demo目录中）</h3>
+
+         <div class="body">
+            <p class="p">这个例子展示了使用一种Joost STX转换载入描述一个石油钻塔的样例数据。该数据是一种从energistics.org下载的复杂的XML文件格式。</p>
+
+            <p class="p">Wellsite Information Transfer Standard Markup Language (WITSML™)是一种石油工业发起的为技术和软件提供开放的、非所有权的、标准的接口，以便在石油公司、服务公司、钻探承包商和监管代理之间分享信息。更多有关WITSML™的信息请见<a class="xref" href="http://www.energistics.org/" target="_blank">http://www.energistics.org/</a>。</p>
+
+            <p class="p">石油钻塔的信息由一个顶层的<samp class="ph codeph">&lt;rigs&gt;</samp>元素和多个子元素（例如<samp class="ph codeph">&lt;documentInfo&gt;, &lt;rig&gt;</samp>,等）构成。下面从该文件中摘录的片段展示了<samp class="ph codeph">&lt;rig&gt;</samp>标签中的信息的类型。</p>
+
+            <pre class="pre codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet href="../stylesheets/rig.xsl" type="text/xsl" media="screen"?&gt;
+&lt;rigs 
+ xmlns="http://www.energistics.org/schemas/131" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://www.energistics.org/schemas/131 ../obj_rig.xsd" 
+ version="1.3.1.1"&gt;
+ &lt;documentInfo&gt;
+ ... misc data ...
+ &lt;/documentInfo&gt;
+ &lt;rig uidWell="W-12" uidWellbore="B-01" uid="xr31"&gt;
+     &lt;nameWell&gt;6507/7-A-42&lt;/nameWell&gt;
+     &lt;nameWellbore&gt;A-42&lt;/nameWellbore&gt;
+     &lt;name&gt;Deep Drill #5&lt;/name&gt;
+     &lt;owner&gt;Deep Drilling Co.&lt;/owner&gt;
+     &lt;typeRig&gt;floater&lt;/typeRig&gt;
+     &lt;manufacturer&gt;Fitsui Engineering&lt;/manufacturer&gt;
+     &lt;yearEntService&gt;1980&lt;/yearEntService&gt;
+     &lt;classRig&gt;ABS Class A1 M CSDU AMS ACCU&lt;/classRig&gt;
+     &lt;approvals&gt;DNV&lt;/approvals&gt;
+ ... more data ...</pre>
+
+            <p class="p">目标是把这个钻塔的信息导入到Greenplum数据库。</p>
+
+            <p class="p">样例文档<em class="ph i">rig.xml</em>的尺寸大约是11KB。输入不包含制表符，因此相关信息可以被转换成用竖线（|）分隔的记录。</p>
+
+            <p class="p">
+               <samp class="ph codeph">W-12|6507/7-A-42|xr31|Deep Drill #5|Deep Drilling Co.|John
+                  Doe|John.Doe@example.com|</samp>
+            </p>
+
+            <p class="p">有这些列：</p>
+
+            <ul class="ul" id="topic94__ul_ids_bp2_pbb">
+               <li class="li">
+                  <samp class="ph codeph">well_uid text</samp>, -- e.g. W-12 </li>
+
+               <li class="li">
+                  <samp class="ph codeph">well_name text</samp>, -- e.g. 6507/7-A-42 </li>
+
+               <li class="li">
+                  <samp class="ph codeph">rig_uid text</samp>, -- e.g. xr31 </li>
+
+               <li class="li">
+                  <samp class="ph codeph">rig_name text</samp>, -- e.g. Deep Drill #5 </li>
+
+               <li class="li">
+                  <samp class="ph codeph">rig_owner text</samp>, -- e.g. Deep Drilling Co. </li>
+
+               <li class="li">
+                  <samp class="ph codeph">rig_contact text</samp>, -- e.g. John Doe </li>
+
+               <li class="li">
+                  <samp class="ph codeph">rig_email text</samp>, -- e.g. John.Doe@example.com </li>
+
+               <li class="li">
+                  <samp class="ph codeph">doc xml</samp>
+               </li>
+
+            </ul>
+
+            <p class="p">然后，载入该数据到Greenplum数据库中。</p>
+
+         </div>
+
+      </div>
+
+   </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

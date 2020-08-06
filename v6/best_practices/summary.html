@@ -1,0 +1,681 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      最佳实践概要 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_summary has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    最佳实践概要
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">最佳实践概要</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">本章包含Greenplum数据库的最佳实践概要。</p>
+
+    <div class="section">
+<h2 class="title sectiontitle">数据模型</h2>
+      
+    </div>
+
+    <div class="section">Greenplum数据库是一种shared nothing的分析型MPP数据库。这种模型与高度规范化的/事务型
+      的SMP数据库有显著区别。正因为如此，推荐以下几项最佳实践。
+      <ul class="ul" id="topic_kqw_prc_3r__ul_knm_src_3r">
+        <li class="li">Greenplum数据库使用非规范化的模式设计会工作得最好，非规范化的模式适合于MPP分析型处理，例如
+          带有大型事实表和较小维度表的星形模式或者雪花模式。</li>
+
+        <li class="li">表之间用于连接(join)的列采用相同的数据类型。</li>
+
+      </ul>
+<p class="p">详见<a class="xref" href="schema.html#schema_design" title="这一节包含设计Greenplum数据库模式的最佳实践。">模式设计</a>。</p>
+</div>
+
+    <div class="section">
+<h2 class="title sectiontitle">堆存储 vs. 追加优化存储</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_ypm_src_3r">
+        <li class="li">经常进行反复的批量或单一<samp class="ph codeph">UPDATE</samp>，<samp class="ph codeph">DELETE</samp>和<samp class="ph codeph">INSERT</samp>
+          操作的表或分区使用堆存储。</li>
+
+        <li class="li">经常进行并发<samp class="ph codeph">UPDATE</samp>，<samp class="ph codeph">DELETE</samp>和<samp class="ph codeph">INSERT</samp>的表或分区
+          使用堆存储。</li>
+
+        <li class="li">对于在初始装载后很少更新并且只会在大型批处理操作中进行后续插入的表和分区，使用追加优化存储。</li>
+
+        <li class="li">绝不在追加优化表上执行单个<samp class="ph codeph">INSERT</samp>，<samp class="ph codeph">UPDATE</samp>或
+            <samp class="ph codeph">DELETE</samp>操作。</li>
+
+        <li class="li">绝不在追加优化表上执行并发的批量<samp class="ph codeph">UPDATE</samp>或<samp class="ph codeph">DELETE</samp>操作。可以执行并发的
+          批量<samp class="ph codeph">INSERT</samp>操作。</li>
+
+      </ul>
+
+      <p class="p">详见<a class="xref" href="schema.html#storage_model__heap_vs_ao">堆存储还是追加优化存储</a>。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">行存 vs. 列存</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_esm_src_3r">
+        <li class="li">如果负载中有要求更新并且频繁执行插入的迭代事务，则对这种负载使用行存。</li>
+
+        <li class="li">在对宽表选择时使用行存。</li>
+
+        <li class="li">为一般目的或混合负载使用行存。</li>
+
+        <li class="li">选择面很窄（很少的列）和在少量列上计算数据聚集时使用列存。</li>
+
+        <li class="li">如果表中有单个列定期被更新而不修改行中的其他列，则对这种表使用列存。</li>
+
+      </ul>
+
+      <p class="p">详见<a class="xref" href="schema.html#storage_model__row_vs_column">行存还是列存</a>。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">压缩</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_l5m_src_3r">
+        <li class="li">在大型追加优化和分区表上使用压缩以改进系统范围的I/O。</li>
+
+        <li class="li">在数据最终的存储位置表设置列压缩。</li>
+
+        <li class="li">平衡压缩解压缩时间和CPU执行周期，选择性能最高的压缩级别。</li>
+
+      </ul>
+
+      <p class="p">详见<a class="xref" href="schema.html#topic_ebd_khx_z4">压缩</a>。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">数据分布</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_uwm_src_3r">
+        <li class="li">为所有的表显式定义一个列分布或者随机分布。不要使用默认值。</li>
+
+        <li class="li">使用能将数据在所有segment上均匀分布的单个列作为分布键。</li>
+
+        <li class="li">不要采用查询的<samp class="ph codeph">WHERE</samp>条件中使用的列作为分布键。</li>
+
+        <li class="li">不要采用日期或时间戳作为分布键。</li>
+
+        <li class="li">不要将同一列同时用于数据分布和分区。</li>
+
+        <li class="li">在经常做连接(join)操作的大表上采用相同的分布键，这样可以通过本地连接(join)来显著提高性能。</li>
+
+        <li class="li">在初始装载数据以及增量装载数据之后验证数据没有明显倾斜。</li>
+
+      </ul>
+
+      <p class="p">详见<a class="xref" href="schema.html#distribution">分布</a>。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">资源队列内存管理</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_ezm_src_3r">
+        <li class="li">设置<samp class="ph codeph">vm.overcommit_memory</samp>为2。</li>
+
+        <li class="li">不要配置OS使用大页。</li>
+
+        <li class="li">使用<samp class="ph codeph">gp_vmem_protect_limit</samp>设置实例可以为每个Segment数据库中执行的<em class="ph i">所有</em>工作分配的最大内存。</li>
+
+        <li class="li">可以通过以下计算方法来设置<samp class="ph codeph">gp_vmem_protect_limit</samp>:<ul class="ul" id="topic_kqw_prc_3r__ul_bdj_xkq_kv">
+            <li class="li">
+<samp class="ph codeph">gp_vmem</samp> – Greenplum数据库可用总内存
+              <pre class="pre codeblock">gp_vmem = ((SWAP + RAM) – (7.5GB + 0.05 * RAM)) / 1.7</pre>
+
+              其中<samp class="ph codeph">SWAP</samp>是该主机的交换空间，单位GB，<samp class="ph codeph">RAM</samp>是该主机的内存，单位GB</li>
+
+            <li class="li">
+<samp class="ph codeph">max_acting_primary_segments</samp> – 当发生主机或主segment故障导致镜像segment切换时，
+              单台主机上可以运行的主segment上限。</li>
+
+            <li class="li">
+<samp class="ph codeph">gp_vmem_protect_limit</samp><pre class="pre codeblock">gp_vmem_protect_limit = gp_vmem / acting_primary_segments</pre>
+
+              转换成MB来设置配置参数的值。</li>
+
+          </ul>
+</li>
+
+        <li class="li">在有大量工作文件被生成的场景下用下面的公式计算将工作文件考虑在内的<samp class="ph codeph">gp_vmem</samp>因子：
+          <pre class="pre codeblock">gp_vmem = ((SWAP + RAM) – (7.5GB + 0.05 * RAM - (300KB *
+      <var class="keyword varname">total_#_workfiles</var>))) / 1.7</pre>
+
+        </li>
+
+        <li class="li">绝不将<samp class="ph codeph">gp_vmem_protect_limit</samp>设置得过高或者比系统上的物理RAM大。</li>
+
+        <li class="li">使用计算出的<samp class="ph codeph">gp_vmem</samp>值来计算操作系统参数<samp class="ph codeph">vm.overcommit_ratio</samp>
+          的设置：<pre class="pre codeblock">vm.overcommit_ratio = (RAM - 0.026 * gp_vmem) / RAM</pre>
+</li>
+
+        <li class="li">使用<samp class="ph codeph">statement_mem</samp>来分配每个segment数据库中用于一个查询的内存。</li>
+
+        <li class="li">使用资源队列设置活动查询的数目（<samp class="ph codeph">ACTIVE_STATEMENTS</samp>）以及队列中查询所能利用的内存量
+          （<samp class="ph codeph">MEMORY_LIMIT</samp>）。</li>
+
+        <li class="li">把所有的用户都与一个资源队列关联。不要使用默认的队列。 </li>
+
+        <li class="li">设置<samp class="ph codeph">PRIORITY</samp>以匹配用于负载以及实际情况的队列的实际需要，避免使用MAX权限。</li>
+
+        <li class="li">确保资源队列的内存分配不会超过<samp class="ph codeph">gp_vmem_protect_limit</samp>的设置。
+            </li>
+
+        <li class="li">动态更新资源队列设置以匹配日常操作流。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="workloads.html#topic_hhc_z5w_r4" title="避免内存错误，管理Greenplum数据库资源。">采用资源队列管理内存和资源</a>.</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">分区</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_ngn_src_3r">
+        <li class="li">只对大型表分区。不要分区小表。</li>
+
+        <li class="li">只有能基于查询条件实现分区消除（分区裁剪）时才使用分区。</li>
+
+        <li class="li">选择范围分区而舍弃列表分区。</li>
+
+        <li class="li">基于查询谓词对表分区。</li>
+
+        <li class="li">不要在同一列上对表进行分布和分区。</li>
+
+        <li class="li">不要使用默认分区。</li>
+
+        <li class="li">不要使用多级分区，创建较少的分区让每个分区中有更多数据。</li>
+
+        <li class="li">通过检查查询的<samp class="ph codeph">EXPLAIN</samp>计划验证查询有选择地扫描分区表（分区被裁剪）。</li>
+
+        <li class="li">不要用列存储创建太多分区，因为每个Segment上的物理文件总数：<samp class="ph codeph">physical files = segments x columns x
+            partitions</samp>
+</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="schema.html#topic_fmc_lx1_3r">分区</a>.</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">索引</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_f2n_src_3r">
+        <li class="li">通常在Greenplum数据库中无需使用索引。</li>
+
+        <li class="li">对高基数的表在列式表的单列上创建索引用于钻透目的要求查询具有较高的选择度。</li>
+
+        <li class="li">不要索引被频繁更新的列。</li>
+
+        <li class="li">总是在装载数据到表之前删除索引。在装载后，重新为该表创建索引。</li>
+
+        <li class="li">创建具有选择性的B-树索引。</li>
+
+        <li class="li">不要在被更新的列上创建位图索引。</li>
+
+        <li class="li">不要为唯一列、基数非常高或者非常低的数据使用位图索引。位图索引在列值唯一性位于100-100,000之间时性能最好。</li>
+
+        <li class="li">不要为事务性负载使用位图索引。</li>
+
+        <li class="li">通常不要索引分区表。如果需要索引，索引列必须与分区列不同。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="schema.html#indexes">索引</a>.</p>
+
+    </div>
+
+    <div class="section" id="topic_kqw_prc_3r___Toc286661611">
+<h2 class="title sectiontitle">资源队列</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_nnn_src_3r">
+        <li class="li">使用资源队列来管理集群上的负载。</li>
+
+        <li class="li">将所有的角色都与一个用户定义的资源队列关联。</li>
+
+        <li class="li">使用<samp class="ph codeph">ACTIVE_STATEMENTS</samp>参数限制特定队列的成员能并发运行的活动查询数量。</li>
+
+        <li class="li">使用<samp class="ph codeph">MEMORY_LIMIT</samp>参数控制通过队列运行的查询所能利用的总内存量。</li>
+
+        <li class="li">动态修改资源队列以匹配负载以及现状。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="workloads.html#topic_hhc_z5w_r4__configuring_rq">配置资源队列</a>.</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">监控和维护</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_wd5_bj4_y4">
+        <li class="li">实现<em class="ph i">Greenplum数据库管理员指南</em>中的"推荐的监控和维护任务"。</li>
+
+        <li class="li">安装时运行<samp class="ph codeph">gpcheckperf</samp>并且在之后定期运行该工具，保存其输出用来比较系统性能随时间的变化。</li>
+
+        <li class="li">使用手头的所有工具来理解系统在不同负载下的表现。</li>
+
+        <li class="li">检查任何异常事件以判断成因。</li>
+
+        <li class="li">通过定期运行执行计划监控查询活动以确保查询被以最优的方式运行。</li>
+
+        <li class="li">检查执行计划以判断索引是否被使用以及分区消除是否按照预期发生。</li>
+
+        <li class="li">了解系统日志文件的位置和内容并且定期监控它们，而不是只在问题出现时才去检查日志。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="maintenance.html#topic_yrk_bcx_r4" title="本节介绍日常运维相关的最佳实践，关注这些内容可以确保Greenplum数据库日常高可用性和性能保持 最佳状态。">系统监控和维护</a>, <a class="xref" href="../admin_guide/query/topics/query-profiling.html#topic39__in198649">Query
+          Profiling</a> and <a class="xref" href="logfiles.html#topic_crh_2fc_3r">监控Greenplum数据库日志文件</a>.</p>
+
+    </div>
+
+    <div class="section" id="topic_kqw_prc_3r___Toc286661612">
+<h2 class="title sectiontitle">ANALYZE</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_spn_src_3r">
+        <li class="li">如果分析操作势在必行，那么请做出决定。如果<samp class="ph codeph">p_autostats_mode</samp>设置为
+          <samp class="ph codeph">on_no_stats</samp>（默认）并且表没有被分区，分析操作并不是必须的。</li>
+
+        <li class="li">处理大量的表时，优先使用<samp class="ph codeph">analyzedb</samp>工具而不是<samp class="ph codeph">ANALYZE</samp>命令，
+          因为<samp class="ph codeph">analyzedb</samp>工具不会分析整个数据库。<samp class="ph codeph">analyzedb</samp>工具可以增量
+          并发地更新统计数据。针对堆表，统计数据会一直被更新。相较而言<samp class="ph codeph">ANALYZE</samp>则不像
+          <samp class="ph codeph">analyzedb</samp>一样去更新表的元数据（用来记录表统计信息是否是最新的）。</li>
+
+        <li class="li">不要在整个数据库上运行<samp class="ph codeph">ANALYZE</samp>。需要时，有选择地在表级别上运行<samp class="ph codeph">ANALYZE</samp>。
+          </li>
+
+        <li class="li">在显著改变底层数据的<samp class="ph codeph">INSERT</samp>、<samp class="ph codeph">UPDATE</samp>以及<samp class="ph codeph">DELETE</samp>
+          操作之后总是运行<samp class="ph codeph">ANALYZE</samp>。</li>
+
+        <li class="li">在<samp class="ph codeph">CREATE INDEX</samp>操作之后总是运行<samp class="ph codeph">ANALYZE</samp>。</li>
+
+        <li class="li">如果在非常大的表上运行<samp class="ph codeph">ANALYZE</samp>需要太长时间，可以只在用于连接条件、
+          <samp class="ph codeph">WHERE</samp>子句、<samp class="ph codeph">SORT</samp>子句、<samp class="ph codeph">GROUP BY</samp>
+          子句或者<samp class="ph codeph">HAVING</samp>子句的列上运行<samp class="ph codeph">ANALYZE</samp>。</li>
+
+        <li class="li">当处理大批量表时，使用<samp class="ph codeph">analyzedb</samp>工具而不是使用<samp class="ph codeph">ANALYZE</samp>
+        命令</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="analyze.html#analyze">用ANALYZE更新统计信息</a>.</p>
+
+    </div>
+
+    <div class="section" id="topic_kqw_prc_3r___Toc286661609">
+<h2 class="title sectiontitle">Vacuum</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_cjn_src_3r">
+        <li class="li">在大量<samp class="ph codeph">UPDATE</samp>和<samp class="ph codeph">DELETE</samp>操作后运行
+          <samp class="ph codeph">VACUUM</samp>。</li>
+
+        <li class="li">不要运行<samp class="ph codeph">VACUUM FULL</samp>。而是运行一个<samp class="ph codeph">CREATE TABLE...AS</samp>
+          操作，然后重命名并且删掉原始表。</li>
+
+        <li class="li">频繁地在系统目录上运行<samp class="ph codeph">VACUUM</samp>以避免目录膨胀以及在目录上运行
+          <samp class="ph codeph">VACUUM FULL</samp>的需要。</li>
+
+        <li class="li">绝不要杀掉系统目录表上的<samp class="ph codeph">VACUUM</samp>操作。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="bloat.html#topic_gft_h11_bp">管理数据库膨胀</a>.</p>
+
+    </div>
+
+    <div class="section" id="topic_kqw_prc_3r___Toc286661610">
+<h2 class="title sectiontitle">装载</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_jln_src_3r">
+        <li class="li">随着segment数目增加最大化并行度。</li>
+
+        <li class="li">在尽可能多的ETL节点上均匀散布数据。<ul class="ul" id="topic_kqw_prc_3r__ul_o1t_dqr_t1b">
+          <li class="li">把非常大型的数据文件分割成相等的部分，并且把数据散布在尽可能多的文件系统上。</li>
+
+          <li class="li">每个文件系统运行两个<samp class="ph codeph">gpfdist</samp>实例。</li>
+
+          <li class="li">在尽可能多的接口上运行<samp class="ph codeph">gpfdist</samp>。</li>
+
+          <li class="li">使用<samp class="ph codeph">gp_external_max_segs</samp>以控制每个<samp class="ph codeph">gpfdist</samp>
+            服务的segment数量。</li>
+
+          <li class="li">总是保持<samp class="ph codeph">gp_external_max_segs</samp>和<samp class="ph codeph">gpfdist</samp>
+            进程的数量为偶因子。</li>
+
+          </ul>
+</li>
+
+        <li class="li">在装载到现有表之前总是删除索引并且在装载之后重建索引。</li>
+
+        <li class="li">总是在对表装载之后运行<samp class="ph codeph">VACUUM</samp>。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="data_loading.html#topic_fj5_b1x_r4" title="本节描述了将数据装载到Greenplum数据库的不同方式。">装载数据</a>.</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">安全性</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_ocm_zsx_kr">
+        <li class="li">保护<samp class="ph codeph">gpadmin</samp>用户ID并且只允许对它进行必需的系统管理员访问。</li>
+
+        <li class="li">在执行特定的系统维护任务（例如升级或者扩容）时，管理员只应作为<samp class="ph codeph">gpadmin</samp>
+          登入到Greenplum。</li>
+
+        <li class="li">限制具有<samp class="ph codeph">SUPERUSER</samp>角色属性的用户。成为超级用户的角色能绕过Greenplum
+          数据库中的所有访问特权检查以及资源队列。只有系统管理员应该被给予超级用户的权力。请见
+          <em class="ph i">Greenplum数据库管理员指南</em>中的“修改角色属性”。</li>
+
+        <li class="li">数据库用户绝不应该以<samp class="ph codeph">gpadmin</samp>登录，且ETL或者生产负载也绝不应该以
+          <samp class="ph codeph">gpadmin</samp>运行。</li>
+
+        <li class="li">为每个登入的用户、应用和服务分派一个不同的角色。</li>
+
+        <li class="li">对于应用或者Web服务，考虑为每个应用或服务创建一个不同的角色。</li>
+
+        <li class="li">使用组管理访问特权。</li>
+
+        <li class="li">保护root口令。</li>
+
+        <li class="li">为操作系统口令强制一种强口令策略。</li>
+
+        <li class="li">确保重要的操作系统文件受到保护。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="security.html#topic_nyc_mdf_jr" title="最佳实践可以确保最高级别的系统安全性。">安全性</a>.</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">加密</h2>
+      
+      <ul class="ul" id="topic_kqw_prc_3r__ul_sms_31r_bs">
+        <li class="li">加密和解密数据需要性能作为代价，只加密需要加密的数据。</li>
+
+        <li class="li">在生产系统中实现任何加密方案之前，先执行性能测试。</li>
+
+        <li class="li">生产Greenplum数据库系统中的服务器证书应该由一个数字证书认证机构（CA）签发，这样客户端可以
+          认证该服务器。如果客户端都是机构中的本地客户端，CA可以是本地的。</li>
+
+        <li class="li">只要客户端到Greenplum数据库的连接会通过不安全的链接，就应该对其使用SSL加密。</li>
+
+        <li class="li">对称加密方案（加密和解密使用同样的密钥）具有比非对称方案更好的性能，因此在密钥能被安全共享时应当使用
+          对称加密方案。</li>
+
+        <li class="li">使用crytographic函数来加密磁盘上的数据。数据在数据库进程中被加密和解密，因此有必要用SSL保护客户端
+          连接以避免传输未加密数据。</li>
+
+        <li class="li">在ETL数据被装载到数据库中或者从数据库中卸载时，使用gpfdists而不是gpfdist。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="encryption.html" title="本节描述了有关实现加密和管理密钥的最佳实践。">加密数据和数据库连接</a></p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">高可用性</h2>
+      
+      <div class="note note">
+<span class="notetitle">Note:</span> 以下指导规则在真实硬件部署环境中总结而出，但是并不能直接移植到公有云架构下，该架构下本身
+        已经存在一些高可用手段。</div>
+
+      <ul class="ul" id="topic_kqw_prc_3r__ul_ry5_syr_s4">
+        <li class="li">使用带有8至24个磁盘的硬件RAID存储方案。</li>
+
+        <li class="li">使用RAID 1、5或6，这样磁盘阵列能容忍一个失效的磁盘。</li>
+
+        <li class="li">在磁盘阵列中配置一个热后备以允许在检测到磁盘失效时自动开始重建。</li>
+
+        <li class="li">通过镜像RAID卷防止重建时整个磁盘阵列失效和退化。</li>
+
+        <li class="li">定期监控磁盘使用并且在需要时增加额外的空间。</li>
+
+        <li class="li">监控segment倾斜以确保数据被平均地分布并且在所有segment上存储被平均地消耗。</li>
+
+        <li class="li">设置一个后备master以便在主master故障后接管。</li>
+
+        <li class="li">规划当故障发生时，如何把客户端切换到新的master实例，例如，通过更新DNS中的master地址。</li>
+
+        <li class="li">设置监控机制以便在主Master失效时在系统监控应用中或者通过email发出通知。</li>
+
+        <li class="li">为所有的segment设置镜像。</li>
+
+        <li class="li">将主segment和它们的镜像放置在不同的主机上以预防主机故障。
+        </li>
+
+        <li class="li">迅速地使用<samp class="ph codeph">gprecoverseg</samp>工具恢复故障的segment，以便恢复冗余并且让系统回到最佳平衡。</li>
+
+        <li class="li">考虑双集群配置以提供额外层次上的冗余以及额外的查询处理吞吐。</li>
+
+        <li class="li">除非数据库可以很容易地从源端恢复，否则定期备份Greenplum数据库。</li>
+
+        <li class="li">如果堆表相对较小并且两次备份之间只有很少的追加优化或列存分区被修改，使用增量备份</li>
+
+        <li class="li">如果备份被保存到NFS挂载点，使用例如Dell EMC Isilon之类的横向扩展NFS方案以避免IO瓶颈。</li>
+
+        <li class="li">考虑使用Greenplum集成将备份流式传送给Dell EMC Data Domain或者 Veritas NetBackup企业级备份平台。</li>
+
+      </ul>
+
+      <p class="p">见<a class="xref" href="ha.html#topic_q5g_pmj_s4" title="当用户启用并且正确地配置Greenplum高可用特性时，Greenplum数据库支持高度可用的、容错的数据库服务。 要保证达到要求的服务等级，每个组件都必须有一个备用组件以保证在它失效时及时顶上。">高可用性</a>.</p>
+
+    </div>
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

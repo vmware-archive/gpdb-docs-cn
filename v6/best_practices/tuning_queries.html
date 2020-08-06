@@ -1,0 +1,488 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      SQL查询调优 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_tuning_queries has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    SQL查询调优
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">SQL查询调优</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">Greenplum数据库基于代价的优化器会权衡所有执行查询的策略并选择代价最小的策略去执行。</p>
+
+    <p class="p">和其他RDBMS的优化器类似，在计算可选执行计划的代价时，Greenplum的优化器会考虑诸如要连接的表中的行数、索引
+      的可用性以及列数据的基数等因素。优化器还会考虑数据的位置、倾向于在segment上做尽可能多的工作以及最小化完成
+      查询必须在segment之间传输的数据量。</p>
+
+    <p class="p">当查询运行得比预期慢时，用户可以查看优化器选择的计划以及它为计划的每一步计算出的代价。这将帮助用户确定哪些
+      步骤消耗了最多的资源，然后修改查询或者模式来为优化器提供更加有效的执行方法。用户可以使用SQL语句<samp class="ph codeph">EXPLAIN</samp>
+      来查看查询的执行计划。
+      </p>
+
+    <p class="p">优化器基于为表生成的统计信息产生计划。精确的统计信息对于产生最好的执行计划非常重要。有关更新统计信息的方法
+      请见<a class="xref" href="analyze.html#analyze">用ANALYZE更新统计信息</a>。
+      </p>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_s1r_jfb_s4">
+    <h2 class="title topictitle2">如何生成执行计划</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">EXPLAIN</samp>和<samp class="ph codeph">EXPLAIN ANALYZE</samp>语句是查询原因并改进查询性能的有用工具。
+        <samp class="ph codeph">EXPLAIN</samp>会为查询显示其查询计划和估算的代价，但是不执行该查询。<samp class="ph codeph">EXPLAIN ANALYZE</samp>
+        除了显示查询的查询计划之外，还会执行该查询。<samp class="ph codeph">EXPLAIN ANALYZE</samp>会丢掉任何来自<samp class="ph codeph">SELECT</samp>
+        语句的输出，但是其他语句中的操作会被执行（例如<samp class="ph codeph">INSERT</samp>，<samp class="ph codeph">UPDATE</samp>或<samp class="ph codeph">DELETE</samp>）。
+        
+        要在DML语句上使用<samp class="ph codeph">EXPLAIN ANALYZE</samp>却不让该命令影响数据，可以明确地把<samp class="ph codeph">EXPLAIN ANALYZE</samp>
+        用在一个事务中（<samp class="ph codeph">BEGIN; EXPLAIN ANALYZE ...; ROLLBACK;</samp>）。</p>
+
+      <p class="p"><samp class="ph codeph">EXPLAIN ANALYZE</samp>语句运行后除了显示执行计划外，还有以下额外信息：</p>
+
+      <ul class="ul" id="topic_s1r_jfb_s4__ul_snt_mfb_s4">
+        <li class="li">运行该查询消耗的总时间（以毫秒计）</li>
+
+        <li class="li">计划节点操作中涉及的worker（segments）数量</li>
+
+        <li class="li">操作中产生最多行的segment返回的最大行数（及其segment ID）</li>
+
+        <li class="li">操作所使用的内存</li>
+
+        <li class="li">从产生最多行的segment中检索到第一行所需的时间（以毫秒计），以及从该segment中检索所有行花费的总时间。
+         </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <div class="topic nested1" id="reading_explain_plan">
+    <h2 class="title topictitle2">如何阅读执行计划</h2>
+
+    <div class="body">
+      <p class="p">执行计划是一份报告，它详细描述了Greenplum数据库优化器确定的执行查询要遵循的步骤。查询计划是一棵
+        由节点构成的树，应该从下向上阅读，每一个节点都会将其结果传递给其上一级节点。每个节点表示执行计划中
+        的一个步骤，每个节点对应的那一行标识了在该步骤中执行的操作—例如一个扫描、一个连接、一个聚集
+        或者排序操作。节点还标识了用于执行该操作的方法。例如，扫描操作的方法可能是顺序扫描或者索引扫描。
+        而连接操作可以执行哈希连接或者嵌套循环连接。</p>
+
+      <p class="p">下面是一个简单查询的执行计划。该查询在存储于每一segment中的分布表中查找行数。</p>
+
+      <pre class="pre codeblock language-sql">gpadmin=# EXPLAIN SELECT gp_segment_id, count(*)
+                  FROM contributions 
+                  GROUP BY gp_segment_id;
+                                 QUERY PLAN                        
+--------------------------------------------------------------------------------
+ Gather Motion 2:1  (slice2; segments: 2)  (cost=0.00..431.00 rows=2 width=12)
+   -&gt;  GroupAggregate  (cost=0.00..431.00 rows=1 width=12)
+         Group By: gp_segment_id
+         -&gt;  Sort  (cost=0.00..431.00 rows=1 width=12)
+               Sort Key: gp_segment_id
+               -&gt;  Redistribute Motion 2:2  (slice1; segments: 2)  (cost=0.00..431.00 rows=1 width=12)
+                     Hash Key: gp_segment_id
+                     -&gt;  Result  (cost=0.00..431.00 rows=1 width=12)
+                           -&gt;  GroupAggregate  (cost=0.00..431.00 rows=1 width=12)
+                                 Group By: gp_segment_id
+                                 -&gt;  Sort  (cost=0.00..431.00 rows=7 width=4)
+                                       Sort Key: gp_segment_id
+                                       -&gt;  Seq Scan on table1  (cost=0.00..431.00 rows=7 width=4)
+ Optimizer status: Pivotal Optimizer (GPORCA) version 2.56.0
+(14 rows)</pre>
+
+      <p class="p">这个执行计划有八个节点 – Seq Scan、Sort、GroupAggregate、Result、Redistribute Motion、Sort、
+        GroupAggregate和最后的Gather Motion。每一个节点包含三个代价估值：代价估值（以顺序页面读取的方式）- cost、
+        行数 - rows、以及行宽度 - width。
+        </p>
+
+      <p class="p">代价评估由两部分构成。1.0的代价等于一次顺序磁盘页面读取。代价评估的第一部分是启动代价，它是获取第一行的代价。
+        第二部分是总代价，它是得到所有行的代价。</p>
+
+      <p class="p">行数评估是由计划节点输出的行数。这个数字可能会小于执行计划节点实际处理或者扫描的行数，它反映了<samp class="ph codeph">WHERE</samp>
+        子句条件的选择度评估。总代价代表假设所有的行将被检索出来的代价评估，但并非总是这样（例如，如果用户使用
+        <samp class="ph codeph">LIMIT</samp>子句，情况可能不一样）。</p>
+
+      <p class="p">宽度评估是计划节点输出的所有列的以字节计的总宽度。</p>
+
+      <p class="p">节点中的代价评估包括了其所有子节点的代价总和，因此执行计划中最顶层节点（通常是一个Gather Motion）具有对
+        计划总体执行代价的评估。这就是查询规划器想要最小化的那个数字。</p>
+
+
+      <p class="p">扫描操作符扫描表中的行以寻找一个行的集合。对于不同种类的存储有不同的扫描操作符。它们包括：</p>
+
+      <ul class="ul">
+        <li class="li">表上的Seq Scan — 扫描表中的所有行。</li>
+
+        <li class="li">Index Scan — 遍历一个索引以从表中取得行。</li>
+
+        <li class="li">Bitmap Heap Scan — 从索引中收集表中行的指针并且按照磁盘上的位置进行排序。（无论是否是AO表，
+          该操作都会调用一个Bitmap Heap Scan）</li>
+
+        <li class="li">Dynamic Seq Scan — 使用一个分区选择函数来选择分区。</li>
+
+      </ul>
+
+      <p class="p">Join操作符包括以下这些：</p>
+
+      <ul class="ul">
+        <li class="li">Hash Join – 从较小的表构建一个哈希表，用连接列作为哈希键。然后扫描较大的表，为连接列计算哈希键
+          并且探索哈希表寻找具有相同哈希键的行。哈希连接通常是Greenplum数据库中最快的连接方式。执行计划中的Hash Cond
+          显示列出要被连接的列。</li>
+
+        <li class="li">Nested Loop – 在较大数据集的行上迭代，在每次迭代时从较小的数据集中扫描行。嵌套循环连接要求广播
+          其中的一个表，这样一个表中的所有行才能与其他表中的所有行进行比较。它在较小的表或者通过使用索引约束的表上
+          性能表现的更好。它还被用于笛卡尔积和范围连接。在使用Nested Loop连接大型表时会有性能影响。对于包含
+          Nested Loop连接操作符的执行计划节点，应该验证SQL并且确保结果是想要的结果。设置服务器配置参数<samp class="ph codeph">enable_nestloop</samp>
+          为OFF（默认）能够让优化器更倾向于使用Hash Join。</li>
+
+        <li class="li">Merge Join – 排序两个数据集并且将它们合并起来。归并连接对预排序好的数据很快，但是在现实世界中很少见。
+          为了更倾向于使用Merge Join而不是Hash Join，可以把系统配置参数<samp class="ph codeph">enable_mergejoin</samp>设置为ON。
+        </li>
+
+      </ul>
+
+
+      <p class="p">一些查询计划节点指定数据移动操作。在处理查询操作时，数据移动操作在Segment之间移动行。该节点标识执行移动操作
+        使用的方法。Motion操作符包括以下这些：
+        </p>
+
+      <ul class="ul">
+        <li class="li"> Broadcast motion – 每一个segment将自己的行发送给所有其他segment，这样每一个segment实例都有
+          表的一份完整的本地拷贝。Broadcast motion可能不如Redistribute motion那么好，因此优化器通常只在小表上选择
+          Broadcast motion。对大表来说，Broadcast motion是不可接受的。在数据没有按照连接键分布的情况下，将把一个
+          表中所需的行动态重分布到另一个segment。
+          </li>
+
+        <li class="li"> Redistribute motion – 每一个segment重新哈希数据并且把行发送到对应于哈希键的合适的segment上。
+         </li>
+
+        <li class="li"> Gather motion – 来自所有segment的结果数据被组装成一个单一的流。对大部分执行计划来说这是最后的操作。</li>
+
+      </ul>
+
+      <p class="p">查询计划中出现的其他操作符包括：</p>
+
+      <div class="p">
+        <ul class="ul" id="reading_explain_plan__ul_t4l_mrl_x4">
+          <li class="li">Materialize – 规划器将一个子查询物化一次，这样就不用为顶层行重复该工作。
+            </li>
+
+          <li class="li">InitPlan – 一个预查询，被用在动态分区裁剪中，当执行时还不知道规划器需要用来标识要扫描分区的值时，
+            会执行这个预查询。</li>
+
+          <li class="li">Sort –  为另一个要求排序数据的操作（例如Aggregation或者Merge Join）准备排序数据。</li>
+
+          <li class="li">Group By – 通过一个或者更多列分组行。</li>
+
+          <li class="li">Group/Hash Aggregate – 使用哈希聚集行。</li>
+
+          <li class="li">Append – 串接数据集，例如在整合从分区表中各分区扫描的行时会用到。</li>
+
+          <li class="li">Filter – 使用来自于一个<samp class="ph codeph">WHERE</samp>子句的条件选择行。</li>
+
+          <li class="li">Limit – 限制返回的行数。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="optimization_hints">
+    <h2 class="title topictitle2">优化Greenplum查询</h2>
+
+    <div class="body">
+      <p class="p">这个主题描述可以用来在某些情况下提高系统性能的Greenplum数据库特性和编程实践。</p>
+
+      <p class="p">为了分析执行计划，首先找出评估代价非常高的计划节点。判断估计的行数和代价是不是和该操作执行的行数相关。</p>
+
+      <p class="p">如果使用分区，验证是否实现了分区裁剪。要实现分区裁剪，查询谓词（<samp class="ph codeph">WHERE</samp>子句）必须与分区
+        条件相同。还有，<samp class="ph codeph">WHERE</samp>子句不能包含显式值且不能含有子查询。</p>
+
+      <p class="p">审查查询计划树的执行顺序。审查估计的行数。用户想要执行顺序构建在较小的表或者哈希连接结果上并且用较大的表来
+        探查。最优情况下，最大的表被用于最后的连接或者探查以减少传递到树最顶层计划节点的行数。如果分析结果显示构建
+        或探查的执行顺序不是最优的，应确保数据库统计信息为最新。运行<samp class="ph codeph">ANALYZE</samp>将能更新数据库统计
+        信息，进而产生一个最优的查询计划。</p>
+
+      <p class="p">查找计算性倾斜的迹象。当Hash Aggregate和Hash Join之类的操作符的执行导致segment上的不平均执行时，查询
+        执行中会发生计算性倾斜。在一些segment上会使用比其他segment更多的CPU和内存，导致非最优化执行。原因可能是
+        在具有低基数或者非一致分布的列上使用连接、排序或者聚集操作。用户可以在查询的<samp class="ph codeph">EXPLAIN ANALYZE</samp>
+        语句中检测计算性倾斜。每个节点包括任一segment所处理的最大行数以及所有segment处理的平均行数。如果最大行数
+        远大于平均数，那么至少有一个segment执行了比其他segment更多的工作，因此应该怀疑该操作符出现了计算性倾斜。</p>
+
+      <p class="p">确定执行Sort或者Aggregate操作的执行计划节点。Aggregate操作下隐藏的就是一个Sort。如果Sort或者Aggregate
+        操作涉及到大量行，这就是改进查询性能的机会。在需要排序大量行时，HashAggregate操作是比Sort和Aggregate操作
+        更好的操作。通常优化器会因为SQL结构（也就是编写SQL的方式）而选择Sort操作。在重写查询时，大部分的Sort操作
+        可以用HashAggregate替换。要更倾向于使用HashAggregate操作而不是Sort和Aggregate，请确保服务器配置参数
+        <samp class="ph codeph">enable_groupagg</samp>被设置为<samp class="ph codeph">ON</samp>。</p>
+
+      <p class="p">当执行计划显示带有大量行的广播移动时，用户应该尝试消除广播移动。一种方法是使用服务器配置参数<samp class="ph codeph">gp_segments_for_planner</samp>
+        来增加这种移动的代价评估，这样优化器会偏向其他可替代的方案。<samp class="ph codeph">gp_segments_for_planner</samp>
+        变量告诉查询规划器在其计算中使用多少主segment。默认值是零，这会告诉规划器在估算中使用实际的主segment数量。
+        增加主segment的数量会增加移动的代价，因此会更加偏向重新分布移动而不是广播。例如，设置<samp class="ph codeph">gp_segments_for_planner = 100000</samp>
+        会告诉规划器有100,000个segment。反过来，要影响规划器广播表而不是重新分布它，可以把<samp class="ph codeph">gp_segments_for_planner</samp>
+        设置为一个较低的值，例如2。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">Greenplum分组扩展</h3>
+        
+        <div class="p">Greenplum数据库对<samp class="ph codeph">GROUP BY</samp>子句的聚集扩展可以让一些常见计算在数据库中执行得比在应用
+          或者存储过程代码中更加高效：
+          <ul class="ul" id="optimization_hints__ul_ppq_3fc_s4">
+            <li class="li"><samp class="ph codeph">GROUP BY ROLLUP(<em class="ph i">col1</em>, <em class="ph i">col2</em>, <em class="ph i">col3</em>)</samp></li>
+
+            <li class="li"><samp class="ph codeph">GROUP BY CUBE(<em class="ph i">col1</em>, <em class="ph i">col2</em>, <em class="ph i">col3</em>)</samp></li>
+
+            <li class="li"><samp class="ph codeph">GROUP BY GROUPING SETS((<em class="ph i">col1</em>, <em class="ph i">col2</em>), (<em class="ph i">col1</em>,
+                <em class="ph i">col3</em>))</samp></li>
+
+          </ul>
+</div>
+
+        <p class="p"><samp class="ph codeph">ROLLUP</samp>分组创建从最详细层次上滚到总计的聚集小计，后面跟着分组（或者表达式）列表。
+          <samp class="ph codeph">ROLLUP</samp>接收分组列的一个有序列表，计算<samp class="ph codeph">GROUP BY</samp>子句中指定的标准
+          聚集值，然后根据该列表从右至左渐进地创建更高层的小计。最后创建总计。</p>
+
+        <p class="p"><samp class="ph codeph">CUBE</samp>分组创建给定分组（或者表达式）列表所有可能组合的小计。在多维分析术语中，<samp class="ph codeph">CUBE</samp>
+          产生一个数据立方体在指定维度可以被计算的所有小计。</p>
+
+        <p class="p">用户可以用<samp class="ph codeph">GROUPING SETS</samp>表达式选择性地指定想要创建的分组集。这允许在多个维度间
+          进行精确的说明而无需计算整个<samp class="ph codeph">ROLLUP</samp>或者<samp class="ph codeph">CUBE</samp>。</p>
+
+        <p class="p">这些子句的细节请参考<em class="ph i">Greenplum数据库参考指南</em>。</p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">窗口函数</h3>
+        
+        <p class="p">窗口函数在结果集的划分上应用聚集或者排名函数—例如，<samp class="ph codeph">sum(population) over (partition by city)</samp>。
+          窗口函数很强大，因为它们的所有工作都在数据库内完成，它们比通过从数据库中检索细节行并且预处理它们来产生
+          类似结果的前端工具具有性能优势。</p>
+
+        <ul class="ul" id="optimization_hints__ul_atr_jxm_y4">
+          <li class="li">
+<samp class="ph codeph">row_number()</samp>窗口函数为一个划分中的行产生行号，例如
+            <samp class="ph codeph">row_number() over (order by id)</samp>。</li>
+
+          <li class="li">当查询计划表明一个表被多个操作扫描时，用户可以使用窗口函数来降低扫描次数。</li>
+
+          <li class="li">经常可以通过使用窗口函数消除自连接。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

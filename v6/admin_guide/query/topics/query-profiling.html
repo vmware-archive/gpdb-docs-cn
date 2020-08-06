@@ -1,0 +1,1793 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      查询分析 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_query x6-0_admin_guide_query_topics x6-0_admin_guide_query_topics_query-profiling has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    查询分析
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">查询分析</h1>
+
+  
+  <div class="body">
+<div class="abstract">
+     <span class="shortdesc">检查性能不好的查询的查询计划,来确定可能的性能调优机会。</span>
+
+  </div>
+
+    <p class="p">Greenplum数据库为每个查询设计一个 <em class="ph i">查询计划 </em>。选择正确的查询计划来匹配查询和数据结构对好的性能是必要的。 一个查询计划定义Greenplum数据库将如何在并行执行环境中运行查询。 </p>
+
+    <p class="p">查询优化器使用数据库维护的数据统计信息来选择具有最低可能代价的查询计划。代价以磁盘I/O来度量，磁盘I/O用取得的磁盘页面为单位。目标是最小化计划的总执行代价。</p>
+
+    <p class="p">可以用<samp class="ph codeph">EXPLAIN</samp>命令查看一个给定查询的计划。<samp class="ph codeph">EXPLAIN</samp>展示查询规划器对该查询计划估计的代价。例如：</p>
+
+    <div class="p">
+      <pre class="pre codeblock">EXPLAIN SELECT * FROM names WHERE id=22;
+</pre>
+
+    </div>
+
+    <p class="p"><samp class="ph codeph">EXPLAIN ANALYZE</samp>不仅运行该语句，还会显示它的计划。这有助于判断优化器的估计与现实有多接近。例如：</p>
+
+    <div class="p">
+      <pre class="pre codeblock">EXPLAIN ANALYZE SELECT * FROM names WHERE id=22;
+</pre>
+
+    </div>
+
+    <div class="note note">
+<span class="notetitle">Note:</span> 在Greenplum数据库中，默认的GPORCA优化器与传统查询优化器共存。GPORCA生成的<samp class="ph codeph">EXPLAIN</samp>输出与传统查询优化器生成的输出不同。 <p class="p">默认情况下，Greenplum数据库会在可能时使用GPORCA来为查询生成执行计划。</p>
+
+        <p class="p">当<samp class="ph codeph">EXPLAIN ANALYZE</samp>命令使用GPORCA时，<samp class="ph codeph">EXPLAIN</samp>计划只显示被排除的分区数。被扫描的分区不会被显示。要在segment实例
+            日志中显示被扫描分区的名称，可以把服务器配置参数<samp class="ph codeph">gp_log_dynamic_partition_pruning</samp>设置为<samp class="ph codeph">on</samp>。这个<samp class="ph codeph">SET</samp>命令的例子启用了该参数。</p>
+<div class="p">
+        <pre class="pre codeblock">SET gp_log_dynamic_partition_pruning = on;</pre>
+
+      </div>
+<p class="p">有关GPORCA的信息，请见<a class="xref" href="query.html#topic1" title="本主题提供在Greenplum数据库中使用SQL的信息。">查询数据</a></p>
+</div>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../../query/topics/query.html" title="本主题提供在Greenplum数据库中使用SQL的信息。">查询数据</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic40">
+    <h2 class="title topictitle2">阅读EXPLAIN输出</h2>
+
+    <div class="body">
+      <p class="p">一个查询计划是一棵节点的树。计划中的每个节点表示一个操作，例如表扫描、连接、聚集或者排序。</p>
+
+      <p class="p">
+          应该从底向上阅读计划：每个节点会把行交给直接在它上面的节点。一个计划中的底层节点通常是表扫描操作：顺序的、索引的或者位图索引扫描。如果该查询要求那些行上的连接、聚集、排序或者其他操作，就会有额外的节点在扫描节点上面负责执行这些操作。最顶层的计划节点通常是Greenplum数据库的移动节点：重新分布、显式重新分布、广播或者收集移动。这些操作在查询处理时在segment实例之间移动行。</p>
+
+      <p class="p"><samp class="ph codeph">EXPLAIN</samp> 的输出对计划树中的每个节点都有一行并且为该计划节点显示基本的节点类型和下列执行代价估计：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic40__in182482">
+<strong class="ph b">cost</strong> —以磁盘页面获取为单位度量。1.0等于一次顺序磁盘页面读取。第一个估计是得到第一行的启动代价，第二个估计是得到所有行的总代价。总代价总是假定所有的行都将被检索，但并不总是这样。例如，如果查询使用了<samp class="ph codeph">LIMIT</samp>，并非所有的行都会被检索。</li>
+
+        <li class="li" id="topic40__in182483">
+<strong class="ph b">rows</strong> —这个计划节点输出的总行数。这个数字通常小于被该计划节点处理或者扫描的行数，它反映了任意WHERE子句条件的估计选择度。理想情况下，最顶层节点的估计近似于该查询实际返回、更新或者删除的行数。</li>
+
+        <li class="li" id="topic40__in182484">
+<strong class="ph b">width</strong> —这个计划节点输出的所有行的总字节数。</li>
+
+      </ul>
+
+      <p class="p">注意以下几点：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic40__in203106">一个节点的代价包括其子节点的代价。最顶层计划节点有对于该计划估计的总执行代价。这就是优化器想要最小化的数字。</li>
+
+        <li class="li" id="topic40__in203119">代价只反映了被查询优化器加以考虑的计划执行的某些方面。例如，代价不反映将结果行传送到客户端花费的时间。</li>
+
+      </ul>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic41">
+      <h3 class="title topictitle3">EXPLAIN实例</h3>
+
+      <div class="body">
+        <p class="p">下面的例子描述了如何阅读一个查询的<samp class="ph codeph">EXPLAIN</samp>查询代价：</p>
+
+        <div class="p">
+          <pre class="pre codeblock"><strong class="ph b">EXPLAIN</strong> SELECT * FROM names WHERE name = 'Joelle';
+                     QUERY PLAN
+------------------------------------------------------------
+Gather Motion 2:1 (slice1) (cost=0.00..20.88 rows=1 width=13)
+
+   -&gt; Seq Scan on 'names' (cost=0.00..20.88 rows=1 width=13)
+         Filter: name::text ~~ 'Joelle'::text
+</pre>
+
+        </div>
+
+        <p class="p">从底向上阅读这个计划。一开始，查询优化器顺序地扫描<em class="ph i">names</em>表。注意<samp class="ph codeph">WHERE</samp>子句被应用为一个<em class="ph i">filter</em>条件。这意味着扫描操作会对它扫描的每个行检查该条件并且只输出满足该条件的行。</p>
+
+        <p class="p">扫描操作的结果被传递给一个<em class="ph i"> gather motion</em>
+            操作。在Greenplum数据库中，收集移动是segment实例何时把行发送给Master。在这个例子中，我们有两个Segment实例会向一个Master实例发送。这个操作工作在并行执行计划的<em class="ph i">slices</em>
+            上。查询计划会被划分成<em class="ph i">slices</em>，这样segment实例可以并行工作在查询计划的片段上。</p>
+
+        <p class="p">为这个计划估计的启动代价是<samp class="ph codeph">00.00</samp>（没有代价）而总代价是<samp class="ph codeph">20.88</samp>次磁盘页面获取。优化器估计这个查询将返回一行。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic42">
+    <h2 class="title topictitle2">阅读EXPLAIN ANALYZE输出</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">EXPLAIN ANALYZE</samp>规划并且运行语句。<samp class="ph codeph">EXPLAIN ANALYZE</samp>计划会把实际执行代价和优化器的估计一起显示。这允许用户查看优化器的估计是否接近于实际。<samp class="ph codeph">EXPLAIN ANALYZE</samp>也展示下列信息：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic42__in209045">查询执行的总运行时间（以毫秒为单位）。</li>
+
+        <li class="li" id="topic42__in209046">查询计划每个切片使用的内存，以及为整个查询语句保留的内存。</li>
+
+        <li class="li" id="topic42__in209047">一个计划节点操作中涉及的工作者（segment实例）数量。其中只统计返回行的segment实例。</li>
+
+          <li class="li" id="topic42__in209048">为该操作产生最多行的segment实例返回的行最大数量。如果多个segment实例产生了相等的行数，EXPLAIN ANALYZE会显示那个用了运行最长<em class="ph i">&lt;time&gt;</em>的segment实例。</li>
+
+        <li class="li" id="topic42__in209049">为一个操作产生最多行的segment实例的ID。</li>
+
+        <li class="li" id="topic42__in209050">相关操作使用的内存量（<samp class="ph codeph">work_mem</samp>）。如果<samp class="ph codeph">work_mem</samp>不足以在内存中执行该操作，计划会显示溢出到磁盘的数据量最少的segment实例的溢出数据量。例如：<div class="p">
+            <pre class="pre codeblock">Work_mem used: 64K bytes avg, 64K bytes max (seg0).
+Work_mem wanted: 90K bytes avg, 90K byes max (seg0) to lessen 
+workfile I/O affecting 2 workers.
+</pre>
+
+          </div>
+</li>
+
+        <li class="li" id="topic42__in209053">产生最多行的segment实例检索到第一行的时间（以毫秒为单位）以及该segment实例检索到所有行花掉的时间。如果到获取第1行的<em class="ph i">&lt;time&gt;</em>与运行到结束的<em class="ph i">&lt;time&gt;</em>
+          相同，结果中可能会省略前者。</li>
+
+      </ul>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic43">
+      <h3 class="title topictitle3">EXPLAIN ANALYZE实例</h3>
+
+      <div class="body">
+        <p class="p">这个例子用同一个查询描述了如何阅读一个<samp class="ph codeph">EXPLAIN ANALYZE</samp>查询计划。这个计划中粗体部分展示了每一个计划节点的实际计时和返回行，以及整个查询的内存和时间统计信息。</p>
+
+        <pre class="pre codeblock"><strong class="ph b">EXPLAIN ANALYZE</strong> SELECT * FROM names WHERE name = 'Joelle';
+                     QUERY PLAN
+------------------------------------------------------------
+Gather Motion 2:1 (slice1; segments: 2) (cost=0.00..20.88 rows=1 width=13)
+    <strong class="ph b">Rows out: 1 rows at destination with 0.305 ms to first row, 0.537 ms to end, start offset by 0.289 ms.</strong>
+        -&gt; Seq Scan on names (cost=0.00..20.88 rows=1 width=13)
+             <strong class="ph b">Rows out: Avg 1 rows x 2 workers. Max 1 rows (seg0) with 0.255 ms to first row, 0.486 ms to end, start offset by 0.968 ms.</strong>
+                 Filter: name = 'Joelle'::text
+ Slice statistics:
+
+      (slice0) Executor memory: 135K bytes.
+
+    (slice1) Executor memory: 151K bytes avg x 2 workers, 151K bytes max (seg0).
+
+<strong class="ph b">Statement statistics:</strong>
+ <strong class="ph b">Memory used: 128000K bytes</strong>
+ <strong class="ph b">Total runtime: 22.548 ms</strong>
+</pre>
+
+        <p class="p">从底向上阅读这个查询。运行这个查询花掉的总时间是<em class="ph i">22.548</em> 毫秒。</p>
+
+        <p class="p"><em class="ph i">sequential scan</em>操作只有一个返回行的segment实例（<em class="ph i">seg0</em>），并且它只返回 <em class="ph i">1行</em>。它用了<em class="ph i">0.255</em>毫秒找到第一行且用了<em class="ph i">0
+            .486</em>毫秒来扫描所有的行。
+            这个结果接近于优化器的估计：查询优化器估计这个查询将会返回一行。收集移动（segment实例向Master发送数据）接收到1行。这个操作的总消耗时间是<em class="ph i">0.537</em>毫秒。</p>
+
+      </div>
+
+      <div class="topic nested3" id="topic_idt_2ll_gr">
+        <h4 class="title topictitle4">判断查询优化器</h4>
+
+        <div class="body">
+          <p class="p">用户可以查看<span class="keyword cmdname">EXPLAIN</span>输出来判断是否启用了GPORCA以及这个解释计划是由GPORCA还是传统查询优化器生成。这一信息出现在<span class="keyword cmdname">EXPLAIN</span>输出的末尾。<samp class="ph codeph">Settings</samp>行显示服务器配置参数<samp class="ph codeph">OPTIMIZER</samp>的设置。 <samp class="ph codeph">Optimizer status</samp>行显示该解释计划是由GPORCA还是传统查询优化器生成。</p>
+
+            <p class="p">对于这两个查询计划的例子，GPORCA被启用，所以服务器配置参数<samp class="ph codeph">OPTIMIZER</samp> 为<samp class="ph codeph">on</samp>。对于第一个计划，GPORCA生成了该 <span class="keyword cmdname">EXPLAIN</span>计划。对于第二个计划，Greenplum数据库回退到传统查询优化器来生成该查询计划。</p>
+
+            <div class="p">
+<pre class="pre codeblock">                       QUERY PLAN
+------------------------------------------------------------------------------------
+ Aggregate  (cost=0.00..296.14 rows=1 width=8)
+   -&gt;  Gather Motion 2:1  (slice1; segments: 2)  (cost=0.00..295.10 rows=1 width=8)
+         -&gt;  Aggregate  (cost=0.00..294.10 rows=1 width=8)
+               -&gt;  Seq Scan on part  (cost=0.00..97.69 rows=100040 width=1)
+ Settings:  <strong class="ph b">optimizer=on</strong>
+ Optimizer status: <strong class="ph b">Pivotal Optimizer (GPORCA) version 1.584</strong>
+(5 rows)</pre>
+
+            <pre class="pre codeblock">explain select count(*) from part;
+
+                       QUERY PLAN
+----------------------------------------------------------------------------------------
+ Aggregate  (cost=3519.05..3519.06 rows=1 width=8)
+   -&gt;  Gather Motion 2:1  (slice1; segments: 2)  (cost=3518.99..3519.03 rows=1 width=8)
+         -&gt;  Aggregate  (cost=3518.99..3519.00 rows=1 width=8)
+               -&gt;  Seq Scan on part  (cost=0.00..3018.79 rows=100040 width=1)
+ Settings:  <strong class="ph b">optimizer=on</strong>
+ Optimizer status: <strong class="ph b">Postgres query optimizer</strong>
+                (5 rows)</pre>
+</div>
+
+          <div class="p">对于这个查询，服务器配置参数<samp class="ph codeph">OPTIMIZER</samp>是
+              <samp class="ph codeph">off</samp>.<pre class="pre codeblock">explain select count(*) from part;
+
+                       QUERY PLAN
+----------------------------------------------------------------------------------------
+ Aggregate  (cost=3519.05..3519.06 rows=1 width=8)
+   -&gt;  Gather Motion 2:1  (slice1; segments: 2)  (cost=3518.99..3519.03 rows=1 width=8)
+         -&gt;  Aggregate  (cost=3518.99..3519.00 rows=1 width=8)
+               -&gt;  Seq Scan on part  (cost=0.00..3018.79 rows=100040 width=1)
+ Settings: <strong class="ph b">optimizer=off</strong>
+ Optimizer status: <strong class="ph b">Postgres query optimizer</strong>
+(5 rows)</pre>
+</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic44">
+    <h2 class="title topictitle2">检查查询计划来解决问题</h2>
+
+    <div class="body">
+      <p class="p">如果一个查询执行得不好，检查它的查询并且提出以下问题：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic44__in182530">
+<strong class="ph b">该计划中的操作花费了特别长的时间吗？</strong> 查找消耗了多数查询执行时间的操作。例如，如果一个索引扫描花费了比预期长的时间，该索引可能过期并且需要重建索引。或者，调整<samp class="ph codeph">enable_&lt;operator&gt; </samp>参数来看看是否能够强制传统查询优化器（规划器）来为该查询选择一个不同的计划。</li>
+
+        <li class="li" id="topic44__in182538">
+<strong class="ph b">优化器的估计是否接近实际？</strong>
+	运行<samp class="ph codeph">EXPLAIN ANALYZE</samp>并且查看规划器估计的行数是否接近查询操作实际返回的行数。如果有很大的差别，应在相关列上收集更多统计信息。
+            更多 <samp class="ph codeph">EXPLAIN ANALYZE</samp>和<samp class="ph codeph">ANALYZE</samp> 命令的信息请见<em class="ph i">Greenplum数据库参考指南</em> </li>
+
+        <li class="li" id="topic44__in182542">
+<strong class="ph b">在该计划中是否很早就应用了选择性谓词?</strong> 在计划中早些应用最具选择性的过滤条件，这样会有较少的行在计划树中向上移动。如果查询计划没有正确地估计查询谓词的选择度，应在相关列上收集更多统计信息。<span class="ph">更多有关收集统计信息的内容请见Greenplum数据库参考指南中的<samp class="ph codeph">ANALYZE</samp>命令。</span> 用户还可以尝试重新排序SQL语句中的<samp class="ph codeph">WHERE</samp>子句。</li>
+
+        <li class="li" id="topic44__in182546">
+<strong class="ph b">优化器是否选择了最好的连接顺序？</strong> 当查询连接多个表时，确保优化器选择了最具选择性的连接顺序。计划中应该尽早做消除最多行的连接，这样会有较少的行在计划树中向上移动。
+            如果计划没有选择最优的连接顺序，可以设置<samp class="ph codeph">join_collapse_limit=1</samp>并且在SQL语句中使用显式的JOIN语法来强制传统查询优化器（规划器）用指定的连接顺序。还可以在相关的连接列上收集更多的统计信息。
+             更多有关收集统计信息的内容请见Greenplum数据库参考指南中的<samp class="ph codeph">ANALYZE</samp>命令。</li>
+
+        <li class="li" id="topic44__in182550">
+<strong class="ph b">优化器是否有选择地扫描分区表？ </strong> 如果在使用表分区，优化器是否有选择地只扫描满足查询谓词所需的子表？对父表的扫描应该会返回0行，因为父表中不包含任何数据。一个显示选择性分区扫描的查询计划例子，可见 <a class="xref" href="../../ddl/ddl-partition.html#topic74">验证分区策略</a> 验证分区策略</li>
+
+        <li class="li" id="topic44__in182554">
+<strong class="ph b">优化器是否在适用时选择了哈希聚集和哈希连接操作？</strong> 哈希操作通常比其他类型的连接或者聚集快很多。行比较和排序在内存中完成而不需要读写磁盘。为了让查询优化器选择哈希操作，必须由足够多的可用内存来保存估计数量的行。尝试增加工作内存来改进查询的性能。如果可能，未查询运行一次<samp class="ph codeph">EXPLAIN ANALYZE</samp>来显示那些计划操作会溢出到磁盘、它们使用了多少工作内存以及需要多少内存来避免溢出到磁盘。例如：
+            <p class="p"><samp class="ph codeph">Work_mem used: 23430K bytes avg, 23430K bytes max (seg0). Work_mem
+              wanted: 33649K bytes avg, 33649K bytes max (seg0) to lessen workfile I/O affecting 2
+              workers.</samp></p>
+<p class="p">来自于 <samp class="ph codeph">EXPLAIN ANALYZE</samp>的"bytes wanted"消息是基于被写出到工作文件的数据量的而且并不准确。所需的最小<samp class="ph codeph">work_mem</samp>可以与建议值不同。</p>
+</li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

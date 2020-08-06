@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      保护数据库 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_security-guide x6-0_security-guide_topics x6-0_security-guide_topics_SecuringGPDB has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/security-guide/topics/preface.html">安全性配置指南</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/SecuringGPDB.html">保护数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/ports_and_protocols.html">Greenplum数据库端口和协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authenticate.html">配置客户端认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authorization.html">配置数据库授权</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Auditing.html">审计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/BestPractices.html">安全性最佳实践</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    保护数据库
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">保护数据库</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">介绍Greenplum数据库的安全性主题。</p>
+
+    <p class="p">安全性配置的目的是配置Greenplum数据库服务器以消除尽可能多的安全性缺陷。
+    这份指南为最小安全性需求提供了底线，并且有额外的安全性文档对其进行补充。 </p>
+
+    <div class="p">根本的安全性需求有下面几类： <ul class="ul" id="topic_iqr_ym2_jr__ul_fwy_bn2_jr">
+        <li class="li">
+<a class="xref" href="Authenticate.html#topic_n5w_gtd_jr" title="描述认证Greenplum数据库客户端的可用方法。">认证</a> 覆盖Greenplum数据库服务器支持并且用来建立客户端应用标识的机制。</li>
+
+        <li class="li">
+<a class="xref" href="Authorization.html#topic_ivr_cs2_jr" title="描述如何通过使用角色和权限在用户级别限制对数据库数据的授权访问。">授权</a>与数据库用来授权客户端访问使用的特权和权限模型相关。 </li>
+
+        <li class="li">
+<a class="xref" href="Auditing.html#topic_ufw_zn2_jr" title="描述被记录并且应该被监控以检测安全性威胁的Greenplum数据库事件。">审计</a>, 或者日志设置覆盖Greenplum数据库中跟踪成功或者失败的用户动作的可用日志选项。</li>
+
+        <li class="li">
+<a class="xref" href="Encryption.html#topic_th5_5bf_jr" title="描述如何在数据库中或者在网络上传输时加密数据以防止窃听攻击或者中间人攻击。">数据加密</a> 阐述可用来保护静态数据以及传输中数据的加密功能。
+            这包括与Greenplum数据库相关的安全性证书。 </li>
+
+      </ul>
+</div>
+
+    <div class="section">
+<h2 class="title sectiontitle">访问Kerberos化的Hadoop集群</h2>
+      
+      <p class="p">用户可以使用Greenplum平台扩展框架（PXF）进行读写Hadoop文件系统中的外部表。如果Hadoop集群受到Kerberos的保护（Kerberos化），Greenplum数据库必须被配置为允许外部表拥有者用Kerberos认证。执行这种设置的步骤请见<a class="xref" href="../../pxf/pxf_kerbhdfs.html">为保护HDFS配置PXF</a>。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">平台加固</h2>
+      
+      <p class="p">平台加固涉及通过遵循最佳实践和实施联邦安全性标准来评估以及最小化系统弱点。
+        加固产品基于US国防部的指导方针“安全性模板实现指南（STIG）”。加固工作移除不必要的包、禁用不需要的服务、设置严格的
+        文件和目录权限、移除无主的文件和目录、为单用户模式执行认证并且为最终用户提供选项以配置服从最新STIG的包。 </p>
+
+    </div>
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../topics/preface.html">安全性配置指南</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

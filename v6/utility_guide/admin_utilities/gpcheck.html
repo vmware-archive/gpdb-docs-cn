@@ -1,0 +1,622 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpcheck |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpcheck has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpcheck
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    
+    <h1 class="title topictitle1">gpcheck</h1>
+
+    <div class="body">
+        <p class="p">检查和验证Greenplum数据库平台的设置。</p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock"><strong class="ph b">gpcheck</strong> {{<strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">hostfile_gpcheck</var> | {<strong class="ph b">-h</strong> | <strong class="ph b">--host</strong>} <var class="keyword varname">host_ID</var>| <strong class="ph b">--local</strong> } 
+                [<strong class="ph b">-m</strong> <var class="keyword varname">master_host</var>] [<strong class="ph b">-s</strong> <var class="keyword varname">standby_master_host</var>] [<strong class="ph b">--stdout</strong> | <strong class="ph b">--zipout</strong>] 
+                [<strong class="ph b">--config</strong> <var class="keyword varname">config_file</var>]
+                
+                <strong class="ph b">gpcheck</strong> <strong class="ph b">--zipin</strong> <var class="keyword varname">gpcheck_zipfile</var>
+                
+                <strong class="ph b">gpcheck</strong> <strong class="ph b">-?</strong> 
+                
+                <strong class="ph b">gpcheck</strong> <strong class="ph b">--version</strong></pre>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p"><samp class="ph codeph">gpcheck</samp>工具确定用户正在运行Greenplum数据库的平台，并且验证各种平台相关的配置设置。
+                <samp class="ph codeph">gpcheck</samp>可以使用一个主机文件或者之前由<samp class="ph codeph">--zipout</samp>选项创建的文件
+                来验证平台设置。在成功的验证过程结束时，将显示<samp class="ph codeph">GPCHECK_NORMAL</samp>消息。如果显示
+                <samp class="ph codeph">GPCHECK_ERROR</samp>，则一个或多个验证检查失败。用户也可以使用<samp class="ph codeph">gpcheck</samp>
+                来收集和查看主机上的平台设置，而不运行验证检查。
+            </p>
+
+            <p class="p">用户应该以<samp class="ph codeph">root</samp>用户运行<samp class="ph codeph">gpcheck</samp>。如果用户没有以<samp class="ph codeph">root</samp>
+                用户运行<samp class="ph codeph">gpcheck</samp>，该工具将显示一条警告消息，并且将无法验证所有的配置设置；只有其中的
+                一部分设置将被验证。
+            </p>
+
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+            
+            <dl class="dl parml">
+                
+                    <dt class="dt pt dlterm">--config <var class="keyword varname">config_file</var>
+</dt>
+
+                    <dd class="dd pd">替代默认配置文件<samp class="ph codeph">$GPHOME/etc/gpcheck.cnf</samp>（或者Dell EMC Greenplum Data Computing Appliance
+                        上的<samp class="ph codeph">~/gpconfigs/gpcheck_dca_config</samp>）配置文件的名字。该文件指定要运行的OS相关的检查。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">{-f | --file} <var class="keyword varname">hostfile_gpcheck</var>
+</dt>
+
+                    <dd class="dd pd">包含被<samp class="ph codeph">gpcheck</samp>用来验证平台相关设置的主机列表的文件名称。该文件应包含
+                        Greenplum数据库系统中所有主机（Master、后备Master和Segment）的单一主机名。
+                        <samp class="ph codeph">gpcheck</samp>使用SSH连接到这些主机。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">{--h | --host} <var class="keyword varname">host_ID</var>
+</dt>
+
+                    <dd class="dd pd">在由<var class="keyword varname">host_ID</var>指定的Greenplum数据库系统中的主机上检查平台相关的设置。
+                        <samp class="ph codeph">gpcheck</samp>使用SSH连接到该主机。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--local</dt>
+
+                    <dd class="dd pd">检查运行<samp class="ph codeph">gpcheck</samp>的Segment主机上的平台相关设置。 这一选项不需要SSH认证。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-m <var class="keyword varname">master_host</var>
+</dt>
+
+                    <dd class="dd pd">此选项已弃用，将在以后的版本中删除。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-s <var class="keyword varname">standby_master_host</var>
+</dt>
+
+                    <dd class="dd pd">此选项已弃用，将在以后的版本中删除。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--stdout</dt>
+
+                    <dd class="dd pd">显示从gpcheck收集的主机信息。不执行检查或验证。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--zipout</dt>
+
+                    <dd class="dd pd">将所有收集的数据保存到当前工作目录中的一个<samp class="ph codeph">.zip</samp>文件中。
+                        <samp class="ph codeph">gpcheck</samp>会自动创建<samp class="ph codeph">.zip</samp>文件并将其命名为
+                        gpcheck_timestamp.tar.gz。不执行检查或验证。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--zipin <var class="keyword varname">gpcheck_zipfile</var>
+</dt>
+
+                    <dd class="dd pd">使用此选项解压缩并检查<samp class="ph codeph">--zipout</samp>选项创建的<samp class="ph codeph">.zip</samp>文件。
+                        <samp class="ph codeph">gpcheck</samp>根据用户在此选项中指定的文件执行验证任务。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-? (help)</dt>
+
+                    <dd class="dd pd">展示在线帮助。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--version</dt>
+
+                    <dd class="dd pd">显示工具的版本。</dd>
+
+                
+            </dl>
+
+        </div>
+
+        <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">示例</h2>
+            
+            <p class="p">通过输入主机文件验证Greenplum数据库平台设置：</p>
+
+            <pre class="pre codeblock"># gpcheck -f hostfile_gpcheck </pre>
+
+            <p class="p">将Greenplum数据库平台设置保存到一个zip文件：</p>
+
+            <pre class="pre codeblock"># gpcheck -f hostfile_gpcheck --zipout</pre>
+
+            <p class="p">使用<samp class="ph codeph">--zipin</samp>选项创建的zip文件验证Greenplum数据库平台设置：</p>
+
+            <pre class="pre codeblock"># gpcheck --zipin gpcheck_timestamp.tar.gz</pre>
+
+            <p class="p">查看收集的Greenplum数据库平台设置：</p>
+
+            <pre class="pre codeblock"># gpcheck -f hostfile_gpcheck --stdout</pre>
+
+        </div>
+
+        <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">另见</h2>
+            
+            <p class="p"><samp class="ph codeph"><a class="xref" href="gpssh.html#topic1">gpssh</a></samp>、<samp class="ph codeph"><a class="xref" href="gpscp.html#topic1">gpscp</a></samp>、<samp class="ph codeph"><a class="xref" href="gpcheckperf.html#topic1">gpcheckperf</a></samp></p>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

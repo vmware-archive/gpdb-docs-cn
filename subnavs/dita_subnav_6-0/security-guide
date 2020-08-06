@@ -1,0 +1,71 @@
+<div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/../../6-0/homenav.html">Greenplum Database® 6.0 Documentation</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/security-guide/topics/preface.html">Greenplum Database Security Configuration Guide</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/SecuringGPDB.html">Securing the Database</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/ports_and_protocols.html">Greenplum Database Ports and Protocols</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authenticate.html">Configuring Client Authentication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Authorization.html">Configuring Database Authorization</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Auditing.html">Auditing</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/Encryption.html">Encrypting Data and Database Connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/security-guide/topics/BestPractices.html">Security Best Practices</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>

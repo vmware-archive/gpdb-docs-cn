@@ -1,0 +1,651 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpseginstall |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpseginstall has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpseginstall
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    
+    <h1 class="title topictitle1">gpseginstall</h1>
+
+    <div class="body">
+        <p class="p">在Segment主机上安装Greenplum数据库。</p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock"><strong class="ph b">gpseginstall</strong> <strong class="ph b">-f</strong> <var class="keyword varname">hostfile</var> [<strong class="ph b">-u</strong> <var class="keyword varname">gpdb_admin_user</var>] [<strong class="ph b">-p</strong> <var class="keyword varname">password</var>] 
+                             [<strong class="ph b">-c</strong> u|p|c|s|E|e|l|v]
+                
+                <strong class="ph b">gpseginstall</strong> --help</pre>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p"><samp class="ph codeph">gpseginstall</samp>工具提供了一种在主机列表文件中指定的Segment主机上快速安装
+                Greenplum数据库的简单方法。该工具不会在Master主机上安装或更新Greenplum数据库。用户可以以
+                <samp class="ph codeph">root</samp>身份或以非root用户身份运行<samp class="ph codeph">gpseginstall</samp>。
+                <samp class="ph codeph">gpseginstall</samp>不执行数据库初始化。有关初始化数据库的更多信息，请参阅
+                <samp class="ph codeph">gpinitsystem</samp>。</p>
+
+            <p class="p">以root身份运行时，<samp class="ph codeph">gpseginstall</samp>默认操作是添加一个系统用户
+                （默认是<samp class="ph codeph">gpadmin</samp>），创建口令（默认是<samp class="ph codeph">changeme</samp>），
+                并在部分主机上部署和安装Greenplum数据库。为此，<samp class="ph codeph">gpseginstall</samp>从当前
+                用户的环境变量（<samp class="ph codeph">$GPHOME</samp>）中的安装路径下查找Master上的当前Greenplum
+                数据库二进制文件。它将Greenplum数据库软件压缩成<samp class="ph codeph">tar.gz</samp>文件并执行MD5
+                校验和以验证文件完整性。</p>
+
+            <p class="p">然后，它将Greenplum数据库拷贝到Segment主机，安装（解压缩）Greenplum数据库，并将
+                Greenplum数据库安装的所有权更改为用户使用<samp class="ph codeph">-u</samp>选项指定的系统用户。
+                最后，它将作为根用户以及用-u选项指定的系统用户在所有Greenplum数据库主机之间进行密钥交换。
+                gpseginstall还会执行用户限制检查并验证所有Segment上的Greenplum数据库的版本号。
+            </p>
+
+            <p class="p">如果以非root用户的身份运行gpseginstall，则gpseginstall仅会在Segment主机上压缩、复制并
+                安装Greenplum数据库。它还可以为当前系统用户在Greenplum数据库主机之间交换密钥，并验证所有
+                Segment上的Greenplum数据库的版本号。</p>
+
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+            
+            <dl class="dl parml">
+                
+                    <dt class="dt pt dlterm">-c | --commands <var class="keyword varname">option_list</var>
+</dt>
+
+                    <dd class="dd pd">可选。这使用户可以自定义<samp class="ph codeph">gpseginstall</samp>操作。请注意，如果不在
+                        <samp class="ph codeph">gpseginstall</samp>语法中指定<samp class="ph codeph">-c</samp>选项，则默认
+                        执行这些命令选项。
+                        <ul class="ul" id="topic1__ul_vby_bnk_44">
+                            <li class="li" id="topic1__jv144166">
+<samp class="ph codeph">u</samp>: 添加系统用户（仅限<samp class="ph codeph">root</samp>使用）。
+                            </li>
+
+                            <li class="li" id="topic1__jv144168">
+<samp class="ph codeph">p</samp>: 为系统用户更改口令（仅限<samp class="ph codeph">root</samp>使用）。
+                            </li>
+
+                            <li class="li" id="topic1__jv144170">
+<samp class="ph codeph">s</samp>: 将Greenplum数据库压缩、复制、解压（安装到）所有Segment。</li>
+
+                            <li class="li" id="topic1__jv144173">
+<samp class="ph codeph">c</samp>: 更改Segment主机上的Greenplum数据库安装
+                                目录的所有权（仅限<samp class="ph codeph">root</samp>使用）。</li>
+
+                            <li class="li" id="topic1__jv144176">
+<samp class="ph codeph">E</samp>: 为root用户在Greenplum数据库的Master主机和Segment
+                                主机之间进行密钥交换（仅限<samp class="ph codeph">root</samp>使用）。</li>
+
+                            <li class="li" id="topic1__jv144179">
+<samp class="ph codeph">e</samp>: 为非root系统用户在Greenplum数据库的Master主机和
+                                Segment主机之间进行密钥交换。</li>
+
+                            <li class="li" id="topic1__jv144182">
+<samp class="ph codeph">l</samp>: （仅适用于Linux）将新用户添加到Segment主机时，
+                                检查并修改用户限制配置文件（<samp class="ph codeph">/etc/security/limits.conf</samp>）
+                                （仅限<samp class="ph codeph">root</samp>使用）。</li>
+
+                            <li class="li" id="topic1__jv144186">
+<samp class="ph codeph">v</samp>: 验证在所有Segment上运行的Greenplum数据库的版本。
+                                <samp class="ph codeph">gpseginstall</samp>检查由<samp class="ph codeph">$GPHOME</samp>环境变量引用的Greenplum
+                                数据库安装的版本号以及到安装目录的符号链接。如果存在版本号不匹配或者无法找到Greenplum数据库
+                                安装目录，则会发生错误。
+                            </li>
+
+                        </ul>
+</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-f | --file <var class="keyword varname">hostfile</var>
+</dt>
+
+                    <dd class="dd pd">必需。指定包含要安装Greenplum数据库的Segment主机的文件。</dd>
+
+                    <dd class="dd pd">主机列表文件的每行必须包含一个主机名，并包含Greenplum系统中每个主机的主机名。确保没有空行或多余的空格。
+                        如果主机有多个配置的主机名，则每个主机只能使用一个主机名。例如：</dd>
+
+                    <dd class="dd pd">
+                        <pre class="pre codeblock">sdw1-1
+                            sdw2-1
+                            sdw3-1
+                            sdw4-1</pre>
+
+                    </dd>
+
+                    <dd class="dd pd">如果可用，用户可以使用在Greenplum数据库主机间交换密钥时使用的同一个
+                        <samp class="ph codeph">gpssh-exkeys</samp>主机列表。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-p | --password <var class="keyword varname">password</var>
+</dt>
+
+                    <dd class="dd pd">可选。使用<samp class="ph codeph">-u</samp>选项设置用户指定用户的口令。默认口令是
+                        <samp class="ph codeph">changeme</samp>。此选项仅在以root用户身份运行<samp class="ph codeph">gpsetinstall</samp>
+                        时使用。</dd>
+
+                    <dd class="dd pd">推荐的安全最佳实践：<ul class="ul" id="topic1__ul_zwv_fnk_44">
+                        <li class="li" id="topic1__jv143869">一直使用口令。</li>
+
+                        <li class="li" id="topic1__jv144536">不要使用默认口令。</li>
+
+                        <li class="li" id="topic1__jv143870">安装后立即更改默认口令。</li>
+
+                    </ul>
+</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-u | --user <var class="keyword varname">user</var>
+</dt>
+
+                    <dd class="dd pd">可选。指定系统用户。此用户也是Greenplum数据库管理用户。此用户拥有Greenplum数据库安装
+                        并且管理数据库。这也是Greenplum数据库启动/初始化的用户。此选项仅在以<samp class="ph codeph">root</samp>
+                        身份运行<samp class="ph codeph">gpseginstall</samp>时可用。默认是<samp class="ph codeph">gpadmin</samp>。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--help（帮助）</dt>
+
+                    <dd class="dd pd">显示在线帮助。</dd>
+
+                
+            </dl>
+
+        </div>
+
+        <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">示例</h2>
+            
+            <p class="p">以<samp class="ph codeph">root</samp>身份，在所有Segment上安装Greenplum数据库，将系统用户保留为
+                默认值（<samp class="ph codeph">gpadmin</samp>）并将<samp class="ph codeph">gpadmin</samp>的口令设置为
+                <samp class="ph codeph">secret123</samp>：
+            </p>
+
+            <pre class="pre codeblock"># gpseginstall -f my_host_list_file -p secret123</pre>
+
+            <p class="p">作为非root用户，将Greenplum数据库二进制文件压缩并复制到所有Segment
+                （作为<samp class="ph codeph">gpadmin</samp>）：</p>
+
+            <pre class="pre codeblock">$ gpseginstall -f host_file</pre>
+
+            <p class="p">以root身份，添加用户（<samp class="ph codeph">gpadmin2</samp>），为该用户设置口令（<samp class="ph codeph">secret1234</samp>），
+                作为新用户在主机之间交换密钥，检查用户限制，验证版本号，但不要更改Greenplum二进制文件的所有权，
+                压缩/复制/在Segment上安装Greenplum数据库，或者以<samp class="ph codeph">root</samp>身份交换密钥。
+            </p>
+
+            <pre class="pre codeblock">$ gpseginstall -f host_file -u gpadmin2 -p secret1234 -c upelv</pre>
+
+        </div>
+
+        <div class="section">
+<h2 class="title sectiontitle">另见</h2>
+            
+            <p class="p"><samp class="ph codeph"><a class="xref" href="gpinitsystem.html#topic1">gpinitsystem</a></samp>、<samp class="ph codeph"><a class="xref" href="gpssh-exkeys.html#topic1">gpssh-exkeys</a></samp></p>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

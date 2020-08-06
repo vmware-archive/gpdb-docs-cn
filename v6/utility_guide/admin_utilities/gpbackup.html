@@ -1,0 +1,936 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpbackup |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpbackup has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpbackup
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">gpbackup</h1>
+
+  <div class="body">
+    <p class="p">创建一个可以给<samp class="ph codeph">gprestore</samp>工具使用的Greenplum数据库备份。</p>
+
+    <div class="section">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock"><strong class="ph b">gpbackup --dbname</strong> <var class="keyword varname">database_name</var>
+   [<strong class="ph b">--backup-dir</strong> <var class="keyword varname">directory</var>]
+   [<strong class="ph b">--compression-level</strong> <var class="keyword varname">level</var>]
+   [<strong class="ph b">--data-only</strong>]
+   [<strong class="ph b">--debug</strong>]
+   [<strong class="ph b">--exclude-schema</strong> <var class="keyword varname">schema_name</var>]
+   [<strong class="ph b">--exclude-table</strong> <var class="keyword varname">schema.table</var>]
+   [<strong class="ph b">--exclude-table-file</strong> <var class="keyword varname">file_name</var>]
+   [<strong class="ph b">--include-schema</strong> <var class="keyword varname">schema_name</var>]
+   [<strong class="ph b">--include-table</strong> <var class="keyword varname">schema.table</var>]
+   [<strong class="ph b">--include-table-file</strong> <var class="keyword varname">file_name</var>]
+   [<strong class="ph b">--incremental</strong> [<strong class="ph b">--from-timestamp</strong> <var class="keyword varname">backup-timestamp</var>]]
+   [<strong class="ph b">--jobs</strong> <var class="keyword varname">int</var>]
+   [<strong class="ph b">--leaf-partition-data</strong>]
+   [<strong class="ph b">--metadata-only</strong>]
+   [<strong class="ph b">--no-compression</strong>]
+   [<strong class="ph b">--plugin-config</strong> <var class="keyword varname">config_file_location</var>]
+   [<strong class="ph b">--quiet</strong>]
+   [<strong class="ph b">--single-data-file]</strong>
+   [<strong class="ph b">--verbose</strong>]
+   [<strong class="ph b">--version</strong>]
+   [<strong class="ph b">--with-stats</strong>]
+
+<strong class="ph b">gpbackup --help</strong> </pre>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p"><samp class="ph codeph">gpbackup</samp>工具用来备份数据库的内容到元数据文件集合和数据文件集合，这些文件可以被
+        <samp class="ph codeph">gprestore</samp>工具用来恢复数据库。当备份数据库时，可以通过指定表级别和模式级别选项来
+        备份某些特定的表。例如，可以通过组合模式级别和表级别选项来备份模式下的所有表，并排除某一张单独的表。
+      </p>
+
+      <p class="p">默认情况下，<samp class="ph codeph">gpbackup</samp>备份指定数据库的对象和Greenplum数据库系统全局对象。可以通过
+        <samp class="ph codeph">gprestore</samp>工具指定可选参数<samp class="ph codeph">--with-globals</samp>来恢复全局对象。更多
+        信息请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        。</p>
+
+      <p class="p"><samp class="ph codeph">gpbackup</samp>默认将Greenplum数据库备份对象元数据文件和DDL文件存储在Master数据目录下。
+        Greenplum Segment使用<samp class="ph codeph">COPY ... ON SEGMENT</samp>命令将数据备份为压缩CSV数据文件，并
+        存储在每个Segment的数据目录下。更多信息请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>。</p>
+
+      <p class="p">可以通过指定<samp class="ph codeph">--backup-dir</samp>选项将Master和Segment主机上的数据备份到一个绝对
+        路径下。可以通过指定其他选项来过滤备份集合来排除或包含指定的表。</p>
+
+      <p class="p">可以通过指定
+        <samp class="ph codeph"><a class="xref" href="#topic1__incremental">--incremental</a></samp>选项来启动增量备份。增量备份在追加优化表或
+        表分区上的变化数据小于未发生变化的数据时有效。有关增量备份的详细信息，请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>。</p>
+
+      <p class="p">指定<samp class="ph codeph">--jobs</samp>选项（1 job），Greenplum数据库Master主机上的每个
+        <samp class="ph codeph">gpbackup</samp>操作都会启动一个单独的事务。<samp class="ph codeph">COPY
+          ... ON SEGMENT</samp>命令在每个Segment主机上并行执行备份任务。备份进程会在备份的每张表
+        上唤起<samp class="ph codeph">ACCESS SHARE</samp>锁。在表锁处理过程中，数据库处于静止状态。</p>
+
+      <p class="p">当备份操作完成后，<samp class="ph codeph">gpbackup</samp>会返回状态码。详情请见
+          <a class="xref" href="#topic1__return_codes">返回码</a>。</p>
+
+      <p class="p"><samp class="ph codeph">gpexpand</samp>正在初始化新segments时，<samp class="ph codeph">gpbackup</samp>工具不能
+        运行。集群扩展完成后，在扩展之前创建的备份不能被<samp class="ph codeph">gprestore</samp>使用。</p>
+
+      <p class="p"><samp class="ph codeph">gpbackup</samp>可以在备份操作完成后发送Email状态通知。客户可以在配置文件中
+        创建工具发送和接收服务器信息。详情请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 
+        该工具在系统内部采用SSH连接执行各项操作任务。在大型Greenplum集群、云部署或每台主机部署了大量的
+        segment实例时，可能会遇到超过主机最大授权连接数限制的情况。此时需要考虑更新SSH配置参数<samp class="ph codeph">MaxStartups</samp>
+        以提高该限制。更多关于SSH配置的选项，请参考您的Linux分发版的SSH文档。</div>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">选项</h2>
+      
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--dbname</strong>
+            <var class="keyword varname">database_name</var>
+</dt>
+
+          <dd class="dd pd">必须。指定要备份的数据库。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--backup-dir</strong>
+            <var class="keyword varname">directory</var>
+</dt>
+
+          <dd class="dd pd">可选。复制所有备份文件（元数据文件和数据文件）到指定路径。必须指定<var class="keyword varname">directory</var>
+            为绝对路径（不能是相对路径）。如果不提供该选项，元数据文件会保存在Greenplum Master主机的
+            <span class="ph filepath">$MASTER_DATA_DIRECTORY/backups/YYYYMMDD/YYYYMMDDhhmmss/</span>
+            路径下。Segment主机的CSV数据文件保存在<span class="ph filepath">&lt;seg_dir&gt;/backups/YYYYMMDD/YYYYMMDDhhmmss/</span>
+            路径下。当指定该选项时，文件会被复制到备份目录的子路径下。</dd>
+
+          <dd class="dd pd">该选项不能和<samp class="ph codeph">--plugin-config</samp>一起使用。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--compression-level</strong>
+            <var class="keyword varname">level</var>
+</dt>
+
+          <dd class="dd pd">可选。指定用来压缩数据文件的gzip压缩级别（从1到9）。默认为1。注意，<samp class="ph codeph">gpbackup</samp>
+            默认使用压缩。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--data-only</strong></dt>
+
+          <dd class="dd pd">可选。仅将表数据备份到CSV文件，不备份用来重建表和其他数据库对象的元数据文件。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--debug</strong></dt>
+
+          <dd class="dd pd">可选。显示操作期间的调试信息。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--exclude-schema</strong>
+            <var class="keyword varname">schema_name</var>
+</dt>
+
+          <dd class="dd pd">可选。指定要被排除备份的模式名。该参数可以指定多次以排除多个模式。该选项不能与
+            <samp class="ph codeph">--include-schema</samp>一起使用，也不能与表过滤选项例如：
+            <samp class="ph codeph">--include-table</samp>一起使用。更多信息请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--exclude-table</strong>
+            <var class="keyword varname">schema.table</var>
+</dt>
+
+          <dd class="dd pd">可选。指定要排除在备份中的表。被排除的表必须为格式<samp class="ph codeph">&lt;schema-name&gt;.&lt;table-name&gt;</samp>
+            。如果表或模式名使用了任何非小写字母、数字或下划线，必须用双引号包裹名字。该选项可以指定多次。
+            该选项不能与<samp class="ph codeph">--exclude-schema</samp>或<samp class="ph codeph">--include-table</samp>同时使用。
+          </dd>
+
+          <dd class="dd pd">该选项不能和<samp class="ph codeph">--leaf-partition-data</samp>组合使用。虽然您可以指定子分区名字，但是
+            <samp class="ph codeph">gpbackup</samp>会忽略分区名称。</dd>
+
+          <dd class="dd pd">更多信息详见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+            。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--exclude-table-file</strong>
+            <var class="keyword varname">file_name</var>
+</dt>
+
+          <dd class="dd pd">可选。指定一个包含需要排除在备份之外的列表文件。每行必须指定一个单独的表，格式为
+              <samp class="ph codeph">&lt;schema-name&gt;.&lt;table-name&gt;</samp>。文件不能包含多余的行。
+            如果表或模式名使用了任何非小写字母、数字或下划线，必须用双引号包裹名字。该选项可以指定多次。
+            该选项不能与<samp class="ph codeph">--exclude-schema</samp>或<samp class="ph codeph">--include-table</samp>同时使用。
+          </dd>
+
+          <dd class="dd pd">该选项不能和<samp class="ph codeph">--leaf-partition-data</samp>组合使用。虽然您可以在<samp class="ph codeph">--exclude-table-file</samp>
+            中指定子分区名字，但是<samp class="ph codeph">gpbackup</samp>会忽略分区名称。
+            </dd>
+
+          <dd class="dd pd">更多信息请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+           。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--include-schema</strong>
+            <var class="keyword varname">schema_name</var>
+</dt>
+
+          <dd class="dd pd">可选。指定要包含在备份中的数据库模式名。可以多次指定该参数来包含多个备份模式。如果指定该选项，
+            任何不包含在<samp class="ph codeph">--include-schema</samp>中的模式都不会放在备份集中。该选项不能与选项
+            <samp class="ph codeph">--exclude-schema</samp>、<samp class="ph codeph">--include-table</samp>或
+            <samp class="ph codeph">--include-table-file</samp>一起使用。更多详情请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--include-table</strong>
+            <var class="keyword varname">schema.table</var>
+</dt>
+
+          <dd class="dd pd">可选。指定一个要包含在备份中的表。该表的格式必须为<samp class="ph codeph">&lt;schema-name&gt;.&lt;table-name&gt;</samp>。
+            如果表或模式名使用了任何非小写字母、数字或下划线，必须用双引号包裹名字。有关模式和表名中支持的
+            字符信息详情，请见<a class="xref" href="#topic1__table_names">模式和表名</a>中的模式和表名部分。</dd>
+
+          <dd class="dd pd">该选项可以指定多次。该选项不能和模式筛选选项<samp class="ph codeph">--include-schema</samp>或<samp class="ph codeph">--exclude-table-file</samp>等
+            一起使用。</dd>
+
+          <dd class="dd pd">客户也可以指定序列或视图的名字。</dd>
+
+          <dd class="dd pd">如果指定该选项，该工具不会自动备份依赖对象。客户必须指定相关依赖对象。例如，如果备份了视图，
+            客户必须备份试图所用的表。如果备份表用到了一个序列，客户必须也备份相关的序列。</dd>
+
+          <dd class="dd pd">可以在表名处通过指定<samp class="ph codeph">--leaf-partition-data</samp>选项来指定表子分区名字，
+            仅备份指定的分区。当指定子分区备份时，子分区数据和分区表的元数据信息都会被备份。</dd>
+
+          <dd class="dd pd">更多信息请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+            。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--include-table-file</strong>
+            <var class="keyword varname">file_name</var>
+</dt>
+
+          <dd class="dd pd">可选。指定一个备份时需要的表名列表文件。文件中的每行必须定义为单独的表名，格式为：
+              <samp class="ph codeph">&lt;schema-name&gt;.&lt;table-name&gt;</samp>。该文件不能包含多余的列。
+            有关模式和表名中支持的
+            字符信息详情，请见<a class="xref" href="#topic1__table_names">模式和表名</a>中的模式和表名部分。</dd>
+
+          <dd class="dd pd">任何没有列在文件中的表都会被排除在备份集以外。该选项不能与模式过滤选项<samp class="ph codeph">--include-schema</samp>
+            或<samp class="ph codeph">--exclude-table-file</samp>等一起使用。</dd>
+
+          <dd class="dd pd">该选项也可以指定序列和视图名称。</dd>
+
+          <dd class="dd pd">如果指定该选项，该工具不会自动备份依赖对象。客户必须指定相关依赖对象。例如，如果备份了视图，
+            客户必须备份试图所用的表。如果备份表用到了一个序列，客户必须也备份相关的序列。</dd>
+
+          <dd class="dd pd">可以在表名处通过指定<samp class="ph codeph">--leaf-partition-data</samp>选项来指定表子分区名字，
+            仅备份指定的分区。当指定子分区备份时，子分区数据和分区表的元数据信息都会被备份。</dd>
+
+          <dd class="dd pd">更多信息请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+            。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<a name="topic1__incremental"><!-- --></a><strong class="ph b">--incremental</strong>
+</dt>
+
+          <dd class="dd pd">指定该选项可以增加一个增量备份到增量备份集中。一个备份集包括一个全量备份和一个或多个增量备份。
+            该备份集合必须是连续性的，以保证在恢复时是可用的。</dd>
+
+          <dd class="dd pd">默认情况下，<samp class="ph codeph">gpbackup</samp>会找出最近的备份。如果该备份是全备份，工具会创建一个
+            备份集合。如果备份为增量备份，工具会将备份增加到已经存在的备份集。增量备份被增加到备份集的最后
+            。可以通过指定<samp class="ph codeph">--from-timestamp</samp>来覆盖默认的行为。</dd>
+
+          <dd class="dd pd">
+            <dl class="dl parml">
+              
+                <dt class="dt pt dlterm">
+<strong class="ph b">--from-timestamp</strong>
+                  <var class="keyword varname">backup-timestamp</var>
+</dt>
+
+                <dd class="dd pd">可选。指定备份时间戳。指定的备份必须已经有增量备份存在。如果指定的备份只有全量备份，该工具
+                  会创建一个备份集。如果指定的备份是增量备份，工具会将增量备份直接备份到该备份集合。</dd>
+
+              
+            </dl>
+
+          </dd>
+
+          <dd class="dd pd">该选项必须与<samp class="ph codeph">--leaf-partition-data</samp>选项一起使用。不能与<samp class="ph codeph">--data-only</samp>
+            或<samp class="ph codeph">--metadata-only</samp>一起使用。</dd>
+
+          <dd class="dd pd">如果备份操作不能增加备份到已经存在的增量备份集或者不能使用备份来创建一个备份集，工具将不能创建备份
+            并且工具会返回错误。</dd>
+
+          <dd class="dd pd">有关创建和使用增量备份的详细信息，请见<a class="xref" href="../../admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--jobs</strong>
+            <var class="keyword varname">int</var>
+</dt>
+
+          <dd class="dd pd">可选。指定进行表备份的并行任务数量。默认<samp class="ph codeph">gpbackup</samp>采用1个任务（数据库连接）。
+            增加该参数的值可以提高数据备份的速度。多运行多个任务时，每个任务会在一个单独的事务中备份表。
+            例如，如果指定<samp class="ph codeph">--jobs 2</samp>，工具会创建2个进程，每个进程启动一个单独的事务，
+            工具会使用这两个进程并行的备份表。
+            <div class="note important">
+<span class="importanttitle">Important:</span> 如果指定超过1的值，数据库在工具从表上获取备份用的锁时处于静默状态。
+              如果数据库操作正在那些被备份的表上执行，此时进行备份的话这些表在不同事务中的锁处理和一致性
+              问题不能被保证。</div>
+</dd>
+
+          <dd class="dd pd">该选项不能和<samp class="ph codeph">--metadata-only</samp>、<samp class="ph codeph">--single-data-file</samp>或
+            <samp class="ph codeph">--plugin-config</samp>一起使用。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--leaf-partition-data</strong></dt>
+
+          <dd class="dd pd">可选。对于分区表，该选项定义后会为每一个子分区创建一个单独的数据文件，而不是为整个表创建一个
+            完成的文件（默认）。使用该选项要求客户通过<samp class="ph codeph">--include-table-file</samp>选项指定
+            包含在备份中的单独子节点分区。该选项不能与<samp class="ph codeph">--exclude-table-file</samp>或
+              <samp class="ph codeph">--exclude-table</samp>选项同时使用。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--metadata-only</strong></dt>
+
+          <dd class="dd pd">可选。仅创建可用来重建数据库的元数据文件（DDL），不备份表的实际数据。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--no-compression</strong></dt>
+
+          <dd class="dd pd">可选。不对表数据CSV文件进行压缩。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">
+<strong class="ph b">--plugin-config</strong>
+            <var class="keyword varname">config-file_location</var>
+</dt>
+
+          <dd class="dd pd">指定<samp class="ph codeph">gpbackup</samp>插件配置文件的位置，该文件是一个YAML格式的文本文件。
+            该文件包含<samp class="ph codeph">gpbackup</samp>在备份操作期间使用的配置信息。</dd>
+
+          <dd class="dd pd">如果在备份数据库时指定了<samp class="ph codeph">--plugin-config</samp>选项，那么在从备份
+            恢复数据库时也需要同样指定对应的配置信息。</dd>
+
+          <dd class="dd pd">该选项不能与<samp class="ph codeph">--backup-dir</samp>一起使用。</dd>
+
+          <dd class="dd pd">有关使用存储插件应用的详细信息，请见<a class="xref" href="../../admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>部分。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--quiet</strong></dt>
+
+          <dd class="dd pd">可选。不显示所有非告警、非错误日志信息。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--single-data-file</strong></dt>
+
+          <dd class="dd pd">可选。在每个Segment主机上为所有备份的表创建一个单独的数据文件。默认情况下，每个<samp class="ph codeph">gpbackup</samp>
+            会为每张表创建一个压缩CSV文件。
+            <div class="note note">
+<span class="notetitle">Note:</span> 如果选用<samp class="ph codeph">--single-data-file</samp>选项来将每个Segment上的数据备份为1个文件，
+              就不能在使用<samp class="ph codeph">gprestore</samp>时指定<samp class="ph codeph">--jobs</samp>选项为超过1的值来执行
+              并行恢复。</div>
+</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--verbose</strong></dt>
+
+          <dd class="dd pd">可选。打印详细日志信息。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--version</strong></dt>
+
+          <dd class="dd pd">可选。打印工具版本号并退出。</dd>
+
+        
+        
+          <dt class="dt pt dlterm"><strong class="ph b">--with-stats</strong></dt>
+
+          <dd class="dd pd">可选。在备份集中包含查询计划统计信息。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--help</dt>
+
+          <dd class="dd pd">显示在线帮助信息。</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section" id="topic1__return_codes">
+<h2 class="title sectiontitle">返回码</h2>
+      
+      <div class="p">
+<samp class="ph codeph">gpbackup</samp>完成后会返回如下返回码之一。<ul class="ul" id="topic1__ul_hhb_sqp_n4">
+          <li class="li">
+<strong class="ph b">0</strong> – 成功完成备份。</li>
+
+          <li class="li">
+<strong class="ph b">1</strong> – 备份完成，没有严重错误。具体信息见日志文件。
+            </li>
+
+        <li class="li">
+<strong class="ph b">2</strong> – 备份失败，有严重错误。具体信息见日志文件。</li>
+
+        </ul>
+</div>
+
+    </div>
+
+    <div class="section" id="topic1__table_names">
+<h2 class="title sectiontitle">模式和表名</h2>
+      
+      <p class="p">当指定表过滤项<samp class="ph codeph">--include-table</samp>或<samp class="ph codeph">--include-table-file</samp>
+        为列表文件时，<samp class="ph codeph">gpbackup</samp>支持备份模式或表名包含以下特殊字符时。</p>
+
+      <p class="p"><samp class="ph codeph"> ~ # $ % ^ &amp; * ( ) _ - + [ ] { } &gt; &lt; \ | ; : / ? ! ,</samp>
+      </p>
+
+      <div class="p">如果在命令行指定<samp class="ph codeph">--include-table</samp>选项时，名字包含大写字母或特殊字符时，名字必须被
+        单引号包裹。
+        <pre class="pre codeblock">gpbackup --dbname test --include-table 'my#1schema'.'my_$42_Table'</pre>
+
+      </div>
+
+      <div class="p">当使用<samp class="ph codeph">--include-table-file</samp>选项，表名被放在文件中时，不需要使用单引号。例如，
+        使用<samp class="ph codeph">--include-table-file</samp>选项备份两个表。
+        <pre class="pre codeblock">my#1schema.my_$42_Table
+my#1schema.my_$590_Table</pre>
+
+      </div>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> <samp class="ph codeph">--include-table</samp>和<samp class="ph codeph">--include-table-file</samp>选项不支持
+        模式名或表名包含双引号（<samp class="ph codeph">"</samp>）、点号（<samp class="ph codeph">.</samp>）、换行符（<samp class="ph codeph">\n</samp>）
+        或空格符（<samp class="ph codeph"> </samp>）。</div>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">示例</h2>
+      
+      <div class="p">备份"demo"数据库中的所有模式和表，包括Greenplum数据库全局系统对象：
+        <pre class="pre codeblock">$ gpbackup --dbname demo</pre>
+</div>
+
+      <div class="p">备份"demo"数据库中除了"twitter"模式以外的所有模式和表：
+        <pre class="pre codeblock">$ gpbackup --dbname demo --exclude-schema twitter</pre>
+</div>
+
+      <div class="p">仅备份"demo"数据库中的"twitter"模式：
+        <pre class="pre codeblock">$ gpbackup --dbname demo --include-schema twitter</pre>
+</div>
+
+      <div class="p">备份"demo"数据库中的所有模式和表，包括Greenplum数据库全局系统对象，将所有备份文件复制到
+        <span class="ph filepath">/home/gpadmin/backup</span>路径下。
+        <pre class="pre codeblock">$ gpbackup --dbname demo --with-stats --backup-dir /home/gpadmin/backup</pre>
+</div>
+
+      <p class="p">该示例使用<samp class="ph codeph">--include-schema</samp>和<samp class="ph codeph">--exclude-table</samp>
+        备份指定模式，除了单独的一张表。</p>
+
+      <pre class="pre codeblock">$ gpbackup --dbname demo --include-schema mydata --exclude-table mydata.addresses</pre>
+
+      <p class="p"><samp class="ph codeph">--exclude-schema</samp>选项不能与表过滤选项一起使用，例如<samp class="ph codeph">--include-table</samp>。
+      </p>
+
+    </div>
+
+    <div class="section" id="topic1__section9">
+<h2 class="title sectiontitle">另见</h2>
+      
+      <p class="p">
+        <samp class="ph codeph"><a class="xref" href="gprestore.html">gprestore</a></samp>、<a class="xref" href="../../admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>和<a class="xref" href="../../admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a></p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

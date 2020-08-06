@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Building a Connector |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_sdk x6-0_pxf_sdk_build_conn has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    Building a Connector
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#identify_depends">Identifying Connector Compile-Time Dependencies</a></li>
+<li>
+<a href="#setup">Setting up the PXF Development Environment</a><ul>
+<li><a href="#setup_prereq">Prerequisites</a></li>
+<li><a href="#setup_procedure">Procedure</a></li>
+</ul>
+</li>
+<li>
+<a href="#demo_buildjar">Example: Building the Demo Connector JAR file</a><ul>
+<li><a href="#about_demo">About the Demo Connector</a></li>
+<li><a href="#build_prereqs">Prerequisites</a></li>
+<li><a href="#build_procedure">Procedure</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>This section describes considerations for building a connector, including selecting an IDE and/or build tool, setting up the PXF development environment, and identifying compile-time dependencies.</p>
+
+<p><strong>Note</strong>: The PXF developer documentation includes a set of exercises that expand on the topics covered. These exercises operate on a built-in PXF connecter named <em>Demo</em>, an example connector to the local file system. You will extend a local copy of the <em>Demo</em> connector throughout exercises in this guide.</p>
+
+<h2 id="identifying-connector-compile-time-dependencies"><a id="identify_depends"></a>Identifying Connector Compile-Time Dependencies</h2>
+
+<p>You must identify and satisfy the compile-time dependencies that your connector or plug-in has on external components. For example, the PXF HDFS connector utilizes the Hadoop Java API. This connector has compile-time dependencies on several classes in the <code>com.apache.hadoop</code> package. These dependencies are fulfilled via a number of JAR files provided in a Hadoop client installation.</p>
+
+<p>You can set up the build environment for your connector to retrieve compile-time dependencies from <code>maven</code> or other remote repositories. Your connector may also have compile-time dependencies that you fulfill via a JAR file local to your build system.</p>
+
+<p>All PXF connectors have a compile-time dependency on the <code>pxf-api-&lt;version&gt;.jar</code> file. Your connector may also have compile-time dependencies on other PXF jar files if you extend any of the PXF classes implemented in those JAR files.</p>
+
+<p><em>PXF JAR files are not currently available from a remote repository.</em> You must copy the JAR file(s) from your Greenplum Database installation to your development system before you build your connector.</p>
+
+<p>PXF JAR files are available from the following directory in your Greenplum Database installation:</p>
+<pre class="highlight shell"><code><span class="nv">$GPHOME</span>/pxf/lib
+</code></pre>
+
+<h2 id="setting-up-the-pxf-development-environment"><a id="setup"></a>Setting up the PXF Development Environment</h2>
+
+<p>You can develop with the PXF SDK on your operating system of choice and with the IDE or build environment of your choice.</p>
+
+<p>You must install the Java Development Kit on your development system to develop with the PXF SDK. You must also obtain the PXF API JAR file, and the JAR file(s) for any PXF built-in connectors whose plug-in classes you will extend.</p>
+
+<h3 id="prerequisites"><a id="setup_prereq"></a>Prerequisites</h3>
+
+<p>Before setting up your PXF development environment, ensure that you have:</p>
+
+<ul>
+<li>Access to a system on which you can develop Java code.</li>
+<li>Administrative access to your development system.</li>
+<li>Secure shell access to the Greenplum Database master host to copy files.</li>
+</ul>
+
+<h3 id="procedure"><a id="setup_procedure"></a>Procedure</h3>
+
+<p>Perform the following procedure to set up your PXF development environment. This procedure assumes a Linux-based development system.</p>
+
+<ol>
+<li><p>Create a work directory. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>mkdir pxf_dev
+<span class="gp">user@devsystem$ </span><span class="nb">cd </span>pxf_dev
+<span class="gp">user@devsystem$ </span><span class="nb">export </span><span class="nv">PXFDEV_BASE</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+</code></pre>
+
+<p>Exercises in this guide reference your work directory. You may consider adding <code>$PXFDEV_BASE</code> to your <code>.bash_profile</code> or equivalent shell initialization script.</p></li>
+<li><p>If not already present on your development system, install Java Development Kit version 1.8. You must have superuser permissions to install operating system packages. For example, to install the JDK on a CentOS development system:</p>
+<pre class="highlight shell"><code><span class="gp">root@devsystem$ </span>sudo yum install java-1.8.0-openjdk-1.8.0<span class="k">*</span>
+</code></pre></li>
+<li><p>Obtain the PXF API JAR file <code>pxf-api-&lt;version&gt;.jar</code> and copy it to your work directory. You can copy this file from your Greenplum Database installation. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span><span class="nb">cd</span> <span class="nv">$PXFDEV_BASE</span>
+<span class="gp">user@devsystem$ </span>scp gpuser@gpmaster:/usr/local/greenplum-db/pxf/lib/pxf-api-&lt;version&gt;.jar .
+</code></pre></li>
+<li><p>Copy any other PXF JAR files that you require. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>scp gpuser@gpmaster:/usr/local/greenplum-db/pxf/lib/pxf-hdfs-&lt;version&gt;.jar .
+</code></pre></li>
+</ol>
+
+<h2 id="example:-building-the-demo-connector-jar-file"><a id="demo_buildjar"></a>Example: Building the Demo Connector JAR file</h2>
+
+<p>In this exercise, you create a local copy of the <em>Demo</em> connector and use the build tool <code>gradle</code> to build your local copy. You may choose to use an IDE or a different, equivalent, build tool.</p>
+
+<h3 id="about-the-demo-connector"><a id="about_demo"></a>About the Demo Connector</h3>
+
+<p>The <em>Demo</em> connector supports read and write operations on text format files stored on the local file system. The <em>Demo</em> connector read operation currently returns static data. The <em>Demo</em> connector fully supports writing to the local file system.</p>
+
+<h4 id="package-and-class-names"><a id="demo_names"></a>Package and Class Names</h4>
+
+<p>Your local copy of the <em>Demo</em> connector source code will reside in a packaged named <code>org.greenplum.pxf.example.demo</code>.</p>
+
+<p>The <em>Demo</em> connector plug-in classes:</p>
+
+<table><thead>
+<tr>
+<th>Class Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>DemoFragmenter</code></td>
+<td>Template implementation of the <code>Fragmenter</code> class.  Returns static fragment information.</td>
+</tr>
+<tr>
+<td><code>DemoAccessor</code></td>
+<td>Template implementation of the <code>ReadAccessor</code> interface. Returns static data.</td>
+</tr>
+<tr>
+<td><code>DemoTextResolver</code></td>
+<td>Implements <code>ReadResolver</code> and <code>WriteResolver</code> interfaces. Deserializes and serializes text format data.</td>
+</tr>
+<tr>
+<td><code>DemoFileWritableAccessor</code></td>
+<td>Implements the <code>WriteAccessor</code> interface. Writes text format data to the local file system.</td>
+</tr>
+</tbody></table>
+
+<h4 id="compile-time-dependencies"><a id="demo_depends"></a>Compile-Time Dependencies</h4>
+
+<p>The <em>Demo</em> connector has compile-time dependencies on the <code>pxf-api-&lt;version&gt;.jar</code> file and the Apache Commons Logging JAR file, <code>commons-logging.jar</code>.</p>
+
+<p>When you build the <em>Demo</em> connector in this exercise, you will satisfy these compile-time dependencies via a local file and a maven repository.</p>
+
+<h3 id="prerequisites"><a id="build_prereqs"></a>Prerequisites</h3>
+
+<p>Before building the <em>Demo</em> connector, ensure that you have:</p>
+
+<ul>
+<li>Set up your development environment as described in an earlier topic.</li>
+<li>Installed <code>gradle</code> on your development system. Refer to <a href="https://gradle.org/install/#helpful-information">Gradle Build Tool Installation</a> for instructions.</li>
+</ul>
+
+<h3 id="procedure"><a id="build_procedure"></a>Procedure</h3>
+
+<p>Perform the following procedure to create a local copy of the <em>Demo</em> connector source code, update package names, configure compile-time dependencies, and use <code>gradle</code> to build the connector.</p>
+
+<ol>
+<li><p>Download the PXF <em>Demo</em> connector source code from the Greenplum PXF git repo. You can obtain the PXF source code from Greenplum PXF <code>github</code> repository. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span><span class="nb">cd</span> <span class="nv">$PXFDEV_BASE</span>
+<span class="gp">user@devsystem$ </span>git clone https://github.com/greenplum-db/pxf.git
+</code></pre>
+
+<p>The <code>clone</code> operation creates a directory named <code>pxf/</code> in your current working directory.</p></li>
+<li><p>Create a project directory for your copy of the source code and navigate to that directory. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>mkdir demo_example
+<span class="gp">user@devsystem$ </span><span class="nb">cd </span>demo_example
+</code></pre></li>
+<li><p>Create a <code>libs</code> directory for dependent packages, and copy the PXF API JAR file you previously downloaded to <code>libs/</code>. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>mkdir libs
+<span class="gp">user@devsystem$ </span>cp <span class="nv">$PXFDEV_BASE</span>/pxf-api-&lt;version&gt;.jar libs/
+</code></pre></li>
+<li><p>The source code for the PXF <em>Demo</em> connector is located in the <code>pxf/server/pxf-api/src/main/java/org/greenplum/pxf/api/examples</code> directory of the repository you cloned in Step 1. Copy this code to your work area. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>mkdir -p src/main/java/org/greenplum/pxf/example/demo
+<span class="gp">user@devsystem$ </span><span class="nb">cd </span>src/main/java/org/greenplum/pxf/example/demo
+<span class="gp">user@devsystem$ </span>cp <span class="nv">$PXFDEV_BASE</span>/pxf/server/pxf-api/src/main/java/org/greenplum/pxf/api/examples/<span class="k">*</span> .
+</code></pre></li>
+<li><p>The original PXF <em>Demo</em> connector resides in the <code>org.greenplum.pxf.api.examples</code> package. Your <em>Demo</em> connector resides in a package named <code>org.greenplum.pxf.example.demo</code>. Update the package name in your local copy of the <em>Demo</em> connector source code. You can edit the files, run a script, etc. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>find . -name <span class="s1">'*.java'</span> -exec sed -i <span class="s1">''</span> s/<span class="s2">"org.greenplum.pxf.api.examples"</span>/<span class="s2">"org.greenplum.pxf.example.demo"</span>/g <span class="o">{}</span> +
+</code></pre></li>
+<li><p>Initialize a <code>gradle</code> Java library project for your <em>Demo</em> connector. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span><span class="nb">cd</span> <span class="nv">$PXFDEV_BASE</span>/demo_example
+<span class="gp">user@devsystem$ </span>gradle init --type java-library
+</code></pre>
+
+<p>This command generates build configuration files and scripts. Before building your <em>Demo</em> connector project, you must customize the <code>build.gradle</code> and <code>settings.gradle</code> files.</p></li>
+<li><p>Gradle uses the <code>settings.gradle</code> file <code>rootProject.name</code> setting for the base name of the built Java library JAR file. The default <code>rootProject.name</code> setting value is the base name of current working directory. Edit the <code>settings.gradle</code> file and supply a custom root project name for your <em>Demo</em> connector. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>vi settings.gradle
+</code></pre>
+<pre class="highlight plaintext"><code>rootProject.name = 'my-demo-connector'
+</code></pre></li>
+<li><p>Gradle uses the <code>build.gradle</code> file to identify the compile time dependencies for a project and other configuration. Your <em>Demo</em> connector depends on the PXF API JAR file (available locally) and the <code>commons-logging.jar</code> file (available from a maven repository). Edit your <code>build.gradle</code> file to supply these dependencies. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>vi build.gradle
+</code></pre>
+
+<p>Search for the <code>repositories</code> block, and add the bolded text to identify the location of the PXF API JAR file. Recall that you copied this file to the <code>libs/</code> directory in Step 3. For example:</p>
+
+<pre>
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    <b>flatDir {
+      dirs './libs'
+    }</b>
+}
+</pre>
+
+<p>Search for the <code>dependencies</code> block and add the bolded text to identify the <code>pxf-api-&lt;version&gt;.jar</code> and <code>common-logging-&lt;version&gt;.jar</code> file as dependencies of your gradle project. For example:</p>
+
+<pre>
+dependencies {
+    ...
+    testCompile 'junit:junit:4.12'
+
+    <b>compile 'commons-logging:commons-logging:1.1.3'
+    compile 'org.greenplum.pxf.api:pxf-api:4.0.0'</b>
+}
+</pre> </li>
+<li><p>Build your connector JAR file. For example:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>./gradlew build
+</code></pre>
+
+<p><code>gradle</code> builds your code and writes the built <code>my-demo-connector.jar</code> JAR file to the <code>build/libs</code> directory.</p></li>
+<li><p>Locate your connector JAR file, and note this location:</p>
+<pre class="highlight shell"><code><span class="gp">user@devsystem$ </span>ls build/libs
+my-demo-connector.jar
+</code></pre>
+
+<p>You will deploy and test your <em>Demo</em> connector JAR file in an upcoming exercise.</p></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

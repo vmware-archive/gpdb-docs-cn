@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      升级PXF |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_upgrade_pxf has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    升级PXF
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#pxfpre">Step 1: PXF Pre-Upgrade Actions</a></li>
+<li><a href="#pxfup">Step 2: Upgrading PXF</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>如果在当前的Greenplum数据库中安装使用PXF，则必须在升级到新版本Greenplum数据库时升级PXF服务。</p>
+
+<p>PXF升级过程描述了如何在Greenplum数据库安装中升级PXF。 此过程使用<em>PXF.from</em>来表示当前安装的PXF版本, <em>PXF.to</em>表示升级新版本的Greenplum数据库时安装的PXF版本。</p>
+
+<p>大多数PXF安装不需要修改PXF配置文件，并且可以进行无缝升级</p>
+
+<p><strong>Note</strong>: 从Greenplum Database版本5.12开始，PXF不再需要安装Hadoop客户端。PXF现在捆绑了它所依赖的所有JAR文件，并在运行时加载这些JAR。</p>
+
+<p>PXF升级过程分为两部分。您在升级到Greenplum数据库的新版本之前执行一个过程，之后执行一个过程：</p>
+
+<ul>
+<li>  <a href="#pxfpre">Step 1: PXF Pre-Upgrade Actions</a></li>
+<li>  GPDB升级到一个新的版本</li>
+<li>  <a href="#pxfup">Step 2: Upgrading PXF</a> GPDB升级到一个新的版本</li>
+</ul>
+
+<h2 id="step-1:-pxf-pre-upgrade-actions"><a id="pxfpre"></a>Step 1: PXF Pre-Upgrade Actions</h2>
+
+<p>在升级到Greenplum数据库的新版本之前执行此过程：</p>
+
+<ol>
+<li><p>登录到GPDB master节点</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>安装<a href="/6-0/pxf/cfginitstart_pxf.html#stop_pxf">Stopping PXF</a> 章节描述停止每个segment节点上的PXF</p></li>
+<li><p><strong>如果你想从GPDB版本5.14或更早的版本开始升级</strong>:</p>
+
+<ol>
+<li><p>备份 <em>PXF.from</em> 在<code>$GPHOME/pxf/conf/</code>目录的配置文件。所有segment主机上的这些文件应该相同，因此您只需要从其中一个主机进行复制。 例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>mkdir -p /save/pxf-from-conf
+<span class="gp">gpadmin@gpmaster$ </span>scp gpadmin@seghost1:/usr/local/greenplum-db/pxf/conf/<span class="k">*</span> /save/pxf-from-conf/
+</code></pre></li>
+<li><p>请注意您可能已添加到<em>PXF.from</em>安装的任何自定义JAR文件的位置。 保存这些JAR文件的副本</p></li>
+</ol></li>
+<li><p>升级到新版本的Greenplum数据库，然后参照<a href="#pxfup">Step 2: Upgrading PXF</a>.</p></li>
+</ol>
+
+<h2 id="step-2:-upgrading-pxf"><a id="pxfup"></a>Step 2: Upgrading PXF</h2>
+
+<p>升级到新版本的Greenplum数据库后，请执行以下步骤以升级和配置<em>PXF.to</em>软件：</p>
+
+<ol>
+<li><p>登录到GPDB master节点</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>按照<a href="/6-0/pxf/init_pxf.html">Initializing PXF</a>的描述在每个segment主机上初始化PXF。</p></li>
+<li><p>默认情况下，在Greenplum数据库版本5.5.0及更高版本中启用PXF用户模拟。如果要从较旧的<em>PXF.from</em>版本升级，则必须为基础Hadoop服务配置用户模拟。有关说明，请参阅<a href="/6-0/pxf/pxfuserimpers.html">Configuring User Impersonation and Proxying</a>，包括关闭PXF用户模拟的配置过程。</p></li>
+<li><p><strong>如果你想从GPDB版本5.14或更早的版本开始升级</strong>:</p>
+
+<ol>
+<li><p>如果更新了<em>PXF.from</em>安装中的<code>pxf-env.sh</code>配置文件，请将这些更改重新应用于<code>$PXF_CONF/conf/pxf-env.sh</code>。 例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>vi <span class="nv">$PXF_CONF</span>/conf/pxf-env.sh
+   &lt;update the file&gt;
+</code></pre></li>
+<li><p>同样，如果您在PXF.from安装中更新了<code>pxf-profiles.xml</code>配置文件，请将这些更改重新应用到主机上的<code>$PXF_CONF/conf/pxf-profiles.xml</code>。</p>
+
+<p><strong>Note:</strong> 从Greenplum Database版本5.12开始，PXF类的包名称已更改为使用前缀<code>org.greenplum.*</code> 。如果要从较旧的<em>PXF.from</em>版本升级并自定义<code>pxf-profiles.xml</code>文件，则必须在重新应用时更改对<code>org.greenplum.pxf.*</code>的任何<code>org.apache.hawq.pxf.*</code>的引用。</p></li>
+<li><p>如果更新了<em>PXF.from</em>安装中的<code>pxf-log4j.properties</code>配置文件，请将这些更改重新应用到主机上的 <code>$PXF_CONF/conf/pxf-log4j.properties</code></p></li>
+<li><p>如果在<em>PXF.from</em>安装中更新了<code>pxf-public.classpath</code>配置文件，请将文件中引用的每个JAR复制到naster主机的<code>$PXF_CONF/lib</code></p></li>
+<li><p>如果你将其他JAR文件添加到<em>PXF.from</em>中，请将它们复制到master主机上的<code>$PXF_CONF/lib</code></p></li>
+<li><p>从Greenplum Database版本 5.15 开始，PXF需要Hadoop配置文件放置在<code>$PXF_CONF/servers/default</code>目录中。如果在<em>PXF.from</em>安装中配置了PXF Hadoop连接器，请将<code>/etc/&lt;hadoop_service&gt;/conf</code>中的Hadoop配置文件复制到Greenplum Database主机上的<code>$PXF_CONF/servers/default</code></p></li>
+<li><p>从Greenplum Database版本 5.15 开始，PXF的默认Kerberos keytab文件位置是<code>$PXF_CONF/keytabs</code>。如果先前已将PXF配置为安全HDFS 且PXF密钥表文件位于<em>PXF.from</em>安装目录中(例如，<code>$GPHOME/pxf/conf</code>)，请考虑将keytab文件重定位到<code>$PXF_CONF/keytabs</code>,或者，更新<code>$PXF_CONF/conf/pxf-env.sh</code>文件中的<code>PXF_KEYTAB</code>属性设置以引用您的keytab文件。</p></li>
+</ol></li>
+<li><p><strong>如果要从Greenplum数据库5.18或更早版本升级</strong>：</p>
+
+<ol>
+<li>现在，PXF捆绑了Hadoop 2.9.2版相关的JAR文件。 如果您在<code>$PXF_CONF/lib</code>中注册了其他与Hadoop相关的JAR文件，请确保这些库与Hadoop 2.9.2版兼容。</li>
+<li>现在，PXF JDBC连接器支持基于文件的服务器配置。如果选择将此新功能与引用外部SQL数据库的现有外部表一起使用，请参阅<a href="/6-0/pxf/jdbc_cfg.html">配置JDBC连接器</a>中的配置说明，以获取更多信息。</li>
+<li>现在，PXF JDBC连接器支持语句查询超时。此特性需要JDBC驱动程序的显式支持。默认查询超时为<code>0</code>，请耐心等待。一些JDBC驱动程序在不完全支持语句查询超时功能的情况下支持<code>0</code>超时值。确保已注册的所有JDBC驱动程序都支持默认超时，或者更好的是，它完全支持此特性。 您可能需要更新JDBC驱动程序版本以获得此支持。有关使用PXF注册JAR文件的信息，请参考<a href="/6-0/pxf/jdbc_cfg.html#cfg_jar">JDBC驱动程序JAR注册</a>中的配置说明。</li>
+<li>如果您打算对整数类型使用Hive分区过滤，则必须在Hadoop群集的<code>hive-site.xml</code>和PXF用户配置<code>$PXF_CONF/servers/default/hive-site.xml</code>中设置<code>hive.metastore.integral.jdo.pushdown</code> Hive属性。请参阅<a href="/6-0/pxf/client_instcfg.html#client-cfg-update">更新Hadoop配置</a>。</li>
+</ol></li>
+<li><p><strong>如果您要从Greenplum数据库5.21.1或更早版本升级</strong>：当您创建指定<code>HiveText</code>或<code>HiveRC</code>配置文件的外部表时，PXF Hive连接器不再支持在<code>LOCATION</code> URI中提供<code>DELIMITER=&lt;delim&gt;</code>选项。如果您以前创建了一个在<code>LOCATION</code> URI中指定<code>DELIMITER</code>的外部表，则必须删除该表，然后从<code>LOCATION</code>省略<code>DELIMITER</code>来重新创建它。您仍然需要在外部表格式设置选项中提供非默认定界符。</p></li>
+<li><p>将PXF配置从master主机同步到standby和每个Greenplum数据库segment主机。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre></li>
+<li><p>按照<a href="/6-0/pxf/cfginitstart_pxf.html#start_pxf">Starting PXF</a>章节描述在每个segment主机上启动PXF。</p></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

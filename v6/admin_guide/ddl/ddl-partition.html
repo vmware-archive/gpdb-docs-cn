@@ -1,0 +1,2623 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      对大型表分区 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_ddl x6-0_admin_guide_ddl_ddl-partition has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    对大型表分区
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">对大型表分区</h1>
+
+  <div class="body">
+    <div class="p">表分区让我们能通过把表划分成较小的、更容易管理的小块来支持非常大的表，例如事实表。
+      通过让Greenplum数据库查询优化器只扫描满足给定查询所需的数据而避免扫描大表的全部内容，分区表能够提升查询性能。<ul class="ul" id="topic_o3v_dwy_sp__ul_szj_5sz_bt">
+        <li class="li"><a class="xref" href="#topic_tvx_nsz_bt">关于表分区</a></li>
+
+        <li class="li"><a class="xref" href="#topic65">决定表的分区策略</a></li>
+
+        <li class="li"><a class="xref" href="#topic66">创建分区表</a></li>
+
+        <li class="li"><a class="xref" href="#topic73">加载分区表</a></li>
+
+        <li class="li"><a class="xref" href="#topic74">验证分区策略</a></li>
+
+        <li class="li"><a class="xref" href="#topic76">查看用户的分区设计</a></li>
+
+        <li class="li"><a class="xref" href="#topic77">维护分区表</a></li>
+
+      </ul>
+</div>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../ddl/ddl.html" title="这一节包括Greenplum数据库中的数据定义语言（DDL）以及如何创建和管理数据库对象。">定义数据库对象</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_tvx_nsz_bt">
+    <h2 class="title topictitle2">关于表分区</h2>
+
+    <div class="body">
+      <p class="p">分区并不会改变表数据在Segment之间的物理分布。
+        表分布是物理的：Greenplum数据库会在物理上把分区表和未分区表划分到多个Segment上来启用并行查询处理。
+        表分区是逻辑的：Greenplum数据库在逻辑上划分大表来提升查询性能并且有利于数据仓库维护任务，例如把旧数据滚出数据仓库。
+        </p>
+
+      <p class="p">Greenplum数据库支持：</p>
+
+      <ul class="ul" id="topic_tvx_nsz_bt__ul_ohc_2wy_sp">
+        <li class="li" id="topic_tvx_nsz_bt__im204035">
+<em class="ph i">范围分区</em>：基于一个数字型范围划分数据，例如按照日期或价格划分。</li>
+
+        <li class="li" id="topic_tvx_nsz_bt__im207235">
+<em class="ph i">列表分区</em>：基于一个值列表划分数据，例如按照销售范围或产品线划分。</li>
+
+        <li class="li" id="topic_tvx_nsz_bt__im207242">两种类型的组合。</li>
+
+      </ul>
+
+      <div class="fig fignone" id="topic_tvx_nsz_bt__im207241">
+<span class="figcap">Figure 1. 多层分区设计的例子</span>
+        
+        <br><img class="image" id="topic_tvx_nsz_bt__image_pmc_2wy_sp" src="../graphics/partitions.jpg" width="344" height="203"><br>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic64">
+    <h2 class="title topictitle2">Greenplum数据库中的表分区</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库把表划分成部分（也称为分区）来启用大规模并行处理。
+        表分区在使用<samp class="ph codeph">PARTITION BY</samp>（以及可选的<samp class="ph codeph">SUBPARTITION BY</samp>）子句的<samp class="ph codeph">CREATE TABLE</samp>执行期间进行。
+        分区操作会创建一个顶层（父）表以及一层或者多层子表。
+        在内部，Greenplum数据库会在顶层表和它的底层分区之间创建继承关系，类似于PostgreSQL的<samp class="ph codeph">INHERITS</samp>子句的功能。
+        </p>
+
+      <p class="p">Greenplum使用表创建时定义的分区标准来创建每一个分区及其上一个可区分的<samp class="ph codeph">CHECK</samp>约束，这个约束限制了该表能含有的数据。
+        查询优化器使用<samp class="ph codeph">CHECK</samp>约束来决定要扫描哪些表分区来满足一个给定的查询谓词。
+        </p>
+
+      <p class="p">Greenplum系统目录存储了分区层次信息，这样插入到顶层父表的行会被正确地传播到子表分区。
+        要更改分区设计或者表结构，可使用带有<samp class="ph codeph">PARTITION</samp>子句的<samp class="ph codeph">ALTER TABLE</samp>修改父表。
+        </p>
+
+      <p class="p">要把数据插入到一个分过区的表中，用户需要指定根分区表，也就是用<samp class="ph codeph">CREATE TABLE</samp>命令创建的那个表。
+        用户也可以在<samp class="ph codeph">INSERT</samp>命令中指定分区表的一个叶子子表。
+        如果该数据对于指定的叶子子表不合法，则会返回一个错误。
+        不支持在DML命令中指定一个非叶子或者非根分区表。
+        </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic65">
+    <h2 class="title topictitle2">决定表的分区策略</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库不支持对复制表进行分区(<samp class="ph codeph">DISTRIBUTED REPLICATED</samp>)。
+        不是所有的哈希分布表或随机分布表都适合于分区。
+        如果下列问题的答案全部或者大部分都是<em class="ph i">yes</em>，表分区就是一种可行的改进查询性能的数据库设计策略。
+        如果下列问题的答案大部分都是<em class="ph i">no</em>，表分区对于该表就不是正确的方案。
+        请测试用户的设计策略来确保查询性能能得到预期的改进。
+        </p>
+
+      <ul class="ul" id="topic65__ul_jpc_2wy_sp">
+        <li class="li" id="topic65__im148863">
+<strong class="ph b">表是否足够大？</strong>大型的事实表是进行表划分很好的候选。
+          如果在一个表中有几百万或者几十亿个记录，从逻辑上将数据分成较小的块会让用户在性能方面受益。
+          对于只有几千行或者更少数据的小表来说，维护分区的管理开销将会超过用户可能得到的性能收益。
+          </li>
+
+        <li class="li" id="topic65__im148864">
+<strong class="ph b">用户是否体验到不满意的性能？</strong>正如任何性能调节的动机一样，只有针对一个表的查询产生比预期还要慢的响应时间时才应该对该表分区。 </li>
+
+        <li class="li" id="topic65__im148865">
+<strong class="ph b">用户的查询谓词有没有可识别的访问模式？</strong>检查用户的查询负载的<samp class="ph codeph">WHERE</samp>子句并且查找一直被用来访问数据的表列。
+          例如，如果大部分查询都倾向于用日期查找记录，那么按月或者按周的日期分区设计可能会对用户有益。
+          或者如果用户倾向于根据地区访问记录，可考虑一种列表分区设计来根据地区划分表。
+          </li>
+
+        <li class="li" id="topic65__im204373">
+<strong class="ph b">用户的数据仓库是否维护了一个历史数据的窗口？</strong>
+          另一个分区设计的考虑是用户的组织对维护历史数据的业务需求。
+          例如，用户的数据仓库可能要求用户保留过去十二个月的数据。
+          如果数据按月分区，用户可以轻易地从仓库中删除最旧的月份分区并且把当前数据载入到最近的月份分区中。</li>
+
+        <li class="li" id="topic65__im148867">
+<strong class="ph b">数据能否基于某种定义的原则被划分成差不多相等的部分？</strong>尽可能选择将把用户的数据均匀划分的分区原则。
+          如果分区包含基本同等数量的记录，查询性能会基于创建的分区数量而提升。
+          例如，通过将一个大型表划分成10个分区，一个查询的执行速度将比在未分区表上快10倍，前提是这些分区就是为支持该查询的条件而设计。</li>
+
+      </ul>
+
+      <p class="p">不要创建超过所需数量的分区。
+        创建过多的分区可能会拖慢管理和维护工作，例如清理、恢复Segment、扩展集群、检查磁盘用量等等。</p>
+
+      <p class="p">除非查询优化器能基于查询谓词排除一些分区，否则分区技术不能改进查询性能。
+        每个分区都扫描的查询运行起来会比表没有分区时还慢，因此如果用户的查询中很少能排除分区，请避免进行分区。
+        请检查查询的解释计划来确认分区被排除。
+        参考<a class="xref" href="../query/topics/query-profiling.html#topic39" title="检查性能不好的查询的查询计划,来确定可能的性能调优机会。">查询分析</a>获取更多关于分区的信息。</p>
+
+      <div class="note warning">
+<span class="warningtitle">Warning:</span> 请对多级分区格外谨慎，因为分区文件的数量可能会增长得非常快。
+        例如，如果一个表被按照日和城市划分并且有1,000个日以及1,000个城市，那么分区的总数就是一百万。
+        列存表会把每一列存在一个物理表中，因此如果这个表有100个列，系统就需要为该表管理一亿个文件。</div>
+
+      <p class="p">在选定一种多级分区策略之前，可以考虑一种带有位图索引的单级分区。
+        索引会降低数据装载的速度，因此推荐用用户的数据和模式进行性能测试以决定最佳的策略。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic66">
+    <h2 class="title topictitle2">创建分区表</h2>
+
+    <div class="body">
+      <p class="p">在使用<samp class="ph codeph">CREATE TABLE</samp>创建表时就可以对它们分区。
+        这个主题提供了用于创建带有数个分区的表的SQL语法的例子。
+        </p>
+
+      <p class="p">对一个表分区：</p>
+
+      <ol class="ol" id="topic66__ol_fsc_2wy_sp">
+        <li class="li" id="topic66__im204435">决定分区设计：日期范围、数字范围或者值的列表。</li>
+
+        <li class="li" id="topic66__im204448">选择要按哪个（哪些）列对表分区。</li>
+
+        <li class="li" id="topic66__im204455">决定用户需要多少个分区级别。
+          例如，用户可以按月创建一个日期范围分区表，然后对每个月的分区按照销售地区划分子分区。</li>
+
+      </ol>
+
+      <ul class="ul" id="topic66__ul_rvc_2wy_sp">
+        <li class="li" id="topic66__im153718">
+          <a class="xref" href="#topic67">定义日期范围分区表</a>
+        </li>
+
+        <li class="li" id="topic66__im153726">
+          <a class="xref" href="#topic68">定义数字范围分区表</a>
+        </li>
+
+        <li class="li" id="topic66__im153737">
+          <a class="xref" href="#topic69">定义列表分区表</a>
+        </li>
+
+        <li class="li" id="topic66__im153742">
+          <a class="xref" href="#topic70">定义多级分区表</a>
+        </li>
+
+        <li class="li" id="topic66__im153747">
+          <a class="xref" href="#topic71">对已有的表进行分区</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic67">
+      <h3 class="title topictitle3">定义日期范围分区表</h3>
+
+      <div class="body">
+        <p class="p">一个按日期范围分区的表使用单个<samp class="ph codeph">date</samp>或者<samp class="ph codeph">timestamp</samp>列作为分区键列。
+          如果需要，用户可以使用同一个分区键列来创建子分区，例如按月分区然后按日建子分区。
+          请考虑使用最细的粒度分区。
+          例如，对于一个用日期分区的表，用户可以按日分区并且得到365个每日的分区，而不是先按年分区然后按月建子分区再然后按日建子分区。
+          一种多级设计可能会减少查询规划时间，但是一种平面的分区设计运行得更快。
+          </p>
+
+        <p class="p">用户可以通过给出一个<samp class="ph codeph">START</samp>值、一个<samp class="ph codeph">END</samp>值以及一个定义分区增量值的<samp class="ph codeph">EVERY</samp>子句让Greenplum数据库自动产生分区。
+          默认情况下，<samp class="ph codeph">START</samp>值总是被包括在内而<samp class="ph codeph">END</samp>值总是被排除在外。例如：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE sales (id int, date date, amt decimal(10,2))
+DISTRIBUTED BY (id)
+PARTITION BY RANGE (date)
+( START (date '2016-01-01') INCLUSIVE
+   END (date '2017-01-01') EXCLUSIVE
+   EVERY (INTERVAL '1 day') );
+</pre>
+
+        </div>
+
+        <p class="p">用户也可以逐个声明并且命名每一个分区。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE sales (id int, date date, amt decimal(10,2))
+DISTRIBUTED BY (id)
+PARTITION BY RANGE (date)
+( PARTITION Jan16 START (date '2016-01-01') INCLUSIVE , 
+  PARTITION Feb16 START (date '2016-02-01') INCLUSIVE ,
+  PARTITION Mar16 START (date '2016-03-01') INCLUSIVE ,
+  PARTITION Apr16 START (date '2016-04-01') INCLUSIVE ,
+  PARTITION May16 START (date '2016-05-01') INCLUSIVE ,
+  PARTITION Jun16 START (date '2016-06-01') INCLUSIVE ,
+  PARTITION Jul16 START (date '2016-07-01') INCLUSIVE ,
+  PARTITION Aug16 START (date '2016-08-01') INCLUSIVE ,
+  PARTITION Sep16 START (date '2016-09-01') INCLUSIVE ,
+  PARTITION Oct16 START (date '2016-10-01') INCLUSIVE ,
+  PARTITION Nov16 START (date '2016-11-01') INCLUSIVE ,
+  PARTITION Dec16 START (date '2016-12-01') INCLUSIVE 
+                  END (date '2017-01-01') EXCLUSIVE );
+</pre>
+
+        </div>
+
+        <p class="p">用户不需要为每一个分区声明一个<samp class="ph codeph">END</samp>子句，只需要为最后一个分区写上就好。
+          在这个例子中，<samp class="ph codeph">Jan16</samp>会在<samp class="ph codeph">Feb16</samp>开始处结束。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic68">
+      <h3 class="title topictitle3">定义数字范围分区表</h3>
+
+      <div class="body">
+        <p class="p">一个按数字范围分区的表使用单个数字数据类型列作为分区键列。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE rank (id int, rank int, year int, gender 
+char(1), count int)
+DISTRIBUTED BY (id)
+PARTITION BY RANGE (year)
+( START (2006) END (2016) EVERY (1), 
+  DEFAULT PARTITION extra ); 
+</pre>
+
+        </div>
+
+        <p class="p">更多有关默认分区的信息，请见<a class="xref" href="#topic80">增加默认分区</a>。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic69">
+      <h3 class="title topictitle3">定义列表分区表</h3>
+
+      <div class="body">
+        <p class="p">一个按列表分区的表可以使用任意允许等值比较的数据类型列作为它的分区键列。
+          一个列表分区也可以用一个多列（组合）分区键，反之一个范围分区只允许单一列作为分区键。
+          对于列表分区，用户必须为每一个用户想要创建的分区（列表值）声明一个分区说明。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE rank (id int, rank int, year int, gender 
+char(1), count int ) 
+DISTRIBUTED BY (id)
+PARTITION BY LIST (gender)
+( PARTITION girls VALUES ('F'), 
+  PARTITION boys VALUES ('M'), 
+  DEFAULT PARTITION other );
+</pre>
+
+        </div>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 当前的Greenplum数据库传统优化器允许列表分区带有多列（组合）分区键。
+          一个范围分区只允许单一列作为分区键。
+          Greenplum查询优化器不支持组合键，因此用户不能使用组合分区键。</div>
+
+        <p class="p">更多有关默认分区的信息，请见<a class="xref" href="#topic80">增加默认分区</a>。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic70">
+      <h3 class="title topictitle3">定义多级分区表</h3>
+
+      <div class="body">
+        <p class="p">用户可以用分区的子分区创建一种多级分区设计。
+          使用一个 子分区模板可以确保每一个分区都有相同的子分区设计，包括用户后来增加的分区。
+          例如，下面的SQL创建所示的两级分区设计<a class="xref" href="#topic_tvx_nsz_bt__im207241">Figure 1</a>：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE sales (trans_id int, date date, amount 
+decimal(9,2), region text) 
+DISTRIBUTED BY (trans_id)
+PARTITION BY RANGE (date)
+SUBPARTITION BY LIST (region)
+SUBPARTITION TEMPLATE
+( SUBPARTITION usa VALUES ('usa'), 
+  SUBPARTITION asia VALUES ('asia'), 
+  SUBPARTITION europe VALUES ('europe'), 
+  DEFAULT SUBPARTITION other_regions)
+  (START (date '2011-01-01') INCLUSIVE
+   END (date '2012-01-01') EXCLUSIVE
+   EVERY (INTERVAL '1 month'), 
+   DEFAULT PARTITION outlying_dates );
+</pre>
+
+        </div>
+
+        <p class="p">下面的例子展示了一个三级分区设计，其中<samp class="ph codeph">sales</samp>表被按照<samp class="ph codeph">year</samp>分区，然后按照<samp class="ph codeph">month</samp>分区，再然后按照<samp class="ph codeph">region</samp>分区。
+          <samp class="ph codeph">SUBPARTITION TEMPLATE</samp>子句保证每一个年度的分区都有相同的子分区结构。
+          这个例子在该层次的每一个级别上都声明了一个<samp class="ph codeph">DEFAULT</samp>分区。
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE p3_sales (id int, year int, month int, day int, 
+region text)
+DISTRIBUTED BY (id)
+PARTITION BY RANGE (year)
+    SUBPARTITION BY RANGE (month)
+       SUBPARTITION TEMPLATE (
+        START (1) END (13) EVERY (1), 
+        DEFAULT SUBPARTITION other_months )
+           SUBPARTITION BY LIST (region)
+             SUBPARTITION TEMPLATE (
+               SUBPARTITION usa VALUES ('usa'),
+               SUBPARTITION europe VALUES ('europe'),
+               SUBPARTITION asia VALUES ('asia'),
+               DEFAULT SUBPARTITION other_regions )
+( START (2002) END (2012) EVERY (1), 
+  DEFAULT PARTITION outlying_years );
+</pre>
+
+        </div>
+
+        <div class="cautiontitle">CAUTION:</div>
+<div class="note caution">当用户创建基于范围的多级分区时，很容易会创建大量的子分区，有一些包含很少的甚至不包含数据。
+          这可能会在系统表中增加很多项，这些项增加了优化和执行查询所需的时间和内存。
+          增加范围区间或者选择一种不同的分区策略可减少创建的子分区数量。</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic71">
+      <h3 class="title topictitle3">对已有的表进行分区</h3>
+
+      <div class="body">
+        <p class="p">表只能在创建时被分区。
+          如果用户有一个表想要分区，用户必须创建一个分过区的表，把原始表的数据载入到新表，再删除原始表并且把分过区的表重命名为原始表的名称。
+          用户还必须重新授权表上的权限。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE sales2 (LIKE sales) 
+PARTITION BY RANGE (date)
+( START (date 2016-01-01') INCLUSIVE
+   END (date '2017-01-01') EXCLUSIVE
+   EVERY (INTERVAL '1 month') );
+INSERT INTO sales2 SELECT * FROM sales;
+DROP TABLE sales;
+ALTER TABLE sales2 RENAME TO sales;
+GRANT ALL PRIVILEGES ON sales TO admin;
+GRANT SELECT ON sales TO guest;
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic72">
+      <h3 class="title topictitle3">分区表的限制</h3>
+
+      <div class="body">
+        <p class="p">对于每个分区级别，一个已分区的表最多能有32,767个分区。</p>
+
+        <p class="p">一个已分区表上的主键或者唯一约束必须包含所有的分区列。
+          一个唯一索引可以忽略分区列，但是它只能在已分区表的每个部分而不是整个已分区的表上被强制。</p>
+
+        <p class="p">用<samp class="ph codeph">DISTRIBUTED REPLICATED</samp>分布策略创建的表不能被分区。</p>
+
+        <p class="p">Greenplum的下一代查询优化器GPORCA支持统一的多级分区表。
+          如果启用了GPORCA（默认情况）并且多级分区表不统一，Greenplum数据库会用传统查询优化器对该表执行查询。
+          有关统一多级分区表的信息，请见<a class="xref" href="../query/topics/query-piv-uniform-part-tbl.html#topic1">关于统一多级分区表</a>。
+          </p>
+
+        <p class="p">有关交换叶节点和外部表的信息，请参考<a class="xref" href="#topic_yhz_gpn_qs">用外部表交换叶子子分区</a>。</p>
+
+        <p class="p">当一个叶子子分区是外部表时，对分区表有一些限制：</p>
+
+        <ul class="ul" id="topic72__ul_byq_wdd_bt">
+          <li class="li">针对包含外部表分区的分区表运行的查询将用传统查询优化器执行。</li>
+
+          <li class="li">外部表分区是一个只读外部表。尝试在该外部表分区中访问或者修改数据的命令会返回一个错误。例如：<ul class="ul" id="topic72__ul_ugr_try_bt">
+              <li class="li">尝试在外部表分区中改变数据的<samp class="ph codeph">INSERT</samp>、<samp class="ph codeph">DELETE</samp>以及<samp class="ph codeph">UPDATE</samp>命令会返回一个错误。</li>
+
+              <li class="li">
+<samp class="ph codeph">TRUNCATE</samp>命令返回一个错误。</li>
+
+              <li class="li">
+<samp class="ph codeph">COPY</samp>命令无法复制数据到一个会更新外部表分区的分区表中。</li>
+
+              <li class="li">尝试从一个外部表分区中复制出数据的<samp class="ph codeph">COPY</samp>命令会返回一个错误，除非用户为<samp class="ph codeph">COPY</samp>命令指定<samp class="ph codeph">IGNORE EXTERNAL PARTITIONS</samp>子句。
+                如果用户指定该子句，数据不会被从外部表分区复制出来。
+                <div class="p">要对一个有外部表作为叶子子表的分区表使用<samp class="ph codeph">COPY</samp>命令，可以使用一个SQL查询来拷贝数据。
+                  例如，如果表<samp class="ph codeph">my_sales</samp>包含一个外部表作为叶子子表，这个命令可以把其数据发送到<samp class="ph codeph">stdout</samp>：
+                  <pre class="pre codeblock">COPY (SELECT * from my_sales ) TO stdout</pre>
+</div>
+</li>
+
+              <li class="li">
+<samp class="ph codeph">VACUUM</samp>命令会跳过外部表分区。</li>
+
+            </ul>
+</li>
+
+          <li class="li">
+            <p class="p">如果在外部表分区上没有数据改变，则支持下列操作。否则，返回一个错误。</p>
+
+            <ul class="ul" id="topic72__ul_hcw_mrn_qs">
+              <li class="li">增加或者删除一列。</li>
+
+              <li class="li">更改列的数据类型。</li>
+
+            </ul>
+
+          </li>
+
+          <li class="li">如果分区表包含一个外部表分区，则不支持这些<samp class="ph codeph">ALTER PARTITION</samp>操作：<ul class="ul" id="topic72__ul_edw_mrn_qs">
+              <li class="li">设置一个子分区模板。</li>
+
+              <li class="li">更改分区属性。</li>
+
+              <li class="li">创建一个默认分区。</li>
+
+              <li class="li">设置一种分布策略。</li>
+
+              <li class="li">设置或者删除列的一个<samp class="ph codeph">NOT NULL</samp>约束。</li>
+
+              <li class="li">增加或者删除约束。</li>
+
+              <li class="li">分裂一个外部分区。</li>
+
+            </ul>
+</li>
+
+          <li class="li">如果分区表的一个叶子子分区是一个可读的外部表，Greenplum数据库工具<samp class="ph codeph">gpbackup</samp>不会从该叶子子分区中备份数据。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic73">
+    <h2 class="title topictitle2">加载分区表</h2>
+
+    <div class="body">
+      <p class="p">在用户创建了分区表结构之后，顶层父表为空。
+        数据会被路由到底层的子表分区中。
+        在一个多级分区设计中，只有层次底部的子分区能够包含数据。</p>
+
+      <p class="p">不能被映射到一个子表分区的行会被拒绝并且载入会失败。
+        为了避免无法映射的行在载入时被拒绝，可以为用户的分区层次定义一个<samp class="ph codeph">DEFAULT</samp>分区。
+        任何不匹配一个分区的<samp class="ph codeph">CHECK</samp>约束的行会被载入到<samp class="ph codeph">DEFAULT</samp>分区。
+        参见<a class="xref" href="#topic80">增加默认分区</a>。
+        </p>
+
+      <p class="p">在运行时，查询优化器扫描整个表继承层次并使用<samp class="ph codeph">CHECK</samp>表约束来决定要扫描哪个子表分区来满足查询的条件。
+        <samp class="ph codeph">DEFAULT</samp>分区（如果用户的层次中有一个）总是会被扫描。
+        包含数据的<samp class="ph codeph">DEFAULT</samp>分区会拖慢总体扫描时间。
+        </p>
+
+      <p class="p">当用户使用<samp class="ph codeph">COPY</samp>或者<samp class="ph codeph">INSERT</samp>来载入数据到父表时，数据会被自动路由到正确的分区，这就像是向一个常规表中载入数据一样。
+        </p>
+
+      <p class="p">向分区表中载入数据的最佳方法是创建一个中间状态表，把数据载入其中，然后把它交换到用户的分区设计中。参见<a class="xref" href="#topic83">交换分区</a>。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic74">
+    <h2 class="title topictitle2">验证分区策略</h2>
+
+    <div class="body">
+      <p class="p">当一个表基于查询谓词被分区时，用户可以使用<samp class="ph codeph">EXPLAIN</samp>来验证查询优化器只扫描相关的数据来检查查询计划。</p>
+
+      <p class="p">例如，假设一个<em class="ph i">sales</em>表被按日期范围分区，先用月份分区然后用地区建立子分区，如图<a class="xref" href="#topic_tvx_nsz_bt__im207241">Figure 1</a>所示。
+        对于下列查询：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">EXPLAIN SELECT * FROM sales WHERE date='01-07-12' AND 
+region='usa';
+</pre>
+
+      </div>
+
+      <p class="p">这个查询的查询计划应该展示只涉及到下列表的表扫描：</p>
+
+      <ul class="ul" id="topic74__ul_xyc_2wy_sp">
+        <li class="li" id="topic74__im152925">返回0-1行的默认分区（如果用户的分区设计有一个默认分区）</li>
+
+        <li class="li" id="topic74__im148892">返回0-1行的January 2012分区（<em class="ph i">sales_1_prt_1</em>）</li>
+
+        <li class="li" id="topic74__im148893">返回若干行的USA地区子分区（<em class="ph i">sales_1_2_prt_usa</em>）。</li>
+
+      </ul>
+
+      <p class="p">下面的例子展示了相关的查询计划片段。</p>
+
+      <div class="p">
+        <pre class="pre codeblock">-&gt;  <samp class="ph codeph">Seq Scan on</samp><samp class="ph codeph">sales_1_prt_1</samp> sales (cost=0.00..0.00 <samp class="ph codeph">rows=0</samp> 
+     width=0)
+Filter: "date"=01-07-12::date AND region='USA'::text
+-&gt;  <samp class="ph codeph">Seq Scan on</samp><samp class="ph codeph">sales_1_2_prt_usa</samp> sales (cost=0.00..9.87 
+<samp class="ph codeph">rows=20</samp> 
+      width=40)
+</pre>
+
+      </div>
+
+      <p class="p">确保查询优化器不会扫描不必要的分区或者子分区（例如，扫描没有在查询谓词中指定的月份或者地区），以及顶层表的扫描返回0-1行。</p>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic75">
+      <h3 class="title topictitle3">选择性分区扫描疑难解答</h3>
+
+      <div class="body">
+        <p class="p">下列限制可能导致一个对用户的分区层次进行非选择性扫描的查询计划。</p>
+
+        <ul class="ul" id="topic75__ul_kcd_2wy_sp">
+          <li class="li" id="topic75__im148903">只有当查询包含表的使用不可变操作符，例如
+            <p class="p"> =, &lt; , &lt;= , &gt;,  &gt;= , 和 &lt;&gt;</p>
+
+            的直接或者简单限制时，查询优化器才能有选择地扫描分区表。</li>
+
+          <li class="li" id="topic75__im183866">选择性扫描识别查询中的<samp class="ph codeph">STABLE</samp>以及<samp class="ph codeph">IMMUTABLE</samp>函数，但是不识别<samp class="ph codeph">VOLATILE</samp>函数。
+            例如，<samp class="ph codeph">date &gt; CURRENT_DATE</samp>这样的<samp class="ph codeph">WHERE</samp>子句导致查询优化器选择性扫描分区表，但是<samp class="ph codeph">time &gt; TIMEOFDAY</samp>不会。
+            </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic76">
+    <h2 class="title topictitle2">查看用户的分区设计</h2>
+
+    <div class="body">
+      <p class="p">用户可以使用<em class="ph i">pg_partitions</em>视图查看有关分区设计的信息。
+        例如，要查看<em class="ph i">sales</em>表的分区设计：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">SELECT partitionboundary, partitiontablename, partitionname, 
+partitionlevel, partitionrank 
+FROM pg_partitions 
+WHERE tablename='sales';
+</pre>
+
+      </div>
+
+      <p class="p">下列表和视图展示了关于分区表的信息。</p>
+
+      <ul class="ul" id="topic76__ul_ycd_2wy_sp">
+        <li class="li" id="topic76__im211944">
+<em class="ph i">pg_partition </em>- 跟踪分区表以及它们的继承层次关系。</li>
+
+        <li class="li" id="topic76__im156096">
+<em class="ph i">pg_partition_templates</em> - 展示使用一个子分区模板创建的子分区。</li>
+
+        <li class="li" id="topic76__im156103">
+<em class="ph i">pg_partition_columns</em> - 显示在一个分区设计中用到的分区键列。</li>
+
+      </ul>
+
+      <p class="p">有关Greenplum数据库系统目录表和视图的信息，请见<em class="ph i">Greenplum数据库参考指南</em>。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic77">
+    <h2 class="title topictitle2">维护分区表</h2>
+
+    <div class="body">
+      <p class="p">要维护一个分区表，对顶层父表使用<samp class="ph codeph">ALTER TABLE</samp>命令。
+        最常用的情景是删除旧的分区以及增加新的分区，以此在一种范围分区设计中维护数据的一个滚动窗口。
+        用户可以把旧的分区转换（<em class="ph i">交换</em>）成追加优化的压缩存储格式来节省空间。
+        如果在用户的分区设计中有一个默认分区，用户可以通过<em class="ph i">分裂</em>默认分区来增加一个分区。</p>
+
+      <ul class="ul" id="topic77__ul_ufd_2wy_sp">
+        <li class="li" id="topic77__im154171">
+          <a class="xref" href="#topic78">增加分区</a>
+        </li>
+
+        <li class="li" id="topic77__im153528">
+          <a class="xref" href="#topic79">重命名分区</a>
+        </li>
+
+        <li class="li" id="topic77__im153533">
+          <a class="xref" href="#topic80">增加默认分区</a>
+        </li>
+
+        <li class="li" id="topic77__im153537">
+          <a class="xref" href="#topic81">删除分区</a>
+        </li>
+
+        <li class="li" id="topic77__im153550">
+          <a class="xref" href="#topic82">截断分区</a>
+        </li>
+
+        <li class="li" id="topic77__im153555">
+          <a class="xref" href="#topic83">交换分区</a>
+        </li>
+
+        <li class="li" id="topic77__im153559">
+          <a class="xref" href="#topic84">分裂分区</a>
+        </li>
+
+        <li class="li" id="topic77__im163231">
+          <a class="xref" href="#topic85">修改子分区模板</a>
+        </li>
+
+        <li class="li">
+          <a class="xref" href="#topic_yhz_gpn_qs">用外部表交换叶子子分区</a>
+        </li>
+
+      </ul>
+
+      <div class="note important">
+<span class="importanttitle">Important:</span> 重要： 在定义和改变分区设计时，要使用给定的分区名而不是表对象名。
+        尽管用户可以直接使用SQL命令来查询和装载任何表（包括分区表），用户只能使用<samp class="ph codeph">ALTER TABLE...PARTITION</samp>子句修改一个分区表的结构。
+        <p class="p">分区并不要求有名称。如果一个分区没有名称，可使用下列表达式之一来指定它：<samp class="ph codeph">PARTITION FOR (value)</samp>或者<samp class="ph codeph">PARTITION FOR(RANK(number)</samp>。
+          </p>
+</div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic78">
+      <h3 class="title topictitle3">增加分区</h3>
+
+      <div class="body">
+        <p class="p">用户可以用<samp class="ph codeph">ALTER TABLE</samp>命令为一个分区设计增加一个分区。
+          如果原始分区设计包括由一个子分区模板定义的子分区，新增加的分区也会根据该模板划分子分区。例如：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales ADD PARTITION 
+            START (date '2017-02-01') INCLUSIVE 
+            END (date '2017-03-01') EXCLUSIVE;
+</pre>
+
+        </div>
+
+        <p class="p">如果在创建表时没有使用一个子分区模板，用户可以在增加分区时定义子分区：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales ADD PARTITION 
+            START (date '2017-02-01') INCLUSIVE 
+            END (date '2017-03-01') EXCLUSIVE
+      ( SUBPARTITION usa VALUES ('usa'), 
+        SUBPARTITION asia VALUES ('asia'), 
+        SUBPARTITION europe VALUES ('europe') );
+</pre>
+
+        </div>
+
+        <p class="p">当用户为一个现有分区增加一个子分区时，用户可以指定要更改的分区。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales ALTER PARTITION FOR (RANK(12))
+      ADD PARTITION africa VALUES ('africa');
+</pre>
+
+        </div>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 用户不能向一个具有默认分区的分区设计中增加分区。
+          用户必须分裂默认分区来增加分区。
+          参见<a class="xref" href="#topic84">分裂分区</a>。</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic79">
+      <h3 class="title topictitle3">重命名分区</h3>
+
+      <div class="body">
+        <p class="p">分区表使用下列命名习惯。分区子表的名称服从唯一性要求和长度限制。</p>
+
+        <div class="p">
+          <pre class="pre codeblock"><em class="ph i">&lt;parentname&gt;</em>_<em class="ph i">&lt;level&gt;</em>_prt_<em class="ph i">&lt;partition_name&gt;</em></pre>
+
+        </div>
+
+        <p class="p">例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock"><em class="ph i">sales_1_prt_jan16</em></pre>
+
+        </div>
+
+        <p class="p">对于自动生成的范围分区，在没有给出名称时会分配一个数字：</p>
+
+        <div class="p">
+          <pre class="pre codeblock"><em class="ph i">sales_1_prt_1</em></pre>
+
+        </div>
+
+        <p class="p">要重命名一个已分区的子表，应重命名顶层父表。在所有相关的子表分区的表名中，<em class="ph i">&lt;parentname&gt;</em>都会改变。例如下面的命令：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales RENAME TO globalsales;
+</pre>
+
+        </div>
+
+        <p class="p">会修改相关的表名：</p>
+
+        <div class="p">
+          <pre class="pre codeblock"><em class="ph i">globalsales_1_prt_1</em></pre>
+
+        </div>
+
+        <p class="p">用户可以更改一个分区的名称让它更容易标识。例如：:</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales RENAME PARTITION FOR ('2016-01-01') TO jan16;
+</pre>
+
+        </div>
+
+        <p class="p">会把相关的表名改为如下：</p>
+
+        <div class="p">
+          <pre class="pre codeblock"><em class="ph i">sales_1_prt_jan16</em></pre>
+
+        </div>
+
+        <p class="p">在使用<samp class="ph codeph">ALTER TABLE</samp>命令修改分区表时，总是用它们的分区名（<em class="ph i">jan16</em>）而不是它们的完整表名（<em class="ph i">sales_1_prt_jan16</em>）引用表。
+          </p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 表名不能是一个<samp class="ph codeph">ALTER TABLE</samp>语句中的分区名。
+          例如，<samp class="ph codeph">ALTER TABLE sales...</samp>是正确的。
+          <samp class="ph codeph">ALTER TABLE sales_1_part_jan16...</samp>则不被允许。
+          </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic80">
+      <h3 class="title topictitle3">增加默认分区</h3>
+
+      <div class="body">
+        <p class="p">用户可以用<samp class="ph codeph">ALTER TABLE</samp>命令为一个分区设计增加一个默认分区。</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales ADD DEFAULT PARTITION other;
+</pre>
+
+        </div>
+
+        <p class="p">如果用户的分区设计是多级的，该层次中每一级都必须有一个默认分区。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales ALTER PARTITION FOR (RANK(1)) ADD DEFAULT 
+PARTITION other;
+
+ALTER TABLE sales ALTER PARTITION FOR (RANK(2)) ADD DEFAULT 
+PARTITION other;
+
+ALTER TABLE sales ALTER PARTITION FOR (RANK(3)) ADD DEFAULT 
+PARTITION other;
+</pre>
+
+        </div>
+
+        <p class="p">如果到来的数据不匹配一个分区的<samp class="ph codeph">CHECK</samp>约束并且没有默认分区，该数据就会被拒绝。
+          默认分区确保到来的不匹配一个分区的数据能被插入到默认分区中。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic81">
+      <h3 class="title topictitle3">删除分区</h3>
+
+      <div class="body">
+        <p class="p">用户可以使用<samp class="ph codeph">ALTER TABLE</samp>命令从用户的分区设计中删除一个分区。
+          当用户删除一个具有子分区的分区时，子分区（以及其中的所有数据）也会被自动删除。
+          对于范围分区，从范围中删除较老的分区很常见，因为旧的数据会被滚出数据仓库。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales DROP PARTITION FOR (RANK(1));
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic82">
+      <h3 class="title topictitle3">截断分区</h3>
+
+      <div class="body">
+        <p class="p">用户可以使用<samp class="ph codeph">ALTER TABLE</samp>命令截断一个分区。
+          当用户截断一个具有子分区的分区时，子分区也会被自动截断。</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales TRUNCATE PARTITION FOR (RANK(1));
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic83">
+      <h3 class="title topictitle3">交换分区</h3>
+
+      <div class="body">
+        <p class="p">用户可以使用<samp class="ph codeph">ALTER TABLE</samp>命令交换一个分区。
+          交换一个分区用一个表换掉一个现有的分区。
+          用户只能在分区层次的最底层交换分区（只有包含数据的分区才可以被交换）。
+          </p>
+
+        <p class="p">不可以交换包含复制表的分区。
+          不支持使用分区表或分区表的子分区交换分区。</p>
+
+        <p class="p">分区交换对数据装载有用。
+          例如，装载一个分段表并且把装载好的表换入到用户的分区设计中去。
+          用户可以使用分区交换来把较老分区的存储类型改为追加优化表。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE jan12 (LIKE sales) WITH (appendoptimized=true);
+INSERT INTO jan12 SELECT * FROM sales_1_prt_1 ;
+ALTER TABLE sales EXCHANGE PARTITION FOR (DATE '2012-01-01') 
+WITH TABLE jan12;
+</pre>
+
+        </div>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 这个例子指的是表<samp class="ph codeph">sales</samp>的单级定义，就是在前面那些例子对它增加或者修改分区之前。</div>
+
+        <div class="note warning">
+<span class="warningtitle">Warning:</span> 如果用户指定<samp class="ph codeph">WITHOUT VALIDATION</samp>子句，用户必须确保用户用于交换现有分区的表中的数据对于该分区上的约束是合法的。
+          否则，针对分区表的查询可能会返回不正确的结果。</div>
+
+        <p class="p">Greenplum数据库服务器配置参数<samp class="ph codeph">gp_enable_exchange_default_partition</samp>控制<samp class="ph codeph">EXCHANGE DEFAULT PARTITION</samp>子句的可用性。
+          该参数的默认值是<samp class="ph codeph">off</samp>，表示该子句不可用，如果在<samp class="ph codeph">ALTER TABLE</samp>命令中指定了该子句，Greenplum数据库会返回一个错误。
+          </p>
+
+        <div class="p">关于该参数的信息，请见<cite class="cite">Greenplum数据库参考指南</cite>中的“服务器配置参数”。
+          <div class="note warning">
+<span class="warningtitle">Warning:</span> 在用户交换默认分区前，用户必须确保要被交换的表中的数据（即新的默认分区）对于默认分区是合法的。
+            例如，新默认分区中的数据不能含有对分区表其他叶子子分区有效的数据。
+            否则，交换过默认分区的分区表上由GPORCA执行的查询可能会返回不正确的结果。</div>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic84">
+      <h3 class="title topictitle3">分裂分区</h3>
+
+      <div class="body">
+        <p class="p">分裂一个分区会把一个分区划分成两个分区。
+          用户可以使用<samp class="ph codeph">ALTER TABLE</samp>命令分裂分区。
+          只能在最低层级的分区做分裂（包含数据的分区）。
+          对于对级别分区，只是范围分区可以分裂，列表分区不行。
+          用户指定的分裂值会分在后一个分区中。</p>
+
+        <p class="p">例如，把一个月度分区分裂成两个，第一个分区包含日期January 1-15而第二个分区包含日期January 16-31：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales SPLIT PARTITION FOR ('2017-01-01')
+AT ('2017-01-16')
+INTO (PARTITION jan171to15, PARTITION jan1716to31);
+</pre>
+
+        </div>
+
+        <p class="p">如果用户的分区设计有一个默认分区，用户必须分裂该默认分区来增加分区。</p>
+
+        <p class="p">在使用<samp class="ph codeph">INTO</samp>子句时，指定当前的默认分区为第二个分区名。
+          例如，要分裂一个默认的范围分区来为January 2017增加一个新的月度分区：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales SPLIT DEFAULT PARTITION 
+START ('2017-01-01') INCLUSIVE 
+END ('2017-02-01') EXCLUSIVE 
+INTO (PARTITION jan17, default partition);
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic85">
+      <h3 class="title topictitle3">修改子分区模板</h3>
+
+      <div class="body">
+        <p class="p">使用<samp class="ph codeph">ALTER TABLE</samp> SET SUBPARTITION TEMPLATE 来修改一个分区表的子分区模板。
+          在用户设置了新子分区模板之后增加的分区会具有新的分区设计。
+          现有的分区不会被改变。
+          </p>
+
+        <div class="p">下面的例子修改这个分区表的子分区模板：<pre class="pre codeblock">CREATE TABLE sales (trans_id int, date date, amount decimal(9,2), region text)
+  DISTRIBUTED BY (trans_id)
+  PARTITION BY RANGE (date)
+  SUBPARTITION BY LIST (region)
+  SUBPARTITION TEMPLATE
+    ( SUBPARTITION usa VALUES ('usa'),
+      SUBPARTITION asia VALUES ('asia'),
+      SUBPARTITION europe VALUES ('europe'),
+      DEFAULT SUBPARTITION other_regions )
+  ( START (date '2014-01-01') INCLUSIVE
+    END (date '2014-04-01') EXCLUSIVE
+    EVERY (INTERVAL '1 month') );</pre>
+</div>
+
+        <p class="p">这个<samp class="ph codeph">ALTER TABLE</samp>命令修改子分区模板。</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales SET SUBPARTITION TEMPLATE
+( SUBPARTITION usa VALUES ('usa'), 
+  SUBPARTITION asia VALUES ('asia'), 
+  SUBPARTITION europe VALUES ('europe'),
+  SUBPARTITION africa VALUES ('africa'), 
+  DEFAULT SUBPARTITION regions );</pre>
+
+        </div>
+
+        <p class="p">当用户为表sales增加一个日期范围分区时，它包括非洲的新地区列表子分区。
+          例如，下面的命令创建子分区<samp class="ph codeph">usa</samp>、<samp class="ph codeph">asia</samp>、<samp class="ph codeph">europe</samp>、 <samp class="ph codeph">africa</samp>以及一个名为other的默认分区：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales ADD PARTITION "4"
+  START ('2014-04-01') INCLUSIVE 
+  END ('2014-05-01') EXCLUSIVE ;</pre>
+
+        </div>
+
+        <p class="p">要查看为分区表<samp class="ph codeph">sales</samp>创建的表，用户可以从psql命令行使用<samp class="ph codeph">\dt sales*</samp>。
+          </p>
+
+        <p class="p">要移除一个子分区模板，使用带有空圆括号的<samp class="ph codeph">SET SUBPARTITION TEMPLATE</samp>。
+          例如，要清除sales表的子分区模板：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales SET SUBPARTITION TEMPLATE ();
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="topic_yhz_gpn_qs">
+      <h3 class="title topictitle3">用外部表交换叶子子分区</h3>
+
+      <div class="body">
+        <p class="p">用户可以用一个可读的外部表交换一个分区表中的一个叶子子分区。
+          外部表数据可以位于一个主机文件系统、一个NFS挂载或者一个Hadoop文件系统（HDFS）。</p>
+
+        <p class="p">例如，如果用户有一个分区表，它按月被分成月度分全局并且对该表的大部分查询值访问较新的数据，用户可以把较旧的、较少访问的数据拷贝到外部表并且把较旧的分区与这些外部表交换。
+          对于之访问较新数据的查询，用户可以创建使用分区排除的查询来防止扫描较旧的、不需要的分区。</p>
+
+         <p class="p">如果分区表含有一个带检查约束或者<samp class="ph codeph">NOT NULL</samp>约束的列，用一个外部表交换一个叶子子分区是不可以的。
+           </p>
+
+        <p class="p">关于交换和修改一个叶子子分区的信息，请见<cite class="cite">Greenplum数据库命令参考</cite>中的<samp class="ph codeph">ALTER TABLE</samp>命令。
+          </p>
+
+        <p class="p">关于含有外部表分区的分区表的限制，请见<a class="xref" href="#topic72">分区表的限制</a>。</p>
+
+      </div>
+
+      <div class="topic nested3" id="topic_y3y_1xd_bt">
+        <h4 class="title topictitle4">用外部表交换分区的例子</h4>
+
+        <div class="body">
+          <p class="p">这是一个简单的例子，它把这个分区表的一个叶子子分区交换为一个外部表。分区表包含2010至2013年份的数据。</p>
+
+          <pre class="pre codeblock">CREATE TABLE sales (id int, year int, qtr int, day int, region text)
+  DISTRIBUTED BY (id) 
+  PARTITION BY RANGE (year) 
+  ( PARTITION yr START (2010) END (2014) EVERY (1) ) ;</pre>
+
+          <p class="p">该分区表有四个叶子子分区。
+            每一个叶子子分区含有单一年份的数据。
+            叶子子分区表<samp class="ph codeph">sales_1_prt_yr_1</samp>包含2010年的数据。
+            这些步骤把表<samp class="ph codeph">sales_1_prt_yr_1</samp>交换为一个使用<samp class="ph codeph">gpfdist</samp>协议的外部表：
+            </p>
+
+          <ol class="ol" id="topic_y3y_1xd_bt__ol_uls_2xd_bt">
+            <li class="li">确保Greenplum数据库系统启用了该外部表协议。
+              <div class="p">这个例子使用了<samp class="ph codeph">gpfdist</samp>协议。这个命令开始<samp class="ph codeph">gpfdist</samp>协议。
+              <pre class="pre codeblock"> $ gpfdist</pre>
+</div>
+</li>
+
+            <li class="li">创建一个可写的外部表。<p class="p">这个<samp class="ph codeph">CREATE WRITABLE EXTERNAL
+                  TABLE</samp>命令用和分区表相同的列创建一个可写的外部表。</p>
+<pre class="pre codeblock">CREATE WRITABLE EXTERNAL TABLE my_sales_ext ( LIKE sales_1_prt_yr_1 )
+  LOCATION ( 'gpfdist://gpdb_test/sales_2010' )
+  FORMAT 'csv' 
+  DISTRIBUTED BY (id) ;</pre>
+</li>
+
+            <li class="li">创建一个可读的外部表，它从前一步创建的可写外部表的目的地读取数据。
+              <p class="p">这个<samp class="ph codeph">CREATE EXTERNAL
+                  TABLE</samp>创建一个可读外部表，它使用和可写外部数据相同的外部数据。</p>
+<pre class="pre codeblock">CREATE EXTERNAL TABLE sales_2010_ext ( LIKE sales_1_prt_yr_1)
+  LOCATION ( 'gpfdist://gpdb_test/sales_2010' )
+  FORMAT 'csv' ;</pre>
+</li>
+
+            <li class="li">从叶子子分区中拷贝数据到该可写外部表。
+              <p class="p">这个<samp class="ph codeph">INSERT</samp></p>
+<pre class="pre codeblock">INSERT INTO my_sales_ext SELECT * FROM sales_1_prt_yr_1 ;</pre>
+</li>
+
+            <li class="li">用该外部表交换现有的叶子子分区。
+              <p class="p">这个<samp class="ph codeph">ALTER TABLE</samp>命令指定了<samp class="ph codeph">EXCHANGE PARTITION</samp>子句来切换可读外部表和叶子子分区。
+                </p>
+<pre class="pre codeblock">ALTER TABLE sales ALTER PARTITION yr_1 
+   EXCHANGE PARTITION yr_1 
+   WITH TABLE sales_2010_ext WITHOUT VALIDATION;</pre>
+
+              <p class="p">以表名<samp class="ph codeph">sales_1_prt_yr_1</samp>成为叶子子分区的外部表，并且旧的叶子子分区变成表<samp class="ph codeph">sales_2010_ext</samp>。
+                </p>
+
+              <div class="note warning">
+<span class="warningtitle">Warning:</span> 为了确保针对分区表的查询返回正确的结果，外部表数据必须针对叶子子分区上的<samp class="ph codeph">CHECK</samp>约束有效。
+                在这种情况下，数据会从其上定义有<samp class="ph codeph">CHECK</samp>约束的叶子子分区表中取出。</div>
+</li>
+
+            <li class="li">删除滚出分区表的表。
+              <pre class="pre codeblock">DROP TABLE sales_2010_ext ;</pre>
+</li>
+
+          </ol>
+
+          <p class="p">用户可以重命名该叶子子分区的名称来表明<samp class="ph codeph">sales_1_prt_yr_1</samp>是一个外部表。</p>
+
+          <p class="p">这个示例命令把分区名改为<samp class="ph codeph">yr_1_ext</samp>把叶子子分区表的名称改为<samp class="ph codeph">sales_1_prt_yr_1_ext</samp>。
+            </p>
+
+          <pre class="pre codeblock">ALTER TABLE sales RENAME PARTITION yr_1 TO  yr_1_ext ;</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

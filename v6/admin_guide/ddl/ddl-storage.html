@@ -1,0 +1,2606 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      选择表存储模型 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_ddl x6-0_admin_guide_ddl_ddl-storage has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    选择表存储模型
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">选择表存储模型</h1>
+
+  <div class="body">
+    <p class="p">Greenplum数据库支持多种存储模型和一种混合存储模型。
+      当用户创建一个表时，用户会选择如何存储它的数据。
+      这个主题解释了表存储的选项以及如何为用户的负载选择最好的存储模型。
+      </p>
+
+    <ul class="ul" id="topic_r2v_zvy_sp__ul_wjf_1wy_sp">
+      <li class="li" id="topic_r2v_zvy_sp__im168064">
+        <a class="xref" href="#topic37">堆存储</a>
+      </li>
+
+      <li class="li" id="topic_r2v_zvy_sp__im211316">
+        <a class="xref" href="#topic38">追加优化存储</a>
+      </li>
+
+      <li class="li" id="topic_r2v_zvy_sp__im168306">
+        <a class="xref" href="#topic39">选择面向行或者面向列的存储</a>
+      </li>
+
+      <li class="li" id="topic_r2v_zvy_sp__im168351">
+        <a class="xref" href="#topic40">使用压缩（只适用于追加优化表）</a>
+      </li>
+
+      <li class="li" id="topic_r2v_zvy_sp__im168411">
+        <a class="xref" href="#topic41">检查追加优化表的压缩和分布</a>
+      </li>
+
+      <li class="li">
+        <a class="xref" href="#topic55">修改一个表</a>
+      </li>
+
+      <li class="li">
+        <a class="xref" href="#topic62">删除一个表</a>
+      </li>
+
+    </ul>
+
+    <div class="note note">
+<span class="notetitle">Note:</span> 为了简化数据库表的创建，用户可以使用Greenplum数据库的服务器配置参数<samp class="ph codeph">gp_default_storage_options</samp>为一些表存储选项指定默认值。
+      <p class="p">更多有关该参数的信息，请见<cite class="cite">Greenplum数据库参考指南</cite>中的“服务器配置参数”部分。
+        </p>
+
+    </div>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../ddl/ddl.html" title="这一节包括Greenplum数据库中的数据定义语言（DDL）以及如何创建和管理数据库对象。">定义数据库对象</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic37">
+    <h2 class="title topictitle2">堆存储</h2>
+
+    <div class="body">
+      <p class="p">默认情况下，Greenplum数据库使用和PostgreSQL相同的堆存储模型。
+        堆表存储在OLTP类型负载下表现最好，这种环境中数据会在初始载入后被频繁地修改。
+        <samp class="ph codeph">UPDATE</samp>和<samp class="ph codeph">DELETE</samp>操作要求存储行级版本信息来确保可靠的数据库事务处理。
+        堆表最适合于较小的表，例如维度表，它们在初始载入数据后会经常被更新。
+        </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic38">
+    <h2 class="title topictitle2">追加优化存储</h2>
+
+    <div class="body">
+      <p class="p">追加优化表存储在数据仓库环境中的非规范表表现最好。
+        非规范表通常是系统中最大的表。
+        事实表通常成批地被载入并且被只读查询访问。
+        将大型的事实表改为追加优化存储模型可以消除每行中的更新可见性信息负担，这可以为每一行节约大概20字节。
+        这可以得到一种更加简洁并且更容易优化的页面结构。
+        追加优化表的存储模型是为批量数据装载优化的，因此不推荐单行的<samp class="ph codeph">INSERT</samp>语句。
+        </p>
+
+      <div class="section" id="topic38__im168504">
+<h3 class="title sectiontitle">创建一个堆表</h3>
+        
+        <p class="p">面向行的堆表是默认的存储类型。</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=&gt; CREATE TABLE foo (a int, b text) DISTRIBUTED BY (a);</pre>
+
+        </div>
+
+        
+        <p class="p">使用<samp class="ph codeph">CREATE TABLE</samp>命令的<samp class="ph codeph">WITH</samp>子句可以声明表的存储选项。
+          默认是将表创建为面向行的堆存储表。
+          例如，要创建一个不压缩的追加优化表：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">=&gt; CREATE TABLE bar (a int, b text) 
+    WITH (appendoptimized=true)
+    DISTRIBUTED BY (a);</pre>
+
+        </div>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 使用<samp class="ph codeph">appendoptimized=<var class="keyword varname">value</var></samp>语法来指定追加优化类型的表存储。
+          <samp class="ph codeph">appendoptimized</samp>是<samp class="ph codeph">appendonly</samp>传统存储选项的精简别名。
+          Greenplum数据库在catalog里存储<samp class="ph codeph">appendonly</samp>，并在列出追加优化表的存储选项时显示相同的内容。
+          </div>
+
+        <p class="p">在一个可重复读或可序列化事务中的追加优化表上不允许<samp class="ph codeph">UPDATE</samp>和<samp class="ph codeph">DELETE</samp>，它们将导致该事务中止。
+          追加优化表上不支持<samp class="ph codeph">CLUSTER</samp>、<samp class="ph codeph">DECLARE...FOR UPDATE</samp>和触发器。
+          </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic39">
+    <h2 class="title topictitle2">选择面向行或者面向列的存储</h2>
+
+    <div class="body">
+      <p class="p">Greenplum提供面向存储的模型选择：行，列或两者的组合。
+        本主题提供了为表选择最佳存储的一般准则。
+        使用您自己的数据和查询工作负载评估性能。
+        </p>
+
+      <ul class="ul" id="topic39__ul_mtf_1wy_sp">
+        <li class="li" id="topic39__im201450">面向行的存储：适用于具有许多迭代事务的OLTP类型的工作负载以及一次需要多列的单行，因此检索是高效的。</li>
+
+        <li class="li" id="topic39__im201471">面向列的存储：适合于在少量列上计算数据聚集的数据仓库负载，或者是用于需要对单列定期更新但不修改其他列数据的情况。</li>
+
+      </ul>
+
+      <p class="p">对于大部分常用目的或者混合负载，面向行的存储提供了灵活性和性能的最佳组合。
+        不过，也有场景中面向列的存储模型提供了更高效的I/O和存储。
+        在为一个表决定存储方向模型时，请考虑下列需求：</p>
+
+      <ul class="ul" id="topic39__ul_oyf_1wy_sp">
+        <li class="li" id="topic39__im168747">
+<strong class="ph b">表数据的更新。</strong>如果用户会频繁地装载和更新表数据，请选择一个面向行的堆表。
+          <span class="ph">面向列的表存储只能用于追加优化表。</span>
+          <p class="p">参考<a class="xref" href="#topic37">堆存储</a>获得更多信息。</p>
+</li>
+
+        <li class="li" id="topic39__im170466">
+<strong class="ph b">频繁的插入。</strong>如果频繁地向表中插入行，请考虑面向行的模型。
+          列存表并未对写操作优化，因为一行的列值必须被写到磁盘上的不同位置。</li>
+
+        <li class="li" id="topic39__im168960">
+<strong class="ph b">查询中要求的列数。</strong>如果在查询的<samp class="ph codeph">SELECT</samp>列表或者<samp class="ph codeph">WHERE</samp>子句中常常要求所有或者大部分列，请考虑面向行的模型。
+          面向列的表最适合的情况是，查询会聚集一个单一列中的很多值且<samp class="ph codeph">WHERE</samp>或者<samp class="ph codeph">HAVING</samp>谓词也在该聚集列上。例如：
+          <pre class="pre codeblock">SELECT SUM(salary)...</pre>
+<pre class="pre codeblock">SELECT AVG(salary)... WHERE salary &gt; 10000</pre>
+<p class="p">
+            或者面向列的情况是<samp class="ph codeph">WHERE</samp>谓词在一个单一列上并且返回相对较少的行。例如：
+            </p>
+<pre class="pre codeblock">SELECT salary, dept ... WHERE state='CA'</pre>
+</li>
+
+        <li class="li" id="topic39__im170487">
+<strong class="ph b">表中的列数。</strong>在同时要求很多列或者表的行尺寸相对较小时，面向行的存储会更有效。
+          对于具有很多列的表且查询中访问这些列的一个小子集时，面向列的表能够提供更好的查询性能。</li>
+
+        <li class="li" id="topic39__im168797">
+<strong class="ph b">压缩。</strong>列数据具有相同的数据类型，因此在列存数据上支持存储尺寸优化，但在行存数据上则不支持。
+          例如，很多压缩方案使用临近数据的相似性来进行压缩。
+          不过，临近压缩做得越好，随机访问就会越困难，因为必须解压数据才能读取它们。</li>
+
+      </ul>
+
+      <div class="section" id="topic39__im169305">
+<h3 class="title sectiontitle">创建一个面向列的表</h3>
+        
+        <p class="p"><samp class="ph codeph">CREATE TABLE</samp>命令的<samp class="ph codeph">WITH</samp>子句指定表的存储选项。
+          默认是面向行的堆表。<span class="ph">使用面向列的存储的表必须是追加优化表</span>。
+          例如，要创建一个列存表：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">=&gt; CREATE TABLE bar (a int, b text) 
+    WITH (appendoptimized=true, orientation=column)
+    DISTRIBUTED BY (a);
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic40">
+    <h2 class="title topictitle2">使用压缩（只适用于追加优化表）</h2>
+
+    <div class="body">
+      <p class="p">对于追加优化表，在Greenplum数据库中有两种类型的库内压缩可用：</p>
+
+      <ul class="ul" id="topic40__ul_n2g_1wy_sp">
+        <li class="li" id="topic40__im201632">应用于一整个表的表级压缩。</li>
+
+        <li class="li" id="topic40__im201672">应用到一个指定列的列级压缩。用户可以为不同的列应用不同的列级压缩算法。</li>
+
+      </ul>
+
+      <p class="p">下面的表总结了可用的压缩算法。</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic40__im198267" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. 用于追加优化表的压缩算法</span></caption>
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="130pt" id="d8817e338">表方向</th>
+
+              <th class="entry" valign="top" width="136pt" id="d8817e341">可用的压缩类型</th>
+
+              <th class="entry" valign="top" width="110pt" id="d8817e344">支持的算法</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="130pt" headers="d8817e338 ">行</td>
+
+              <td class="entry" valign="top" width="136pt" headers="d8817e341 ">表</td>
+
+              <td class="entry" valign="top" width="110pt" headers="d8817e344 ">
+<samp class="ph codeph">ZLIB</samp>, <samp class="ph codeph">ZSTD</samp>和
+                <samp class="ph codeph">QUICKLZ</samp><sup class="ph sup">1</sup>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="130pt" headers="d8817e338 ">列</td>
+
+              <td class="entry" valign="top" width="136pt" headers="d8817e341 ">列和表</td>
+
+              <td class="entry" valign="top" width="110pt" headers="d8817e344 ">
+<samp class="ph codeph">RLE_TYPE</samp>, <samp class="ph codeph">ZLIB</samp>, <samp class="ph codeph">ZSTD</samp>和
+                  <samp class="ph codeph">QUICKLZ</samp><sup class="ph sup">1</sup>
+</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <div class="p">
+        <div class="note note">
+<span class="notetitle">Note:</span> <sup class="ph sup">1</sup>QuickLZ压缩在Greenplum数据库的开源版本中不可用。</div>
+
+      </div>
+
+      <p class="p">在为追加优化表选择一种压缩类型和级别时，要考虑这些因素：</p>
+
+      <ul class="ul" id="topic40__ul_xlg_1wy_sp">
+        <li class="li" id="topic40__im201780">CPU使用。用户的Segment系统必须具有可用的CPU能力来压缩和解压数据。</li>
+
+        <li class="li" id="topic40__im201781">压缩率/磁盘尺寸。最小化磁盘尺寸是一个因素，但也要考虑压缩和扫描数据所需的时间和CPU计算能力。
+          要找到能高效压缩数据但不导致过长压缩时间或者过慢扫描率的最优设置。</li>
+
+        <li class="li" id="topic40__im201782">压缩的速度。与zlib比较，QuickLZ在较低的压缩率下通常使用较少的CPU计算能力、能更快地压缩数据。
+          zlib提供更高的压缩率，但是速度较慢。
+          <p class="p">例如，在压缩级别1上（<samp class="ph codeph">compresslevel=1</samp>），QuickLZ和zlib具有差不多的压缩率，但是压缩速度不同。
+            使用<samp class="ph codeph">compresslevel=6</samp>的zlib能比QuickLZ更显著地提升压缩率，但是压缩速度更慢。
+            ZStandard压缩可以提供良好的压缩比或速度，具体取决于压缩级别，或两者的良好折衷。</p>
+</li>
+
+        <li class="li" id="topic40__im201783">解压速度/扫描率。压缩的追加优化表的性能取决于硬件、查询调优设置和其他因素。
+          请执行对比测试来判断在用户的环境中的真实性能。
+          <div class="note note">
+<span class="notetitle">Note:</span> 不要在使用压缩的文件系统上创建压缩的追加优化表。
+            如果用户的Segment数据目录所在的文件系统是一个压缩的文件系统，用户的追加优化表不能使用压缩。</div>
+</li>
+
+      </ul>
+
+      <p class="p">压缩的追加优化表的性能取决于硬件、查询调优设置和其他因素。
+        请执行对比测试来判断在用户的环境中的真实性能。</p>
+
+	<div class="note note">
+<span class="notetitle">Note:</span> Zstd压缩级别可以设置为1-19。
+      QuickLZ的压缩级别只能被设置为级别1，没有其他的选项可用。
+      zlib的压缩级别可以设置为1-9的值。
+      RLE的压缩级别可以设置为1-4的值。
+      <p class="p"><samp class="ph codeph">ENCODING</samp>子句指定个别列的压缩类型和级别。
+        当<samp class="ph codeph">ENCODING</samp>子句与<samp class="ph codeph">WITH</samp>子句冲突时，<samp class="ph codeph">ENCODING</samp>子句的优先级高于<samp class="ph codeph">WITH</samp>子句。
+        </p>
+</div>
+
+      <div class="section" id="topic40__im159764">
+<h3 class="title sectiontitle">创建一个压缩表</h3>
+        
+        <p class="p"><samp class="ph codeph">CREATE TABLE</samp>命令的<samp class="ph codeph">WITH</samp>子句声明表的存储选项。
+          使用压缩技术的表必须是追加优化表。
+          例如，要创建一个使用zlib压缩且压缩级别为5的追加优化表：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">=&gt; CREATE TABLE foo (a int, b text) 
+   WITH (appendoptimized=true, compresstype=zlib, compresslevel=5);
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic41">
+    <h2 class="title topictitle2">检查追加优化表的压缩和分布</h2>
+
+    <div class="body">
+      <p class="p">Greenplum提供了内建函数来检查一个追加优化表的压缩率和分布情况。
+        这些函数要求对象ID或者表名作为参数。用户可以用schema名来限定表名。</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic41__im161827" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 2. 用于压缩追加优化表元数据的函数</span></caption>
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="183pt" id="d8817e507">函数</th>
+
+              <th class="entry" valign="top" width="98pt" id="d8817e510">返回类型</th>
+
+              <th class="entry" valign="top" width="169pt" id="d8817e513">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="183pt" headers="d8817e507 ">get_ao_distribution(name)<p class="p">get_ao_distribution(oid)</p>
+</td>
+
+              <td class="entry" valign="top" width="98pt" headers="d8817e510 ">(dbid, tuplecount)行的集合</td>
+
+              <td class="entry" valign="top" width="169pt" headers="d8817e513 ">展示一个追加优化表的行在阵列中的分布情况。
+                返回一个行集合，其中每一个行包括了一个节点<em class="ph i">dbid</em>以及存储在其中的元组数。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="183pt" headers="d8817e507 ">get_ao_compression_ratio(name)<p class="p">get_ao_compression_ratio(oid)</p>
+</td>
+
+              <td class="entry" valign="top" width="98pt" headers="d8817e510 ">float8</td>
+
+              <td class="entry" valign="top" width="169pt" headers="d8817e513 ">为一个压缩的追加优化表计算压缩率。如果该信息不可用，这个函数会返回-1。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <p class="p">压缩比作为公共比率返回。
+        例如，返回值<samp class="ph codeph">3.19</samp>或者<samp class="ph codeph">3.19:1</samp>表示解压后的表比压缩表的尺寸的3倍略大。
+        </p>
+
+      <p class="p">表的分布被返回为一个行集合，它们反映了每个Segment上存储了多少元组。
+        例如，在一个具有四个Primary Segment（<em class="ph i">dbid</em>值从0-3）的系统中，该函数返回与以下类似的四个行：
+        </p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# SELECT get_ao_distribution('lineitem_comp');
+ get_ao_distribution
+---------------------
+(0,7500721)
+(1,7501365)
+(2,7499978)
+(3,7497731)
+(4 rows)
+</pre>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic42">
+    <h2 class="title topictitle2">游程编码支持</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库对列级压缩支持游程编码（RLE）。
+        RLE数据压缩把重复的数据存储为一个单一的数据值和一个计数。
+        例如，在有两个列date和description的表中，它包含200,000个含有值<samp class="ph codeph">date1</samp>的项以及400,000个含有值<samp class="ph codeph">date2</samp>的项，
+        对这个date域的RLE压缩会类似于<samp class="ph codeph">date1 200000 date2 400000</samp>。
+        RLE对于没有大量重复数据集合的文件来说用处不大，因为它会大幅度增加这种文件的尺寸。
+        </p>
+
+      <p class="p">有四种级别的RLE压缩可用。这些级别逐步增加了压缩率，但是同时也会降低压缩速度。</p>
+
+      <p class="p">Greenplum数据库4.2.1及其后的版本支持面向列的RLE压缩。
+        如果要备份一个用了RLE压缩的表用来恢复到一个早期版本的Greenplum数据库中，
+        应在开始备份操作前修改该表为不采用压缩或者采用早期版本中支持的压缩类型（<samp class="ph codeph">ZLIB</samp>或者<samp class="ph codeph">QUICKLZ</samp>）。
+        </p>
+
+      <p class="p">Greenplum数据库为<samp class="ph codeph">BIGINT</samp>、<samp class="ph codeph">INTEGER</samp>、<samp class="ph codeph">DATE</samp>、<samp class="ph codeph">TIME</samp>或者<samp class="ph codeph">TIMESTAMP</samp>列中的数据的RLE压缩结合了增量压缩。
+        该增量压缩算法基于连续列值之间的变化来进行压缩，它的设计目的是在以排序顺序装载数据时或者对已排序数据应用压缩时改进压缩性能。
+        </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic43">
+    <h2 class="title topictitle2">增加列级压缩</h2>
+
+    <div class="body">
+      <p class="p">用户可以为列存追加优化表的列增加下列存储指令：</p>
+
+      <ul class="ul" id="topic43__ul_asg_1wy_sp">
+        <li class="li" id="topic43__im203149">压缩类型</li>
+
+        <li class="li" id="topic43__im203164">压缩级别</li>
+
+        <li class="li" id="topic43__im203171">列的块尺寸</li>
+
+      </ul>
+
+      <p class="p">使用<samp class="ph codeph">CREATE TABLE</samp>、<samp class="ph codeph">ALTER TABLE</samp>以及<samp class="ph codeph">CREATE TYPE</samp>命令增加存储指令。
+        </p>
+
+      <p class="p">下面的表格详细介绍了存储指令的类型以及每一个指令可能的值。</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic43__im198636" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 3. 列级压缩的存储指令</span></caption>
+          
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="87pt" id="d8817e684">名称</th>
+
+              <th class="entry" valign="top" width="95pt" id="d8817e687">定义</th>
+
+              <th class="entry" valign="top" width="147pt" id="d8817e690">值</th>
+
+              <th class="entry" valign="top" width="167.25pt" id="d8817e693">注释</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="87pt" headers="d8817e684 ">
+                <samp class="ph codeph">compresstype</samp>
+              </td>
+
+              <td class="entry" valign="top" width="95pt" headers="d8817e687 ">压缩的类型。</td>
+
+              <td class="entry" valign="top" width="147pt" headers="d8817e690 ">
+<samp class="ph codeph">zstd: </samp>ZStandard算法
+                <p class="p"><samp class="ph codeph">zlib: </samp>缩小算法</p>
+
+                <p class="p"><samp class="ph codeph">quicklz: </samp>快速算法</p>
+
+                <p class="p"><samp class="ph codeph">RLE_TYPE: </samp>游程编码</p>
+
+                <p class="p"><samp class="ph codeph">none: </samp>无压缩</p>
+</td>
+
+              <td class="entry" valign="top" width="167.25pt" headers="d8817e693 ">值不区分大小写。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" rowspan="4" valign="top" width="87pt" headers="d8817e684 ">
+                <samp class="ph codeph">compresslevel</samp>
+              </td>
+
+              <td class="entry" rowspan="4" valign="top" width="95pt" headers="d8817e687 ">压缩级别。</td>
+
+              <td class="entry" valign="top" width="147pt" headers="d8817e690 ">
+<samp class="ph codeph">zlib</samp>压缩：
+                  <samp class="ph codeph">1</samp>-<samp class="ph codeph">9</samp>
+</td>
+
+              <td class="entry" valign="top" width="167.25pt" headers="d8817e693 ">
+<samp class="ph codeph">1</samp>是最快的方法但压缩率最低。<samp class="ph codeph">1</samp>是默认值。
+                <p class="p"><samp class="ph codeph">9</samp>是最慢的方法但压缩率最高。</p>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="147pt" headers="d8817e690 ">
+<samp class="ph codeph">zstd</samp>压缩：
+                  <samp class="ph codeph">1</samp>-<samp class="ph codeph">19</samp>
+</td>
+
+              <td class="entry" valign="top" width="167.25pt" headers="d8817e693 ">
+<samp class="ph codeph">1</samp>是最快的方法但压缩率最低。<samp class="ph codeph">1</samp>是默认值。
+                <p class="p"><samp class="ph codeph">19</samp>是最慢的方法但压缩率最高。</p>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="147pt" headers="d8817e690 ">
+<samp class="ph codeph">QuickLZ</samp>压缩：<p class="p"><samp class="ph codeph">1</samp> – 使用压缩</p>
+</td>
+
+              <td class="entry" valign="top" width="167.25pt" headers="d8817e693 ">
+<samp class="ph codeph">1</samp>是默认值。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="147pt" headers="d8817e690 ">
+<samp class="ph codeph">RLE_TYPE</samp>压缩：<samp class="ph codeph">1</samp> –
+                  <samp class="ph codeph">4</samp><p class="p"><samp class="ph codeph">1</samp> - 只应用RLE</p>
+
+                <p class="p"><samp class="ph codeph">2</samp> - 应用RLE然后应用zlib压缩级别1</p>
+
+                <p class="p"><samp class="ph codeph">3</samp> - 应用RLE然后应用zlib压缩级别5</p>
+
+                <p class="p"><samp class="ph codeph">4</samp> - 应用RLE然后应用zlib压缩级别9</p>
+</td>
+
+              <td class="entry" valign="top" width="167.25pt" headers="d8817e693 ">
+<samp class="ph codeph">1</samp>是最快的方法但压缩率最低。
+                <p class="p"><samp class="ph codeph">4</samp>是最慢的方法但压缩率最高。
+                  <samp class="ph codeph">1</samp>是默认值。</p>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="87pt" headers="d8817e684 ">
+                <samp class="ph codeph">blocksize</samp>
+              </td>
+
+              <td class="entry" valign="top" width="95pt" headers="d8817e687 ">表中每一块的以字节计的尺寸</td>
+
+              <td class="entry" valign="top" width="147pt" headers="d8817e690 ">
+                <samp class="ph codeph">8192 – 2097152</samp>
+              </td>
+
+              <td class="entry" valign="top" width="167.25pt" headers="d8817e693 ">该值必须是8192的倍数。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <p class="p">下面是增加存储指令的格式。</p>
+
+      <div class="p">
+        <pre class="pre codeblock">[ ENCODING ( <em class="ph i">storage_directive</em> [,…] ) ] </pre>
+
+      </div>
+
+      <p class="p">其中单词ENCODING是必需的并且存储指令有三个部分：</p>
+
+      <ul class="ul" id="topic43__ul_hzg_1wy_sp">
+        <li class="li" id="topic43__im203108">指令的名称</li>
+
+        <li class="li" id="topic43__im203115">一个等号</li>
+
+        <li class="li" id="topic43__im203122">参数</li>
+
+      </ul>
+
+      <p class="p">多个存储指令用逗号分隔。
+        如下面的<samp class="ph codeph">CREATE TABLE</samp>子句所示，可以把一个存储指令应用到单一列或者把它作为所有列的默认指令。
+        </p>
+
+      <p class="p">
+        <em class="ph i">一般用法：</em>
+      </p>
+
+      <pre class="pre codeblock"><em class="ph i">column_name</em> <em class="ph i">data_type</em> ENCODING ( <em class="ph i">storage_directive </em>[, … ] ), …  
+</pre>
+
+      <pre class="pre codeblock">COLUMN <em class="ph i">column_name</em> ENCODING ( <em class="ph i">storage_directive</em> [, … ] ), … 
+</pre>
+
+      <pre class="pre codeblock">DEFAULT COLUMN ENCODING ( <em class="ph i">storage_directive</em> [, … ] )
+</pre>
+
+      <p class="p">
+        <em class="ph i">示例：</em>
+      </p>
+
+      <pre class="pre codeblock">C1 char ENCODING (compresstype=quicklz, blocksize=65536) 
+</pre>
+
+      <pre class="pre codeblock">COLUMN C1 ENCODING (compresstype=zlib, compresslevel=6, blocksize=65536)
+</pre>
+
+      <pre class="pre codeblock">DEFAULT COLUMN ENCODING (compresstype=quicklz)
+</pre>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic44">
+      <h3 class="title topictitle3">
+        <strong class="ph b">默认压缩值</strong>
+      </h3>
+
+      <div class="body">
+        <p class="p">如果没有定义压缩类型、压缩级别和块尺寸，默认是无压缩并且块尺寸被设置为服务器配置参数<samp class="ph codeph">block_size</samp>。
+          </p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic45">
+      <h3 class="title topictitle3">
+        <strong class="ph b">压缩设置的优先级</strong>
+      </h3>
+
+      <div class="body">
+        <p class="p">列压缩设置从表级继承到分区级，再到子分区级。最低级别上的设置优先。</p>
+
+        <ul class="ul" id="topic45__ul_j3h_1wy_sp">
+          <li class="li" id="topic45__im1963152">表级定义的列压缩设置会覆盖该类型的任何压缩设置。</li>
+
+          <li class="li" id="topic45__im196315">表级指定的列压缩设置会覆盖整个表的任何压缩设置。</li>
+
+          <li class="li" id="topic45__im196314">为分区指定的列压缩设置会覆盖列级或表级别的任何压缩设置。</li>
+
+          <li class="li" id="topic45__im196313">为子分区指定的列压缩设置会覆盖分区，列或表级别的任何压缩设置。</li>
+
+          <li class="li" id="topic45__im207669">当<samp class="ph codeph">ENCODING</samp>子句与<samp class="ph codeph">WITH</samp>子句冲突时，
+            <samp class="ph codeph">ENCODING</samp>子句的优先级高于<samp class="ph codeph">WITH</samp>子句。</li>
+
+        </ul>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 在一个含有存储指令或者列引用存储指令的表中不允许<samp class="ph codeph">INHERITS</samp>子句。
+          <p class="p">使用<samp class="ph codeph">LIKE</samp>子句创建的表忽略存储指令以及列引用存储指令。</p>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic46">
+      <h3 class="title topictitle3">
+        <strong class="ph b">列压缩设置的最佳位置</strong>
+      </h3>
+
+      <div class="body">
+        <p class="p">最佳做法是在数据所在的层次上设置列压缩设置。
+          参考<a class="xref" href="#topic52">例 5</a>，它展示了一个分区深度为2的表。
+          <samp class="ph codeph">RLE_TYPE</samp>压缩在子分区层次上被增加到一个列。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic47">
+      <h3 class="title topictitle3">
+        <strong class="ph b">存储指令示例</strong>
+      </h3>
+
+      <div class="body">
+        <p class="p">下面的例子展示了在<samp class="ph codeph">CREATE TABLE</samp>语句中存储指令的使用。</p>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic48">
+        <h4 class="title topictitle4">例 1 </h4>
+
+        <div class="body">
+          <p class="p">在这个例子中，列<samp class="ph codeph">c1</samp>被使用<samp class="ph codeph">zstd</samp>压缩并且使用系统中定义的块尺寸。
+            列<samp class="ph codeph">c2</samp>用<samp class="ph codeph">quicklz</samp>压缩并且使用的块尺寸为<samp class="ph codeph">65536</samp>。
+            列<samp class="ph codeph">c3</samp>没有被压缩并且使用系统中定义的块尺寸。
+            </p>
+
+          <pre class="pre codeblock">CREATE TABLE T1 (c1 int ENCODING (compresstype=zstd),
+                  c2 char ENCODING (compresstype=quicklz, blocksize=65536),
+                  c3 char)    WITH (appendoptimized=true, orientation=column);</pre>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic49">
+        <h4 class="title topictitle4">例 2</h4>
+
+        <div class="body">
+          <p class="p">在这个例子中，列<samp class="ph codeph">c1</samp>使用<samp class="ph codeph">zlib</samp>压缩并且使用系统中定义的块尺寸。
+            列<samp class="ph codeph">c2</samp>使用<samp class="ph codeph">quicklz</samp>压缩，并且使用的块尺寸为<samp class="ph codeph">65536</samp>。
+            列<samp class="ph codeph">c3</samp>使用<samp class="ph codeph">RLE_TYPE</samp>压缩并且使用系统中定义的块尺寸。
+            </p>
+
+          <pre class="pre codeblock">CREATE TABLE T2 (c1 int ENCODING (compresstype=zlib),
+                  c2 char ENCODING (compresstype=quicklz, blocksize=65536),
+                  c3 char,
+                  COLUMN c3 ENCODING (compresstype=RLE_TYPE)
+                  )
+    WITH (appendoptimized=true, orientation=column);</pre>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic50">
+        <h4 class="title topictitle4">例 3</h4>
+
+        <div class="body">
+          <p class="p">在这个例子中，列<samp class="ph codeph">c1</samp>使用<samp class="ph codeph">zlib</samp>压缩并且使用系统中定义的块尺寸。
+            列<samp class="ph codeph">c2</samp>使用<samp class="ph codeph">quicklz</samp>压缩，并且使用的块尺寸为<samp class="ph codeph">65536</samp>。
+            列<samp class="ph codeph">c3</samp>使用<samp class="ph codeph">zlib</samp>压缩并且使用系统中定义的块尺寸。
+            注意，列<samp class="ph codeph">c3</samp>在分区中使用<samp class="ph codeph">zlib</samp>（而不是<samp class="ph codeph">RLE_TYPE</samp>），因为在分区子句中的列存储比表的列定义中的存储指令优先级高。
+            </p>
+
+          <pre class="pre codeblock">CREATE TABLE T3 (c1 int ENCODING (compresstype=zlib),
+                  c2 char ENCODING (compresstype=quicklz, blocksize=65536),
+                  c3 text, COLUMN c3 ENCODING (compresstype=RLE_TYPE) )
+    WITH (appendoptimized=true, orientation=column)
+    PARTITION BY RANGE (c3) (START ('1900-01-01'::DATE)          
+                             END ('2100-12-31'::DATE),
+                             COLUMN c3 ENCODING (compresstype=zlib));</pre>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic51">
+        <h4 class="title topictitle4">例 4</h4>
+
+        <div class="body">
+          <p class="p">在这个例子中，<samp class="ph codeph">CREATE TABLE</samp>把<samp class="ph codeph">zlib</samp>压缩类型存储指令分配给<samp class="ph codeph">c1</samp>。
+            列<samp class="ph codeph">c2</samp>没有存储指令并且从<samp class="ph codeph">DEFAULT COLUMN ENCODING</samp>子句继承了压缩类型（<samp class="ph codeph">quicklz</samp>）和块尺寸（<samp class="ph codeph">65536</samp>）。
+            </p>
+
+          <p class="p">列<samp class="ph codeph">c3</samp>的<samp class="ph codeph">ENCODING</samp>子句定义其压缩类型<samp class="ph codeph">RLE_TYPE</samp>。
+            为特定列定义的<samp class="ph codeph">ENCODING</samp>子句会覆盖<samp class="ph codeph">DEFAULT ENCODING</samp>子句，因此列<samp class="ph codeph">c3</samp>使用默认块大小<samp class="ph codeph">32768</samp>。
+            </p>
+
+          <p class="p">列<samp class="ph codeph">c4</samp>的压缩类型为<samp class="ph codeph">none</samp>，并使用默认块大小。
+            </p>
+
+          <pre class="pre codeblock">CREATE TABLE T4 (c1 int ENCODING (compresstype=zlib),
+                  c2 char,
+                  c3 text,
+                  c4 smallint ENCODING (compresstype=none),
+                  DEFAULT COLUMN ENCODING (compresstype=quicklz,
+                                             blocksize=65536),
+                  COLUMN c3 ENCODING (compresstype=RLE_TYPE)
+                  ) 
+   WITH (appendoptimized=true, orientation=column);</pre>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic52">
+        <h4 class="title topictitle4">例 5</h4>
+
+        <div class="body">
+          <p class="p">这个例子创建一个追加优化的列存表T5。
+            T5有两个分区<samp class="ph codeph">p1</samp>和<samp class="ph codeph">p2</samp>，每一个都有子分区。
+            每一个子分区都有<samp class="ph codeph">ENCODING</samp>子句：
+            </p>
+
+          <ul class="ul" id="topic52__ul_vlh_1wy_sp">
+            <li class="li" id="topic52__im209617">分区<samp class="ph codeph">p1</samp>的子分区<samp class="ph codeph">sp1</samp>的<samp class="ph codeph">ENCODING</samp>子句定义了列<samp class="ph codeph">i</samp>的压缩类型是<samp class="ph codeph">zlib</samp>并且块尺寸是65536。
+              </li>
+
+            <li class="li" id="topic52__im209618">分区<samp class="ph codeph">p2</samp>的子分区<samp class="ph codeph">sp1</samp>的<samp class="ph codeph">ENCODING</samp>子句定义了列<samp class="ph codeph">i</samp>的压缩类型是<samp class="ph codeph">rle_type</samp>并且块尺寸为默认值。
+              列<samp class="ph codeph">k</samp>使用默认压缩并且其块尺寸为8192。
+              <pre class="pre codeblock">CREATE TABLE T5(i int, j int, k int, l int)
+    WITH (appendoptimized=true, orientation=column)
+    PARTITION BY range(i) SUBPARTITION BY range(j)
+    (
+       partition p1 start(1) end(2)
+       ( subpartition sp1 start(1) end(2) 
+         column i encoding(compresstype=zlib, blocksize=65536)
+       ), 
+       partition p2 start(2) end(3)
+       ( subpartition sp1 start(1) end(2)
+           column i encoding(compresstype=rle_type)
+           column k encoding(blocksize=8192)
+       )
+    );</pre>
+</li>
+
+          </ul>
+
+          <p class="p">用<samp class="ph codeph">ALTER TABLE</samp>命令把一个压缩列增加到现有表的例子，请见<a class="xref" href="#topic60">为表增加一个压缩列</a>。
+            </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic53">
+      <h3 class="title topictitle3">
+        <strong class="ph b">在TYPE命令中增加压缩</strong>
+      </h3>
+
+      <div class="body">
+        <p class="p">创建新类型时，可以为该类型定义默认压缩属性。
+          例如，以下<samp class="ph codeph">CREATE TYPE</samp>命令定义了一个名为<samp class="ph codeph">int33</samp>的类型，它指定了<samp class="ph codeph">quicklz</samp>压缩：
+          </p>
+
+        <pre class="pre codeblock">CREATE TYPE int33 (
+   internallength = 4,
+   input = int33_in,
+   output = int33_out,
+   alignment = int4,
+   default = 123,
+   passedbyvalue,
+   compresstype="quicklz",
+   blocksize=65536,
+   compresslevel=1
+   );</pre>
+
+        <p class="p">在<samp class="ph codeph">CREATE TABLE</samp>命令中将<samp class="ph codeph">int33</samp>指定为列类型时，将使用您为该类型指定的存储指令创建该列：
+          </p>
+
+        <pre class="pre codeblock">CREATE TABLE t2 (c1 int33)
+    WITH (appendoptimized=true, orientation=column);</pre>
+
+        <p class="p">您在表定义中指定的表级或列级存储属性会覆盖类型级存储属性。
+          有关为类型创建和添加压缩属性的信息，请参阅<a class="xref" href="../../ref_guide/sql_commands/CREATE_TYPE.html#topic1">CREATE TYPE</a>。
+          有关更改类型中的压缩规范的信息，请参阅<a class="xref" href="../../ref_guide/sql_commands/ALTER_TYPE.html#topic1">ALTER TYPE</a>。
+          </p>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic54">
+        <h4 class="title topictitle4">选择块尺寸</h4>
+
+        <div class="body">
+          <p class="p">blocksize是一个表中每一块的尺寸，以字节计。
+            块尺寸必须介于8192字节和2097152字节之间，并且必须是8192的倍数。默认是32768。
+            </p>
+
+          <p class="p">指定大的块尺寸可能会消耗大量的内存。
+            块大小决定了存储层中的缓存。
+            在面向列的表中，Greenplum维护为每个分区每个列维护了一个缓存。
+            具有许多分区或列的表占用大量内存。</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic55">
+    <h2 class="title topictitle2">修改一个表</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">ALTER TABLE</samp>命令改变一个表的定义。
+        使用<samp class="ph codeph">ALTER TABLE</samp>可以更改表的属性，例如列定义、分布策略、存储模型以及分区结构（另见<a class="xref" href="ddl-partition.html#topic77">维护分区表</a>）。
+        例如，为一个表列增加一个非空约束：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=&gt; ALTER TABLE address ALTER COLUMN street SET NOT NULL;
+</pre>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic56">
+      <h3 class="title topictitle3">修改表的分布</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">ALTER TABLE</samp>提供了选项来改变一个表的分布策略。
+          当表分布选项改变时，表数据会被在磁盘上重新分布，这可能会造成资源紧张。
+          用户也可以使用现有的分布策略重新分布表数据。
+          </p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic57">
+      <h3 class="title topictitle3">更改分布策略</h3>
+
+      <div class="body">
+        <p class="p">对于已分区的表，对于分布策略的更改会递归地应用到子分区上。
+          这种操作会保留拥有关系和该表的所有其他属性。
+          例如，下列命令使用customer_id列作为分布键在所有Segment之间重新分布表sales：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales SET DISTRIBUTED BY (customer_id); 
+</pre>
+
+        </div>
+
+        <p class="p">在用户改变一个表的哈希分布时，表数据会被自动重新分布。
+          把分布策略改成随机分布不会导致数据被重新分布。
+          例如，下面的<samp class="ph codeph">ALTER TABLE</samp>命令不会立刻产生效果：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales SET DISTRIBUTED RANDOMLY;
+</pre>
+
+        </div>
+
+        <p class="p">将表的分布策略更改为DISTRIBUTED REPLICATED或从DISTRIBUTED REPLICATED修改为其他分布，会自动重新分配表数据。
+          </p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic58">
+      <h3 class="title topictitle3">重新分布表的数据</h3>
+
+      <div class="body">
+        <p class="p">要用一种随机分布策略（或者当哈希分布策略没有被更改时）对表重新分布数据，可使用<samp class="ph codeph">REORGANIZE=TRUE</samp>。
+          重新组织数据对于更正一个数据倾斜问题是必要的，当系统中增加了Segment资源后也需要重新组织数据。
+          例如，下面的命令会使用当前的分布策略（包括随机分布）在所有Segment上重新分布数据。
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">ALTER TABLE sales SET WITH (REORGANIZE=TRUE);
+</pre>
+
+        </div>
+
+        <p class="p">将表的分布策略更改为<samp class="ph codeph">DISTRIBUTED REPLICATED</samp>或从<samp class="ph codeph">DISTRIBUTED REPLICATED</samp>改为其它总是重新分配表数据，
+          即使<samp class="ph codeph">REORGANIZE=FALSE</samp>也是如此。
+          </p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic59">
+      <h3 class="title topictitle3">修改表的存储模型</h3>
+
+      <div class="body">
+        <p class="p">表存储、压缩和行列类型只能在创建时声明。
+          要改变存储模型，用户必须用正确的存储选项创建一个表，再把原始表的数据载入到新表中，接着删除原始表并且把新表重命名为原始表的名称。
+          用户还必须重新授权原始表上有的权限。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">CREATE TABLE sales2 (LIKE sales) 
+WITH (appendoptimized=true, compresstype=quicklz, 
+      compresslevel=1, orientation=column);
+INSERT INTO sales2 SELECT * FROM sales;
+DROP TABLE sales;
+ALTER TABLE sales2 RENAME TO sales;
+GRANT ALL PRIVILEGES ON sales TO admin;
+GRANT SELECT ON sales TO guest;
+</pre>
+
+        </div>
+
+        <p class="p">可参考<a class="xref" href="ddl-partition.html#topic84">分裂分区</a>来学习如何改表一个已分区表的存储模型。
+          </p>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic60">
+        <h4 class="title topictitle4">
+          <strong class="ph b">为表增加一个压缩列</strong>
+        </h4>
+
+        <div class="body">
+          <p class="p">使用<samp class="ph codeph">ALTER TABLE</samp>命令为一个表增加一个压缩列。
+            所有在<a class="xref" href="#topic43">增加列级压缩</a>中描述的用于压缩列的选项和约束都适用于用<samp class="ph codeph">ALTER TABLE</samp>命令增加的列。
+            </p>
+
+          <p class="p">下面的例子展示了如何向一个表中增加一个使用<samp class="ph codeph">zlib</samp>压缩的列<samp class="ph codeph">T1</samp>。
+            </p>
+
+          <div class="p">
+            <pre class="pre codeblock">ALTER TABLE T1
+      ADD COLUMN c4 int DEFAULT 0
+      ENCODING (compresstype=zlib);
+</pre>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic61">
+        <h4 class="title topictitle4">
+          <strong class="ph b">压缩设置的继承</strong>
+        </h4>
+
+        <div class="body">
+          <p class="p">如果一个表有子分区且子分区带有压缩设置，则向该表增加的一个分区会从子分区继承那些压缩设置。
+            下面的例子展示了如何创建一个有子分区编码的表，然后修改它来增加一个分区。</p>
+
+          <div class="p">
+            <pre class="pre codeblock">CREATE TABLE ccddl (i int, j int, k int, l int)
+  WITH
+    (appendoptimized = TRUE, orientation=COLUMN)
+  PARTITION BY range(j)
+  SUBPARTITION BY list (k)
+  SUBPARTITION template(
+    SUBPARTITION sp1 values(1, 2, 3, 4, 5),
+    COLUMN i ENCODING(compresstype=ZLIB),
+    COLUMN j ENCODING(compresstype=QUICKLZ),
+    COLUMN k ENCODING(compresstype=ZLIB),
+    COLUMN l ENCODING(compresstype=ZLIB))
+  (PARTITION p1 START(1) END(10),
+   PARTITION p2 START(10) END(20))
+;
+
+ALTER TABLE ccddl
+  ADD PARTITION p3 START(20) END(30)
+;
+</pre>
+
+          </div>
+
+          <p class="p">运行<samp class="ph codeph">ALTER TABLE</samp>命令会创建表<samp class="ph codeph">ccddl</samp>的名为<samp class="ph codeph">ccddl_1_prt_p3</samp>和<samp class="ph codeph">ccddl_1_prt_p3_2_prt_sp1</samp>的分区。
+            分区<samp class="ph codeph">ccddl_1_prt_p3</samp>继承了子分区<samp class="ph codeph">sp1</samp>的不同的压缩编码。
+            </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic62">
+    <h2 class="title topictitle2">删除一个表</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">DROP TABLE</samp>命令把表从数据库中移除。例如：
+        </p>
+
+      <div class="p">
+        <pre class="pre codeblock">DROP TABLE mytable;
+</pre>
+
+      </div>
+
+      <p class="p">要清空一个表的行但不移除该表的定义，可使用<samp class="ph codeph">DELETE</samp>或者<samp class="ph codeph">TRUNCATE</samp>。例如：
+        </p>
+
+      <div class="p">
+        <pre class="pre codeblock">DELETE FROM mytable;
+
+TRUNCATE mytable;
+</pre>
+
+      </div>
+
+      <p class="p"><samp class="ph codeph">DROP TABLE</samp>总是会移除目标表上存在的任何索引、规则、触发器和约束。
+        删除一个被视图引用的表应指定<samp class="ph codeph">CASCADE</samp>。<samp class="ph codeph">CASCADE</samp>会移除依赖表的视图。
+        </p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

@@ -1,0 +1,2407 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Recommended Monitoring and Maintenance Tasks |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_monitoring x6-0_admin_guide_monitoring_monitoring has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    Recommended Monitoring and Maintenance Tasks
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    <div class="nested0" id="topic_kmz_lbg_rp">
+        <h1 class="title topictitle1">Recommended Monitoring and Maintenance Tasks</h1>
+
+        
+        <div class="body">
+<p class="shortdesc">This section lists monitoring and maintenance activities recommended to ensure
+            high availability and consistent performance of your Greenplum Database
+            cluster.</p>
+
+            <p class="p">The tables in the following sections suggest activities that a Greenplum System Administrator can perform periodically to
+                ensure that all components of the system are operating optimally. Monitoring
+                activities help you to detect and diagnose problems early. Maintenance activities
+                help you to keep the system up-to-date and avoid deteriorating performance, for
+                example, from bloated system tables or diminishing free disk space. </p>
+
+            <p class="p">It is not necessary to implement all of these suggestions in every cluster; use the
+                frequency and severity recommendations as a guide to implement measures according to
+                your service requirements. </p>
+
+        </div>
+
+        <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/partII.html" title="这一节描述了一个Greenplum数据库系统管理员所执行的基本系统管理任务。">管理一个Greenplum系统</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="drr_5bg_rp">
+            <h2 class="title topictitle2">Database State Monitoring Activities</h2>
+
+            <div class="body">
+                
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="drr_5bg_rp__table_drr_5bg_rp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. Database State Monitoring Activities</span></caption>
+                        
+                        
+                        
+                        <thead class="thead" align="left">
+                            <tr class="row">
+                                <th class="entry" valign="top" id="d75104e58">Activity</th>
+
+                                <th class="entry" valign="top" id="d75104e61">Procedure</th>
+
+                                <th class="entry" valign="top" id="d75104e64">Corrective Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="tbody">
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">List segments that are currently down. If any rows are
+                                    returned, this should generate a warning or alert.<p class="p">Recommended
+                                        frequency: run every 5 to 10 minutes</p>
+<p class="p">Severity:
+                                        IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">Run the following query in the <samp class="ph codeph">postgres</samp>
+                                    database:<pre class="pre codeblock">SELECT * FROM gp_segment_configuration
+WHERE status &lt;&gt; 'u';</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">If the query returns any rows, follow these steps to correct
+                                    the problem:<ol class="ol" id="drr_5bg_rp__ol_okh_2cg_rp">
+                                        <li class="li">Verify that the hosts with down segments are responsive. </li>
+
+                                        <li class="li">If hosts are OK, check the <span class="ph filepath">pg_log</span>
+                                            files for the <span class="ph">primaries and
+                                                mirrors of the </span>down segments to discover the
+                                            root cause of the segments going down. </li>
+
+                                        <li class="li">If no unexpected errors are found, run the
+                                                <samp class="ph codeph">gprecoverseg</samp> utility to bring the
+                                            segments back online.</li>
+
+                                    </ol>
+</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">Check for segments that are currently in change tracking
+                                    mode. If any rows are returned, this should generate a warning
+                                    or alert.<p class="p">Recommended frequency: run every 5 to 10
+                                        minutes</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">
+                                    <div class="p">Execute the following query in the <samp class="ph codeph">postgres</samp>
+                                        database:<pre class="pre codeblock">SELECT * FROM gp_segment_configuration
+WHERE mode = 'c';</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">
+                                    <div class="p">If the query returns any rows, follow these steps to correct
+                                        the problem:<ol class="ol" id="drr_5bg_rp__ol_ezt_kcg_rp">
+                                            <li class="li">Verify that hosts with down segments are responsive. </li>
+
+                                            <li class="li">If hosts are OK, check the
+                                                  <span class="ph filepath">pg_log</span> files for the
+                                                primaries and mirrors of the down segments to
+                                                determine the root cause of the segments going down. </li>
+
+                                            <li class="li">If no unexpected errors are found, run the
+                                                  <samp class="ph codeph">gprecoverseg</samp> utility to bring the
+                                                segments back online.</li>
+
+                                        </ol>
+</div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">Check for segments that are currently re-syncing. If rows are
+                                    returned, this should generate a warning or alert.<p class="p">Recommended
+                                        frequency: run every 5 to 10 minutes</p>
+<p class="p">Severity:
+                                        IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">
+                                    <div class="p">Execute the following query in the <samp class="ph codeph">postgres</samp>
+                                        database:<pre class="pre codeblock">SELECT * FROM gp_segment_configuration
+WHERE mode = 'r';</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">
+                                    <p class="p">When this query returns rows, it implies that the segments
+                                        are in the process of being re-synched. If the state does
+                                        not change from 'r' to 's', then check the
+                                            <span class="ph filepath">pg_log</span> files from the primaries and
+                                        mirrors of the affected segments for errors.</p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">Check for segments that are not operating in their optimal
+                                    role. If any segments are found, the cluster may not be
+                                    balanced. If any rows are returned this should generate a
+                                    warning or alert. <p class="p">Recommended frequency: run every 5 to 10
+                                        minutes</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">
+                                    <div class="p">Execute the following query in the <samp class="ph codeph">postgres</samp>
+                                        database:
+                                        <pre class="pre codeblock">SELECT * FROM gp_segment_configuration
+WHERE preferred_role &lt;&gt; role;</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">
+                                    <p class="p">When the segments are not running in their preferred role,
+                                        hosts have uneven numbers of primary segments on each host,
+                                        implying that processing is skewed. Wait for a potential
+                                        window and restart the database to bring the segments into
+                                        their preferred roles.</p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">Run a distributed query to test that it runs on all segments.
+                                    One row should be returned for each primary segment.
+                                        <p class="p">Recommended frequency: run every 5 to 10
+                                        minutes</p>
+<p class="p">Severity: CRITICAL</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">
+                                    <div class="p">Execute the following query in the <samp class="ph codeph">postgres</samp>
+                                        database:<pre class="pre codeblock">SELECT gp_segment_id, count(*)
+FROM gp_dist_random('pg_class')
+GROUP BY 1;</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">
+                                    <p class="p">If this query fails, there is an issue dispatching to some
+                                        segments in the cluster. This is a rare event. Check the
+                                        hosts that are not able to be dispatched to ensure there is
+                                        no hardware or networking issue.</p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">Test the state of master mirroring on a Greenplum Database<span class="ph"> 4.2 or
+                                        earlier</span> cluster. If the value is "Not Synchronized",
+                                    raise an alert or warning.<p class="p">Recommended frequency: run every 5
+                                        to 10 minutes</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">
+                                    <div class="p">Execute the following query in the <samp class="ph codeph">postgres</samp>
+                                        database:
+                                        <pre class="pre codeblock">SELECT summary_state
+FROM gp_master_mirroring;</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">
+                                    <p class="p">Check the <span class="ph filepath">pg_log</span> from the master and
+                                        standby master for errors. If there are no unexpected errors
+                                        and the machines are up, run the
+                                            <samp class="ph codeph">gpinitstandby</samp> utility to bring the
+                                        standby online. This requires a database restart on GPDB 4.2
+                                        and earlier.</p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">Test the state of master mirroring on Greenplum Database. If
+                                    the value is not "STREAMING", raise an alert or
+                                        warning.<p class="p">Recommended frequency: run every 5 to 10
+                                        minutes</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">
+                                    <div class="p">Run the following <samp class="ph codeph">psql</samp>
+                                        command:<pre class="pre codeblock">psql <em class="ph i">dbname</em> -c 'SELECT procpid, state FROM pg_stat_replication;'</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">
+                                    <p class="p">Check the <span class="ph filepath">pg_log</span> file from the master
+                                        and standby master for errors. If there are no unexpected
+                                        errors and the machines are up, run the
+                                            <samp class="ph codeph">gpinitstandby</samp> utility to bring the
+                                        standby online. </p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e58 ">Perform a basic check to see if the master is up and
+                                        functioning.<p class="p">Recommended frequency: run every 5 to 10
+                                        minutes</p>
+<p class="p">Severity: CRITICAL</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e61 ">
+                                    <div class="p">Run the following query in the <samp class="ph codeph">postgres</samp>
+                                        database:
+                                        <pre class="pre codeblock">SELECT count(*) FROM gp_segment_configuration;</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e64 ">
+                                    <p class="p">If this query fails the active master may be down. Try again
+                                        several times and then inspect the active master manually.
+                                        If the active master is down, reboot or power cycle the
+                                        active master to ensure no processes remain on the active
+                                        master and then trigger the activation of the standby
+                                        master.</p>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+</div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested1" id="topic_atb_b2g_rp">
+            <h2 class="title topictitle2">Database Alert Log Monitoring </h2>
+
+            <div class="body">
+                
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_atb_b2g_rp__table_dvp_d2g_rp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 2. Database Alert Log Monitoring Activities</span></caption>
+                        
+                        
+                        
+                        <thead class="thead" align="left">
+                            <tr class="row">
+                                <th class="entry" valign="top" id="d75104e370">Activity</th>
+
+                                <th class="entry" valign="top" id="d75104e373">Procedure</th>
+
+                                <th class="entry" valign="top" id="d75104e376">Corrective Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="tbody">
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e370 ">Check for FATAL and ERROR log messages from the
+                                        system.<p class="p">Recommended frequency: run every 15
+                                        minutes</p>
+<p class="p">Severity: WARNING</p>
+<p class="p"><em class="ph i">This activity and
+                                            the next are two methods for monitoring messages in the
+                                            log_alert_history table. It is only necessary to set up
+                                            one or the other.</em></p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e373 ">
+                                    <div class="p">Run the following query in the <samp class="ph codeph">gpperfmon</samp>
+                                        database:<pre class="pre codeblock">SELECT * FROM log_alert_history
+WHERE logseverity in ('FATAL', 'ERROR')
+   AND logtime &gt; (now() - interval '15 minutes');</pre>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e376 ">Send an alert to the DBA to analyze the alert. You may want
+                                    to add additional filters to the query to ignore certain
+                                    messages of low interest.</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+</div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested1" id="topic_y4c_4gg_rp">
+            <h2 class="title topictitle2">Hardware and Operating System Monitoring</h2>
+
+            <div class="body">
+                
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_y4c_4gg_rp__table_ls5_sgg_rp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 3. Hardware and Operating System Monitoring Activities</span></caption>
+                        
+                        
+                        
+                        <thead class="thead" align="left">
+                            <tr class="row">
+                                <th class="entry" valign="top" id="d75104e439">Activity</th>
+
+                                <th class="entry" valign="top" id="d75104e442">Procedure</th>
+
+                                <th class="entry" valign="top" id="d75104e445">Corrective Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="tbody">
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e439 ">Check disk space usage on volumes used for Greenplum Database data storage and the OS.
+                                        <p class="p">Recommended frequency: every 5 to 30
+                                        minutes</p>
+<p class="p">Severity: CRITICAL</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e442 ">
+                                    <div class="p">Set up a disk space check.<ul class="ul" id="topic_y4c_4gg_rp__ul_rs1_whg_rp">
+                                            <li class="li">Set a threshold to raise an alert when a disk
+                                                reaches a percentage of capacity. The recommended
+                                                threshold is 75% full.</li>
+
+                                            <li class="li">It is not recommended to run the system with
+                                                capacities approaching 100%.</li>
+
+                                        </ul>
+</div>
+
+                                </td>
+
+                                <td class="entry" valign="top" headers="d75104e445 ">Free space on the system by removing some data or
+                                    files.</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e439 ">Check for errors or dropped packets on the network
+                                        interfaces.<p class="p">Recommended frequency: hourly</p>
+<p class="p">Severity:
+                                        IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e442 ">Set up a network interface checks. </td>
+
+                                <td class="entry" valign="top" headers="d75104e445 ">
+                                    <p class="p">Work with network and OS teams to resolve errors.</p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e439 ">Check for RAID errors or degraded RAID performance.
+                                        <p class="p">Recommended frequency: every 5 minutes</p>
+<p class="p">Severity:
+                                        CRITICAL</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e442 ">Set up a RAID check.</td>
+
+                                <td class="entry" valign="top" headers="d75104e445 ">
+                                    <ul class="ul" id="topic_y4c_4gg_rp__ul_f4b_fjg_rp">
+                                        <li class="li">Replace failed disks as soon as possible. </li>
+
+                                        <li class="li">Work with system administration team to resolve other
+                                            RAID or controller errors as soon as possible.</li>
+
+                                    </ul>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e439 ">Run the Greenplum <samp class="ph codeph">gpcheck</samp> utility to test
+                                    that the configuration of the cluster complies with current
+                                        recommendations.<p class="p">Recommended frequency: when creating a
+                                        cluster or adding new machines to the cluster
+                                        </p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e442 ">Run <samp class="ph codeph">gpcheck</samp>.</td>
+
+                                <td class="entry" valign="top" headers="d75104e445 ">
+                                    <p class="p">Work with system administration team to update configuration
+                                        according to the recommendations made by the
+                                            <samp class="ph codeph">gpcheck</samp> utility.</p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e439 ">Check for adequate I/O bandwidth and I/O skew.<p class="p">Recommended
+                                        frequency: when create a cluster or when hardware issues are
+                                        suspected.</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e442 ">Run the Greenplum
+                                    <samp class="ph codeph">gpcheckperf</samp> utility. </td>
+
+                                <td class="entry" valign="top" headers="d75104e445 ">
+                                    <div class="p">The cluster may be under-specified if data transfer rates are
+                                        not similar to the following: <ul class="ul" id="topic_y4c_4gg_rp__ul_elm_dkg_rp">
+                                            <li class="li">2GB per second disk read</li>
+
+                                            <li class="li">1 GB per second disk write</li>
+
+                                            <li class="li">10 Gigabit per second network read and write </li>
+
+                                        </ul>
+If transfer rates are lower than expected, consult with
+                                        your data architect regarding performance expectations.</div>
+
+                                    <p class="p">If the machines on the cluster display an uneven performance
+                                        profile, work with the system administration team to fix
+                                        faulty machines.</p>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+</div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested1" id="topic_gbp_jng_rp">
+            <h2 class="title topictitle2">Catalog Monitoring</h2>
+
+            <div class="body">
+                
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_gbp_jng_rp__table_pdq_lng_rp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 4. Catalog Monitoring Activities</span></caption>
+                        
+                        
+                        
+                        <thead class="thead" align="left">
+                            <tr class="row">
+                                <th class="entry" valign="top" id="d75104e615">Activity</th>
+
+                                <th class="entry" valign="top" id="d75104e618">Procedure</th>
+
+                                <th class="entry" valign="top" id="d75104e621">Corrective Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="tbody">
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e615 ">Run catalog consistency checks to ensure the catalog on each
+                                    host in the cluster is consistent and in a good
+                                        state.<p class="p">Recommended frequency: weekly</p>
+<p class="p">Severity:
+                                        IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e618 ">Run the Greenplum
+                                    <samp class="ph codeph">gpcheckcat</samp> utility in each
+                                    database:<pre class="pre codeblock">gpcheckcat -O</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e621 ">Run repair scripts for any issues detected.</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e615 ">Run a persistent table catalog check.<p class="p">Recommended
+                                        frequency: monthly</p>
+<p class="p">Severity: CRITICAL</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e618 ">During a downtime, with no users on the system, run the
+                                        Greenplum
+                                    <samp class="ph codeph">gpcheckcat</samp> utility in each
+                                    database:<pre class="pre codeblock">gpcheckcat -R persistent</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e621 ">Run repair scripts for any issues detected.</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e615 ">Check for <samp class="ph codeph">pg_class</samp> entries that have no
+                                    corresponding pg_<samp class="ph codeph">attribute</samp> entry.<p class="p">Recommended
+                                        frequency: monthly</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e618 ">During a downtime, with no users on the system, run the
+                                        Greenplum
+                                    <samp class="ph codeph">gpcheckcat</samp> utility in each
+                                    database:<pre class="pre codeblock">gpcheckcat -R pgclass</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e621 ">Run the repair scripts for any issues identified.</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e615 ">Check for leaked temporary schema and missing schema
+                                        definition.<p class="p">Recommended frequency: monthly</p>
+<p class="p">Severity:
+                                        IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e618 ">During a downtime, with no users on the system, run the
+                                        Greenplum
+                                    <samp class="ph codeph">gpcheckcat</samp> utility in each
+                                    database:<pre class="pre codeblock">gpcheckcat -R namespace</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e621 ">Run the repair scripts for any issues identified.</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e615 ">Check constraints on randomly distributed
+                                        tables.<p class="p">Recommended frequency: monthly</p>
+<p class="p">Severity:
+                                        IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e618 ">During a downtime, with no users on the system, run the
+                                        Greenplum
+                                    <samp class="ph codeph">gpcheckcat</samp> utility in each
+                                    database:<pre class="pre codeblock">gpcheckcat -R distribution_policy</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e621 ">Run the repair scripts for any issues identified.</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e615 ">Check for dependencies on non-existent objects.<p class="p">Recommended
+                                        frequency: monthly</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e618 ">During a downtime, with no users on the system, run the
+                                        Greenplum
+                                    <samp class="ph codeph">gpcheckcat</samp> utility in each
+                                    database:<pre class="pre codeblock">gpcheckcat -R dependency</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e621 ">Run the repair scripts for any issues identified.</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+</div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested1" id="maintentenance_check_scripts">
+            <h2 class="title topictitle2">Data Maintenance</h2>
+
+            <div class="body">
+                
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="maintentenance_check_scripts__table_tp4_nxg_rp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 5. Data Maintenance Activities</span></caption>
+                        
+                        
+                        
+                        <thead class="thead" align="left">
+                            <tr class="row">
+                                <th class="entry" valign="top" id="d75104e790">Activity</th>
+
+                                <th class="entry" valign="top" id="d75104e793">Procedure</th>
+
+                                <th class="entry" valign="top" id="d75104e796">Corrective Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="tbody">
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e790 ">Check for missing statistics on tables. </td>
+
+                                <td class="entry" valign="top" headers="d75104e793 ">Check the <samp class="ph codeph">gp_stats_missing</samp> view in each
+                                    database:<pre class="pre codeblock">SELECT * FROM gp_toolkit.gp_stats_missing;</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e796 ">Run <samp class="ph codeph">ANALYZE</samp> on tables that are missing
+                                    statistics.</td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" headers="d75104e790 ">Check for tables that have bloat (dead space) in data files
+                                    that cannot be recovered by a regular <samp class="ph codeph">VACUUM</samp>
+                                    command. <p class="p">Recommended frequency: weekly or
+                                        monthly</p>
+<p class="p">Severity: WARNING</p>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e793 ">Check the <samp class="ph codeph">gp_bloat_diag</samp> view in each database:
+                                    <pre class="pre codeblock">SELECT * FROM gp_toolkit.gp_bloat_diag;</pre>
+</td>
+
+                                <td class="entry" valign="top" headers="d75104e796 ">Execute a <samp class="ph codeph">VACUUM FULL</samp> statement at a time
+                                    when users are not accessing the table to remove bloat and
+                                    compact the data.</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+</div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested1" id="topic_dld_23h_rp">
+            <h2 class="title topictitle2">Database Maintenance</h2>
+
+            <div class="body">
+                <div class="p">
+                    
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_dld_23h_rp__table_vxx_f3h_rp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 6. Database Maintenance Activities</span></caption>
+                            
+                            
+                            
+                            <thead class="thead" align="left">
+                                <tr class="row">
+                                    <th class="entry" valign="top" id="d75104e881">Activity</th>
+
+                                    <th class="entry" valign="top" id="d75104e884">Procedure</th>
+
+                                    <th class="entry" valign="top" id="d75104e887">Corrective Actions</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody class="tbody">
+                                <tr class="row">
+                                    <td class="entry" valign="top" headers="d75104e881 ">Mark deleted rows in heap tables so that the space they
+                                        occupy can be reused.<p class="p">Recommended frequency:
+                                            daily</p>
+<p class="p">Severity: CRITICAL</p>
+</td>
+
+                                    <td class="entry" valign="top" headers="d75104e884 ">Vacuum user
+                                        tables:<pre class="pre codeblock">VACUUM <em class="ph i">&lt;table&gt;</em>;</pre>
+</td>
+
+                                    <td class="entry" valign="top" headers="d75104e887 ">Vacuum updated tables regularly to prevent bloating.
+                                    </td>
+
+                                </tr>
+
+                                <tr class="row">
+                                    <td class="entry" valign="top" headers="d75104e881 ">Update table statistics. <p class="p">Recommended frequency: after
+                                            loading data and before executing
+                                            queries</p>
+<p class="p">Severity: CRITICAL</p>
+</td>
+
+                                    <td class="entry" valign="top" headers="d75104e884 ">Analyze user tables. You can use the
+                                            <samp class="ph codeph">analyzedb</samp> management
+                                        utility:<pre class="pre codeblock">analyzedb -d <var class="keyword varname">&lt;database&gt;</var> -a</pre>
+</td>
+
+                                    <td class="entry" valign="top" headers="d75104e887 ">Analyze updated tables regularly so that the optimizer
+                                        can produce efficient query execution plans.</td>
+
+                                </tr>
+
+                                <tr class="row">
+                                    <td class="entry" valign="top" headers="d75104e881 ">Backup the database data.<p class="p">Recommended frequency: daily,
+                                            or as required by your backup plan</p>
+<p class="p">Severity:
+                                            CRITICAL</p>
+</td>
+
+                                    <td class="entry" valign="top" headers="d75104e884 ">
+                                        <span class="ph">Run the <samp class="ph codeph">gpbackup</samp>
+                                            utility to create a backup of the master and segment
+                                            databases in parallel.</span>
+                                    </td>
+
+                                    <td class="entry" valign="top" headers="d75104e887 ">Best practice is to have a current backup ready in case
+                                        the database must be restored. </td>
+
+                                </tr>
+
+                                <tr class="row">
+                                    <td class="entry" valign="top" headers="d75104e881 ">Vacuum, reindex, and analyze system catalogs to maintain
+                                        an efficient catalog.<p class="p">Recommended frequency: weekly, or
+                                            more often if database objects are created and dropped
+                                            frequently</p>
+</td>
+
+                                    <td class="entry" valign="top" headers="d75104e884 ">
+                                        <ol class="ol" id="topic_dld_23h_rp__ol_frs_nlh_rp">
+                                            <li class="li">
+<samp class="ph codeph">VACUUM</samp> the system tables in each
+                                                database.</li>
+
+                                            <li class="li">Run <samp class="ph codeph">REINDEX SYSTEM</samp> in each
+                                                database, or use the <samp class="ph codeph">reindexdb</samp>
+                                                command-line utility with the <samp class="ph codeph">-s</samp>
+                                                option:
+                                                <pre class="pre codeblock">reindexdb -s <var class="keyword varname">&lt;database&gt;</var></pre>
+</li>
+
+                                            <li class="li">
+<samp class="ph codeph">ANALYZE</samp> each of the system
+                                                tables:<pre class="pre codeblock">analyzedb -s pg_catalog -d <var class="keyword varname">&lt;database&gt;</var></pre>
+</li>
+
+                                        </ol>
+
+                                    </td>
+
+                                    <td class="entry" valign="top" headers="d75104e887 ">The optimizer retrieves information from the system
+                                        tables to create query plans. If system tables and indexes
+                                        are allowed to become bloated over time, scanning the system
+                                        tables increases query execution time. It is important to
+                                        run <samp class="ph codeph">ANALYZE</samp> after reindexing, because
+                                            <samp class="ph codeph">REINDEX</samp> leaves indexes with no
+                                        statistics. </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested1" id="topic_idx_smh_rp">
+            <h2 class="title topictitle2">Patching and Upgrading</h2>
+
+            <div class="body">
+                
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_idx_smh_rp__table_td5_5mh_rp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 7. Patch and Upgrade Activities</span></caption>
+                        
+                        
+                        
+                        <thead class="thead" align="left">
+                            <tr class="row">
+                                <th class="entry" valign="top" width="33.003300330033%" id="d75104e1044">Activity</th>
+
+                                <th class="entry" valign="top" width="33.66336633663366%" id="d75104e1047">Procedure</th>
+
+                                <th class="entry" valign="top" width="33.33333333333333%" id="d75104e1050">Corrective Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="tbody">
+                            <tr class="row">
+                                <td class="entry" valign="top" width="33.003300330033%" headers="d75104e1044 ">Ensure any bug fixes or enhancements are applied to the
+                                        kernel.<p class="p">Recommended frequency: at least every 6
+                                        months</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" width="33.66336633663366%" headers="d75104e1047 ">Follow the vendor's instructions to update the Linux
+                                    kernel.</td>
+
+                                <td class="entry" valign="top" width="33.33333333333333%" headers="d75104e1050 ">Keep the kernel current to include bug fixes and security
+                                    fixes, and to avoid difficult future upgrades. </td>
+
+                            </tr>
+
+                            <tr class="row">
+                                <td class="entry" valign="top" width="33.003300330033%" headers="d75104e1044 ">Install Greenplum Database minor releases<span class="ph">, for example
+                                            5.0.<em class="ph i">x</em></span>.<p class="p">Recommended frequency:
+                                        quarterly</p>
+<p class="p">Severity: IMPORTANT</p>
+</td>
+
+                                <td class="entry" valign="top" width="33.66336633663366%" headers="d75104e1047 ">Follow upgrade instructions in the Greenplum Database
+                                    <em class="ph i">Release Notes</em>. Always upgrade to the latest in the
+                                    series.</td>
+
+                                <td class="entry" valign="top" width="33.33333333333333%" headers="d75104e1050 ">Keep the Greenplum Database software current to
+                                    incorporate bug fixes, performance enhancements, and feature
+                                    enhancements into your Greenplum
+                                    cluster. </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

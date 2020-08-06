@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Deploying a Profile |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_sdk x6-0_pxf_sdk_deploy_profile has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    Deploying a Profile
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li>
+<a href="#construct_profile">Constructing a Profile Definition</a><ul><li><a href="#select_classes">Specifying the Plug-in Class Names</a></li></ul>
+</li>
+<li><a href="#reg_profile">Registering and Deploying a New Profile</a></li>
+<li><a href="#verify_profile_reg">Verifying Profile Registration</a></li>
+<li>
+<a href="#example_profile">Example: Defining and Deploying Demo Connector Profiles</a><ul>
+<li><a href="#profile_prereqs">Prerequisites</a></li>
+<li><a href="#procedure">Procedure</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>A PXF profile encapsulates access to a specific format of data from a specific external data source using a simple name. PXF is installed with HDFS, Hive, and HBase connectors that expose a number of built-in profiles supporting specific data formats in these data stores. The <a href="/6-0/pxf/using_pxf.html#built-inprofiles">PXF Profiles</a> section in the PXF end user documentation identifies the list of PXF built-in profiles.</p>
+
+<p>As a developer using the PXF SDK, you may extend the plug-in classes of PXF built-in connectors or you may implement your own plug-in classes. You or the Greenplum Database administrator may then choose to register and deploy one or more connector profile definitions as a convenience for the end user.</p>
+
+<h2 id="constructing-a-profile-definition"><a id="construct_profile"></a>Constructing a Profile Definition</h2>
+
+<p>A profile definition for a connector is an XML block that identifies the name of the profile, a description, and the plug-in classes that implement access to the external data source.</p>
+<pre class="highlight xml"><code><span class="nt">&lt;profile&gt;</span>
+    <span class="nt">&lt;name&gt;</span>profile_name<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>profile_description<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;fragmenter&gt;</span>fully.qualified.fragmenter.classname<span class="nt">&lt;/fragmenter&gt;</span>
+        <span class="nt">&lt;accessor&gt;</span>fully.qualified.accessor.classname<span class="nt">&lt;/accessor&gt;</span>
+        <span class="nt">&lt;resolver&gt;</span>fully.qualified.resolver.classname<span class="nt">&lt;/resolver&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/profile&gt;</span>
+</code></pre>
+
+<p>The profile &lt;name&gt; provides a simple mapping to the &lt;plugins&gt; classes. The Greenplum Database end user provides the profile name or the Java plug-in class names when creating an external table to access the external data.</p>
+
+<h3 id="specifying-the-plug-in-class-names"><a id="select_classes"></a>Specifying the Plug-in Class Names</h3>
+
+<p>The profile &lt;plugins&gt; identify the fully-qualified names of the Java classes that PXF will use to split (&lt;fragmenter&gt;), read and/or write (&lt;accessor&gt;), and deserialize/serialize (&lt;resolver&gt;) the external data.</p>
+
+<p>When you define a profile that supports a read operation from an external data store, you must provide one each of &lt;fragmenter&gt;, &lt;accessor&gt;, and &lt;resolver&gt; plug-in class names. You must provide both an &lt;accessor&gt; and a &lt;resolver&gt; plug-in class name for a profile that supports a write operation to an external data store.</p>
+
+<p>You can use a profile or set of plug-ins for both reading <em>and</em> writing when the &lt;accessor&gt; plug-in class implements both the <code>ReadAccessor</code> and the <code>WriteAccessor</code> interfaces and the &lt;resolver&gt; plug-in class implements both the <code>ReadResolver</code> and the <code>WriteResolver</code> interfaces.</p>
+
+<p>You can re-use a single plug-in class name in multiple profile definitions. For example, the PXF built-in HDFS connector <code>HdfsTextSimple</code> and <code>HdfsTextMulti</code> profiles use the same &lt;fragmenter&gt; and &lt;resolver&gt; plug-in classes.</p>
+<pre class="highlight xml"><code><span class="nt">&lt;profile&gt;</span>
+    <span class="nt">&lt;name&gt;</span>HdfsTextSimple<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>This profile is suitable for using when reading
+        delimited single line records from plain text files on HDFS
+    <span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;fragmenter&gt;</span>org.greenplum.pxf.plugins.hdfs.HdfsDataFragmenter<span class="nt">&lt;/fragmenter&gt;</span>
+        <span class="nt">&lt;accessor&gt;</span>org.greenplum.pxf.plugins.hdfs.LineBreakAccessor<span class="nt">&lt;/accessor&gt;</span>
+        <span class="nt">&lt;resolver&gt;</span>org.greenplum.pxf.plugins.hdfs.StringPassResolver<span class="nt">&lt;/resolver&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/profile&gt;</span>
+
+<span class="nt">&lt;profile&gt;</span>
+    <span class="nt">&lt;name&gt;</span>HdfsTextMulti<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>This profile is suitable for using when reading delimited single
+        or multi line records (with quoted linefeeds) from plain text files on HDFS.
+        It is not splittable (non parallel) and slower than HdfsTextSimple.
+    <span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;fragmenter&gt;</span>org.greenplum.pxf.plugins.hdfs.HdfsDataFragmenter<span class="nt">&lt;/fragmenter&gt;</span>
+        <span class="nt">&lt;accessor&gt;</span>org.greenplum.pxf.plugins.hdfs.QuotedLineBreakAccessor<span class="nt">&lt;/accessor&gt;</span>
+        <span class="nt">&lt;resolver&gt;</span>org.greenplum.pxf.plugins.hdfs.StringPassResolver<span class="nt">&lt;/resolver&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/profile&gt;</span>
+</code></pre>
+
+<h2 id="registering-and-deploying-a-new-profile"><a id="reg_profile"></a>Registering and Deploying a New Profile</h2>
+
+<p>When you register a new profile with PXF, you add the profile definition to the <code>$PXF_CONF/conf/pxf-profiles.xml</code> file. Ensure that you add the profile definition between the &lt;profiles&gt; and &lt;\profiles&gt; (notice the <strong>s</strong>) keywords when you edit the <code>pxf-profiles.xml</code> file.</p>
+
+<p><strong>Note</strong>: In a typical Greenplum Database deployment, the <code>pxf-profiles.xml</code> file contains multiple third-party profile definitions.</p>
+
+<p>When you deploy a new profile, from the Greenplum Database master host you:</p>
+
+<ul>
+<li>Synchronize the PXF configuration to each Greenplum Database segment host</li>
+<li>Restart the PXF service on each host</li>
+</ul>
+
+<p>Only the Greenplum Database administrative user can register profiles and restart the PXF service.</p>
+
+<p>For example, if you added a new profile to <code>$PXF_CONF/conf/pxf-profiles.xml</code>, this command deploys the profile across the cluster:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre>
+
+<p>Restart PXF on each Greenplum Database segment host as described in <a href="/6-0/pxf/cfginitstart_pxf.html#restart_pxf">Restarting PXF</a>.</p>
+
+<h2 id="verifying-profile-registration"><a id="verify_profile_reg"></a>Verifying Profile Registration</h2>
+
+<p>To verify that you registered and deployed a new profile correctly, you create a Greenplum Database external table specifying the profile name and invoke <code>SELECT</code> and/or <code>INSERT</code> commands on the table to test read and write operations on the external data source.</p>
+
+<h2 id="example:-defining-and-deploying-demo-connector-profiles"><a id="example_profile"></a>Example: Defining and Deploying Demo Connector Profiles</h2>
+
+<p>In this exercise, you define and register both a read profile and a write profile for the <em>Demo</em> connector, deploy the profiles, and verify the deploy operation.</p>
+
+<h3 id="prerequisites"><a id="profile_prereqs"></a>Prerequisites</h3>
+
+<p>Before attempting this exercise, ensure that you have completed the <a href="/6-0/pxf/sdk/deploy_conn.html#example">Example: Deploying the Demo Connector</a> exercise.</p>
+
+<h3 id="procedure"><a id="procedure"></a>Procedure</h3>
+
+<p>Perform the following procedure to define and register a read profile and a write profile for your <em>Demo</em> connector and verify that you deployed the profiles successfully:</p>
+
+<ol>
+<li><p>Log in to the Greenplum Database master node as an administrative user:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>Open the <code>pxf-profiles.xml</code> file in the editor of your choosing. For example:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>vi <span class="nv">$PXF_CONF</span>/conf/pxf-profiles.xml
+</code></pre></li>
+<li><p>Add a definition for a <em>Demo</em> connector read profile named <code>DemoReadLocalFS</code>. Copy/paste the following text to the <code>pxf-profiles.xml</code> file, making sure to paste inside the &lt;profiles&gt; and &lt;/profiles&gt; keywords:</p>
+
+<pre>
+&lt;profile&gt;
+    &lt;name&gt;DemoReadLocalFS&lt;/name&gt;
+    &lt;description&gt;This profile reads text files on the local file system.
+    &lt;/description&gt;
+    &lt;plugins&gt;
+        &lt;fragmenter&gt;org.greenplum.pxf.example.demo.DemoFragmenter&lt;/fragmenter&gt;
+        &lt;accessor&gt;org.greenplum.pxf.example.demo.DemoAccessor&lt;/accessor&gt;
+        &lt;resolver&gt;org.greenplum.pxf.example.demo.DemoTextResolver&lt;/resolver&gt;
+    &lt;/plugins&gt;
+&lt;/profile&gt;
+</pre></li>
+<li><p>Add a definition for a <em>Demo</em> connector write profile named <code>DemoWriteLocalFS</code>. Copy/paste the following text to the <code>pxf-profiles.xml</code> file, again making sure to paste between the &lt;profiles&gt; and &lt;/profiles&gt; keywords:</p>
+
+<pre>
+&lt;profile&gt;
+    &lt;name&gt;DemoWriteLocalFS&lt;/name&gt;
+    &lt;description&gt;This profile writes a text file on the local file system.
+    &lt;/description&gt;
+    &lt;plugins&gt;
+        &lt;accessor&gt;org.greenplum.pxf.example.demo.DemoFileWritableAccessor&lt;/accessor&gt;
+        &lt;resolver&gt;org.greenplum.pxf.example.demo.DemoTextResolver&lt;/resolver&gt;
+    &lt;/plugins&gt;
+&lt;/profile&gt;
+</pre></li>
+<li><p>Save the file and exit the editor.</p></li>
+<li><p>Copy the <code>pxf-profiles.xml</code> file to all segment hosts in your Greenplum Database cluster by synchronizing the PXF configuration. For example:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre></li>
+<li><p>Restart PXF on each Greenplum Database segment host as described in <a href="/6-0/pxf/cfginitstart_pxf.html#restart_pxf">Restarting PXF</a>.</p></li>
+<li><p>Verify that you correctly deployed the <em>Demo</em> connector profiles by creating and accessing Greenplum Database external tables:</p>
+
+<ol>
+<li><p>Connect to a database in which you created the PXF extension as the <code>gpadmin</code> user. For example, to connect to a database named <code>pxf_exampledb</code>:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>psql -d pxf_exampledb -U gpadmin
+</code></pre></li>
+<li><p>Create a readable Greenplum external table specifying the <code>DemoReadLocalFS</code> profile name. For example:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">demo_tbl_read_wp</span> <span class="p">(</span><span class="n">a</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">b</span> <span class="n">TEXT</span><span class="p">,</span> <span class="k">c</span> <span class="n">TEXT</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://default/tmp/dummy1?PROFILE=DemoReadLocalFS'</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">DELIMITER</span> <span class="s1">','</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span>
+</code></pre></li>
+<li><p>Query the <code>demo_tbl_read_wp</code> table:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">demo_tbl_read_wp</span><span class="p">;</span>
+       <span class="n">a</span>        <span class="o">|</span>   <span class="n">b</span>    <span class="o">|</span>   <span class="k">c</span>
+<span class="c1">----------------+--------+--------</span>
+ <span class="n">fragment2</span> <span class="n">row1</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment2</span> <span class="n">row2</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment1</span> <span class="n">row1</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment1</span> <span class="n">row2</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment3</span> <span class="n">row1</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment3</span> <span class="n">row2</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></li>
+<li><p>Create a writable Greenplum external table specifying the <code>DemoWriteLocalFS</code> profile name. For example:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">demo_tbl_write_wp</span> <span class="p">(</span><span class="n">a</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">b</span> <span class="n">TEXT</span><span class="p">,</span> <span class="k">c</span> <span class="n">TEXT</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://tmp/demo_write_2?PROFILE=DemoWriteLocalFS'</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">DELIMITER</span> <span class="s1">','</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span>
+</code></pre></li>
+<li><p>Write some text data into the <code>demo_tbl_write_wp</code> table. For example:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">demo_tbl_write_wp</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">demo_tbl_write_wp</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'u'</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">demo_tbl_write_wp</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'r'</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">,</span> <span class="s1">'t'</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+</code></pre></li>
+<li><p>View the contents of the <code>/tmp/demo_write_2</code> directory on the local file system. For example:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>cat /tmp/demo_write_2/<span class="k">*</span>
+x,y,z
+u,v,w
+r,s,t
+</code></pre></li>
+</ol></li>
+</ol>
+
+<p>You successfully deployed <em>Demo</em> connector read and write profiles.</p>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

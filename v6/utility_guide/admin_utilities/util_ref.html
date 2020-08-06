@@ -1,0 +1,799 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      管理工具参考 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_util_ref has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    管理工具参考
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">管理工具参考</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">本章描述了Greenplum数据库提供的命令行管理工具相关内容</p>
+
+    <div class="p">Greenplum数据库使用标准的PostgreSQL客户端和服务器程序，并且额外提供了用于管理分布式Greenplum数据库
+      的管理工具。Greenplum数据库管理工具位于<samp class="ph codeph">$GPHOME/bin</samp>目录下。
+      <div class="note note">
+<span class="notetitle">Note:</span> 在<samp class="ph codeph">gpfdist</samp>的URL中引用IPv6地址或者在任何管理工具中使用数字形式的IP地址而不是
+        主机名时，请把IP地址放在方括号中。在命令提示符使用时，最好的方式是将方括号转义或者把它们放在引号内。
+        例如：<samp class="ph codeph">\[2620:0:170:610::11\]</samp>或<samp class="ph codeph">'[2620:0:170:610::11]'</samp>。
+      </div>
+</div>
+
+    <p class="p">下列是Greenplum数据库的管理工具。</p>
+
+    <table cellpadding="4" cellspacing="0" summary="" id="topic1__km162860" border="1" class="simpletable">
+<tr class="strow">
+        <td valign="top" class="stentry">
+          <p class="p">
+            <a class="xref" href="analyzedb.html#topic1">analyzedb</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpactivatestandby.html#topic1">gpactivatestandby</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpaddmirrors.html#topic1">gpaddmirrors</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpbackup.html">gpbackup</a></p>
+
+          <p class="p">
+            <a class="xref" href="gpcheck.html#topic1">gpcheck</a></p>
+
+          <p class="p">
+            <a class="xref" href="gpcheckcat.html#topic1">gpcheckcat</a>
+          </p>
+
+          <p class="p">gpchecknet（已弃用）</p>
+
+          <p class="p">gpcheckos（已弃用）</p>
+
+          <p class="p">
+            <a class="xref" href="gpcheckperf.html#topic1">gpcheckperf</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpconfig.html#topic1">gpconfig</a>
+          </p>
+
+          
+          <p class="p">
+            <a class="xref" href="gpdeletesystem.html#topic1">gpdeletesystem</a>
+          </p>
+
+          <p class="p"> gpdetective（已弃用）</p>
+
+          <p class="p">
+            <a class="xref" href="gpexpand.html#topic1">gpexpand</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpfdist.html#topic1">gpfdist</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpinitstandby.html#topic1">gpinitstandby</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpinitsystem.html#topic1">gpinitsystem</a>
+          </p>
+
+          
+          
+          
+          
+          
+          <p class="p">
+            <a class="xref" href="gpload.html#topic1">gpload</a>
+          </p>
+
+        </td>
+
+        <td valign="top" class="stentry">
+          <p class="p">
+            <a class="xref" href="gplogfilter.html#topic1">gplogfilter</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpmapreduce.html#topic1">gpmapreduce</a>
+          </p>
+
+          
+          <p class="p">
+            <a class="xref" href="gpperfmon_install.html#topic1">gpperfmon_install</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gppkg.html#topic1">gppkg</a>
+          </p>
+
+          <p class="p">gprebuildsystem（已弃用）</p>
+
+          <p class="p">
+            <a class="xref" href="gprecoverseg.html#topic1">gprecoverseg</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpreload.html#topic1">gpreload</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gprestore.html">gprestore</a></p>
+
+          <p class="p">gpsizecalc（已弃用）</p>
+
+          <p class="p">
+            <a class="xref" href="gpscp.html#topic1">gpscp</a>
+          </p>
+
+          <p class="p">gpskew（已弃用）</p>
+
+          <p class="p">
+            <a class="xref" href="gpseginstall.html#topic1">gpseginstall</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpssh.html#topic1">gpssh</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpssh-exkeys.html#topic1">gpssh-exkeys</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpstart.html#topic1">gpstart</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpstate.html#topic1">gpstate</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpstop.html#topic1">gpstop</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="gpsys.html#topic1">gpsys1</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="pgbouncer.html#topic1">pgbouncer</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="pgbouncer-ini.html#topic1">pgbouncer.ini</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="pgbouncer-admin.html#topic1">pgbouncer-admin</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="../../pxf/ref/pxf.html">pxf</a>
+          </p>
+
+          <p class="p">
+            <a class="xref" href="../../pxf/ref/pxf-cluster.html">pxf
+              cluster</a>
+          </p>
+
+        </td>
+
+      </tr>
+</table>
+
+  </div>
+
+  <div class="topic nested1" id="topic_zqp_5xm_cp">
+    <h2 class="title topictitle2">后端服务器程序</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库提供了下列标准的PostgreSQL数据库管理程序，它们位于<samp class="ph codeph">$GPHOME/bin</samp>中。
+        为了处理Greenplum数据库系统的并行性和分布性，这些程序都经过了不同程度的修改。用户只能通过Greenplum数据库
+        管理工具来访问这些程序。</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_zqp_5xm_cp__km164231" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. Greenplum数据库后端服务程序</span></caption>
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="101pt" id="d36868e335">程序名</th>
+
+              <th class="entry" valign="top" width="188pt" id="d36868e338">描述</th>
+
+              <th class="entry" valign="top" width="158pt" id="d36868e341">替代程序</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164249">initdb</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">在初始化一个Greenplum数据库集群时，这个程序会被<samp class="ph codeph">gpinitsystem</samp>
+                调用。它被用来创建集群内部每一个segment实例和master实例。</td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">
+                <samp class="ph codeph">
+                  <a class="xref" href="gpinitsystem.html#topic1">gpinitsystem</a>
+                </samp>
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164262">ipcclean</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">Greenplum数据库中没有使用</td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">N/A</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164272">pg_basebackup</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">该程序用来对某个单独的数据库实例创建一个二进制拷贝。Greenplum数据库
+                会在创建备用master实例或创建一个segment镜像的完整拷贝时使用。不要使用该工具备份Greenplum
+                数据库segment实例，因为它达不到MPP一致性备份的要求。</td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">
+<samp class="ph codeph"><a class="xref" href="gpinitstandby.html#topic1">gpinitstandby</a></samp>, <samp class="ph codeph"><a class="xref" href="gprecoverseg.html#topic1">gprecoverseg</a></samp>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164291">pg_controldata</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">Greenplum数据库中没有使用</td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">
+                <samp class="ph codeph">
+                  <a class="xref" href="gpstate.html#topic1">gpstate</a>
+                </samp>
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164304">pg_ctl</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">在启动或者停止Greenplum数据库阵列时，这个程序会被<samp class="ph codeph">gpstart</samp>
+                和<samp class="ph codeph">gpstop</samp>调用。在集群内部，它被用来以正确的选项并行地停止和启动segment实例和
+                master实例。</td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">
+<samp class="ph codeph"><a class="xref" href="gpstart.html#topic1">gpstart</a></samp>, <samp class="ph codeph"><a class="xref" href="gpstop.html#topic1">gpstop</a></samp>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164320">pg_resetxlog</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">不要使用<p class="p"><strong class="ph b">警告：</strong>
+                这个程序可能会导致数据丢失或者导致数据变得不可用。如果使用了这个程序，集群必须被重新初始化然后回复数据。</p>
+</td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">N/A</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164330">postgres</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">
+<samp class="ph codeph">postgres</samp>可执行程序是实际处理查询的服务器进程。
+              </td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">主<samp class="ph codeph">postgres</samp>进程（postmaster）按照需要创建其他的
+                <samp class="ph codeph">postgres</samp>子进程以及<samp class="ph codeph">postgres</samp>会话来处理客户端连接。
+              </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="101pt" headers="d36868e335 ">
+                <samp class="ph codeph" id="topic_zqp_5xm_cp__km164337">postmaster</samp>
+              </td>
+
+              <td class="entry" valign="top" width="188pt" headers="d36868e338 ">
+<samp class="ph codeph">postmaster</samp>开启接受客户端连接的<samp class="ph codeph">postgres</samp>
+                数据库服务器监听进程。在Greenplum数据库中，Greenplum的master实例和每一个segment实例上
+                都会运行一个<samp class="ph codeph">postgres</samp>数据库监听进程。</td>
+
+              <td class="entry" valign="top" width="158pt" headers="d36868e341 ">在Greenplum数据库中，用户可以使用<samp class="ph codeph"><a class="xref" href="gpstart.html#topic1">gpstart</a></samp>和<samp class="ph codeph">
+                  <a class="xref" href="gpstop.html#topic1">gpstop</a></samp>在系统中以正确的顺序
+                和正确的选项一次性开启和关闭所有的postmaster进程（<samp class="ph codeph">postgres</samp>进程）。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

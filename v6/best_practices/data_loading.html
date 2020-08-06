@@ -1,0 +1,437 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      装载数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_data_loading has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    装载数据
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">装载数据</h1>
+
+  <p class="shortdesc">本节描述了将数据装载到Greenplum数据库的不同方式。</p>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_tmf_t2t_bp">
+    <h2 class="title topictitle2">带列值的INSERT语句</h2>
+
+    <div class="body">
+      <p class="p">带有值的单个<samp class="ph codeph">INSERT</samp>语句会向表中加入一行。这个行会流过master并且被分布到一个segment上。
+        这是最慢的方法并且不适合装载大量数据。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_oqb_y2t_bp">
+    <h2 class="title topictitle2">COPY语句</h2>
+
+    <div class="body">
+      <p class="p">PostgreSQL的<samp class="ph codeph">COPY</samp>语句从外部文件拷贝数据到数据表中。它比<samp class="ph codeph">INSERT</samp>
+        语句插入多行的效率更高，但是行仍需流过master。所有数据都在一个命令中被拷贝，它并不是一种并行处理。</p>
+
+      <div class="p">
+<samp class="ph codeph">COPY</samp>命令的数据输入来自于一个文件或者标准输入。例如：
+        <pre class="pre codeblock">COPY table FROM '/data/mydata.csv' WITH CSV HEADER;</pre>
+
+        使用<samp class="ph codeph">COPY</samp>适合于增加相对较小的数据集合（例如多达上万行的维度表）或者一次性数据装载。</div>
+
+      <p class="p">在编写脚本处理装载少于1万行的少量数据时使用<samp class="ph codeph">COPY</samp>。</p>
+
+      <p class="p">因为COPY是一个单一命令，在使用这种方法填充表时没有必要禁用自动提交。</p>
+
+      <p class="p">使用者可以运行多个并发的<samp class="ph codeph">COPY</samp>命令以提高性能。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_kgp_z2t_bp">
+    <h2 class="title topictitle2">外部表</h2>
+
+    <div class="body">
+      <p class="p">外部表提供了对Greenplum数据库之外的数据来源的访问。可以用<samp class="ph codeph">SELECT</samp>语句访问它们，外部表
+        通常被用于抽取、装载、转换（ELT）模式，这是一种抽取、转换、装载（ETL）模式的变种，这种模式可以利用
+        Greenplum数据库的快速并行数据装载能力。</p>
+
+      <p class="p">通过ETL，数据被从其来源抽取，在数据库外部使用外部转换工具（Informatica或者Datastage）转换，然后
+        被装载到数据库中。</p>
+
+      <p class="p">通过ELT，Greenplum外部表提供对外部来源中数据的访问，外部来源可以是只读文件（例如文本、CSV或者XML文件）、
+        Web服务器、Hadoop文件系统、可执行的OS程序或者Greenplum <samp class="ph codeph">gpfdist</samp>文件服务器，这些在
+        下一节中描述。外部表支持选择、排序和连接这样的SQL操作，这样数据可以被同时装载和转换，或者被装载到一个
+        <em class="ph i">装载表</em>并且在数据库内被转换成目标表。</p>
+
+      <p class="p">外部表使用<samp class="ph codeph">CREATE EXTERNAL TABLE</samp>语句定义，该语句有一个<samp class="ph codeph">LOCATION</samp>
+        子句定义数据的位置以及一个<samp class="ph codeph">FORMAT</samp>子句定义源数据的格式，这样系统才能够解析输入数据。
+        文件使用<samp class="ph codeph">file://</samp>协议，并且文件必须位于一台segment主机上由Greenplum超级用户可访问
+        的位置。数据可以被分散在segment主机上，并且每台主机上的每个主segment有不超过一个文件。<samp class="ph codeph">LOCATION</samp>
+        子句中列出的文件的数量是将并行读取该外部表的segment的数量。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_x2l_bft_bp">
+    <h2 class="title topictitle2">使用Gpfdist外部表</h2>
+
+    <div class="body">
+      <p class="p">装载大型事实表的最快方式是使用基于<samp class="ph codeph">gpdist</samp>的外部表。<samp class="ph codeph">gpfdist</samp>
+        是一个使用HTTP协议的文件服务器程序，它以并行的方式向Greenplum数据库的segment供应外部数据文件。
+        一个<samp class="ph codeph">gpfdist</samp>实例每秒能供应200MB并且很多<samp class="ph codeph">gpfdist</samp>进程可以
+        同时运行，每一个供应要被装载的数据的一部分。当使用者用<samp class="ph codeph">INSERT INTO &lt;table&gt; SELECT * FROM &lt;external_table&gt;</samp>
+        这样的语句开始装载时，<samp class="ph codeph">INSERT</samp>语句会被master解析并且分布给主segment。segment
+        连接到<samp class="ph codeph">gpfdist</samp>服务器并且并行检索数据，解析并验证数据，从分布键数据计算一个哈希值
+        并且基于哈希键把行发送给它的目标segment。每个<samp class="ph codeph">gpfdist</samp>实例默认将接受最多64个
+        来自segment的连接。通过让更多的segment和<samp class="ph codeph">gpfdist</samp>服务器参与到装载处理中，可以
+        以非常高的速度进行数据装载。</p>
+
+      <p class="p">在使用<samp class="ph codeph">gpfdist</samp>数量达到配置参数<samp class="ph codeph">gp_external_max_segments</samp>
+        的最大值时，主segment会并行访问外部文件。在优化<samp class="ph codeph">gpfdist</samp>的性能时，随着
+        segment的数量增加会最大化并行性。在尽可能多的ETL节点上均匀地散布数据。将非常大型的数据文件
+        分解成相等的部分，并且把数据分散在尽可能多的文件系统上。</p>
+
+      <p class="p">在每个文件系统上运行两个<samp class="ph codeph">gpfdist</samp>实例。在装载数据时，<samp class="ph codeph">gpfdist</samp>
+        在segment节点上容易变成CPU密集型的操作。举个例子，如果有八个机架的segment节点，在segment上就有大量
+        可用的CPU来驱动更多的<samp class="ph codeph">gpfdist</samp>进程。在尽可能多的接口上运行<samp class="ph codeph">gpfdist</samp>。
+        要注意绑定网卡并且确保启动足够的<samp class="ph codeph">gpfdist</samp>实例配合它们一起工作。</p>
+
+      <p class="p">有必要在所有这些资源上保持工作处于均衡状态。装载的速度与最慢的节点相同。装载文件布局上的倾斜将导致
+        整体装载受制于资源瓶颈。</p>
+
+      <div class="p">
+<samp class="ph codeph">gp_external_max_segs</samp>配置参数控制每个<samp class="ph codeph">gpfdist</samp>进程能服务的
+        segment数量。默认值是64。使用者可以在saster上的<samp class="ph codeph">postgresql.conf</samp>配置文件中设置
+        一个不同的值。总是保持<samp class="ph codeph">gp_external_max_segs</samp>和<samp class="ph codeph">gpfdist</samp>进程的
+        数量为一个偶因子，也就是说<samp class="ph codeph">gp_external_max_segs</samp>值应该是<samp class="ph codeph">gpfdist</samp>
+        进程数的倍数。例如，如果有12个segment和4个<samp class="ph codeph">gpfdist</samp>进程，规划器会按照下面的方式
+        循环分配segment连接：
+        <pre class="pre screen">Segment 1  - gpfdist 1 
+Segment 2  - gpfdist 2 
+Segment 3  - gpfdist 3 
+Segment 4  - gpfdist 4 
+Segment 5  - gpfdist 1 
+Segment 6  - gpfdist 2 
+Segment 7  - gpfdist 3 
+Segment 8  - gpfdist 4 
+Segment 9  - gpfdist 1 
+Segment 10 - gpfdist 2 
+Segment 11 - gpfdist 3 
+Segment 12 - gpfdist 4</pre>
+</div>
+
+      <p class="p">在装载到已有表之前删除索引，并且在装载之后重建索引。在装载完数据后重新创建索引比装载每行时增量更新
+        索引更快。</p>
+
+      <p class="p">装载后在表上运行<samp class="ph codeph">ANALYZE</samp>。在装载期间通过设置<samp class="ph codeph">gp_autostats_mode</samp>
+        为<samp class="ph codeph">NONE</samp>来禁用自动统计信息收集。在装载出错后运行<samp class="ph codeph">VACUUM</samp>来回收空间。</p>
+
+      <p class="p">对重度分区的列存表执行少量高频的数据装载可能会对系统有很大影响，因为在每个时间间隔内被访问的物理文件会很多。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_xyt_cft_bp">
+    <h2 class="title topictitle2">Gpload</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">gpload</samp>是一种数据装载工具，它扮演着Greenplum外部表并行装载特性的接口的角色。
+        </p>
+
+      <p class="p">要当心对<samp class="ph codeph">gpload</samp>的使用，因为它会创建并且删除外部表，从而可能会导致系统目录膨胀。
+        可转而使用<samp class="ph codeph">gpfdist</samp>，因为它能提供最好的性能。</p>
+
+      <div class="p">
+<samp class="ph codeph">gpload</samp>使用定义在一个YAML格式的控制文件中的规范来执行一次装载。它会执行下列操作：
+        <ul class="ul" id="topic_xyt_cft_bp__ul_zrl_dnp_y4">
+          <li class="li">调用<samp class="ph codeph">gpfdist</samp>进程</li>
+
+          <li class="li">基于定义的源数据创建一个临时的外部表定义</li>
+
+          <li class="li">执行<samp class="ph codeph">INSERT</samp>、<samp class="ph codeph">UPDATE</samp>或者<samp class="ph codeph">MERGE</samp>操作
+            将源数据载入数据库中的目标表</li>
+
+          <li class="li">删除临时外部表</li>
+
+          <li class="li">清除<samp class="ph codeph">gpfdist</samp>进程</li>
+
+        </ul>
+</div>
+
+      <p class="p">装载会在单个事务中完成。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_ryr_2ft_bp">
+    <h2 class="title topictitle2">最佳实践</h2>
+
+    <div class="body">
+      <ul class="ul" id="topic_ryr_2ft_bp__ul_kvl_jvs_x4">
+        <li class="li">在装载数据之前删掉现有表上的任何索引，并且在装载之后重建那些索引。新创建索引比装载每行时
+          增量更新索引更快。</li>
+
+        <li class="li">在装载期间通过将<samp class="ph codeph">gp_autostats_mode</samp>配置参数设置为<samp class="ph codeph">NONE</samp>
+          禁用自动统计信息收集。</li>
+
+        <li class="li">外部表并非为频繁访问或者ad hoc访问而设计。</li>
+
+        <li class="li">外部表没有统计信息来告知优化器。可以用下面这样的语句在<samp class="ph codeph">pg_class</samp>系统目录中为
+          外部表设置粗略的行数和磁盘页数估计：
+          <pre class="pre codeblock">UPDATE pg_class SET reltuples=400000, relpages=400
+WHERE relname='myexttable';</pre>
+</li>
+
+        <li class="li">在使用<samp class="ph codeph">gpfdist</samp>时，通过为ETL服务器上的每一块NIC运行一个<samp class="ph codeph">gpfdist</samp>
+          实例以最大化网络带宽。在<samp class="ph codeph">gpfdist</samp>实例之间均匀地划分源数据。</li>
+
+        <li class="li">在使用<samp class="ph codeph">gpload</samp>时，在资源允许的情况下同时运行尽可能多的<samp class="ph codeph">gpload</samp>
+          实例。利用可用的CPU、内存和网络资源以增加能从ETL服务器传输到Greenplum数据库的数据量。</li>
+
+        <li class="li">使用<samp class="ph codeph">COPY</samp>语句的<samp class="ph codeph">SEGMENT REJECT LIMIT</samp>子句设置在
+          <samp class="ph codeph">COPY FROM</samp>命令被中止之前可以出现错误的行的百分数限制。这个拒绝限制是针对每个
+          segment的，当任意一个segment超过该限制时，命令将被中止且不会有行被增加。使用<samp class="ph codeph">LOG ERRORS</samp>
+          子句可以保存错误行。如果有一行在格式上有错误—例如缺少值或者有多余的值，或者数据类型不对—
+          Greenplum数据库会在内部存储错误信息和行。使用内建SQL函数<samp class="ph codeph">gp_read_error_log()</samp>
+          可以访问这种存储下来的信息。</li>
+
+        <li class="li">如果装载出现错误，在该表上运行<samp class="ph codeph">VACUUM</samp>以恢复空间。</li>
+
+        <li class="li">在用户装载数据到表中后，在堆表（包括系统目录）上运行<samp class="ph codeph">VACUUM</samp>，并且在所有的表上运行
+          <samp class="ph codeph">ANALYZE</samp>。没有必要在追加优化表上运行<samp class="ph codeph">VACUUM</samp>。如果表已经被分过区，
+          用户可以只清理和分析受数据装载影响的分区。这些步骤会清除来自于被中止的装载、删除或者更新中的行并且为表
+          更新统计信息。</li>
+
+        <li class="li">在装载大量数据之后重新检查表中的segment倾斜。用户可以使用下面这样的查询来检查倾斜：
+          <pre class="pre codeblock language-sql">SELECT gp_segment_id, count(*) 
+FROM <em class="ph i">schema.table</em> 
+GROUP BY gp_segment_id ORDER BY 2;</pre>
+</li>
+
+        <li class="li">
+<samp class="ph codeph">gpfdist</samp>默认假定最大记录尺寸为32K。要装载大于32K的数据记录，用户必须通过在
+          <samp class="ph codeph">gpfdist</samp>命令行上指定<samp class="ph codeph">-m &lt;<em class="ph i">bytes</em></samp>选项来增加最大行
+          尺寸参数。如果用户使用的是<samp class="ph codeph">gpload</samp>，在<samp class="ph codeph">gpload</samp>控制文件中设置
+          <samp class="ph codeph">MAX_LINE_LENGTH</samp>参数。
+          <div class="note note">
+<span class="notetitle">Note:</span> 与Informatica Power Exchange的集成当前被限制为默认的32K记录长度。</div>
+</li>
+
+      </ul>
+
+      <div class="section">
+<h3 class="title sectiontitle">额外信息</h3>
+        
+        <p class="p">使用<samp class="ph codeph">gpfdist</samp>和<samp class="ph codeph">gpload</samp>装载数据的详细指导步骤请见
+          <em class="ph i">Greenplum数据库参考指南</em>。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

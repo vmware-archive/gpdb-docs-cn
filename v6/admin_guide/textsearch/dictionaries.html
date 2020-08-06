@@ -1,0 +1,2051 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      文本搜索词典 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_textsearch x6-0_admin_guide_textsearch_dictionaries has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    文本搜索词典
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">文本搜索词典</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">由Greenplum数据库全文搜索解析器生成的token通过一系列字典传递以产生标准化术语或“词位”。
+      不同种类的词典可用于以不同方式和不同语言过滤和转换token。
+      </p>
+
+    <p class="p">本节包含以下子主题：</p>
+
+    <ul class="ul" id="dictionaries__ul_tjn_nzw_4fb">
+      <li class="li"><a class="xref" href="#dictionaries__section_j2z_lzw_4fb">关于文本搜索词典</a></li>
+
+      <li class="li"><a class="xref" href="#dictionaries__stop-words">停止词</a></li>
+
+      <li class="li"><a class="xref" href="#dictionaries__simple">简单的字典</a></li>
+
+      <li class="li"><a class="xref" href="#dictionaries__synonym">同义词词典</a></li>
+
+      <li class="li"><a class="xref" href="#dictionaries__thesaurus-dictionary">同义词词典</a></li>
+
+      <li class="li"><a class="xref" href="#dictionaries__ispell">Ispell字典</a></li>
+
+      <li class="li"><a class="xref" href="#dictionaries__section_xgc_2zw_4fb">SnowBall词典</a></li>
+
+    </ul>
+
+    <div class="section" id="dictionaries__section_j2z_lzw_4fb">
+<h2 class="title sectiontitle">关于文本搜索词典</h2>
+      
+      <p class="p">字典用于消除在搜索中不应考虑的单词（停用单词），并对单词进行标准化，以使相同单词的不同派生形式匹配。
+          成功标准化的单词称为词位。
+          除了提高搜索质量之外，停止词的标准化和删除减少了文档的<samp class="ph codeph">tsvector</samp>表示的大小，从而提高了性能。
+          规范化并不总是具有语言意义，通常依赖于应用语义。
+          </p>
+
+      <p class="p">标准化的一些例子：</p>
+
+      <ul class="ul" id="dictionaries__ul_y5r_vm5_kfb">
+        <li class="li">语法 -  Ispell词典试图将输入词减少到标准化形式; 词干词典删除单词结尾</li>
+
+        <li class="li">可以规范化URL位置以使URL等效匹配：<ul class="ul" id="dictionaries__ul_z5r_vm5_kfb">
+            <li class="li"><samp class="ph codeph">http://www.pgsql.ru/db/mw/index.html</samp></li>
+
+            <li class="li"><samp class="ph codeph">http://www.pgsql.ru/db/mw/</samp></li>
+
+            <li class="li"><samp class="ph codeph">http://www.pgsql.ru/db/../db/mw/index.html</samp></li>
+
+          </ul>
+</li>
+
+        <li class="li">颜色名称可以用它们的十六进制值替换，例如红色，绿色，蓝色，品红色 -&gt; FF0000,00FF00,0000FF，FF00FF
+            </li>
+
+        <li class="li">如果索引数字，我们可以删除一些小数位以减少可能数字的范围，因此例如3.14159265359,3.1415926,3.14在归一化后将是相同的，如果小数点后只保留两位数。
+            </li>
+
+      </ul>
+
+      <p class="p">字典是一个接受token作为输入并返回的程序：A dictionary is a program that accepts a token as input and
+        returns:</p>
+
+      <ul class="ul" id="dictionaries__ul_avr_vm5_kfb">
+        <li class="li">如果字典已知输入token（注意一个token可以产生多个词位），则为词位数组</li>
+
+        <li class="li">设置了<samp class="ph codeph">TSL_FILTER</samp>标志的单个词位，用新token替换原始token以传递给后续字典（执行此操作的字典称为过滤字典）</li>
+
+        <li class="li">如果字典知道token，则为空数组，但它是停止词</li>
+
+        <li class="li">如果字典无法识别输入token，则为<samp class="ph codeph">NULL</samp>
+</li>
+
+      </ul>
+
+      <p class="p">Greenplum数据库为许多语言提供预定义的词典。
+          还有一些预定义模板可用于创建具有自定义参数的新词典。
+          每个预定义的字典模板如下所述。
+          如果没有适合的现有模板，则可以创建新模板;
+          有关示例，请参阅Greenplum数据库分发的<samp class="ph codeph">contrib/</samp>区域。
+        </p>
+
+      <p class="p">文本搜索配置将解析器与一组字典绑定在一起，以处理解析器的输出token。
+          对于解析器可以返回的每个token类型，配置指定单独的字典列表。
+          当解析器找到该类型的token时，依次查询列表中的每个字典，直到某些字典将其识别为已知字。
+          如果它被识别为停止词，或者没有字典识别该token，则它将被丢弃并且不被索引或搜索。
+          通常，返回<samp class="ph codeph">non-NULL</samp>输出的第一个字典确定结果，并且不查阅任何剩余的字典;
+          但是过滤字典可以用修改后的单词替换给定单词，然后将其传递给后续词典。
+        </p>
+
+      <p class="p">配置字典列表的一般规则是首先放置最窄，最具体的字典，然后是更一般的字典，最后是一个非常通用的字典，如Snowball stemmer或<samp class="ph codeph">simple</samp>，它可以识别所有内容。
+          例如，对于特定于天文学的搜索（<samp class="ph codeph">astro_en</samp>配置），可以将token类型<samp class="ph codeph">asciiword</samp>（ASCII字）绑定到天文术语的同义词词典，通用英语词典和Snowball英语词干分析器：
+        </p>
+
+      <pre class="pre codeblock">ALTER TEXT SEARCH CONFIGURATION astro_en
+    ADD MAPPING FOR asciiword WITH astrosyn, english_ispell, english_stem;</pre>
+
+      <p class="p">过滤字典可以放在列表中的任何位置，除非它没有用处。
+          过滤词典对于部分规范化单词以简化后续词典的任务非常有用。
+          例如，过滤字典可用于从重音字母中删除重音，如<a class="xref" href="https://www.postgresql.org/docs/9.4/unaccent.html" target="_blank">非重音</a>模块所做的那样。
+        </p>
+
+    </div>
+
+    <div class="section" id="dictionaries__stop-words">
+<h2 class="title sectiontitle">停止词</h2>
+      
+      <p class="p">停止词是非常常见的词，几乎出现在每个文档中，并且没有区分值。
+          因此，在全文搜索的上下文中可以忽略它们。
+          例如，每个英文文本都包含像a和the这样的单词，因此将它们存储在索引中是没用的。
+          但是，停止词会影响<samp class="ph codeph">tsvector</samp>中的位置，从而影响排名：
+        </p>
+
+      <pre class="pre codeblock">SELECT to_tsvector('english','in the list of stop words');
+        to_tsvector
+----------------------------
+ 'list':3 'stop':5 'word':6</pre>
+
+      <p class="p">丢失的位置1,2,4是因为停止词。
+          计算带有和不带停止词的文档的等级是完全不同的：
+        </p>
+
+      <pre class="pre codeblock">SELECT ts_rank_cd (to_tsvector('english','in the list of stop words'), to_tsquery('list &amp; stop'));
+ ts_rank_cd
+------------
+       0.05
+
+SELECT ts_rank_cd (to_tsvector('english','list stop words'), to_tsquery('list &amp; stop'));
+ ts_rank_cd
+------------
+        0.1</pre>
+
+      <p class="p">它取决于特定字典如何处理停止词。
+          例如，<samp class="ph codeph">ispell</samp>词典首先将单词标准化，然后查看停止词列表，而<samp class="ph codeph">Snowball</samp>词干表首先检查停止词列表。
+          不同行为的原因是试图降低噪音。
+        </p>
+
+    </div>
+
+    <div class="section" id="dictionaries__simple">
+<h2 class="title sectiontitle">简单的字典</h2>
+      
+      <p class="p">简单字典模板通过将输入token转换为小写字母并针对停用字文件进行检查来进行操作。
+          如果在文件中找到它，则返回一个空数组，导致该token被丢弃。
+          如果不是，则将该词的小写形式作为标准化词位返回。
+          或者，可以将字典配置为将非停止词报告为无法识别，允许将它们传递到列表中的下一个词典。
+        </p>
+
+      <p class="p">以下是使用简单模板的字典定义示例：</p>
+
+      <pre class="pre codeblock">CREATE TEXT SEARCH DICTIONARY public.simple_dict (
+    TEMPLATE = pg_catalog.simple,
+    STOPWORDS = english
+);</pre>
+
+      <p class="p">这里，<samp class="ph codeph">english</samp>是停止词文件的基本名称。
+          该文件的全名为<samp class="ph codeph">$SHAREDIR/tsearch_data/english.stop</samp>，
+          其中<samp class="ph codeph">$SHAREDIR</samp>表示Greenplum数据库安装的共享数据目录，
+          通常为<samp class="ph codeph">/usr/local/greenplum-db-&lt;version&gt;/share/postgresql</samp>
+          （使用<samp class="ph codeph">pg_config --sharedir</samp>来确定它，如果您不确定。
+          文件格式只是一个单词列表，每行一个。
+          空行和尾随空格被忽略，大写折叠为小写，但没有对文件内容进行其他处理。
+          often
+        </p>
+
+      <p class="p">现在我们可以测试我们的字典：</p>
+
+      <pre class="pre codeblock">SELECT ts_lexize('public.simple_dict','YeS');
+ ts_lexize
+-----------
+ {yes}
+
+SELECT ts_lexize('public.simple_dict','The');
+ ts_lexize
+-----------
+ {}</pre>
+
+      <p class="p">如果在停止词文件中找不到，我们也可以选择返回<samp class="ph codeph">NULL</samp>而不是小写的词。
+          通过将字典的<samp class="ph codeph">Accept</samp>参数设置为false来选择此行为。
+          继续这个例子：
+        </p>
+
+      <pre class="pre codeblock">ALTER TEXT SEARCH DICTIONARY public.simple_dict ( Accept = false );
+
+SELECT ts_lexize('public.simple_dict','YeS');
+ ts_lexize
+-----------
+ {yes}
+
+SELECT ts_lexize('public.simple_dict','The');
+ ts_lexize
+-----------
+ {}</pre>
+
+      <p class="p">使用<samp class="ph codeph">Accept = true</samp>的默认设置，只在字典列表的末尾放置一个简单的字典是有用的，因为它永远不会将任何token传递给后面的字典。
+          相反，<samp class="ph codeph">Accept = false</samp>仅在至少有一个后续字典时才有用。
+        </p>
+
+      <div class="cautiontitle">CAUTION:</div>
+<div class="note caution">大多数类型的词典都依赖于配置文件，例如停止词的文件。
+          这些文件必须以UTF-8编码存储。
+          如果它们被读入服务器，它们将被转换为实际的数据库编码（如果不同）。
+        </div>
+
+      <div class="cautiontitle">CAUTION:</div>
+<div class="note caution">通常，数据库会话将首次在会话中使用时读取字典配置文件一次。
+          如果修改配置文件并希望强制现有会话获取新内容，请在字典上发出<samp class="ph codeph">ALTER TEXT SEARCH DICTIONARY命令</samp>。
+          这可以是“虚拟”更新，实际上不会更改任何参数值。
+        </div>
+
+    </div>
+
+    <div class="section" id="dictionaries__synonym">
+<h2 class="title sectiontitle">同义词词典</h2>
+      
+      <p class="p">此词典模板用于创建用同义词替换单词的词典。
+          不支持短语 - 使用同义词库模板（<a class="xref" href="#dictionaries__thesaurus-dictionary">同义词词典</a>）。
+          同义词词典可用于克服语言问题，例如，防止英语词干分词将“Paris”一词减少为“pari”。
+          在同义词词典中有一个<samp class="ph codeph">Paris paris</samp>线就足够了，并把它放在<samp class="ph codeph">english_stem</samp>字典之前。
+          例如：
+        </p>
+
+      <pre class="pre codeblock">SELECT * FROM ts_debug('english', 'Paris');
+   alias   |   description   | token |  dictionaries  |  dictionary  | lexemes 
+-----------+-----------------+-------+----------------+--------------+---------
+ asciiword | Word, all ASCII | Paris | {english_stem} | english_stem | {pari}
+
+CREATE TEXT SEARCH DICTIONARY my_synonym (
+    TEMPLATE = synonym,
+    SYNONYMS = my_synonyms
+);
+
+ALTER TEXT SEARCH CONFIGURATION english
+    ALTER MAPPING FOR asciiword
+    WITH my_synonym, english_stem;
+
+SELECT * FROM ts_debug('english', 'Paris');
+   alias   |   description   | token |       dictionaries        | dictionary | lexemes 
+-----------+-----------------+-------+---------------------------+------------+---------
+ asciiword | Word, all ASCII | Paris | {my_synonym,english_stem} | my_synonym | {paris}</pre>
+
+      <p class="p">同义词模板所需的唯一参数是<samp class="ph codeph">SYNONYMS</samp>，它是其配置文件的基本名称 - 上例中的<samp class="ph codeph">my_synonyms</samp>。
+          该文件的全名为<samp class="ph codeph">$SHAREDIR/tsearch_data/my_synonyms.syn</samp>（其中<samp class="ph codeph">$SHAREDIR</samp>表示Greenplum数据库安装的共享数据目录）。
+          文件格式只是每个要替换的单词一行，单词后跟其同义词，用空格分隔。
+          空行和尾随空格将被忽略。
+        </p>
+
+      <p class="p">同义词模板还有一个可选参数<samp class="ph codeph">CaseSensitive</samp>，默认为<samp class="ph codeph">false</samp>。
+          当<samp class="ph codeph">CaseSensitive</samp>为<samp class="ph codeph">false</samp>时，同义词文件中的单词将折叠为小写，输入token也是如此。
+          如果是<samp class="ph codeph">true</samp>，则单词和token不会折叠为小写，而是按原样进行比较。
+        </p>
+
+      <p class="p">星号（*）可以放在配置文件中同义词的末尾。
+          这表示同义词是前缀。
+          当在<samp class="ph codeph">to_tsvector()</samp>中使用该条目时，将忽略星号，但在<samp class="ph codeph">to_tsquery()</samp>中使用该条目时，结果将是具有前缀匹配标记的查询项（请参阅<a class="xref" href="controlling.html#controlling__parsing-queries">解析查询</a>）。
+          例如，假设我们在<samp class="ph codeph">$SHAREDIR/tsearch_data/synonym_sample.syn</samp>中有这些条目：
+          </p>
+
+      <pre class="pre codeblock">postgres pgsql postgresql pgsql postgre pgsql 
+gogle googl 
+indices index*</pre>
+
+      <p class="p">然后我们将得到这些结果：</p>
+
+      <pre class="pre codeblock">mydb=# CREATE TEXT SEARCH DICTIONARY syn (template=synonym, synonyms='synonym_sample');
+mydb=# SELECT ts_lexize('syn','indices');
+ ts_lexize
+-----------
+ {index}
+(1 row)
+
+mydb=# CREATE TEXT SEARCH CONFIGURATION tst (copy=simple);
+mydb=# ALTER TEXT SEARCH CONFIGURATION tst ALTER MAPPING FOR asciiword WITH syn;
+mydb=# SELECT to_tsvector('tst','indices');
+ to_tsvector
+-------------
+ 'index':1
+(1 row)
+
+mydb=# SELECT to_tsquery('tst','indices');
+ to_tsquery
+------------
+ 'index':*
+(1 row)
+
+mydb=# SELECT 'indexes are very useful'::tsvector;
+            tsvector             
+---------------------------------
+ 'are' 'indexes' 'useful' 'very'
+(1 row)
+
+mydb=# SELECT 'indexes are very useful'::tsvector @@ to_tsquery('tst','indices');
+ ?column?
+----------
+ t
+(1 row)</pre>
+
+    </div>
+
+    <div class="section" id="dictionaries__thesaurus-dictionary">
+<h2 class="title sectiontitle">同义词词典</h2>
+      
+      <p class="p">同义词词典（有时缩写为TZ）是一组词，包括有关词和短语关系的信息，即更宽泛的术语（BT），更窄的术语（NT），首选术语，非首选术语，相关术语，等等。
+        </p>
+
+      <p class="p">基本上，同义词词典将所有非首选术语替换为一个优选术语，并且可选地，也保留用于索引的原始术语。
+          Greenplum数据库的同义词词典的当前实现是同义词词典的扩展，增加了词组支持。
+          同义词词典需要以下格式的配置文件：
+          </p>
+
+      <pre class="pre codeblock"># this is a comment
+sample word(s) : indexed word(s)
+more sample word(s) : more indexed word(s)
+...</pre>
+
+      <p class="p">其中冒号（<samp class="ph codeph">:</samp>)符号充当短语及其替换之间的分隔符。</p>
+
+      <p class="p">同义词词典使用子词典（在词典的配置中指定）来在检查词组匹配之前规范化输入文本。
+          只能选择一个子字典。
+          如果子字典无法识别单词，则会报告错误。
+          在这种情况下，您应该删除单词的使用或教它关于它的子字典。
+          您可以在索引单词的开头放置一个星号（<samp class="ph codeph">*</samp>）以跳过对其应用子字典，但所有样本单词必须为子字典所知。
+        </p>
+
+      <p class="p">如果存在多个与输入匹配的短语，则同义词词典选择最长匹配，并且通过使用最后定义来断开关系。
+        </p>
+
+      <p class="p">无法指定子字典识别的特定停止词; 改为使用<samp class="ph codeph">?</samp>标记任何停止词可以出现的位置。
+          例如，假设<samp class="ph codeph">a</samp>和<samp class="ph codeph">the</samp>根据子字典是停止词：
+        </p>
+
+      <pre class="pre codeblock">? one ? two : swsw</pre>
+
+      <p class="p">匹配<samp class="ph codeph">a one the two</samp>和<samp class="ph codeph">the one a two</samp>; 两者都将被<samp class="ph codeph">swsw</samp>取代。
+        </p>
+
+      <p class="p">由于同义词词典具有识别短语的能力，因此它必须记住其状态并与解析器交互。
+          同义词词典使用这些分配来检查它是否应该处理下一个单词或停止累积。
+          必须仔细配置同义词词典。
+          例如，如果分配同义词词典仅处理<samp class="ph codeph">asciiword</samp> token，那么像<samp class="ph codeph">one 7</samp>一样的同义词词典定义将不起作用，因为token类型<samp class="ph codeph">uint</samp>未分配给同义词词典。
+          </p>
+
+      <div class="cautiontitle">CAUTION:</div>
+<div class="note caution">在索引期间使用同义词，因此同义词词典参数的任何更改都需要重新索引。
+          对于大多数其他字典类型，添加或删除停止词等小的更改不会强制重新编制索引。
+        </div>
+
+      <div class="sectiondiv">
+        <p class="p"><strong class="ph b">同义词库配置</strong></p>
+
+        <p class="p">要定义新的同义词词典，请使用<samp class="ph codeph">thesaurus</samp>模板。例如：
+            </p>
+
+        <pre class="pre codeblock">CREATE TEXT SEARCH DICTIONARY thesaurus_simple (
+    TEMPLATE = thesaurus,
+    DictFile = mythesaurus,
+    Dictionary = pg_catalog.english_stem
+);</pre>
+
+        <p class="p">其中：</p>
+
+        <ul class="ul" id="dictionaries__ul_dz3_kq5_kfb">
+          <li class="li">
+<samp class="ph codeph">thesaurus_simple</samp>是新的词典名称</li>
+
+          <li class="li">
+<samp class="ph codeph">mythesaurus</samp>是同义词库配置文件的基本名称。
+              （它的全名是<samp class="ph codeph">$SHAREDIR/tsearch_data/mythesaurus.ths</samp>，其中<samp class="ph codeph">$SHAREDIR</samp>表示安装共享数据目录。）
+            </li>
+
+          <li class="li">
+<samp class="ph codeph">pg_catalog.english_stem</samp>是用于词库规范化的子字典（这里是一个Snowball英语词干分析器）。
+              请注意，subdictionary将具有自己的配置（例如，停止词），此处未显示。
+            </li>
+
+        </ul>
+
+        <p class="p">现在可以将同义词词典<samp class="ph codeph">thesaurus_simple</samp>绑定到配置中的所需token类型，例如：
+            </p>
+
+        <pre class="pre codeblock">ALTER TEXT SEARCH CONFIGURATION russian
+    ALTER MAPPING FOR asciiword, asciihword, hword_asciipart
+    WITH thesaurus_simple;</pre>
+
+      </div>
+      <div class="sectiondiv">
+        <p class="p"><strong class="ph b">词库示例</strong></p>
+
+        <p class="p">考虑一个简单的天文词库<samp class="ph codeph">thesaurus_astro</samp>，其中包含一些天文单词组合：
+            </p>
+
+        <pre class="pre">supernovae stars : sn
+crab nebulae : crab</pre>
+
+        <p class="p">下面我们创建一个字典并将一些token类型绑定到天文词库和英语词干分析器：
+            </p>
+
+        <pre class="pre codeblock">CREATE TEXT SEARCH DICTIONARY thesaurus_astro (
+    TEMPLATE = thesaurus,
+    DictFile = thesaurus_astro,
+    Dictionary = english_stem
+);
+
+ALTER TEXT SEARCH CONFIGURATION russian
+    ALTER MAPPING FOR asciiword, asciihword, hword_asciipart
+    WITH thesaurus_astro, english_stem;</pre>
+
+        <p class="p">现在我们可以看到它是如何工作的。
+            <samp class="ph codeph">ts_lexize</samp>对于测试同义词库并不是非常有用，因为它将其输入视为单个token。
+            相反，我们可以使用<samp class="ph codeph">plainto_tsquery</samp>和<samp class="ph codeph">to_tsvector</samp>，它们会将输入字符串分成多个token：
+            </p>
+
+        <pre class="pre codeblock">SELECT plainto_tsquery('supernova star');
+ plainto_tsquery
+-----------------
+ 'sn'
+
+SELECT to_tsvector('supernova star');
+ to_tsvector
+-------------
+ 'sn':1</pre>
+
+        <p class="p">原则上，如果引用参数，可以使用<samp class="ph codeph">to_tsquery</samp>：</p>
+
+        <pre class="pre codeblock">SELECT to_tsquery('''supernova star''');
+ to_tsquery
+------------
+ 'sn'</pre>
+
+        <p class="p">请注意，<samp class="ph codeph">supernova star</samp>与<samp class="ph codeph">thesaurus_astro</samp>中的<samp class="ph codeph">supernovae stars</samp>相匹配，
+            因为我们在同义词定义中指定了<samp class="ph codeph">english_stem</samp>提取器。
+            提取器去掉了<samp class="ph codeph">e</samp>和<samp class="ph codeph">s</samp>。
+            </p>
+
+        <p class="p">要索引原始短语以及替换，只需将其包含在定义的右侧部分：</p>
+
+        <pre class="pre codeblock">supernovae stars : sn supernovae stars
+
+SELECT plainto_tsquery('supernova star');
+       plainto_tsquery
+-----------------------------
+ 'sn' &amp; 'supernova' &amp; 'star'</pre>
+
+      </div>
+    </div>
+
+    <div class="section" id="dictionaries__ispell">
+<h2 class="title sectiontitle">Ispell字典</h2>
+      
+      <p class="p">Ispell字典模板支持形态词典，可以将单词的许多不同语言形式归一化为相同的词位。
+          例如，英语Ispell字典可以匹配搜索项<samp class="ph codeph">bank</samp>的所有词形组合和变化，
+          例如<samp class="ph codeph">banking</samp>，<samp class="ph codeph">banked</samp>，<samp class="ph codeph">banks</samp>，<samp class="ph codeph">banks</samp>'和<samp class="ph codeph">bank's</samp>。
+        </p>
+
+      <p class="p">标准Greenplum数据库分发不包含任何Ispell配置文件。
+          <a class="xref" href="http://ficus-www.cs.ucla.edu/geoff/ispell.html" target="_blank">Ispell</a>提供大量语言的字典。
+          此外，还支持一些更现代的字典文件格式 -  <a class="xref" href="http://en.wikipedia.org/wiki/MySpell" target="_blank">MySpell</a>（OO &lt; 2.0.1）
+          和<a class="xref" href="http://sourceforge.net/projects/hunspell/" target="_blank">Hunspell</a>（OO&gt; = 2.0.2）。
+          <a class="xref" href="http://wiki.services.openoffice.org/wiki/Dictionaries" target="_blank">OpenOffice Wiki</a>上提供了大量字典。
+        </p>
+
+      <p class="p">要创建Ispell字典，请使用内置<samp class="ph codeph">ispell</samp>模板并指定几个参数：</p>
+
+      <pre class="pre codeblock">CREATE TEXT SEARCH DICTIONARY english_ispell (
+    TEMPLATE = ispell,
+    DictFile = english,
+    AffFile = english,
+    StopWords = english
+);</pre>
+
+      <p class="p">这里，<samp class="ph codeph">DictFile</samp>，<samp class="ph codeph">AffFile</samp>和<samp class="ph codeph">StopWords</samp>指定字典，词缀和停止词文件的基本名称。
+          停止词文件具有与上述<samp class="ph codeph">simple</samp>词典类型相同的格式。
+          此处未指定其他文件的格式，但可从上述网站获取。
+        </p>
+
+      <p class="p">Ispell字典通常识别一组有限的单词，因此应该跟着另一个更广泛的字典; 例如，一个可以识别一切的Snowball字典。</p>
+
+      <p class="p">Ispell词典支持分裂复合词; 一个有用的功能。
+          请注意，词缀文件应使用<samp class="ph codeph">compoundwords controlled</samp>语句指定一个特殊标志，该语句标记可以参与复合词形成的词典单词：
+        </p>
+
+      <pre class="pre codeblock">compoundwords  controlled z</pre>
+
+      <p class="p">以下是挪威语的一些示例：</p>
+
+      <pre class="pre codeblock">SELECT ts_lexize('norwegian_ispell', 'overbuljongterningpakkmesterassistent');
+   {over,buljong,terning,pakk,mester,assistent}
+SELECT ts_lexize('norwegian_ispell', 'sjokoladefabrikk');
+   {sjokoladefabrikk,sjokolade,fabrikk}</pre>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 
+        <p class="p">MySpell不支持复合词。
+            Hunspell对复合词有着复杂的支持。
+            目前，Greenplum数据库仅实现了Hunspell的基本复合词操作。
+            </p>
+
+      </div>
+
+    </div>
+
+    <div class="section" id="dictionaries__section_xgc_2zw_4fb">
+<h2 class="title sectiontitle">SnowBall词典</h2>
+      
+      <p class="p">Snowball词典模板基于Martin Porter的一个项目，他是流行的Porter英语词干算法的发明者。
+          Snowball现在为许多语言提供词干算法（有关更多信息，请参阅<a class="xref" href="http://snowballstem.org/" target="_blank">Snowball站点</a>）。
+          每种算法都理解如何将单词的常见变体形式减少到其语言中的基础或词干拼写。
+          Snowball字典需要一个语言参数来识别要使用的词干分析器，并且可以选择指定一个停止词文件名，该名称提供要删除的单词列表。
+          （Greenplum数据库的标准停止词列表也由Snowball项目提供。）
+          例如，有一个内置的定义等效于
+          </p>
+
+      <pre class="pre codeblock">CREATE TEXT SEARCH DICTIONARY english_stem (
+    TEMPLATE = snowball,
+    Language = english,
+    StopWords = english
+);</pre>
+
+      <p class="p">停止词文件格式与已经说明的相同。</p>
+
+      <p class="p">Snowball字典可以识别所有内容，无论它是否能够简化单词，因此它应该放在字典列表的末尾。
+          在任何其他字典之前使用它是没用的，因为token永远不会通过它传递到下一个字典。
+        </p>
+
+    </div>
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../textsearch/full-text-search.html" title="Greenplum数据库提供用于查询自然语言文档的数据类型，函数，运算符，索引类型和配置。">使用全文搜索</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

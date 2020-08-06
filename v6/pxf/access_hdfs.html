@@ -1,0 +1,409 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      使用PXF访问Hadoop |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_access_hdfs has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    使用PXF访问Hadoop
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#hdfs_arch">&#26550;&#26500;</a></li>
+<li><a href="#hadoop_prereq">&#20808;&#20915;&#26465;&#20214;</a></li>
+<li><a href="#hdfs_cmdline">HDFS Shell &#21629;&#20196;&#20837;&#38376;</a></li>
+<li><a href="#hadoop_connectors">&#36830;&#25509;&#22120;,&#25968;&#25454;&#26684;&#24335;&#21644;&#37197;&#32622;&#25991;&#20214;</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>PXF与Cloudera，Hortonworks Data Platform，MapR和通用Apache Hadoop发行版兼容。 PXF安装有HDFS，Hive和HBase连接器。 您可以使用这些连接器从以上Hadoop发行版访问各种格式的数据。</p>
+
+<div class="note">在先前版本的Greenplum数据库中，您可能使用 <code>gphdfs</code> 协议的外部表来访问存储在Hadoop中的数据。 Greenplum数据库6.0.0版本移除了<code>gphdfs</code> 协议。 在Greenplum数据库6.x版本中使用PXF和<code>pxf</code>协议外部表来访问Hadoop。</div>
+
+<h2 id="架构"><a id="hdfs_arch"></a>架构</h2>
+
+<p>HDFS是Apache Hadoop使用的主要分布式存储机制。 当用户或应用程序在引用了HDFS文件的PXF外部表上执行查询时，Greenplum数据库master节点将查询分发给所有的segment节点。 每个Segment实例请求运行在其主机上的PXF代理. 当它从segment实例接受请求时, PXF代理:</p>
+
+<ol>
+<li>分配工作线程以处理来自segment实例的请求。</li>
+<li>调用HDFS Java API从HDFS NameNode请求HDFS文件的元数据信息。</li>
+<li>提供HDFS NameNode返回的元数据信息给segment实例。</li>
+</ol>
+
+<p><span class="figtitleprefix">图: </span>PXF-到-Hadoop 架构</p>
+
+<p><img src="graphics/pxfarch.png" class="image" /></p>
+
+<p>Segment实例使用它在Greenplum数据库中的 <code>gp_segment_id</code> 和元数据描述的文件块信息将查询所需数据的特定部分分配给自己。 然后，segment实例向PXF代理发送请求来读取分配的数据。 该数据可以存储在一个或多个HDSFS数据节点上。</p>
+
+<p>PXF代理调用HDFS Java API来读取数据并将其传递给segment实例。 segment实例将其部分数据传递给Greenplum数据库master节点。 此通信跨segment节点和segment实例并行发生。</p>
+
+<h2 id="先决条件"><a id="hadoop_prereq"></a>先决条件</h2>
+
+<p>在使用PXF处理Hadoop数据之前，请确保：</p>
+
+<ul>
+<li>您已经配置并初始化PXF, 并且PXF正在每台segment主机上运行. 更多详情，请参阅<a href="/6-0/pxf/instcfg_pxf.html">配置 PXF</a>。</li>
+<li>您已经配置了计划使用的PXF Hadoop连接器。有关说明，请参阅<a href="/6-0/pxf/client_instcfg.html">配置PXF Hadoop 连接器</a>。 如果您计划访问存储在Cloudera Hadoop集群中的JSON格式数据， 则PXF需要Cloudera 5.8或者更高的Hadoop发行版。</li>
+<li>如果开启了用户模拟(默认), 确保您已将Greenplum数据库外部表需要访问到的HDFS文件及目录的读取(并根据需要写入) 权限，授予给了每个需要访问这些文件和目录的Greenplum数据库用户/角色的名称。 如果未开启用户模拟，您必须要将权限授予给<code>gpadmin</code>用户。</li>
+<li>Greenplum数据库segment主机和外部Hadoop系统之间的时间是同步的。</li>
+</ul>
+
+<h2 id="hdfs-shell-命令入门"><a id="hdfs_cmdline"></a>HDFS Shell 命令入门</h2>
+
+<p>Hadoop包含与HDFS文件系统直接交互的命令行工具。 这些工具支持典型的文件系统操作，包括复制和列出文件，更改文件权限等。</p>
+
+<p>HDFS 文件系统命令语法为<code>hdfs dfs &lt;选项&gt; [&lt;文件&gt;]</code>。 在没有选项的情况下调用，<code>hdfs dfs</code>将列出该工具支持的文件系统选项。</p>
+
+<p>调用<code>hdfs dfs</code>命令的用户必须具有HDFS存储数据的读取权限才能列出和查看目录及文件内容, 并具有写入权限才能创建目录和文件。</p>
+
+<p>PXF Hadoop主题使用的<code>hdfs dfs</code>选项包括:</p>
+
+<table><thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>-cat</code></td>
+<td>显示文件内容</td>
+</tr>
+<tr>
+<td><code>-mkdir</code></td>
+<td>在HDFS中创建目录</td>
+</tr>
+<tr>
+<td><code>-put</code></td>
+<td>将文件从本地文件系统复制到HDFS中</td>
+</tr>
+</tbody></table>
+
+<p>例:</p>
+
+<p>在HDFS中创建目录:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -mkdir -p /data/exampledir
+</code></pre>
+
+<p>将文本文件从本地文件系统复制到HDFS:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -put /tmp/example.txt /data/exampledir/
+</code></pre>
+
+<p>显示位于HDFS中的文本文件的内容:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -cat /data/exampledir/example.txt
+</code></pre>
+
+<h2 id="连接器,数据格式和配置文件"><a id="hadoop_connectors"></a>连接器,数据格式和配置文件</h2>
+
+<p>PXF Hadoop连接器提供内置配置文件以支持以下数据格式:</p>
+
+<ul>
+<li>Text</li>
+<li>Avro</li>
+<li>JSON</li>
+<li>ORC</li>
+<li>Parquet</li>
+<li>RCFile</li>
+<li>SequenceFile</li>
+<li>AvroSequenceFile</li>
+</ul>
+
+<p>PXF Hadoop连接器公开以下配置文件以读取这些支持的数据格式，并在许多情况下写入:</p>
+
+<table><thead>
+<tr>
+<th>数据源</th>
+<th>数据格式</th>
+<th>配置文件名称</th>
+<th>弃用的配置文件名称</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>HDFS</td>
+<td><a href="/6-0/pxf/hdfs_text.html#profile_text">单行的分隔文本</a></td>
+<td>hdfs:text</td>
+<td>HdfsTextSimple</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td><a href="/6-0/pxf/hdfs_text.html#profile_textmulti">含有被双引号引起来的换行符的分隔文本</a></td>
+<td>hdfs:text:multi</td>
+<td>HdfsTextMulti</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td><a href="/6-0/pxf/hdfs_avro.html">Avro</a></td>
+<td>hdfs:avro</td>
+<td>Avro</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td><a href="/6-0/pxf/hdfs_json.html">JSON</a></td>
+<td>hdfs:json</td>
+<td>Json</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td><a href="/6-0/pxf/hdfs_parquet.html">Parquet</a></td>
+<td>hdfs:parquet</td>
+<td>Parquet</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td>AvroSequenceFile</td>
+<td>hdfs:AvroSequenceFile</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td><a href="/6-0/pxf/hdfs_seqfile.html">SequenceFile</a></td>
+<td>hdfs:SequenceFile</td>
+<td>SequenceWritable</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/hive_pxf.html">Hive</a></td>
+<td>TextFile 存储格式</td>
+<td>Hive, <a href="/6-0/pxf/hive_pxf.html#hive_text">HiveText</a></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/hive_pxf.html">Hive</a></td>
+<td>SequenceFile 存储格式</td>
+<td>Hive</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/hive_pxf.html">Hive</a></td>
+<td>RCFile 存储格式</td>
+<td>Hive, <a href="/6-0/pxf/hive_pxf.html#hive_hiverc">HiveRC</a></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/hive_pxf.html">Hive</a></td>
+<td>ORC 存储格式</td>
+<td>Hive, <a href="/6-0/pxf/hive_pxf.html#hive_orc">HiveORC</a>, HiveVectorizedORC</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/hive_pxf.html">Hive</a></td>
+<td>Parquet 存储格式</td>
+<td>Hive</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><a href="/6-0/pxf/hbase_pxf.html">HBase</a></td>
+<td>任意存储格式</td>
+<td>HBase</td>
+<td>n/a</td>
+</tr>
+</tbody></table>
+
+<p>使用<code>CREATE EXTERNAL TABLE</code>命令指定<code>pxf</code>协议时，提供配置文件名称，以创建引用Hadoop文件、目录或表的Greenplum数据库外部表。例如，以下命令创建一个使用默认服务器的外部表，并指定名为<code>hdfs:text</code>的配置文件：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_hdfs_text</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+   <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxf_hdfs_simple.txt?PROFILE=hdfs:text'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">delimiter</span><span class="o">=</span><span class="n">E</span><span class="s1">','</span><span class="p">);</span>
+</code></pre>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

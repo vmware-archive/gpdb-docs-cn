@@ -1,0 +1,304 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      初始化PXF |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_init_pxf has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    初始化PXF
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li>
+<a href="#init_pxf">PXF&#37197;&#32622;&#23646;&#24615;</a><ul><li><a href="#init-pxf-steps">&#36807;&#31243;</a></li></ul>
+</li>
+<li>
+<a href="#pxf-reset">&#37325;&#32622;PXF</a><ul><li><a href="#reset-pxf-steps">&#27493;&#39588;</a></li></ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>你必须显式初始化PXF服务实例。 此一次性初始化将创建PXF服务Web应用程序并生成PXF配置文件和模板。</p>
+
+<p>PXF提供了两个你可以在初始化时候使用的管理命令</p>
+
+<ul>
+<li><a href="/6-0/pxf/ref/pxf-cluster.html"><code>pxf cluster init</code></a> - 初始化所有在GP集群中的pxf服务实例</li>
+<li><a href="/6-0/pxf/ref/pxf.html"><code>pxf init</code></a> - 初始化当前节点上的pxf服务实例</li>
+</ul>
+
+<p>PXF还提供了类似的<code>reset</code>命令，可用于重置PXF配置。</p>
+
+<h2 id="-pxf配置属性"><a id="init_pxf"></a> PXF配置属性</h2>
+
+<p>PXF同时支持内部的和用户自定义的配置属性。初始化PXF会生成PXF内部配置文件，并设置特定于您的配置的默认属性。初始化PXF还会为用户自定义设置生成配置文件模板，例如自定义配置文件和PXF运行时间和日志记录设置。</p>
+
+<p>PXF内部配置文件位于<code>$GPHOME/pxf/conf</code>目录，在初始化PXF时，你可以通过指定环境变量<code>$PXF_CONF</code>来配置用户目录。如果在初始化PXF之前未设置<code>$PXF_CONF</code>，PXF可能会在初始化过程中提示您接受或拒绝默认用户配置目录<code>$HOME/pxf</code>。</p>
+
+<p><strong>Note</strong>: 选择可以备份的<code>$PXF_CONF</code>位置，并确保他在GPDB安装目录之外。</p>
+
+<p>在初始化期间，PXF会根据需要创建<code>$PXF_CONF</code>目录然后使用子目录和模板文件填充他。有关这些目录和内容的列表，可以参照<a href="/6-0/pxf/about_pxf_dir.html#usercfg">PXF User Configuration Directories</a></p>
+
+<h3 id="准备"><a id="init-pxf-prereq" class="no-quick-link"></a>准备</h3>
+
+<p>GPDB实例初始化PXF之前，请确保:</p>
+
+<ul>
+<li>GPDB集群是启动并且运行的</li>
+<li>可以通过<code>$PXF_CONF</code>指定PXF用户配置目录的文件位置，并且<code>gpadmin</code>用户也需要对这个目录有写权限</li>
+</ul>
+
+<h3 id="过程"><a id="init-pxf-steps"></a>过程</h3>
+
+<p>执行一下流程确保在你的GPDB集群的每个节点初始化PXF。</p>
+
+<ol>
+<li><p>登录GPDB的master节点</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>运行<code>pxf cluster init</code>命令会在master,standby节点和所有的segment节点主机上初始化PXF服务。如下命令指定<code>/usr/local/greenplum-pxf</code>作为pxf初始化的用户配置目录</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">PXF_CONF</span><span class="o">=</span>/usr/local/greenplum-pxf <span class="nv">$GPHOME</span>/pxf/bin/pxf cluster init
+</code></pre>
+
+<p><code>init</code>命令创建了pxf网页应用和pxf内部配置。init命令也创建了<code>$PXF_CONF</code>用户配置目录(如果目录不存在)并使用用户可自定义的配置模板填充<code>conf</code>和<code>templates</code>目录。如果<code>$PXF_CONF</code>存在，则PXF仅更新<code>templates</code>目录。</p>
+
+<p><strong>Note</strong>:PXF服务只运行在segment主机上，然而<code>pxf cluster init</code>命令也会安装在GPDB的master和standby主机上创建PXF用户配置目录。</p></li>
+</ol>
+
+<h2 id="重置pxf"><a id="pxf-reset"></a>重置PXF</h2>
+
+<p>如果需要，可以将PXF重置为其未初始化状态。如果您指定了错误的<code>PXF_CONF</code>目录，或者您想从头开始初始化过程，则可以选择重置PXF。</p>
+
+<p>重置PXF时，PXF会提示您确认操作。如果确认，PXF将删除以下运行时文件和目录（其中<code>PXF_HOME=$GPHOME/pxf</code>）：</p>
+
+<ul>
+<li><code>$PXF_HOME/conf/pxf-private.classpath</code></li>
+<li><code>$PXF_HOME/pxf-service</code></li>
+<li><code>$PXF_HOME/run</code></li>
+</ul>
+
+<p>重置操作期间PXF不会删除<code>$PXF_CONF</code>目录。</p>
+
+<p>必须先在segment主机上停止PXF服务实例，然后才能在主机上重置PXF。</p>
+
+<h3 id="步骤"><a id="reset-pxf-steps"></a>步骤</h3>
+
+<p>执行以下过程在Greenplum数据库集群中的每个segment主机上重置PXF。</p>
+
+<ol>
+<li><p>登录到Greenplum数据库master节点：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>在每个segment主机上停止PXF服务实例。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster stop
+</code></pre></li>
+<li><p>在所有Greenplum主机上重置PXF服务实例。例如：</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster reset
+</code></pre></li>
+</ol>
+
+<p><strong>注意</strong>: 重置PXF之后，必须初始化并启动PXF才能再次使用该服务。</p>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

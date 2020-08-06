@@ -1,0 +1,857 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      加密数据和数据库连接 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_encryption has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    加密数据和数据库连接
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">加密数据和数据库连接</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">本节描述了有关实现加密和管理密钥的最佳实践。</p>
+
+    <div class="section">
+      <p class="p">在Greenplum数据库系统中可以用下面的方式使用加密来保护数据：</p>
+
+      <ul class="ul" id="topic_th5_5bf_jr__ul_wxd_dxc_lr">
+        <li class="li">客户端和Master数据库之间的连接可以用SSL加密。这种方式可以通过设置<samp class="ph codeph">ssl</samp>服务器配置
+          参数为<samp class="ph codeph">on</samp>并且配置好<samp class="ph codeph">pg_hba.conf</samp>文件来启用。有关在Greenplum数据库
+          中启用SSL的信息请见<em class="ph i">Greenplum数据库管理员指南</em>中的“加密客户端/服务器连接”部分。</li>
+
+        <li class="li">Greenplum数据库4.2.1及以上的版本允许在Greenplum的并行文件分发服务器、<samp class="ph codeph">gpfdist</samp>
+          和segment主机之间传输SSL加密数据。详见<a class="xref" href="#topic_th5_5bf_jr__section_kjt_3kr_bs">加密gpfdist连接</a>。</li>
+
+        <li class="li">Greenplum数据库集群中主机之间的网络通信可以使用IPsec加密。集群中的每一对主机之间会建立一个认证过的
+          加密的VPN。对IPsec的支持请检查操作系统文档，或者考虑
+          <a class="xref" href="https://www.zettaset.com" target="_blank">Zettaset</a>等组织
+          提供的第三方解决方案。</li>
+
+        <li class="li">
+<samp class="ph codeph">pgcrypto</samp>包中的加密/解密函数保护停留在数据库中的数据。列级的加密可以保护敏感信息，
+          例如口令、社会保险号码或者信用卡号码。例子可以在<a class="xref" href="#topic_th5_5bf_jr__section_emf_3kr_bs">使用PGP加密表中的数据</a>中找到。</li>
+
+      </ul>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">最佳实践</h2>
+      
+      <ul class="ul" id="topic_th5_5bf_jr__ul_sms_31r_bs">
+        <li class="li">加密确保数据只能被拥有解密数据所需密钥的用户看见。</li>
+
+        <li class="li">加密和解密数据有性能代价，只加密需要加密的数据。</li>
+
+        <li class="li">在生产系统中实现任何加密解决方案之前先做性能测试。</li>
+
+        <li class="li">用于生产的Greenplum数据库系统中的服务器证书应该由一个数字证书认证机构（CA）签发，这样客户端可以
+          认证服务器。如果所有的客户端都在该组织本地，这个CA可以是本地的。</li>
+
+        <li class="li">只要到Greenplum数据库的客户端连接会通过一个不安全的链路，就应该使用SSL加密。</li>
+
+        <li class="li">对称加密模式（加密和解密使用相同的密钥）比非对称模式具有更好的性能，并且应该在可以安全共享密钥时
+          使用对称模式。</li>
+
+        <li class="li">使用来自pgcrypto包的函数来加密磁盘上的数据。数据在数据库进程中被加密和解密，因此有必要用SSL来
+          保护客户端连接以避免传输未加密的数据。</li>
+
+        <li class="li">在ETL数据被载入数据库或者被从数据库中卸载时，使用gpfdists协议来保护ETL数据。详情请见
+          <a class="xref" href="#topic_th5_5bf_jr__section_kjt_3kr_bs">加密gpfdist连接</a>。</li>
+
+      </ul>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">密钥管理</h2>
+      
+      <p class="p">只要使用对称（单私钥）或者非对称（公钥和私钥）加密，就有必要安全地存储主密钥或者私钥。存储加密密钥
+        有很多选项，例如在文件系统上保存、密钥保管库、加密的USB、可信平台模块（TPM）或者硬件安全模块（HSM）。
+        </p>
+
+      <p class="p">在规划密钥管理时考虑下列问题：</p>
+
+      <ul class="ul" id="topic_th5_5bf_jr__ul_vqd_sl2_lr">
+        <li class="li"> 密钥将被存在哪里？</li>
+
+        <li class="li"> 密钥何时过期？</li>
+
+        <li class="li"> 如何保护密钥？</li>
+
+        <li class="li"> 如何访问密钥？</li>
+
+        <li class="li"> 如何恢复和收回密钥？</li>
+
+      </ul>
+
+      <p class="p">开放Web应用安全性项目（OWASP）提供了一套非常全面的<a class="xref" href="https://www.owasp.org/index.php/Cryptographic_Storage_Cheat_Sheet" target="_blank">保护加密密钥指南</a>。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">用pgcrypto加密静止数据</h2>
+      
+      <p class="p">Greenplum数据库的pgcrypto包提供了加密数据库中静止数据的函数。管理员可以加密具有敏感信息（例如社会
+        保险号码或信用卡号）的列以提供一个额外的保护层。没有加密密钥的用户无法读取以加密形式存储的数据库数据，
+        并且这些数据也无法从磁盘直接读取。</p>
+
+      <p class="p">pgcrypto在Greenplum数据库安装时默认已经安装。客户只需要在想要使用的数据库中启用该组件即可。</p>
+
+      <p class="p">pgcrypto允许使用对称和非对称加密的PGP加密。对称加密使用同样的密钥加密和解密数据，并且比非对称加密更快。
+        在交换密钥不成问题的环境中它是首选方法。在非对称加密中，公钥被用来加密数据而私钥被用来解密数据。这种模式
+        比对称加密慢一些并且要求更强的密钥。</p>
+
+      <p class="p">使用pgcrypto总是会带来性能和可维护性的代价。有必要只对需要加密的数据使用加密。还有，要记住用户无法通过
+        对数据增加索引来搜索加密数据。</p>
+
+      <div class="p">在用户实现数据库内加密之前，考虑下列PGP限制。<ul class="ul" id="topic_th5_5bf_jr__ul_ihq_xt4_kr">
+        <li class="li"> 不支持签名。这还意味着不会检查加密子密钥是否属于主密钥。</li>
+
+        <li class="li"> 不支持将加密密钥作为主密钥。这种做法通常是不被鼓励的，因此这一限制应该不是问题。</li>
+
+        <li class="li"> 不支持多个子密钥。这可能看起来像一个问题，因为这是一种常见的做法。在另一方面，
+          用户不应将其常规GPG/PGP密钥用于pgcrypto，而是要创建新的密钥，因为使用场景不同。</li>
+
+        </ul>
+</div>
+
+      <p class="p">Greenplum数据库默认用zlib编译，这允许PGP加密函数在加密数据之前先压缩数据。在编译有OpenSSL时，
+        将会有更多算法可用。</p>
+
+      <p class="p">因为pgcrypto函数运行在数据库服务器内部，数据和口令是以明文形式在pgcrypto和客户端应用之间移动。
+        为了最好的安全性，用户应该使用本地连接或者使用SSL连接，并且用户应该信任系统管理员和数据库管理员。</p>
+
+      <p class="p">pgcrypto会根据主PostgreSQL配置脚本配置自身。</p>
+
+      <p class="p">当编译有<samp class="ph codeph">zlib</samp>时，pgcrypto加密函数能在加密前压缩数据。</p>
+
+      <p class="p">pgcrypto拥有从基本内建函数到高级内建函数的多个加密级别。下面的表格展示了支持的加密算法。</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_th5_5bf_jr__table_wzb_4fd_lr" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. Pgcrypto支持的加密函数</span></caption>
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" align="left" valign="top" width="33.33333333333333%" id="d1947e207"> 功能值 </th>
+
+              <th class="entry" align="left" valign="top" width="33.33333333333333%" id="d1947e210"> 内建 </th>
+
+              <th class="entry" align="left" valign="top" width="33.33333333333333%" id="d1947e213"> 带有OpenSSL </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> MD5 </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> SHA1 </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> SHA224/256/384/512 </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes <a name="fnsrc_1" href="#fntarg_1"><sup>1</sup></a>。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> 其他摘要算法 </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> no </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes <a name="fnsrc_2" href="#fntarg_2"><sup>2</sup></a>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> Blowfish </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> AES </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes<a name="fnsrc_3" href="#fntarg_3"><sup>3</sup></a>
+</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> DES/3DES/CAST5 </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> no </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> Raw Encryption </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> PGP Symmetric-Key </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes </td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e207 "> PGP Public Key </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e210 "> yes </td>
+
+              <td class="entry" align="left" valign="top" width="33.33333333333333%" headers="d1947e213 "> yes </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+    <div class="section" id="topic_th5_5bf_jr__creating_pgp_keys">
+<h2 class="title sectiontitle">创建PGP密钥</h2>
+      
+      <p class="p">要在Greenplum数据库中使用PGP非对称加密，用户必须首先创建公私钥并且安装它们。</p>
+
+      <p class="p">这一节假定用户正在Linux机器上用Gnu Privacy Guard（<samp class="ph codeph">gpg</samp>）命令行工具
+        安装Greenplum数据库。Pivotal推荐使用最新版本的GPG来创建密钥。可以从
+        <a class="xref" href="https://www.gnupg.org/download/" target="_blank">https://www.gnupg.org/download/</a>为用户的操作系统下载并安装Gnu Privacy Guard（GPG）。在GnuPG网站上，
+        用户将找到用于常见Linux发行的安装器以及Windows和Mac OS X安装器的链接。</p>
+
+      <ol class="ol" id="topic_th5_5bf_jr__ol_vnm_h54_kr">
+        <li class="li">作为root，执行下列命令并且从菜单选择选项1：
+         <pre class="pre codeblock"># gpg --gen-key 
+gpg (GnuPG) 2.0.14; Copyright (C) 2009 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+ 
+gpg: directory `/root/.gnupg' created
+gpg: new configuration file `/root/.gnupg/gpg.conf' created
+gpg: WARNING: options in `/root/.gnupg/gpg.conf' are not yet active during this run
+gpg: keyring `/root/.gnupg/secring.gpg' created
+gpg: keyring `/root/.gnupg/pubring.gpg' created
+Please select what kind of key you want:
+ (1) RSA and RSA (default)
+ (2) DSA and Elgamal
+ (3) DSA (sign only)
+ (4) RSA (sign only)
+Your selection? <strong class="ph b">1</strong></pre>
+</li>
+
+        <li class="li">如下例所示，回应提示并且遵循其指导：
+          <pre class="pre codeblock">RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) Press enter to accept default key size
+Requested keysize is 2048 bits
+Please specify how long the key should be valid.
+ 0 = key does not expire
+ &lt;n&gt; = key expires in n days
+ &lt;n&gt;w = key expires in n weeks
+ &lt;n&gt;m = key expires in n months
+ &lt;n&gt;y = key expires in n years
+ Key is valid for? (0) <strong class="ph b">365</strong>
+Key expires at Wed 13 Jan 2016 10:35:39 AM PST
+Is this correct? (y/N) <strong class="ph b">y</strong>
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: <strong class="ph b">John Doe</strong>
+Email address: <strong class="ph b">jdoe@email.com</strong>
+Comment: 
+You selected this USER-ID:
+ "John Doe &lt;jdoe@email.com&gt;"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? <strong class="ph b">O</strong>
+You need a Passphrase to protect your secret key.
+<em class="ph i">（该演示例子的密码为空。）</em>
+can't connect to `/root/.gnupg/S.gpg-agent': No such file or directory
+You don't want a passphrase - this is probably a *bad* idea!
+I will do it anyway.  You can change your passphrase at any time,
+using this program with the option "--edit-key".
+
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: /root/.gnupg/trustdb.gpg: trustdb created
+gpg: key 2027CC30 marked as ultimately trusted
+public and secret key created and signed.
+
+gpg:  checking the trustdbgpg: 
+      3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg:  depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg:  next trustdb check due at 2016-01-13
+pub   2048R/2027CC30 2015-01-13 [expires: 2016-01-13]
+      Key fingerprint = 7EDA 6AD0 F5E0 400F 4D45   3259 077D 725E 2027 CC30
+uid                  John Doe &lt;jdoe@email.com&gt;
+sub   2048R/4FD2EFBB 2015-01-13 [expires: 2016-01-13]
+</pre>
+</li>
+
+        <li class="li">通过输入下列命令来列出PGP密钥：
+          <pre class="pre codeblock">gpg --list-secret-keys 
+/root/.gnupg/secring.gpg
+------------------------
+sec   2048R/2027CC30 2015-01-13 [expires: 2016-01-13]
+uid                  John Doe &lt;jdoe@email.com&gt;
+ssb   2048R/4FD2EFBB 2015-01-13
+
+          </pre>
+<p class="p">2027CC30是公钥并且将被用来<em class="ph i">加密</em>数据库中的数据。4FD2EFBB是私钥并且将
+            被用来<em class="ph i">解密</em>数据。</p>
+</li>
+
+        <li class="li">使用下列命令导出密钥：
+          <pre class="pre codeblock"># gpg -a --export 4FD2EFBB &gt; public.key
+# gpg -a --export-secret-keys 2027CC30 &gt; secret.key</pre>
+</li>
+
+      </ol>
+
+      <p class="p">更多有关PGP加密函数的信息请见<a class="xref" href="https://www.postgresql.org/docs/9.4/pgcrypto.html" target="_blank">pgcrypto</a>。</p>
+
+    </div>
+
+    <div class="section" id="topic_th5_5bf_jr__section_emf_3kr_bs">
+<h2 class="title sectiontitle">使用PGP加密表中的数据</h2>
+      
+      <p class="p">这个小节展示如何使用用户产生的PGP密钥加密插入到一列中的数据。</p>
+
+      <ol class="ol" id="topic_th5_5bf_jr__ol_nty_qzd_lr">
+        <li class="li">转储<samp class="ph codeph">public.key</samp>文件的内容，然后把它拷贝的剪贴板：
+          <pre class="pre codeblock"># cat public.key
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.14 (GNU/Linux)
+            
+mQENBFS1Zf0BCADNw8Qvk1V1C36Kfcwd3Kpm/dijPfRyyEwB6PqKyA05jtWiXZTh
+2His1ojSP6LI0cSkIqMU9LAlncecZhRIhBhuVgKlGSgd9texg2nnSL9Admqik/yX
+R5syVKG+qcdWuvyZg9oOOmeyjhc3n+kkbRTEMuM3flbMs8shOwzMvstCUVmuHU/V
+. . .
+WH+N2lasoUaoJjb2kQGhLOnFbJuevkyBylRz+hI/+8rJKcZOjQkmmK8Hkk8qb5x/
+HMUc55H0g2qQAY0BpnJHgOOQ45Q6pk3G2/7Dbek5WJ6K1wUrFy51sNlGWE8pvgEx
+/UUZB+dYqCwtvX0nnBu1KNCmk2AkEcFK3YoliCxomdOxhFOv9AKjjojDyC65KJci
+Pv2MikPS2fKOAg1R3LpMa8zDEtl4w3vckPQNrQNnYuUtfj6ZoCxv
+=XZ8J
+-----END PGP PUBLIC KEY BLOCK-----
+</pre>
+</li>
+
+        <li class="li">创建一个名为<samp class="ph codeph">userssn</samp>的表并且插入一些敏感数据，这个例子中是Bob和Alice的社会
+          保险号码。在"dearmor("之后粘贴public.key的内容。
+          <pre class="pre codeblock">CREATE TABLE userssn( ssn_id SERIAL PRIMARY KEY, 
+    username varchar(100), ssn bytea); 
+
+INSERT INTO userssn(username, ssn)
+SELECT robotccs.username, pgp_pub_encrypt(robotccs.ssn, keys.pubkey) AS ssn
+FROM ( 
+        VALUES ('Alice', '123-45-6788'), ('Bob', '123-45-6799')) 
+            AS robotccs(username, ssn)
+CROSS JOIN  (SELECT  dearmor('-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.14 (GNU/Linux)
+            
+mQENBFS1Zf0BCADNw8Qvk1V1C36Kfcwd3Kpm/dijPfRyyEwB6PqKyA05jtWiXZTh
+2His1ojSP6LI0cSkIqMU9LAlncecZhRIhBhuVgKlGSgd9texg2nnSL9Admqik/yX
+R5syVKG+qcdWuvyZg9oOOmeyjhc3n+kkbRTEMuM3flbMs8shOwzMvstCUVmuHU/V
+. . .
+WH+N2lasoUaoJjb2kQGhLOnFbJuevkyBylRz+hI/+8rJKcZOjQkmmK8Hkk8qb5x/
+HMUc55H0g2qQAY0BpnJHgOOQ45Q6pk3G2/7Dbek5WJ6K1wUrFy51sNlGWE8pvgEx
+/UUZB+dYqCwtvX0nnBu1KNCmk2AkEcFK3YoliCxomdOxhFOv9AKjjojDyC65KJci
+Pv2MikPS2fKOAg1R3LpMa8zDEtl4w3vckPQNrQNnYuUtfj6ZoCxv
+=XZ8J
+-----END PGP PUBLIC KEY BLOCK-----' AS pubkey) AS keys;
+</pre>
+</li>
+
+        <li class="li">验证<samp class="ph codeph">ssn</samp>列被加密。 
+          <pre class="pre codeblock">test_db=# select * from userssn;
+ssn_id   | 1
+username | Alice
+ssn      | \301\300L\003\235M%_O\322\357\273\001\010\000\272\227\010\341\216\360\217C\020\261)_\367
+[\227\034\313:C\354d&lt;\337\006Q\351('\2330\031lX\263Qf\341\262\200\3015\235\036AK\242fL+\315g\322
+7u\270*\304\361\355\220\021\330"\200%\264\274}R\213\377\363\235\366\030\023)\364!\331\303\237t\277=
+f \015\004\242\231\263\225%\032\271a\001\035\277\021\375X\232\304\305/\340\334\0131\325\344[~\362\0
+37-\251\336\303\340\377_\011\275\301/MY\334\343\245\244\372y\257S\374\230\346\277\373W\346\230\276\
+017fi\226Q\307\012\326\3646\000\326\005:E\364W\252=zz\010(:\343Y\237\257iqU\0326\350=v0\362\327\350\
+315G^\027:K_9\254\362\354\215&lt;\001\304\357\331\355\323,\302\213Fe\265\315\232\367\254\245%(\\\373
+4\254\230\331\356\006B\257\333\326H\022\013\353\216F?\023\220\370\035vH5/\227\344b\322\227\026\362=\
+42\033\322&lt;\001}\243\224;)\030zqX\214\340\221\035\275U\345\327\214\032\351\223c\2442\345\304K\016\
+011\214\307\227\237\270\026`R\205\205a~1\263\236[\037C\260\031\205\374\245\317\033k|\366\253\037
+---------+--------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+ssn_id   | 2
+username | Bob
+ssn      | \301\300L\003\235M%_O\322\357\273\001\007\377t&gt;\345\343,\200\256\272\300\012\033M4\265\032L
+L[v\262k\244\2435\264\232B\357\370d9\375\011\002\327\235&lt;\246\210b\030\012\337@\226Z\361\246\032\00
+7`\012c\353]\355d7\360T\335\314\367\370;X\371\350*\231\212\260B\010#RQ0\223\253c7\0132b\355\242\233\34
+1\000\370\370\366\013\022\357\005i\202~\005\\z\301o\012\230Z\014\362\244\324&amp;\243g\351\362\325\375
+\213\032\226$\2751\256XR\346k\266\030\234\267\201vUh\004\250\337A\231\223u\247\366/i\022\275\276\350\2
+20\316\306|\203+\010\261;\232\254tp\255\243\261\373Rq;\316w\357\006\207\374U\333\365\365\245hg\031\005
+\322\347ea\220\015l\212g\337\264\336b\263\004\311\210.4\340G+\221\274D\035\375\2216\241`\346a0\273wE\2
+12\342y^\202\262|A7\202t\240\333p\345G\373\253\243oCO\011\360\247\211\014\024{\272\271\322&lt;\001\267
+\347\240\005\213\0078\036\210\307$\317\322\311\222\035\354\006&lt;\266\264\004\376\251q\256\220(+\030\
+3270\013c\327\272\212%\363\033\252\322\337\354\276\225\232\201\212^\304\210\2269@\3230\370{
+</pre>
+</li>
+
+        <li class="li">从数据库提取public.key ID：
+          <pre class="pre codeblock">SELECT pgp_key_id(dearmor('-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.14 (GNU/Linux)
+
+mQENBFS1Zf0BCADNw8Qvk1V1C36Kfcwd3Kpm/dijPfRyyEwB6PqKyA05jtWiXZTh
+2His1ojSP6LI0cSkIqMU9LAlncecZhRIhBhuVgKlGSgd9texg2nnSL9Admqik/yX
+R5syVKG+qcdWuvyZg9oOOmeyjhc3n+kkbRTEMuM3flbMs8shOwzMvstCUVmuHU/V
+. . .
+WH+N2lasoUaoJjb2kQGhLOnFbJuevkyBylRz+hI/+8rJKcZOjQkmmK8Hkk8qb5x/
+HMUc55H0g2qQAY0BpnJHgOOQ45Q6pk3G2/7Dbek5WJ6K1wUrFy51sNlGWE8pvgEx
+/UUZB+dYqCwtvX0nnBu1KNCmk2AkEcFK3YoliCxomdOxhFOv9AKjjojDyC65KJci
+Pv2MikPS2fKOAg1R3LpMa8zDEtl4w3vckPQNrQNnYuUtfj6ZoCxv
+=XZ8J
+-----END PGP PUBLIC KEY BLOCK-----'));
+
+pgp_key_id | 9D4D255F4FD2EFBB
+</pre>
+
+          <p class="p">这会显示用来加密<samp class="ph codeph">ssn</samp>列使用的PGP键ID是9D4D255F4FD2EFBB。只要有新密钥被创建，
+            都推荐执行这一步，然后将该ID保存下来用于跟踪。</p>
+<p class="p">用户可以使用这个键来查看哪一个密钥对被用来
+              加密数据：</p>
+
+          <pre class="pre codeblock">SELECT username, pgp_key_id(ssn) As key_used                                                                                                                       FROM userssn;                                                                                                                                                                 username | Bob
+key_used | 9D4D255F4FD2EFBB
+---------+-----------------
+username | Alice
+key_used | 9D4D255F4FD2EFBB
+</pre>
+
+          <div class="note note">
+<span class="notetitle">Note:</span> 不同的密钥可能具有相同的ID。这很少见，但属于正常现象。客户端应用应该尝试用每一个来解密看看
+            哪一个合适 — 就像处理<samp class="ph codeph">ANYKEY</samp>一样。详情请见pgcrypto文档中的<a class="xref" href="https://www.postgresql.org/docs/9.4/pgcrypto.html" target="_blank">pgp_key_id()</a>部分。</div>
+
+        </li>
+
+        <li class="li">使用私钥解密数据。
+            <pre class="pre codeblock">SELECT username, pgp_pub_decrypt(ssn, keys.privkey) 
+                 AS decrypted_ssn FROM userssn
+                 CROSS JOIN
+                 (SELECT dearmor('-----BEGIN PGP PRIVATE KEY BLOCK-----
+Version: GnuPG v2.0.14 (GNU/Linux)
+
+lQOYBFS1Zf0BCADNw8Qvk1V1C36Kfcwd3Kpm/dijPfRyyEwB6PqKyA05jtWiXZTh
+2His1ojSP6LI0cSkIqMU9LAlncecZhRIhBhuVgKlGSgd9texg2nnSL9Admqik/yX
+R5syVKG+qcdWuvyZg9oOOmeyjhc3n+kkbRTEMuM3flbMs8shOwzMvstCUVmuHU/V
+vG5rJAe8PuYDSJCJ74I6w7SOH3RiRIc7IfL6xYddV42l3ctd44bl8/i71hq2UyN2
+/Hbsjii2ymg7ttw3jsWAx2gP9nssDgoy8QDy/o9nNqC8EGlig96ZFnFnE6Pwbhn+
+ic8MD0lK5/GAlR6Hc0ZIHf8KEcavruQlikjnABEBAAEAB/wNfjjvP1brRfjjIm/j
+XwUNm+sI4v2Ur7qZC94VTukPGf67lvqcYZJuqXxvZrZ8bl6mvl65xEUiZYy7BNA8
+fe0PaM4Wy+Xr94Cz2bPbWgawnRNN3GAQy4rlBTrvqQWy+kmpbd87iTjwZidZNNmx
+02iSzraq41Rt0Zx21Jh4rkpF67ftmzOH0vlrS0bWOvHUeMY7tCwmdPe9HbQeDlPr
+n9CllUqBn4/acTtCClWAjREZn0zXAsNixtTIPC1V+9nO9YmecMkVwNfIPkIhymAM
+OPFnuZ/Dz1rCRHjNHb5j6ZyUM5zDqUVnnezktxqrOENSxm0gfMGcpxHQogUMzb7c
+6UyBBADSCXHPfo/VPVtMm5p1yGrNOR2jR2rUj9+poZzD2gjkt5G/xIKRlkB4uoQl
+emu27wr9dVEX7ms0nvDq58iutbQ4d0JIDlcHMeSRQZluErblB75Vj3HtImblPjpn
+4Jx6SWRXPUJPGXGI87u0UoBH0Lwij7M2PW7l1ao+MLEA9jAjQwQA+sr9BKPL4Ya2
+r5nE72gsbCCLowkC0rdldf1RGtobwYDMpmYZhOaRKjkOTMG6rCXJxrf6LqiN8w/L
+/gNziTmch35MCq/MZzA/bN4VMPyeIlwzxVZkJLsQ7yyqX/A7ac7B7DH0KfXciEXW
+MSOAJhMmklW1Q1RRNw3cnYi8w3q7X40EAL/w54FVvvPqp3+sCd86SAAapM4UO2R3
+tIsuNVemMWdgNXwvK8AJsz7VreVU5yZ4B8hvCuQj1C7geaN/LXhiT8foRsJC5o71
+Bf+iHC/VNEv4k4uDb4lOgnHJYYyifB1wC+nn/EnXCZYQINMia1a4M6Vqc/RIfTH4
+nwkZt/89LsAiR/20HHRlc3Qga2V5IDx0ZXN0a2V5QGVtYWlsLmNvbT6JAT4EEwEC
+ACgFAlS1Zf0CGwMFCQHhM4AGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEAd9
+cl4gJ8wwbfwH/3VyVsPkQl1owRJNxvXGt1bY7BfrvU52yk+PPZYoes9UpdL3CMRk
+8gAM9bx5Sk08q2UXSZLC6fFOpEW4uWgmGYf8JRoC3ooezTkmCBW8I1bU0qGetzVx
+opdXLuPGCE7hVWQe9HcSntiTLxGov1mJAwO7TAoccXLbyuZh9Rf5vLoQdKzcCyOH
+h5IqXaQOT100TeFeEpb9TIiwcntg3WCSU5P0DGoUAOanjDZ3KE8Qp7V74fhG1EZV
+zHb8FajR62CXSHFKqpBgiNxnTOk45NbXADn4eTUXPSnwPi46qoAp9UQogsfGyB1X
+DOTB2UOqhutAMECaM7VtpePv79i0Z/NfnBedA5gEVLVl/QEIANabFdQ+8QMCADOi
+pM1bF/JrQt3zUoc4BTqICaxdyzAfz0tUSf/7Zro2us99GlARqLWd8EqJcl/xmfcJ
+iZyUam6ZAzzFXCgnH5Y1sdtMTJZdLp5WeOjwgCWG/ZLu4wzxOFFzDkiPv9RDw6e5
+MNLtJrSp4hS5o2apKdbO4Ex83O4mJYnav/rEiDDCWU4T0lhv3hSKCpke6LcwsX+7
+liozp+aNmP0Ypwfi4hR3UUMP70+V1beFqW2JbVLz3lLLouHRgpCzla+PzzbEKs16
+jq77vG9kqZTCIzXoWaLljuitRlfJkO3vQ9hOv/8yAnkcAmowZrIBlyFg2KBzhunY
+mN2YvkUAEQEAAQAH/A7r4hDrnmzX3QU6FAzePlRB7niJtE2IEN8AufF05Q2PzKU/
+c1S72WjtqMAIAgYasDkOhfhcxanTneGuFVYggKT3eSDm1RFKpRjX22m0zKdwy67B
+Mu95V2Oklul6OCm8dO6+2fmkGxGqc4ZsKy+jQxtxK3HG9YxMC0dvA2v2C5N4TWi3
+Utc7zh//k6IbmaLd7F1d7DXt7Hn2Qsmo8I1rtgPE8grDToomTnRUodToyejEqKyI
+ORwsp8n8g2CSFaXSrEyU6HbFYXSxZealhQJGYLFOZdR0MzVtZQCn/7n+IHjupndC
+Nd2a8DVx3yQS3dAmvLzhFacZdjXi31wvj0moFOkEAOCz1E63SKNNksniQ11lRMJp
+gaov6Ux/zGLMstwTzNouI+Kr8/db0GlSAy1Z3UoAB4tFQXEApoX9A4AJ2KqQjqOX
+cZVULenfDZaxrbb9Lid7ZnTDXKVyGTWDF7ZHavHJ4981mCW17lU11zHBB9xMlx6p
+dhFvb0gdy0jSLaFMFr/JBAD0fz3RrhP7e6Xll2zdBqGthjC5S/IoKwwBgw6ri2yx
+LoxqBr2pl9PotJJ/JUMPhD/LxuTcOZtYjy8PKgm5jhnBDq3Ss0kNKAY1f5EkZG9a
+6I4iAX/NekqSyF+OgBfC9aCgS5RG8hYoOCbp8na5R3bgiuS8IzmVmm5OhZ4MDEwg
+nQP7BzmR0p5BahpZ8r3Ada7FcK+0ZLLRdLmOYF/yUrZ53SoYCZRzU/GmtQ7LkXBh
+Gjqied9Bs1MHdNUolq7GaexcjZmOWHEf6w9+9M4+vxtQq1nkIWqtaphewEmd5/nf
+EP3sIY0EAE3mmiLmHLqBju+UJKMNwFNeyMTqgcg50ISH8J9FRIkBJQQYAQIADwUC
+VLVl/QIbDAUJAeEzgAAKCRAHfXJeICfMMOHYCACFhInZA9uAM3TC44l+MrgMUJ3r
+W9izrO48WrdTsxR8WkSNbIxJoWnYxYuLyPb/shc9k65huw2SSDkj//0fRrI61FPH
+QNPSvz62WH+N2lasoUaoJjb2kQGhLOnFbJuevkyBylRz+hI/+8rJKcZOjQkmmK8H
+kk8qb5x/HMUc55H0g2qQAY0BpnJHgOOQ45Q6pk3G2/7Dbek5WJ6K1wUrFy51sNlG
+WE8pvgEx/UUZB+dYqCwtvX0nnBu1KNCmk2AkEcFK3YoliCxomdOxhFOv9AKjjojD
+yC65KJciPv2MikPS2fKOAg1R3LpMa8zDEtl4w3vckPQNrQNnYuUtfj6ZoCxv
+=fa+6
+-----END PGP PRIVATE KEY BLOCK-----') AS privkey) AS keys;
+
+username | decrypted_ssn 
+----------+---------------
+ Alice    | 123-45-6788
+ Bob      | 123-45-6799
+(2 rows)
+
+            </pre>
+<p class="p">如果用户使用口令创建一个密钥，用户可能必须在此处输入口令。
+              不过对于这个演示例子，口令为空。</p>
+</li>
+
+      </ol>
+
+    </div>
+
+    <div class="section" id="topic_th5_5bf_jr__section_kjt_3kr_bs">
+<h2 class="title sectiontitle">加密gpfdist连接</h2>
+      
+      <p class="p"><samp class="ph codeph">gpfdists</samp>协议是<samp class="ph codeph">gpfdist</samp>协议的一个安全版本，它能安全地标识文件
+        服务器和Greenplum数据库并且加密它们之间的通信。使用<samp class="ph codeph">gpfdists</samp>可以防止窃听和中间人攻击。
+        </p>
+
+      <p class="p"><samp class="ph codeph">gpfdists</samp>协议利用下列值得关注的特性实现客户端/服务器的SSL安全性：
+        </p>
+
+      <ul class="ul" id="topic_th5_5bf_jr__ul_yyk_vq4_kr">
+        <li class="li">要求客户端证书。</li>
+
+        <li class="li">不支持多语言证书。</li>
+
+        <li class="li">不支持证书撤销列表（CRL）。</li>
+
+        <li class="li">TLSv1协议被用于<samp class="ph codeph">TLS_RSA_WITH_AES_128_CBC_SHA</samp>加密算法。这些SSL参数不能被更改。
+          </li>
+
+        <li class="li">不支持SSL再协商。</li>
+
+        <li class="li">SSL忽略主机失配参数被设置为false。</li>
+
+        <li class="li">
+<samp class="ph codeph">gpfdist</samp>文件服务器（server.key）或Greenplum数据库（client.key）不支持含有口令
+          的私钥。</li>
+
+        <li class="li">为使用的操作系统颁发合适的证书是用户的责任。通常，支持将证书转换成所要求的格式，例如可使用
+         <a class="xref" href="http://www.commoncriteriaportal.org/products/?expand#ALL" target="_blank">https://www.sslshopper.com/ssl-converter.html</a>的SSL转换器。</li>
+
+      </ul>
+
+      <p class="p">用<samp class="ph codeph">--ssl</samp>选项启动的<samp class="ph codeph">gpfdist</samp>服务器只能用<samp class="ph codeph">gpfdists</samp>
+        协议通信。没有用 <samp class="ph codeph">--ssl</samp>选项启动的<samp class="ph codeph">gpfdist</samp>服务器只能用<samp class="ph codeph">gpfdist</samp>
+        协议通信。更多有关<samp class="ph codeph">gpfdist</samp>的细节请参考<em class="ph i">Greenplum数据库管理员指南</em>。</p>
+
+      <div class="p">有两种方式启用<samp class="ph codeph">gpfdists</samp>协议：<ul class="ul" id="topic_th5_5bf_jr__ul_xdc_ycd_lr">
+        <li class="li">用<samp class="ph codeph">--ssl</samp>选项运行<samp class="ph codeph">gpfdist</samp>，然后在<samp class="ph codeph">CREATE EXTERNAL TABLE</samp>
+          语句的<samp class="ph codeph">LOCATION</samp>子句中使用<samp class="ph codeph">gpfdists</samp>协议。</li>
+
+        <li class="li">在YAML控制文件中将SSL选项设置为true，然后用它来运行<samp class="ph codeph">gpload</samp>。运行的<samp class="ph codeph">gpload</samp>
+          会用<samp class="ph codeph">--ssl</samp>选项启动<samp class="ph codeph">gpfdist</samp>服务器，然后使用<samp class="ph codeph">gpfdists</samp>协议。</li>
+
+        </ul>
+</div>
+
+      <p class="p"> 在使用gpfdists时，下列客户端证书必须位于每个segment的<samp class="ph codeph">$PGDATA/gpfdists</samp>目录中：</p>
+
+      <ul class="ul" id="topic_th5_5bf_jr__ul_afc_bdd_lr">
+        <li class="li">客户端证书文件，<samp class="ph codeph">client.crt</samp>
+        </li>
+
+        <li class="li">客户端私钥文件，<samp class="ph codeph">client.key</samp>
+        </li>
+
+        <li class="li">受信证书发布机构，<samp class="ph codeph">root.crt</samp>
+        </li>
+
+      </ul>
+
+      <div class="note important">
+<span class="importanttitle">Important:</span> 重要：不要用口令保护私钥。服务器不会为私钥提示要求口令，并且数据装载会在要求
+        口令时失败报错。</div>
+
+      <p class="p">在使用带SSL的<samp class="ph codeph">gpload</samp>时，用户要在YAML控制文件中指定服务器证书的位置。在使用带SSL
+        的<samp class="ph codeph">gpfdist</samp>时，用户用--ssl选项指定服务器证书的位置。</p>
+
+      <div class="p">下面的例子展示了如何安全地装载数据到外部表中。这个例子从所有带<samp class="ph codeph">txt</samp>扩展名的文件使用
+        <samp class="ph codeph">gpfdists</samp>协议创建一个可读外部表<samp class="ph codeph">ext_expenses</samp>。这些文件被格式化
+        为用一个竖线（<samp class="ph codeph">|</samp>）作为列定界符，并且用空格表示空。<ol class="ol" id="topic_th5_5bf_jr__ol_wwy_j2d_lr">
+          <li class="li">在segment主机上用<samp class="ph codeph">--ssl</samp>选项运行<samp class="ph codeph">gpfdist</samp>。</li>
+
+          <li class="li">登入数据库并执行下列命令：<pre class="pre codeblock">
+=# CREATE EXTERNAL TABLE ext_expenses 
+   ( name text, date date, amount float4, category text, desc1 text )
+LOCATION ('gpfdists://etlhost-1:8081/*.txt', 'gpfdists://etlhost-2:8082/*.txt')
+FORMAT 'TEXT' ( DELIMITER '|' NULL ' ') ;
+</pre>
+</li>
+
+        </ol>
+</div>
+
+    </div>
+
+  </div>
+
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+<div class="fn">
+<a name="fntarg_1" href="#fnsrc_1"><sup>1</sup></a>  SHA2算法在OpenSSL 0.9.8版本中增加。在老版本中，pgcrypto会采用其内建代码。</div>
+<div class="fn">
+<a name="fntarg_2" href="#fnsrc_2"><sup>2</sup></a>  任何OpenSSL支持的算法都可以使用，那些需要显式提供密码的除外。</div>
+<div class="fn">
+<a name="fntarg_3" href="#fnsrc_3"><sup>3</sup></a>  AES算法在OpenSSL 0.9.7版本中增加。在老版本中，pgcrypto会采用其内建代码。</div>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

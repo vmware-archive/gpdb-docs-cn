@@ -1,0 +1,733 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpcheckperf |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpcheckperf has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpcheckperf
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    
+    <h1 class="title topictitle1">gpcheckperf</h1>
+
+    <div class="body">
+        <p class="p">验证指定主机的基准硬件性能。</p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock"><strong class="ph b">gpcheckperf</strong> <strong class="ph b">-d</strong> <var class="keyword varname">test_directory</var> [<strong class="ph b">-d</strong> <var class="keyword varname">test_directory</var> ...] 
+                    {<strong class="ph b">-f</strong> <var class="keyword varname">hostfile_gpcheckperf</var> | <strong class="ph b">- h</strong> <var class="keyword varname">hostname</var> [<strong class="ph b">-h</strong> <var class="keyword varname">hostname</var> ...]} 
+                    [<strong class="ph b">-r</strong> ds] [<strong class="ph b">-B</strong> <var class="keyword varname">block_size</var>] [<strong class="ph b">-S</strong> <var class="keyword varname">file_size</var>] [<strong class="ph b">-D</strong>] [<strong class="ph b">-v</strong>|<strong class="ph b">-V</strong>]
+                
+                <strong class="ph b">gpcheckperf</strong> <strong class="ph b">-d</strong> <var class="keyword varname">temp_directory</var>
+                    {<strong class="ph b">-f</strong> <var class="keyword varname">hostfile_gpchecknet</var> | <strong class="ph b">- h</strong> <var class="keyword varname">hostname</var> [<strong class="ph b">-h</strong> <var class="keyword varname">hostname</var> ...]} 
+                    [ <strong class="ph b">-r</strong> n|N|M [<strong class="ph b">--duration</strong> <var class="keyword varname">time</var>] [<strong class="ph b">--netperf</strong>] ] [<strong class="ph b">-D</strong>] [<strong class="ph b">-v</strong> | <strong class="ph b">-V</strong>]
+                
+                <strong class="ph b">gpcheckperf</strong> <strong class="ph b">-?</strong>
+                
+                <strong class="ph b">gpcheckperf</strong> <strong class="ph b">--version</strong></pre>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p"><samp class="ph codeph">gpcheckperf</samp>工具在指定的主机上启动会话并运行以下性能测试：
+            </p>
+
+            <ul class="ul">
+                <li class="li" id="topic1__jq141274">
+<strong class="ph b">磁盘I/O测试（dd测试）</strong> — 要测试逻辑磁盘或文件系统的顺序吞吐性能，
+                    该工具使用<strong class="ph b">dd</strong>命令，该命令是一个标准的UNIX工具。它记录花费多长时间在磁盘上读写一个
+                    大文件，并以兆字节（MB）每秒为单位计算磁盘I/O性能。默认情况下，用于测试的文件尺寸按照主机
+                    上的总随机访问内存（RAM）的两倍计算。这确保了测试是真正地测试磁盘I/O而不是使用内存缓存。
+                </li>
+
+                <li class="li" id="topic1__jq141275">
+<strong class="ph b">内存带宽测试（流）</strong> — 为了测试内存带宽，该工具使用STREAM基准程序来
+                    测量可持续的内存带宽（以MB/s为单位）。这测试用户的系统在不涉及CPU计算性能情况下是否受系统
+                    内存带宽的限制。在数据集较大的应用程序中（如在Greenplum数据库中），低内存带宽是一个主要的
+                    性能问题。如果内存带宽明显低于CPU的理论带宽，则会导致CPU花费大量的时间等待数据从系统内存到达。</li>
+
+                <li class="li" id="topic1__jq141279">
+<strong class="ph b">网络性能测试（gpnetbench*）</strong> — 为了测试网络性能（以及Greenplum
+                    数据库Interconnect的性能），该工具运行一种网络基准测试程序，该程序当前主机发送5秒钟的数据流
+                    到测试中包含的每台远程主机。数据被并行传输到每台远程主机，并以兆字节（MB）每秒报告最小、最大、
+                    平均和中位网络传输速率。如果汇总的传输速率比预期慢（小于100MB/s），则可以使用<samp class="ph codeph">-r n</samp>
+                    选项串行地运行该网络测试以获取每台主机的结果。要运行全矩阵带宽测试，用户可以指定<samp class="ph codeph">-r M</samp>，
+                    这将导致每台主机都发送和接收来自指定的每台其他主机的数据。该测试最适用于验证交换结构是否可以承受全矩阵负载。
+                </li>
+
+            </ul>
+
+            <p class="p">为了指定要测试的主机，请使用<samp class="ph codeph">-f</samp>选项指定包含主机名列表的文件，或使用
+                <samp class="ph codeph">-h</samp>选项在命令行上指名单个主机名。如果运行网络性能测试，主机文件中
+                的所有项必须是同一子网内的网络接口。如果用户的Segment主机具有在不同子网上配置的多个
+                网络接口，请为每个子网运行一次网络测试。
+            </p>
+
+            <p class="p">用户还必须指定至少一个测试目录（使用<samp class="ph codeph">-d</samp>）。运行<samp class="ph codeph">gpcheckperf</samp>
+                的用户必须具有对所有远程主机上指定测试目录的写入权限。对于磁盘I/O测试，测试目录应与用户的
+                Segment数据目录（主Segment和/或镜像Segment）相对应。对于内存带宽和网络测试，测试程序文件
+                需要临时目录。
+            </p>
+
+            <p class="p">在使用<samp class="ph codeph">gpcheckperf</samp>之前，用户必须在涉及性能测试的主机之间建立可信的主机设置。
+                用户可以使用<samp class="ph codeph">gpssh-exkeys</samp>工具更新已知主机文件并在主机之间交换公钥
+                （如果尚未这样做的话）。请注意，<samp class="ph codeph">gpcheckperf</samp>调用<samp class="ph codeph">gpssh</samp>
+                和<samp class="ph codeph">gpscp</samp>，这些Greenplum工具也必须在<samp class="ph codeph">$PATH</samp>中。</p>
+
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+            
+            <dl class="dl parml">
+                
+                    <dt class="dt pt dlterm">-B <var class="keyword varname">block_size</var>
+</dt>
+
+                    <dd class="dd pd">指定用于磁盘I/O测试的块大小（以KB或MB为单位）。缺省值是32KB，与Greenplum数据库页面大小相同。
+                        最大块大小是1 MB。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-d <var class="keyword varname">test_directory</var>
+</dt>
+
+                    <dd class="dd pd">对于磁盘I/O测试，指定要测试的文件系统目录位置。用户必须具有对性能测试中涉及的所有主机上
+                        测试目录的写入权限。用户可以多次使用<samp class="ph codeph">-d</samp>选项指定多个测试目录
+                        （例如，测试主数据目录和镜像数据目录的磁盘I/O）。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-d <var class="keyword varname">temp_directory</var>
+</dt>
+
+                    <dd class="dd pd">对于网络和流测试，指定单个目录，测试程序文件在测试期间将被复制到该目录。用户必须具有
+                        对测试中涉及的所有主机上该目录的写入权限。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-D（显示每台主机的结果）</dt>
+
+                    <dd class="dd pd">报告每个主机的磁盘I/O测试的性能结果。缺省情况下，仅报告具有最低和最高性能的主机的结果，
+                        以及所有主机的总体和平均性能。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--duration <var class="keyword varname">time</var>
+</dt>
+
+                    <dd class="dd pd">以秒（s）、分钟（m）、小时（h）或天数（d）指定网络测试的持续时间。默认值是15秒。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-f <var class="keyword varname">hostfile_gpcheckperf</var>
+</dt>
+
+                    <dd class="dd pd">对于磁盘I/O和流测试，请指定一个包含将参与性能测试的主机名的文件名称。主机名是必需的，
+                        用户可以选择指定每个主机的后补用户名和/或SSH端口号。主机文件的语法是每行一台主机，
+                        如下所示：
+                    </dd>
+
+                    <dd class="dd pd">
+                        <pre class="pre codeblock">[<var class="keyword varname">username</var>@]<var class="keyword varname">hostname</var>[:<var class="keyword varname">ssh_port</var>]</pre>
+
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-f <var class="keyword varname">hostfile_gpchecknet</var>
+</dt>
+
+                    <dd class="dd pd">对于网络性能测试，主机文件中的所有项都必须是同一子网内的主机地址。如果用户的Segment
+                        主机在不同子网上配置有多个网络接口，请为每个子网运行一次网络测试。例如（包含互连子网1
+                        的Segment主机地址名的主机文件）：
+                    </dd>
+
+                    <dd class="dd pd">
+                        <pre class="pre codeblock">sdw1-1
+                            sdw2-1
+                            sdw3-1</pre>
+
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-h <var class="keyword varname">hostname</var>
+</dt>
+
+                    <dd class="dd pd">指定将参与性能测试的单个主机名（或主机地址）。用户可以多次使用<samp class="ph codeph">-h</samp>
+                        选项来指定多个主机名。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--netperf</dt>
+
+                    <dd class="dd pd">指定应该用<samp class="ph codeph">netperf</samp>二进制文件来执行网络测试，而不是Greenplum网络测试。
+                        要使用此选项，用户必须从<a class="xref" href="http://www.netperf.org" target="_blank">http://www.netperf.org</a>下载
+                        <samp class="ph codeph">netperf</samp>并且安装到所有Greenplum主机（Master和Segment）的
+                        <samp class="ph codeph">$GPHOME/bin/lib</samp>目录中。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-r ds{n|N|M}</dt>
+
+                    <dd class="dd pd">指定要运行的性能测试，默认是<samp class="ph codeph">dsn</samp>：
+                        <ul class="ul" id="topic1__ul_jjn_vvt_mo">
+                            <li class="li" id="topic1__jq141318">磁盘I/O测试（<samp class="ph codeph">d</samp>）</li>
+
+                            <li class="li" id="topic1__jq141319">流测试（<samp class="ph codeph">s</samp>）</li>
+
+                            <li class="li" id="topic1__jq141320">网络性能测试，串行（<samp class="ph codeph">n</samp>）、
+                                并行（<samp class="ph codeph">N</samp>）或全矩阵（<samp class="ph codeph">M</samp>）模式。
+                                可选的<samp class="ph codeph">--duration</samp>选项指定了运行网络测试的时间
+                                （以秒为单位）。要使用并行（<samp class="ph codeph">N</samp>）模式，用户必须在
+                                <var class="keyword varname">偶数</var>台主机上运行测试。
+                                <p class="p">如果用户宁愿使用netperf<samp class="ph codeph">netperf</samp>（<a class="xref" href="http://www.netperf.org" target="_blank">http://www.netperf.org</a>）而不是Greenplum网络测试，用户必须下载它并安装到所有Greenplum主机
+                                    （Master和Segment）的<samp class="ph codeph">$GPHOME/bin/lib</samp>目录中。
+                                    然后，用户可以指定可选的<samp class="ph codeph">--netperf</samp>选项来使用
+                                    <samp class="ph codeph">netperf</samp>二进制文件而不是默认的<samp class="ph codeph">gpnetbench*</samp>工具。
+                                </p>
+</li>
+
+                        </ul>
+</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-S <var class="keyword varname">file_size</var>
+</dt>
+
+                    <dd class="dd pd">指定用于<samp class="ph codeph">-d</samp>所指定的所有目录的磁盘I/O测试的总文件尺寸。
+                        <var class="keyword varname">file_size</var>应该等于主机上总RAM的两倍。如果未指定，则默认值是
+                        在执行<samp class="ph codeph">gpcheckperf</samp>的主机上的总RAM的两倍，这确保了测试是真正地
+                        测试磁盘I/O而不是使用内存缓存。用户可以以KB、MB或GB为单位指定尺寸。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-v（详细模式）| -V（非常详细模式）</dt>
+
+                    <dd class="dd pd">详细（Verbose）模式显示性能测试运行时的进度和状态信息。非常详细（Very Verbose）
+                        模式显示该工具生成的所有输出消息。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--version</dt>
+
+                    <dd class="dd pd">显示该工具的版本。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-?（帮助）</dt>
+
+                    <dd class="dd pd">显示在线帮助。</dd>
+
+                
+            </dl>
+
+        </div>
+
+        <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">示例</h2>
+            
+            <p class="p">使用<var class="keyword varname">/data1</var>和<var class="keyword varname">/data2</var>作为测试目录在文件
+                <var class="keyword varname">host_file</var>中的所有主机上运行磁盘I/O和内存带宽测试：</p>
+
+            <pre class="pre codeblock">$ gpcheckperf -f hostfile_gpcheckperf -d /data1 -d /data2 -r ds</pre>
+
+            <p class="p">在名为<var class="keyword varname">sdw1</var>和<var class="keyword varname">sdw2 </var>的主机上只使用测试目录
+                <var class="keyword varname">/data1</var>运行磁盘I/O测试。显示单个主机结果并以详细模式运行：
+            </p>
+
+            <pre class="pre codeblock">$ gpcheckperf -h sdw1 -h sdw2 -d /data1 -r d -D -v</pre>
+
+            <p class="p">使用测试目录<var class="keyword varname">/tmp,</var>运行并行网络测试，其中<var class="keyword varname">hostfile_gpcheck_ic*</var>
+                指定同一Interconnect子网内的所有网络接口的主机地址名称：
+            </p>
+
+            <pre class="pre codeblock">$ gpcheckperf -f hostfile_gpchecknet_ic1 -r N -d /tmp
+                $ gpcheckperf -f hostfile_gpchecknet_ic2 -r N -d /tmp</pre>
+
+            <p class="p">运行与上面相同的测试，但使用<samp class="ph codeph">netperf</samp>而不是Greenplum网络测试
+                （注意，<samp class="ph codeph">netperf</samp>必须安装在所有Greenplum主机上的
+                <samp class="ph codeph">$GPHOME/bin/lib</samp>中）：
+            </p>
+
+            <pre class="pre codeblock">$ gpcheckperf -f hostfile_gpchecknet_ic1 -r N --netperf -d /tmp
+                $ gpcheckperf -f hostfile_gpchecknet_ic2 -r N --netperf -d /tmp</pre>
+
+        </div>
+
+        <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">另见</h2>
+            
+            <p class="p"><samp class="ph codeph"><a class="xref" href="gpssh.html#topic1">gpssh</a></samp>、
+                <samp class="ph codeph"><a class="xref" href="gpscp.html#topic1">gpscp</a></samp>、<samp class="ph codeph"><a class="xref" href="gpcheck.html#topic1">gpcheck</a></samp></p>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      createdb |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_client_utilities x6-0_utility_guide_client_utilities_createdb has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    createdb
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    <h1 class="title topictitle1">createdb</h1>
+
+    <div class="body">
+        <p class="p" id="topic1__client_util_desc">创建一个新的数据库。</p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock" id="topic1__client_util_synopsis"><strong class="ph b">createdb</strong> [<var class="keyword varname">connection-option</var> ...] [<var class="keyword varname">option</var> ...] [<var class="keyword varname">dbname</var> ['<var class="keyword varname">description</var>']]
+
+<strong class="ph b">createdb</strong> <strong class="ph b">-? | --help</strong>
+
+<strong class="ph b">createdb</strong> <strong class="ph b">-V | --version</strong></pre>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p"><samp class="ph codeph">createdb</samp>在Greenplum数据库系统中创建一个新数据库。
+            </p>
+
+            <p class="p">通常，执行此命令的数据库用户将成为新数据库的所有者。
+                但是，如果执行用户具有适当的特权，则可以通过<samp class="ph codeph">-O</samp>选项指定其他所有者。
+            </p>
+
+            <p class="p"><samp class="ph codeph">createdb</samp>是SQL命令<samp class="ph codeph"><a class="xref" href="../../ref_guide/sql_commands/CREATE_DATABASE.html#topic1">CREATE DATABASE</a></samp>的包装。
+            </p>
+
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+            
+            <dl class="dl parml">
+                
+                    <dt class="dt pt dlterm">
+                        <var class="keyword varname">dbname</var>
+                    </dt>
+
+                    <dd class="dd pd">要创建的数据库的名称。
+                        该名称在Greenplum系统中的所有其他数据库中必须唯一。
+                        如果未指定，则从环境变量<samp class="ph codeph">PGDATABASE</samp>中读取，然后从<samp class="ph codeph">PGUSER</samp>中读取，或者默认为当前系统用户。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">
+                        <var class="keyword varname">description</var>
+                    </dt>
+
+                    <dd class="dd pd">与新创建的数据库关联的注释。
+                        包含空格的说明必须用引号引起来。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-D <var class="keyword varname">tablespace</var> | --tablespace=<var class="keyword varname">tablespace</var>
+                    </dt>
+
+                    <dd class="dd pd">指定数据库的默认表空间。（此名称作为双引号标识符处理。）
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-e echo</dt>
+
+                    <dd class="dd pd">回显<samp class="ph codeph">createdb</samp>生成并发送到服务器的命令。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-E <var class="keyword varname">encoding</var> | --encoding <var class="keyword varname">encoding</var>
+                    </dt>
+
+                    <dd class="dd pd">在新数据库中使用的字符集编码。
+                        指定字符串常量（例如<samp class="ph codeph">'UTF8'</samp>），整数编码数字或<samp class="ph codeph">DEFAULT</samp>以使用默认编码。
+                        <span class="ph">有关支持的字符集的信息，请参阅《Greenplum数据库参考指南》。</span>
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-l <var class="keyword varname">locale</var> | --locale <var class="keyword varname">locale</var>
+                    </dt>
+
+                    <dd class="dd pd">指定此数据库中要使用的语言环境。
+                        这等效于同时指定<samp class="ph codeph">--lc-collate</samp>和<samp class="ph codeph">--lc-ctype</samp>。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--lc-collate <var class="keyword varname">locale</var>
+                    </dt>
+
+                    <dd class="dd pd">指定要在此数据库中使用的<samp class="ph codeph">LC_COLLATE</samp>设置。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--lc-ctype <var class="keyword varname">locale</var>
+                    </dt>
+
+                    <dd class="dd pd">指定要在此数据库中使用的LC_CTYPE设置。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--maintenance-db=<var class="keyword varname">dbname</var>
+                    </dt>
+
+                    <dd class="dd pd">指定在创建新数据库时要连接的数据库的名称。
+                        如果未指定，将使用<samp class="ph codeph">postgres</samp>数据库。
+                        如果不存在（或者它是正在创建的新数据库的名称），将使用<samp class="ph codeph">template1</samp>。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-O <var class="keyword varname">owner</var> | --owner=<var class="keyword varname">owner</var>
+                    </dt>
+
+                    <dd class="dd pd">拥有新数据库的数据库用户的名称。
+                        默认为执行此命令的用户。
+                        （此名称作为双引号标识符处理。）
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-T <var class="keyword varname">template</var> | --template=<var class="keyword varname">template</var>
+                    </dt>
+
+                    <dd class="dd pd">从中创建新数据库的模板的名称。
+                        默认为<samp class="ph codeph">template1</samp>。
+                        （此名称作为双引号标识符处理。）
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-V | --version</dt>
+
+                    <dd class="dd pd">打印<samp class="ph codeph">createdb</samp>版本并退出。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-? | --help</dt>
+
+                    <dd class="dd pd">显示有关<samp class="ph codeph">createdb</samp>命令行参数的帮助，然后退出。
+                    </dd>
+
+                
+            </dl>
+
+            <p class="p">选项<samp class="ph codeph">-D</samp>，<samp class="ph codeph">-l</samp>，<samp class="ph codeph">-E</samp>，<samp class="ph codeph">-O</samp>和<samp class="ph codeph">-T</samp>对应于基础SQL命令<samp class="ph codeph">CREATE DATABASE</samp>的选项。
+                有关它们的更多信息，请参见<span class="ph"><samp class="ph codeph"><a class="xref" href="../../ref_guide/sql_commands/CREATE_DATABASE.html#topic1">CREATE DATABASE</a></samp></span>。
+                
+                for more information about them.
+            </p>
+
+            <div class="sectiondiv">
+                <strong class="ph b">连接选项</strong>
+                <dl class="dl parml">
+                    
+                        <dt class="dt pt dlterm">-h <var class="keyword varname">host</var> | --host=<var class="keyword varname">host</var>
+                        </dt>
+
+                        <dd class="dd pd">运行Greenplum master数据库服务器的计算机的主机名。
+                            如果未指定，则从环境变量<samp class="ph codeph">PGHOST</samp>读取或默认为localhost。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-p <var class="keyword varname">port</var> | --port=<var class="keyword varname">port</var>
+                        </dt>
+
+                        <dd class="dd pd">Greenplum master数据库服务器正在侦听连接的TCP端口。
+                            如果未指定，则从环境变量<samp class="ph codeph">PGPORT</samp>读取或默认为5432。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-U <var class="keyword varname">username</var> | --username=<var class="keyword varname">username</var>
+                        </dt>
+
+                        <dd class="dd pd">要用作连接的数据库角色名称。
+                            如果未指定，则从环境变量<samp class="ph codeph">PGUSER</samp>读取或默认为当前系统角色名称。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-w | --no-password</dt>
+
+                        <dd class="dd pd">不发出密码提示。
+                            如果服务器要求密码验证，而其他方式（例如<samp class="ph codeph">.pgpass</samp>文件）无法使用密码，则连接尝试将失败。
+                            此选项在没有用户输入密码的批处理作业和脚本中很有用。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-W | --password</dt>
+
+                        <dd class="dd pd">强制输入密码提示。</dd>
+
+                    
+                </dl>
+
+            </div>
+        </div>
+
+        <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">示例</h2>
+            
+            <p class="p">使用默认选项创建数据库<samp class="ph codeph">test</samp>：
+            </p>
+
+            <pre class="pre codeblock">createdb test</pre>
+
+            <p class="p">使用主机<samp class="ph codeph">gpmaster</samp>上的Greenplum master（端口<samp class="ph codeph">54321</samp>）并使用<samp class="ph codeph">LATIN1</samp>编码方案来创建数据库<samp class="ph codeph">demo</samp>：
+            </p>
+
+            <pre class="pre codeblock">createdb -p 54321 -h gpmaster -E LATIN1 demo</pre>
+
+        </div>
+
+        <div class="section" id="topic1__section7">
+<h2 class="title sectiontitle">另见</h2>
+            
+            <p class="p">
+                
+                <span class="ph">
+                    <samp class="ph codeph">
+                        <a class="xref" href="../../ref_guide/sql_commands/CREATE_DATABASE.html#topic1">CREATE DATABASE</a>
+                    </samp>
+                    ,
+                    <samp class="ph codeph">
+                        <a class="xref" href="dropdb.html#topic1">dropdb</a>
+                    </samp>
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

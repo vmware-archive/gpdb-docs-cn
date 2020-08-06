@@ -1,0 +1,395 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      读取HBase表数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_hbase_pxf has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    读取HBase表数据
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#prereq">&#20808;&#20915;&#26465;&#20214;</a></li>
+<li><a href="#hbase_primer">HBase&#20837;&#38376;</a></li>
+<li><a href="#hbase_shell">HBase Shell</a></li>
+<li><a href="#syntax3">&#26597;&#35810;&#22806;&#37096;HBase&#25968;&#25454;</a></li>
+<li><a href="#datatypemapping">&#25968;&#25454;&#31867;&#22411;&#26144;&#23556;</a></li>
+<li><a href="#columnmapping">&#21015;&#26144;&#23556;</a></li>
+<li><a href="#rowkey">&#34892;&#38190;</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>Apache HBase是Hadoop上的分布式、版本化的非关系型数据库。</p>
+
+<p>PXF HBase连接器读取存储在HBase表中的数据。HBase连接器支持过滤器下推。</p>
+
+<p>本节介绍如何使用PXF HBase连接器</p>
+
+<h2 id="先决条件"><a id="prereq"></a>先决条件</h2>
+
+<p>使用HBase表数据前，请确保您已满足：</p>
+
+<ul>
+<li>将 <code>$GPHOME/pxf/lib/pxf-hbase-*.jar</code> 复制到HBase集群中的每个节点，并且该PXF JAR文件位于 <code>$HBASE_CLASSPATH</code> 中。 PXF HBase 连接器需要此配置才能支持过滤器下推。</li>
+<li>满足PXF Hadoop <a href="/6-0/pxf/access_hdfs.html#hadoop_prereq">先决条件</a>.</li>
+</ul>
+
+<h2 id="hbase入门"><a id="hbase_primer"></a>HBase入门</h2>
+
+<p>本主题假设您对以下HBase概念有基本的了解：</p>
+
+<ul>
+<li>HBase 列包含两个组件：列簇和列限定词。 这些组件由冒号 <code>:</code> 分隔， &lt;column-family&gt;:&lt;column-qualifier&gt;</li>
+<li>HBase 行由一个行键和一个或多个列值组成。 行键是表行的唯一标识符</li>
+<li>HBase 表是由具有一个或多个列的数据行组成的多维映射。 创建HBase表时，可以指定一组完整的列簇</li>
+<li>HBase 单元由行(列簇, 列限定词, 列值)和时间戳组成。 给定单元格中的列值和时间戳表示该值的版本</li>
+</ul>
+
+<p>有关HBase的详细信息，请参阅<a href="http://hbase.apache.org/book.html">Apache HBase Reference Guide</a>。</p>
+
+<h2 id="hbase-shell"><a id="hbase_shell"></a>HBase Shell</h2>
+
+<p>HBase shell 是一个类似 <code>psql</code> 的子系统。 要启动HBase shell：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hbase shell
+&lt;hbase output&gt;
+hbase<span class="o">(</span>main<span class="o">)</span>:001:0&gt;
+</code></pre>
+
+<p>HBase默认的命名空间为 <code>default</code>。</p>
+
+<h3 id="示例:-创建一个hbase表"><a id="hbaseshell_example" class="no-quick-link"></a>示例: 创建一个HBase表</h3>
+
+<p>创建一个示例HBase表。</p>
+
+<ol>
+<li><p>在 <code>default</code> 命名空间中创建一个名为 <code>order_info</code> 的HBase表。 <code>order_info</code> 具有两个列簇: <code>product</code> 和 <code>shipping_info</code>：</p>
+<pre class="highlight plaintext"><code>hbase(main):&gt; create 'order_info', 'product', 'shipping_info'
+</code></pre></li>
+<li><p><code>order_info</code> <code>product</code> 列簇具有名为 <code>name</code> 和 <code>location</code> 的列标识符。 <code>shipping_info</code> 列簇具有名为 <code>state</code> 和 <code>zipcode</code> 的列标识符。 将一些数据添加到 <code>order_info</code> 表中：</p>
+<pre class="highlight plaintext"><code>put 'order_info', '1', 'product:name', 'tennis racquet'
+put 'order_info', '1', 'product:location', 'out of stock'
+put 'order_info', '1', 'shipping_info:state', 'CA'
+put 'order_info', '1', 'shipping_info:zipcode', '12345'
+put 'order_info', '2', 'product:name', 'soccer ball'
+put 'order_info', '2', 'product:location', 'on floor'
+put 'order_info', '2', 'shipping_info:state', 'CO'
+put 'order_info', '2', 'shipping_info:zipcode', '56789'
+put 'order_info', '3', 'product:name', 'snorkel set'
+put 'order_info', '3', 'product:location', 'warehouse'
+put 'order_info', '3', 'shipping_info:state', 'OH'
+put 'order_info', '3', 'shipping_info:zipcode', '34567'
+</code></pre>
+
+<p>在本主题后面的示例中，您将通过PXF直接访问 <code>orders_info</code> HBase 表。</p></li>
+<li><p>显示 <code>order_info</code> 表的内容：</p>
+<pre class="highlight plaintext"><code>hbase(main):&gt; scan 'order_info'
+ROW     COLUMN+CELL                                               
+ 1      column=product:location, timestamp=1499074825516, value=out of stock                                                
+ 1      column=product:name, timestamp=1499074825491, value=tennis racquet                                                  
+ 1      column=shipping_info:state, timestamp=1499074825531, value=CA                                                       
+ 1      column=shipping_info:zipcode, timestamp=1499074825548, value=12345                                                  
+ 2      column=product:location, timestamp=1499074825573, value=on floor    
+ ... 
+3 row(s) in 0.0400 seconds                                         
+</code></pre></li>
+</ol>
+
+<h2 id="查询外部hbase数据"><a id="syntax3"></a>查询外部HBase数据</h2>
+
+<p>PXF HBase 连接器支持一个名为的 <code>HBase</code> 的配置文件。</p>
+
+<p>使用以下语法创建引用HBase表的Greenplum数据库外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;hbase-table-name&gt;?PROFILE=HBase'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="p">);</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> 命令中HBase连接器使用的特定关键字和值见下表描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;hbase&#8209;table&#8209;name&gt;</td>
+<td>HBase表的名称</td>
+</tr>
+<tr>
+<td>PROFILE</td>
+<td><code>PROFILE</code> 关键字必须指定为 <code>HBase</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td><code>FORMAT</code> 子句必须指定为 <code>&#39;CUSTOM&#39; (FORMATTER=&#39;pxfwritable_import&#39;)</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="数据类型映射"><a id="datatypemapping"></a>数据类型映射</h2>
+
+<p>HBase是基于字节的; 它将所有数据类型存储为字节数组。 要在Greenplum数据库中表示HBase数据，请为Greenplum数据库列选择与HBase列标识符值的底层内容匹配的数据类型。</p>
+
+<p><strong>注意</strong>: PXF不支持复杂HBase对象</p>
+
+<h2 id="列映射"><a id="columnmapping"></a>列映射</h2>
+
+<p>您可以创建一个引用HBase表定义中全部或部分列标识符的Greenplum数据库外部表。PXF支持Greenplum数据库表列和HBase表列标识符之间的直接或间接映射。</p>
+
+<h3 id="直接映射"><a id="directmapping" class="no-quick-link"></a>直接映射</h3>
+
+<p>当您使用直接映射将Greenplum数据库外部表的列名映射到HBase标识符时，您可以将列簇限定的HBase标识符名称指定为带引号的值。 PXF HBase连接器在读取表数据时将这些列名按原样传递给HBase。</p>
+
+<p>例如, 创建一个访问以下数据的Greenplum数据库外部表：</p>
+
+<ul>
+<li>  列簇 <code>product</code> 中的 <code>name</code> 标识符</li>
+<li>  列簇 <code>shipping_info</code> 中的 <code>zipcode</code> 标识符</li>
+</ul>
+
+<p>从此前您在<a href="#hbaseshell_example">示例: 创建一个HBase表</a> 创建的 <code>order_info</code> HBase 表中访问数据，使用以下 <code>CREATE EXTERNAL TABLE</code> 语法：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">orderinfo_hbase</span> <span class="p">(</span><span class="nv">"product:name"</span> <span class="n">varchar</span><span class="p">,</span> <span class="nv">"shipping_info:zipcode"</span> <span class="n">int</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://order_info?PROFILE=HBase'</span><span class="p">)</span>                                     
+    <span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="p">);</span>
+</code></pre>
+
+<h3 id="通过查找表间接映射"><a id="indirectmappingvialookuptable" class="no-quick-link"></a>通过查找表间接映射</h3>
+
+<p>当您使用间接映射将Greenplum数据库外部表列名映射到HBase标识符时，您可以在HBase中创建的查找表中指定映射。 查找表将 &lt;column-family&gt;:&lt;column-qualifier&gt; 映射到在创建Greenplum数据库外部表时指定的列名别名。</p>
+
+<p>您必须将HBase PXF查找表命名为 <code>pxflookup</code> 。 并且您必须使用一个名为 <code>mapping</code> 的单列簇定义此表。例如:</p>
+<pre class="highlight plaintext"><code>hbase(main):&gt; create 'pxflookup', 'mapping'
+</code></pre>
+
+<p>尽管直接映射既快速又直观， 使用间接映射可以让您为HBase &lt;column-family&gt;:&lt;column-qualifier&gt; 名称创建一个较短的，基于字符的别名。由于以下原因，这可以更好的使HBase标识符与Greenplum数据库保持一致:</p>
+
+<ul>
+<li>  HBase 标识符可能非常长。 Greenplum数据库列名大小限制为63各字符。</li>
+<li>  HBase 标识符名称可以包含二进制或不可打印的字符。 Greenplum数据库列名称是基于字符的。</li>
+</ul>
+
+<p>填充 <code>pxflookup</code> HBase表时, 向表中添加行, 以便:</p>
+
+<ul>
+<li>行键指定为HBase表名</li>
+<li><code>mapping</code> 列簇标识符定义为Greenplum数据库列名, 值标识为需要创建别名的HBase <code>&lt;column-family&gt;:&lt;column-qualifier&gt;</code></li>
+</ul>
+
+<p>例如，要在 <code>order_info</code> 表上使用间接映射，将以下条目添加到 <code>pxflookup</code> 表：</p>
+<pre class="highlight plaintext"><code>hbase(main):&gt; put 'pxflookup', 'order_info', 'mapping:pname', 'product:name'
+hbase(main):&gt; put 'pxflookup', 'order_info', 'mapping:zip', 'shipping_info:zipcode'
+</code></pre>
+
+<p>使用以下 <code>CREATE EXTERNAL TABLE</code> 语法创建Greenplum数据库外部表</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">orderinfo_map</span> <span class="p">(</span><span class="n">pname</span> <span class="n">varchar</span><span class="p">,</span> <span class="n">zip</span> <span class="n">int</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://order_info?PROFILE=HBase'</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="行键"><a id="rowkey"></a>行键</h2>
+
+<p>HBase 表行键是表行的唯一标识符。 PXF 以特殊方式处理行键。</p>
+
+<p>要在Greenplum数据库外部表查询中使用行键，请使用名为 <code>recordkey</code> 的PXF保留列定义外部表。 <code>recordkey</code> 列名指示PXF返回每一行的HBase表记录键。</p>
+
+<p>使用Greenplum数据库数据类型<code>bytea</code> 定义 <code>recordkey</code></p>
+
+<p>例如:</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">recordkey</span> <span class="n">bytea</span><span class="p">,</span> <span class="p">...</span> <span class="p">)</span> 
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;hbase_table_name&gt;?PROFILE=HBase'</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="p">);</span>
+</code></pre>
+
+<p>在您创建外部表之后，您可以在 <code>WHERE</code> 子句中使用 <code>recordkey</code> 在一系列键值上过滤HBase表</p>
+
+<p><strong>注意</strong>: 若要在 <code>recordkey</code> 上启用过滤器下推，请将字段定义为 <code>text</code></p>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

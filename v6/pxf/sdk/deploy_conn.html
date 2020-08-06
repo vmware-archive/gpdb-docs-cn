@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Deploying a Connector |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_sdk x6-0_pxf_sdk_deploy_conn has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    Deploying a Connector
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#runtime_depends">Identifying Connector Run-Time Dependencies</a></li>
+<li><a href="#deploy_depends">Registering Connector Run-Time Dependencies</a></li>
+<li><a href="#deploy_to_cluster">Deploying to the Greenplum Database Cluster</a></li>
+<li><a href="#verify_deploy">Verifying Connector Deployment</a></li>
+<li>
+<a href="#example">Example: Deploying the Demo Connector</a><ul>
+<li><a href="#about_connector">About the Demo Connector</a></li>
+<li><a href="#deploy_prereqs">Prerequisites</a></li>
+<li><a href="#procedure">Procedure</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>The Greenplum Database administrator deploys a connector to a Greenplum Database cluster by first registering the connector and its dependencies, and then synchronizing the PXF configuration files across the Greenplum Database cluster. After deploying the connector, the administrator must restart the PXF agent.</p>
+
+<h2 id="-identifying-connector-run-time-dependencies"><a id="runtime_depends"></a> Identifying Connector Run-Time Dependencies</h2>
+
+<p>You must identify your connector&rsquo;s run-time dependencies on other JAR files.</p>
+
+<p>You must also identify any dependencies that your connector has on third-party commands or other components on the system. These commands and components must be installed on all Greenplum Database segment hosts. Any programs on which your connector depends must be executable by the <code>gpadmin</code> operating system user.</p>
+
+<h2 id="registering-connector-run-time-dependencies"><a id="deploy_depends"></a>Registering Connector Run-Time Dependencies</h2>
+
+<p>The PXF agent determines certain runtime dependencies from files found in the <code>$GPHOME/pxf/conf</code>, <code>$PXF_CONF/conf</code>, and <code>$PXF_CONF/lib</code> directories. Only the Greenplum Database administrative user can register PXF dependencies.</p>
+
+<p>The <code>$GPHOME/pxf/conf/pxf-private.classpath</code> configuration file identifies the runtime dependencies for the PXF agent itself. This file also identifies the runtime dependencies for the PXF built-in HDFS, Hive, and HBase connectors.</p>
+
+<p>The Greenplum Database administrator registers a third-party connector and its runtime dependencies by copying the files to the <code>$PXF_CONF/lib</code> directory, synchronizing the PXF configuration across the cluster, and then restarting the PXF agent on each segment host.</p>
+
+<h2 id="deploying-to-the-greenplum-database-cluster"><a id="deploy_to_cluster"></a>Deploying to the Greenplum Database Cluster</h2>
+
+<p>When a Greenplum Database administrator deploys a new connector, they:</p>
+
+<ul>
+<li>Copy the connector JAR file and the (JAR) files of any dependencies to the Greenplum Database master host</li>
+<li>Synchronize the PXF configuration to each Greenplum Database segment host</li>
+<li>Restart the PXF agent on each host</li>
+</ul>
+
+<p>Only the Greenplum Database administrative user can restart the PXF agent. </p>
+
+<p>For example, if <code>PXF_CONF=/usr/local/greenplum-pxf</code>, these commands deploy the connector across the cluster:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>cp my-connector.jar <span class="nv">$PXF_CONF</span>/lib/
+<span class="gp">gpadmin@gpmaster$ </span>cp connector-dependency.jar <span class="nv">$PXF_CONF</span>/lib/
+<span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre>
+
+<p>Restart PXF on each Greenplum Database segment host as described in <a href="/6-0/pxf/cfginitstart_pxf.html#restart_pxf">Restarting PXF</a>.</p>
+
+<p>The administrator must also install any third-party commands or other components used by the connector on all Greenplum Database segment hosts and ensure that these programs are executable by the <code>gpadmin</code> operating system user.</p>
+
+<h2 id="verifying-connector-deployment"><a id="verify_deploy"></a>Verifying Connector Deployment</h2>
+
+<p>To verify that you deployed a connector successfully, you create a Greenplum Database external table and invoke <code>SELECT</code> and/or <code>INSERT</code> commands on the table to test read and write operations on the external data source.</p>
+
+<p>The Greenplum Database end user accesses an external data source by invoking a <code>CREATE EXTERNAL TABLE</code> command specifying the <code>pxf</code> protocol. (Refer to the <a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> reference page for more about this Greenplum Database command.)</p>
+
+<p>The <code>LOCATION</code> clause of a <code>CREATE EXTERNAL TABLE</code> command specifying the <code>pxf</code> protocol is a URI that specifies the external data source and the location, path to, or name of the data. The query portion of the <code>pxf</code> protocol URI, introduced by a question mark (?), must include a profile name or the fully-qualified plug-in class names of the connector. </p>
+
+<p><a href="/6-0/pxf/using_pxf.html#creatinganexternaltable">Creating an External Table using PXF</a> in the PXF end user documentation details how to create an external table when specifying a profile name. The syntax for a <code>CREATE EXTERNAL TABLE</code> command that specifies the Java plug-in class names in the <code>LOCATION</code> clause follows:</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="p">[</span><span class="n">WRITABLE</span><span class="p">]</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+        <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span><span class="p">(</span><span class="s1">'pxf://&lt;path-to-data&gt;?[FRAGMENTER=&lt;fragmenter_class&gt;
+        &amp;]ACCESSOR=&lt;accessor_class&gt;
+        &amp;RESOLVER=&lt;resolver_class&gt;
+        [&amp;&lt;custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'[TEXT|CSV|CUSTOM]'</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">formatting</span><span class="o">-</span><span class="n">properties</span><span class="o">&gt;</span><span class="p">);</span>
+</code></pre>
+
+<p>The <code>LOCATION</code> clause identifies the Java plug-in classes that PXF will use to split (<code>FRAGMENTER</code>), read and/or write (<code>ACCESSOR</code>), and deserialize/serialize (<code>RESOLVER</code>) the external data.</p>
+
+<h2 id="example:-deploying-the-demo-connector"><a id="example"></a>Example: Deploying the Demo Connector</h2>
+
+<p>In this exercise you deploy the <em>Demo</em> connector, its dependencies, and configuration files and verify the deploy operation.</p>
+
+<h3 id="about-the-demo-connector"><a id="about_connector"></a>About the Demo Connector</h3>
+
+<p>Recall that your copy of the <em>Demo</em> connector resides in the <code>org.greenplum.pxf.example.demo</code> package.</p>
+
+<h4 id="plug-in-classes"><a id="demo_classes"></a>Plug-in Classes</h4>
+
+<p>The <em>Demo</em> connector read operation uses the following plug-in classes:</p>
+
+<ul>
+<li>Fragmenter - <code>org.greenplum.pxf.example.demo.DemoFragmenter</code></li>
+<li>Read Accessor - <code>org.greenplum.pxf.example.demo.DemoAccessor</code></li>
+<li>Read Resolver - <code>org.greenplum.pxf.example.demo.DemoTextResolver</code></li>
+</ul>
+
+<p>The <em>Demo</em> connector write operation uses the following plug-in classes:</p>
+
+<ul>
+<li>Write Accessor - <code>org.greenplum.pxf.example.demo.DemoFileWritableAccessor</code></li>
+<li>Write Resolver - <code>org.greenplum.pxf.example.demo.DemoTextResolver</code></li>
+</ul>
+
+<p>Notice that the <em>Demo</em> connector read and write operations share the same <em>Resolver</em> class but use different <em>Accessor</em> classes.</p>
+
+<h4 id="run-time-dependencies"><a id="demo_depends"></a>Run-Time Dependencies</h4>
+
+<p>The <em>Demo</em> connector has a run-time dependency on the Apache Commons Logging JAR, <code>commons-logging.jar</code>. This JAR file is installed with PXF and should already be specified in the <code>pxf-private.classpath</code> file.</p>
+
+<h3 id="prerequisites"><a id="deploy_prereqs"></a>Prerequisites</h3>
+
+<p>Before attempting this exercise, ensure that you have:</p>
+
+<ul>
+<li>Built the <em>Demo</em> connector as described in <a href="/6-0/pxf/sdk/build_conn.html#demo_buildjar">Example: Building the Demo Connector JAR File</a>.</li>
+<li>Administrative access to a running Greenplum Database cluster.</li>
+<li>Initialized, configured, and started the PXF agent on each Greenplum Database segment host as described in <a href="https://gpdb.docs.pivotal.io/latest/pxf/instcfg_pxf.html">Configuring PXF</a>.</li>
+<li>Enabled the PXF extension in the database, and optionally granted specific Greenplum Database roles access to the <code>pxf</code> protocol; <a href="https://gpdb.docs.pivotal.io/latest/pxf/using_pxf.html#enable-pxf-ext">Enabling/Disabling PXF</a> and <a href="https://gpdb.docs.pivotal.io/latest/pxf/using_pxf.html#access_pxf">Granting Access to PXF</a> describe these procedures.</li>
+</ul>
+
+<h3 id="procedure"><a id="procedure"></a>Procedure</h3>
+
+<p>Perform the following procedure to deploy the <em>Demo</em> connector and to verify that you deployed the connector successfully:</p>
+
+<ol>
+<li><p>Log in to the Greenplum Database master node as an administrative user:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>ssh gpadmin@&lt;gpmaster&gt;
+</code></pre></li>
+<li><p>Copy the <em>Demo</em> connector JAR file that you previously built to the <code>$PXF_CONF/lib</code> directory on the Greenplum Database master host. Replace <code>PXFDEV_BASE</code> with the absolute path to your PXF development work area:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>scp user@devsystem:/PXFDEV_BASE/demo_example/build/libs/my-demo-connector.jar <span class="nv">$PXF_CONF</span>/lib/my-demo-connector.jar
+</code></pre></li>
+<li><p>Copy the JAR file to all Greenplum Database segment hosts by synchronizing the PXF configuration. For example:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span><span class="nv">$GPHOME</span>/pxf/bin/pxf cluster sync
+</code></pre></li>
+<li><p>Restart PXF on each Greenplum Database segment host as described in <a href="/6-0/pxf/cfginitstart_pxf.html#restart_pxf">Restarting PXF</a>.</p></li>
+<li><p>Verify that you correctly deployed the <em>Demo</em> connector by creating and accessing Greenplum Database readable and writable external tables that specify the <em>Demo</em> connector plug-ins:</p>
+
+<ol>
+<li><p>Connect to a database in which you created the PXF extension as the <code>gpadmin</code> user. For example, to connect to a database named <code>pxf_exampledb</code>:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>psql -d pxf_exampledb -U gpadmin
+</code></pre></li>
+<li><p>Create a readable Greenplum external table to exercise the <em>Demo</em> connector read operation. For example:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">demo_tbl_read</span> <span class="p">(</span><span class="n">a</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">b</span> <span class="n">TEXT</span><span class="p">,</span> <span class="k">c</span> <span class="n">TEXT</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://default/tmp/dummy1?FRAGMENTER=org.greenplum.pxf.example.demo.DemoFragmenter&amp;ACCESSOR=org.greenplum.pxf.example.demo.DemoAccessor&amp;RESOLVER=org.greenplum.pxf.example.demo.DemoTextResolver'</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">DELIMITER</span> <span class="s1">','</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span>
+</code></pre>
+
+<p>(The Demo connector read operation returns static data. You could have specified any file path in the <code>LOCATION</code> clause; it will be ignored by the <em>Demo</em> connector.)</p></li>
+<li><p>Query the <code>demo_tbl_read</code> table:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">demo_tbl_read</span><span class="p">;</span>
+       <span class="n">a</span>        <span class="o">|</span>   <span class="n">b</span>    <span class="o">|</span>   <span class="k">c</span>    
+<span class="c1">----------------+--------+--------</span>
+ <span class="n">fragment2</span> <span class="n">row1</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment2</span> <span class="n">row2</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment1</span> <span class="n">row1</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment1</span> <span class="n">row2</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment3</span> <span class="n">row1</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+ <span class="n">fragment3</span> <span class="n">row2</span> <span class="o">|</span> <span class="n">value1</span> <span class="o">|</span> <span class="n">value2</span>
+<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></li>
+<li><p>Create a writable Greenplum external table to exercise the <em>Demo</em> connector write operation. For example:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">demo_tbl_write</span> <span class="p">(</span><span class="n">a</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">b</span> <span class="n">TEXT</span><span class="p">,</span> <span class="k">c</span> <span class="n">TEXT</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://tmp/demo_write_1?ACCESSOR=org.greenplum.pxf.example.demo.DemoFileWritableAccessor&amp;RESOLVER=org.greenplum.pxf.example.demo.DemoTextResolver'</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">DELIMITER</span> <span class="s1">','</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span>
+</code></pre></li>
+<li><p>Write some text data into the <code>demo_tbl_write</code> table. For example:</p>
+<pre class="highlight sql"><code><span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">demo_tbl_write</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">demo_tbl_write</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'u'</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="n">pxf_exampledb</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">demo_tbl_write</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'r'</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">,</span> <span class="s1">'t'</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+</code></pre>
+
+<p>Each <code>INSERT</code> command writes a file to the directory named  <code>/tmp/demo_write_1</code> on the local file system.  </p></li>
+<li><p>View the contents of the <code>/tmp/demo_write_1</code> directory on the local file system. For example:</p>
+<pre class="highlight shell"><code><span class="gp">gpadmin@gpmaster$ </span>cat /tmp/demo_write_1/<span class="k">*</span>
+x,y,z
+u,v,w
+r,s,t
+</code></pre></li>
+</ol></li>
+</ol>
+
+<p>You successfully deployed the <em>Demo</em> connector. If you choose, you may deploy read and write profiles for the <em>Demo</em> connector as a convenience to the end user. See <a href="/6-0/pxf/sdk/deploy_profile.html">Deploying a Profile</a> for profile definition and deployment instructions.</p>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

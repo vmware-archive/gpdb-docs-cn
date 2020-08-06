@@ -1,0 +1,421 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      读写HDFS Parquet数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_hdfs_parquet has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    读写HDFS Parquet数据
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#prereq">&#20808;&#20915;&#26465;&#20214;</a></li>
+<li><a href="#datatype_map">&#25968;&#25454;&#31867;&#22411;&#26144;&#23556;</a></li>
+<li><a href="#profile_cet">&#21019;&#24314;&#22806;&#37096;&#34920;</a></li>
+<li><a href="#parquet_write">&#31034;&#20363;</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>使用PXF HDFS连接器读写Parquet格式数据。本节介绍如何读写以Parquet格式存储的HDFS文件，包括如何创建、查询和写入引用HDFS文件的外部表。</p>
+
+<p>PXF当前仅支持读写基本Parquet数据类型。</p>
+
+<div class="note">PXF Parquet写入支持是一个Beta功能。</div>
+
+<h2 id="先决条件"><a id="prereq"></a>先决条件</h2>
+
+<p>在尝试从HDFS读取或向HDFS写入数据之前，请确保已满足PXF Hadoop<a href="/6-0/pxf/access_hdfs.html#hadoop_prereq">先决条件</a>。</p>
+
+<h2 id="数据类型映射"><a id="datatype_map"></a>数据类型映射</h2>
+
+<p>要在Greenplum数据库中读写Parquet基本数据类型，请将Parquet数据值映射到相同类型的Greenplum数据库列。下表总结了外部映射规则：</p>
+
+<p><a id="p2g_type_mapping_table"></a></p>
+
+<table><thead>
+<tr>
+<th>Parquet数据类型</th>
+<th>PXF/Greenplum数据类型</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>byte_array</td>
+<td>Bytea, Text</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Float8</td>
+</tr>
+<tr>
+<td>fixed_len_byte_array</td>
+<td>Numeric</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Real</td>
+</tr>
+<tr>
+<td>int_8, int_16</td>
+<td>Smallint, Integer</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>Bigint</td>
+</tr>
+<tr>
+<td>int96</td>
+<td>Timestamp, Timestamptz</td>
+</tr>
+</tbody></table>
+
+<div class="note">写入Parquet时：
+<ul>
+  <li>PXF将<code>timestamp</code>本地化为当前系统时区，并将其转换为通用时间(UTC)，然后最终转换为<code>int96</code>。</li>
+  <li>PXF将<code>timestamp</code>转换为UTC<code>timestamp</code>，然后转换为<code>int96</code>。在此转换过程中，PXF会丢失时区信息。</li>
+</ul></div>
+
+<h2 id="创建外部表"><a id="profile_cet"></a>创建外部表</h2>
+
+<p>PXF HDFS连接器<code>hdfs:parquet</code>配置文件支持读写Parquet格式的HDFS数据。当您将记录插入可写外部表中时，您插入的数据块将写入指定目录中一个或多个文件。</p>
+
+<p>使用以下语法创建引用HDFS目录的Greenplum数据库外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="p">[</span><span class="n">WRITABLE</span><span class="p">]</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-hdfs-dir&gt;
+    ?PROFILE=hdfs:parquet[&amp;SERVER=&lt;server_name&gt;][&amp;&lt;custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="o">|</span><span class="s1">'pxfwritable_export'</span><span class="p">);</span>
+<span class="p">[</span><span class="n">DISTRIBUTED</span> <span class="k">BY</span> <span class="p">(</span><span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...</span> <span class="p">]</span> <span class="p">)</span> <span class="o">|</span> <span class="n">DISTRIBUTED</span> <span class="n">RANDOMLY</span><span class="p">];</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;hdfs&#8209;file&gt;</td>
+<td>HDFS数据存储中目录或文件的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE</td>
+<td><code>PROFILE</code>关键字必须指定为<code>hdfs:parquet</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>&lt;custom&#8209;option&gt;=&lt;value&gt;</td>
+<td>&lt;custom-option&gt;描述见下方</td>
+</tr>
+<tr>
+<td>FORMAT &lsquo;CUSTOM&rsquo;</td>
+<td>使用<code>FORMAT</code> &rsquo;<code>CUSTOM</code>&#39;时指定<code>(FORMATTER=&#39;pxfwritable_export&#39;)</code> (写入) 或 <code>(FORMATTER=&#39;pxfwritable_import&#39;)</code> (读取)。</td>
+</tr>
+<tr>
+<td>DISTRIBUTED BY</td>
+<td>如果您计划将现有Greenplum数据库表中的数据加载到可写外部表，考虑在可写外部表上使用与Greenplum表相同的分布策略或&lt;字段名&gt;。 这样做可以避免数据加载操作中segment节点间额外的数据移动。</td>
+</tr>
+</tbody></table>
+
+<p><a id="customopts"></a>
+PXF <code>hdfs:parquet</code> 配置文件支持与编码和压缩有关的写入选项。您可以在<code>CREATE WRITABLE EXTERNAL TABLE</code> <code>LOCATION</code>子句中指定这些写入选项。<code>hdfs:parquet</code>配置文件支持以下自定义选项：</p>
+
+<table><thead>
+<tr>
+<th>写入选项</th>
+<th>值描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>COMPRESSION_CODEC</td>
+<td>压缩编码器别名。 用于写入Parquet数据受支持的压缩编码器包括： <code>snappy</code>, <code>gzip</code>, <code>lzo</code>, 和<code>uncompressed</code>。 如果未提供此选项，PXF将使用<code>snappy</code>压缩编码器来压缩数据。</td>
+</tr>
+<tr>
+<td>ROWGROUP_SIZE</td>
+<td>Parquet文件由一个或多个行组组成，将数据逻辑划分为行。<code>ROWGROUP_SIZE</code> 标识行组的大小(以字节为单位)。默认的行组大小为<code>8 * 1024 * 1024</code>字节。</td>
+</tr>
+<tr>
+<td>PAGE_SIZE</td>
+<td>行组由划分为页面的列块组成。<code>PAGE_SIZE</code>是此类页面的大小(以字节为单位)。默认的页面大小为<code>1024 * 1024</code>字节。</td>
+</tr>
+<tr>
+<td>DICTIONARY_PAGE_SIZE</td>
+<td>当PXF写入Parquet文件时，默认情况下启用字典编码。每列、每行组只有一个字典页面。<code>DICTIONARY_PAGE_SIZE</code>与<code>PAGE_SIZE</code>类似，但是对于字典而言：默认字典页面大小为<code>512 * 1024</code>字节。</td>
+</tr>
+<tr>
+<td>PARQUET_VERSION</td>
+<td>Parquet版本；支持<code>v1</code> 和 <code>v2</code>。默认的Parquet版本为<code>v1</code>。</td>
+</tr>
+</tbody></table>
+
+<p><strong>注意</strong>: 如果您不希望PXF压缩数据，则必须明确指定<code>uncompressed</code>。</p>
+
+<p>使用PXF写入HDFS的Parquet文件具有以下命名格式：<code>&lt;file&gt;.&lt;compress_extension&gt;.parquet</code>，例如 <code>1547061635-0000004417_0.gz.parquet</code>.</p>
+
+<h2 id="-示例"><a id="parquet_write"></a> 示例</h2>
+
+<p>本示例采用在<a href="/6-0/pxf/hdfs_text.html#profile_text_query">示例：读取HDFS中的文本数据</a>中介绍的数据模式。</p>
+
+<table><thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>location</td>
+<td>text</td>
+</tr>
+<tr>
+<td>month</td>
+<td>text</td>
+</tr>
+<tr>
+<td>number_of_orders</td>
+<td>int</td>
+</tr>
+<tr>
+<td>total_sales</td>
+<td>float8</td>
+</tr>
+</tbody></table>
+
+<p>在此示例中，您创建一个Parquet格式的可写外部表，该表使用默认的PXF服务器引用HDFS中的Parquet格式的数据，将一些数据插入表中，然后创建一个可读外部表以读取数据。</p>
+
+<ol>
+<li><p>使用<code>hdfs:parquet</code>配置文件创建一个可写外部表。例如：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_tbl_parquet</span> <span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">number_of_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">double</span> <span class="k">precision</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxf_parquet?PROFILE=hdfs:parquet'</span><span class="p">)</span>
+  <span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_export'</span><span class="p">);</span>
+</code></pre></li>
+<li><p>通过直接写入<code>pxf_tbl_parquet</code>表将一些记录写入HDFS的<code>pxf_parquet</code>目录中。例如：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_tbl_parquet</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Frankfurt'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="mi">777</span><span class="p">,</span> <span class="mi">3956</span><span class="p">.</span><span class="mi">98</span> <span class="p">);</span>
+<span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_tbl_parquet</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Cleveland'</span><span class="p">,</span> <span class="s1">'Oct'</span><span class="p">,</span> <span class="mi">3812</span><span class="p">,</span> <span class="mi">96645</span><span class="p">.</span><span class="mi">37</span> <span class="p">);</span>
+</code></pre></li>
+<li><p>回想一下，Greenplum 数据库不支持直接查询一个可写外部表。要读取<code>pxf_parquet</code>中的数据，请创建一个引用此HDFS目录的可读外部表：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">read_pxf_parquet</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">number_of_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">double</span> <span class="k">precision</span><span class="p">)</span>
+    <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxf_parquet?PROFILE=hdfs:parquet'</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="p">);</span>
+</code></pre></li>
+<li><p>查询可读外部表<code>read_pxf_parquet</code>：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">read_pxf_parquet</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">total_sales</span><span class="p">;</span>
+</code></pre>
+<pre class="highlight plaintext"><code> location  | month | number_of_orders | total_sales
+-----------+-------+------------------+-------------
+ Frankfurt | Mar   |              777 |     3956.98
+ Cleveland | Oct   |             3812 |     96645.4
+(2 rows)
+</code></pre></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

@@ -1,0 +1,5170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      SELECT |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_ref_guide x6-0_ref_guide_sql_commands x6-0_ref_guide_sql_commands_SELECT has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/ref_guide.html">参考指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/sql_commands/sql_ref.html">SQL Command Reference</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/GPReferenceSQLSummaryLOP.html">SQL Syntax Summary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ABORT.html">ABORT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_AGGREGATE.html">ALTER AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_COLLATION.html">ALTER COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_CONVERSION.html">ALTER CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DATABASE.html">ALTER DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DEFAULT_PRIVILEGES.html">ALTER DEFAULT PRIVILEGES</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DOMAIN.html">ALTER DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_EXTENSION.html">ALTER EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_EXTERNAL_TABLE.html">ALTER EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FOREIGN_DATA_WRAPPER.html">ALTER FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FOREIGN_TABLE.html">ALTER FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FUNCTION.html">ALTER FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_GROUP.html">ALTER GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_INDEX.html">ALTER INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_LANGUAGE.html">ALTER LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR.html">ALTER OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR_CLASS.html">ALTER OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR_FAMILY.html">ALTER OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_PROTOCOL.html">ALTER PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_RESOURCE_GROUP.html">ALTER RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_RESOURCE_QUEUE.html">ALTER RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_ROLE.html">ALTER ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SCHEMA.html">ALTER SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SEQUENCE.html">ALTER SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SERVER.html">ALTER SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TABLE.html">ALTER TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TABLESPACE.html">ALTER TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_CONFIGURATION.html">ALTER TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_DICTIONARY.html">ALTER TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_PARSER.html">ALTER TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_TEMPLATE.html">ALTER TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TYPE.html">ALTER TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_USER.html">ALTER USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_USER_MAPPING.html">ALTER USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_VIEW.html">ALTER VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ANALYZE.html">ANALYZE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/BEGIN.html">BEGIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CHECKPOINT.html">CHECKPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CLOSE.html">CLOSE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CLUSTER.html">CLUSTER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COMMENT.html">COMMENT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COMMIT.html">COMMIT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COPY.html">COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_AGGREGATE.html">CREATE AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_CAST.html">CREATE CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_COLLATION.html">CREATE COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_CONVERSION.html">CREATE CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_DATABASE.html">CREATE DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_DOMAIN.html">CREATE DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_EXTENSION.html">CREATE EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FOREIGN_DATA_WRAPPER.html">CREATE FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FOREIGN_TABLE.html">CREATE FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FUNCTION.html">CREATE FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_GROUP.html">CREATE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_INDEX.html">CREATE INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_LANGUAGE.html">CREATE LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR.html">CREATE OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR_CLASS.html">CREATE OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR_FAMILY.html">CREATE OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_PROTOCOL.html">CREATE PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RESOURCE_GROUP.html">CREATE RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RESOURCE_QUEUE.html">CREATE RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_ROLE.html">CREATE ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RULE.html">CREATE RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SCHEMA.html">CREATE SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SEQUENCE.html">CREATE SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SERVER.html">CREATE SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLE.html">CREATE TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLE_AS.html">CREATE TABLE AS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLESPACE.html">CREATE TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_CONFIGURATION.html">CREATE TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_DICTIONARY.html">CREATE TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_PARSER.html">CREATE TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_TEMPLATE.html">CREATE TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TYPE.html">CREATE TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_USER.html">CREATE USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_USER_MAPPING.html">CREATE USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_VIEW.html">CREATE VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DEALLOCATE.html">DEALLOCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DECLARE.html">DECLARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DELETE.html">DELETE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DISCARD.html">DISCARD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DO.html">DO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_AGGREGATE.html">DROP AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_CAST.html">DROP CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_COLLATION.html">DROP COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_CONVERSION.html">DROP CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_DATABASE.html">DROP DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_DOMAIN.html">DROP DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_EXTENSION.html">DROP EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_EXTERNAL_TABLE.html">DROP EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FOREIGN_DATA_WRAPPER.html">DROP FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FOREIGN_TABLE.html">DROP FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FUNCTION.html">DROP FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_GROUP.html">DROP GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_INDEX.html">DROP INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_LANGUAGE.html">DROP LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR.html">DROP OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR_CLASS.html">DROP OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR_FAMILY.html">DROP OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OWNED.html">DROP OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_PROTOCOL.html">DROP PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RESOURCE_GROUP.html">DROP RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RESOURCE_QUEUE.html">DROP RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_ROLE.html">DROP ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RULE.html">DROP RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SCHEMA.html">DROP SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SEQUENCE.html">DROP SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SERVER.html">DROP SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TABLE.html">DROP TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TABLESPACE.html">DROP TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_CONFIGURATION.html">DROP TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_DICTIONARY.html">DROP TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_PARSER.html">DROP TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_TEMPLATE.html">DROP TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TYPE.html">DROP TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_USER.html">DROP USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_USER_MAPPING.html">DROP USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_VIEW.html">DROP VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/END.html">END</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/EXECUTE.html">EXECUTE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/EXPLAIN.html">EXPLAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/FETCH.html">FETCH</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/GRANT.html">GRANT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/INSERT.html">INSERT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/LOAD.html">LOAD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/LOCK.html">LOCK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/MOVE.html">MOVE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/PREPARE.html">PREPARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REASSIGN_OWNED.html">REASSIGN OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REINDEX.html">REINDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/RELEASE_SAVEPOINT.html">RELEASE SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/RESET.html">RESET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REVOKE.html">REVOKE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ROLLBACK.html">ROLLBACK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ROLLBACK_TO_SAVEPOINT.html">ROLLBACK TO SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SAVEPOINT.html">SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SELECT.html">SELECT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SELECT_INTO.html">SELECT INTO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET.html">SET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_CONSTRAINTS.html">SET CONSTRAINTS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_ROLE.html">SET ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_SESSION_AUTHORIZATION.html">SET SESSION AUTHORIZATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_TRANSACTION.html">SET TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SHOW.html">SHOW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/START_TRANSACTION.html">START TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/TRUNCATE.html">TRUNCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/UPDATE.html">UPDATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/VACUUM.html">VACUUM</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/VALUES.html">VALUES</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/SQL2008_support.html">SQL 2008可选特性兼容性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/env_var_ref.html">Greenplum环境变量</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql-keywords.html">保留标识符和SQL关键字</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref.html#topic1">系统目录参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-tables.html#topic1">系统表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-views.html#topic1">系统视图</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-html.html#topic1">系统目录定义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_data_wrapper_options.html">foreign_data_wrapper_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_data_wrappers.html">foreign_data_wrappers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_server_options.html">foreign_server_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_servers.html">foreign_servers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_table_options.html">foreign_table_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_tables.html">foreign_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_configuration_history.html">gp_configuration_history</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distributed_log.html">gp_distributed_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distributed_xacts.html">gp_distributed_xacts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distribution_policy.html">gp_distribution_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gpexpand_expansion_progress.html">gpexpand.expansion_progress</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_expansion_status.html">gpexpand.status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_expansion_tables.html">gpexpand.status_detail</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_fastsequence.html">gp_fastsequence</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_id.html">gp_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_pgdatabase.html">gp_pgdatabase</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_config.html">gp_resgroup_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status.html">gp_resgroup_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status_per_host.html">gp_resgroup_status_per_host</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status_per_segment.html">gp_resgroup_status_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resqueue_status.html">gp_resqueue_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_stat_replication.html">gp_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_segment_configuration.html">gp_segment_configuration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_transaction_log.html">gp_transaction_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_version_at_initdb.html">gp_version_at_initdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_aggregate.html">pg_aggregate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_am.html">pg_am</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_amop.html">pg_amop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_amproc.html">pg_amproc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_appendonly.html">pg_appendonly</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attrdef.html">pg_attrdef</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attribute.html">pg_attribute</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attribute_encoding.html">pg_attribute_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_auth_members.html">pg_auth_members</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_authid.html">pg_authid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_available_extension_versions.html">pg_available_extension_versions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_available_extensions.html">pg_available_extensions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_cast.html">pg_cast</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_class.html">pg_class</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_compression.html">pg_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_constraint.html">pg_constraint</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_conversion.html">pg_conversion</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_database.html">pg_database</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_db_role_setting.html">pg_db_role_setting</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_depend.html">pg_depend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_description.html">pg_description</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_enum.html">pg_enum</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_extension.html">pg_extension</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_exttable.html">pg_exttable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_data_wrapper.html">pg_foreign_data_wrapper</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_server.html">pg_foreign_server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_table.html">pg_foreign_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_index.html">pg_index</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_inherits.html">pg_inherits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_language.html">pg_language</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_largeobject.html">pg_largeobject</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_listener.html">pg_listener</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_locks.html">pg_locks</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_max_external_files.html">pg_max_external_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_namespace.html">pg_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_opclass.html">pg_opclass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_operator.html">pg_operator</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_opfamily.html">pg_opfamily</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition.html">pg_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_columns.html">pg_partition_columns</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_encoding.html">pg_partition_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_rule.html">pg_partition_rule</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_templates.html">pg_partition_templates</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partitions.html">pg_partitions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_pltemplate.html">pg_pltemplate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_proc.html">pg_proc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resgroup.html">pg_resgroup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resgroupcapability.html">pg_resgroupcapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resourcetype.html">pg_resourcetype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueue.html">pg_resqueue</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueue_attributes.html">pg_resqueue_attributes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueuecapability.html">pg_resqueuecapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_rewrite.html">pg_rewrite</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_roles.html">pg_roles</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_shdepend.html">pg_shdepend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_shdescription.html">pg_shdescription</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_activity.html">pg_stat_activity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_last_operation.html">pg_stat_last_operation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_last_shoperation.html">pg_stat_last_shoperation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_operations.html">pg_stat_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_partition_operations.html">pg_stat_partition_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_replication.html">pg_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_statistic.html">pg_statistic</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stats_resqueue.html">pg_stat_resqueues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_tablespace.html">pg_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_trigger.html">pg_trigger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_type.html">pg_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_type_encoding.html">pg_type_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_user_mapping.html">pg_user_mapping</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_user_mappings.html">pg_user_mappings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/user_mapping_options.html">user_mapping_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/user_mappings.html">user_mappings</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/gp_toolkit.html">gp_toolkit管理模式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic2">检查需要例行维护的表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic5">检查锁</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic8">检查追加优化表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic16">查看Greenplum数据库服务器日志文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic21">检查服务器配置文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic24">检查失败的segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic26x">检查资源组活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic26">检查资源队列活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic32">检查查询磁盘溢出空间使用情况</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic36">查看用户和组（角色）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic38">检查数据库对象大小和磁盘空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic49">检查数据分布不均</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/gpperfmon/dbref.html">gpperfmon 数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-database.html"> database_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-diskspace.html"> diskspace_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-interface-stats.html"> interface_stats_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-log-alert.html"> log_alert_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-queries.html">queries_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-segment.html"> segment_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-socket-stats.html">socket_stats_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-system.html">system_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-dynamic-memory-info.html">dynamic_memory_info 视图</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-memory-info.html"> memory_info 视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/data_types.html">Greenplum 数据库数据类型</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-datetime.html">日期&#x2F;时间类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-pseudo.html">伪类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-textsearch.html">全文搜索类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-range.html">范围类型</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/character_sets.html">字符集支持</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc_config.html">服务器配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_config.html#topic_vsn_22l_z4">参数类型和值</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_config.html#topic_cyz_p2l_z4">设置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html">参数类别</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic12">连接和验证参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic15">系统资源消耗参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic57">GPORCA参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic21">查询调优参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic29">错误报告和日志参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic33">系统监控参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic37">运行时统计信息收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic38">自动统计收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic39">客户端连接默认参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic43">锁管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic44">资源管理参数（资源队列）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic444">资源管理参数（资源组）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic45">外部表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic46">数据库表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic48">历史版本兼容性参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic49">Greenplum数据库阵列配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic55">master和segment的Greenplum镜像参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic56">Greenplum数据库扩展参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc-list.html">配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#application_name">application_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#array_nulls">array_nulls</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#authentication_timeout">authentication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#backslash_quote">backslash_quote</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#block_size">block_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#bonjour_name">bonjour_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#check_function_bodies">check_function_bodies</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#client_encoding">client_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#client_min_messages">client_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_index_tuple_cost">cpu_index_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_operator_cost">cpu_operator_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_tuple_cost">cpu_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cursor_tuple_fraction">cursor_tuple_fraction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#data_checksums">data_checksums</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#DateStyle">DateStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#db_user_namespace">db_user_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#deadlock_timeout">deadlock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_assertions">debug_assertions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_pretty_print">debug_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_parse">debug_print_parse</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_plan">debug_print_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_prelim_plan">debug_print_prelim_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_rewritten">debug_print_rewritten</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_slice_table">debug_print_slice_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_statistics_target">default_statistics_target</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_tablespace">default_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_text_search_config">default_text_search_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_deferrable">default_transaction_deferrable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_isolation">default_transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_read_only">default_transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#dynamic_library_path">dynamic_library_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#effective_cache_size">effective_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_bitmapscan">enable_bitmapscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_groupagg">enable_groupagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_hashagg">enable_hashagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_hashjoin">enable_hashjoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_indexscan">enable_indexscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_mergejoin">enable_mergejoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_nestloop">enable_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_seqscan">enable_seqscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_sort">enable_sort</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_tidscan">enable_tidscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#escape_string_warning">escape_string_warning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#explain_pretty_print">explain_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#extra_float_digits">extra_float_digits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#from_collapse_limit">from_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_adjust_selectivity_for_outerjoins">gp_adjust_selectivity_for_outerjoins</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_appendonly_compaction">gp_appendonly_compaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_appendonly_compaction_threshold">gp_appendonly_compaction_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_mode">gp_autostats_mode</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_mode_in_functions">gp_autostats_mode_in_functions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_on_change_threshold">gp_autostats_on_change_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_cached_segworkers_threshold">gp_cached_segworkers_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_command_count">gp_command_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_connection_send_timeout">gp_connection_send_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_content">gp_content</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_create_table_random_default_distribution">gp_create_table_random_default_distribution</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_dbid">gp_dbid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_debug_linger">gp_debug_linger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_default_storage_options">gp_default_storage_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_dynamic_partition_pruning">gp_dynamic_partition_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_adaptive_nestloop">gp_enable_adaptive_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct">gp_enable_agg_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct_pruning">gp_enable_agg_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_direct_dispatch">gp_enable_direct_dispatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_exchange_default_partition">gp_enable_exchange_default_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_fast_sri">gp_enable_fast_sri</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_gpperfmon">gp_enable_gpperfmon</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_gather">gp_enable_groupext_distinct_gather</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_pruning">gp_enable_groupext_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_multiphase_agg">gp_enable_multiphase_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_predicate_propagation">gp_enable_predicate_propagation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_preunique">gp_enable_preunique</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_query_metrics">gp_enable_query_metrics</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_relsize_collection">gp_enable_relsize_collection</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_segment_copy_checking">gp_enable_segment_copy_checking</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_sort_distinct">gp_enable_sort_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_sort_limit">gp_enable_sort_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_enable_exec">gp_external_enable_exec</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_max_segs">gp_external_max_segs</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_enable_filter_pushdown">gp_external_enable_filter_pushdown</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_interval">gp_fts_probe_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_retries">gp_fts_probe_retries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_threadcount">gp_fts_probe_threadcount</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_timeout">gp_fts_probe_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_global_deadlock_detector_period">gp_global_deadlock_detector_period</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_gpperfmon_send_interval">gp_gpperfmon_send_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gpperfmon_log_alert_level">gpperfmon_log_alert_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_hashjoin_tuples_per_bucket">gp_hashjoin_tuples_per_bucket</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_ignore_error_table">gp_ignore_error_table (不推荐使用)</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#topic_lvm_ttc_3p">gp_initial_bad_row_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_instrument_shmem_size">gp_instrument_shmem_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_debug_retry_interval">gp_interconnect_debug_retry_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_fc_method">gp_interconnect_fc_method</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_hash_multiplier">gp_interconnect_hash_multiplier</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_queue_depth">gp_interconnect_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_setup_timeout">gp_interconnect_setup_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_snd_queue_depth">gp_interconnect_snd_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_type">gp_interconnect_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_format">gp_log_format</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_fts">gp_log_fts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_gang">gp_log_gang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_interconnect">gp_log_interconnect</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_local_distributed_cache">gp_max_local_distributed_cache</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_packet_size">gp_max_packet_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_plan_size">gp_max_plan_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_slices">gp_max_slices</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#memory_spill_ratio">memory_spill_ratio</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_motion_cost_per_row">gp_motion_cost_per_row</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_recursive_cte">gp_recursive_cte</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_reject_percent_threshold">gp_reject_percent_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_reraise_signal">gp_reraise_signal</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_memory_policy">gp_resqueue_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority">gp_resqueue_priority</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority_cpucores_per_segment">gp_resqueue_priority_cpucores_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority_sweeper_interval">gp_resqueue_priority_sweeper_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resgroup_memory_policy">gp_resgroup_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_bypass">gp_resource_group_bypass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_cpu_limit">gp_resource_group_cpu_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_memory_limit">gp_resource_group_memory_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_manager">gp_resource_manager</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_role">gp_role</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_safefswritesize">gp_safefswritesize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_segment_connect_timeout">gp_segment_connect_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_segments_for_planner">gp_segments_for_planner</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_server_version">gp_server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_server_version_num">gp_server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_session_id">gp_session_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_set_proc_affinity">gp_set_proc_affinity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_set_read_only">gp_set_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_statistics_pullup_from_child_partition">gp_statistics_pullup_from_child_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_statistics_use_fkeys">gp_statistics_use_fkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_use_legacy_hashops">gp_use_legacy_hashops</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_idle_resource_timeout">gp_vmem_idle_resource_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_protect_limit">gp_vmem_protect_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_protect_segworker_cache_limit">gp_vmem_protect_segworker_cache_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_compression">gp_workfile_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_files_per_query">gp_workfile_limit_files_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_query">gp_workfile_limit_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_segment">gp_workfile_limit_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gpperfmon_port">gpperfmon_port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ignore_checksum_failure">ignore_checksum_failure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#integer_datetimes">integer_datetimes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#IntervalStyle">IntervalStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#join_collapse_limit">join_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#keep_wal_segments">keep_wal_segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#krb_caseins_users">krb_caseins_users</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#krb_server_keyfile">krb_server_keyfile</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_collate">lc_collate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_ctype">lc_ctype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_messages">lc_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_monetary">lc_monetary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_numeric">lc_numeric</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_time">lc_time</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#listen_addresses">listen_addresses</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#local_preload_libraries">local_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lock_timeout">lock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_autostats">log_autostats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_connections">log_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_disconnections">log_disconnections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_dispatch_stats">log_dispatch_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_duration">log_duration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_error_verbosity">log_error_verbosity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_executor_stats">log_executor_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_hostname">log_hostname</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_duration_statement">log_min_duration_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_error_statement">log_min_error_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_messages">log_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_parser_stats">log_parser_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_planner_stats">log_planner_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_rotation_age">log_rotation_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_rotation_size">log_rotation_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_statement">log_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_statement_stats">log_statement_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_temp_files">log_temp_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_timezone">log_timezone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_truncate_on_rotation">log_truncate_on_rotation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#maintenance_work_mem">maintenance_work_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_appendonly_tables">max_appendonly_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_connections">max_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_files_per_process">max_files_per_process</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_function_args">max_function_args</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_identifier_length">max_identifier_length</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_index_keys">max_index_keys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_locks_per_transaction">max_locks_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_prepared_transactions">max_prepared_transactions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_resource_portals_per_transaction">max_resource_portals_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_resource_queues">max_resource_queues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_stack_depth">max_stack_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_statement_mem">max_statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer">optimizer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_array_expansion_threshold">optimizer_array_expansion_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_analyze_root_partition">optimizer_analyze_root_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_control">optimizer_control</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_cte_inlining_bound">optimizer_cte_inlining_bound</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_enable_associativity">optimizer_enable_associativity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_enable_master_only_queries">optimizer_enable_master_only_queries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_agg_skew_avoidance">optimizer_force_agg_skew_avoidance</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_multistage_agg">optimizer_force_multistage_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_three_stage_scalar_dqa">optimizer_force_three_stage_scalar_dqa</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_arity_for_associativity_commutativity">optimizer_join_arity_for_associativity_commutativity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_order">optimizer_join_order</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_order_threshold">optimizer_join_order_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_mdcache_size">optimizer_mdcache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_metadata_caching">optimizer_metadata_caching</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_minidump">optimizer_minidump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_nestloop_factor">optimizer_nestloop_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_parallel_union">optimizer_parallel_union</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_print_missing_stats">optimizer_print_missing_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_print_optimization_stats">optimizer_print_optimization_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_sort_factor">optimizer_sort_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#password_encryption">password_encryption</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#password_hash_algorithm">password_hash_algorithm</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_classpath">pljava_classpath</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_classpath_insecure">pljava_classpath_insecure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_statement_cache_size">pljava_statement_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_release_lingering_savepoints">pljava_release_lingering_savepoints</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_vmoptions">pljava_vmoptions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#port">port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#random_page_cost">random_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#readable_external_table_timeout">readable_external_table_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#repl_catchup_within_range">repl_catchup_within_range</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#replication_timeout">replication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#regex_flavor">regex_flavor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#resource_cleanup_gangs_on_wait">resource_cleanup_gangs_on_wait</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#resource_select_only">resource_select_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#runaway_detector_activation_percent">runaway_detector_activation_percent</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#search_path">search_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#seq_page_cost">seq_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_encoding">server_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_version">server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_version_num">server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#shared_buffers">shared_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#shared_preload_libraries">shared_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ssl">ssl</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ssl_ciphers">ssl_ciphers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#standard_conforming_strings">standard_conforming_strings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#statement_mem">statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#statement_timeout">statement_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#stats_queue_level">stats_queue_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#superuser_reserved_connections">superuser_reserved_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_count">tcp_keepalives_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_idle">tcp_keepalives_idle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_interval">tcp_keepalives_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#temp_buffers">temp_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#TimeZone">TimeZone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#timezone_abbreviations">timezone_abbreviations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#track_activity_query_size">track_activity_query_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transaction_isolation">transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transaction_read_only">transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transform_null_equals">transform_null_equals</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_directory">unix_socket_directory</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_group">unix_socket_group</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_permissions">unix_socket_permissions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#update_process_title">update_process_title</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_delay">vacuum_cost_delay</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_limit">vacuum_cost_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_dirty">vacuum_cost_page_dirty</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_hit">vacuum_cost_page_hit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_miss">vacuum_cost_page_miss</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_freeze_min_age">vacuum_freeze_min_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#validate_previous_free_tid">validate_previous_free_tid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#verify_gpfdists_cert">verify_gpfdists_cert</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vmem_process_interrupt">vmem_process_interrupt</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#wal_receiver_status_interval">wal_receiver_status_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#writable_external_table_bufsize">writable_external_table_bufsize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#xid_stop_limit">xid_stop_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#xid_warn_limit">xid_warn_limit</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/function-summary.html">内置函数摘要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/yaml_spec.html">Greenplum MapReduce规范</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_sql.html">Greenplum PL&#x2F;pgSQL过程语言</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_r.html">Greenplum PL&#x2F;R 语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_python.html">Greenplum PL&#x2F;Python语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_container.html">Greenplum PL&#x2F;Container语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_java.html">Greenplum的PL&#x2F;Java语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_perl.html">Greenplum的PL&#x2F;Perl语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/madlib.html">用于分析的Greenplum MADlib扩展</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/modules/intro.html">附加提供的模块</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/citext.html">citext</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/dblink.html">dblink</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/fuzzystrmatch.html">fuzzystrmatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://github.com/greenplum-db/gpdb/tree/master/gpcontrib/gp_sparse_vector/README">gp_sparse_vector</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/hstore.html">hstore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/orafce_ref.html">orafce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pageinspect.html">pageinspect</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/pgcrypto.html">pgcrypto</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/gppc.html">Greenplum Partner Connector API</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/bgworker.html">后台工作进程</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/feature_summary.html">Greenplum 特点概要</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    SELECT
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    <h1 class="title topictitle1">SELECT</h1>
+
+    <div class="body">
+        <p class="p" id="topic1__sql_command_desc">从表或视图中检索行。</p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock" id="topic1__sql_command_synopsis">[ WITH [ RECURSIVE<sup class="ph sup">1</sup> ] <var class="keyword varname">with_query</var> [, ...] ]
+SELECT [ALL | DISTINCT [ON (<var class="keyword varname">expression</var> [, ...])]]
+      * | <var class="keyword varname">expression</var>[[AS] <var class="keyword varname">output_name</var>] [, ...]
+      [FROM <var class="keyword varname">from_item</var> [, ...]]
+      [WHERE <var class="keyword varname">condition</var>]
+      [GROUP BY <var class="keyword varname">grouping_element</var> [, ...]]
+      [HAVING <var class="keyword varname">condition</var> [, ...]]
+      [WINDOW <var class="keyword varname">window_name</var> AS (<var class="keyword varname">window_definition</var>) [, ...] ]
+      [{UNION | INTERSECT | EXCEPT} [ALL | DISTINCT] <var class="keyword varname">select</var>]
+      [ORDER BY <var class="keyword varname">expression</var> [ASC | DESC | USING <var class="keyword varname">operator</var>] [NULLS {FIRST | LAST}] [, ...]]
+      [LIMIT {<var class="keyword varname">count</var> | ALL}]
+      [OFFSET <var class="keyword varname">start</var> [ ROW | ROWS ] ]
+      [FETCH { FIRST | NEXT } [ <var class="keyword varname">count</var> ] { ROW | ROWS } ONLY]
+      [FOR {UPDATE | NO KEY UPDATE | SHARE | KEY SHARE} [OF <var class="keyword varname">table_name</var> [, ...]] [NOWAIT] [...]]
+
+TABLE { [ ONLY ] <var class="keyword varname">table_name</var> [ * ] | <var class="keyword varname">with_query_name</var> }
+            </pre>
+
+            <p class="p">其中<var class="keyword varname">with_query:</var>是：
+            </p>
+
+            <pre class="pre codeblock">  <var class="keyword varname">with_query_name</var> [( <var class="keyword varname">column_name</var> [, ...] )] AS ( <var class="keyword varname">select</var> | <var class="keyword varname">values</var> | <var class="keyword varname">insert</var> | <var class="keyword varname">update</var> | <var class="keyword varname">delete</var> )</pre>
+
+            <p class="p">其中<var class="keyword varname">from_item</var>可以是以下之一：
+            </p>
+
+            <pre class="pre codeblock">[ONLY] <var class="keyword varname">table_name</var> [ * ] [ [ AS ] <var class="keyword varname">alias</var> [ ( <var class="keyword varname">column_alias</var> [, ...] ) ] ]
+( <var class="keyword varname">select</var> ) [ AS ] <var class="keyword varname">alias</var> [( <var class="keyword varname">column_alias</var> [, ...] ) ]
+<var class="keyword varname">with_query_name</var> [ [ AS ] <var class="keyword varname">alias</var> [ ( <var class="keyword varname">column_alias</var> [, ...] ) ] ]
+<var class="keyword varname">function_name</var> ( [ <var class="keyword varname">argument</var> [, ...] ] )
+                [ WITH ORDINALITY ] [ [ AS ] <var class="keyword varname">alias</var> [ ( <var class="keyword varname">column_alias</var> [, ...] ) ] ]
+<var class="keyword varname">function_name</var> ( [ <var class="keyword varname">argument</var> [, ...] ] ) [ AS ] <var class="keyword varname">alias</var> ( <var class="keyword varname">column_definition</var> [, ...] )
+<var class="keyword varname">function_name</var> ( [ <var class="keyword varname">argument</var> [, ...] ] ) AS ( <var class="keyword varname">column_definition</var> [, ...] )
+ROWS FROM( function_name ( [ argument [, ...] ] ) [ AS ( column_definition [, ...] ) ] [, ...] )
+                [ WITH ORDINALITY ] [ [ AS ] <var class="keyword varname">alias</var> [ ( <var class="keyword varname">column_alias</var> [, ...] ) ] ]
+<var class="keyword varname">from_item</var> [ NATURAL ] <var class="keyword varname">join_type</var> <var class="keyword varname">from_item</var>
+                [ ON <var class="keyword varname">join_condition</var> | USING ( <var class="keyword varname">join_column</var> [, ...] ) ]</pre>
+
+            <p class="p">其中<var class="keyword varname">grouping_element</var>可以是以下之一：
+            </p>
+
+            <pre class="pre codeblock">()
+<var class="keyword varname">expression</var>
+ROLLUP (<var class="keyword varname">expression</var> [,...])
+CUBE (<var class="keyword varname">expression</var> [,...])
+GROUPING SETS ((<var class="keyword varname">grouping_element</var> [, ...]))</pre>
+
+            <p class="p">其中<var class="keyword varname">window_definition</var>是：
+            </p>
+
+            <pre class="pre codeblock">  [<var class="keyword varname">existing_window_name</var>]
+  [PARTITION BY <var class="keyword varname">expression</var> [, ...]]
+  [ORDER BY <var class="keyword varname">expression</var> [ASC | DESC | USING <var class="keyword varname">operator</var>]
+  [NULLS {FIRST | LAST}] [, ...]]
+  [{ RANGE | ROWS} <var class="keyword varname">frame_start</var>
+      | {RANGE | ROWS} BETWEEN <var class="keyword varname">frame_start</var> AND <var class="keyword varname">frame_end</var></pre>
+
+            <div class="p">其中<var class="keyword varname">frame_start</var>和<var class="keyword varname">frame_end</var>可以是以下之一：
+                <pre class="pre codeblock">UNBOUNDED PRECEDING
+<var class="keyword varname">value</var>
+PRECEDING
+CURRENT ROW
+<var class="keyword varname">value</var>
+FOLLOWING
+UNBOUNDED FOLLOWING</pre>
+
+            </div>
+
+            <p class="p">
+                <strong class="ph b">注解：</strong>
+                <sup class="ph sup">1</sup><samp class="ph codeph">RECURSIVE</samp>关键字是一个Beta功能。
+            </p>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p"><samp class="ph codeph">SELECT</samp>从零个或多个表中检索行。
+                <samp class="ph codeph">SELECT</samp>的一般处理如下：
+            </p>
+
+            <ol class="ol">
+                <li class="li">
+<samp class="ph codeph">WITH</samp>子句中的所有查询均被计算。
+                    这些可以有效地用作可以在<samp class="ph codeph">FROM</samp>列表中引用的临时表。
+                </li>
+
+                <li class="li" id="topic1__eg138796">将计算<samp class="ph codeph">FROM</samp>列表中的所有元素。
+                    （<samp class="ph codeph">FROM</samp>列表中的每个元素都是真实表或虚拟表。）
+                    如果<samp class="ph codeph">FROM</samp>列表中指定了多个元素，则它们将交叉连接在一起。
+                </li>
+
+                <li class="li" id="topic1__eg138832">如果指定了<samp class="ph codeph">WHERE</samp>子句，则从输出中排除所有不满足该条件的行。
+                </li>
+
+                <li class="li" id="topic1__eg138840">如果指定了<samp class="ph codeph">GROUP BY</samp>子句，或者存在聚合函数调用，
+                    则将输出组合为与一个或多个值匹配的行组，并计算聚合函数的结果。
+                    如果存在<samp class="ph codeph">HAVING</samp>子句，它将排除不满足给定条件的组。
+                </li>
+
+                <li class="li">实际的输出行是使用<samp class="ph codeph">SELECT</samp>输出表达式为每个选定的行或行组计算的。
+                </li>
+
+                <li class="li">
+<samp class="ph codeph">SELECT DISTINCT</samp>从结果中消除重复的行。
+                    <samp class="ph codeph">SELECT DISTINCT ON</samp>消除与所有指定表达式匹配的行。
+                    <samp class="ph codeph">SELECT ALL</samp>（默认）将返回所有候选行，包括重复项。
+                </li>
+
+                <li class="li" id="topic1__eg141787">如果指定了窗口表达式（和可选的<samp class="ph codeph">WINDOW</samp>子句），
+                    则根据位置（行）或基于值的（范围）窗口框架来组织输出。
+                </li>
+
+                <li class="li" id="topic1__eg138848">使用每个选定行的<samp class="ph codeph">SELECT</samp>输出表达式来计算实际的输出行。
+                </li>
+
+
+                <li class="li" id="topic1__eg138856">使用运算符<samp class="ph codeph">UNION</samp>，<samp class="ph codeph">INTERSECT</samp>和<samp class="ph codeph">EXCEPT</samp>，可以组合多个<samp class="ph codeph">SELECT</samp>语句的输出以形成单个结果集。
+                    <samp class="ph codeph">UNION</samp>运算符返回一个或两个结果集中的所有行。
+                    <samp class="ph codeph">INTERSECT</samp>运算符返回完全位于两个结果集中的所有行。
+                    <samp class="ph codeph">EXCEPT</samp>运算符返回第一个结果集中的行，而不是第二个结果集中的行。
+                    在所有三种情况下，除非指定了<samp class="ph codeph">ALL</samp>，否则将消除重复的行。
+                    可以添加噪声字<samp class="ph codeph">DISTINCT</samp>来明确指定消除重复行。
+                    请注意，<samp class="ph codeph">DISTINCT</samp>是此处的默认行为，即使<samp class="ph codeph">ALL</samp>是<samp class="ph codeph">SELECT</samp>本身的默认行为。
+                </li>
+
+                <li class="li" id="topic1__eg138864">如果指定了<samp class="ph codeph">ORDER BY</samp>子句，则返回的行将以指定的顺序排序。
+                    如果未给出<samp class="ph codeph">ORDER BY</samp>，则以系统最先找到的顺序返回行。
+                </li>
+
+                <li class="li" id="topic1__eg138878">如果指定了<samp class="ph codeph">LIMIT</samp>（或<samp class="ph codeph">FETCH FIRST</samp>）或<samp class="ph codeph">OFFSET</samp>子句，
+                    则<samp class="ph codeph">SELECT</samp>语句仅返回结果行的子集。
+                </li>
+
+                <li class="li" id="topic1__eg138885">如果指定了<samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR NO KEY UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>或<samp class="ph codeph">FOR KEY SHARE</samp>，
+                    则<samp class="ph codeph">SELECT</samp>语句将锁定整个表以防止并发更新。
+                </li>
+
+            </ol>
+
+            <p class="p">您必须对<samp class="ph codeph">SELECT</samp>命令中使用的每一列都具有<samp class="ph codeph">SELECT</samp>特权。
+                使用<samp class="ph codeph">FOR NO KEY UPDATE</samp>，<samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>或<samp class="ph codeph">FOR KEY SHARE</samp>也需要<samp class="ph codeph">UPDATE</samp>特权（对于这样选择的每个表的至少一列）。
+            </p>
+
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">参数</h2>
+            
+            <div class="sectiondiv">
+                <strong class="ph b">WITH子句</strong>
+                <p class="p">可选的<samp class="ph codeph">WITH</samp>子句允许您指定一个或多个子查询，这些子查询可以在主查询中按名称引用。
+                    子查询在主查询期间有效地充当临时表或视图。
+                    每个子查询可以是<samp class="ph codeph">SELECT</samp>，<samp class="ph codeph">INSERT</samp>，<samp class="ph codeph">UPDATE</samp>或<samp class="ph codeph">DELETE</samp>语句。
+                    在用<samp class="ph codeph">WITH</samp>编写数据修改语句（<samp class="ph codeph">INSERT</samp>，<samp class="ph codeph">UPDATE</samp>或<samp class="ph codeph">DELETE</samp>）时，通常会包含<samp class="ph codeph">RETURNING</samp>子句。
+                    它是<samp class="ph codeph">RETURNING</samp>的输出，而不是该语句修改的基础表，形成了由主查询读取的临时表。
+                    如果省略<samp class="ph codeph">RETURNING</samp>，则该语句仍将执行，但是不会产生任何输出，因此主查询无法将其引用为表。
+                </p>
+
+                <p class="p">对于包含<samp class="ph codeph">WITH</samp>子句的<samp class="ph codeph">SELECT</samp>命令，
+                    该子句最多可以包含一个用于修改表数据的子句（<samp class="ph codeph">INSERT</samp>，<samp class="ph codeph">UPDATE</samp>或<samp class="ph codeph">DELETE</samp>命令）。
+                </p>
+
+                <p class="p">必须为<samp class="ph codeph">WITH</samp>子句中的每个查询指定一个无schema限定的<var class="keyword varname">with_query_name</var>。
+                    （可选）可以指定列名列表；如果省略列名列表，则从子查询中推断出名称。
+                    主查询和<samp class="ph codeph">WITH</samp>查询都（理论上）同时执行。
+                </p>
+
+                <p class="p">如果指定了<samp class="ph codeph">RECURSIVE</samp>，则它允许<samp class="ph codeph">SELECT</samp>子查询按名称引用自己。
+                    这样的子查询具有一般形式
+                </p>
+
+                <pre class="pre codeblock"><var class="keyword varname">non_recursive_term</var> UNION [ALL | DISTINCT] <var class="keyword varname">recursive_term</var></pre>
+
+                <p class="p">递归自引用出现在<samp class="ph codeph">UNION</samp>的右侧。
+                    每个查询仅允许一个递归自引用。
+                    不支持递归数据修改语句，但是您可以在数据修改语句中使用递归<samp class="ph codeph">SELECT</samp>查询的结果。
+                </p>
+
+                <p class="p">如果指定了<samp class="ph codeph">RECURSIVE</samp>关键字，则无需对<samp class="ph codeph">WITH</samp>查询进行排序：一个查询可以引用列表中后面的另一个查询。
+                    但是，不支持循环引用或相互递归。
+                </p>
+
+                <p class="p">如果没有<samp class="ph codeph">RECURSIVE</samp>关键字，
+                    则<samp class="ph codeph">WITH</samp>查询只能引用<samp class="ph codeph">WITH</samp>列表中较早的同级<samp class="ph codeph">WITH</samp>查询。
+                </p>
+
+                <p class="p"><samp class="ph codeph">WITH RECURSIVE</samp>限制。不支持这些项目：
+                </p>
+
+                <ul class="ul" id="topic1__ul_b21_szt_n1b">
+                    <li class="li">一个递归<samp class="ph codeph">WITH</samp>子句，在<var class="keyword varname">recursive_term</var>中包含以下内容。
+                        <ul class="ul" id="topic1__ul_c1b_nhf_p1b">
+                            <li class="li">具有自引用的子查询</li>
+
+                            <li class="li">
+                                <samp class="ph codeph">DISTINCT</samp>
+                                子句
+                            </li>
+
+                            <li class="li">
+                                <samp class="ph codeph">GROUP BY</samp>
+                                子句
+                            </li>
+
+                            <li class="li">窗口函数</li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="li">递归<samp class="ph codeph">WITH</samp>子句，其中<var class="keyword varname">with_query_name</var>是集合操作的一部分。
+                    </li>
+
+                </ul>
+
+                <div class="p">以下是集合操作限制的示例。
+                    该查询返回错误，因为集合操作<samp class="ph codeph">UNION</samp>包含对表<samp class="ph codeph">foo</samp>的引用。
+                    <pre class="pre codeblock">WITH RECURSIVE foo(i) AS (
+    SELECT 1
+    UNION ALL
+    SELECT i+1 FROM (SELECT * FROM foo UNION SELECT 0) bar
+)
+SELECT * FROM foo LIMIT 5;</pre>
+
+                </div>
+
+                <div class="p">由于集合操作<samp class="ph codeph">UNION</samp>没有对CTE <samp class="ph codeph">foo</samp>的引用，因此允许此递归CTE。
+                    <pre class="pre codeblock">WITH RECURSIVE foo(i) AS (
+    SELECT 1
+    UNION ALL
+    SELECT i+1 FROM (SELECT * FROM bar UNION SELECT 0) bar, foo
+    WHERE foo.i = bar.a
+)
+SELECT * FROM foo LIMIT 5;</pre>
+
+                </div>
+
+                <p class="p"><samp class="ph codeph">WITH</samp>查询的一个关键属性是，即使主查询多次引用它们，一次执行主查询也只会对它们进行一次评估。
+                    特别是，无论主查询是读取全部输出还是输出任何内容，都保证数据修改语句仅执行一次。
+                </p>
+
+                <p class="p">主查询和<samp class="ph codeph">WITH</samp>查询都（理论上）同时执行。
+                    这意味着，除了通过读取其<samp class="ph codeph">RETURNING</samp>输出之外，不能从查询的其他部分看到<samp class="ph codeph">WITH</samp>中的数据修改语句的效果。
+                    如果两个这样的数据修改语句试图修改同一行，则结果不确定。
+                </p>
+
+                <p class="p">有关更多信息，请参见<a class="xref" href="../../admin_guide/query/topics/CTE-query.html" title="WITH子句提供在一个更大的SELECT查询中，使用子查询或执行数据修改操作的方式。你可以在INSERT, UPDATE, 或 DELETE 命令中使用WITH子句。">WITH查询（公用表表达式）</a>。
+                    <a class="xref" href="../../admin_guide/query/topics/CTE-query.html" title="WITH子句提供在一个更大的SELECT查询中，使用子查询或执行数据修改操作的方式。你可以在INSERT, UPDATE, 或 DELETE 命令中使用WITH子句。">WITH查询（公用表表达式）</a>
+                    
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">SELECT列表</strong>
+                <p class="p"><samp class="ph codeph">SELECT</samp>列表（在关键字<samp class="ph codeph">SELECT</samp>和<samp class="ph codeph">FROM</samp>之间）指定用于形成<samp class="ph codeph">SELECT</samp>语句输出行的表达式。
+                    表达式可以（通常）引用<samp class="ph codeph">FROM</samp>子句中计算的列。
+                </p>
+
+                <p class="p"><samp class="ph codeph">SELECT</samp>列表中的<var class="keyword varname">expression</var>可以是常量值，列引用，运算符调用，函数调用，聚合表达式，窗口表达式，标量子查询等。
+                    可以将许多结构体归类为表达式，但不遵循任何常规语法规则。
+                    这些通常具有函数或运算符的语义。
+                    有关SQL值表达式和函数调用的信息，请参阅<em class="ph i">Greenplum数据库管理员指南</em>中的“查询数据”。
+                </p>
+
+                <p class="p">就像在表中一样，<samp class="ph codeph">SELECT</samp>的每个输出列都有一个名称。
+                    在简单的<samp class="ph codeph">SELECT</samp>中，此名称仅用于标记要显示的列，
+                    但是当<samp class="ph codeph">SELECT</samp>是较大查询的子查询时，该名称在较大查询中被视为由该子查询生成的虚拟表的列名。
+                    要指定用于输出列的名称，请在该列的表达式之后写入<samp class="ph codeph">AS</samp> <var class="keyword varname">output_name</var>。
+                    （您可以省略<samp class="ph codeph">AS</samp>，但只有在所需的输出名称与任何SQL关键字都不匹配时才可以使用。
+                    为防止将来可能再添加关键字，您始终可以写<samp class="ph codeph">AS</samp>或在输出名称中用双引号。）
+                    如果不指定列名称，Greenplum数据库自动选择一个名称。
+                    如果列的表达式是简单的列引用，则所选名称与该列的名称相同。
+                    在更复杂的情况下，可以使用函数或类型名称，或者系统可能会依赖生成的名称（例如<samp class="ph codeph">?column?</samp>或<samp class="ph codeph">column<var class="keyword varname">N</var></samp>）。
+                </p>
+
+                <p class="p">输出列的名称可用于引用<samp class="ph codeph">ORDER BY</samp>和<samp class="ph codeph">GROUP BY</samp>子句中的列的值，
+                    但不能用于<samp class="ph codeph">WHERE</samp>或<samp class="ph codeph">HAVING</samp>子句中。
+                    在那里，您必须写出表达式。
+                </p>
+
+                <p class="p">可以将<samp class="ph codeph">*</samp>而不是表达式写到输出列表，作为所选行的所有列的简写。
+                    另外，您可以编写<samp class="ph codeph"><var class="keyword varname">table_name</var>.*</samp>作为仅来自该表的列的简写。
+                    在这种情况下，无法使用<samp class="ph codeph">AS</samp>指定新名称。
+                    输出列名称将与表列名称相同。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">DISTINCT子句</strong>
+                <p class="p">如果指定了<samp class="ph codeph">SELECT DISTINCT</samp>，则将从结果集中删除所有重复的行（每组重复项中保留一行）。
+                    <samp class="ph codeph">SELECT ALL</samp>则相反：所有行都保留；这是默认值。
+                </p>
+
+                <div class="p">
+<samp class="ph codeph">SELECT DISTINCT ON ( <var class="keyword varname">expression</var> [, ...] )</samp>仅保留给定表达式等于的每组行的第一行。
+                    使用与<samp class="ph codeph">ORDER BY</samp>相同的规则来解释<samp class="ph codeph">DISTINCT ON</samp>表达式（请参见上文）。
+                    请注意，除非使用<samp class="ph codeph">ORDER BY</samp>来确保所需的行最先出现，否则每个集合的“第一行”都是不可预测的。
+                    例如：
+                    <pre class="pre codeblock">SELECT DISTINCT ON (location) location, time, report
+    FROM weather_reports
+    ORDER BY location, time DESC;</pre>
+
+                    检索每个位置的最新天气报告。
+                    但是，如果我们没有使用<samp class="ph codeph">ORDER BY</samp>强制每个位置的时间值按降序排列，那么我们将从每个位置不可预测的时间获得报告。
+                </div>
+
+                <p class="p"><samp class="ph codeph">DISTINCT ON</samp>表达式必须与最左边的<samp class="ph codeph">ORDER BY</samp>表达式匹配。
+                    <samp class="ph codeph">ORDER BY</samp>子句通常将包含附加表达式，这些表达式确定每个<samp class="ph codeph">DISTINCT ON</samp>组中所需的行优先级。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">FROM子句</strong>
+                <p class="p"><samp class="ph codeph">FROM</samp>子句为<samp class="ph codeph">SELECT</samp>指定一个或多个源表。
+                    如果指定了多个源，则结果为所有源的笛卡尔乘积（交叉连接）。
+                    但通常会添加限定条件（通过<samp class="ph codeph">WHERE</samp>），以将返回的行限制为笛卡尔乘积的一小部分。
+                    <samp class="ph codeph">FROM</samp>子句可以包含以下元素：
+                </p>
+
+                <dl class="dl parml">
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">table_name</var>
+                        </dt>
+
+                        <dd class="dd pd">现有表或视图的名称（可以有schema修饰）。
+                            如果指定<samp class="ph codeph">ONLY</samp>，则仅扫描该表。
+                            如果未指定<samp class="ph codeph">ONLY</samp>，则扫描该表及其所有子表（如果有）。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">alias</var>
+                        </dt>
+
+                        <dd class="dd pd">包含别名的<samp class="ph codeph">FROM</samp>项目的替代名称。
+                            别名用于简洁起见或用于消除自连接的歧义（多次扫描同一张表）。
+                            提供别名后，它将完全隐藏表或函数的实际名称。
+                            例如，在给定<samp class="ph codeph">FROM foo AS f</samp>的情况下，
+                            <samp class="ph codeph">SELECT</samp>的其余部分必须将此<samp class="ph codeph">FROM</samp>项目引用为<samp class="ph codeph">f</samp>而不是<samp class="ph codeph">foo</samp>。
+                            如果写入了别名，则还可以写入列别名列表以为表的一个或多个列提供替代名称。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">select</var>
+                        </dt>
+
+                        <dd class="dd pd">子<samp class="ph codeph">SELECT</samp>可以出现在<samp class="ph codeph">FROM</samp>子句中。
+                            这就像在单个<samp class="ph codeph">SELECT</samp>命令期间将其输出创建为临时表一样。
+                            请注意，子<samp class="ph codeph">SELECT</samp>必须用括号括起来，并且必须为其提供别名。
+                            <samp class="ph codeph"><a class="xref" href="VALUES.html#topic1">VALUES</a></samp>命令也可以在这里使用。
+                            有关在Greenplum数据库中使用相关子选择的限制，请参阅<a class="xref" href="#topic1__section19">兼容性</a>部分中的“非标准子句”。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">with_query_name</var>
+                        </dt>
+
+                        <dd class="dd pd">通过指定其<var class="keyword varname">with_query_name</var>在<samp class="ph codeph">FROM</samp>子句中引用<var class="keyword varname">with_query</var>，就像该名称是表名一样。
+                            <var class="keyword varname">with_query_name</var>不能包含schema限定符。
+                            可以使用与表相同的方式提供别名。
+                        </dd>
+
+                        <dd class="dd pd">
+<var class="keyword varname">with_query</var>隐藏用于主查询目的的同名表。
+                            如有必要，可以通过使用schema限定表名来引用相同名称的表。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">function_name</var>
+                        </dt>
+
+                        <dd class="dd pd">函数调用可以出现在<samp class="ph codeph">FROM</samp>子句中。
+                            （这对于返回结果集的函数特别有用，但是可以使用任何函数。）
+                            这就像在单个<samp class="ph codeph">SELECT</samp>命令期间将其输出创建为临时表一样。
+                            也可以使用别名。
+                            如果编写了别名，则还可以编写列别名列表，以为函数的复合返回类型的一个或多个属性提供替代名称。
+                            如果已将函数定义为返回记录数据类型，则必须存在别名或关键字<samp class="ph codeph">AS</samp>，
+                            然后是形式为<samp class="ph codeph">(column_name data_type [, ... ] )</samp>的列定义列表。
+                            列定义列表必须匹配该函数返回的实际列数和类型。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">join_type</var>
+                        </dt>
+
+                        <dd class="dd pd">以下之一：
+                            <ul class="ul" id="topic1__ul_bwd_ft2_m4">
+                                <li class="li" id="topic1__eg139018">
+                                    <strong class="ph b">[INNER] JOIN</strong>
+                                </li>
+
+                                <li class="li" id="topic1__eg139020">
+                                    <strong class="ph b">LEFT [OUTER] JOIN</strong>
+                                </li>
+
+                                <li class="li" id="topic1__eg139022">
+                                    <strong class="ph b">RIGHT [OUTER] JOIN</strong>
+                                </li>
+
+                                <li class="li" id="topic1__eg139024">
+                                    <strong class="ph b">FULL [OUTER] JOIN</strong>
+                                </li>
+
+                                <li class="li" id="topic1__eg139026">
+                                    <strong class="ph b">CROSS JOIN</strong>
+                                </li>
+
+                            </ul>
+
+                        </dd>
+
+                        <dd class="dd pd">对于<samp class="ph codeph">INNER</samp>和<samp class="ph codeph">OUTER</samp>连接类型，必须指定一个连接条件，
+                            即恰好是<samp class="ph codeph">NATURAL</samp>，<samp class="ph codeph">ON <var class="keyword varname">join_condition</var></samp>或<samp class="ph codeph">USING (<var class="keyword varname">join_column</var>[, ...])</samp>之一。
+                            含义如下。
+                            对于<samp class="ph codeph">CROSS JOIN</samp>，这些子句都不会出现。
+                        </dd>
+
+                        <dd class="dd pd">JOIN子句结合了两个<samp class="ph codeph">FROM</samp>项，为方便起见，我们将其称为“表”，
+                            尽管实际上它们可以是任何类型的<samp class="ph codeph">FROM</samp>项。
+                            如有必要，请使用括号确定嵌套顺序。
+                            在没有括号的情况下，<samp class="ph codeph">JOIN</samp>从左到右嵌套。
+                            无论如何，<samp class="ph codeph">JOIN</samp>的绑定比逗号分隔<samp class="ph codeph">FROM</samp>列表项的绑定更紧密。
+                        </dd>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">CROSS JOIN</samp>和<samp class="ph codeph">INNER JOIN</samp>产生一个简单的笛卡尔积，
+                            与在<samp class="ph codeph">FROM</samp>的顶层列出两个表所获得的结果相同，但受连接条件（如果有）的限制。
+                            <samp class="ph codeph">CROSS JOIN</samp>等效于<samp class="ph codeph">INNER JOIN ON</samp> <samp class="ph codeph">(TRUE)</samp>，即，没有行被限定删除。
+                            这些连接类型只是一种符号上的方便，因为它们无法执行普通<samp class="ph codeph">FROM</samp>和<samp class="ph codeph">WHERE</samp>无法完成的工作。
+                        </dd>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">LEFT OUTER JOIN</samp>返回合格的笛卡尔乘积中的所有行（即，所有通过其连接条件的组合行），
+                            加上左表中没有通过右表连接条件的每行的一个副本。
+                            通过为右侧列插入空值，此左侧行将扩展为连接表的整个宽度。
+                            请注意，在确定哪些行具有匹配项时，仅考虑<samp class="ph codeph">JOIN</samp>子句自身的条件。
+                            之后应用外部条件。
+                        </dd>
+
+                        <dd class="dd pd">相反，<samp class="ph codeph">RIGHT OUTER JOIN</samp>返回所有已连接的行，并为每个不匹配的右手行加上一行（在左边扩展为空）。
+                            这只是一种符号上的便利，因为您可以通过切换左右表将其转换为<samp class="ph codeph">LEFT OUTER JOIN</samp>。
+                        </dd>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">FULL OUTER JOIN</samp>返回所有连接的行，再加上一行，
+                            用于每行不匹配的左表行（在右边扩展为空），再加上每行不匹配的右表行（扩展在左边为空）。
+                        </dd>
+
+                    
+                </dl>
+
+                <dl class="dl parml">
+                    
+                        <dt class="dt pt dlterm">ON
+                            <var class="keyword varname">join_condition</var>
+                        </dt>
+
+                        <dd class="dd pd">
+<var class="keyword varname">join_condition</var>是一个表达式，
+                            其结果为<samp class="ph codeph">boolean</samp>类型的值（类似于<samp class="ph codeph">WHERE</samp>子句），该值指定连接中的哪些行被视为匹配。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">USING (<var class="keyword varname">join_column</var> [, ...])
+                        </dt>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">USING ( a, b, ... )</samp>形式的子句是<samp class="ph codeph">ON left_table.a = right_table.a AND left_table.b = right_table.b ...</samp>的简写。
+                            同样，<samp class="ph codeph">USING</samp>意味着连接输出中将仅包括每对等效列中的一对，而不是两者。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">NATURAL</dt>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">NATURAL</samp>是<samp class="ph codeph">USING</samp>列表的简写形式，该列表提到两个表中具有相同名称的所有列。
+                            如果没有公用的列名，则<samp class="ph codeph">NATURAL</samp>等效于<samp class="ph codeph">ON TRUE</samp>。
+                        </dd>
+
+                    
+                </dl>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">WHERE子句</strong>
+                <p class="p">可选的<samp class="ph codeph">WHERE</samp>子句具有一般形式：
+                </p>
+
+                <pre class="pre codeblock">WHERE <var class="keyword varname">condition</var></pre>
+
+                <p class="p"><var class="keyword varname">condition</var>是任何计算结果为<samp class="ph codeph">boolean</samp>型结果的表达式。
+                    任何不满足此条件的行将从输出中删除。
+                    如果用一行的实际值替换其中的变量引用后，该表达式返回真，则该行符合条件。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">GROUP BY子句</strong>
+                <p class="p">可选的<samp class="ph codeph">GROUP BY</samp>子句具有一般形式：
+                </p>
+
+                <pre class="pre codeblock">GROUP BY <var class="keyword varname">grouping_element</var>[, ...]</pre>
+
+                <p class="p">其中<var class="keyword varname">grouping_element</var>可以是以下之一：
+                </p>
+
+                <pre class="pre codeblock">()
+<var class="keyword varname">expression</var>
+ROLLUP (<var class="keyword varname">expression</var> [,...])
+CUBE (<var class="keyword varname">expression</var> [,...])
+GROUPING SETS ((<var class="keyword varname">grouping_element</var> [, ...]))</pre>
+
+                <p class="p"><samp class="ph codeph">GROUP BY</samp>将所有共享有相同值的分组表达式的所有选定行压缩为单行。
+                    <var class="keyword varname">expression</var>可以是输入列名称，也可以是输出列（<samp class="ph codeph">SELECT</samp>列表项）的名称或序号，或者是由输入列值组成的任意表达式。
+                    如有歧义，<samp class="ph codeph">GROUP BY</samp>名称将被解释为输入列名称，而不是输出列名称。
+                </p>
+
+                <p class="p">汇总函数（如果有的话）在组成每个组的所有行中进行计算，从而为每个组生成单独的值。
+                    （如果有聚合函数但没有<samp class="ph codeph">GROUP BY</samp>子句，则该查询被视为具有包含所有选定行的单个组。）
+                    可以通过将<samp class="ph codeph">FILTER</samp>子句附加到聚合函数调用来进一步过滤提供给每个聚合函数的行集。
+                    如果存在<samp class="ph codeph">FILTER</samp>子句，则只有与之匹配的那些行才包含在该聚合函数的输入中。
+                </p>
+
+                <p class="p">如果存在<samp class="ph codeph">GROUP BY</samp>或任何聚合函数，则<samp class="ph codeph">SELECT</samp>列表表达式不能引用未分组的列，
+                    除非是在聚合函数内，或者当未分组的列在函数上依赖于分组的列时，否则对于未分组的列将会返回不止一个的可能的值。
+                    如果分组的列（或其子集）是包含未分组的列的表的主键，则存在函数依赖。
+                </p>
+
+                <p class="p">请记住，在评估<samp class="ph codeph">HAVING</samp>子句或<samp class="ph codeph">SELECT</samp>列表中的任何“标量”表达式之前，将评估所有聚合函数。
+                    这意味着，例如，<samp class="ph codeph">CASE</samp>表达式不能用于跳过对聚合函数的求值；见<a class="xref" href="../../admin_guide/query/topics/defining-queries.html#topic25">表达式计算规则</a>。
+                </p>
+
+                <p class="p">Greenplum数据库具有以下附加的OLAP分组扩展（通常称为<em class="ph i">supergroups</em>）：
+                </p>
+
+                <dl class="dl parml">
+                    
+                        <dt class="dt pt dlterm">ROLLUP</dt>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">ROLLUP</samp>分组是对<samp class="ph codeph">GROUP BY</samp>子句的扩展，该子句创建聚合部分和，
+                            该部分和从最详细的级别汇总到总计，并遵循分组列（或表达式）的列表。
+                            <samp class="ph codeph">ROLLUP</samp>提取分组列的有序列表，计算在<samp class="ph codeph">GROUP BY</samp>子句中指定的标准聚合值，
+                            然后逐步创建更高级别的部分和，从列表的右向左移动。
+                            最后，它创建了一个总计。
+                            可以将<samp class="ph codeph">ROLLUP</samp>分组视为一系列分组集。 例如：
+                        </dd>
+
+                        <dd class="dd pd">
+                            <pre class="pre codeblock">GROUP BY ROLLUP (a,b,c)</pre>
+
+                        </dd>
+
+                        <dd class="dd pd">等效于：</dd>
+
+                        <dd class="dd pd">
+                            <pre class="pre codeblock">GROUP BY GROUPING SETS( (a,b,c), (a,b), (a), () )</pre>
+
+                        </dd>
+
+                        <dd class="dd pd">请注意，<samp class="ph codeph">ROLLUP</samp>的<var class="keyword varname">n</var>个元素转换为<var class="keyword varname">n</var>+1个分组集。
+                            同样，在<samp class="ph codeph">ROLLUP</samp>中指定分组表达式的顺序也很重要。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">CUBE</dt>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">CUBE</samp>分组是对<samp class="ph codeph">GROUP BY</samp>子句的扩展，它为分组列（或表达式）的给定列表的所有可能组合创建部分和。
+                            在多维分析方面，<samp class="ph codeph">CUBE</samp>生成可以为具有指定维的多维数据集计算的所有部分和。
+                            例如：
+                        </dd>
+
+                        <dd class="dd pd">
+                            <pre class="pre codeblock">GROUP BY CUBE (a,b,c)</pre>
+
+                        </dd>
+
+                        <dd class="dd pd">等效于：</dd>
+
+                        <dd class="dd pd">
+                            <pre class="pre codeblock">GROUP BY GROUPING SETS( (a,b,c), (a,b), (a,c), (b,c), (a),
+(b), (c), () )</pre>
+
+                        </dd>
+
+                        <dd class="dd pd">注意，<samp class="ph codeph">CUBE</samp>的<var class="keyword varname">n</var>个元素转换为2n个分组集。
+                            考虑在需要交叉表报告的任何情况下使用<samp class="ph codeph">CUBE</samp>。
+                            <samp class="ph codeph">CUBE</samp>通常最适合使用多个维度列而不是表示单个维度不同级别的列的查询。
+                            例如，通常要求的交叉列表可能需要月份，州和产品的所有组合的部分和。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">GROUPING SETS</dt>
+
+                        <dd class="dd pd">您可以使用<samp class="ph codeph">GROUP BY</samp>子句中的<samp class="ph codeph">GROUPING SETS</samp>表达式有选择地指定要创建的组集。
+                            这样就可以在多个维度上进行精确指定，而无需计算整个<samp class="ph codeph">ROLLUP</samp>或<samp class="ph codeph">CUBE</samp>。
+                            例如：
+                        </dd>
+
+                        <dd class="dd pd">
+                            <pre class="pre codeblock">GROUP BY GROUPING SETS( (a,c), (a,b) )</pre>
+
+                        </dd>
+
+                        <dd class="dd pd">如果使用分组扩展子句<samp class="ph codeph">ROLLUP</samp>，<samp class="ph codeph">CUBE</samp>或<samp class="ph codeph">GROUPING SETS</samp>，则要面临两个问题。
+                            首先，如何确定哪些结果行是部分和，然后确定给定部分和的确切聚合级别。
+                            或者，如何区分包含存储的<samp class="ph codeph">NULL</samp>值和由<samp class="ph codeph">ROLLUP</samp>或<samp class="ph codeph">CUBE</samp>创建的“NULL”值的结果行。
+                            其次，当在<samp class="ph codeph">GROUP BY</samp>子句中指定重复的分组集时，如何确定哪些结果行是重复的？
+                            您可以在<samp class="ph codeph">SELECT</samp>列表中使用两个附加的分组函数来帮助解决此问题：
+                            <ul class="ul" id="topic1__ul_vx1_3ml_m4">
+                                <li class="li" id="topic1__eg143759">
+                                    <strong class="ph b">grouping(column [, ...])</strong>
+                                    — 可以将<samp class="ph codeph">grouping</samp>函数应用于一个或多个分组属性，以将超聚合的行与常规的分组的行区分开。
+                                    这有助于将代表超级汇总行中所有值的集合的“NULL”与常规行中的<samp class="ph codeph">NULL</samp>值区分开。
+                                    此函数中的每个参数都产生一个位 - <samp class="ph codeph">1</samp>或<samp class="ph codeph">0</samp>，
+                                    其中<samp class="ph codeph">1</samp>表示结果行是超级聚合的，而<samp class="ph codeph">0</samp>表示结果行来自常规分组。
+                                    <samp class="ph codeph">grouping</samp>函数通过将这些位视为二进制数然后将其转换为以10为基的整数来返回整数。
+                                </li>
+
+                                <li class="li" id="topic1__eg143806">
+                                    <strong class="ph b">group_id()</strong>
+                                    — 对于包含重复分组集的分组扩展查询，<samp class="ph codeph">group_id</samp>函数用于标识输出中的重复行。
+                                    所有唯一分组集输出的唯一行的group_id值为0。
+                                    对于每个检测到的重复分组集，<samp class="ph codeph">group_id</samp>函数分配的group_id编号大于0。
+                                    特定重复分组集中的所有输出行均由相同的group_id编号标识。
+                                </li>
+
+                            </ul>
+
+                        </dd>
+
+                    
+                </dl>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">WINDOW子句</strong>
+                <p class="p">可选的<samp class="ph codeph">WINDOW</samp>子句指定出现在查询的<samp class="ph codeph">SELECT</samp>列表或<samp class="ph codeph">ORDER BY</samp>子句中的窗口函数的行为。
+                    这些函数可以在其<samp class="ph codeph">OVER</samp>子句中按名称引用<samp class="ph codeph">WINDOW</samp>子句条目。
+                    但是，<samp class="ph codeph">WINDOW</samp>子句条目不必在任何地方引用。
+                    如果查询中未使用它，则将其忽略。
+                    可以根本不使用任何<samp class="ph codeph">WINDOW</samp>子句来使用窗口函数，因为窗口函数调用可以直接在其<samp class="ph codeph">OVER</samp>子句中指定其窗口定义。
+                    但是，当多个窗口函数需要相同的窗口定义时，<samp class="ph codeph">WINDOW</samp>子句将保存键入内容。
+                </p>
+
+                <p class="p">例如：</p>
+
+                <pre class="pre codeblock">SELECT vendor, rank() OVER (mywindow) FROM sale
+GROUP BY vendor
+WINDOW mywindow AS (ORDER BY sum(prc*qty));</pre>
+
+                <p class="p"><samp class="ph codeph">WINDOW</samp>子句具有以下一般形式：
+                </p>
+
+                <pre class="pre codeblock">WINDOW <var class="keyword varname">window_name</var> AS (<var class="keyword varname">window_definition</var>)</pre>
+
+                <p class="p">其中<var class="keyword varname">window_name</var>是可以从<samp class="ph codeph">OVER</samp>子句或后续窗口定义中引用的名称，
+                    而<var class="keyword varname">window_definition</var>为：
+                </p>
+
+                <pre class="pre codeblock">[<var class="keyword varname">existing_window_name</var>]
+[PARTITION BY <var class="keyword varname">expression</var> [, ...]]
+[ORDER BY <var class="keyword varname">expression</var> [ASC | DESC | USING <var class="keyword varname">operator</var>] [NULLS {FIRST | LAST}] [, ...] ]
+[<var class="keyword varname">frame_clause</var>]</pre>
+
+                <dl class="dl parml">
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">existing_window_name</var>
+                        </dt>
+
+                        <dd class="dd pd">如果指定了<samp class="ph codeph"><var class="keyword varname">existing_window_name</var></samp>，则它必须引用<samp class="ph codeph">WINDOW</samp>列表中的较早条目；
+                            新窗口将复制该条目的分区子句以及其排序子句（如果有）。
+                            新窗口不能指定自己的<samp class="ph codeph">PARTITION BY</samp>子句，只有复制的窗口没有该子句时，它才能指定<samp class="ph codeph">ORDER BY</samp>。
+                            新窗口始终使用其自己的frame子句；复制的窗口不得指定frame子句。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">PARTITION BY</dt>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">PARTITION BY</samp>子句根据指定表达式的唯一值将结果集组织为逻辑组。
+                            <samp class="ph codeph">PARTITION BY</samp>子句的元素的解释方式与<samp class="ph codeph">GROUP BY</samp>子句的元素几乎相同，
+                            不同之处在于它们始终是简单表达式，而不是输出列的名称或编号。
+                            另一个区别是这些表达式可以包含聚合函数调用，这在常规<samp class="ph codeph">GROUP BY</samp>子句中是不允许的。
+                            在此处允许使用它们，因为窗口在分组和聚合之后发生。
+                            与窗口函数一起使用时，这些函数将分别应用于每个分区。
+                            例如，如果在<samp class="ph codeph">PARTITION BY</samp>之后加上列名，则结果集将按该列的不同值进行分区。
+                            如果省略，则将整个结果集视为一个分区。
+                        </dd>
+
+                        <dd class="dd pd">同样，<samp class="ph codeph">ORDER BY</samp>列表中的元素的解释方式与<samp class="ph codeph">ORDER BY</samp>子句中的元素几乎相同，
+                            不同之处在于，始终将表达式视为简单表达式，而不使用输出列的名称或编号。
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">ORDER BY</dt>
+
+                        <dd class="dd pd">
+<samp class="ph codeph">ORDER BY</samp>子句的元素定义如何对结果集的每个分区中的行进行排序。
+                            如果省略，则以最有效的顺序返回行，并且行可能会有所不同。
+                            <strong class="ph b">注意：</strong>缺少一致顺序（例如<samp class="ph codeph">time</samp>）的数据类型的列不是在窗口规范的<samp class="ph codeph">ORDER BY</samp>子句中使用的良好候选对象。
+                            带有或不带有时区的时间缺乏连贯的排序，因为加法和减法没有预期的效果。
+                            例如，以下条件通常不成立：<samp class="ph codeph">x::time &lt; x::time + '2 hour'::interval</samp>
+                        </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">
+                            <var class="keyword varname">frame_clause</var>
+                        </dt>
+
+                        <dd class="dd pd">可选的<samp class="ph codeph"><var class="keyword varname">frame_clause</var></samp>定义依赖于框架的窗口函数的窗口框架（并非全部如此）。
+                            窗口框架是查询的每一行（称为当前行）的一组相关行。
+                            <samp class="ph codeph"><var class="keyword varname">frame_clause</var></samp>可以是以下之一
+                            <pre class="pre codeblock">{ RANGE | ROWS } <var class="keyword varname">frame_start</var>
+{ RANGE | ROWS } BETWEEN <var class="keyword varname">frame_start</var> AND <var class="keyword varname">frame_end</var></pre>
+
+                            其中<samp class="ph codeph"><var class="keyword varname">frame_start</var></samp>和<samp class="ph codeph"><var class="keyword varname">frame_end</var></samp>可以是以下之一
+                            <ul class="ul" id="topic1__ul_ehq_kws_1gb">
+                                <li class="li">
+                                    <samp class="ph codeph">UNBOUNDED PRECEDING</samp>
+                                </li>
+
+                                <li class="li">
+                                    <samp class="ph codeph">
+                                        <var class="keyword varname">value</var>
+                                        PRECEDING
+                                    </samp>
+                                </li>
+
+                                <li class="li">
+                                    <samp class="ph codeph">CURRENT ROW</samp>
+                                </li>
+
+                                <li class="li">
+                                    <samp class="ph codeph">
+                                        <var class="keyword varname">value</var>
+                                        FOLLOWING
+                                    </samp>
+                                </li>
+
+                                <li class="li">
+                                    <samp class="ph codeph">UNBOUNDED FOLLOWING</samp>
+                                </li>
+
+                            </ul>
+
+                        </dd>
+
+                        <dd class="dd pd">如果省略<samp class="ph codeph"><var class="keyword varname">frame_end</var></samp>，则默认为<samp class="ph codeph">CURRENT ROW</samp>。
+                            限制条件是<samp class="ph codeph"><var class="keyword varname">frame_start</var></samp>不能为<samp class="ph codeph">UNBOUNDED FOLLOWING</samp>，
+                            <samp class="ph codeph"><var class="keyword varname">frame_end</var></samp>不能为<samp class="ph codeph">UNBOUNDED PRECEDING</samp>，
+                            并且<samp class="ph codeph"><var class="keyword varname">frame_end</var></samp>选择不能在上述列表中出现在<samp class="ph codeph"><var class="keyword varname">frame_start</var></samp>选择之前
+                            — 例如，<samp class="ph codeph">RANGE BETWEEN CURRENT ROW AND <var class="keyword varname">value</var> PRECEDING</samp>是不允许的。
+                        </dd>
+
+                        <dd class="dd pd">默认的框架选项是<samp class="ph codeph">RANGE UNBOUNDED PRECEDING</samp>，与<samp class="ph codeph">RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</samp>之间的范围相同；
+                            它将框架设置为从分区开始到当前行的最后一个对等方的所有行（<samp class="ph codeph">ORDER BY</samp>的行认为与当前行等效，如果没有<samp class="ph codeph">ORDER BY</samp>则为所有行）。
+                            通常，<samp class="ph codeph">UNBOUNDED PRECEDING</samp>表示框架以分区的第一行开始，
+                            类似地<samp class="ph codeph">UNBOUNDED FOLLOWING</samp>表示框架以分区的最后一行结束（与<samp class="ph codeph">RANGE</samp>或<samp class="ph codeph">ROWS</samp>模式无关）。
+                            在<samp class="ph codeph">ROWS</samp>模式下，<samp class="ph codeph">CURRENT ROW</samp>表示框架以当前行开始或结束；
+                            但是在<samp class="ph codeph">RANGE</samp>模式下，这意味着框架以<samp class="ph codeph">ORDER BY</samp>顺序中当前行的第一个或最后一个对等点开始或结束。
+                            当前仅在<samp class="ph codeph">ROWS</samp>模式下允许<var class="keyword varname">value</var> <samp class="ph codeph">PRECEDING</samp>和<var class="keyword varname">value</var> <samp class="ph codeph">FOLLOWING</samp>情况。
+                            它们指示框架以当前行之前或之后许多行的行开始或结束。
+                            <var class="keyword varname">value</var>必须是不包含任何变量，聚合函数或窗口函数的整数表达式。
+                            该值不能为null或负数；但它可以为零，从而选择当前行本身。
+                        </dd>
+
+                        <dd class="dd pd">请注意，如果<samp class="ph codeph">ORDER BY</samp>排序不能唯一地对行进行排序，则<samp class="ph codeph">ROWS</samp>选项可能会产生不可预测的结果。
+                            <samp class="ph codeph">RANGE</samp>选项旨在确保以相同的方式对待在<samp class="ph codeph">ORDER BY</samp>顺序中为对等的行；
+                            所有对等行将在同一框架中。
+                        </dd>
+
+                        <dd class="dd pd">使用<samp class="ph codeph">ROWS</samp>或<samp class="ph codeph">RANGE</samp>子句来表示窗口的边界。
+                            窗口边界可以是一个分区的一行，多行或所有行。
+                            您可以用偏移当前行值的数据值范围（<samp class="ph codeph">RANGE</samp>）或偏移当前行的行数（<samp class="ph codeph">ROWS</samp>）来表示窗口的边界。
+                            使用<samp class="ph codeph">RANGE</samp>子句时，还必须使用<samp class="ph codeph">ORDER BY</samp>子句。
+                            这是因为为生成窗口而执行的计算需要对值进行排序。
+                            此外，<samp class="ph codeph">ORDER BY</samp>子句不能包含多个表达式，并且该表达式必须导致日期或数字值。
+                            使用<samp class="ph codeph">ROWS</samp>或<samp class="ph codeph">RANGE</samp>子句时，如果仅指定起始行，则当前行将用作窗口中的最后一行。
+                        </dd>
+
+                        <dd class="dd pd">
+                            <strong class="ph b">PRECEDING</strong>
+                            — <samp class="ph codeph">PRECEDING</samp>子句使用当前行作为参考点定义窗口的第一行。
+                            起始行以当前行之前的行数表示。
+                            例如，对于<samp class="ph codeph">ROWS</samp>框架，<samp class="ph codeph">5 PRECEDING</samp>设置窗口从当前行之前的第五行开始。
+                            对于<samp class="ph codeph">RANGE</samp>框架，它将窗口设置为从第一行开始，其排序列值在给定顺序比当前行的顺序高5。
+                            如果指定的顺序按日期升序，则它将是当前行之前5天内的第一行。
+                            <samp class="ph codeph">UNBOUNDED PRECEDING</samp>将窗口中的第一行设置为分区中的第一行。
+                        </dd>
+
+                        <dd class="dd pd">
+                            <strong class="ph b">BETWEEN</strong>
+                            — <samp class="ph codeph">BETWEEN</samp>子句使用当前行作为参考点定义窗口的第一行和最后一行。
+                            第一行和最后一行分别用当前行之前和之后的行数表示。
+                            例如，<samp class="ph codeph">BETWEEN 3 PRECEDING AND 5 FOLLOWING</samp>将窗口设置为从当前行之前的第三行开始，到当前行之后的第五行结束。
+                            使用<samp class="ph codeph">BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</samp>，
+                            可以将窗口中的第一行和最后一行分别设置为分区的第一行和最后一行。
+                            如果未指定<samp class="ph codeph">ROW</samp>或<samp class="ph codeph">RANGE</samp>子句，则等效于默认行为。
+                        </dd>
+
+                        <dd class="dd pd">
+                            <strong class="ph b">FOLLOWING</strong>
+                            — FOLLOWING子句使用当前行作为参考点定义窗口的最后一行。
+                            最后一行以当前行之后的行数表示。
+                            例如，对于<samp class="ph codeph">ROWS</samp>框架，<samp class="ph codeph">5 FOLLOWING</samp>将窗口设置为在当前行之后的第五行结束。
+                            在<samp class="ph codeph">RANGE</samp>框架的情况下，它将窗口设置为最后一行的末尾，其排序列值在给定顺序的当前行后5个。
+                            如果指定的顺序按日期升序，则它将是当前行之后5天内的最后一行。
+                            使用<samp class="ph codeph">UNBOUNDED FOLLOWING</samp>将窗口中的最后一行设置为分区中的最后一行。
+                        </dd>
+
+                        <dd class="dd pd">如果未指定<samp class="ph codeph">ROW</samp>或<samp class="ph codeph">RANGE</samp>子句，并且使用<samp class="ph codeph">ORDER BY</samp>，
+                            则窗口绑定从分区的第一行（<samp class="ph codeph">UNBOUNDED PRECEDING</samp>）开始，到当前行（<samp class="ph codeph">CURRENT ROW</samp>）结束。
+                            如果未指定<samp class="ph codeph">ORDER BY</samp>，则窗口从分区的第一行开始（<samp class="ph codeph">UNBOUNDED PRECEDING</samp>），
+                            然后从分区的最后一行结束（<samp class="ph codeph">UNBOUNDED FOLLOWING</samp>）。
+                        </dd>
+
+                    
+                </dl>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">HAVING子句</strong>
+                <p class="p">可选的<samp class="ph codeph">HAVING</samp>子句具有以下一般形式：
+                </p>
+
+                <pre class="pre codeblock">HAVING <var class="keyword varname">condition</var></pre>
+
+                <p class="p">其中<var class="keyword varname">condition</var>与为<samp class="ph codeph">WHERE</samp>子句指定的条件相同。
+                    <samp class="ph codeph">HAVING</samp>去除不满足条件的组行。
+                    <samp class="ph codeph">HAVING</samp>与<samp class="ph codeph">WHERE</samp>不同：<samp class="ph codeph">WHERE</samp>在应用<samp class="ph codeph">GROUP BY</samp>之前过滤单个行，
+                    而<samp class="ph codeph">HAVING</samp>过滤<samp class="ph codeph">GROUP BY</samp>创建的组行。
+                    <var class="keyword varname">condition</var>中引用的每个列都必须明确引用一个分组列，除非该引用出现在聚合函数中或未分组的列在函数上依赖于分组列。
+                </p>
+
+                <p class="p">即使没有<samp class="ph codeph">GROUP BY</samp>子句，<samp class="ph codeph">HAVING</samp>的存在也会将查询转换为分组查询。
+                    这与查询包含聚合函数但不包含<samp class="ph codeph">GROUP BY</samp>子句的情况相同。
+                    所有选定的行都被视为形成一个单一的组，并且<samp class="ph codeph">SELECT</samp>列表和<samp class="ph codeph">HAVING</samp>子句只能引用聚合函数中的表列。
+                    如果<samp class="ph codeph">HAVING</samp>条件为true，则此类查询将返回单行；如果条件不是true，则将返回零行。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">UNION子句</strong>
+                <p class="p"><samp class="ph codeph">UNION</samp>子句具有以下一般形式：
+                </p>
+
+                <pre class="pre codeblock"><var class="keyword varname">select_statement</var> UNION [ALL | DISTINCT] <var class="keyword varname">select_statement</var></pre>
+
+                <p class="p">其中<var class="keyword varname">select_statement</var>是不带<samp class="ph codeph">ORDER BY</samp>，<samp class="ph codeph">LIMIT</samp>，
+                    <samp class="ph codeph">FOR NO KEY UPDATE</samp>，<samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>或<samp class="ph codeph">FOR KEY SHARE</samp>子句的任何<samp class="ph codeph">SELECT</samp>语句。
+                    （如果将<samp class="ph codeph">ORDER BY</samp>和<samp class="ph codeph">LIMIT</samp>括在圆括号中，则可以将其附加到子查询表达式。
+                    不带圆括号，这些子句将应用于<samp class="ph codeph">UNION</samp>的结果，而不是其右侧输入表达式。）
+                </p>
+
+                <p class="p"><samp class="ph codeph">UNION</samp>运算符计算所涉及的<samp class="ph codeph">SELECT</samp>语句返回的行的集合并集。
+                    如果行出现在至少一个结果集中，则在两个结果集中的行并集中。
+                    表示<samp class="ph codeph">UNION</samp>的直接操作数的两个<samp class="ph codeph">SELECT</samp>语句必须产生相同数量的列，并且对应的列必须具有兼容的数据类型。
+                </p>
+
+                <p class="p">除非指定了<samp class="ph codeph">ALL</samp>选项，否则<samp class="ph codeph">UNION</samp>的结果不包含任何重复的行。
+                    <samp class="ph codeph">ALL</samp>防止重复项的消除。
+                    （因此，<samp class="ph codeph">UNION ALL</samp>通常比<samp class="ph codeph">UNION</samp>快得多；请尽可能使用<samp class="ph codeph">ALL</samp>。）
+                    可以编写<samp class="ph codeph">DISTINCT</samp>来明确指定消除重复行的默认行为。
+                </p>
+
+                <p class="p">除非括号中另有说明，否则同一<samp class="ph codeph">SELECT</samp>语句中的多个<samp class="ph codeph">UNION</samp>运算符从左到右求值。
+                </p>
+
+                <p class="p">当前，不能为<samp class="ph codeph">UNION</samp>结果或<samp class="ph codeph">UNION</samp>的任何输入指定<samp class="ph codeph">FOR NO KEY UPDATE</samp>，
+                    <samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>和<samp class="ph codeph">FOR KEY SHARE</samp>。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">INTERSECT子句</strong>
+                <p class="p"><samp class="ph codeph">INTERSECT</samp>子句具有以下一般形式：
+                </p>
+
+                <pre class="pre codeblock"><var class="keyword varname">select_statement</var> INTERSECT [ALL | DISTINCT] <var class="keyword varname">select_statement</var></pre>
+
+                <p class="p">其中<var class="keyword varname">select_statement</var>是不带<samp class="ph codeph">ORDER BY</samp>，<samp class="ph codeph">LIMIT</samp>，
+                    <samp class="ph codeph">FOR NO KEY UPDATE</samp>，<samp class="ph codeph">FOR UPDATE</samp>，
+                    <samp class="ph codeph">FOR SHARE</samp>或<samp class="ph codeph">FOR KEY SHARE</samp>子句的任何SELECT语句。
+                </p>
+
+                <p class="p"><samp class="ph codeph">INTERSECT</samp>运算符计算所涉及的<samp class="ph codeph">SELECT</samp>语句返回的行的交集。
+                    如果一行出现在两个结果集中，则该行位于两个结果集中的交集。
+                </p>
+
+                <p class="p">除非指定<samp class="ph codeph">ALL</samp>选项，否则<samp class="ph codeph">INTERSECT</samp>的结果不包含任何重复的行。
+                    使用<samp class="ph codeph">ALL</samp>，在左表中具有<var class="keyword varname">m</var>个重复项且在右表中具有<var class="keyword varname">n</var>个重复项的行将在结果集中出现min（<var class="keyword varname">m</var>，<var class="keyword varname">n</var>）次。
+                    可以编写<samp class="ph codeph">DISTINCT</samp>来明确指定消除重复行的默认行为。
+                </p>
+
+                <p class="p">除非括号中另有规定，否则同一<samp class="ph codeph">SELECT</samp>语句中的多个<samp class="ph codeph">INTERSECT</samp>运算符从左到右求值。
+                    <samp class="ph codeph">INTERSECT</samp>的优先级比<samp class="ph codeph">UNION</samp>高。
+                    即，<samp class="ph codeph">A UNION B INTERSECT C</samp>等同于<samp class="ph codeph">A UNION (B INTERSECT C)</samp>。
+                </p>
+
+                <p class="p">当前，不能为<samp class="ph codeph">INTERSECT</samp>结果或<samp class="ph codeph">INTERSECT</samp>的任何输入指定<samp class="ph codeph">FOR NO KEY UPDATE</samp>，
+                    <samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>和<samp class="ph codeph">FOR KEY SHARE</samp>。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">EXCEPT子句</strong>
+                <p class="p"><samp class="ph codeph">EXCEPT</samp>子句具有以下一般形式：
+                </p>
+
+                <pre class="pre codeblock"><var class="keyword varname">select_statement</var> EXCEPT [ALL | DISTINCT] <var class="keyword varname">select_statement</var></pre>
+
+                <p class="p">其中<var class="keyword varname">select_statement</var>是不带<samp class="ph codeph">ORDER BY</samp>，<samp class="ph codeph">LIMIT</samp>，<samp class="ph codeph">FOR NO KEY UPDATE</samp>，
+                    <samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>或<samp class="ph codeph">FOR KEY SHARE</samp>子句的任何<samp class="ph codeph">SELECT</samp>语句。
+                </p>
+
+                <p class="p"><samp class="ph codeph">EXCEPT</samp>运算符计算在左<samp class="ph codeph">SELECT</samp>语句的结果但不在右<samp class="ph codeph">SELECT</samp>的结果的行集。
+                </p>
+
+                <p class="p">除非指定了<samp class="ph codeph">ALL</samp>选项，否则<samp class="ph codeph">EXCEPT</samp>的结果将不包含任何重复的行。
+                    使用<samp class="ph codeph">ALL</samp>，在左表中具有<var class="keyword varname">m</var>个重复项且在右表中具有<var class="keyword varname">n</var>个重复项的行将在结果集中出现max（<var class="keyword varname">m-n</var>，0）次。
+                    可以编写<samp class="ph codeph">DISTINCT</samp>来明确指定消除重复行的默认行为。
+                </p>
+
+                <p class="p">除非括号中另有规定，否则同一<samp class="ph codeph">SELECT</samp>语句中的多个<samp class="ph codeph">EXCEPT</samp>运算符从左到右求值。
+                    <samp class="ph codeph">EXCEPT</samp>与<samp class="ph codeph">UNION</samp>优先级相同。
+                </p>
+
+                <p class="p">当前，不能为<samp class="ph codeph">EXCEPT</samp>结果或<samp class="ph codeph">EXCEPT</samp>的任何输入指定<samp class="ph codeph">FOR NO KEY UPDATE</samp>，
+                    <samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>和<samp class="ph codeph">FOR KEY SHARE</samp>。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">ORDER BY子句</strong>
+                <p class="p">可选的<samp class="ph codeph">ORDER BY</samp>子句具有以下一般形式：
+                </p>
+
+                <pre class="pre codeblock">ORDER BY <var class="keyword varname">expression</var> [ASC | DESC | USING <var class="keyword varname">operator</var>] [NULLS {FIRST | LAST}] [,...]
+                </pre>
+
+                <p class="p">其中<var class="keyword varname">expression</var>可以是输出列（<samp class="ph codeph">SELECT</samp>列表项）的名称或序号，
+                    也可以是由输入列值组成的任意表达式。
+                </p>
+
+                <p class="p"><samp class="ph codeph">ORDER BY</samp>子句使结果行根据指定的表达式排序。
+                    如果两行最左边的表达式相等，则根据下一个表达式对它们进行比较，依此类推。
+                    如果所有指定的表达式相等，则将根据实现的顺序返回它们。
+                </p>
+
+                <p class="p">序号是指输出列的序数位置（从左到右）。
+                    通过此特性，可以基于没有唯一名称的列来定义顺序。
+                    这绝对不是必须的，因为始终可以使用<samp class="ph codeph">AS</samp>子句为输出列分配名称。
+                </p>
+
+                <p class="p">还可以在<samp class="ph codeph">ORDER BY</samp>子句中使用任意表达式，包括未出现在<samp class="ph codeph">SELECT</samp>输出列表中的列。
+                    因此，以下语句是有效的：
+                </p>
+
+                <pre class="pre codeblock">SELECT name FROM distributors ORDER BY code;</pre>
+
+                <p class="p">此特性的局限性在于，应用于<samp class="ph codeph">UNION</samp>，<samp class="ph codeph">INTERSECT</samp>或<samp class="ph codeph">EXCEPT</samp>子句结果的<samp class="ph codeph">ORDER BY</samp>子句只能指定输出列名称或序号，而不能指定表达式。
+                </p>
+
+                <p class="p">如果<samp class="ph codeph">ORDER BY</samp>表达式是一个与输出列名和输入列名都匹配的简单名称，则<samp class="ph codeph">ORDER BY</samp>将其解释为输出列名。
+                    这与<samp class="ph codeph">GROUP BY</samp>在相同情况下所做的选择相反。
+                    这两个语句的不一致行为与SQL标准兼容。
+                </p>
+
+                <p class="p">可以选择在<samp class="ph codeph">ORDER BY</samp>子句中的任何表达式之后添加关键字<samp class="ph codeph">ASC</samp>（升序）或<samp class="ph codeph">DESC</samp>（降序）。
+                    如果未指定，则默认采用<samp class="ph codeph">ASC</samp>。
+                    或者，可以在<samp class="ph codeph">USING</samp>子句中指定特定的排序运算符名称。
+                    <samp class="ph codeph">ASC</samp>通常等效于<samp class="ph codeph">USING &lt;</samp>，而<samp class="ph codeph">DESC</samp>通常等效于<samp class="ph codeph">USING &gt;</samp>。
+                    （但是，用户定义数据类型的创建者可以准确定义默认的排序顺序，并且它可能与其他名称的运算符相对应。）
+                </p>
+
+                <p class="p">如果指定了<samp class="ph codeph">NULLS LAST</samp>，则空值将在所有非空值之后排序；
+                    如果指定了<samp class="ph codeph">NULLS FIRST</samp>，则空值将在所有非空值之前排序。
+                    如果都未指定，则默认行为是在指定或隐含<samp class="ph codeph">ASC</samp>时为<samp class="ph codeph">NULLS LAST</samp>，
+                    而在指定<samp class="ph codeph">DESC</samp>时为<samp class="ph codeph">NULLS FIRST</samp>（因此，默认值表示空值大于非空值）。
+                    指定<samp class="ph codeph">USING</samp>时，默认的空值排序取决于运算符是小于运算符还是大于运算符。
+                </p>
+
+                <p class="p">请注意，排序选项仅适用于它们遵循的表达式。
+                    例如，<samp class="ph codeph">ORDER BY x, y DESC</samp>的含义与<samp class="ph codeph">ORDER BY x DESC，y DESC</samp>的含义不同。
+                </p>
+
+                <p class="p">字符串数据是根据创建数据库时建立的特定于语言环境的排序顺序进行排序的。
+                </p>
+
+                <p class="p">字符串数据是根据应用于要排序的列的排序规则进行排序的。
+                    可以根据需要通过在<var class="keyword varname">expression</var>中包含<samp class="ph codeph">COLLATE</samp>子句来覆盖它，
+                    例如<samp class="ph codeph">ORDER BY mycolumn COLLATE "en_US"</samp>。
+                    有关定义排序规则的信息，请参见<samp class="ph codeph"><a class="xref" href="CREATE_COLLATION.html">CREATE COLLATION</a></samp>。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">LIMIT子句</strong>
+                <p class="p"><samp class="ph codeph">LIMIT</samp>子句包含两个独立的子句：
+                </p>
+
+                <pre class="pre codeblock">LIMIT {<var class="keyword varname">count</var> | ALL}
+OFFSET <var class="keyword varname">start</var></pre>
+
+                <p class="p">其中<var class="keyword varname">count</var>指定要返回的最大行数，而<var class="keyword varname">start</var>指定在开始返回行之前要跳过的行数。
+                    如果同时指定了两者，则在开始对要返回的<samp class="ph codeph">count</samp>行进行计数之前，将跳过起始行。
+                </p>
+
+                <p class="p">如果<samp class="ph codeph">count</samp>表达式的计算结果为NULL，则将其视为<samp class="ph codeph">LIMIT ALL</samp>，即无限制。
+                    如果<samp class="ph codeph">start</samp>计算为NULL，则将其与<samp class="ph codeph">OFFSET 0</samp>相同。
+                </p>
+
+                <div class="p">SQL：2008引入了不同的语法来实现相同的结果，Greenplum数据库也支持该语法。
+                    它是：
+                    <pre class="pre codeblock">OFFSET <var class="keyword varname">start</var> [ ROW | ROWS ]
+        FETCH { FIRST | NEXT } [ <var class="keyword varname">count</var> ] { ROW | ROWS } ONLY</pre>
+
+                </div>
+
+                <p class="p">在这种语法中，标准要求<var class="keyword varname">start</var>或<var class="keyword varname">count</var>值是文字常量，参数或变量名；
+                    作为Greenplum数据库扩展，可以使用其他表达式，但通常需要将其括在括号中以避免歧义。
+                    如果在<samp class="ph codeph">FETCH</samp>子句中省略了<var class="keyword varname">count</var>，则其默认值为1。
+                    <samp class="ph codeph">ROW</samp>和<samp class="ph codeph">ROWS</samp>以及<samp class="ph codeph">FIRST</samp>和<samp class="ph codeph">NEXT</samp>是不影响这些子句效果的干扰词。
+                    根据标准，如果两者都存在，则<samp class="ph codeph">OFFSET</samp>子句必须位于<samp class="ph codeph">FETCH</samp>子句之前。
+                    但Greenplum数据库允许使用任何顺序。
+                </p>
+
+                <p class="p">使用<samp class="ph codeph">LIMIT</samp>时，最好使用<samp class="ph codeph">ORDER BY</samp>子句将结果行强制为唯一的顺序。
+                    否则，您将获得查询行的不可预测的子集 - 您可能会要求以第十到第二十行，但以什么顺序要求第十到第二十行？
+                    除非您指定<samp class="ph codeph">ORDER BY</samp>，否则您不知道该如何排序。
+                </p>
+
+                <p class="p">查询优化器在生成查询计划时会考虑<samp class="ph codeph">LIMIT</samp>，因此根据<samp class="ph codeph">LIMIT</samp>和<samp class="ph codeph">OFFSET</samp>的使用方式，您很可能会获得不同的计划（产生不同的行顺序）。
+                    因此，除非使用<samp class="ph codeph">ORDER BY</samp>强制执行可预测的结果顺序，否则使用不同的<samp class="ph codeph">LIMIT/OFFSET</samp>值选择查询结果的不同子集将产生不一致的结果。
+                    这不是缺陷；这是一个正常的结果，即除非使用<samp class="ph codeph">ORDER BY</samp>强制该顺序，否则SQL不会保证以任何特定顺序传递查询结果。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">Locking子句</strong>
+                <p class="p"><samp class="ph codeph">FOR UPDATE</samp>，<samp class="ph codeph">FOR NO KEY UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>和<samp class="ph codeph">FOR KEY SHARE</samp>是锁定子句；
+                    它们会影响<samp class="ph codeph">SELECT</samp>如何锁定从表中获取的行。
+                </p>
+
+                <p class="p">锁定子句具有一般形式
+                </p>
+
+                <pre class="pre codeblock">FOR <var class="keyword varname">lock_strength</var> [OF <var class="keyword varname">table_name</var> [ , ... ] ] [ NOWAIT ]</pre>
+
+                <div class="p">其中<var class="keyword varname">lock_strength</var>可以是以下之一
+                    <pre class="pre codeblock">UPDATE
+NO KEY UPDATE
+SHARE
+KEY SHARE</pre>
+
+                </div>
+
+                <div class="note note">
+<span class="notetitle">Note:</span> 默认情况下，Greenplum数据库获取对表的<samp class="ph codeph">EXCLUSIVE</samp>锁，以对堆表进行<samp class="ph codeph">DELETE</samp>和<samp class="ph codeph">UPDATE</samp>操作。
+                    启用全局死锁检测器后，堆表上<samp class="ph codeph">DELETE</samp>和<samp class="ph codeph">UPDATE</samp>操作的锁定模式为<samp class="ph codeph">ROW EXCLUSIVE</samp>。
+                    通过将<a class="xref" href="../config_params/guc-list.html#gp_enable_global_deadlock_detector">gp_enable_global_deadlock_detector</a>配置参数设置为true来启用全局死锁检测器。
+                    有关全局死锁检测器的信息，请参见<cite class="cite">Greenplum数据库管理员指南</cite>中的<a class="xref" href="../../admin_guide/dml.html#topic_gdd">全局死锁检测器</a> 。
+                </div>
+
+                <p class="p">有关每种行级锁定模式的更多信息，请参见PostgreSQL文档中的<a class="xref" href="https://www.postgresql.org/docs/9.4/explicit-locking.html" target="_blank">显式锁定</a>。
+                </p>
+
+                <p class="p">为防止该操作等待其他事务提交，请使用<samp class="ph codeph">NOWAIT</samp>选项。
+                    使用<samp class="ph codeph">NOWAIT</samp>，如果无法立即锁定选定的行，该语句将报告错误，而不是等待。
+                    请注意，<samp class="ph codeph">NOWAIT</samp>仅适用于行级锁 - 所需的<samp class="ph codeph">ROW SHARE</samp>表级锁仍以常规方式获取。
+                    如果需要不等待就获取表级锁，则可以先将LOCK与<samp class="ph codeph">NOWAIT</samp>选项一起使用。
+                </p>
+
+                <p class="p">如果在锁定子句中命名了特定的表，则仅锁定来自那些表的行；其他使用<samp class="ph codeph">SELECT</samp>的表则像往常一样简单地读取。
+                    没有表列表的锁定子句会影响该语句中使用的所有表。
+                    如果将锁定子句应用于视图或子查询，则它将影响视图或子查询中使用的所有表。
+                    但是，这些子句不适用于主查询引用的<samp class="ph codeph">WITH</samp>查询。
+                    如果希望在<samp class="ph codeph">WITH</samp>查询中发生行锁定，请在<samp class="ph codeph">WITH</samp>查询中指定一个锁定子句。
+                </p>
+
+                <p class="p">如果有必要为不同的表指定不同的锁定行为，则可以编写多个锁定子句。
+                    如果同一表被两个以上的锁定子句提及（或隐式影响），则将其视为仅由最强的一个子表指定。
+                    同样，如果在影响该表的任何子句中指定了表，则该表将作为<samp class="ph codeph">NOWAIT</samp>处理。
+                </p>
+
+                <p class="p">在无法用单独的表行清楚地标识返回的行的上下文中，不能使用锁定子句；例如，它们不能与聚合一起使用。
+                </p>
+
+                <p class="p">当锁定子句出现在<samp class="ph codeph">SELECT</samp>查询的顶层时，被锁定的行与查询返回的行完全相同。
+                    对于连接查询，锁定的行是那些促成返回连接行的行。
+                    此外，查询快照中满足查询条件的行将被锁定，尽管这些行在快照后对其进行更新并且不再满足查询条件不会返回。
+                    如果使用<samp class="ph codeph">LIMIT</samp>，则一旦返回了足够的行以满足限制，锁定就会停止（但请注意，被<samp class="ph codeph">OFFSET</samp>跳过的行将被锁定）。
+                    同样，如果在游标的查询中使用锁定子句，则仅锁定实际被游标读取或跳过的行。
+                </p>
+
+                <div class="p">当sub-<samp class="ph codeph">SELECT</samp>中出现locking子句时，被锁定的行就是该子查询返回给外部查询的行。
+                    这可能涉及的行数少于单独检查子查询所建议的行数，因为外部查询的条件可用于优化子查询的执行。
+                    例如，
+                    <pre class="pre codeblock">SELECT * FROM (SELECT * FROM mytable FOR UPDATE) ss WHERE col1 = 5;</pre>
+
+                    将仅锁定<samp class="ph codeph">col1 = 5</samp>的行，即使该条件在文本上不在子查询中。
+                </div>
+
+                <div class="p">
+<samp class="ph codeph">SELECT</samp>命令可能以<samp class="ph codeph">READ COMMITTED</samp>事务隔离级别运行，并且使用<samp class="ph codeph">ORDER BY</samp>和锁定子句可以使行无序返回。
+                    这是因为<samp class="ph codeph">ORDER BY</samp>首先被应用。
+                    该命令对结果进行排序，但随后可能会阻止尝试获得对一个或多个行的锁定。
+                    一旦<samp class="ph codeph">SELECT</samp>解除阻塞，某些排序列值可能已被修改，从而导致这些行看起来是乱序的（尽管就原始列值而言，它们是有序的）。
+                    例如，可以通过在子查询中放置<samp class="ph codeph">FOR UPDATE/SHARE</samp>子句来解决此问题。
+                    <pre class="pre codeblock">SELECT * FROM (SELECT * FROM mytable FOR UPDATE) ss ORDER BY column1;</pre>
+
+                    请注意，这将导致锁定<samp class="ph codeph">mytable</samp>的所有行，而顶层的<samp class="ph codeph">FOR UPDATE</samp>将仅锁定实际返回的行。
+                    这可能会导致明显的性能差异，特别是如果将<samp class="ph codeph">ORDER BY</samp>与<samp class="ph codeph">LIMIT</samp>或其他限制结合使用。
+                    因此，仅当期望并发更新排序列并且需要严格排序的结果时才建议使用此技术。
+                </div>
+
+                <p class="p">在<samp class="ph codeph">REPEATABLE READ</samp>或<samp class="ph codeph">SERIALIZABLE</samp>事务隔离级别，
+                    这将导致序列化失败（<samp class="ph codeph">SQLSTATE</samp>为<samp class="ph codeph">40001</samp>），因此在这些隔离级别下，不可能乱序接收行。
+                </p>
+
+            </div>
+        </div>
+
+        <div class="section" id="topic1__table-command">
+<h2 class="title sectiontitle">TABLE命令</h2>
+            
+            <p class="p">命令</p>
+
+            <pre class="pre codeblock">TABLE <var class="keyword varname">name</var></pre>
+
+            <p class="p">完全等同于</p>
+
+            <pre class="pre codeblock">SELECT * FROM <var class="keyword varname">name</var></pre>
+
+            <p class="p">在部分复杂查询中，它可用作顶级命令或节省空间的语法变体。
+            </p>
+
+        </div>
+
+        <div class="section" id="topic1__section18">
+<h2 class="title sectiontitle">示例</h2>
+            
+            <p class="p">连接表<samp class="ph codeph">films</samp>与表<samp class="ph codeph">distributors</samp>:
+            </p>
+
+            <pre class="pre codeblock">SELECT f.title, f.did, d.name, f.date_prod, f.kind FROM
+distributors d, films f WHERE f.did = d.did</pre>
+
+            <p class="p">将表films的<samp class="ph codeph">length</samp>列求和并将结果按<samp class="ph codeph">kind</samp>分组:
+            </p>
+
+            <pre class="pre codeblock">SELECT kind, sum(length) AS total FROM films GROUP BY kind;</pre>
+
+            <p class="p">将表films的<samp class="ph codeph">length</samp>列求和并将结果按<samp class="ph codeph">kind</samp>分组并显示总和小于5小时的组：
+            </p>
+
+            <pre class="pre codeblock">SELECT kind, sum(length) AS total FROM films GROUP BY kind
+HAVING sum(length) &lt; interval '5 hours';</pre>
+
+            <p class="p">计算电影<samp class="ph codeph">kind</samp>和<samp class="ph codeph">distributor</samp>的所有销售部分和与总和。
+            </p>
+
+            <pre class="pre codeblock">SELECT kind, distributor, sum(prc*qty) FROM sales
+GROUP BY ROLLUP(kind, distributor)
+ORDER BY 1,2,3;</pre>
+
+            <p class="p">根据总销量计算电影发行商的排名：</p>
+
+            <pre class="pre codeblock">SELECT distributor, sum(prc*qty),
+     rank() OVER (ORDER BY sum(prc*qty) DESC)
+FROM sale
+GROUP BY distributor ORDER BY 2 DESC;</pre>
+
+            <p class="p">以下两个示例是根据第二列（<samp class="ph codeph">name</samp>）的内容对单个结果进行排序的相同方法：
+            </p>
+
+            <pre class="pre codeblock">SELECT * FROM distributors ORDER BY name;
+SELECT * FROM distributors ORDER BY 2;</pre>
+
+            <p class="p">下一个示例说明如何获取表<samp class="ph codeph">distributors</samp>和<samp class="ph codeph">actors</samp>的并集，将结果限制为每个表中以字母<samp class="ph codeph">W</samp>开头的行。
+                只需要不同的行，因此关键字<samp class="ph codeph">ALL</samp>被省略：
+            </p>
+
+            <pre class="pre codeblock">SELECT distributors.name FROM distributors WHERE
+distributors.name LIKE 'W%' UNION SELECT actors.name FROM
+actors WHERE actors.name LIKE 'W%';</pre>
+
+            <p class="p">此示例说明如何在<samp class="ph codeph">FROM</samp>子句中使用函数，无论是否包含列定义列表：
+            </p>
+
+            <pre class="pre codeblock">CREATE FUNCTION distributors(int) RETURNS SETOF distributors
+AS $$ SELECT * FROM distributors WHERE did = $1; $$ LANGUAGE
+SQL;
+SELECT * FROM distributors(111);
+
+CREATE FUNCTION distributors_2(int) RETURNS SETOF record AS
+$$ SELECT * FROM distributors WHERE did = $1; $$ LANGUAGE
+SQL;
+SELECT * FROM distributors_2(111) AS (dist_id int, dist_name
+text);</pre>
+
+            <p class="p">此示例使用一个简单的<samp class="ph codeph">WITH</samp>子句：
+            </p>
+
+            <pre class="pre codeblock">WITH test AS (
+    SELECT random() as x FROM generate_series(1, 3)
+    )
+SELECT * FROM test
+UNION ALL
+SELECT * FROM test;</pre>
+
+            <p class="p">本示例使用<samp class="ph codeph">WITH</samp>子句仅显示最高销售区域中的每产品销售总额。
+            </p>
+
+            <pre class="pre codeblock">WITH regional_sales AS
+   SELECT region, SUM(amount) AS total_sales
+   FROM orders
+   GROUP BY region
+  ), top_regions AS (
+   SELECT region
+   FROM regional_sales
+   WHERE total_sales &gt; (SELECT SUM(total_sales) FROM
+    regional_sales)
+   )
+SELECT region, product, SUM(quantity) AS product_units,
+    SUM(amount) AS product_sales
+FROM orders
+WHERE region IN (SELECT region FROM top_regions)
+GROUP BY region, product;</pre>
+
+            <p class="p">该示例可能编写不包含<samp class="ph codeph">WITH</samp>子句，但需要两级嵌套的sub-<samp class="ph codeph">SELECT</samp>语句。
+            </p>
+
+            <p class="p">本示例使用<samp class="ph codeph">WITH RECURSIVE</samp>子句从仅显示直接下属的表中查找员工Mary的所有下属（直接或间接）及其间接级别：
+            </p>
+
+            <pre class="pre codeblock">WITH RECURSIVE employee_recursive(distance, employee_name, manager_name) AS (
+      SELECT 1, employee_name, manager_name
+      FROM employee
+      WHERE manager_name = 'Mary'
+    UNION ALL
+      SELECT er.distance + 1, e.employee_name, e.manager_name
+      FROM employee_recursive er, employee e
+      WHERE er.employee_name = e.manager_name
+    )
+SELECT distance, employee_name FROM employee_recursive;</pre>
+
+            <p class="p">递归查询的典型形式：初始条件，后跟<samp class="ph codeph">UNION [ALL]</samp>，然后是查询的递归部分。
+                确保查询的递归部分最终不会返回任何元组，否则查询将无限期地循环。
+                有关更多示例，请参见<a class="xref" href="../../admin_guide/query/topics/CTE-query.html#topic_zhs_r1s_w1b" title="WITH子句提供在一个更大的SELECT查询中，使用子查询或执行数据修改操作的方式。你可以在INSERT, UPDATE, 或 DELETE 命令中使用WITH子句。">WITH查询（公用表表达式）</a>。
+                
+            </p>
+
+        </div>
+
+        <div class="section" id="topic1__section19">
+<h2 class="title sectiontitle">兼容性</h2>
+            
+            <p class="p"><samp class="ph codeph">SELECT</samp>语句与SQL标准兼容，但是有一些扩展和某些缺少的功能。
+            </p>
+
+            <div class="sectiondiv">
+                <strong class="ph b">省略FROM子句</strong>
+                <p class="p">Greenplum数据库允许省略<samp class="ph codeph">FROM</samp>子句。
+                    它可以直接用于计算简单表达式的结果。例如：
+                </p>
+
+                <pre class="pre codeblock">SELECT 2+2;</pre>
+
+                <p class="p">其他一些SQL数据库无法做到这一点，除非引入一个虚拟的单行表来执行<samp class="ph codeph">SELECT</samp>。
+                </p>
+
+                <div class="p">请注意，如果未指定<samp class="ph codeph">FROM</samp>子句，则查询无法引用任何数据库表。
+                    例如，以下查询无效：
+                    <pre class="pre codeblock">SELECT distributors.* WHERE distributors.name = 'Westward';</pre>
+
+                    在较早的版本中，将服务器配置参数<var class="keyword varname">add_missing_from</var>设置为true允许Greenplum数据库为查询所引用的每个表向查询的<samp class="ph codeph">FROM</samp>子句添加隐式条目。
+                    这个不再允许。
+                </div>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">省略AS关键字</strong>
+                <p class="p">在SQL标准中，只要新列名是有效的列名（即与任何保留关键字不同），就可以在输出列名之前省略可选关键字<samp class="ph codeph">AS</samp>。
+                    Greenplum数据库的限制更为严格：如果新列名完全匹配任何关键字（保留与否），则要求使用<samp class="ph codeph">AS</samp>。
+                    推荐的做法是使用<samp class="ph codeph">AS</samp>或双引号输出列名，以防止与将来添加关键字的任何可能的冲突。
+                </p>
+
+                <p class="p">在<samp class="ph codeph">FROM</samp>项中，SQL标准和Greenplum数据库都允许在作为未保留关键字的别名之前省略<samp class="ph codeph">AS</samp>。
+                    但是由于语法上的歧义，这对于输出列名称是不切实际的。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">ONLY和Inheritance</strong>
+                <div class="p">使用<samp class="ph codeph">ONLY</samp>时，SQL标准要求在表名前后加上括号，例如：
+                    <pre class="pre codeblock">SELECT * FROM ONLY (tab1), ONLY (tab2) WHERE ...</pre>
+
+                    Greenplum数据库认为这些括号是可选的。
+                </div>
+
+                <p class="p">Greenplum数据库允许编写尾随<samp class="ph codeph">*</samp>来明确指定包括子表的non-<samp class="ph codeph">ONLY</samp>行为。
+                    该标准不允许这样做。
+                </p>
+
+                <p class="p">（这些要点同样适用于所有支持<samp class="ph codeph">ONLY</samp>选项的SQL命令。）
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">Namespace可以用于GROUP BY和ORDER BY</strong>
+                <p class="p">在SQL-92标准中，<samp class="ph codeph">ORDER BY</samp>子句只能使用输出列名称或序号，而<samp class="ph codeph">GROUP BY</samp>子句只能使用基于输入列名称的表达式。
+                    Greenplum数据库扩展了这些子句中的每一个，以允许其他选择（但是如果有歧义，它将使用标准的解释）。
+                    Greenplum数据库还允许两个子句都指定任意表达式。
+                    请注意，出现在表达式中的名称始终被视为输入列名称，而不是输出列名称。
+                </p>
+
+                <p class="p">SQL：1999及更高版本使用的定义略有不同，但并不完全与SQL-92向上兼容。
+                    但是，在大多数情况下，Greenplum数据库以与SQL：1999相同的方式解释<samp class="ph codeph">ORDER BY</samp>或<samp class="ph codeph">GROUP BY</samp>表达式。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">函数依赖</strong>
+                <p class="p">仅当表的主键包含在<samp class="ph codeph">GROUP BY</samp>列表中时，Greenplum数据库才能识别函数依赖（允许从<samp class="ph codeph">GROUP BY</samp>省略列）。
+                    SQL标准指定了应识别的其他条件。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">LIMIT和OFFSET</strong>
+                <p class="p">子句<samp class="ph codeph">LIMIT</samp>和<samp class="ph codeph">OFFSET</samp>是Greenplum数据库特定的语法，也由MySQL使用。
+                    如上所述，SQL：2008标准引入了子句<samp class="ph codeph">OFFSET .. FETCH {FIRST | NEXT} ...</samp>来实现相同的功能。
+                    IBM DB2也使用此语法。
+                    （Oracle应用程序经常使用一种变通办法来实现这些子句的效果，该变通办法涉及自动生成的<samp class="ph codeph">rownum</samp>列，Greenplum数据库中不提供该列。）
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">FOR NO KEY UPDATE, FOR UPDATE, FOR SHARE和FOR KEY SHARE</strong>
+                <p class="p">尽管<samp class="ph codeph">FOR UPDATE</samp>出现在SQL标准中，但该标准仅允许将它作为<samp class="ph codeph">DECLARE CURSOR</samp>的选项。
+                    Greenplum数据库允许在任何<samp class="ph codeph">SELECT</samp>查询以及sub-<samp class="ph codeph">SELECT</samp>中使用它，但这是一个扩展。
+                    <samp class="ph codeph">FOR NO KEY UPDATE</samp>，<samp class="ph codeph">FOR SHARE</samp>和<samp class="ph codeph">FOR KEY SHARE</samp>变体以及<samp class="ph codeph">NOWAIT</samp>选项未出现在标准中。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">WITH中的数据修改语句</strong>
+                <p class="p">Greenplum数据库允许将<samp class="ph codeph">INSERT</samp>，<samp class="ph codeph">UPDATE</samp>和<samp class="ph codeph">DELETE</samp>用作<samp class="ph codeph">WITH</samp>查询。
+                    在SQL标准中不允许。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">非标准子句</strong>
+                <p class="p">在SQL标准中未定义<samp class="ph codeph">DISTINCT ON</samp>子句。
+                </p>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">STABLE和VOLATILE函数的限制</strong>
+                <p class="p">为防止数据在Greenplum数据库中的各个segment之间变得不同步，
+                    如果分类为<samp class="ph codeph">STABLE</samp>或<samp class="ph codeph">VOLATILE</samp>的任何函数包含SQL或以任何方式修改了数据库，则不能在segment数据库级别执行该函数。
+                    有关更多信息，请参见<samp class="ph codeph"><a class="xref" href="CREATE_FUNCTION.html#topic1">CREATE FUNCTION</a></samp>。
+                </p>
+
+            </div>
+        </div>
+
+        <div class="section" id="topic1__section25">
+<h2 class="title sectiontitle">另见</h2>
+            
+            <p class="p">
+                <samp class="ph codeph">
+                    <a class="xref" href="EXPLAIN.html#topic1">EXPLAIN</a>
+                </samp>
+            </p>
+
+        </div>
+
+    </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../sql_commands/sql_ref.html">SQL Command Reference</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

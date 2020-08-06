@@ -1,0 +1,456 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      管理数据库膨胀 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_bloat has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    管理数据库膨胀
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">管理数据库膨胀</h1>
+
+  <div class="body">
+    <p class="p">Greenplum数据库的堆表使用PostgreSQL的多版本并发控制（MVCC）存储实现。被删除或更新的行被从数据库逻辑
+      删除，但是该行的一个不可见映像保留在表中。这些被删除的行（也被称为过期行）被存储在一个空闲空间映射文件中。
+      运行<samp class="ph codeph">VACUUM</samp>会把过期行标记为可以被后续插入重用的空闲空间。</p>
+
+    <p class="p">如果空闲空间映射不足以容纳所有的过期行，<samp class="ph codeph">VACUUM</samp>命令就不能从导致空闲空间映射溢出的
+      过期行回收空间。磁盘空间只能通过运行<samp class="ph codeph">VACUUM FULL</samp>恢复，这个操作会锁住表，逐行拷贝到
+      文件的开头，然后截断文件。这是一种昂贵的操作，对于大型的表，它可能需要超乎想象的时间来完成。应该只在较小
+      的表上使用这种操作。如果使用者尝试杀死<samp class="ph codeph">VACUUM FULL</samp>操作，系统可能会损坏。</p>
+
+    <div class="note important">
+<span class="importanttitle">Important:</span> 
+      <p class="p">在大量的的<samp class="ph codeph">UPDATE</samp>以及<samp class="ph codeph">DELETE</samp>操作之后非常有必要运行<samp class="ph codeph">VACUUM</samp>，
+        这样可以避免运行<samp class="ph codeph">VACUUM FULL</samp>。</p>
+
+    </div>
+
+    <p class="p">如果空闲空间映射溢出并且需要恢复空间，推荐使用<samp class="ph codeph">CREATE TABLE...AS SELECT</samp>命令把该表拷贝为
+      一个新表，这将会创建一个新的紧凑的表。然后删除原始表并且重命名拷贝的表为原始表名。</p>
+
+    <p class="p">对于频繁更新的表来说，有少量或者中等数量的过期行以及空闲空间很正常，空闲空间将随着新数据的加入而被重用。
+      但是当表被允许增长得非常大以至于活动数据只占空间的一小部分时，该表就明显地“膨胀”了。膨胀的表要求更多磁盘
+      存储以及可能拖慢查询执行的额外I/O。</p>
+
+    <p class="p">膨胀影响堆表、系统目录和索引。</p>
+
+    <p class="p">在表上定期运行<samp class="ph codeph">VACUUM</samp>语句可以防止它们长得过大。如果表确实出现了明显的膨胀，必须使用
+      <samp class="ph codeph">VACUUM FULL</samp>语句（或者可替代的过程）来紧缩文件。如果一个大型表变得明显膨胀，更好的方法
+      是使用<a class="xref" href="#topic_gft_h11_bp__remove_bloat">从数据库表移除膨胀</a>中描述的方法
+      之一来移除膨胀。</p>
+
+    <div class="cautiontitle">CAUTION:</div>
+<div class="note caution">
+<strong class="ph b">绝不</strong>运行<samp class="ph codeph">VACUUM FULL &lt;database_name&gt;</samp>并且不要在Greenplum
+      数据库中的大型表上运行<samp class="ph codeph">VACUUM FULL</samp>。</div>
+
+    <div class="section">
+<h2 class="title sectiontitle">检测膨胀</h2>
+      
+      <div class="p">
+<samp class="ph codeph">ANALYZE</samp>语句所收集的统计信息可以被用来计算存储一个表所要求的磁盘页面的预计数量。页面的
+        预计数量和实际数量之间的差别就是膨胀的度量。<samp class="ph codeph">gp_toolkit</samp>模式提供了一个<samp class="ph codeph">gp_bloat_diag</samp>
+        视图，它通过预计页数和实际页数的比率来确定表膨胀。要使用这个视图，确定为数据库中所有的表都收集了最新的统计
+        信息。然后运行下面的SQL：
+        <pre class="pre codeblock">gpadmin=# SELECT * FROM gp_toolkit.gp_bloat_diag;
+ bdirelid | bdinspname | bdirelname | bdirelpages | bdiexppages |                bdidiag                
+----------+------------+------------+-------------+-------------+---------------------------------------
+    21488 | public     | t1         |          97 |           1 | significant amount of bloat suspected
+(1 row)</pre>
+</div>
+
+      <p class="p">其结果只包括发生了中度或者明显膨胀的表。当实际页面数和预期页面的比率超过4但小于10时，就会报告为中度膨胀。
+        当该比率超过10时就会报告明显膨胀。</p>
+
+      <div class="p">
+<samp class="ph codeph">gp_toolkit.gp_bloat_expected_pages</samp>视图会为每个数据库对象列出其已用页面的实际数量
+        和预期数量。
+        <pre class="pre codeblock">gpadmin=# SELECT * FROM gp_toolkit.gp_bloat_expected_pages LIMIT 5;
+ btdrelid | btdrelpages | btdexppages 
+----------+-------------+-------------
+    10789 |           1 |           1
+    10794 |           1 |           1
+    10799 |           1 |           1
+     5004 |           1 |           1
+     7175 |           1 |           1
+(5 rows)</pre>
+</div>
+
+      <p class="p"><samp class="ph codeph">btdrelid</samp>是该表的对象ID。<samp class="ph codeph">btdrelpages</samp>列报告该表使用的页面数，
+        <samp class="ph codeph">btdexppages</samp>列是预期的页面数。另外，报出的数字是基于表统计信息的，因此要确保在已经
+        被更改的表上运行<samp class="ph codeph">ANALYZE</samp>。</p>
+
+    </div>
+
+    <div class="section" id="topic_gft_h11_bp__remove_bloat">
+<h2 class="title sectiontitle">从数据库表移除膨胀</h2>
+      
+      <p class="p"><samp class="ph codeph">VACUUM</samp>命令会把过期行加入到共享的空闲空间映射中，这样这些空间能被重用。当在被频繁
+        更新的表上定期运行<samp class="ph codeph">VACUUM</samp>时，过期行所占用的空间可以被迅速地重用，从而防止表文件长得
+        更大。在空闲空间映射被填满之前运行<samp class="ph codeph">VACUUM</samp>也很重要。对于更新密集的表，用户可能需要每
+        天运行<samp class="ph codeph">VACUUM</samp>至少一次来防止表膨胀。</p>
+
+      <div class="note warning">
+<span class="warningtitle">Warning:</span> 当表出现显著膨胀时，在运行<samp class="ph codeph">ANALYZE</samp>之前先运行<samp class="ph codeph">VACUUM</samp>
+        会更好。如果采样包含空的数据页，分析膨胀表会生成不合适的统计信息，所以在分析表之前先做<samp class="ph codeph">VACUUM</samp>
+        是最好的选择。</div>
+
+      <p class="p">当表积累了显著的膨胀时，运行<samp class="ph codeph">VACUUM</samp>命令并不能起到明显作用。对于小型表，运行
+        <samp class="ph codeph">VACUUM FULL &lt;table_name&gt;</samp>能够回收导致空闲空间映射溢出的行所使用的空间并且减小表
+        文件的尺寸。不过，<samp class="ph codeph">VACUUM FULL</samp>语句是一种昂贵的操作，它要求一个<samp class="ph codeph">ACCESS EXCLUSIVE</samp>
+        锁并且可能需要异常长的时间完成。比起在一个大型表上运行<samp class="ph codeph">VACUUM FULL</samp>，采用另一种方法从
+        大型文件中移除膨胀会更好。注意每一种从大型表中移除膨胀的方法都是资源密集型的，并且只应该在极端情况下完成。
+      </p>
+
+      <div class="p">第一种从大型表中移除膨胀的方法是创建一个将过期行排除在外的表拷贝，删掉原始的表并且把这个拷贝重命名为原来
+        的表名。这种方法使用<samp class="ph codeph">CREATE TABLE &lt;table_name&gt; AS SELECT</samp>语句创建新表，例如：
+        <pre class="pre codeblock">gpadmin=# CREATE TABLE mytable_tmp AS SELECT * FROM mytable;
+gpadmin=# DROP TABLE mytable;
+gpadmin=# ALTER TABLE mytabe_tmp RENAME TO mytable;</pre>
+</div>
+
+      <div class="p">第二种从表移除膨胀的方法是重新分布该表，这会把该表重建为不含过期行的表。参考步骤如下：
+        <ol class="ol" id="topic_gft_h11_bp__ol_bqc_xhq_bp">
+          <li class="li">把表的分布列记下来。</li>
+
+          <li class="li">把该表的分布策略改为随机分布：
+            <pre class="pre codeblock">ALTER TABLE mytable SET WITH (REORGANIZE=false) 
+                DISTRIBUTED randomly;</pre>
+
+            <p class="p">这会为该表更改分布策略，但不会移除任何数据。该命令应该会立即完成。</p>
+</li>
+
+          <li class="li">将分布策略改回其初始设置：
+            <pre class="pre codeblock">ALTER TABLE mytable SET WITH (REORGANIZE=true) 
+DISTRIBUTED BY (<em class="ph i">&lt;original distribution columns&gt;</em>);</pre>
+
+            <p class="p">这一步会重新分布数据。因为表之前是用同样的分布键分布的，表中的行只需要简单地在同一Segment上重写
+              即可，同时排除过期行。</p>
+</li>
+
+        </ol>
+</div>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">从索引移除膨胀</h2>
+      
+      <p class="p">VACUUM命令只会从表中恢复空间。要从索引中恢复空间，需要使用REINDEX命令重建它们。
+        The <samp class="ph codeph">VACUUM</samp> command only recovers space from tables. To recover the space
+        from indexes, recreate them using the <samp class="ph codeph">REINDEX</samp> command.</p>
+
+      <p class="p">要在一个表上重建所有的索引，可运行<samp class="ph codeph">REINDEX <em class="ph i">table_name</em>;</samp>。要重建一个特定的索引，
+        可运行<samp class="ph codeph">REINDEX <em class="ph i">index_name</em>;</samp>。<samp class="ph codeph">REINDEX</samp>会将该索引相关
+        <samp class="ph codeph">reltuples</samp>和<samp class="ph codeph">relpages</samp>的值设置为0（零），如果要更新统计信息，
+        则有必要在重建索引后运行<samp class="ph codeph">ANALYZE</samp>来更新它们。</p>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">从系统目录移除膨胀</h2>
+      
+      <p class="p">Greenplum数据库系统目录也是堆表并且也可能随着时间推移变得膨胀。随着数据库对象被创建、修改或者删除，
+        过期行会留在系统目录中。使用<samp class="ph codeph">gpload</samp>装载数据会加剧膨胀，因为<samp class="ph codeph">gpload</samp>
+        会创建并且删除外部表。（为了避免使用gpload，推荐使用<samp class="ph codeph">gpfdist</samp>装载数据。）</p>
+
+      <p class="p">系统目录中的膨胀会导致扫描表所需的时间增加，例如在创建执行计划时需要扫描系统目录。系统目录会被频繁扫描，
+        那么如果它们变得膨胀，整体的系统性能都会退化。</p>
+
+      <p class="p">推荐每晚在系统目录上运行<samp class="ph codeph">VACUUM</samp>，或者至少每周运行一次。同时，运行<samp class="ph codeph">REINDEX SYSTEM</samp>
+        从索引中移除膨胀。此外，还可以使用带<samp class="ph codeph">-s</samp>（<samp class="ph codeph">--system</samp>）选项的
+        <samp class="ph codeph">reindexdb</samp>工具对系统目录重建索引。在移除系统目录膨胀后，还有必要运行<samp class="ph codeph">ANALYZE</samp>
+        以更新系统目录表的统计信息。</p>
+
+      <div class="p">以下是Greenplum数据库系统目录维护步骤。
+        <ol class="ol" id="topic_gft_h11_bp__ol_un5_p1l_f2b">
+          <li class="li">在系统目录表上执行<samp class="ph codeph">REINDEX</samp>操作用于重建系统目录索引。该操作可以移除索引膨胀并提高
+            <samp class="ph codeph">VACUUM</samp>性能。
+            <div class="note note">
+<span class="notetitle">Note:</span> 当在系统目录表上执行<samp class="ph codeph">REINDEX</samp>操作时，会锁住相应的表，进而影响到当前正在执行
+              的查询性能。用户可以在系统的非活动窗口时间来调用<samp class="ph codeph">REINDEX</samp>命令重建索引，以避免打扰
+              正常业务操作的进行。</div>
+</li>
+
+          <li class="li">在系统目录表上执行<samp class="ph codeph">VACUUM</samp>命令。</li>
+
+          <li class="li">在系统目录表上执行<samp class="ph codeph">ANALYZE</samp>操作来更新表的统计信息。</li>
+
+        </ol>
+</div>
+
+      <p class="p">如果在维护窗口期内，由于时间限制需要停止目前正在进行的系统目录维护，可以运行Greenplum数据库函数
+            <samp class="ph codeph">pg_cancel_backend(&lt;<var class="keyword varname">PID</var>&gt;)</samp>来安全的停止该任务。</p>
+
+      <div class="p">下面的脚本在系统目录上运行<samp class="ph codeph">REINDEX</samp>、<samp class="ph codeph">VACUUM</samp>和
+        <samp class="ph codeph">ANALYZE</samp>。
+        <pre class="pre">#!/bin/bash
+DBNAME="&lt;database_name&gt;"
+SYSTABLES="' pg_catalog.' || relname || ';' from pg_class a, pg_namespace b \
+where a.relnamespace=b.oid and b.nspname='pg_catalog' and a.relkind='r'"
+
+reindexdb -s -d $DBNAME
+psql -tc "SELECT 'VACUUM' || $SYSTABLES" $DBNAME | psql -a $DBNAME
+analyzedb -s pg_catalog -d $DBNAME</pre>
+</div>
+
+      <p class="p">如果系统目录膨胀得很厉害，使用者就必须执行一次大强度的系统目录维护过程。采用<samp class="ph codeph">CREATE TABLE AS SELECT</samp>
+        移除膨胀的方法以及重新分布数据的方法均不能被用于系统目录。使用者必须转而在计划的停机时段运行<samp class="ph codeph">VACUUM FULL</samp>。
+        在此期间，停止系统上所有的目录活动，<samp class="ph codeph">VACUUM FULL</samp>会对系统目录加排他锁。定期运行
+        <samp class="ph codeph">VACUUM</samp>能够预防最终不得不采用上面的高代价方法。</p>
+
+      <div class="p">以下是较为彻底解决系统目录膨胀的步骤。<ol class="ol" id="topic_gft_h11_bp__ol_trp_xqs_f2b">
+          <li class="li">停止Greenplum数据库上所有系统目录操作。</li>
+
+          <li class="li">在系统目录表上执行<samp class="ph codeph">REINDEX</samp>操作来重建系统目录索引。该操作可以移除索引膨胀
+            并提高<samp class="ph codeph">VACUUM</samp>性能。</li>
+
+          <li class="li">在系统目录表上执行<samp class="ph codeph">VACUUM FULL</samp>操作。注意关注下面提到的注意事项。</li>
+
+          <li class="li">在系统目录表上执行<samp class="ph codeph">ANALYZE</samp>操作来更新系统目录表的统计信息。</li>
+
+        </ol>
+</div>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 系统目录表<samp class="ph codeph">pg_attribute</samp>通常是这里面最大的表。如果<samp class="ph codeph">pg_attribute</samp>
+        表明显膨胀，在该表上的<samp class="ph codeph">VACUUM FULL</samp>操作会占用很长时间，此时可能需要将操作分解。以下
+        两种情形表明<samp class="ph codeph">pg_attribute</samp>表存在明显膨胀并可能需要运行长时间的<samp class="ph codeph">VACUUM FULL</samp>
+        操作：
+        <ul class="ul" id="topic_gft_h11_bp__ul_fl3_dty_f2b">
+          <li class="li">
+<samp class="ph codeph">pg_attribute</samp>表包含大量记录。</li>
+
+          <li class="li">
+<samp class="ph codeph">gp_toolkit.gp_bloat_diag</samp>视图中有关<samp class="ph codeph">pg_attribute</samp>表
+            的诊断信息上显示该表存在明显膨胀。</li>
+
+        </ul>
+</div>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">从追加优化表移除膨胀</h2>
+      
+      <p class="p">对追加优化表的处理与堆表有很大不同。尽管追加优化表允许更新、插入和删除，但它们并非为这些操作
+        而优化，因此不推荐对追加优化表使用这些操作。如果使用者采纳这一建议并且为<em class="ph i">一次装载/多次读取</em>
+        负载使用追加优化，追加优化表上的<samp class="ph codeph">VACUUM</samp>几乎会即刻运行。</p>
+
+      <p class="p">如果使用者确实在追加优化表上运行了<samp class="ph codeph">UPDATE</samp>或者<samp class="ph codeph">DELETE</samp>
+        命令，过期行会由一个辅助位图而不是空闲空间映射来跟踪。<samp class="ph codeph">VACUUM</samp>是唯一能恢复
+        空间的方式。在有过期行的追加优化表上运行<samp class="ph codeph">VACUUM</samp>会通过把整个表重写成没有
+        过期行的表以紧缩该表。不过，如果表中过期行的百分数超过了<samp class="ph codeph">gp_appendonly_compaction_threshold</samp>
+        配置参数的值，则不会执行任何操作，该参数的默认值是10（10%）。每个segment上都会检查该阈值，
+        因此<samp class="ph codeph">VACUUM</samp>语句可能会在某些segment上对追加优化表进行紧缩而在其他segment
+        上不做紧缩。通过将<samp class="ph codeph">gp_appendonly_compaction</samp>参数设置为<samp class="ph codeph">no</samp>
+        可以禁用对追加表的紧缩。</p>
+
+    </div>
+
+  </div>
+
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="maintenance.html" title="本节介绍日常运维相关的最佳实践，关注这些内容可以确保Greenplum数据库日常高可用性和性能保持 最佳状态。">系统监控和维护</a>
+</div>
+</div>
+</div>
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

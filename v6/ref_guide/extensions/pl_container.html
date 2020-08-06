@@ -1,0 +1,5517 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Greenplum PL/Container语言扩展 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_ref_guide x6-0_ref_guide_extensions x6-0_ref_guide_extensions_pl_container has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/ref_guide.html">参考指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/sql_commands/sql_ref.html">SQL Command Reference</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/GPReferenceSQLSummaryLOP.html">SQL Syntax Summary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ABORT.html">ABORT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_AGGREGATE.html">ALTER AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_COLLATION.html">ALTER COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_CONVERSION.html">ALTER CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DATABASE.html">ALTER DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DEFAULT_PRIVILEGES.html">ALTER DEFAULT PRIVILEGES</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_DOMAIN.html">ALTER DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_EXTENSION.html">ALTER EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_EXTERNAL_TABLE.html">ALTER EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FOREIGN_DATA_WRAPPER.html">ALTER FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FOREIGN_TABLE.html">ALTER FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_FUNCTION.html">ALTER FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_GROUP.html">ALTER GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_INDEX.html">ALTER INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_LANGUAGE.html">ALTER LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR.html">ALTER OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR_CLASS.html">ALTER OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_OPERATOR_FAMILY.html">ALTER OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_PROTOCOL.html">ALTER PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_RESOURCE_GROUP.html">ALTER RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_RESOURCE_QUEUE.html">ALTER RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_ROLE.html">ALTER ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SCHEMA.html">ALTER SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SEQUENCE.html">ALTER SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_SERVER.html">ALTER SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TABLE.html">ALTER TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TABLESPACE.html">ALTER TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_CONFIGURATION.html">ALTER TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_DICTIONARY.html">ALTER TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_PARSER.html">ALTER TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TEXT_SEARCH_TEMPLATE.html">ALTER TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_TYPE.html">ALTER TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_USER.html">ALTER USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_USER_MAPPING.html">ALTER USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ALTER_VIEW.html">ALTER VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ANALYZE.html">ANALYZE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/BEGIN.html">BEGIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CHECKPOINT.html">CHECKPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CLOSE.html">CLOSE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CLUSTER.html">CLUSTER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COMMENT.html">COMMENT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COMMIT.html">COMMIT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/COPY.html">COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_AGGREGATE.html">CREATE AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_CAST.html">CREATE CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_COLLATION.html">CREATE COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_CONVERSION.html">CREATE CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_DATABASE.html">CREATE DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_DOMAIN.html">CREATE DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_EXTENSION.html">CREATE EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FOREIGN_DATA_WRAPPER.html">CREATE FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FOREIGN_TABLE.html">CREATE FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_FUNCTION.html">CREATE FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_GROUP.html">CREATE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_INDEX.html">CREATE INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_LANGUAGE.html">CREATE LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR.html">CREATE OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR_CLASS.html">CREATE OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_OPERATOR_FAMILY.html">CREATE OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_PROTOCOL.html">CREATE PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RESOURCE_GROUP.html">CREATE RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RESOURCE_QUEUE.html">CREATE RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_ROLE.html">CREATE ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_RULE.html">CREATE RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SCHEMA.html">CREATE SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SEQUENCE.html">CREATE SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_SERVER.html">CREATE SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLE.html">CREATE TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLE_AS.html">CREATE TABLE AS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TABLESPACE.html">CREATE TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_CONFIGURATION.html">CREATE TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_DICTIONARY.html">CREATE TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_PARSER.html">CREATE TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TEXT_SEARCH_TEMPLATE.html">CREATE TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_TYPE.html">CREATE TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_USER.html">CREATE USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_USER_MAPPING.html">CREATE USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/CREATE_VIEW.html">CREATE VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DEALLOCATE.html">DEALLOCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DECLARE.html">DECLARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DELETE.html">DELETE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DISCARD.html">DISCARD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DO.html">DO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_AGGREGATE.html">DROP AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_CAST.html">DROP CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_COLLATION.html">DROP COLLATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_CONVERSION.html">DROP CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_DATABASE.html">DROP DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_DOMAIN.html">DROP DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_EXTENSION.html">DROP EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_EXTERNAL_TABLE.html">DROP EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FOREIGN_DATA_WRAPPER.html">DROP FOREIGN DATA WRAPPER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FOREIGN_TABLE.html">DROP FOREIGN TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_FUNCTION.html">DROP FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_GROUP.html">DROP GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_INDEX.html">DROP INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_LANGUAGE.html">DROP LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR.html">DROP OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR_CLASS.html">DROP OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OPERATOR_FAMILY.html">DROP OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_OWNED.html">DROP OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_PROTOCOL.html">DROP PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RESOURCE_GROUP.html">DROP RESOURCE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RESOURCE_QUEUE.html">DROP RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_ROLE.html">DROP ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_RULE.html">DROP RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SCHEMA.html">DROP SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SEQUENCE.html">DROP SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_SERVER.html">DROP SERVER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TABLE.html">DROP TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TABLESPACE.html">DROP TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_CONFIGURATION.html">DROP TEXT SEARCH CONFIGURATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_DICTIONARY.html">DROP TEXT SEARCH DICTIONARY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_PARSER.html">DROP TEXT SEARCH PARSER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TEXT_SEARCH_TEMPLATE.html">DROP TEXT SEARCH TEMPLATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_TYPE.html">DROP TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_USER.html">DROP USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_USER_MAPPING.html">DROP USER MAPPING</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/DROP_VIEW.html">DROP VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/END.html">END</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/EXECUTE.html">EXECUTE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/EXPLAIN.html">EXPLAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/FETCH.html">FETCH</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/GRANT.html">GRANT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/INSERT.html">INSERT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/LOAD.html">LOAD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/LOCK.html">LOCK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/MOVE.html">MOVE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/PREPARE.html">PREPARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REASSIGN_OWNED.html">REASSIGN OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REINDEX.html">REINDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/RELEASE_SAVEPOINT.html">RELEASE SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/RESET.html">RESET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/REVOKE.html">REVOKE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ROLLBACK.html">ROLLBACK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/ROLLBACK_TO_SAVEPOINT.html">ROLLBACK TO SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SAVEPOINT.html">SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SELECT.html">SELECT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SELECT_INTO.html">SELECT INTO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET.html">SET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_CONSTRAINTS.html">SET CONSTRAINTS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_ROLE.html">SET ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_SESSION_AUTHORIZATION.html">SET SESSION AUTHORIZATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SET_TRANSACTION.html">SET TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/SHOW.html">SHOW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/START_TRANSACTION.html">START TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/TRUNCATE.html">TRUNCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/UPDATE.html">UPDATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/VACUUM.html">VACUUM</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql_commands/VALUES.html">VALUES</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/SQL2008_support.html">SQL 2008可选特性兼容性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/env_var_ref.html">Greenplum环境变量</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/sql-keywords.html">保留标识符和SQL关键字</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref.html#topic1">系统目录参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-tables.html#topic1">系统表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-views.html#topic1">系统视图</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/system_catalogs/catalog_ref-html.html#topic1">系统目录定义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_data_wrapper_options.html">foreign_data_wrapper_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_data_wrappers.html">foreign_data_wrappers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_server_options.html">foreign_server_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_servers.html">foreign_servers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_table_options.html">foreign_table_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/foreign_tables.html">foreign_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_configuration_history.html">gp_configuration_history</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distributed_log.html">gp_distributed_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distributed_xacts.html">gp_distributed_xacts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_distribution_policy.html">gp_distribution_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gpexpand_expansion_progress.html">gpexpand.expansion_progress</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_expansion_status.html">gpexpand.status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_expansion_tables.html">gpexpand.status_detail</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_fastsequence.html">gp_fastsequence</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_id.html">gp_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_pgdatabase.html">gp_pgdatabase</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_config.html">gp_resgroup_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status.html">gp_resgroup_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status_per_host.html">gp_resgroup_status_per_host</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resgroup_status_per_segment.html">gp_resgroup_status_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_resqueue_status.html">gp_resqueue_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_stat_replication.html">gp_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_segment_configuration.html">gp_segment_configuration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_transaction_log.html">gp_transaction_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/gp_version_at_initdb.html">gp_version_at_initdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_aggregate.html">pg_aggregate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_am.html">pg_am</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_amop.html">pg_amop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_amproc.html">pg_amproc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_appendonly.html">pg_appendonly</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attrdef.html">pg_attrdef</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attribute.html">pg_attribute</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_attribute_encoding.html">pg_attribute_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_auth_members.html">pg_auth_members</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_authid.html">pg_authid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_available_extension_versions.html">pg_available_extension_versions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_available_extensions.html">pg_available_extensions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_cast.html">pg_cast</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_class.html">pg_class</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_compression.html">pg_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_constraint.html">pg_constraint</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_conversion.html">pg_conversion</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_database.html">pg_database</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_db_role_setting.html">pg_db_role_setting</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_depend.html">pg_depend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_description.html">pg_description</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_enum.html">pg_enum</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_extension.html">pg_extension</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_exttable.html">pg_exttable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_data_wrapper.html">pg_foreign_data_wrapper</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_server.html">pg_foreign_server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_foreign_table.html">pg_foreign_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_index.html">pg_index</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_inherits.html">pg_inherits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_language.html">pg_language</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_largeobject.html">pg_largeobject</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_listener.html">pg_listener</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_locks.html">pg_locks</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_max_external_files.html">pg_max_external_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_namespace.html">pg_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_opclass.html">pg_opclass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_operator.html">pg_operator</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_opfamily.html">pg_opfamily</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition.html">pg_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_columns.html">pg_partition_columns</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_encoding.html">pg_partition_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_rule.html">pg_partition_rule</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partition_templates.html">pg_partition_templates</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_partitions.html">pg_partitions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_pltemplate.html">pg_pltemplate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_proc.html">pg_proc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resgroup.html">pg_resgroup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resgroupcapability.html">pg_resgroupcapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resourcetype.html">pg_resourcetype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueue.html">pg_resqueue</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueue_attributes.html">pg_resqueue_attributes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_resqueuecapability.html">pg_resqueuecapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_rewrite.html">pg_rewrite</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_roles.html">pg_roles</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_shdepend.html">pg_shdepend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_shdescription.html">pg_shdescription</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_activity.html">pg_stat_activity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_last_operation.html">pg_stat_last_operation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_last_shoperation.html">pg_stat_last_shoperation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_operations.html">pg_stat_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_partition_operations.html">pg_stat_partition_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stat_replication.html">pg_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_statistic.html">pg_statistic</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_stats_resqueue.html">pg_stat_resqueues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_tablespace.html">pg_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_trigger.html">pg_trigger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_type.html">pg_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_type_encoding.html">pg_type_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_user_mapping.html">pg_user_mapping</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/pg_user_mappings.html">pg_user_mappings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/user_mapping_options.html">user_mapping_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/system_catalogs/user_mappings.html">user_mappings</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/gp_toolkit.html">gp_toolkit管理模式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic2">检查需要例行维护的表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic5">检查锁</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic8">检查追加优化表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic16">查看Greenplum数据库服务器日志文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic21">检查服务器配置文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic24">检查失败的segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic26x">检查资源组活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic26">检查资源队列活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic32">检查查询磁盘溢出空间使用情况</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic36">查看用户和组（角色）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic38">检查数据库对象大小和磁盘空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gp_toolkit.html#topic49">检查数据分布不均</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/gpperfmon/dbref.html">gpperfmon 数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-database.html"> database_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-diskspace.html"> diskspace_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-interface-stats.html"> interface_stats_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-log-alert.html"> log_alert_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-queries.html">queries_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-segment.html"> segment_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-socket-stats.html">socket_stats_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-system.html">system_* 表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-dynamic-memory-info.html">dynamic_memory_info 视图</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/gpperfmon/db-memory-info.html"> memory_info 视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/data_types.html">Greenplum 数据库数据类型</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-datetime.html">日期&#x2F;时间类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-pseudo.html">伪类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-textsearch.html">全文搜索类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/datatype-range.html">范围类型</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/character_sets.html">字符集支持</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc_config.html">服务器配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_config.html#topic_vsn_22l_z4">参数类型和值</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_config.html#topic_cyz_p2l_z4">设置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html">参数类别</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic12">连接和验证参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic15">系统资源消耗参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic57">GPORCA参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic21">查询调优参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic29">错误报告和日志参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic33">系统监控参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic37">运行时统计信息收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic38">自动统计收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic39">客户端连接默认参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic43">锁管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic44">资源管理参数（资源队列）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic444">资源管理参数（资源组）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic45">外部表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic46">数据库表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic48">历史版本兼容性参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic49">Greenplum数据库阵列配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic55">master和segment的Greenplum镜像参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc_category-list.html#topic56">Greenplum数据库扩展参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/config_params/guc-list.html">配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#application_name">application_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#array_nulls">array_nulls</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#authentication_timeout">authentication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#backslash_quote">backslash_quote</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#block_size">block_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#bonjour_name">bonjour_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#check_function_bodies">check_function_bodies</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#client_encoding">client_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#client_min_messages">client_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_index_tuple_cost">cpu_index_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_operator_cost">cpu_operator_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cpu_tuple_cost">cpu_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#cursor_tuple_fraction">cursor_tuple_fraction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#data_checksums">data_checksums</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#DateStyle">DateStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#db_user_namespace">db_user_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#deadlock_timeout">deadlock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_assertions">debug_assertions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_pretty_print">debug_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_parse">debug_print_parse</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_plan">debug_print_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_prelim_plan">debug_print_prelim_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_rewritten">debug_print_rewritten</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#debug_print_slice_table">debug_print_slice_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_statistics_target">default_statistics_target</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_tablespace">default_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_text_search_config">default_text_search_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_deferrable">default_transaction_deferrable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_isolation">default_transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#default_transaction_read_only">default_transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#dynamic_library_path">dynamic_library_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#effective_cache_size">effective_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_bitmapscan">enable_bitmapscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_groupagg">enable_groupagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_hashagg">enable_hashagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_hashjoin">enable_hashjoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_indexscan">enable_indexscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_mergejoin">enable_mergejoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_nestloop">enable_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_seqscan">enable_seqscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_sort">enable_sort</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#enable_tidscan">enable_tidscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#escape_string_warning">escape_string_warning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#explain_pretty_print">explain_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#extra_float_digits">extra_float_digits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#from_collapse_limit">from_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_adjust_selectivity_for_outerjoins">gp_adjust_selectivity_for_outerjoins</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_appendonly_compaction">gp_appendonly_compaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_appendonly_compaction_threshold">gp_appendonly_compaction_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_mode">gp_autostats_mode</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_mode_in_functions">gp_autostats_mode_in_functions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_autostats_on_change_threshold">gp_autostats_on_change_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_cached_segworkers_threshold">gp_cached_segworkers_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_command_count">gp_command_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_connection_send_timeout">gp_connection_send_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_content">gp_content</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_create_table_random_default_distribution">gp_create_table_random_default_distribution</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_dbid">gp_dbid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_debug_linger">gp_debug_linger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_default_storage_options">gp_default_storage_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_dynamic_partition_pruning">gp_dynamic_partition_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_adaptive_nestloop">gp_enable_adaptive_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct">gp_enable_agg_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct_pruning">gp_enable_agg_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_direct_dispatch">gp_enable_direct_dispatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_exchange_default_partition">gp_enable_exchange_default_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_fast_sri">gp_enable_fast_sri</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_gpperfmon">gp_enable_gpperfmon</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_gather">gp_enable_groupext_distinct_gather</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_pruning">gp_enable_groupext_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_multiphase_agg">gp_enable_multiphase_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_predicate_propagation">gp_enable_predicate_propagation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_preunique">gp_enable_preunique</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_query_metrics">gp_enable_query_metrics</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_relsize_collection">gp_enable_relsize_collection</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_segment_copy_checking">gp_enable_segment_copy_checking</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_sort_distinct">gp_enable_sort_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_enable_sort_limit">gp_enable_sort_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_enable_exec">gp_external_enable_exec</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_max_segs">gp_external_max_segs</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_external_enable_filter_pushdown">gp_external_enable_filter_pushdown</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_interval">gp_fts_probe_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_retries">gp_fts_probe_retries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_threadcount">gp_fts_probe_threadcount</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_fts_probe_timeout">gp_fts_probe_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_global_deadlock_detector_period">gp_global_deadlock_detector_period</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_gpperfmon_send_interval">gp_gpperfmon_send_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gpperfmon_log_alert_level">gpperfmon_log_alert_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_hashjoin_tuples_per_bucket">gp_hashjoin_tuples_per_bucket</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_ignore_error_table">gp_ignore_error_table (不推荐使用)</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#topic_lvm_ttc_3p">gp_initial_bad_row_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_instrument_shmem_size">gp_instrument_shmem_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_debug_retry_interval">gp_interconnect_debug_retry_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_fc_method">gp_interconnect_fc_method</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_hash_multiplier">gp_interconnect_hash_multiplier</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_queue_depth">gp_interconnect_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_setup_timeout">gp_interconnect_setup_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_snd_queue_depth">gp_interconnect_snd_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_interconnect_type">gp_interconnect_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_format">gp_log_format</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_fts">gp_log_fts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_gang">gp_log_gang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_log_interconnect">gp_log_interconnect</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_local_distributed_cache">gp_max_local_distributed_cache</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_packet_size">gp_max_packet_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_plan_size">gp_max_plan_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_max_slices">gp_max_slices</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#memory_spill_ratio">memory_spill_ratio</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_motion_cost_per_row">gp_motion_cost_per_row</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_recursive_cte">gp_recursive_cte</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_reject_percent_threshold">gp_reject_percent_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_reraise_signal">gp_reraise_signal</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_memory_policy">gp_resqueue_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority">gp_resqueue_priority</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority_cpucores_per_segment">gp_resqueue_priority_cpucores_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resqueue_priority_sweeper_interval">gp_resqueue_priority_sweeper_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resgroup_memory_policy">gp_resgroup_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_bypass">gp_resource_group_bypass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_cpu_limit">gp_resource_group_cpu_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_group_memory_limit">gp_resource_group_memory_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_resource_manager">gp_resource_manager</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_role">gp_role</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_safefswritesize">gp_safefswritesize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_segment_connect_timeout">gp_segment_connect_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_segments_for_planner">gp_segments_for_planner</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_server_version">gp_server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_server_version_num">gp_server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_session_id">gp_session_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_set_proc_affinity">gp_set_proc_affinity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_set_read_only">gp_set_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_statistics_pullup_from_child_partition">gp_statistics_pullup_from_child_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_statistics_use_fkeys">gp_statistics_use_fkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_use_legacy_hashops">gp_use_legacy_hashops</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_idle_resource_timeout">gp_vmem_idle_resource_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_protect_limit">gp_vmem_protect_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_vmem_protect_segworker_cache_limit">gp_vmem_protect_segworker_cache_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_compression">gp_workfile_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_files_per_query">gp_workfile_limit_files_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_query">gp_workfile_limit_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_segment">gp_workfile_limit_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#gpperfmon_port">gpperfmon_port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ignore_checksum_failure">ignore_checksum_failure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#integer_datetimes">integer_datetimes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#IntervalStyle">IntervalStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#join_collapse_limit">join_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#keep_wal_segments">keep_wal_segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#krb_caseins_users">krb_caseins_users</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#krb_server_keyfile">krb_server_keyfile</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_collate">lc_collate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_ctype">lc_ctype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_messages">lc_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_monetary">lc_monetary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_numeric">lc_numeric</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lc_time">lc_time</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#listen_addresses">listen_addresses</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#local_preload_libraries">local_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#lock_timeout">lock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_autostats">log_autostats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_connections">log_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_disconnections">log_disconnections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_dispatch_stats">log_dispatch_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_duration">log_duration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_error_verbosity">log_error_verbosity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_executor_stats">log_executor_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_hostname">log_hostname</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_duration_statement">log_min_duration_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_error_statement">log_min_error_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_min_messages">log_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_parser_stats">log_parser_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_planner_stats">log_planner_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_rotation_age">log_rotation_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_rotation_size">log_rotation_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_statement">log_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_statement_stats">log_statement_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_temp_files">log_temp_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_timezone">log_timezone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#log_truncate_on_rotation">log_truncate_on_rotation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#maintenance_work_mem">maintenance_work_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_appendonly_tables">max_appendonly_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_connections">max_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_files_per_process">max_files_per_process</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_function_args">max_function_args</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_identifier_length">max_identifier_length</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_index_keys">max_index_keys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_locks_per_transaction">max_locks_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_prepared_transactions">max_prepared_transactions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_resource_portals_per_transaction">max_resource_portals_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_resource_queues">max_resource_queues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_stack_depth">max_stack_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#max_statement_mem">max_statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer">optimizer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_array_expansion_threshold">optimizer_array_expansion_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_analyze_root_partition">optimizer_analyze_root_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_control">optimizer_control</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_cte_inlining_bound">optimizer_cte_inlining_bound</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_enable_associativity">optimizer_enable_associativity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_enable_master_only_queries">optimizer_enable_master_only_queries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_agg_skew_avoidance">optimizer_force_agg_skew_avoidance</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_multistage_agg">optimizer_force_multistage_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_force_three_stage_scalar_dqa">optimizer_force_three_stage_scalar_dqa</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_arity_for_associativity_commutativity">optimizer_join_arity_for_associativity_commutativity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_order">optimizer_join_order</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_join_order_threshold">optimizer_join_order_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_mdcache_size">optimizer_mdcache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_metadata_caching">optimizer_metadata_caching</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_minidump">optimizer_minidump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_nestloop_factor">optimizer_nestloop_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_parallel_union">optimizer_parallel_union</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_print_missing_stats">optimizer_print_missing_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_print_optimization_stats">optimizer_print_optimization_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#optimizer_sort_factor">optimizer_sort_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#password_encryption">password_encryption</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#password_hash_algorithm">password_hash_algorithm</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_classpath">pljava_classpath</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_classpath_insecure">pljava_classpath_insecure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_statement_cache_size">pljava_statement_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_release_lingering_savepoints">pljava_release_lingering_savepoints</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#pljava_vmoptions">pljava_vmoptions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#port">port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#random_page_cost">random_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#readable_external_table_timeout">readable_external_table_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#repl_catchup_within_range">repl_catchup_within_range</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#replication_timeout">replication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#regex_flavor">regex_flavor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#resource_cleanup_gangs_on_wait">resource_cleanup_gangs_on_wait</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#resource_select_only">resource_select_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#runaway_detector_activation_percent">runaway_detector_activation_percent</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#search_path">search_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#seq_page_cost">seq_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_encoding">server_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_version">server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#server_version_num">server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#shared_buffers">shared_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#shared_preload_libraries">shared_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ssl">ssl</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#ssl_ciphers">ssl_ciphers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#standard_conforming_strings">standard_conforming_strings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#statement_mem">statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#statement_timeout">statement_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#stats_queue_level">stats_queue_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#superuser_reserved_connections">superuser_reserved_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_count">tcp_keepalives_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_idle">tcp_keepalives_idle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#tcp_keepalives_interval">tcp_keepalives_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#temp_buffers">temp_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#TimeZone">TimeZone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#timezone_abbreviations">timezone_abbreviations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#track_activity_query_size">track_activity_query_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transaction_isolation">transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transaction_read_only">transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#transform_null_equals">transform_null_equals</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_directory">unix_socket_directory</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_group">unix_socket_group</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#unix_socket_permissions">unix_socket_permissions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#update_process_title">update_process_title</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_delay">vacuum_cost_delay</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_limit">vacuum_cost_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_dirty">vacuum_cost_page_dirty</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_hit">vacuum_cost_page_hit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_cost_page_miss">vacuum_cost_page_miss</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vacuum_freeze_min_age">vacuum_freeze_min_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#validate_previous_free_tid">validate_previous_free_tid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#verify_gpfdists_cert">verify_gpfdists_cert</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#vmem_process_interrupt">vmem_process_interrupt</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#wal_receiver_status_interval">wal_receiver_status_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#writable_external_table_bufsize">writable_external_table_bufsize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#xid_stop_limit">xid_stop_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/config_params/guc-list.html#xid_warn_limit">xid_warn_limit</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/function-summary.html">内置函数摘要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/yaml_spec.html">Greenplum MapReduce规范</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_sql.html">Greenplum PL&#x2F;pgSQL过程语言</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_r.html">Greenplum PL&#x2F;R 语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_python.html">Greenplum PL&#x2F;Python语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_container.html">Greenplum PL&#x2F;Container语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_java.html">Greenplum的PL&#x2F;Java语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/pl_perl.html">Greenplum的PL&#x2F;Perl语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/madlib.html">用于分析的Greenplum MADlib扩展</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/ref_guide/modules/intro.html">附加提供的模块</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/citext.html">citext</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/dblink.html">dblink</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/fuzzystrmatch.html">fuzzystrmatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://github.com/greenplum-db/gpdb/tree/master/gpcontrib/gp_sparse_vector/README">gp_sparse_vector</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/hstore.html">hstore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/orafce_ref.html">orafce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pageinspect.html">pageinspect</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/modules/pgcrypto.html">pgcrypto</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/gppc.html">Greenplum Partner Connector API</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/extensions/bgworker.html">后台工作进程</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/ref_guide/feature_summary.html">Greenplum 特点概要</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    Greenplum PL/Container语言扩展
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">Greenplum PL/Container语言扩展</h1>
+
+  <div class="body">
+    <p class="p">本节包括有关PL/Container 1.1及更高版本的以下信息：</p>
+
+    <ul class="ul">
+      <li class="li" id="topic1__pz219023"><a class="xref" href="#topic2">关于PL/Container语言扩展</a></li>
+
+      <li class="li"><a class="xref" href="#topic_resmgmt">关于PL/Container资源管理</a></li>
+
+      <li class="li">
+        <a class="xref" href="#topic_tcm_htd_gw">PL/Container Docker镜像</a>
+</li>
+
+      
+      <li class="li"><a class="xref" href="#topic_qbl_dkq_vcb">#topic_qbl_dkq_vcb</a></li>
+
+      <li class="li"><a class="xref" href="#topic_upg110">#topic_upg110</a></li>
+
+      <li class="li" id="topic1__pz213668">
+<a class="xref" href="#topic6">卸载PL/Container</a>
+      </li>
+
+      <li class="li" id="topic1__pz215253"><a class="xref" href="#topic_rh3_p3q_dw">使用PL/Container函数</a></li>
+
+      <li class="li"><a class="xref" href="#topic_ehl_r3q_dw">关于PL/Container运行PL/Python</a></li>
+
+      <li class="li"><a class="xref" href="#topic_lqz_t3q_dw">关于PL/Container运行PL/R</a></li>
+
+      <li class="li"><a class="xref" href="#topic_sk1_gdq_dw">配置PL/Container</a></li>
+
+      <li class="li"><a class="xref" href="#topic_ydt_rtc_rbb">安装Docker</a></li>
+
+      <li class="li"><a class="xref" href="#topic_kds_plk_rbb">参考</a></li>
+
+    </ul>
+
+    
+    <div class="note warning">
+<span class="warningtitle">Warning:</span> PL/Container与Greenplum Database 5.2.0及更高版本兼容。
+      尚未测试PL/Container与Greenplum Database 5.1.0或5.0.0的兼容性。
+    </div>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../ref_guide.html" title="Greenplum数据库系统的参考信息，包括SQL命令，系统catalog，环境变量，服务器配置参数，字符集支持，数据类型和Greenplum数据库扩展。">Greenplum数据库参考指南</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic2">
+    <h2 class="title topictitle2">关于PL/Container语言扩展</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库PL/Container语言扩展（PL/Container）是一个接口，允许Greenplum数据库与Docker容器交互以在容器中执行用户定义的函数（UDF）。
+        Docker容器确保用户代码无法访问源主机的文件系统。
+        此外，容器在没有网络访问或网络访问受限的情况下启动，无法连接回Greenplum数据库或打开任何其他外部连接。
+        有关可用UDF语言的信息，请参阅<a class="xref" href="#topic_tcm_htd_gw">PL/Container Docker镜像</a>。
+        </p>
+
+      <p class="p">一般来说，Docker容器是一个Linux进程，它使用Linux内核功能（如cgroup，命名空间和联合文件系统）以托管方式运行。
+        Docker镜像是容器的基础。
+        Docker容器是Docker镜像的运行实例。
+        启动Docker容器时，指定Docker镜像。
+        Docker镜像是在主机系统上运行Docker容器时使用的根文件系统更改和执行参数的集合。
+        镜像没有状态，永远不会改变。
+        有关Docker的信息，请访问Docker网站<a class="xref" href="https://www.docker.com/" target="_blank">https://www.docker.com/</a>。
+        </p>
+
+      <p class="p">Greenplum数据库仅在第一次调用该容器中的函数时启动容器。
+        例如，考虑使用所有可用segment选择表数据的查询，并使用PL/Container函数对数据应用转换。
+        在这种情况下，Greenplum数据库将在每个segment上仅启动Docker容器一次，然后联系正在运行的容器以获取结果。
+        </p>
+
+      <p class="p">在开始查询执行的完整循环之后，执行程序向容器发送调用。
+        容器可能会响应容器执行的SPI-SQL查询，以从数据库中获取一些数据，并将结果返回给查询执行器。
+        </p>
+
+      <p class="p">当与其连接关闭时，容器将关闭。
+        当您关闭启动容器的Greenplum数据库会话时会发生这种情况。
+        在待机模式下运行的容器几乎不消耗CPU资源，因为它在套接字上等待。
+        PL/Container内存消耗取决于您在全局词典中缓存的数据量。
+        </p>
+
+      <div class="note warning">
+<span class="warningtitle">Warning:</span> 当Greenplum数据库在Docker容器中运行时，不支持PL/Container。
+        </div>
+
+      <p class="p">PL/Container语言扩展可用作开源模块。
+        有关该模块的信息，请参阅位于<a class="xref" href="https://github.com/greenplum-db/plcontainer" target="_blank">https://github.com/greenplum-db/plcontainer</a>的GitHub存储库中的README文件。
+        </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_resmgmt">
+    <h2 class="title topictitle2">关于PL/Container资源管理</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库在Docker容器中运行PL/Container用户定义的函数。
+        Docker容器和Greenplum数据库服务器共享相同主机上的CPU和内存资源。
+        在默认情况下，Greenplum数据库不知道运行PL/Container实例所消耗的资源。
+        在PL/Container 1.2及更高版本中，您可以使用Greenplum数据库资源组来控制运行PL/Container实例的总体CPU和内存资源使用情况，如以下部分所述。
+        </p>
+
+      <p class="p">PL/Container管理两个级别的资源使用 - 容器级别和runtime级别。
+        您可以使用为PL/Container runtime配置的<samp class="ph codeph">memory_mb</samp>和<samp class="ph codeph">cpu_share</samp>设置来控制容器级CPU和内存资源。
+        <samp class="ph codeph">memory_mb</samp>控制每个容器实例可用的内存资源。
+        <samp class="ph codeph">cpu_share</samp>设置标识容器与其他容器相比的CPU使用率的相对权重。
+        有关PL/Container配置信息，请参阅<a class="xref" href="#topic_ojn_r2s_dw">PL/Container配置文件</a>。
+        </p>
+
+      <p class="p">默认情况下，您不能限制执行PL/Container容器实例的数量，也不能限制它们使用的内存或CPU资源总量。
+        </p>
+
+    </div>
+
+    <div class="topic nested2" id="topic_resgroup">
+      <h3 class="title topictitle3">使用资源组管理PL/Container资源</h3>
+
+      <div class="body">
+        <p class="p">在PL/Container 1.2.0及更高版本中，您可以使用Greenplum数据库资源组来管理和限制PL/Container runtime中容器的总CPU和内存资源。
+          有关启用，配置和使用Greenplum数据库资源组的更多信息，
+          请参阅<cite class="cite">Greenplum数据库管理员指南</cite>中的<a class="xref" href="../../admin_guide/workload_mgmt_resgroups.html">使用资源组</a>。
+          </p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 如果未显式配置PL/Container runtime的资源组，则其容器实例仅受系统资源的限制。
+          容器可能会以Greenplum数据库服务器为代价消耗资源。
+          </div>
+
+        <p class="p">外部组件（如PL/Container）的资源组使用Linux控制组（cgroup）来管理组件级内存和CPU资源的使用。
+          使用资源组管理PL/Container资源时，可以配置Greenplum数据库应用于共享相同PL/Container runtime配置的所有容器实例的内存限制和CPU限制。
+          </p>
+
+        <div class="p">创建资源组以管理PL/Containerruntime的资源时，除了所需的CPU和内存限制外，还必须指定<samp class="ph codeph">MEMORY_AUDITOR=cgroup</samp>和<samp class="ph codeph">CONCURRENCY=0</samp>。
+          例如，以下命令为PL/Container runtime创建名为<samp class="ph codeph">plpy_run1_rg</samp>的资源组：
+          <pre class="pre codeblock">CREATE RESOURCE GROUP plpy_run1_rg WITH (MEMORY_AUDITOR=cgroup, CONCURRENCY=0,
+     CPU_RATE_LIMIT=10, MEMORY_LIMIT=10);</pre>
+</div>
+
+        <p class="p">PL/Container不使用<samp class="ph codeph">MEMORY_SHARED_QUOTA</samp>和<samp class="ph codeph">MEMORY_SPILL_RATIO</samp>资源组内存限制。
+          有关此SQL命令的详细信息，请参阅<samp class="ph codeph"><a class="xref" href="../../ref_guide/sql_commands/CREATE_RESOURCE_GROUP.html">CREATE RESOURCE GROUP</a></samp>参考页。
+          </p>
+
+        <div class="p">您可以创建一个或多个资源组来管理正在运行的PL/Container实例。
+          为PL/Container创建资源组后，将资源组分配给一个或多个PL/Container runtime。
+          您使用资源组的<samp class="ph codeph">groupid</samp>进行此分配。
+          您可以从<samp class="ph codeph">gp_resgroup_config</samp> <samp class="ph codeph">gp_toolkit</samp>视图确定给定资源组名称的<samp class="ph codeph">groupid</samp>。
+          例如，以下查询显示名为<samp class="ph codeph">plpy_run1_rg</samp>的资源组的<samp class="ph codeph">groupid</samp>：
+          <pre class="pre codeblock">SELECT groupname, groupid FROM gp_toolkit.gp_resgroup_config
+     WHERE groupname='plpy_run1_rg';
+
+  groupname   |  groupid  
+--------------+----------
+ plpy_run1_rg |   16391
+(1 row)</pre>
+</div>
+
+        <div class="p">通过为<samp class="ph codeph">plcontainer runtime-add</samp>（新runtime）或<samp class="ph codeph">plcontainer runtime-replace</samp>（现有runtime）命令指定<samp class="ph codeph">-s resource_group_id=<var class="keyword varname">rg_groupid</var></samp>选项，可以将资源组分配给PL/Container runtime配置。
+          例如，要将<samp class="ph codeph">plpy_run1_rg</samp>资源组分配给名为<samp class="ph codeph">python_run1</samp>的新PL/Container runtime：
+          <pre class="pre codeblock">plcontainer runtime-add -r python_run1 -i pivotaldata/plcontainer_python_shared:devel -l python -s resource_group_id=16391</pre>
+</div>
+
+        <p class="p">您还可以使用<samp class="ph codeph">plcontainer runtime-edit</samp>命令将资源组分配给PL/Container runtime。
+          有关<samp class="ph codeph">plcontainer</samp>命令的信息，请参阅<a class="xref" href="#topic_rw3_52s_dw">plcontainer实用程序</a>。
+          </p>
+
+        <p class="p">将资源组分配给PL/Container runtime后，共享相同runtime配置的所有容器实例都受为组配置的内存和CPU的限制。
+          如果减小PL/Container资源组的内存限制，则在组内运行容器中执行的查询可能会因内存不足而失败。
+          如果在运行容器实例时删除PL/Container资源组，Greenplum数据库会终止正在运行的容器。
+          </p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="topic_resgroupcfg">
+      <h3 class="title topictitle3">为PL/Container配置资源组</h3>
+
+      <div class="body">
+        <p class="p">要使用Greenplum数据库资源组来管理PL/Container资源，必须显式配置资源组和PL/Container。
+          </p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> PL/Container版本1.2利用Greenplum数据库版本5.8.0中引入的新资源组功能。
+          如果您降级到使用PL/Container版本1.1或者更早的Greenplum数据库系统，
+          您必须使用<samp class="ph codeph">plcontainer runtime-edit</samp>从PL/Container runtime配置中删除任何<samp class="ph codeph">resource_group_id</samp>设置。
+          </div>
+
+      </div>
+
+      <div class="topic nested3" id="topic_resgroupcfg_proc">
+        <h4 class="title topictitle4">过程</h4>
+
+        <div class="body">
+          <p class="p">执行以下过程以配置PL/Container以使用Greenplum数据库资源组进行CPU和内存资源管理：
+            </p>
+
+          <ol class="ol">
+            <li class="li">如果尚未在Greenplum数据库部署中配置和启用资源组，
+              请按照<cite class="cite">Greenplum数据库管理员指南</cite>中的<a class="xref" href="../../admin_guide/workload_mgmt_resgroups.html#topic71717999">使用资源组</a>中的说明配置cgroup并启用Greenplum数据库资源组。
+              <div class="note note">
+<span class="notetitle">Note:</span> 如果先前已在部署中配置并启用了资源组，请确保Greenplum数据库资源组<samp class="ph codeph">gpdb.conf</samp> cgroups配置文件包含<samp class="ph codeph">内存{}</samp>块，如上一个链接中所述。
+                </div>
+</li>
+
+            <li class="li">分析Greenplum数据库部署的资源使用情况。
+              确定要分配给PL/Container Docker容器的资源组CPU和内存资源的百分比。
+              </li>
+
+            <li class="li">确定如何在PL/Container runtime中分配您在上一步中确定的总PL/Container CPU和内存资源。确认：
+              <ul class="ul">
+                <li class="li">您需要的PL/Container资源组的数量。</li>
+
+                <li class="li">分配给每个资源组的内存和CPU资源的百分比。</li>
+
+                <li class="li">资源组到PL/Container runtime分配。</li>
+
+              </ul>
+</li>
+
+            <li class="li">创建您在上面的步骤中标识的PL/Container资源组。
+              例如，假设您选择将25％ Greenplum数据库的内存和CPU资源分配给PL/Container。
+              如果进一步将这些资源拆分为2个资源组60/40，则以下SQL命令将创建资源组：
+              <pre class="pre codeblock">CREATE RESOURCE GROUP plr_run1_rg WITH (MEMORY_AUDITOR=cgroup, CONCURRENCY=0,
+    CPU_RATE_LIMIT=15, MEMORY_LIMIT=15);
+CREATE RESOURCE GROUP plpy_run1_rg WITH (MEMORY_AUDITOR=cgroup, CONCURRENCY=0,
+    CPU_RATE_LIMIT=10, MEMORY_LIMIT=10);</pre>
+</li>
+
+            <li class="li">查找并记下与您创建的每个资源组关联的<samp class="ph codeph">groupid</samp>。例如：
+              <pre class="pre codeblock">SELECT groupname, groupid FROM gp_toolkit.gp_resgroup_config
+    WHERE groupname IN ('plpy_run1_rg', 'plr_run1_rg');
+
+  groupname   |  groupid
+--------------+----------
+ plpy_run1_rg |   16391
+ plr_run1_rg  |   16393
+(1 row)</pre>
+</li>
+
+            <li class="li">将您创建的每个资源组分配给所需的PL/Container runtime配置。
+              如果尚未创建runtime配置，请使用<samp class="ph codeph">plcontainer runtime-add</samp>命令。
+              如果runtime已存在，请使用<samp class="ph codeph">plcontainer runtime-replace</samp>或<samp class="ph codeph">plcontainer runtime-edit</samp>命令将资源组分配添加到runtime配置。
+              例如：
+                <pre class="pre codeblock">plcontainer runtime-add -r python_run1 -i pivotaldata/plcontainer_python_shared:devel -l python -s resource_group_id=16391
+plcontainer runtime-replace -r r_run1 -i pivotaldata/plcontainer_r_shared:devel -l r -s resource_group_id=16393</pre>
+
+              <p class="p">有关<samp class="ph codeph">plcontainer</samp>命令的信息，请参阅<a class="xref" href="#topic_rw3_52s_dw">plcontainer实用程序</a>。
+                </p>
+</li>
+
+          </ol>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_tcm_htd_gw">
+    <h2 class="title topictitle2">PL/Container Docker镜像</h2>
+
+    <div class="body">
+      <p class="p">PL/Python镜像和PL/R镜像可从Pivotal Network的Greenplum数据库产品下载站点获得，网址为<a class="xref" href="https://network.pivotal.io/products/pivotal-gpdb" target="_blank">https://network.pivotal.io/</a>。
+        </p>
+
+      <ul class="ul" id="topic_tcm_htd_gw__ul_epg_t2v_qbb">
+        <li class="li">用于Python的PL/Container - 安装了Python 2.7.12的Docker镜像。
+          <p class="p">还安装了Python数据科学模块。
+          该模块包含一组与数据科学相关的python库。
+          </p>
+</li>
+
+      </ul>
+
+      <ul class="ul" id="topic_tcm_htd_gw__ul_fpg_t2v_qbb">
+        <li class="li">用于R的PL/Container - 安装了R-3.3.3的容器的Docker镜像。
+          <p class="p">还安装了R Data Science软件包。该软件包包含一组与数据科学相关的R库。
+          </p>
+</li>
+
+      </ul>
+
+      <p class="p">Docker镜像tag表示PL/Container版本（例如，1.0.0）。
+        例如，用于Python Docker镜像的PL/Container的完整Docker镜像名称类似于<samp class="ph codeph">pivotaldata/plc_python_shared:1.0.0</samp>。
+        这是默认PL/Container配置中引用的名称。
+        此外，您可以创建自定义Docker镜像，安装镜像并将图像添加到PL/Container配置。
+        </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_i31_3tr_dw">
+    <h2 class="title topictitle2">前提条件</h2>
+
+    <div class="body">
+      <p class="p">确保您的Greenplum数据库系统满足以下前提条件：</p>
+
+      <ul class="ul" id="topic_i31_3tr_dw__ul_ztj_kzp_dw">
+        <li class="li">Red Hat Enterprise Linux（RHEL）7.x（或更高版本）和CentOS 7.x（或更高版本）上的Greenplum数据库5.2.x支持PL/Container。
+          <div class="note note" id="topic_i31_3tr_dw__plc-issue">
+<span class="notetitle">Note:</span> RHEL/CentOS 6.x系统不支持PL/Container，因为这些平台不官方支持Docker。
+            </div>
+</li>
+
+        <li class="li">这些是Docker主机操作系统的前提条件。
+          <p class="p">RHEL或CentOS 7.x - 支持的最低Linux操作系统内核版本为3.10。
+            RHEL 7.x和CentOS 7.x使用此内核版本。
+            </p>
+
+          <p class="p">您可以使用命令<samp class="ph codeph">uname -r</samp>检查内核版本
+            </p>
+
+          <div class="note note">
+<span class="notetitle">Note:</span> Red Hat提供，维护和支持的Docker版本仅在RHEL 7上可用。
+            Docker功能开发与RHEL7.x基础架构组件相关，用于内核，设备映射（精简配置，直接lvm），sVirt和systemd。
+            </div>
+</li>
+
+      </ul>
+
+      <ul class="ul" id="topic_i31_3tr_dw__ul_b5j_kzp_dw">
+        <li class="li">Docker安装在Greenplum数据库主机（master，primary和所有standby主机）上
+          <ul class="ul" id="topic_i31_3tr_dw__ul_z2t_bxd_rbb">
+            <li class="li">对于RHEL或CentOS 7.x - Docker 17.05</li>
+
+          </ul>
+<p class="p">请见<a class="xref" href="#topic_ydt_rtc_rbb">安装Docker</a>。</p>
+</li>
+
+        <li class="li">在每个Greenplum数据库主机上，<samp class="ph codeph">gpadmin</samp>用户应该是<samp class="ph codeph">docker</samp>组的一部分，以便用户能够管理Docker镜像和容器。
+          </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic3">
+    <h2 class="title topictitle2">安装PL/Container语言扩展</h2>
+
+    <div class="body">
+      <div class="p">要使用PL/Container，请安装PL/Container语言扩展，安装Docker镜像，并配置PL/Container以使用镜像。
+        <ol class="ol" id="topic3__ol_uw5_xdn_sbb">
+          <li class="li">确保Greenplum数据库主机满足前提条件，参考<a class="xref" href="#topic_i31_3tr_dw">前提条件</a>。</li>
+
+          
+          <li class="li">从源代码构建和安装PL/Container扩展，参考
+              <a class="xref" href="#topic_i2t_v2n_sbb">构建和安装PL/Container语言扩展</a>.</li>
+
+          <li class="li">安装Docker镜像并配置PL/Container，参考<a class="xref" href="#topic_qcr_bfk_rbb">安装PL/Container Docker镜像</a>。</li>
+
+        </ol>
+</div>
+
+    </div>
+
+    
+    
+    
+    <div class="topic nested2" id="topic_i2t_v2n_sbb">
+      <h3 class="title topictitle3">构建和安装PL/Container语言扩展</h3>
+
+      
+      <div class="body">
+        <p class="p">PL/Container语言扩展可用作开源模块。
+          有关构建和安装作为Greenplum数据库的一部分的模块信息，
+          请参阅位于<a class="xref" href="https://github.com/greenplum-db/plcontainer" target="_blank">https://github.com/greenplum-db/plcontainer</a>的GitHub存储库中的README文件。
+          </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_qcr_bfk_rbb">
+    <h2 class="title topictitle2">安装PL/Container Docker镜像</h2>
+
+    <div class="body">
+      <p class="p">PL/Container语言扩展包括<samp class="ph codeph">plcontainer</samp>实用程序，该实用程序在Greenplum数据库主机上安装Docker镜像，并将配置信息添加到PL/Container配置文件。
+        配置信息允许PL/Container使用Docker镜像创建Docker容器。
+        有关<samp class="ph codeph">plcontainer</samp>的信息，请参阅<a class="xref" href="#topic_rw3_52s_dw">plcontainer实用程序</a>。
+        </p>
+
+      
+      
+      
+      <p class="p">PL/Container开源模块包含dockerfiles，用于构建可与PL/Container一起使用的Docker镜像。
+        您可以构建一个Docker镜像来运行PL/Python UDF和一个Docker镜像来运行PL/R UDF。
+        请参阅GitHub存储库中的dockerfiles，网址为<a class="xref" href="https://github.com/greenplum-db/plcontainer" target="_blank">https://github.com/greenplum-db/plcontainer</a>。
+        </p>
+
+      <p class="p">在Greenplum数据库主机上安装Docker镜像。
+        此示例使用<samp class="ph codeph">plcontainer</samp>实用程序为Python安装Docker镜像并更新PL/Container配置。
+        该示例假定要安装的Docker镜像位于<samp class="ph codeph">/home/gpadmin</samp>中的文件中。
+        </p>
+
+      <div class="p">此<samp class="ph codeph">plcontainer</samp>命令从Docker镜像文件安装PL/Python的Docker镜像。
+        <pre class="pre codeblock">plcontainer image-add -f /home/gpadmin/plcontainer-python-images-1.0.0.tar.gz</pre>
+</div>
+
+      <p class="p">该实用程序在Greenplum数据库主机上安装Docker镜像时显示进度信息。
+        </p>
+
+      <p class="p">使用<samp class="ph codeph">plcontainer image-list</samp>命令在本地主机上显示已安装的Docker镜像。
+        </p>
+
+      <div class="p">此命令将信息添加到PL/Container配置文件，以便PL/Container可以访问Docker镜像以创建Docker容器。
+        <pre class="pre codeblock">plcontainer runtime-add -r plc_py -i pivotaldata/plcontainer_python_shared:devel -l python</pre>
+</div>
+
+      <p class="p">该实用程序在更新Greenplum数据库实例上的PL/Container配置文件时显示进度信息。
+        </p>
+
+      <p class="p">您可以使用<samp class="ph codeph">plcontainer runtime-show -r plc_py</samp>命令查看PL/Container配置信息。
+        您可以使用<samp class="ph codeph">plcontainer runtime-edit</samp>命令查看PL/Container配置XML文件。
+        </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic6">
+    <h2 class="title topictitle2">卸载PL/Container</h2>
+
+    <div class="body">
+      <p class="p">要卸载PL/Container，请删除Docker容器和镜像，然后从Greenplum数据库中删除PL/Container支持。
+        </p>
+
+      <p class="p">删除对PL/Container的支持后，您在数据库中创建的<samp class="ph codeph">plcontainer</samp>用户定义函数将不再起作用。
+        </p>
+
+    </div>
+
+    <div class="topic nested2" id="topic_rnb_4s5_lw">
+      <h3 class="title topictitle3">卸载Docker容器和镜像</h3>
+
+      <div class="body">
+        <p class="p">在Greenplum数据库主机上，卸载不再需要的Docker容器和镜像。
+          </p>
+
+        <p class="p"><samp class="ph codeph">plcontainer image-list</samp>命令列出了安装在本地Greenplum数据库主机上的Docker镜像。
+          </p>
+
+        <p class="p"><samp class="ph codeph">plcontainer image-delete</samp>命令从所有Greenplum数据库主机中删除指定的Docker镜像。
+          </p>
+
+        <div class="p">如果容器不是由PL/Container管理，则某些Docker容器可能存在于主机上。
+          您可能需要使用Docker命令删除容器。
+          这些<samp class="ph codeph">docker</samp>命令管理本地主机上的Docker容器和镜像。
+          <ul class="ul" id="topic_rnb_4s5_lw__ul_emd_ts5_lw">
+            <li class="li">命令<samp class="ph codeph">docker ps -a</samp>列出主机上的所有容器。命令<samp class="ph codeph">docker stop</samp>关闭容器。
+              </li>
+
+            <li class="li">命令<samp class="ph codeph">docker images</samp>列出主机上的镜像。</li>
+
+            <li class="li">命令<samp class="ph codeph">docker rmi</samp>删除镜像。</li>
+
+            <li class="li">命令<samp class="ph codeph">docker rm</samp>删除容器。</li>
+
+          </ul>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic_qnb_3cj_kw">
+      <h3 class="title topictitle3">删除数据库的PL/Container支持</h3>
+
+      <div class="body">
+        <p class="p">对于不再需要PL/Container的数据库，请删除对PL/Container的支持。</p>
+
+        <div class="section">
+<h4 class="title sectiontitle">PL/Container 1.1及更高版本</h4>
+          
+          <div class="p">对于PL/Container 1.1及更高版本，请从数据库中删除扩展。
+            此<samp class="ph codeph">psql</samp>命令运行<samp class="ph codeph">DROP EXTENION</samp>命令以删除数据库<samp class="ph codeph">mytest</samp>中的PL/Container。
+            <pre class="pre codeblock">psql -d mytest -c 'DROP EXTENSION plcontainer cascade;'</pre>
+</div>
+
+          <p class="p">该命令将删除<samp class="ph codeph">plcontainer</samp>扩展并从数据库中删除PL/Container特定的函数和视图。
+            </p>
+
+        </div>
+
+        <div class="section">
+<h4 class="title sectiontitle">PL/Container 1.0</h4>
+          
+          <p class="p">以<samp class="ph codeph">gpadmin</samp>用户身份运行<samp class="ph codeph">plcontainer_uninstall.sql</samp>脚本。
+            例如，此命令删除<samp class="ph codeph">mytest</samp>数据库中的<samp class="ph codeph">plcontainer</samp>语言。
+            </p>
+
+          <pre class="pre codeblock">psql -d mytest -f $GPHOME/share/postgresql/plcontainer/plcontainer_uninstall.sql</pre>
+
+          <p class="p">该脚本使用<samp class="ph codeph">CASCADE</samp>删除<samp class="ph codeph">plcontainer</samp>语言，以从数据库中删除PL/Container特定的函数和视图。
+            </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    
+  </div>
+
+  <div class="topic nested1" id="topic_rh3_p3q_dw">
+    <h2 class="title topictitle2">使用PL/Container函数</h2>
+
+    <div class="body">
+      <p class="p">在Greenplum数据库系统的数据库中启用PL/Container时，语言<samp class="ph codeph">plcontainer</samp>将在数据库中注册。
+        当您将<samp class="ph codeph">plcontainer</samp>指定为UDF定义中的语言时，可以使用PL/Container Docker镜像支持的过程语言创建和运行用户定义的函数。
+        </p>
+
+      <p class="p">使用PL/Container的UDF定义必须包含这些项。</p>
+
+      <ul class="ul" id="topic_rh3_p3q_dw__ul_z2m_1kj_kw">
+        <li class="li">UDF的第一行必须是<samp class="ph codeph"># container:
+          <var class="keyword varname">ID</var></samp>
+</li>
+
+        <li class="li">
+<samp class="ph codeph">LANGUAGE</samp>属性必须是<samp class="ph codeph">plcontainer</samp>
+</li>
+
+      </ul>
+
+      <p class="p"><var class="keyword varname">ID</var>是PL/Container用于标识Docker镜像的名称。
+        当Greenplum数据库在主机上执行UDF时，主机上的Docker镜像用于启动运行UDF的Docker容器。
+        在XML配置文件<samp class="ph codeph">plcontainer_configuration.xml</samp>中，有一个<samp class="ph codeph">runtime</samp> XML元素，
+        它包含指定Docker容器启动信息的相应<samp class="ph codeph">id</samp> XML元素。
+        有关PL/Container如何将<var class="keyword varname">ID</var>映射到Docker镜像的信息，请参阅<a class="xref" href="#topic_sk1_gdq_dw">配置PL/Container</a>。
+        有关示例UDF定义，请参阅<a class="xref" href="#topic9">示例</a>。
+        </p>
+
+      <p class="p">PL/Container配置文件仅在运行PL/Container函数的每个Greenplum数据库会话中第一次调用PL/Container函数时读取。
+        您可以通过在会话期间对视图<samp class="ph codeph">plcontainer_refresh_config</samp>执行<samp class="ph codeph">SELECT</samp>命令来强制重新读取配置文件。
+        例如，此<samp class="ph codeph">SELECT</samp>命令强制读取配置文件。
+        </p>
+
+      <pre class="pre codeblock">SELECT * FROM plcontainer_refresh_config;</pre>
+
+      <div class="p">运行该命令会执行PL/Container函数，该函数会更新master实例和segment实例上的配置并返回刷新的状态。
+        <pre class="pre codeblock"> gp_segment_id | plcontainer_refresh_local_config
+---------------+----------------------------------
+             1 | ok
+             0 | ok
+            -1 | ok
+(3 rows)</pre>
+</div>
+
+      <p class="p">此外，您可以通过在视图<samp class="ph codeph">plcontainer_show_config</samp>上执行<samp class="ph codeph">SELECT</samp>命令来显示会话中的所有配置。
+        例如，此<samp class="ph codeph">SELECT</samp>命令返回PL/Container配置。
+        </p>
+
+      <pre class="pre codeblock">SELECT * FROM plcontainer_show_config;</pre>
+
+      <div class="p">运行该命令将执行PL/Container函数，该函数显示master实例和segment实例的配置信息。
+        这是视图输出的开始和结束的示例。
+        <pre class="pre codeblock">INFO:  plcontainer: Container 'plc_py_test' configuration
+INFO:  plcontainer:     image = 'pivotaldata/plcontainer_python_shared:devel'
+INFO:  plcontainer:     memory_mb = '1024'
+INFO:  plcontainer:     use container network = 'no'
+INFO:  plcontainer:     use container logging  = 'no'
+INFO:  plcontainer:     shared directory from host '/usr/local/greenplum-db/./bin/plcontainer_clients' to container '/clientdir'
+INFO:  plcontainer:         access = readonly
+
+    ...
+
+INFO:  plcontainer: Container 'plc_r_example' configuration  (seg0 slice3 192.168.180.45:40000 pid=3304)
+INFO:  plcontainer:     image = 'pivotaldata/plcontainer_r_without_clients:0.2'  (seg0 slice3 192.168.180.45:40000 pid=3304)
+INFO:  plcontainer:     memory_mb = '1024'  (seg0 slice3 192.168.180.45:40000 pid=3304)
+INFO:  plcontainer:     use container network = 'no'  (seg0 slice3 192.168.180.45:40000 pid=3304)
+INFO:  plcontainer:     use container logging  = 'yes'  (seg0 slice3 192.168.180.45:40000 pid=3304)
+INFO:  plcontainer:     shared directory from host '/usr/local/greenplum-db/bin/plcontainer_clients' to container '/clientdir'  (seg0 slice3 192.168.180.45:40000 pid=3304)
+INFO:  plcontainer:         access = readonly  (seg0 slice3 192.168.180.45:40000 pid=3304) 
+gp_segment_id | plcontainer_show_local_config
+---------------+-------------------------------
+             0 | ok
+            -1 | ok
+             1 | ok</pre>
+</div>
+
+      <div class="p">PL/Container函数<samp class="ph codeph">plcontainer_containers_summary()</samp>显示有关当前运行的Docker容器的信息。
+        <pre class="pre codeblock">SELECT * FROM plcontainer_containers_summary();</pre>
+</div>
+
+      <p class="p">如果普通（非超级用户）Greenplum数据库用户运行该函数，则该函数仅显示用户创建的容器的信息。
+        如果Greenplum数据库超级用户运行该函数，则会显示Greenplum数据库用户创建的所有容器的信息。
+        这是2个容器运行时的示例输出。
+        </p>
+
+      <pre class="pre codeblock"> SEGMENT_ID |                           CONTAINER_ID                           |   UP_TIME    |  OWNER  | MEMORY_USAGE(KB)
+------------+------------------------------------------------------------------+--------------+---------+------------------
+ 1          | 693a6cb691f1d2881ec0160a44dae2547a0d5b799875d4ec106c09c97da422ea | Up 8 seconds | gpadmin | 12940
+ 1          | bc9a0c04019c266f6d8269ffe35769d118bfb96ec634549b2b1bd2401ea20158 | Up 2 minutes | gpadmin | 13628
+(2 rows)</pre>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic9">
+      <h3 class="title topictitle3">示例</h3>
+
+      <div class="body">
+        <p class="p">示例的<samp class="ph codeph"># container</samp>行中的值<samp class="ph codeph">plc_python_shared</samp>和<samp class="ph codeph">plc_r_shared</samp>是<samp class="ph codeph">plcontainer_config.xml</samp>文件中定义的<samp class="ph codeph">id</samp> XML元素。
+          <samp class="ph codeph">id</samp>元素映射到指定要启动的Docker镜像的<samp class="ph codeph">image</samp>元素。
+          如果您使用不同的ID配置PL/Container，请更改<samp class="ph codeph"># container</samp>行的值。
+          有关配置PL/Container和查看配置设置的信息，请参阅<a class="xref" href="#topic_sk1_gdq_dw">配置PL/Container</a>。
+          </p>
+
+        <div class="p">这是使用<samp class="ph codeph">plc_python_shared</samp>容器运行的PL/Python函数的示例：
+          <pre class="pre codeblock">CREATE OR REPLACE FUNCTION pylog100() RETURNS double precision AS $$
+# container: plc_python_shared
+import math
+return math.log10(100)
+$$ LANGUAGE plcontainer;</pre>
+</div>
+
+        <div class="p">这是使用<samp class="ph codeph">plc_r_shared</samp>容器的类似函数的示例：
+          <pre class="pre codeblock">CREATE OR REPLACE FUNCTION rlog100() RETURNS text AS $$
+# container: plc_r_shared
+return(log10(100))
+$$ LANGUAGE plcontainer;</pre>
+</div>
+
+        <p class="p">如果UDF中的<samp class="ph codeph"># container</samp>行指定了不在PL/Container配置文件中的ID，
+          则当您尝试执行UDF时，Greenplum数据库会返回错误。
+          </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_ehl_r3q_dw">
+    <h2 class="title topictitle2">关于PL/Container运行PL/Python</h2>
+
+    <div class="body">
+      <p class="p">在Python语言容器中，实现了模块<samp class="ph codeph">plpy</samp>。
+        该模块包含以下方法：
+        </p>
+
+      <ul class="ul" id="topic_ehl_r3q_dw__ul_qfd_mdq_dw">
+        <li class="li">
+<samp class="ph codeph">plpy.execute(stmt)</samp> - 执行查询字符串<samp class="ph codeph">stmt</samp>并将查询结果返回到字典对象列表中。为了能够访问结果字段，请确保查询返回命名字段。
+          </li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.prepare(stmt[, argtypes])</samp> - 准备查询的执行计划。如果在查询中有参数引用，则使用查询字符串和参数类型列表调用它。
+          </li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.execute(plan[, argtypes])</samp> - 执行准备好的计划。</li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.debug(msg)</samp> - 将DEBUG2消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.log(msg)</samp> - 将LOG消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.info(msg)</samp> - 将INFO消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.notice(msg)</samp> - 将NOTICE消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.warning(msg)</samp> - 将WARNING消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.error(msg)</samp> - 将ERROR消息发送到Greenplum数据库日志。
+          在Greenplum数据库中引发的ERROR消息导致查询停止并回滚事务。
+          </li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.fatal(msg)</samp> - 将FATAL消息发送到Greenplum数据库日志。
+          FATAL消息导致关闭Greenplum数据库会话并回滚事务。
+          </li>
+
+        <li class="li">
+<samp class="ph codeph">plpy.subtransaction()</samp> - 在显式子事务中管理<samp class="ph codeph">plpy.execute</samp>调用。
+          有关<samp class="ph codeph">plpy.subtransaction()</samp>的其他信息，请参阅PostgreSQL文档中的<a class="xref" href="https://www.postgresql.org/docs/9.1/plpython-subtransaction.html" target="_blank">显式子事务</a>。
+          </li>
+
+      </ul>
+
+      <p class="p">如果在嵌套的Python函数调用中引发级别ERROR或FATAL的错误，则该消息包括封闭函数的列表。
+        </p>
+
+      <div class="p">Python语言容器支持这些在构造ad-hoc查询时很有用的字符串引用函数。
+        <ul class="ul" id="topic_ehl_r3q_dw__ul_jwf_nd2_kfb">
+          <li class="li">
+<samp class="ph codeph">plpy.quote_literal(string)</samp> - 返回引用的字符串，用作SQL语句字符串中的字符串文字。
+            内嵌的单引号和反斜杠正常加倍。
+            <samp class="ph codeph">quote_literal()</samp>在null输入（空输入）上返回null。
+            如果参数可能为null，则<samp class="ph codeph">quote_nullable()</samp>可能更合适。
+            </li>
+
+          <li class="li">
+<samp class="ph codeph">plpy.quote_nullable(string)</samp> - 返回引用的字符串，用作SQL语句字符串中的字符串文字。
+            如果参数为null，则返回<samp class="ph codeph">NULL</samp>。
+            内嵌的单引号和反斜杠正常加倍。
+            </li>
+
+          <li class="li">
+            <samp class="ph codeph">plpy.quote_ident(string)</samp> - 返回引用的字符串，用作SQL语句字符串中的标识符。
+            仅在必要时添加引号（例如，如果字符串包含非标识符字符或将进行大小写折叠）。
+            内嵌的引号正常加倍。
+            </li>
+
+        </ul>
+</div>
+
+      <p class="p">从PL/Python函数返回文本时，PL/Container将Python unicode对象转换为数据库编码中的文本。
+        如果无法执行转换，则返回错误。
+        </p>
+
+      <div class="p">PL/Container不支持此Greenplum数据库PL/Python特性：
+        <ul class="ul" id="topic_ehl_r3q_dw__ul_qzd_1w5_ncb">
+          <li class="li">多维数组。</li>
+
+        </ul>
+</div>
+
+      <p class="p">此外，Python模块有两个全局字典对象，它们在函数调用之间保留数据。
+        它们被命名为GD和SD。
+        GD用于在同一容器内运行的所有函数之间共享数据，而SD用于在每个单独函数的多个调用之间共享数据。
+        请注意，当容器进程位于segment或master上时，只能在同一会话中访问数据。
+        请注意，对于空闲会话，Greenplum数据库会终止segment进程，这意味着相关容器将被关闭，GD和SD中的数据将丢失。
+        </p>
+
+      <p class="p">有关PL/Python的信息，参考<a class="xref" href="pl_python.html#topic1">Greenplum PL/Python语言扩展</a>。</p>
+
+      <p class="p">有关<samp class="ph codeph">plpy</samp>方法的信息，参考<a class="xref" href="https://www.postgresql.org/docs/8.4/plpython-database.html" target="_blank">https://www.postgresql.org/docs/8.4/plpython-database.htm</a>。
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_lqz_t3q_dw">
+    <h2 class="title topictitle2">关于PL/Container运行PL/R</h2>
+
+    <div class="body">
+      <p class="p">在R语言容器中，实现了模块<samp class="ph codeph">pg.spi</samp>。
+        该模块包含以下方法：
+        </p>
+
+      <ul class="ul" id="topic_lqz_t3q_dw__ul_mqz_t3q_dw">
+        <li class="li">
+<samp class="ph codeph">pg.spi.exec(stmt)</samp> - 执行查询字符串<samp class="ph codeph">stmt</samp>并在R data.frame中返回查询结果。
+          为了能够访问结果字段，请确保您的查询返回命名字段。
+          </li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.prepare(stmt[, argtypes])</samp> - 准备查询的执行计划。
+          如果在查询中有参数引用，则使用查询字符串和参数类型列表调用它。
+          </li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.execp(plan[, argtypes])</samp> - 执行准备好的计划。</li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.debug(msg)</samp> - 将DEBUG2消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.log(msg)</samp> - 将LOG消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.info(msg)</samp> - 将INFO消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.notice(msg)</samp> - 将NOTICE消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.warning(msg)</samp> - 将WARNING消息发送到Greenplum数据库日志。</li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.error(msg)</samp> - 将ERROR消息发送到Greenplum数据库日志。
+          在Greenplum数据库中引发的ERROR消息导致查询停止并回滚事务。</li>
+
+        <li class="li">
+<samp class="ph codeph">pg.spi.fatal(msg)</samp> - 将FATAL消息发送到Greenplum数据库日志。
+          FATAL消息导致关闭Greenplum数据库会话并回滚事务。
+          </li>
+
+      </ul>
+
+      <div class="p">PL/Container不支持此PL/R特性：<ul class="ul" id="topic_lqz_t3q_dw__ul_wjk_dgb_4cb">
+          <li class="li">多维数组。</li>
+
+        </ul>
+</div>
+
+      <p class="p">关于PL/R的信息，参考<a class="xref" href="pl_r.html#topic1">Greenplum PL/R 语言扩展</a>。</p>
+
+      <p class="p">关于<samp class="ph codeph">pg.spi</samp>方法的信息，参考<a class="xref" href="http://www.joeconway.com/plr/doc/plr-spi-rsupport-funcs-normal.html" target="_blank">http://www.joeconway.com/plr/doc/plr-spi-rsupport-funcs-normal.html</a></p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_sk1_gdq_dw">
+    <h2 class="title topictitle2">配置PL/Container</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库实用程序<samp class="ph codeph">plcontainer</samp>管理Greenplum数据库系统中的PL/Container配置文件。
+        该实用程序可确保配置文件在Greenplum数据库master和segment实例之间保持一致。
+        </p>
+
+      <div class="note warning">
+<span class="warningtitle">Warning:</span> 在不使用该实用程序的情况下修改segment实例上的配置文件，
+        可能会在不同的Greenplum数据库segment上创建导致不可预期行为的不同的、不兼容的配置。
+        </div>
+
+      <p class="p">使用该实用程序进行的配置更改将应用于所有Greenplum数据库segment上的XML文件。
+        但是，当前运行的会话的PL/Container配置使用会话启动期间存在的配置。
+        要在正在运行的会话中更新PL/Container配置，请在会话中执行此命令。
+        </p>
+
+      <pre class="pre codeblock">SELECT * FROM plcontainer_refresh_config;</pre>
+
+      <p class="p">运行该命令会执行PL/Container函数，该函数会更新master和segment实例上的会话配置。
+        </p>
+
+    </div>
+
+    <div class="topic nested2" id="topic_rw3_52s_dw">
+      <h3 class="title topictitle3">plcontainer实用程序</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph">plcontainer</samp>实用程序安装Docker镜像并管理PL/Container配置。
+          该实用程序包含两组命令。
+          </p>
+
+        <ul class="ul" id="topic_rw3_52s_dw__ul_lzy_xsw_gcb">
+          <li class="li">
+<samp class="ph codeph">image-*</samp>命令管理Greenplum数据库系统主机上的Docker镜像。
+            </li>
+
+          <li class="li">
+<samp class="ph codeph">runtime-*</samp>命令管理Greenplum数据库实例上的PL/Container配置文件。
+            您可以将Docker镜像信息添加到PL/Container配置文件，包括镜像名称，位置和共享文件夹信息。
+            您还可以编辑配置文件。
+            </li>
+
+        </ul>
+
+        <p class="p">要将PL/Container配置为使用Docker镜像，请在所有Greenplum数据库主机上安装Docker镜像，然后将配置信息添加到PL/Container配置中。
+          </p>
+
+        <p class="p">PL/Container配置值（例如镜像名称，runtime ID，参数值和名称）区分大小写。
+          </p>
+
+        <div class="section">
+<h4 class="title sectiontitle">plcontainer语法</h4>
+          
+          <pre class="pre codeblock"><strong class="ph b">plcontainer</strong> [<var class="keyword varname">command</var>] [<strong class="ph b">-h</strong> | <strong class="ph b">--help</strong>]  [<strong class="ph b">--verbose</strong>]</pre>
+
+          <p class="p">其中<var class="keyword varname">command</var>是下面的其中一个。</p>
+
+          <pre class="pre codeblock">  image-add {{<strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">image_file</var>} | {{<strong class="ph b">-u</strong> | <strong class="ph b">--URL</strong>} <var class="keyword varname">image_URL</var>}
+  image-delete {<strong class="ph b">-i</strong> | <strong class="ph b">--image</strong>} <var class="keyword varname">image_name</var>
+  image-list
+
+  runtime-add {<strong class="ph b">-r</strong> | <strong class="ph b">--runtime</strong>} <var class="keyword varname">runtime_id</var>
+     {<strong class="ph b">-i</strong> | <strong class="ph b">--image</strong>} <var class="keyword varname">image_name</var> {<strong class="ph b">-l | --language</strong>} {python | r}
+     [{<strong class="ph b">-v</strong> | <strong class="ph b">--volume</strong>} <var class="keyword varname">shared_volume</var> [{<strong class="ph b">-v</strong>| <strong class="ph b">--volume</strong>} <var class="keyword varname">shared_volume</var>...]]
+     [{<strong class="ph b">-s</strong> | <strong class="ph b">--setting</strong>} <var class="keyword varname">param=value</var> [{<strong class="ph b">-s</strong> | <strong class="ph b">--setting</strong>} <var class="keyword varname">param=value</var> ...]]
+  runtime-replace {<strong class="ph b">-r</strong> | <strong class="ph b">--runtime</strong>} <var class="keyword varname">runtime_id</var>
+     {<strong class="ph b">-i</strong> | <strong class="ph b">--image</strong>} <var class="keyword varname">image_name</var> <strong class="ph b">-l</strong> {r | python}
+     [{<strong class="ph b">-v</strong> | <strong class="ph b">--volume</strong>} <var class="keyword varname">shared_volume</var> [{<strong class="ph b">-v</strong> | <strong class="ph b">--volume</strong>} <var class="keyword varname">shared_volume</var>...]]
+     [{<strong class="ph b">-s</strong> | <strong class="ph b">--setting</strong>} <var class="keyword varname">param=value</var> [{<strong class="ph b">-s</strong> | <strong class="ph b">--setting</strong>} <var class="keyword varname">param=value</var> ...]]
+  runtime-show {<strong class="ph b">-r</strong> | <strong class="ph b">--runtime</strong>} <var class="keyword varname">runtime_id</var>
+  runtime-delete {<strong class="ph b">-r</strong> | <strong class="ph b">--runtime</strong>} <var class="keyword varname">runtime_id</var>
+  runtime-edit [{<strong class="ph b">-e</strong> | <strong class="ph b">--editor</strong>} <var class="keyword varname">editor</var>]
+  runtime-backup {<strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">config_file</var>
+  runtime-restore {<strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">config_file</var>
+  runtime-verify</pre>
+
+        </div>
+
+        <div class="section">
+<h4 class="title sectiontitle">plcontainer命令和选项</h4>
+          
+        </div>
+
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">image-add <var class="keyword varname">location</var>
+</dt>
+
+            <dd class="dd pd">在Greenplum数据库主机上安装Docker镜像。
+              指定主机上Docker镜像文件的位置或Docker镜像的URL。
+              这些是受支持的位置选项。
+              <ul class="ul" id="topic_rw3_52s_dw__ul_ihd_dsv_gcb">
+                <li class="li">{<strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">image_file</var>指定包含Docker镜像的主机上的tar存档文件。
+                  此示例指向gpadmin主目录中的镜像文件
+                    <samp class="ph codeph">/home/gpadmin/test_image.tar.gz</samp>
+</li>
+
+                <li class="li">{<strong class="ph b">-u</strong> | <strong class="ph b">--URL</strong>} <var class="keyword varname">image_URL</var>指定Docker存储库和镜像的URL。
+                  此示例URL指向本地Docker存储库
+                    <samp class="ph codeph">192.168.0.1:5000/images/mytest_plc_r:devel</samp>
+</li>
+
+              </ul>
+</dd>
+
+            <dd class="dd pd">安装Docker镜像后，使用<samp class="ph codeph"><a class="xref" href="#topic_rw3_52s_dw__runtime_add">runtime-add</a></samp>命令配置PL/Container以使用Docker镜像。
+              </dd>
+
+          
+          
+            <dt class="dt pt dlterm">image-delete {<strong class="ph b">-i</strong> | <strong class="ph b">--image</strong>} <var class="keyword varname">image_name</var>
+</dt>
+
+            <dd class="dd pd">从所有Greenplum数据库主机中删除已安装的Docker镜像。
+              例如，指定包括tag的完整Docker镜像名称
+                <samp class="ph codeph">pivotaldata/plcontainer_python_shared:1.0.0</samp>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">image-list</dt>
+
+            <dd class="dd pd">列出主机上安装的Docker镜像。
+              该命令仅列出本地主机上的镜像，而不是远程主机。
+              该命令列出了所有已安装的Docker镜像，包括使用Docker命令安装的镜像。
+              </dd>
+
+          
+          
+            <dt class="dt pt dlterm">
+<a name="topic_rw3_52s_dw__runtime_add"><!-- --></a>runtime-add <var class="keyword varname">options</var>
+</dt>
+
+            <dd class="dd pd">将配置信息添加到所有Greenplum数据库主机上的PL/Container配置文件中。
+              如果指定的<var class="keyword varname">runtime_id</var>存在，则该实用程序将返回错误，并且不会添加配置信息。
+              </dd>
+
+            <dd class="dd pd">关于PL/Container配置信息，参考<a class="xref" href="#topic_ojn_r2s_dw">PL/Container配置文件</a>. </dd>
+
+            <dd class="dd pd">这些是支持的选项：</dd>
+
+            <dd class="dd pd">
+              <dl class="dl parml">
+                
+                  <dt class="dt pt dlterm">{-i | --image} <var class="keyword varname">docker-image</var>
+</dt>
+
+                  <dd class="dd pd">必须。指定Greenplum数据库主机上安装的完整Docker镜像名称，包括tag。例如
+                      <samp class="ph codeph">pivotaldata/plcontainer_python:1.0.0</samp>。</dd>
+
+                  <dd class="dd pd">如果未安装指定的Docker镜像，该实用程序将返回警告。
+                    </dd>
+
+                  <dd class="dd pd">
+<samp class="ph codeph">plcontainer image-list</samp>命令显示已安装的镜像信息，包括名称和tag（存储库和tag列）。
+                    </dd>
+
+                
+                
+                  <dt class="dt pt dlterm">{-l | --language} python | r</dt>
+
+                  <dd class="dd pd">必须。指定PL/Container语言类型，支持的值是<samp class="ph codeph">python</samp>（PL/Python）和<samp class="ph codeph">r</samp>（PL/R）。
+                    为runtime添加配置信息时，该实用程序会根据您指定的语言向配置添加启动命令。
+                    </dd>
+
+                  <dd class="dd pd">Python语言的启动命令。
+                    <pre class="pre codeblock">/clientdir/pyclient.sh</pre>
+</dd>
+
+                  <dd class="dd pd">R语言的启动命令。
+                    <pre class="pre codeblock">/clientdir/rclient.sh</pre>
+</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">{<strong class="ph b">-r</strong> | <strong class="ph b">--runtime</strong>} <var class="keyword varname">runtime_id</var>
+                  </dt>
+
+                  <dd class="dd pd">需要。添加runtime ID。
+                    在PL/Container配置文件中添加<samp class="ph codeph">runtime</samp>元素时，这是PL/Container配置文件中<samp class="ph codeph">id</samp>元素的值。
+                    最大长度为63字节。
+                    </dd>
+
+                  <dd class="dd pd">在Greenplum数据库UDF<samp class="ph codeph"># container</samp>行指定名称。参考<a class="xref" href="#topic9">示例</a>。</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">{<strong class="ph b">-s</strong> | <strong class="ph b">--setting</strong>}
+                      <var class="keyword varname">param</var>=<var class="keyword varname">value</var>
+</dt>
+
+                  <dd class="dd pd">可选的。指定要添加到runtime配置信息的设置。您可以多次指定此选项。
+                    该设置适用于<var class="keyword varname">runtime_id</var>指定的runtime配置。
+                    该参数是PL/Container配置文件中<samp class="ph codeph"><a class="xref" href="#topic_ojn_r2s_dw__plc_settings">settings</a></samp>元素的XML属性。这些是有效的参数。
+                    <ul class="ul" id="topic_rw3_52s_dw__ul_dsz_j4w_gcb">
+                      <li class="li">
+<samp class="ph codeph">cpu_share</samp> - 在runtime配置中为每个容器设置CPU限制。默认值为1024。该值是CPU使用率与其他容器的相对权重。
+                        </li>
+
+                      <li class="li">
+<samp class="ph codeph">memory_mb</samp> - 在runtime配置中为每个容器设置内存限制。默认值为1024。该值是一个整数，指定以MB为单位的内存量。
+                        </li>
+
+                      <li class="li">
+<samp class="ph codeph">resource_group_id</samp> - 将指定的资源组分配给runtime配置。
+                        资源组限制共享此runtime配置的所有容器的CPU和内存资源总使用量。
+                        您必须指定资源组的<samp class="ph codeph">groupid</samp>。
+                        有关管理PL/Container资源的信息，请参阅<a class="xref" href="#topic_resmgmt">关于PL/Container资源管理</a>。
+                        </li>
+
+                      <li class="li">
+<samp class="ph codeph">roles</samp> - 指定允许为runtime配置运行容器的Greenplum数据库角色。
+                        您可以指定单个角色名称或逗号分隔的角色名称列表。
+                        默认值没有限制。
+                        </li>
+
+                      <li class="li">
+<samp class="ph codeph">use_container_logging</samp> - 启用或禁用容器的Docker日志记录。
+                        值为<samp class="ph codeph">yes</samp>（启用日志记录）或<samp class="ph codeph">no</samp>（禁用日志记录，默认值）。
+                        <p class="p">Greenplum数据库服务器配置参数<samp class="ph codeph"><a class="xref" href="../config_params/guc-list.html#log_min_messages">log_min_messages</a></samp>控制日志级别。
+                          默认日志级别为<samp class="ph codeph">warning</samp>。
+                          有关PL/Container日志信息的信息，请参阅<a class="xref" href="#plc_notes">备注</a>。
+                          </p>
+</li>
+
+                    </ul>
+</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">{-v | --volume} <var class="keyword varname">shared-volume</var>
+</dt>
+
+                  <dd class="dd pd">可选的。指定要绑定装载的Docker卷。您可以多次指定此选项以定义多个卷。
+                    </dd>
+
+                  <dd class="dd pd">共享卷的格式：
+                        <samp class="ph codeph"><var class="keyword varname">host-dir</var>:<var class="keyword varname">container-dir</var>:[rw|ro]</samp>。
+                    该信息作为属性存储在PL/Container配置文件中的<samp class="ph codeph">runtime</samp>元素的<samp class="ph codeph">shared_directory</samp>元素中。
+                    <ul class="ul" id="topic_rw3_52s_dw__ul_nms_vvv_gcb">
+                      <li class="li">
+<var class="keyword varname">host-dir</var> - 主机系统上目录的绝对路径。
+                        Greenplum数据库管理员用户（gpadmin）必须具有对目录的适当访问权限。
+                        </li>
+
+                      <li class="li">
+<var class="keyword varname">container-dir</var> - Docker容器中目录的绝对路径。</li>
+
+                      <li class="li">
+<samp class="ph codeph">[rw|ro]</samp> - 从容器访问主机目录的只读或读写权限。</li>
+
+                    </ul>
+</dd>
+
+                  <dd class="dd pd">为新runtime添加配置信息时，该实用程序会添加此只读共享卷信息。
+                    </dd>
+
+                  <dd class="dd pd">
+                    <pre class="pre codeblock"><var class="keyword varname">greenplum-home</var>/bin/plcontainer_clients:/clientdir:ro</pre>
+
+                  </dd>
+
+                  <dd class="dd pd">如果需要，您可以指定其他共享目录。
+                    如果指定的<var class="keyword varname">container-dir</var>与实用程序添加的相同，
+                    或者如果指定具有相同<var class="keyword varname">container-dir</var>的多个共享卷，则该实用程序将返回错误。
+                    <div class="note warning">
+<span class="warningtitle">Warning:</span> 允许对主机目录进行读写访问需要特殊注意事项。
+                      <ul class="ul" id="topic_rw3_52s_dw__ul_ibw_gvk_kcb">
+                        <li class="li">指定对主机目录的读写访问权限时，请确保指定的主机目录具有正确的权限。
+                          </li>
+
+                        <li class="li">运行PL/Container用户定义的函数时，主机上运行的多个并发Docker容器可能会更改主机目录中的数据。
+                          确保这些函数支持对主机目录中的数据进行多个并发访问。
+                          </li>
+
+                      </ul>
+</div>
+</dd>
+
+                
+              </dl>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime-backup {<strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">config_file</var>
+</dt>
+
+            <dd class="dd pd">
+              <p dir="ltr" class="p">将PL/Container配置文件复制到本地主机上的指定文件。
+                </p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime-delete {<strong class="ph b">-r</strong> | <strong class="ph b">--runtime</strong>} <var class="keyword varname">runtime_id</var>
+</dt>
+
+            <dd class="dd pd">
+              <p dir="ltr" class="p">删除所有Greenplum数据库实例上PL/Container配置文件中的runtime配置信息。
+                如果文件中不存在指定的<var class="keyword varname">runtime_id</var>，则实用程序将返回一条消息。
+                </p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime-edit [{<strong class="ph b">-e</strong> | <strong class="ph b">--editor</strong>} <var class="keyword varname">editor</var>]</dt>
+
+            <dd class="dd pd">使用指定的编辑器编辑XML文件<samp class="ph codeph">plcontainer_configuration.xml</samp>。
+              默认编辑器是<samp class="ph codeph">vi</samp>。
+              <p class="p">保存文件会更新所有Greenplum数据库主机上的配置文件。
+                如果更新的文件中存在错误，该实用程序将返回错误并且不会更新该文件。
+                </p>
+</dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime-replace <var class="keyword varname">options</var>
+</dt>
+
+            <dd class="dd pd">
+              <p dir="ltr" class="p">替换所有Greenplum数据库实例上的PL/Container配置文件中的runtime配置信息。
+                如果<var class="keyword varname">runtime_id</var>不存在，则将信息添加到配置文件中。
+                该实用程序将启动命令和共享目录添加到配置中。
+                </p>
+
+              <p dir="ltr" class="p">有关命令选项和添加到配置的信息，请参阅<samp class="ph codeph"><a class="xref" href="#topic_rw3_52s_dw__runtime_add">runtime-add</a></samp>。
+                </p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime-restore {<strong class="ph b">-f</strong> | <strong class="ph b">--file</strong>} <var class="keyword varname">config_file</var>
+</dt>
+
+            <dd class="dd pd">
+              <p dir="ltr" class="p">使用本地主机上指定文件的信息替换所有Greenplum数据库实例上的PL/Container配置文件<samp class="ph codeph">plcontainer_configuration.xml</samp>中的信息。
+                </p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime-show [{<strong class="ph b">-r</strong> | <strong class="ph b">--runtime</strong>} <var class="keyword varname">runtime_id</var>]</dt>
+
+            <dd class="dd pd">
+              <p dir="ltr" class="p">显示格式化的PL/Container runtime配置信息。
+                如果未指定<var class="keyword varname">runtime_id</var> ，则显示所有runtime标识的配置。
+                </p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime-verify</dt>
+
+            <dd class="dd pd">
+              <p dir="ltr" class="p">使用master服务器上的配置信息检查Greenplum数据库实例上的PL/Container配置信息。
+                如果该实用程序发现不一致，系统将提示您使用本地副本替换远程副本。
+                该实用程序还执行XML验证。
+                </p>
+
+            </dd>
+
+          
+          
+            <dt class="dt pt dlterm">-h | --help</dt>
+
+            <dd class="dd pd">显示帮助文本。如果在没有命令的情况下指定，则显示所有<samp class="ph codeph">plcontainer</samp>命令的帮助。如果使用命令指定，则显示该命令的帮助。
+              </dd>
+
+          
+          
+            <dt class="dt pt dlterm">--verbose</dt>
+
+            <dd class="dd pd">为命令启用详细日志记录。</dd>
+
+          
+        </dl>
+
+        <div class="section">
+<h4 class="title sectiontitle">示例</h4>
+          
+          <p class="p">这些是管理PL/Container的常用命令的示例：</p>
+
+          <ul class="ul" id="topic_rw3_52s_dw__ul_ijd_xmw_gcb">
+            <li class="li">在所有Greenplum数据库主机上安装Docker镜像。
+              此示例从文件加载Docker镜像。
+              该实用程序在命令行上显示进度信息，因为该实用程序在所有主机上安装Docker镜像。
+              <pre class="pre codeblock">plcontainer image-add -f plc_newr.tar.gz</pre>
+
+              <p class="p">安装Docker镜像后，您可以在PL/Container配置文件中添加或更新runtime条目，以便PL/Container访问Docker镜像以启动Docker容器。
+                </p>
+</li>
+
+            <li class="li">将容器条目添加到PL/Container配置文件中。
+              此示例添加PL/R runtime的配置信息，并指定内存和日志记录的共享卷和设置。
+                <pre class="pre codeblock">plcontainer runtime-add -r runtime2 -i test_image2:0.1 -l r \
+  -v /host_dir2/shared2:/container_dir2/shared2:ro \
+  -s memory_mb=512 -s use_container_logging=yes</pre>
+
+              <p class="p">该实用程序在命令行上显示进度信息，因为它将runtime配置添加到配置文件，并将更新的配置分发到所有实例。
+                </p>
+</li>
+
+            <li class="li">在配置文件中显示给定runtime标识的特定runtime
+              <pre class="pre codeblock">plcontainer runtime-show -r plc_python_shared</pre>
+
+              <div class="p">该实用程序显示与此输出类似的配置信息。
+                <pre class="pre codeblock">PL/Container Runtime Configuration:
+---------------------------------------------------------
+ Runtime ID: plc_python_shared
+ Linked Docker Image: test1:latest
+ Runtime Setting(s):
+ Shared Directory:
+ ---- Shared Directory From HOST '/usr/local/greenplum-db/bin/plcontainer_clients' to Container '/clientdir', access mode is 'ro'
+ ---- Shared Directory From HOST '/home/gpadmin/share/' to Container '/opt/share', access mode is 'rw'
+---------------------------------------------------------</pre>
+</div>
+</li>
+
+            <li class="li">在您选择的交互式编辑器中编辑配置。
+              此示例使用vim编辑器编辑配置文件。
+              <pre class="pre codeblock">plcontainer runtime-edit -e vim</pre>
+
+              <p class="p">保存文件时，该实用程序会在将文件分发到Greenplum数据库主机时在命令行上显示进度信息。
+                </p>
+</li>
+
+            <li class="li">将当前的PL/Container配置保存到文件中。
+              此示例将文件保存到本地文件<samp class="ph codeph">/home/gpadmin/saved_plc_config.xml</samp>
+              <pre class="pre codeblock">plcontainer runtime-backup -f /home/gpadmin/saved_plc_config.xml</pre>
+</li>
+
+            <li class="li">使用XML文件覆盖PL/Container配置文件。
+              此示例使用<samp class="ph codeph">/home/gpadmin</samp>目录中文件中的信息替换配置文件中的信息。
+              <pre class="pre codeblock">plcontainer runtime-restore -f /home/gpadmin/new_plcontainer_configuration.xml</pre>
+
+              该实用程序在将更新的文件分发到Greenplum数据库实例时，在命令行上显示进度信息。
+              </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="topic_ojn_r2s_dw">
+      <h3 class="title topictitle3">PL/Container配置文件</h3>
+
+      <div class="body">
+        <p class="p">PL/Container在所有Greenplum数据库segment的数据目录中维护配置文件<samp class="ph codeph">plcontainer_configuration.xml</samp>。
+          PL/Container配置文件是XML文件。
+          在XML文件中，根元素<samp class="ph codeph">configuration</samp>包含一个或多个<samp class="ph codeph">runtime</samp>元素。
+          您可以在PL/Container函数定义的<samp class="ph codeph"># container:</samp>行中指定<samp class="ph codeph">runtime</samp>元素的<samp class="ph codeph">id</samp>。
+          </p>
+
+        <p class="p">在XML文件中，名称（如元素和属性名称）和值区分大小写。
+          </p>
+
+        <div class="p">这是一个示例文件。<pre class="pre codeblock">&lt;?xml version="1.0" ?&gt;
+&lt;configuration&gt;
+    &lt;runtime&gt;
+        &lt;id&gt;plc_python_example1&lt;/id&gt;
+        &lt;image&gt;pivotaldata/plcontainer_python_with_clients:0.1&lt;/image&gt;
+        &lt;command&gt;./pyclient&lt;/command&gt;
+    &lt;/runtime&gt;
+    &lt;runtime&gt;
+        &lt;id&gt;plc_python_example2&lt;/id&gt;
+        &lt;image&gt;pivotaldata/plcontainer_python_without_clients:0.1&lt;/image&gt;
+        &lt;command&gt;/clientdir/pyclient.sh&lt;/command&gt;
+        &lt;shared_directory access="ro" container="/clientdir" host="/usr/local/greenplum-db/bin/plcontainer_clients"/&gt;
+        &lt;setting memory_mb="512"/&gt;
+        &lt;setting use_container_logging="yes"/&gt;
+        &lt;setting cpu_share="1024"/&gt;
+        &lt;setting resource_group_id="16391"/&gt;
+    &lt;/runtime&gt;
+    &lt;runtime&gt;
+        &lt;id&gt;plc_r_example&lt;/id&gt;
+        &lt;image&gt;pivotaldata/plcontainer_r_without_clients:0.2&lt;/image&gt;
+        &lt;command&gt;/clientdir/rclient.sh&lt;/command&gt;
+        &lt;shared_directory access="ro" container="/clientdir" host="/usr/local/greenplum-db/bin/plcontainer_clients"/&gt;
+        &lt;setting use_container_logging="yes"/&gt;
+        &lt;setting roles="gpadmin,user1"/&gt;
+    &lt;/runtime&gt;
+    &lt;runtime&gt;
+&lt;/configuration&gt;</pre>
+</div>
+
+        <p class="p">这些是PL/Container配置文件中的XML元素和属性。</p>
+
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">configuration</dt>
+
+            <dd class="dd pd">XML文件的根元素。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">runtime</dt>
+
+            <dd class="dd pd">系统中可用的每个特定容器的一个元素。
+              这些是<samp class="ph codeph">configuration</samp>元素的子元素。
+              </dd>
+
+            <dd class="dd pd">
+              <dl class="dl parml">
+                
+                  <dt class="dt pt dlterm">id</dt>
+
+                  <dd class="dd pd">必须。该值用于从PL/Container用户定义的函数引用Docker容器。
+                    <samp class="ph codeph">id</samp>值在配置中必须是唯一的。
+                    <samp class="ph codeph">id</samp>必须以字符或数字（a-z，A-Z或0-9）开头，并且可以包含字符，数字或字符<samp class="ph codeph">_</samp>（下划线）,<samp class="ph codeph">.</samp>（期间），或<samp class="ph codeph">-</samp>（破折号）。
+                    最大长度为63字节。
+                    <p class="p"><samp class="ph codeph">id</samp>指定当PL/Container创建Docker容器以执行用户定义的函数时要使用的Docker镜像。
+                      </p>
+</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">image</dt>
+
+                  <dd class="dd pd">
+                    <p class="p">必须。该值是完整的Docker镜像名称，包括镜像tag。与在Docker中启动此容器指定它们的方式相同。
+                      配置允许有许多容器对象引用相同的镜像名称，这种方式在Docker中它们将由相同的容器表示。
+                      </p>
+
+                    <p class="p">例如，您可能有两个<samp class="ph codeph">runtime</samp>元素，具有不同的<samp class="ph codeph">id</samp>元素，
+                      <samp class="ph codeph">plc_python_128</samp>和<samp class="ph codeph">plc_python_256</samp>，两者都引用Docker镜像<samp class="ph codeph">pivotaldata/plcontainer_python:1.0.0</samp>。
+                      第一个<samp class="ph codeph">runtime</samp>指定128MB RAM限制，第二个指定由<samp class="ph codeph">setting</samp>元素的<samp class="ph codeph">memory_mb</samp>属性指定的256MB限制。
+                      </p>
+
+                  </dd>
+
+                
+                
+                  <dt class="dt pt dlterm">command</dt>
+
+                  <dd class="dd pd">必须。该值是要在容器内部运行以在容器内启动客户端进程的命令。
+                    在创建<samp class="ph codeph">runtime</samp>元素时，<samp class="ph codeph">plcontainer</samp>实用程序会根据语言（<samp class="ph codeph">-l</samp> 选项）添加<samp class="ph codeph">command</samp>元素。
+                    </dd>
+
+                  <dd class="dd pd">python语言的<samp class="ph codeph">command</samp>元素。
+                    <pre class="pre codeblock">&lt;command&gt;/clientdir/pyclient.sh&lt;/command&gt;</pre>
+</dd>
+
+                  <dd class="dd pd">R语言的<samp class="ph codeph">command</samp>元素。<pre class="pre codeblock">&lt;command&gt;/clientdir/rclient.sh&lt;/command&gt;</pre>
+</dd>
+
+                  <dd class="dd pd">只有在构建自定义容器并希望在容器启动之前实现一些其他初始化逻辑时，才应修改该值。
+                    <div class="note note">
+<span class="notetitle">Note:</span> 无法使用<samp class="ph codeph">plcontainer</samp>实用程序设置此元素。
+                      您可以使用<samp class="ph codeph">plcontainer runtime-edit</samp>命令更新配置文件。
+                      </div>
+</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">shared_directory</dt>
+
+                  <dd class="dd pd">可选的。此元素为具有访问信息的容器指定共享Docker共享卷。
+                    允许多个<samp class="ph codeph">shared_directory</samp>元素。每个<samp class="ph codeph">shared_directory</samp>元素指定一个共享卷。
+                    <samp class="ph codeph">shared_directory</samp>元素的XML属性：
+                    <ul class="ul" id="topic_ojn_r2s_dw__ul_x4d_lcs_dw">
+                      <li class="li">
+<samp class="ph codeph">host</samp> - 主机系统上的目录位置。</li>
+
+                      <li class="li">
+<samp class="ph codeph">container</samp> - 容器内的目录位置。</li>
+
+                      <li class="li">
+<samp class="ph codeph">access</samp> - 主机目录的访问级别，可以是<samp class="ph codeph">ro</samp>（只读）或<samp class="ph codeph">rw</samp>（读写）。
+                      </li>
+
+                    </ul>
+</dd>
+
+                  <dd class="dd pd">创建<samp class="ph codeph">runtime</samp>元素时，<samp class="ph codeph">plcontainer</samp>实用程序会添加<samp class="ph codeph">shared_directory</samp>元素。
+                    <pre class="pre codeblock">&lt;shared_directory access="ro" container="/clientdir" host="/usr/local/greenplum-db/bin/plcontainer_clients"/&gt;</pre>
+</dd>
+
+                  <dd class="dd pd">对于每个<samp class="ph codeph">runtime</samp>元素，<samp class="ph codeph">shared_directory</samp>元素的<samp class="ph codeph">container</samp>属性必须是唯一的。
+                    例如，<samp class="ph codeph">runtime</samp>元素不能有两个带有属性<samp class="ph codeph">container="/clientdir"</samp>的<samp class="ph codeph">shared_directory</samp>元素。
+                    <div class="note warning">
+<span class="warningtitle">Warning:</span> 允许对主机目录进行读写访问需要特别考虑。
+                      <ul class="ul" id="topic_ojn_r2s_dw__ul_vzb_dvk_kcb">
+                        <li class="li">指定对主机目录的读写访问权限时，请确保指定的主机目录具有正确的权限。
+                          </li>
+
+                        <li class="li">运行PL/Container用户定义的函数时，主机上运行的多个并发Docker容器可能会更改主机目录中的数据。
+                          确保这些函数支持对主机目录中的数据进行多个并发访问。
+                          </li>
+
+                      </ul>
+</div>
+</dd>
+
+                
+                
+                  <dt class="dt pt dlterm">
+<a name="topic_ojn_r2s_dw__plc_settings"><!-- --></a>settings</dt>
+
+                  <dd class="dd pd">可选的。此元素指定Docker容器配置信息。每个<samp class="ph codeph">setting</samp>元素都包含一个属性。
+                    element属性指定日志记录，内存或网络信息。例如，此元素启用日志记录。
+                    <pre class="pre codeblock">&lt;setting use_container_logging="yes"/&gt;</pre>
+</dd>
+
+                  <dd class="dd pd">这些是合法属性。<dl class="dl parml">
+                      
+                        <dt class="dt pt dlterm">cpu_share</dt>
+
+                        <dd class="dd pd">可选的。在runtime中指定每个PL/Container容器的CPU使用率。
+                          元素的值是正整数。默认值为1024。该值是CPU使用率与其他容器的相对权重。
+                          </dd>
+
+                        <dd class="dd pd">例如，与具有默认值1024的容器相比，<samp class="ph codeph">cpu_share</samp>为2048的容器被分配了两倍的CPU切片时间。
+                          </dd>
+
+                      
+                      
+                        <dt class="dt pt dlterm">memory_mb="<var class="keyword varname">size</var>"</dt>
+
+                        <dd class="dd pd">可选的。该值指定允许每个容器使用的内存量（MB）。每个容器都以这个RAM量和两倍的交换空间开始。
+                          容器内存消耗受主机系统<samp class="ph codeph">cgroups</samp>配置的限制，这意味着在内存过量使用的情况下，容器由系统终止。
+                          </dd>
+
+                      
+                      
+                        <dt class="dt pt dlterm">resource_group_id="<var class="keyword varname">rg_groupid</var>"</dt>
+
+                        <dd class="dd pd">可选的。该值指定要分配给PL/Container runtime的资源组的<samp class="ph codeph">groupid</samp>。
+                          资源组限制共享此runtime配置的所有正在运行的容器的CPU和内存资源总使用量。
+                          您必须指定资源组的<samp class="ph codeph">groupid</samp>。
+                          如果未将资源组分配给PL/Container runtime配置，则其容器实例仅受系统资源的限制。
+                          有关管理PL/Container资源的信息，请参阅<a class="xref" href="#topic_resmgmt">关于PL/Container资源管理</a>。</dd>
+
+                      
+                      
+                        <dt class="dt pt dlterm">roles="<var class="keyword varname">list_of_roles</var>"</dt>
+
+                        <dd class="dd pd">可选的。该值是Greenplum数据库角色名称或以逗号分隔的角色列表。
+                          PL/Container运行仅对列出的角色使用PL/Container runtime配置的容器。
+                          如果未指定该属性，则任何Greenplum数据库角色都可以运行此容器runtime配置的实例。
+                          例如，您创建一个指定<samp class="ph codeph">plcontainer</samp>语言的UDF，
+                          并标识具有<samp class="ph codeph">roles</samp>属性集的<samp class="ph codeph"># container:</samp> runtime配置。
+                          当角色（用户）运行UDF时，PL/Container会检查角色列表，并仅在角色位于列表中时运行容器。
+                          </dd>
+
+                      
+                      
+                        <dt class="dt pt dlterm"> use_container_logging="{yes | no}"</dt>
+
+                        <dd class="dd pd">可选的。启用或禁用容器的Docker日志记录。属性值<samp class="ph codeph">yes</samp>启用日志记录。属性值<samp class="ph codeph">no</samp>禁用日志记录（默认值）。
+                          </dd>
+
+                        <dd class="dd pd">Greenplum数据库服务器配置参数<samp class="ph codeph"><a class="xref" href="../config_params/guc-list.html#log_min_messages">log_min_messages</a></samp>控制PL/Container日志级别。
+                          默认日志级别为<samp class="ph codeph">warning</samp>。
+                          有关PL/Container日志信息的信息，请参阅<a class="xref" href="#plc_notes">备注</a>。
+                          </dd>
+
+                        <dd class="dd pd">
+                          <p class="p">默认情况下，PL/Container日志信息将发送到系统服务。
+                            在Red Hat 7或CentOS 7系统上，日志信息将发送到<samp class="ph codeph">journald</samp>服务。
+                            在Red Hat 6或CentOS 6系统上，日志将发送到<samp class="ph codeph">syslogd</samp>服务。
+                            </p>
+
+                        </dd>
+
+                      
+                    </dl>
+</dd>
+
+                
+              </dl>
+
+            </dd>
+
+          
+        </dl>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="topic_v3s_qv3_kw">
+      <h3 class="title topictitle3">更新PL/Container配置</h3>
+
+      <div class="body">
+        <p class="p">您可以使用<samp class="ph codeph">plcontainer runtime-add</samp>命令将<samp class="ph codeph">runtime</samp>元素添加到PL/Container配置文件中。
+          命令选项指定runtime ID，Docker镜像和语言等信息。
+          您可以使用<samp class="ph codeph">plcontainer runtime-replace</samp>命令更新现有的<samp class="ph codeph">runtime</samp>元素。
+          该实用程序更新master和所有segment实例上的配置文件。
+          </p>
+
+        <p class="p">PL/Container配置文件可以包含多个<samp class="ph codeph">runtime</samp>元素，这些元素引用由XML元素<samp class="ph codeph">image</samp>指定的相同Docker镜像。
+          在示例配置文件中，<samp class="ph codeph">runtime</samp>元素包含名为<samp class="ph codeph">plc_python_128</samp>和<samp class="ph codeph">plc_python_256</samp>的<samp class="ph codeph">id</samp>元素，
+          两者都引用Docker容器<samp class="ph codeph">pivotaldata/plcontainer_python:1.0.0</samp>。
+          第一个<samp class="ph codeph">runtime</samp>元素定义为128MB RAM限制，第二个定义为为256MB RAM限制。
+          </p>
+
+        <pre class="pre codeblock">&lt;configuration&gt;
+  &lt;runtime&gt;
+    &lt;id&gt;plc_python_128&lt;/id&gt;
+    &lt;image&gt;pivotaldata/plcontainer_python:1.0.0&lt;/image&gt;
+    &lt;command&gt;./client&lt;/command&gt;
+    &lt;shared_directory access="ro" container="/clientdir" host="/usr/local/gpdb/bin/plcontainer_clients"/&gt;
+    &lt;setting memory_mb="128"/&gt;
+  &lt;/runtime&gt;
+  &lt;runtime&gt;
+    &lt;id&gt;plc_python_256&lt;/id&gt;
+    &lt;image&gt;pivotaldata/plcontainer_python:1.0.0&lt;/image&gt;
+    &lt;command&gt;./client&lt;/command&gt;
+    &lt;shared_directory access="ro" container="/clientdir" host="/usr/local/gpdb/bin/plcontainer_clients"/&gt;
+    &lt;setting memory_mb="256"/&gt;
+    &lt;setting resource_group_id="16391"/&gt;
+  &lt;/runtime&gt;
+&lt;configuration&gt;</pre>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" id="plc_notes">
+      <h3 class="title topictitle3">备注</h3>
+
+      <div class="body">
+        <ul class="ul" id="plc_notes__ul_j4g_vgs_wbb">
+          <li class="li">PL/Container不支持Greenplum数据库域对象。</li>
+
+          <li class="li">PL/Container在所有Greenplum数据库segment实例的数据目录中维护配置文件<samp class="ph codeph">plcontainer_configuration.xml</samp>：master，standby master，primary和mirror。
+            此查询列出了Greenplum数据库系统数据目录：
+            <pre class="pre codeblock">SELECT hostname, datadir FROM gp_segment_configuration;</pre>
+
+            <p class="p">PL/Container配置文件示例位于<samp class="ph codeph">$GPHOME/share/postgresql/plcontainer</samp>中。
+              </p>
+</li>
+
+          <li class="li">当Greenplum数据库执行PL/Container UDF时，Query Executer（QE）进程启动Docker容器并根据需要重用它们。
+            经过一定的空闲时间后，QE进程退出并销毁其Docker容器。
+            您可以使用Greenplum数据库服务器配置参数<samp class="ph codeph"><a class="xref" href="../config_params/guc-list.html#gp_vmem_idle_resource_timeout">gp_vmem_idle_resource_timeout</a></samp>控制空闲时间。
+            控制空闲时间可能有助于Docker容器重用，并避免创建和启动Docker容器的开销。
+            <div class="note warning">
+<span class="warningtitle">Warning:</span> 更改<samp class="ph codeph">gp_vmem_idle_resource_timeout</samp>值可能会因资源问题而影响性能。
+              该参数还控制释放除Docker容器之外的Greenplum数据库资源。
+              </div>
+</li>
+
+          <li class="li">如果PL/Container Docker容器超过允许的最大内存量，则会终止该容器并显示内存不足警告。
+            在配置了Docker 1.7.1版的Red Hat 6或CentOS 6系统上，如果PL/Container Docker容器主程序（PID 1）终止，也会显示内存不足警告。
+            </li>
+
+          <li class="li">在某些情况下，当PL/Container在高并发环境中运行时，Docker守护程序会挂起并指示内存不足的日志条目。
+            即使系统似乎有足够的可用内存，也可能发生这种情况。
+            <p class="p">这个问题似乎是由两个因素共同触发的，
+              即PL/Container使用的Go语言（<samp class="ph codeph">golang</samp>）运行时的激进虚拟内存需求，
+              以及<samp class="ph codeph">overcommit_memory</samp>的Greenplum数据库Linux服务器内核参数设置。
+              该参数设置为2，不允许内存过量使用。
+              </p>
+
+            <p class="p">可能有用的解决方法是增加交换空间量并增加Linux服务器内核参数<samp class="ph codeph">overcommit_ratio</samp>。
+              如果更改后问题仍然存在，则可能存在内存不足问题。
+              您应检查系统上的可用内存，并在需要时添加更多RAM。
+              您还可以降低群集负载。
+              </p>
+</li>
+
+          <li class="li">PL/Container不限制Docker基本设备大小，Docker容器的大小。
+            在某些情况下，Docker守护程序控制基本设备大小。
+            例如，如果Docker存储驱动程序是devicemapper，则Docker守护程序<samp class="ph codeph">--storage-opt</samp>选项标志<samp class="ph codeph">dm.basesize</samp>控制基本设备大小。
+            devicemapper的默认基本设备大小为10GB。
+            Docker命令<samp class="ph codeph">docker info</samp>显示Docker系统信息，包括存储驱动程序。
+            基本设备大小显示在Docker 1.12及更高版本中。
+            有关Docker存储驱动程序的信息，请参阅Docker信息<a class="xref" href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-storage-driver" target="_blank">守护存储驱动程序</a>。
+            <p class="p">设置Docker基本设备大小时，必须在所有Greenplum数据库主机上设置大小。
+              </p>
+</li>
+
+          <li class="li">启用PL/Container日志记录后，可以使用Greenplum数据库服务器配置参数<samp class="ph codeph"><a class="xref" href="../config_params/guc-list.html#log_min_messages">log_min_messages</a></samp>设置日志级别。
+            默认日志级别为<samp class="ph codeph">warning</samp>。
+            该参数控制PL/Container日志级别，还控制Greenplum数据库日志级别。
+            <ul class="ul" id="plc_notes__ul_knd_jhl_mcb">
+              <li class="li">使用<samp class="ph codeph">setting</samp>属性<samp class="ph codeph">use_container_logging</samp>为每个runtime ID启用或禁用PL/Container日志记录。
+                默认为无记录。
+                </li>
+
+              <li class="li">PL/Container日志信息是来自Docker容器中运行的UDF的信息。
+                默认情况下，PL/Container日志信息将发送到系统服务。
+                在Red Hat 7或CentOS 7系统上，日志信息将发送到<samp class="ph codeph">journald</samp>服务。
+                在Red Hat 6或CentOS 6系统上，日志信息将发送到<samp class="ph codeph">syslogd</samp>服务。
+                PL/Container日志信息将发送到Docker容器运行的主机的日志文件中。
+                </li>
+
+              <li class="li">Greenplum数据库日志信息将发送到Greenplum数据库master上的日志文件。
+                </li>
+
+            </ul>
+<p class="p">在测试或排除PL/Container UDF故障时，可以使用<samp class="ph codeph">SET</samp>命令更改Greenplum数据库日志级别。
+              您可以在运行PL/Container UDF之前在会话中设置参数。
+              此示例将日志级别设置为<samp class="ph codeph">debug1</samp>。
+              </p>
+<pre class="pre codeblock">SET log_min_messages='debug1' ;</pre>
+
+            <div class="note note">
+<span class="notetitle">Note:</span> 参数<samp class="ph codeph">log_min_messages</samp>控制Greenplum数据库和PL/Container日志记录，
+              即使PL/Container UDF未运行，增加日志级别也可能影响Greenplum数据库性能。
+              </div>
+</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_ydt_rtc_rbb">
+    <h2 class="title topictitle2">安装Docker</h2>
+
+    <div class="body">
+      <p class="p">要使用PL/Container，必须在所有Greenplum数据库主机系统上安装Docker。
+        这些说明显示了如何在CentOS 7上设置Docker服务。
+        在RHEL 7上安装是一个类似的过程。
+        </p>
+
+      <div class="p">在执行Docker安装之前，请确保满足这些要求。<ul class="ul" id="topic_ydt_rtc_rbb__ul_ygx_ms2_rbb">
+          <li class="li">可以访问CentOS <samp class="ph codeph">extras</samp>存储库。</li>
+
+          <li class="li">用户具有sudo权限或是root权限。</li>
+
+        </ul>
+</div>
+
+      <p class="p">另请参阅CentOS的Docker站点安装说明<a class="xref" href="https://docs.docker.com/engine/installation/linux/centos/" target="_blank">https://docs.docker.com/engine/installation/linux/centos/</a>。
+        有关Docker命令的列表，请参阅Docker引擎运行参考<a class="xref" href="https://docs.docker.com/engine/reference/run/" target="_blank">https://docs.docker.com/engine/reference/run/</a>。
+        </p>
+
+      <div class="section">
+<h3 class="title sectiontitle">在CentOS 7上安装Docker</h3>
+        
+        <p class="p">这些步骤安装docker软件包并以具有sudo权限的用户身份启动docker服务。
+          </p>
+
+        <ol class="ol" id="topic_ydt_rtc_rbb__ol_e4g_sb2_rbb">
+          <li class="li">安装Docker所需的依赖项<pre class="pre codeblock">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</pre>
+</li>
+
+          <li class="li">添加Docker仓库<pre class="pre codeblock">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</pre>
+</li>
+
+          <li class="li">更新yum cache<pre class="pre codeblock">sudo yum makecache fast</pre>
+</li>
+
+          <li class="li">安装Docker<pre class="pre codeblock">sudo yum -y install docker-ce</pre>
+</li>
+
+          <li class="li">启动Docker守护进程。<pre class="pre codeblock">sudo systemctl start docker</pre>
+</li>
+
+          <li class="li">要授予对Docker守护程序和docker命令的访问权限，请将Greenplum数据库管理员（gpadmin）分配给组<samp class="ph codeph">docker</samp>。
+            <pre class="pre codeblock">sudo usermod -aG docker gpadmin</pre>
+</li>
+
+          <li class="li">退出会话并再次登录以更新权限。</li>
+
+          <li class="li">运行Docker命令以测试Docker安装。
+            此命令列出当前运行的Docker容器。
+            <pre class="pre codeblock">docker ps</pre>
+</li>
+
+        </ol>
+
+        <div class="p">此命令将Docker配置为在主机系统启动时启动。
+          <pre class="pre codeblock">sudo systemctl start docker.service</pre>
+</div>
+
+        <div class="p">在所有Greenplum数据库主机上安装Docker后，重新启动Greenplum数据库系统以允许Greenplum数据库访问Docker。
+          <pre class="pre codeblock">gpstop -ra</pre>
+</div>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">在CentOS 6上安装Docker</h3>
+        
+        <p class="p">这些步骤安装Docker软件包并以具有sudo权限的用户身份启动docker服务。
+          </p>
+
+        <ol class="ol" id="topic_ydt_rtc_rbb__ol_lrx_zb2_rbb">
+          <li class="li">安装EPEL包<pre class="pre codeblock">sudo yum -y install epel-release</pre>
+</li>
+
+          <li class="li">安装Docker<pre class="pre codeblock">sudo yum -y install docker-io</pre>
+</li>
+
+          <li class="li">创建docker组<pre class="pre codeblock">sudo groupadd docker</pre>
+</li>
+
+          <li class="li">启动Docker<pre class="pre codeblock">sudo service docker start</pre>
+</li>
+
+          <li class="li">要授予对Docker守护程序和docker命令的访问权限，请将Greenplum数据库管理员（gpadmin）分配给组<samp class="ph codeph">docker</samp>。
+            <pre class="pre codeblock">sudo usermod -aG docker gpadmin</pre>
+</li>
+
+          <li class="li">退出会话并再次登录以更新权限。</li>
+
+          <li class="li">运行Docker命令以测试Docker安装。
+            此命令列出当前运行的Docker容器。<pre class="pre codeblock">docker ps</pre>
+</li>
+
+        </ol>
+
+        <div class="p">此命令将Docker配置为在主机系统启动时启动。<pre class="pre codeblock">sudo chkconfig docker on</pre>
+</div>
+
+        <div class="p">在所有Greenplum数据库主机上安装Docker后，重新启动Greenplum数据库系统以允许Greenplum数据库访问Docker。
+          <pre class="pre codeblock">gpstop -ra</pre>
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic_kds_plk_rbb">
+    <h2 class="title topictitle2">参考</h2>
+
+    <div class="body">
+      <p class="p">Docker主页<a class="xref" href="https://www.docker.com/" target="_blank">https://www.docker.com/</a></p>
+
+      <p class="p">Docker命令行接口<a class="xref" href="https://docs.docker.com/engine/reference/commandline/cli/" target="_blank">https://docs.docker.com/engine/reference/commandline/cli/</a></p>
+
+      <p class="p">Dockerfile参考 <a class="xref" href="https://docs.docker.com/engine/reference/builder/" target="_blank">https://docs.docker.com/engine/reference/builder/</a></p>
+
+      <p class="p">在Linux系统上安装Docker<a class="xref" href="https://docs.docker.com/engine/installation/linux/centos/" target="_blank">https://docs.docker.com/engine/installation/linux/centos/</a></p>
+
+      <p class="p">通过systemd控制和配置Docker<a class="xref" href="https://docs.docker.com/engine/admin/systemd/" target="_blank">https://docs.docker.com/engine/admin/systemd/</a></p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

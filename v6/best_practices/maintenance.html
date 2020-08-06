@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      系统监控和维护 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_maintenance has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    系统监控和维护
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">系统监控和维护</h1>
+
+  <p class="shortdesc">本节介绍日常运维相关的最佳实践，关注这些内容可以确保Greenplum数据库日常高可用性和性能保持
+    最佳状态。</p>
+
+  <div class="related-links">
+<ul class="ullinks">
+<li class="link ulchildlink">
+<strong><a href="analyze.html">用ANALYZE更新统计信息</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="bloat.html">管理数据库膨胀</a></strong><br>
+</li>
+<li class="link ulchildlink">
+<strong><a href="logfiles.html">监控Greenplum数据库日志文件</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_izw_bwb_s4">
+    <h2 class="title topictitle2">监控</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库提供了一些对监控系统非常有用的工具。</p>
+
+      <p class="p"><samp class="ph codeph">gp_toolkit</samp>模式包含多个可以用SQL命令访问的视图，通过它们可以查询系统目录、日志
+        文件以及操作环境来获得系统状态信息。</p>
+
+      <p class="p"><samp class="ph codeph">gp_stats_missing</samp>视图展示没有统计信息且要求运行<samp class="ph codeph">ANALYZE</samp>的表。</p>
+
+      <p class="p">更多<samp class="ph codeph">gpstate</samp>和<samp class="ph codeph">gpcheckperf</samp>工具的信息请参考<em class="ph i">Greenplum数据库工具指南</em>。
+        有关gp_<samp class="ph codeph">toolkit</samp>模式的信息，请见<em class="ph i">Greenplum数据库参考指南</em>。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">gpstate</h3>
+        
+        <p class="p"><samp class="ph codeph">gpstate</samp>工具显示Greenplum系统的状态，包括哪些segment宕掉了、saster和segment
+          的配置信息（hosts、数据目录等）、系统使用的端口以及主segment与它们对应的镜像segment之间的映射。</p>
+
+        <p class="p">运行<samp class="ph codeph">gpstate -Q</samp>可以得到一个segment的列表，这个列表列出了那些在master的系统目录
+          中被标记为"down"的segment。</p>
+
+        <p class="p">要得到Greenplum系统的详细状态信息，可运行<samp class="ph codeph">gpstate -s</samp>。</p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">gpcheckperf</h3>
+        
+        <div class="p">
+<samp class="ph codeph">gpcheckperf</samp>工具能用来测试主机硬件的基线性能。其结果可以帮助发现硬件问题。它会
+          执行下列检查：
+            <ul class="ul" id="topic_izw_bwb_s4__ul_ic1_5xb_s4">
+              <li class="li">磁盘I/O测试 – 通过使用操作系统命令<samp class="ph codeph">dd</samp>读写一个大型文件来测量I/O性能。
+                它报告以兆字节每秒为单位的读写速率。</li>
+
+              <li class="li">内存带宽测试 – 使用STREAM基准测量以兆字节每秒为单位的可持续的内存带宽。</li>
+
+              <li class="li">网络性能测试 – 运行<samp class="ph codeph">gpnetbench</samp>网络基准程序（也可以选<samp class="ph codeph">netperf</samp>）
+                来测试网络性能。这种测试可以运行在三种模式中：并行结对测试（<samp class="ph codeph">-r N</samp>）、
+                串行结对测试（<samp class="ph codeph">-r n</samp>）或者全矩阵测试（<samp class="ph codeph">-r M</samp>）。报告
+                的最小、最大、平均和中值传输率将以兆字节每秒为单位。</li>
+
+            </ul>
+为了从<samp class="ph codeph">gpcheckperf</samp>获得有效的数字，数据库系统必须被停止。即使系统仍在
+          运行且没有运行查询活动，从<samp class="ph codeph">gpcheckperf</samp>得到的数字可能也不准确。</div>
+
+        <p class="p"><samp class="ph codeph">gpcheckperf</samp>要求在参与性能测试的主机之间提前进行访问互信设置。因为工具会调用
+          <samp class="ph codeph">gpssh</samp>以及<samp class="ph codeph">gpscp</samp>，因此这些工具必须也位于用户的<samp class="ph codeph">PATH</samp>
+          中。可以个别指定要检查的主机（<samp class="ph codeph">-h <em class="ph i">host1</em> -h <em class="ph i">host2</em> ...</samp>）或者使用
+          <samp class="ph codeph">-f <em class="ph i">hosts_file</em></samp>，其中<samp class="ph codeph"><em class="ph i">hosts_file</em></samp>是一个包含要
+          检查的主机列表的文本文件。如果用户有多个子网，为每个子网都创建一个单独的主机文件，这样用户可以单独测试
+          子网。</p>
+
+        <div class="p">
+<samp class="ph codeph">gpcheckperf</samp>默认会运行磁盘I/O测试、内存测试和串行结对网络性能测试。对于磁盘I/O
+          测试，用户必须使用<samp class="ph codeph">-d</samp>选项指定要测试的文件系统。下面的命令在<samp class="ph codeph">subnet_1_hosts</samp>
+          文件中列出的主机上测试磁盘I/O和内存带宽：
+          <pre class="pre codeblock">$ gpcheckperf -f subnet_1_hosts -d /data1 -d /data2 -r ds</pre>
+</div>
+
+        <p class="p"><samp class="ph codeph">-r</samp>选项选择要运行的测试：磁盘I/O（<samp class="ph codeph">d</samp>）、内存带宽（<samp class="ph codeph">s</samp>）、
+          网络并行结对（<samp class="ph codeph">N</samp>）、网络串行结对测试（<samp class="ph codeph">n</samp>）、网络全矩阵测试（<samp class="ph codeph">M</samp>）。
+          每次执行只能选择一种网络模式。详细的<samp class="ph codeph">gpcheckperf</samp>参考信息请见<em class="ph i">Greenplum数据库
+            参考指南</em>。</p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">用操作系统工具监控</h3>
+        
+      </div>
+
+      <div class="p">下面的Linux/UNIX工具可以被用来评估主机性能：<ul class="ul" id="topic_izw_bwb_s4__ul_hvv_sh4_y4">
+        <li class="li">
+<samp class="ph codeph">iostat</samp> 允许用户监控segment主机上的磁盘活动。</li>
+
+        <li class="li">
+<samp class="ph codeph">top</samp> 显示操作系统进程的动态视图。</li>
+
+        <li class="li">
+<samp class="ph codeph">vmstat</samp> 显示内存使用统计信息。</li>
+
+        </ul>
+</div>
+
+      <p class="p">用户可以使用<samp class="ph codeph">gpssh</samp>在多台主机上运行相关工具。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">最佳实践</h3>
+        
+        <ul class="ul" id="topic_izw_bwb_s4__ul_wd5_bj4_y4">
+          <li class="li">实现<em class="ph i">Greenplum数据库管理员指南</em>中的“推荐的监控和维护任务”。</li>
+
+          <li class="li">在安装时运行<samp class="ph codeph">gpcheckperf</samp>，并且在安装之后定期运行它，将其输出保存起来以对比
+            不同时刻的系统性能。</li>
+
+          <li class="li">使用所有能支配的工具来理解系统在不同负载下的行为。</li>
+
+          <li class="li">检查异常事件以确定原因。</li>
+
+          <li class="li">通过定期运行执行计划监控系统上的查询活动，以确保查询以最优的方式运行。</li>
+
+          <li class="li">检查执行计划以确定索引是否被使用以及分区裁剪是否按照预期发生。</li>
+
+        </ul>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">附加信息</h3>
+        
+        <ul class="ul" id="topic_izw_bwb_s4__ul_ynx_fmn_y4">
+          <li class="li">
+<samp class="ph codeph">gpcheckperf</samp>详细信息请见<em class="ph i">Greenplum数据库工具指南</em>。</li>
+
+          <li class="li">"推荐的监控和日常运维任务"部分详情请柬<em class="ph i">Greenplum数据库管理员指南</em>。</li>
+
+          <li class="li">
+<a class="xref" href="http://www.cs.virginia.edu/%7Emccalpin/papers/bandwidth/bandwidth.html" target="_blank">Sustainable Memory Bandwidth in Current High
+              Performance Computers</a>. John D. McCalpin. Oct 12, 1995.</li>
+
+          <li class="li">请参考<a class="xref" href="http://www.netperf.org/netperf" target="_blank">www.netperf.org</a>来使用<samp class="ph codeph">netperf</samp>, netperf必须被安装在所有测试
+            机器上。更多有关<samp class="ph codeph">gpcheckperf</samp>的信息请移步命令详细出处。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

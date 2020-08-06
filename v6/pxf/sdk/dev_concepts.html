@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      PXF Developer Concepts |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_sdk x6-0_pxf_sdk_dev_concepts has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    PXF Developer Concepts
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#architecture">Plug-ins, Connectors, and Profiles</a></li>
+<li><a href="#dataflow">Data Flow</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>The PXF SDK provides the classes and interfaces that you use to implement support for new external data sources, data formats, and data access APIs in Greenplum Database. You can also use the PXF SDK to extend existing external data sources, formats, and APIs.</p>
+
+<p>When you develop with the PXF SDK, you ultimately build a JAR file. The Greenplum Database administrator deploys your JAR file to the Greenplum Database cluster. The Greenplum Database end user accesses your external data source/format/API when invoking a <code>CREATE EXTERNAL TABLE</code> command specifying the <code>pxf</code> protocol.</p>
+
+<p>This topic introduces concepts central to developing with the PXF SDK. These concepts will be discussed in detail in later sections of this guide.</p>
+
+<h2 id="plug-ins,-connectors,-and-profiles"><a id="architecture"></a>Plug-ins, Connectors, and Profiles</h2>
+
+<p>The PXF API includes the <em>Fragmenter</em> class and read and write <em>Accessor</em> and <em>Resolver</em> interfaces. You implement theses classes and interfaces when you extend PXF to add support for a new external data source, data format, or data access API. The classes that you create are called <em>plug-in</em>s.</p>
+
+<p>A connector is a set of plug-in classes that support read and/or write operation(s) to an external data source:</p>
+
+<ul>
+<li>A set of a single <em>Fragmenter</em>, <em>Accessor</em>, and <em>Resolver</em> plug-in class together comprise a <em>read connector</em>. </li>
+<li>An <em>Accessor</em> and <em>Resolver</em> plug-in pair comprise a <em>write connector</em>. </li>
+<li>A single <em>Accessor</em> or <em>Resolver</em> class may implement both read and write operations.</li>
+</ul>
+
+<p>A <em>profile</em> is a simple name mapping to a set of connector plug-in class names. You or the Greenplum Database administrator may choose to configure one or more profiles for your connector as a convenience for the Greenplum Database end user.</p>
+
+<p>Summary of terms:</p>
+
+<table><thead>
+<tr>
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Plug-in</td>
+<td>A <em>Fragmenter</em>, <em>Accessor</em>, or <em>Resolver</em> class implementation.</td>
+</tr>
+<tr>
+<td>Connector</td>
+<td>A set of plug-in classes that support the read and/or write operation to an external data source.</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>A name mapping to a set of connector plug-in class names.</td>
+</tr>
+</tbody></table>
+
+<h2 id="data-flow"><a id="dataflow"></a>Data Flow</h2>
+
+<p>PXF in Greenplum Database has two components:</p>
+
+<ul>
+<li>A C shared library that is loaded into Greenplum Database when the <code>CREATE EXTENSION pxf</code> command is invoked on a database.</li>
+<li>A Java service, referred to as the PXF agent, a single JVM process located on each Greenplum Database segment host. You start the PXF agent when you run <code>pxf cluster start</code>.</li>
+</ul>
+
+<p>Operations on Greenplum Database external tables are first routed to the PXF C shared library extension then on to the PXF agent.</p>
+
+<p>The PXF C library validates PXF-specific parameters in the <code>CREATE EXTERNAL TABLE</code> command. The PXF agent invokes a connector&rsquo;s plug-in classes only after the end user performs a <code>SELECT</code> (read) or <code>INSERT</code> (write) operation on the external table.</p>
+
+<p>The PXF agent initiates a read operation on the external data source when the user runs a <code>SELECT</code> command on a PXF external table. The PXF agent spawns a thread that invokes the connector <em>Fragmenter</em>, which splits data from an external data source into a list of fragments that can be read in parallel. A read <em>Accessor</em> reads a single fragment from an external data source and produces a list of records/rows. The read <em>Resolver</em> deserializes a record/row into fields. Finally, PXF translates these fields into Greenplum Database table column values. </p>
+
+<p><img src="../graphics/pxfreadwrite.png" class="image" /></p>
+
+<p>The PXF agent initiates a write operation to the external data source when the user runs an <code>INSERT</code> or similar command on a PXF writable external table. When writing to an external data source, PXF translates Greenplum Database table column values into fields and invokes the connector write <em>Resolver</em>. The write <em>Resolver</em> serializes these fields into a record. The write <em>Accessor</em> writes a record directly to the external data source.</p>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      在对象存储中读取和写入文本数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_objstore_text has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    在对象存储中读取和写入文本数据
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#prereq">&#20808;&#20915;&#26465;&#20214;</a></li>
+<li>
+<a href="#profile_text">&#35835;&#21462;&#25991;&#26412;&#25968;&#25454;</a><ul><li><a href="#profile_text_query">&#31034;&#20363;: &#20174;S3&#35835;&#21462;&#25991;&#26412;&#25968;&#25454;</a></li></ul>
+</li>
+<li>
+<a href="#profile_textmulti">&#35835;&#21462;&#21547;&#26377;&#21452;&#24341;&#21495;&#24341;&#36215;&#26469;&#30340;&#25442;&#34892;&#31526;&#30340;&#25991;&#26412;&#25968;&#25454;</a><ul><li><a href="#profile_textmulti_query">&#31034;&#20363;: &#20174;S3&#20013;&#35835;&#21462;&#22810;&#34892;&#25991;&#26412;&#25968;&#25454;</a></li></ul>
+</li>
+<li>
+<a href="#write_text">&#20889;&#20837;&#25991;&#26412;&#25968;&#25454;</a><ul><li><a href="#write_s3textsimple_example">&#31034;&#20363;: &#23558;&#25991;&#26412;&#25968;&#25454;&#20889;&#20837;S3</a></li></ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>PXF 对象存储连接器支持普通分隔和逗号分隔的值文本数据。 本节介绍如何使用PXF访问对象存储中的文本数据，包括如何创建、查询以及将数据写入引用对象存储中文件的外部表。</p>
+
+<p><strong>注意</strong>: 从对象存储中访问文本数据和访问HDFS中的文本数据非常相似。</p>
+
+<h2 id="先决条件"><a id="prereq"></a>先决条件</h2>
+
+<p>在尝试从对象存储中读取数据或将数据写入对象存储之前，请确保已满足PXF对象存储<a href="/6-0/pxf/access_objstore.html#objstore_prereq">先决条件</a></p>
+
+<h2 id="读取文本数据"><a id="profile_text"></a>读取文本数据</h2>
+
+<p>当您从对象存储中读取每行都是一条记录的分隔的纯文本或.csv数据时，请使用 <code>&lt;objstore&gt;:text</code> 配置文件。 PXF 支持以下 <code>&lt;objstore&gt;</code> 配置文件前缀：</p>
+
+<table><thead>
+<tr>
+<th>对象存储</th>
+<th>配置前缀</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Azure Blob Storage</td>
+<td>wasbs</td>
+</tr>
+<tr>
+<td>Azure Data Lake</td>
+<td>adl</td>
+</tr>
+<tr>
+<td>Google Cloud Storage</td>
+<td>gs</td>
+</tr>
+<tr>
+<td>Minio</td>
+<td>s3</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>s3</td>
+</tr>
+</tbody></table>
+
+<p>以下语法创建一个引用对象存储中示例文本文件的Greenplum数据库可读外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span> 
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-file&gt;?PROFILE=&lt;objstore&gt;:text[&amp;SERVER=&lt;server_name&gt;][&amp;&lt;custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'[TEXT|CSV]'</span> <span class="p">(</span><span class="k">delimiter</span><span class="p">[</span><span class="o">=|&lt;</span><span class="k">space</span><span class="o">&gt;</span><span class="p">][</span><span class="n">E</span><span class="p">]</span><span class="s1">'&lt;delim_value&gt;'</span><span class="p">);</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> 命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;file&gt;</td>
+<td>S3 对象存储中文件或目录的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE=&lt;objstore&gt;:text</td>
+<td><code>PROFILE</code> 关键字必须定义为特定的对象存储。 例如: <code>s3:text</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>当 &lt;path-to-file&gt; 引用分隔的纯文本数据时，请使用 <code>FORMAT</code> <code>&#39;TEXT&#39;</code> 。<br> 当 &lt;path-to-file&gt; 引用逗号分隔的值数据时，请使用 <code>FORMAT</code> <code>&#39;CSV&#39;</code></td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>数据中的分隔符。对于<code>FORMAT</code> <code>&#39;CSV&#39;</code>，默认的&lt;delim_value&gt; 是逗号<code>,</code>。 当分隔符为转义序列时，在&lt;delim_value&gt; 前面加上<code>E</code>。示例：<code>(delimiter=E&#39;\t&#39;)</code>, <code>(delimiter &#39;:&#39;)</code>。</td>
+</tr>
+</tbody></table>
+
+<p>如果要访问S3对象存储库：</p>
+
+<ul>
+<li><p>您可以通过<code>CREATE EXTERNAL TABLE</code>命令中的自定义选项提供S3凭据，如<a href="/6-0/pxf/access_s3.html#s3_override">使用DDL覆盖S3服务器配置</a>中所述。</p></li>
+<li><p>如果您正在从S3中读取CSV格式的数据，则可以指示PXF使用S3 Select Amazon服务检索数据。有关用于此目的的PXF自定义选项的更多信息，请参考<a href="/6-0/pxf/access_s3.html#s3_select">使用Amazon S3选择服务</a>。</p></li>
+</ul>
+
+<h3 id="示例:-从s3读取文本数据"><a id="profile_text_query"></a>示例: 从S3读取文本数据</h3>
+
+<p>执行以下步骤创建示例文本文件，将文件复制到S3, 然后使用  <code>s3:text</code> 配置文件创建两个PXF 外部表来查询数据。</p>
+
+<p>要运行此示例，您必须：</p>
+
+<ul>
+<li>在系统上安装了AWS CLI工具</li>
+<li>知道您的AWS访问ID和密钥</li>
+<li>拥有对S3存储桶的写权限</li>
+</ul>
+
+<ol>
+<li><p>在S3上为PXF示例文件创建一个文件夹。 例如, 假设您对名为 <code>BUCKET</code> 的S3存储桶具有写权限：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>aws s3 mb s3://BUCKET/pxf_examples
+</code></pre></li>
+<li><p>在本地创建一个名为 <code>pxf_s3_simple.txt</code> 的分隔的纯文本数据文件:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span><span class="nb">echo</span> <span class="s1">'Prague,Jan,101,4875.33
+Rome,Mar,87,1557.39
+Bangalore,May,317,8936.99
+Beijing,Jul,411,11600.67'</span> &gt; /tmp/pxf_s3_simple.txt
+</code></pre>
+
+<p>请注意使用逗号 <code>,</code> 分隔四个字段</p></li>
+<li><p>将数据文件复制到您在步骤1创建的S3 目录中：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>aws s3 cp /tmp/pxf_s3_simple.txt s3://BUCKET/pxf_examples/
+</code></pre></li>
+<li><p>验证文件现在位于S3中:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>aws s3 ls s3://BUCKET/pxf_examples/pxf_s3_simple.txt
+</code></pre></li>
+<li><p>启动 <code>psql</code> 子系统:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>psql -d postgres
+</code></pre></li>
+<li><p>使用 PXF <code>s3:text</code> 配置文件创建Greenplum数据库外部表，该表引用您刚刚创建并添加到S3中的 <code>pxf_s3_simple.txt</code> 文件。 例如, 假设您的服务名为 <code>s3srvcfg</code>：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_s3_textsimple</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://BUCKET/pxf_examples/pxf_s3_simple.txt?PROFILE=s3:text&amp;SERVER=s3srvcfg'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">delimiter</span><span class="o">=</span><span class="n">E</span><span class="s1">','</span><span class="p">);</span>
+</code></pre></li>
+<li><p>查询外部表:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_s3_textsimple</span><span class="p">;</span>          
+</code></pre>
+<pre class="highlight plaintext"><code>   location    | month | num_orders | total_sales 
+---------------+-------+------------+-------------
+ Prague        | Jan   |        101 |     4875.33
+ Rome          | Mar   |         87 |     1557.39
+ Bangalore     | May   |        317 |     8936.99
+ Beijing       | Jul   |        411 |    11600.67
+(4 rows)
+</code></pre></li>
+<li><p>创建另一个引用 <code>pxf_s3_simple.txt</code> 的外部表，这次指定 <code>CSV</code> <code>FORMAT</code>:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_s3_textsimple_csv</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://BUCKET/pxf_examples/pxf_s3_simple.txt?PROFILE=s3:text&amp;SERVER=s3srvcfg'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+<span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_s3_textsimple_csv</span><span class="p">;</span>          
+</code></pre>
+
+<p>当您为逗号分隔值数据指定<code>FORMAT &#39;CSV&#39;</code>时，不需要提供<code>delimiter</code>分隔符选项，因为逗号是默认的分隔符。</p></li>
+</ol>
+
+<h2 id="读取含有双引号引起来的换行符的文本数据"><a id="profile_textmulti"></a>读取含有双引号引起来的换行符的文本数据</h2>
+
+<p>使用 <code>&lt;objstore&gt;:text:multi</code> 配置文件读取数据中含有引号引起来的换行符，单行或多行的分隔文本数据。 以下语法创建一个引用对象存储中此类文本文件的Greenplum数据库可读外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-file&gt;?PROFILE=&lt;objstore&gt;:text:multi[&amp;SERVER=&lt;server_name&gt;][&amp;&lt;custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'[TEXT|CSV]'</span> <span class="p">(</span><span class="k">delimiter</span><span class="p">[</span><span class="o">=|&lt;</span><span class="k">space</span><span class="o">&gt;</span><span class="p">][</span><span class="n">E</span><span class="p">]</span><span class="s1">'&lt;delim_value&gt;'</span><span class="p">);</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;file&gt;</td>
+<td>S3数据存储中的目录或文件的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE=&lt;objstore&gt;:text:multi</td>
+<td><code>PROFILE</code> 关键字必须指定为特定的对象存储。 例如：<code>s3:text:multi</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>当&lt;path-to-hdfs-file&gt;引用分隔的纯文本数据时，请使用<code>FORMAT</code> <code>&#39;TEXT&#39;</code>。<br> 当&lt;path-to-hdfs-file&gt;引用逗号分隔值数据时，请使用<code>FORMAT</code> <code>&#39;CSV&#39;</code>。</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>数据中的分隔符。对于<code>FORMAT</code> <code>&#39;CSV&#39;</code>，默认的&lt;delim_value&gt; 是逗号<code>,</code>。 当分隔符为转义序列时，在&lt;delim_value&gt; 前面加上<code>E</code>。示例：<code>(delimiter=E&#39;\t&#39;)</code>, <code>(delimiter &#39;:&#39;)</code>。</td>
+</tr>
+</tbody></table>
+
+<p>如果要访问S3对象存储，则可以通过<code>CREATE EXTERNAL TABLE</code>命令中的自定义选项提供S3凭据，如<a href="/6-0/pxf/access_objstore.html#s3_override">使用DDL覆盖S3服务器配置</a>中所述。</p>
+
+<h3 id="示例:-从s3中读取多行文本数据"><a id="profile_textmulti_query"></a>示例: 从S3中读取多行文本数据</h3>
+
+<p>执行以下步骤创建一个样例文本文件、 将文件复制到S3，并使用 PXF <code>s3:text:multi</code> 配置文件创建一个Greenplum数据库可读外部表来查询数据。</p>
+
+<p>要运行此示例，您必须：</p>
+
+<ul>
+<li>在系统上安装了AWS CLI工具</li>
+<li>知道您的AWS访问ID和密钥</li>
+<li>拥有对S3存储桶的写权限</li>
+</ul>
+
+<ol>
+<li><p>创建第二个带分隔符的纯文本文件：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>vi /tmp/pxf_s3_multi.txt
+</code></pre></li>
+<li><p>将以下数据复制/黏贴到 <code>pxf_s3_multi.txt</code> 中：</p>
+<pre class="highlight plaintext"><code>"4627 Star Rd.
+San Francisco, CA  94107":Sept:2017
+"113 Moon St.
+San Diego, CA  92093":Jan:2018
+"51 Belt Ct.
+Denver, CO  90123":Dec:2016
+"93114 Radial Rd.
+Chicago, IL  60605":Jul:2017
+"7301 Brookview Ave.
+Columbus, OH  43213":Dec:2018
+</code></pre>
+
+<p>注意使用冒号 <code>:</code> 分隔三个字段。 另外还要注意第一个字段(地址)周围的引号。 此字段包含嵌入式换行符，用于将街道地址与城市和州分开。</p></li>
+<li><p>将文本文件复制到S3：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>aws s3 cp /tmp/pxf_s3_multi.txt s3://BUCKET/pxf_examples/
+</code></pre></li>
+<li><p>使用 <code>s3:text:multi</code> 配置文件创建一个引用S3文件 <code>pxf_s3_multi.txt</code> 的外部表，确保定义 <code>:</code> (冒号) 作为字段分隔符。 例如，假设您的服务名为 <code>s3srvcfg</code> ：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_s3_textmulti</span><span class="p">(</span><span class="n">address</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="k">year</span> <span class="n">int</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://BUCKET/pxf_examples/pxf_s3_multi.txt?PROFILE=s3:text:multi&amp;SERVER=s3srvcfg'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'CSV'</span> <span class="p">(</span><span class="k">delimiter</span> <span class="s1">':'</span><span class="p">);</span>
+</code></pre>
+
+<p>注意指定 <code>delimiter</code> 的替代语法。</p></li>
+<li><p>查询 <code>pxf_s3_textmulti</code> 表:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_s3_textmulti</span><span class="p">;</span>
+</code></pre>
+<pre class="highlight plaintext"><code>         address          | month | year 
+--------------------------+-------+------
+ 4627 Star Rd.            | Sept  | 2017
+ San Francisco, CA  94107           
+ 113 Moon St.             | Jan   | 2018
+ San Diego, CA  92093               
+ 51 Belt Ct.              | Dec   | 2016
+ Denver, CO  90123                  
+ 93114 Radial Rd.         | Jul   | 2017
+ Chicago, IL  60605                 
+ 7301 Brookview Ave.      | Dec   | 2018
+ Columbus, OH  43213                
+(5 rows)
+</code></pre></li>
+</ol>
+
+<h2 id="写入文本数据"><a id="write_text"></a>写入文本数据</h2>
+
+<p>&ldquo;&lt;objstore&gt;:text&rdquo; 配置文件支持将单行纯文本文件写入对象存储中。 使用PXF创建可写外部表时，请指定目录名称。当您将记录写入可写外部表中，您插入的数据块将写入指定目录中的一个或多个文件中。</p>
+
+<p><strong>注意</strong>： 使用可写配置文件创建的外部表仅支持 <code>INSERT</code> 操作。 如果要查询插入的数据，则比如单独创建一个引用该目录的可读外部表。</p>
+
+<p>使用以下语法创建一个引用对象存储目录的Greenplum数据库可写外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span> 
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-dir&gt;
+    ?PROFILE=&lt;objstore&gt;:text[&amp;SERVER=&lt;server_name&gt;][&amp;&lt;custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'[TEXT|CSV]'</span> <span class="p">(</span><span class="k">delimiter</span><span class="p">[</span><span class="o">=|&lt;</span><span class="k">space</span><span class="o">&gt;</span><span class="p">][</span><span class="n">E</span><span class="p">]</span><span class="s1">'&lt;delim_value&gt;'</span><span class="p">);</span>
+<span class="p">[</span><span class="n">DISTRIBUTED</span> <span class="k">BY</span> <span class="p">(</span><span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...</span> <span class="p">]</span> <span class="p">)</span> <span class="o">|</span> <span class="n">DISTRIBUTED</span> <span class="n">RANDOMLY</span><span class="p">];</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> 命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;dir&gt;</td>
+<td>S3数据存储中目录的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE=&lt;objstore&gt;:text</td>
+<td><code>PROFILE</code> 关键字必须指定为对象存储。例如： <code>s3:text</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>&lt;custom&#8209;option&gt;=&lt;value&gt;</td>
+<td>&lt;custom-option&gt; 选项见下方描述</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>将分隔的纯文本写入&lt;path-to-dir&gt;时，使用 <code>FORMAT</code> <code>&#39;TEXT&#39;</code> 。 <br> 将逗号分隔值文本写入&lt;path-to-dir&gt;时，使用 <code>FORMAT</code> <code>&#39;CSV&#39;</code> 。</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>数据中的分隔符。 数据中的分隔符。对于<code>FORMAT</code> <code>&#39;CSV&#39;</code>，默认的&lt;delim_value&gt; 是逗号<code>,</code>。 当分隔符为转义序列时，在&lt;delim_value&gt; 前面加上<code>E</code>。示例：<code>(delimiter=E&#39;\t&#39;)</code>, <code>(delimiter &#39;:&#39;)</code>。</td>
+</tr>
+<tr>
+<td>DISTRIBUTED BY</td>
+<td>如果您计划将现有Greenplum数据库表中的数据加载到可写外部表，考虑在可写外部表上使用与Greenplum表相同的分布策略或&lt;字段名&gt;。 这样做可以避免数据加载操作中segment节点间额外的数据移动。.</td>
+</tr>
+</tbody></table>
+
+<p>使用 <code>&lt;objstore&gt;:text</code>  配置文件创建可写外部表时，可以选择使用记录或块压缩。 PXF <code>&lt;objstore&gt;:text</code> 配置文件支持以下压缩编解码器：</p>
+
+<ul>
+<li>org.apache.hadoop.io.compress.DefaultCodec</li>
+<li>org.apache.hadoop.io.compress.GzipCodec</li>
+<li>org.apache.hadoop.io.compress.BZip2Codec</li>
+</ul>
+
+<p>您可以通过 <code>CREATE EXTERNAL TABLE</code> <code>LOCATION</code> 子句中的自定义选项指定压缩编码器。 <code>&lt;objstore&gt;:text</code> 配置文件支持以下自定义写入选项：</p>
+
+<table><thead>
+<tr>
+<th>选项</th>
+<th>值描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>COMPRESSION_CODEC</td>
+<td>压缩编解码器Java类名。 如果未提供此选项，Greenplum数据库不会执行压缩编码。支持的压缩编解码器包括：<br><code>org.apache.hadoop.io.compress.DefaultCodec</code><br><code>org.apache.hadoop.io.compress.BZip2Codec</code><br><code>org.apache.hadoop.io.compress.GzipCodec</code></td>
+</tr>
+<tr>
+<td>COMPRESSION_TYPE</td>
+<td>采用的压缩类型; 支持的值为 <code>RECORD</code> (默认) 或 <code>BLOCK</code></td>
+</tr>
+<tr>
+<td>THREAD-SAFE</td>
+<td>确定表查询是否可以在多线程模式下运行的布尔值。 默认为 <code>TRUE</code>。 将此选项设置为 <code>FALSE</code> 以处理单个线程中所有非线程安全操作 (例如，压缩)的请求。</td>
+</tr>
+</tbody></table>
+
+<p>如果要访问S3对象存储，则可以通过<code>CREATE EXTERNAL TABLE</code>命令中的自定义选项提供S3凭据，如<a href="/6-0/pxf/access_objstore.html#s3_override">使用DDL覆盖S3服务器配置</a>中所述。</p>
+
+<h3 id="示例:-将文本数据写入s3"><a id="write_s3textsimple_example"></a>示例: 将文本数据写入S3</h3>
+
+<p>这个实力引用在 <a href="#profile_text_query">示例: 从S3读取文本数据</a> 中介绍的数据模式。</p>
+
+<table><thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>location</td>
+<td>text</td>
+</tr>
+<tr>
+<td>month</td>
+<td>text</td>
+</tr>
+<tr>
+<td>number_of_orders</td>
+<td>int</td>
+</tr>
+<tr>
+<td>total_sales</td>
+<td>float8</td>
+</tr>
+</tbody></table>
+
+<p>此示例还可以选择使用您在该练习中创建的名为 <code>pxf_s3_textsimple</code> 的Greenplum数据库外部表。</p>
+
+<h4 id="步骤"><a id="write_s3textsimple_proc" class="no-quick-link"></a>步骤</h4>
+
+<p>执行以下步骤，使用与上述相同的数据模式创建Greenplum数据库可写外部表， 其中之一将使用压缩。你将使用 PXF <code>s3:text</code> 配置文件将数据写入S3。 您还将创建一个单独的可读外部表，以读取您写入S3的数据。</p>
+
+<ol>
+<li><p>使用上述的数据模式创建Greenplum数据库可写外部表。写入S3 目录 <code>BUCKET/pxf_examples/pxfwrite_s3_textsimple1</code>。 创建表是指定逗号 <code>,</code> 作为分隔符。例如，假设您的服务名称为 <code>s3srvcfg</code>：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_s3_writetbl_1</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://BUCKET/pxf_examples/pxfwrite_s3_textsimple1?PROFILE=s3:text&amp;SERVER=s3srvcfg'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">);</span>
+</code></pre>
+
+<p>将 <code>FORMAT</code> 子句 <code>delimiter</code> 值指定为单个ASCII逗号字符 <code>,</code></p></li>
+<li><p>通过在 <code>pxf_s3_writetbl_1</code> 上调用SQL <code>INSERT</code> 命令，将一些单独的记录写入 <code>pxfwrite_s3_textsimple1</code> S3目录：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_s3_writetbl_1</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Frankfurt'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="mi">777</span><span class="p">,</span> <span class="mi">3956</span><span class="p">.</span><span class="mi">98</span> <span class="p">);</span>
+<span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_s3_writetbl_1</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Cleveland'</span><span class="p">,</span> <span class="s1">'Oct'</span><span class="p">,</span> <span class="mi">3812</span><span class="p">,</span> <span class="mi">96645</span><span class="p">.</span><span class="mi">37</span> <span class="p">);</span>
+</code></pre></li>
+<li><p>(可选) 将您在 <a href="#profile_text_query">示例: 从S3读取文本数据</a> 创建的 <code>pxf_s3_textsimple</code>  表中的数据插入到 <code>pxf_s3_writetbl_1</code> ：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_s3_writetbl_1</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_s3_textsimple</span><span class="p">;</span>
+</code></pre></li>
+<li><p>Greenplum数据库不支持直接查询可写外部表。要查询刚刚添加到S3的数据，必须创建一个引用该S3目录的Greenplum数据库可读外部表：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_s3_textsimple_r1</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://BUCKET/pxf_examples/pxfwrite_s3_textsimple1?PROFILE=s3:text&amp;SERVER=s3srvcfg'</span><span class="p">)</span>
+            <span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+</code></pre>
+
+<p>创建可读外部表时，请指定 <code>&#39;CSV&#39;</code> <code>FORMAT</code>，因为您创建可写外部表时使用逗号 <code>,</code> 作为分隔字符，即 <code>&#39;CSV&#39;</code> <code>FORMAT</code> 默认分隔符。</p></li>
+<li><p>查询可读外部表：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_s3_textsimple_r1</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">total_sales</span><span class="p">;</span>
+</code></pre>
+<pre class="highlight plaintext"><code> location  | month | num_orders | total_sales 
+-----------+-------+------------+-------------
+ Rome      | Mar   |         87 |     1557.39
+ Frankfurt | Mar   |        777 |     3956.98
+ Prague    | Jan   |        101 |     4875.33
+ Bangalore | May   |        317 |     8936.99
+ Beijing   | Jul   |        411 |    11600.67
+ Cleveland | Oct   |       3812 |    96645.37
+(6 rows)
+</code></pre>
+
+<p><code>pxf_s3_textsimple_r1</code> 表包含了您单独插入的记录以及 <code>pxf_s3_textsimple</code> 表的完整内容(如果执行了可选步骤)</p></li>
+<li><p>创建第二个Greenplum数据库可写外部表，这次使用Gzip 压缩并使用冒号 <code>:</code> 作为分隔符：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_s3_writetbl_2</span> <span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://BUCKET/pxf_examples/pxfwrite_s3_textsimple2?PROFILE=s3:text&amp;SERVER=s3srvcfg&amp;COMPRESSION_CODEC=org.apache.hadoop.io.compress.GzipCodec'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">delimiter</span><span class="o">=</span><span class="s1">':'</span><span class="p">);</span>
+</code></pre></li>
+<li><p>通过直接写入 <code>pxf_s3_writetbl_2</code> 表将一些记录写入到 <code>pxfwrite_s3_textsimple2</code> S3目录：</p>
+<pre class="highlight sql"><code><span class="n">gpadmin</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_s3_writetbl_2</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Frankfurt'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="mi">777</span><span class="p">,</span> <span class="mi">3956</span><span class="p">.</span><span class="mi">98</span> <span class="p">);</span>
+<span class="n">gpadmin</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_s3_writetbl_2</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Cleveland'</span><span class="p">,</span> <span class="s1">'Oct'</span><span class="p">,</span> <span class="mi">3812</span><span class="p">,</span> <span class="mi">96645</span><span class="p">.</span><span class="mi">37</span> <span class="p">);</span>
+</code></pre></li>
+<li><p>要从新创建的名为 <code>pxfwrite_s3_textsimple2</code> 的S3目录查询数据，您可以如上所述创建一个Greenplum数据库可读外部表，该表引用此S3目录并指定 <code>FORMAT &#39;CSV&#39; (delimiter=&#39;:&#39;)</code> 。</p></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      读写HDFS文本数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_hdfs_text has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    读写HDFS文本数据
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#prereq">&#20808;&#20915;&#26465;&#20214;</a></li>
+<li>
+<a href="#profile_text">&#35835;&#21462;&#25991;&#26412;&#25968;&#25454;</a><ul><li><a href="#profile_text_query">&#31034;&#20363;&#65306;&#35835;&#21462;HDFS&#20013;&#30340;&#25991;&#26412;&#25968;&#25454;</a></li></ul>
+</li>
+<li>
+<a href="#profile_textmulti">&#35835;&#21462;&#21547;&#26377;&#21452;&#24341;&#21495;&#24341;&#36215;&#26469;&#30340;&#25442;&#34892;&#31526;&#30340;&#25991;&#26412;&#25968;&#25454;</a><ul><li><a href="#profile_textmulti_query">&#31034;&#20363;&#65306;&#22312;HDFS&#19978;&#35835;&#21462;&#22810;&#34892;&#25991;&#26412;&#25968;&#25454;</a></li></ul>
+</li>
+<li>
+<a href="#hdfswrite_text">&#23558;&#25991;&#26412;&#25991;&#20214;&#20889;&#20837;HDFS</a><ul><li><a href="#write_hdfstextsimple_example">&#31034;&#20363;&#65306;&#23558;&#25991;&#26412;&#25968;&#25454;&#20889;&#20837;HDFS</a></li></ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>PXF HDFS连接器支持纯分隔和逗号分隔的值表单文本数据。 本节介绍如何使用PXF访问HDFS文本数据，包括如何创建引用了HDFS文件的外部表，查询外部表和向外部表写入数据。</p>
+
+<h2 id="先决条件"><a id="prereq"></a>先决条件</h2>
+
+<p>在尝试从HDFS读取或向HDFS写入数据之前，请确保已满足PXF Hadoop<a href="/6-0/pxf/access_hdfs.html#hadoop_prereq">先决条件</a>。</p>
+
+<h2 id="读取文本数据"><a id="profile_text"></a>读取文本数据</h2>
+
+<p>当您在读取每行都是单条记录的纯文本分隔或csv数据时，请使用<code>hdfs:text</code>配置文件。以下语法创建了一个Greenplum数据库可读外部表，该表引用了HDFS上的此类文本文件：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-hdfs-file&gt;?PROFILE=hdfs:text[&amp;SERVER=&lt;server_name&gt;]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'[TEXT|CSV]'</span> <span class="p">(</span><span class="k">delimiter</span><span class="p">[</span><span class="o">=|&lt;</span><span class="k">space</span><span class="o">&gt;</span><span class="p">][</span><span class="n">E</span><span class="p">]</span><span class="s1">'&lt;delim_value&gt;'</span><span class="p">);</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;hdfs&#8209;file&gt;</td>
+<td>HDFS数据存储中目录或文件的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE</td>
+<td><code>PROFILE</code>关键字必须指定为<code>hdfs:text</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>当&lt;path-to-hdfs-file&gt;引用纯文本分隔数据时，请使用<code>FORMAT</code> <code>&#39;TEXT&#39;</code>。<br> 当&lt;path-to-hdfs-file&gt;引用逗号分隔值数据时，请使用<code>FORMAT</code> <code>&#39;CSV&#39;</code>。</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>数据中的分隔符。对于<code>FORMAT</code> <code>&#39;CSV&#39;</code>，默认的&lt;delim_value&gt; 是逗号<code>,</code>。 当分隔符为转义序列时，在&lt;delim_value&gt; 前面加上<code>E</code>。示例：<code>(delimiter=E&#39;\t&#39;)</code>, <code>(delimiter &#39;:&#39;)</code>。</td>
+</tr>
+</tbody></table>
+
+<h3 id="示例：读取hdfs中的文本数据"><a id="profile_text_query"></a>示例：读取HDFS中的文本数据</h3>
+
+<p>执行以下过程来创建示例文本文件，将文件复制到HDFS，然后使用<code>hdfs:text</code>配置文件和默认的PXF服务器创建两个PXF外部表来查询数据：</p>
+
+<ol>
+<li><p>为PXF示例数据文件创建HDFS目录。例如：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -mkdir -p /data/pxf_examples
+</code></pre></li>
+<li><p>创建名为<code>pxf_hdfs_simple.txt</code>的纯文本分割数据文件：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span><span class="nb">echo</span> <span class="s1">'Prague,Jan,101,4875.33
+Rome,Mar,87,1557.39
+Bangalore,May,317,8936.99
+Beijing,Jul,411,11600.67'</span> &gt; /tmp/pxf_hdfs_simple.txt
+</code></pre>
+
+<p>注意使用逗号<code>,</code>来分隔四个数据字段。.</p></li>
+<li><p>将数据文件添加到HDFS:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -put /tmp/pxf_hdfs_simple.txt /data/pxf_examples/
+</code></pre></li>
+<li><p>显示存储在HDFS中的<code>pxf_hdfs_simple.txt</code>文件的内容:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -cat /data/pxf_examples/pxf_hdfs_simple.txt
+</code></pre></li>
+<li><p>启动<code>psql</code>子系统:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>psql -d postgres
+</code></pre></li>
+<li><p>使用PXF <code>hdfs:text</code> 配置文件创建一个引用刚刚创建并添加到HDFS的<code>pxf_hdfs_simple.txt</code>文件的Greenplum数据库外部表:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_hdfs_textsimple</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxf_hdfs_simple.txt?PROFILE=hdfs:text'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">delimiter</span><span class="o">=</span><span class="n">E</span><span class="s1">','</span><span class="p">);</span>
+</code></pre></li>
+<li><p>查询外部表:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_hdfs_textsimple</span><span class="p">;</span>
+</code></pre>
+<pre class="highlight plaintext"><code>   location    | month | num_orders | total_sales
+---------------+-------+------------+-------------
+ Prague        | Jan   |        101 |     4875.33
+ Rome          | Mar   |         87 |     1557.39
+ Bangalore     | May   |        317 |     8936.99
+ Beijing       | Jul   |        411 |    11600.67
+(4 rows)
+</code></pre></li>
+<li><p>创建第二个引用<code>pxf_hdfs_simple.txt</code>的外部表，这一次指定<code>FORMAT</code>为<code>CSV</code> :</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_hdfs_textsimple_csv</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxf_hdfs_simple.txt?PROFILE=hdfs:text'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+<span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_hdfs_textsimple_csv</span><span class="p">;</span>
+</code></pre>
+
+<p>当您为逗号分隔值数据指定<code>FORMAT &#39;CSV&#39;</code>时，不需要提供<code>delimiter</code>分隔符选项，因为默认的分隔符是逗号。</p></li>
+</ol>
+
+<h2 id="读取含有双引号引起来的换行符的文本数据"><a id="profile_textmulti"></a>读取含有双引号引起来的换行符的文本数据</h2>
+
+<p>使用<code>hdfs:text:multi</code>配置文件读取数据中含有引号引起来的换行符，单行或多行的分隔文本数据。以下语法创建一个引用此类文件的Greenplum外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-hdfs-file&gt;?PROFILE=hdfs:text:multi[&amp;SERVER=&lt;server_name&gt;]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'[TEXT|CSV]'</span> <span class="p">(</span><span class="k">delimiter</span><span class="p">[</span><span class="o">=|&lt;</span><span class="k">space</span><span class="o">&gt;</span><span class="p">][</span><span class="n">E</span><span class="p">]</span><span class="s1">'&lt;delim_value&gt;'</span><span class="p">);</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;hdfs&#8209;file&gt;</td>
+<td>HDFS数据存储中目录或文件的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE</td>
+<td><code>PROFILE</code>关键字必须指定为<code>hdfs:text:multi</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>当&lt;path-to-hdfs-file&gt;引用纯文本分隔数据时，请使用<code>FORMAT</code> <code>&#39;TEXT&#39;</code>。<br> 当&lt;path-to-hdfs-file&gt;引用逗号分隔值数据时，请使用<code>FORMAT</code> <code>&#39;CSV&#39;</code>。</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>数据中的分隔符。对于<code>FORMAT</code> <code>&#39;CSV&#39;</code>，默认的&lt;delim_value&gt; 是逗号<code>,</code>。 当分隔符为转义序列时，在&lt;delim_value&gt; 前面加上<code>E</code>。示例：<code>(delimiter=E&#39;\t&#39;)</code>, <code>(delimiter &#39;:&#39;)</code>。</td>
+</tr>
+</tbody></table>
+
+<h3 id="示例：在hdfs上读取多行文本数据"><a id="profile_textmulti_query"></a>示例：在HDFS上读取多行文本数据</h3>
+
+<p>执行以下步骤来创建示例文本文件，将文件复制到HDFS，然后使用PXF<code>hdfs：text：multi</code>配置文件和默认的PXF服务器创建Greenplum数据库可读的外部表来查询数据：</p>
+
+<ol>
+<li><p>创建第二个分隔的纯文本文件：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>vi /tmp/pxf_hdfs_multi.txt
+</code></pre></li>
+<li><p>将以下数据复制/黏贴到<code>pxf_hdfs_multi.txt</code>中：</p>
+<pre class="highlight plaintext"><code>"4627 Star Rd.
+San Francisco, CA  94107":Sept:2017
+"113 Moon St.
+San Diego, CA  92093":Jan:2018
+"51 Belt Ct.
+Denver, CO  90123":Dec:2016
+"93114 Radial Rd.
+Chicago, IL  60605":Jul:2017
+"7301 Brookview Ave.
+Columbus, OH  43213":Dec:2018
+</code></pre>
+
+<p>注意使用冒号 <code>:</code> 分隔三个字段。 另外请注意第一个(地址)字段周围的引号。这个字段包含了一个嵌入的换行符，用于将街道地址与城市和州分开。</p></li>
+<li><p>将文本文件复制到HDFS：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -put /tmp/pxf_hdfs_multi.txt /data/pxf_examples/
+</code></pre></li>
+<li><p>使用 <code>hdfs:text:multi</code> 配置文件创建一个引用HDFS文件 <code>pxf_hdfs_multi.txt</code> 的外部表， 确保将<code>:</code> (冒号) 标识为字段分隔符：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_hdfs_textmulti</span><span class="p">(</span><span class="n">address</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="k">year</span> <span class="n">int</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxf_hdfs_multi.txt?PROFILE=hdfs:text:multi'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'CSV'</span> <span class="p">(</span><span class="k">delimiter</span> <span class="s1">':'</span><span class="p">);</span>
+</code></pre>
+
+<p>Notice the alternate syntax for specifying the <code>delimiter</code>.</p></li>
+<li><p>查询 <code>pxf_hdfs_textmulti</code> 表：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_hdfs_textmulti</span><span class="p">;</span>
+</code></pre>
+<pre class="highlight plaintext"><code>         address          | month | year
+--------------------------+-------+------
+ 4627 Star Rd.            | Sept  | 2017
+ San Francisco, CA  94107
+ 113 Moon St.             | Jan   | 2018
+ San Diego, CA  92093
+ 51 Belt Ct.              | Dec   | 2016
+ Denver, CO  90123
+ 93114 Radial Rd.         | Jul   | 2017
+ Chicago, IL  60605
+ 7301 Brookview Ave.      | Dec   | 2018
+ Columbus, OH  43213
+(5 rows)
+</code></pre></li>
+</ol>
+
+<h2 id="将文本文件写入hdfs"><a id="hdfswrite_text"></a>将文本文件写入HDFS</h2>
+
+<p>PXF HDFS连接器 &ldquo;hdfs:text&rdquo; 配置文件支持将单行纯文本数据写入HDFS。 当您使用PXF HDFS连接器创建可写外部表时，可以指定在HDFS上的目录名称。 当您向可写外部表写入数据时，您写入的数据块将写入到指定目录中的一个或多个文件。</p>
+
+<p><strong>注意</strong>: 使用可写配置文件创建的外部表只能用于 <code>INSERT</code> 操作。如果要查询写入的数据，则必须另外创建一个引用HDFS目录的可读外部表。</p>
+
+<p>使用以下语法创建一个引用HDFS目录的Greenplum可写外部表： </p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-hdfs-dir&gt;
+    ?PROFILE=hdfs:text[&amp;SERVER=&lt;server_name&gt;][&amp;&lt;custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'[TEXT|CSV]'</span> <span class="p">(</span><span class="k">delimiter</span><span class="p">[</span><span class="o">=|&lt;</span><span class="k">space</span><span class="o">&gt;</span><span class="p">][</span><span class="n">E</span><span class="p">]</span><span class="s1">'&lt;delim_value&gt;'</span><span class="p">);</span>
+<span class="p">[</span><span class="n">DISTRIBUTED</span> <span class="k">BY</span> <span class="p">(</span><span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...</span> <span class="p">]</span> <span class="p">)</span> <span class="o">|</span> <span class="n">DISTRIBUTED</span> <span class="n">RANDOMLY</span><span class="p">];</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;hdfs&#8209;dir&gt;</td>
+<td>HDFS数据存储中目录的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE</td>
+<td><code>PROFILE</code>关键字必须指定为<code>hdfs:text</code></td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>&lt;custom&#8209;option&gt;</td>
+<td>&lt;custom-option&gt;描述见下方</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>当&lt;path-to-hdfs-file&gt;引用纯文本分隔数据时，请使用<code>FORMAT</code> <code>&#39;TEXT&#39;</code>。<br> 当&lt;path-to-hdfs-file&gt;引用逗号分隔值数据时，请使用<code>FORMAT</code> <code>&#39;CSV&#39;</code>。</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>数据中的分隔符。对于<code>FORMAT</code> <code>&#39;CSV&#39;</code>，默认的&lt;delim_value&gt; 是逗号<code>,</code>。 当分隔符为转义序列时，在&lt;delim_value&gt; 前面加上<code>E</code>。示例：<code>(delimiter=E&#39;\t&#39;)</code>, <code>(delimiter &#39;:&#39;)</code>。</td>
+</tr>
+<tr>
+<td>DISTRIBUTED BY</td>
+<td>如果您计划将现有Greenplum数据库表中的数据加载到可写外部表，考虑在可写外部表上使用Greenplum表相同的分布策略或&lt;字段名&gt;。 这样做可以避免数据加载操作中segment节点间额外的数据移动。</td>
+</tr>
+</tbody></table>
+
+<p>使用 <code>hdfs:text</code> 配置文件创建的可写外部表可以选择使用记录或块压缩。 PXF <code>hdfs:text</code> 配置文件支持以下压缩编解码器：</p>
+
+<ul>
+<li>org.apache.hadoop.io.compress.DefaultCodec</li>
+<li>org.apache.hadoop.io.compress.GzipCodec</li>
+<li>org.apache.hadoop.io.compress.BZip2Codec</li>
+</ul>
+
+<p>您可以通过 <code>CREATE EXTERNAL TABLE</code> <code>LOCATION</code> 子句中自定义选择指定压缩编解码器。 <code>hdfs:text</code> 配置文件支持以下自定义写入选项：</p>
+
+<table><thead>
+<tr>
+<th>选项</th>
+<th>值描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>COMPRESSION_CODEC</td>
+<td>压缩编解码器Java类名。 如果未提供此选项，Greenplum数据库不会执行压缩编码。支持的压缩编解码器包括：<br><code>org.apache.hadoop.io.compress.DefaultCodec</code><br><code>org.apache.hadoop.io.compress.BZip2Codec</code><br><code>org.apache.hadoop.io.compress.GzipCodec</code></td>
+</tr>
+<tr>
+<td>COMPRESSION_TYPE</td>
+<td>采用的压缩类型; 支持的值为 <code>RECORD</code> (默认) 或 <code>BLOCK</code></td>
+</tr>
+<tr>
+<td>THREAD-SAFE</td>
+<td>确定表查询是否可以在多线程模式下运行的布尔值。 默认为 <code>TRUE</code>。 将此选项设置为 <code>FALSE</code> 以处理单个线程中所有非线程安全操作 (例如，压缩)的请求。</td>
+</tr>
+</tbody></table>
+
+<h3 id="示例：将文本数据写入hdfs"><a id="write_hdfstextsimple_example"></a>示例：将文本数据写入HDFS</h3>
+
+<p>此示例使用了<a href="#profile_text_query">示例：读取HDFS中的文本数据</a>中的数据格式。</p>
+
+<table><thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>location</td>
+<td>text</td>
+</tr>
+<tr>
+<td>month</td>
+<td>text</td>
+</tr>
+<tr>
+<td>number_of_orders</td>
+<td>int</td>
+</tr>
+<tr>
+<td>total_sales</td>
+<td>float8</td>
+</tr>
+</tbody></table>
+
+<p>在此示例中您还可以选择在该练习创建的 <code>pxf_hdfs_textsimple</code> Greenplum数据库外部表。.</p>
+
+<h4 id="步骤"><a id="write_hdfstextsimple_proc" class="no-quick-link"></a>步骤</h4>
+
+<p>执行以下步骤，使用与上述相同的数据模式创建Greenplum数据库可写外部表，其中一个表将使用压缩。您将使用PXF<code>hdfs：text</code>配置文件和默认的PXF服务器将数据写入基础HDFS目录。您还将创建一个单独的可读外部表，以读取您写入HDFS目录的数据。</p>
+
+<ol>
+<li><p>使用上述数据格式创建Greenplum数据库可写外部表。 写入HDFS目录<code>/data/pxf_examples/pxfwritable_hdfs_textsimple1</code>。 使用逗号<code>,</code>作为分隔符创建表:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_hdfs_writabletbl_1</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxfwritable_hdfs_textsimple1?PROFILE=hdfs:text'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">);</span>
+</code></pre>
+
+<p>您将<code>FORMAT</code> 子句 <code>delimiter</code> 的值指定为单个ascii逗号字符<code>,</code>。</p></li>
+<li><p>通过在<code>pxf_hdfs_writabletbl_1</code>上调用SQL <code>INSERT</code> 命令，将一些单独的记录写入<code>pxfwritable_hdfs_textsimple1</code> HDFS目录:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_hdfs_writabletbl_1</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Frankfurt'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="mi">777</span><span class="p">,</span> <span class="mi">3956</span><span class="p">.</span><span class="mi">98</span> <span class="p">);</span>
+<span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_hdfs_writabletbl_1</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Cleveland'</span><span class="p">,</span> <span class="s1">'Oct'</span><span class="p">,</span> <span class="mi">3812</span><span class="p">,</span> <span class="mi">96645</span><span class="p">.</span><span class="mi">37</span> <span class="p">);</span>
+</code></pre></li>
+<li><p>(可选) 写入您在<a href="#profile_text_query">示例：读取HDFS中的文本数据</a>创建的 <code>pxf_hdfs_textsimple</code> 表中的数据到 <code>pxf_hdfs_writabletbl_1</code>:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_hdfs_writabletbl_1</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_hdfs_textsimple</span><span class="p">;</span>
+</code></pre></li>
+<li><p>在另一个终端窗口，显示刚添加到HDFS的数据:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -cat /data/pxf_examples/pxfwritable_hdfs_textsimple1/<span class="k">*</span>
+Frankfurt,Mar,777,3956.98
+Cleveland,Oct,3812,96645.37
+Prague,Jan,101,4875.33
+Rome,Mar,87,1557.39
+Bangalore,May,317,8936.99
+Beijing,Jul,411,11600.67
+</code></pre>
+
+<p>因为您在创建可写外部表时使用了逗号 <code>,</code> 作为分隔符, 这个字符是HDFS数据中每条记录的字段分隔符.</p></li>
+<li><p>Greenplum数据库不支持直接查询可写外部表。要查询刚刚添加到HDFS的数据， 你必须创建一个引用这个HDFS目录的Greenplum可读外部表：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_hdfs_textsimple_r1</span><span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxfwritable_hdfs_textsimple1?PROFILE=hdfs:text'</span><span class="p">)</span>
+            <span class="n">FORMAT</span> <span class="s1">'CSV'</span><span class="p">;</span>
+</code></pre>
+
+<p>在创建可读外部表时使用 <code>&#39;CSV&#39;</code> <code>FORMAT</code>，因为您在创建可写外部表时使用逗号 <code>,</code> 作为分隔符，即 <code>&#39;CSV&#39;</code> <code>FORMAT</code> 的默认分隔符。</p></li>
+<li><p>查询可读外部表:</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pxf_hdfs_textsimple_r1</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">total_sales</span><span class="p">;</span>
+</code></pre>
+<pre class="highlight plaintext"><code> location  | month | num_orders | total_sales 
+-----------+-------+------------+-------------
+ Rome      | Mar   |         87 |     1557.39
+ Frankfurt | Mar   |        777 |     3956.98
+ Prague    | Jan   |        101 |     4875.33
+ Bangalore | May   |        317 |     8936.99
+ Beijing   | Jul   |        411 |    11600.67
+ Cleveland | Oct   |       3812 |    96645.37
+(6 rows)
+</code></pre>
+
+<p><code>pxf_hdfs_textsimple_r1</code> 表包含您单独插入的记录， 以及执行可选步骤时 <code>pxf_hdfs_textsimple</code> 表的完整内容。</p></li>
+<li><p>创建第二个Greenplum数据库可写外部表， 这次使用Gzip压缩并使用冒号 <code>:</code> 作为分隔符：</p>
+<pre class="highlight sql"><code><span class="n">postgres</span><span class="o">=#</span> <span class="k">CREATE</span> <span class="n">WRITABLE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">pxf_hdfs_writabletbl_2</span> <span class="p">(</span><span class="k">location</span> <span class="n">text</span><span class="p">,</span> <span class="k">month</span> <span class="n">text</span><span class="p">,</span> <span class="n">num_orders</span> <span class="n">int</span><span class="p">,</span> <span class="n">total_sales</span> <span class="n">float8</span><span class="p">)</span>
+            <span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://data/pxf_examples/pxfwritable_hdfs_textsimple2?PROFILE=hdfs:text&amp;COMPRESSION_CODEC=org.apache.hadoop.io.compress.GzipCodec'</span><span class="p">)</span>
+          <span class="n">FORMAT</span> <span class="s1">'TEXT'</span> <span class="p">(</span><span class="k">delimiter</span><span class="o">=</span><span class="s1">':'</span><span class="p">);</span>
+</code></pre></li>
+<li><p>通过直接写入 <code>pxf_hdfs_writabletbl_2</code> 表，将一些记录写入<code>pxfwritable_hdfs_textsimple2</code> HDFS目录：</p>
+<pre class="highlight sql"><code><span class="n">gpadmin</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_hdfs_writabletbl_2</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Frankfurt'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="mi">777</span><span class="p">,</span> <span class="mi">3956</span><span class="p">.</span><span class="mi">98</span> <span class="p">);</span>
+<span class="n">gpadmin</span><span class="o">=#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">pxf_hdfs_writabletbl_2</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">'Cleveland'</span><span class="p">,</span> <span class="s1">'Oct'</span><span class="p">,</span> <span class="mi">3812</span><span class="p">,</span> <span class="mi">96645</span><span class="p">.</span><span class="mi">37</span> <span class="p">);</span>
+</code></pre></li>
+<li><p>在另一个终端窗口中，显示您刚添加到HDFS的数据；使用 <code>hdfs dfs</code> <code>-text</code> 选项以文本的形式查看压缩数据：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>hdfs dfs -text /data/pxf_examples/pxfwritable_hdfs_textsimple2/<span class="k">*</span>
+Frankfurt:Mar:777:3956.98
+Cleveland:Oct:3812:96645.3
+</code></pre>
+
+<p>请注意冒号 <code>:</code> 是此HDFS数据的字段分隔符。</p>
+
+<p>要从名为<code>pxfwritable_hdfs_textsimple2</code>的新创建的HDFS目录中查询数据，您可以创建一个Greenplum可读外部表并指定 <code>FORMAT &#39;CSV&#39; (delimiter=&#39;:&#39;)</code>。</p></li>
+</ol>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

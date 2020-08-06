@@ -1,0 +1,4651 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      监控Greenplum系统 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_managing x6-0_admin_guide_managing_monitor has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    监控Greenplum系统
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">监控Greenplum系统</h1>
+
+  
+  <div class="body">
+<p class="shortdesc">可以用系统中包含的各种工具以及附加组件来监控一个Greenplum数据库系统。</p>
+
+    <p class="p">观察Greenplum数据库系统日常的性能有助于管理员理解系统的行为、计划工作流以及故障排查问题。
+      本章讨论用于监控数据库性能和活动的工具。</p>
+
+    <p class="p">另外，记得回顾<a class="xref" href="../monitoring/monitoring.html#topic_kmz_lbg_rp" title="This section lists monitoring and maintenance activities recommended to ensure high availability and consistent performance of your Greenplum Database cluster.">Recommended Monitoring and Maintenance Tasks</a>中编写脚本
+      监控活动来快速检测系统中问题的有关内容。</p>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../managing/partII.html" title="这一节描述了一个Greenplum数据库系统管理员所执行的基本系统管理任务。">管理一个Greenplum系统</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic2">
+    <h2 class="title topictitle2">监控数据库活动和性能</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库包含一个可选的系统监控和管理数据库<samp class="ph codeph">gpperfmon</samp>，管理员可以
+        选择启用它。<samp class="ph codeph">gpperfmon_install</samp>命令行工具创建<samp class="ph codeph">gpperfmon</samp>
+        数据库并启用数据收集代理来存储查询和系统矩阵信息到该数据库。管理员可以查询<samp class="ph codeph">gpperfmon</samp>
+        数据库中的矩阵信息。更多<samp class="ph codeph">gpperfmon</samp>的信息，请见<cite class="cite">Greenplum Database Reference
+        Guide</cite>。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic3">
+    <h2 class="title topictitle2">监控系统状态</h2>
+
+    <div class="body">
+      <p class="p">作为一个Greenplum数据库管理员，必须监控系统的问题事件，例如一个Segment宕机或者一台Segment主机磁盘
+        空间耗尽。下面的主题描述如何监控一个Greenplum数据库系统的健康状况以及检查一个Greenplum数据库系统的
+        特定状态信息。</p>
+
+      <ul class="ul">
+        <li class="li" id="topic3__kj167000">
+          <a class="xref" href="#topic12">检查系统状态</a>
+        </li>
+
+        <li class="li" id="topic3__kj167035">
+          <a class="xref" href="#topic15">检查磁盘空间使用</a>
+        </li>
+
+        <li class="li" id="topic3__kj167040">
+          <a class="xref" href="#topic20">检查数据分布倾斜</a>
+        </li>
+
+        <li class="li" id="topic3__kj184001">
+          <a class="xref" href="#topic24">查看数据库对象的元数据信息</a>
+        </li>
+
+        <li class="li">
+          <a class="xref" href="#topic_slt_ddv_1q">查看会话内存使用信息</a>
+        </li>
+
+        <li class="li" id="topic3__kj185839">
+          <a class="xref" href="#topic27">查看查询工作文件使用信息</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    </div>
+
+    <div class="topic nested1" xml:lang="en" lang="en" id="topic12">
+      <h2 class="title topictitle2">检查系统状态</h2>
+
+      <div class="body">
+        <p class="p">一个Greenplum数据库系统由横跨多台机器的多个PostgreSQL实例（Master和Segment）构成。要监控一个
+          Greenplum数据库系统，需要了解整个系统的信息以及个体实例的状态信息。<samp class="ph codeph">gpstate</samp>
+          工具提供有关一个Greenplum数据库系统的状态信息。</p>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic13">
+        <h3 class="title topictitle3">查看Master和Segment的状态及配置</h3>
+
+        <div class="body">
+          <p class="p">默认的<samp class="ph codeph">gpstate</samp>行为是检查Segment实例并且显示可用和失效Segment的一个简短状态。
+            例如，要快速查看Greenplum数据库系统的状态：</p>
+
+          <div class="p">
+            <pre class="pre codeblock">$ gpstate
+</pre>
+
+          </div>
+
+          <p class="p">要查看Greenplum数据库阵列配置更详细的信息，使用带有<samp class="ph codeph">-s</samp>选项的<samp class="ph codeph">gpstate</samp>：
+               </p>
+
+          <div class="p">
+            <pre class="pre codeblock">$ gpstate -s
+</pre>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic14">
+        <h3 class="title topictitle3">查看镜像配置和状态</h3>
+
+        <div class="body">
+          <p class="p">如果在使用镜像作为数据冗余，用户可能想要看看系统中的镜像Segment实例列表、它们当前的同步状态以及
+            镜像和主Segment之间的映射。例如，要查看一个系统中的镜像Segment和它们的状态：5</p>
+
+          <div class="p">
+            <pre class="pre codeblock">$ gpstate -m 
+</pre>
+
+          </div>
+
+          <p class="p">要查看主Segment到镜像Segment的映射：</p>
+
+          <div class="p">
+            <pre class="pre codeblock">$ gpstate -c
+</pre>
+
+          </div>
+
+          <p class="p">要查看后备Master镜像的状态：</p>
+
+          <div class="p">
+            <pre class="pre codeblock">$ gpstate -f
+</pre>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested1" xml:lang="en" lang="en" id="topic15">
+      <h2 class="title topictitle2">检查磁盘空间使用</h2>
+
+      <div class="body">
+        <p class="p">一个数据库管理员最重要的监控任务是确保Master和Segment数据目录所在的文件系统的使用率不会超过
+          70%的。完全占满的数据磁盘不会导致数据损坏，但是可能会妨碍数据库的正常操作。如果磁盘占用得太满，
+          可能会导致数据库服务器关闭。</p>
+
+        <p class="p">可以使用<samp class="ph codeph">gp_toolkit</samp>管理模式中的<samp class="ph codeph">gp_disk_free</samp>外部表
+          来检查Segment主机文件系统中的剩余空闲空间（以KB为计量单位）。例如：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM gp_toolkit.gp_disk_free 
+   ORDER BY dfsegment;
+</pre>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic16">
+        <h3 class="title topictitle3">检查分布式数据库和表的大小</h3>
+
+        <div class="body">
+          <p class="p"><samp class="ph codeph">gp_toolkit</samp>管理模式包含几个可以用来判断Greenplum数据库的分布式数据库、
+            模式、表或索引磁盘空间使用的视图。</p>
+
+          <p class="p">用于检查数据库对象尺寸和磁盘空间的视图列表，请见<em class="ph i">Greenplum Database Reference Guide</em>.</p>
+
+        </div>
+
+        <div class="topic nested3" xml:lang="en" lang="en" id="topic17">
+          <h4 class="title topictitle4">查看一个数据库的磁盘空间使用情况</h4>
+
+          <div class="body">
+            <p class="p">要查看一个数据库的总大小（以字节计），使用<em class="ph i">gp_toolkit</em>管理模式中的<em class="ph i">gp_size_of_database</em>
+              视图。例如：</p>
+
+            <div class="p">
+              <pre class="pre codeblock">=&gt; SELECT * FROM gp_toolkit.gp_size_of_database 
+   ORDER BY sodddatname;
+</pre>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="topic nested3" xml:lang="en" lang="en" id="topic18">
+          <h4 class="title topictitle4">查看一个表的磁盘空间使用情况</h4>
+
+          <div class="body">
+            <p class="p"><em class="ph i">gp_toolkit</em>管理模式包含几个检查表大小的视图。表大小视图根据对象ID
+              （而不是名称）列出表。要根据一个表的名称检查其尺寸，必须在<em class="ph i">pg_class</em>表中查找关系名称
+              （<samp class="ph codeph">relname</samp>）。例如：</p>
+
+            <div class="p">
+              <pre class="pre codeblock">=&gt; SELECT relname AS name, sotdsize AS size, sotdtoastsize 
+   AS toast, sotdadditionalsize AS other 
+   FROM gp_toolkit.gp_size_of_table_disk as sotd, pg_class 
+   WHERE sotd.sotdoid=pg_class.oid ORDER BY relname;
+</pre>
+
+            </div>
+
+            <p class="p">可用的表大小视图的列表请见<em class="ph i">Greenplum Database
+                Reference Guide</em>.</p>
+
+          </div>
+
+        </div>
+
+        <div class="topic nested3" xml:lang="en" lang="en" id="topic19">
+          <h4 class="title topictitle4">查看索引的磁盘空间使用情况</h4>
+
+          <div class="body">
+            <p class="p"><em class="ph i">gp_toolkit</em>管理模式包含几个用于检查索引大小的视图。要查看一个表上所有索引的总大小，使用
+              <em class="ph i">gp_size_of_all_table_indexes</em>视图。要查看一个特定索引的大小，使用<em class="ph i">gp_size_of_index</em>视图。
+              该索引大小视图根据对象ID（而不是名称）列出表和索引。要根据一个索引的名称查看其尺寸，必须在<em class="ph i">pg_class</em>
+              表中查找关系名称（<samp class="ph codeph">relname</samp>）。例如：</p>
+
+            <div class="p">
+              <pre class="pre codeblock">=&gt; SELECT soisize, relname as indexname
+   FROM pg_class, gp_toolkit.gp_size_of_index
+   WHERE pg_class.oid=gp_size_of_index.soioid 
+   AND pg_class.relkind='i';
+</pre>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested1" xml:lang="en" lang="en" id="topic20">
+      <h2 class="title topictitle2">检查数据分布倾斜</h2>
+
+      <div class="body">
+        <p class="p">Greenplum数据库中所有的表都是分布式的，意味着它们的数据被按规则划分到系统中的所有Segment上。
+          不均匀分布的数据可能会削弱查询处理性能。一个表的分布策略在表创建时被确定。有关选择表分布策略的信息，
+          请见下列主题：</p>
+
+        <ul class="ul">
+          <li class="li" id="topic20__kj191663">
+            <a class="xref" href="#topic21">查看一个表的分布键</a>
+          </li>
+
+          <li class="li" id="topic20__kj191667">
+            <a class="xref" href="#topic22">查看数据分布</a>
+          </li>
+
+          <li class="li" id="topic20__kj167462">
+            <a class="xref" href="#topic23">检查查询过程倾斜</a>
+          </li>
+
+        </ul>
+
+        <p class="p"><em class="ph i">gp_toolkit</em>管理模式还包含一些用于检查表上数据分布倾斜的视图。有关如何检查非均匀数据分布的信息，
+          请见<cite class="cite">Greenplum Database Reference Guide</cite>.</p>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic21">
+        <h3 class="title topictitle3">查看一个表的分布键</h3>
+
+        <div class="body">
+          <p class="p">要查看一个表中被用作数据分布键的列，可以使用<samp class="ph codeph">psql</samp>中的<samp class="ph codeph">\d+</samp>
+            元命令来检查表的定义。例如：
+           </p>
+
+          <div class="p">
+            <pre class="pre codeblock">=# <samp class="ph codeph">\d+ sales
+</samp>                Table "retail.sales"
+ Column      |     Type     | Modifiers | Description
+-------------+--------------+-----------+-------------
+ sale_id     | integer      |           |
+ amt         | float        |           |
+ date        | date         |           |
+Has OIDs: no
+Distributed by: (sale_id)
+</pre>
+
+          </div>
+
+        <p class="p">当我们创建复制表时，Greenplum数据库会在每个Segment上都存储一份完整的表数据。复制表没有分布键。
+          <samp class="ph codeph">\d+</samp>元命令会展示分布表的分布键，复制表展示状态为<samp class="ph codeph">Distributed Replicated</samp>。</p>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic22">
+        <h3 class="title topictitle3">查看数据分布</h3>
+
+        <div class="body">
+          <p class="p">要查看一个表中行的数据分布（每个Segment上的行数），可以运行一个这样的查询：</p>
+
+          <div class="p">
+            <pre class="pre codeblock">=# SELECT gp_segment_id, count(*) 
+   FROM <em class="ph i">table_name</em> GROUP BY gp_segment_id;
+</pre>
+
+          </div>
+
+          <p class="p">如果所有的Segment都有大致相同的行数，一个表就可以被认为是分布均匀的。</p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 
+          <p class="p">如果在复制表上运行该查询会执行失败，因为Greenplum数据库不允许用户查询复制表的<samp class="ph codeph">gp_segment_id</samp>
+            系统列数据。由于每个Segment上都有一份完整的表数据，复制表必然是均匀的。</p>
+
+        </div>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic23">
+        <h3 class="title topictitle3">检查查询过程倾斜</h3>
+
+        <div class="body">
+          <p class="p">当一个查询被执行时，所有的Segment应该具有等量的负载来保证最好的性能。如果发现了一个执行性能低下的查询，
+            可能需要使用<samp class="ph codeph">EXPLAIN</samp>命令进行深入研究。有关使用<samp class="ph codeph">EXPLAIN</samp>命令和查询
+            分析的信息，请见<a class="xref" href="../query/topics/query-profiling.html#topic39" title="检查性能不好的查询的查询计划,来确定可能的性能调优机会。">查询分析</a>.</p>
+
+          <p class="p">如果表的数据分布策略与查询谓词没有很好地匹配，查询执行负载可能会倾斜。要检查执行倾斜，可以运行一个这样
+            的查询：</p>
+
+          <div class="p">
+            <pre class="pre codeblock">=# SELECT gp_segment_id, count(*) FROM <em class="ph i">table_name</em>
+   WHERE <em class="ph i">column</em>='<em class="ph i">value</em>' GROUP BY gp_segment_id;
+</pre>
+
+          </div>
+
+          <p class="p">这将显示对于给定的<samp class="ph codeph">WHERE</samp>谓词，Segment会返回的行数。</p>
+
+        <p class="p">如<a class="xref" href="#topic22">查看数据分布</a>所说的, 该查询在复制表上运行时也会报错，因为在复制表上查询的
+          <samp class="ph codeph">gp_segment_id</samp>列不具有参考价值。</p>
+
+          <div class="section">
+<h4 class="title sectiontitle">避免极度倾斜警告</h4>
+            
+            <p class="p">当执行一个使用哈希连接操作的查询时，可能会收到下面的警告消息：</p>
+
+            <p class="p">
+              <samp class="ph codeph">Extreme skew in the innerside of Hashjoin</samp>
+            </p>
+
+            <div class="p">当一个哈希连接操作符的输入倾斜时，就会发生这种情况。它不会阻碍查询成功完成。可以按照这些步骤来避免计划
+              中的倾斜：
+              <ol class="ol" id="topic23__ol_nwc_tyx_bq">
+                <li class="li">确保所有的事实表都被分析过。</li>
+
+                <li class="li">验证该查询用到的任何已填充临时表都被分析过。</li>
+
+                <li class="li">查看该查询的<samp class="ph codeph">EXPLAIN ANALYZE</samp>计划，并且在其中查找以下信息：
+                  <ul class="ul" id="topic23__ul_kph_zyx_bq">
+                    <li class="li">如果有带多列过滤的扫描产生超过预估的行数，则将<samp class="ph codeph">gp_selectivity_damping_factor</samp>
+                      服务器配置参数的值设置为当前值的2倍以上并且重新测试该查询。
+                      </li>
+
+                    <li class="li">如果在连接一个相对较小（小于5000行）的单一事实表时发生倾斜，将<samp class="ph codeph">gp_segments_for_planner</samp>
+                      服务器配置参数设置为1并且重新测试该查询。
+                    </li>
+
+                  </ul>
+</li>
+
+                <li class="li">检查应用于该查询的过滤属性是否匹配基表的分布键。如果过滤属性和分布键相同，考虑用不同的
+                  分布键重新分布一些基表。</li>
+
+                <li class="li">检查连接键的基数。如果基数较低，尝试用不同的连接列或者表上额外的过滤属性来重写该查询以降低行数。
+                  这些更改可能会改变查询的语义。</li>
+
+              </ol>
+</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested1" xml:lang="en" lang="en" id="topic24">
+      <h2 class="title topictitle2">查看数据库对象的元数据信息</h2>
+
+      <div class="body">
+        <p class="p">Greenplum数据库在其系统目录中跟踪各种有关存储在数据库中对象（例如表、视图、索引等等）和
+          全局对象（例如角色和表空间）的元数据信息。
+         </p>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic25">
+        <h3 class="title topictitle3">查看最后一个执行的操作</h3>
+
+        <div class="body">
+          <p class="p">可以使用系统视图<em class="ph i">pg_stat_operations</em>和 <em class="ph i">pg_stat_partition_operations</em>
+            查看在一个对象（例如一个表）上执行的动作。例如，要查看在一个表上执行的动作，比如它何时被创建以及它上一次是什么时候被清理和分析：
+           </p>
+
+          <div class="p">
+            <pre class="pre codeblock">=&gt; SELECT schemaname as schema, objname as table, 
+   usename as role, actionname as action, 
+   subtype as type, statime as time 
+   FROM pg_stat_operations 
+   WHERE objname='cust';
+ schema | table | role | action  | type  | time
+--------+-------+------+---------+-------+--------------------------
+  sales | cust  | main | CREATE  | TABLE | 2016-02-09 18:10:07.867977-08
+  sales | cust  | main | VACUUM  |       | 2016-02-10 13:32:39.068219-08
+  sales | cust  | main | ANALYZE |       | 2016-02-25 16:07:01.157168-08
+(3 rows)
+</pre>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic26">
+        <h3 class="title topictitle3">查看一个对象的定义</h3>
+
+        <div class="body">
+          <p class="p">要查看一个对象（例如表或者视图）的定义，在<samp class="ph codeph">psql</samp>中可以使用<samp class="ph codeph">\d+</samp>元命令。
+            例如，要查看一个表的定义：
+           </p>
+
+          <div class="p">
+            <pre class="pre codeblock">=&gt; \d+ <em class="ph i">mytable</em>
+</pre>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested1" id="topic_slt_ddv_1q">
+      <h2 class="title topictitle2">查看会话内存使用信息</h2>
+
+      <div class="body">
+        <p class="p">可以创建并且使用<em class="ph i">session_level_memory_consumption</em>视图来查看正在Greenplum数据库上运行查询的会话的
+          当前内存利用信息。该视图包含会话信息以及该会话连接到的数据库、该会话当前运行的查询和会话处理所消耗的内存等信息。
+          </p>
+
+        <ul class="ul" id="topic_slt_ddv_1q__ul_hwv_bbb_dq">
+          <li class="li">
+            <a class="xref" href="#topic_nby_j1b_dq">创建session_level_memory_consumption视图</a>
+          </li>
+
+          <li class="li">
+            <a class="xref" href="#topic7">session_level_memory_consumption视图</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="topic nested2" id="topic_nby_j1b_dq">
+        <h3 class="title topictitle3">创建session_level_memory_consumption视图</h3>
+
+        <div class="body">
+          <div class="p">要在Greenplum数据库中创建<em class="ph i">session_level_memory_consumption</em>视图，
+            为每一个数据库运行一次扩展创建语句<samp class="ph codeph">CREATE EXTENSION gp_internal_tools;</samp>。
+            例如，要在数据库<samp class="ph codeph">testdb</samp>中安装该视图，可使用这个命令：
+           <pre class="pre codeblock">$ psql -d testdb -c "CREATE EXTENSION gp_internal_tools;"</pre>
+</div>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested2" xml:lang="en" lang="en" id="topic7">
+        <h3 class="title topictitle3">session_level_memory_consumption视图</h3>
+
+        <div class="body">
+          <p class="p">
+            <em class="ph i">session_level_memory_consumption</em>视图提供有关正在运行SQL查询的会话的内存消耗以及闲置时间的信息。</p>
+
+          <p class="p">当基于资源队列的资源管理方式启用时，在该视图中，列<samp class="ph codeph">is_runaway</samp>表示是否Greenplum数据库认为
+            该会话是一个失控会话，这种判断基于该会话的查询的vmem内存消耗来做出。在资源队列管理模式下，当查询消耗过多内存时，
+            Greenplum数据库认为该会话处于失控状态。Greenplum数据库的服务器配置参数<samp class="ph codeph">runaway_detector_activation_percent</samp>
+            控制Greenplum数据库什么时候会认为一个会话是失控会话。
+          </p>
+
+          <p class="p">在该视图中，当基于组的资源管理方式启用时，列<samp class="ph codeph">is_runaway</samp>, <samp class="ph codeph">runaway_vmem_mb</samp>,和
+            <samp class="ph codeph">runaway_command_cnt</samp>功能失效。</p>
+
+          
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic7__session_level_memory_consumption_table" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 1. session_level_memory_consumption</span></caption>
+              
+              
+              
+              
+              <thead class="thead" align="left">
+                <tr class="row">
+                  <th class="entry" valign="top" width="131pt" id="d56234e747">列</th>
+
+                  <th class="entry" valign="top" width="86pt" id="d56234e750">类型</th>
+
+                  <th class="entry" valign="top" width="85pt" id="d56234e753">引用</th>
+
+                  <th class="entry" valign="top" width="147pt" id="d56234e756">描述</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody class="tbody">
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">datname</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">name</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">该会话连接到的数据库名。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">sess_id</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">会话ID。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">usename</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">name</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">会话用户的用户名。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">current_query</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">text</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">该会话正在运行的当前SQL查询。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">segid</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">Segment ID。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">vmem_mb</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">该会话的总vmem内存使用，以MB计。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">is_runaway</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">boolean</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">会话被标记为在Segment上失控。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">qe_count</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">该会话的查询处理数量。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">active_qe_count</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">该会话的活动查询处理数量。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">dirty_qe_count</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">还没有释放其内存的查询处理的数量。<p class="p">对于没有运行的会话该值为<samp class="ph codeph">-1</samp>。</p>
+</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">runaway_vmem_mb</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">当会话被标记为失控会话时消耗的vmem内存量。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">runaway_command_cnt</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">integer</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">当会话被标记为失控会话时的命令计数。</td>
+
+                </tr>
+
+                <tr class="row">
+                  <td class="entry" valign="top" width="131pt" headers="d56234e747 ">
+                    <samp class="ph codeph">idle_start</samp>
+                  </td>
+
+                  <td class="entry" valign="top" width="86pt" headers="d56234e750 ">timestamptz</td>
+
+                  <td class="entry" valign="top" width="85pt" headers="d56234e753 "> </td>
+
+                  <td class="entry" valign="top" width="147pt" headers="d56234e756 ">这个会话中上一次一个查询处理变成空闲的时间。</td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested1" xml:lang="en" lang="en" id="topic27">
+      <h2 class="title topictitle2">查看查询工作文件使用信息</h2>
+
+      <div class="body">
+        <p class="p">Greenplum数据库管理方案<em class="ph i">gp_toolkit</em>包含显示Greenplum数据库工作文件信息的视图。
+          如果没有足够的内存让查询完全在内存中执行，Greenplum数据库会在磁盘上创建工作文件。这些
+          信息可以用来故障排查和查询调优。这些视图中的信息也可以被用来为Greenplum数据库配置参数
+          <samp class="ph codeph">gp_workfile_limit_per_query</samp>和<samp class="ph codeph">gp_workfile_limit_per_segment</samp>
+          指定值。</p>
+
+        <p class="p">在模式<em class="ph i">gp_toolkit</em>中有下面这些视图：</p>
+
+        <ul class="ul">
+          <li class="li" id="topic27__kj191083">gp_workfile_entries视图为当前在Segment上创建了工作文件的每个
+            操作符都包含一行。</li>
+
+          <li class="li" id="topic27__kj191084">gp_workfile_usage_per_query视图为当前在Segment上创建了工作
+            文件的每个查询都包含一行。</li>
+
+          <li class="li" id="topic27__kj191085">gp_workfile_usage_per_segment视图为每个Segment都包含一行。
+            每一行显示了当前在该Segment上用于工作文件的总磁盘空间。</li>
+
+        </ul>
+
+        <p class="p">有关使用<em class="ph i">gp_toolkit</em>的信息请见<a class="xref" href="#topic31">使用gp_toolkit</a>。</p>
+
+      </div>
+
+    </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic28">
+    <h2 class="title topictitle2">查看数据库服务器日志文件</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库中的每一个数据库实例（Master和Segment）都运行着一个有着自己的服务器日志文件的
+        PostgreSQL数据库服务器。日常的日志文件被创建在Master和每个Segment的数据目录中的
+        <samp class="ph codeph">pg_log</samp>目录下。</p>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic29">
+      <h3 class="title topictitle3">日志文件格式</h3>
+
+      <div class="body">
+        <p class="p">服务器日志文件被写成一种逗号分隔值（CSV）格式。一些日志项并不会所有的域都有值。例如，只有与一个查询
+          工作者进程相关的日志项才会有<samp class="ph codeph">slice_id</samp>值。可以用查询的会话标识符（<samp class="ph codeph">gp_session_id</samp>）
+          和命令标识符（<samp class="ph codeph">gp_command_count</samp>）来确定一个特定查询的相关日志项。</p>
+
+        <p class="p">下列域会被写入到日志中：</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic29__kj165707" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 2. Greenplum数据库服务器日志格式</span></caption>
+            
+            
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="6.25%" id="d56234e1103">#</th>
+
+                <th class="entry" valign="top" width="20.089285714285715%" id="d56234e1106">域名称</th>
+
+                <th class="entry" valign="top" width="19.866071428571427%" id="d56234e1109">数据类型</th>
+
+                <th class="entry" valign="top" width="53.79464285714286%" id="d56234e1112">描述</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">1</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">event_time</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">timestamp with time zone</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">该日志项被写入到日志中的时间</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">2</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">user_name</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(100)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">数据库用户名</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">3</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">database_name</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(100)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">数据库名</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">4</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">process_id</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(10)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">系统进程ID（以"p"为前缀）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">5</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">thread_id</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(50)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">线程号（以"th"为前缀）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">6</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">remote_host</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(100)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">在Master上，是客户端机器的主机名/地址。在Segment上，是Master的主机名/地址。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">7</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">remote_port</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(10)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">Segment或者Master的端口号</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">8</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">session_start_time</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">timestamp with time zone</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">会话连接被打开的时间</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">9</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">transaction_id </td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">int</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">Master上的顶层事务ID。这个ID是任何子事务的父亲。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">10</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">gp_session_id</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">会话标识符号（以"con"为前缀）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">11</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">gp_command_count</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">会话中的命令号（以"cmd"为前缀）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">12</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">gp_segment</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">Segment内容标识符（主Segment以"seg"为前缀，镜像Segment以"mir"为前缀）。Master的内容ID总是为-1。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">13</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">slice_id</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">切片ID（被执行的查询计划的一部分）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">14</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">distr_tranx_id</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">分布式事务ID</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">15</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">local_tranx_id</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">本地事务ID</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">16</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">sub_tranx_id</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">子事务ID</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">17</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">event_severity</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(10)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">值包括：LOG、ERROR、FATAL、PANIC、DEBUG1、DEBUG2</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">18</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">sql_state_code</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">varchar(10)</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">与日志消息相关的SQL状态代码</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">19</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">event_message </td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">日志或者错误消息文本</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">20</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">event_detail</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">与一个错误或者警告消息相关的详细消息文本</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">21</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">event_hint</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">与一个错误或者警告消息相关的提示消息文本</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">22</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">internal_query</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">内部生成的查询文本</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">23</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">internal_query_pos</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">int</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">内部生成的查询文本的指针式索引</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">24</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">event_context</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">这个消息产生的上下文</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">25</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">debug_query_string</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">完整的用户提供的查询字符串，用于调试。内部使用可能会修改这个字符串。</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">26</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">error_cursor_pos</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">int</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">该查询字符串中的指针式索引</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">27</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">func_name</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">这个消息产生的函数</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">28</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">file_name</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">产生该消息的内部代码文件</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">29</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">file_line</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">int</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">产生该消息的内部代码文件的行号</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="6.25%" headers="d56234e1103 ">30</td>
+
+                <td class="entry" valign="top" width="20.089285714285715%" headers="d56234e1106 ">stack_trace</td>
+
+                <td class="entry" valign="top" width="19.866071428571427%" headers="d56234e1109 ">text</td>
+
+                <td class="entry" valign="top" width="53.79464285714286%" headers="d56234e1112 ">与这个消息相关的堆栈跟踪</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic30">
+      <h3 class="title topictitle3">搜索Greenplum服务器日志文件</h3>
+
+      <div class="body">
+        <p class="p">Greenplum数据库提供一个名为<samp class="ph codeph">gplogfilter</samp>的工具，它可以在一个Greenplum数据库
+          日志文件中搜索匹配指定条件的项。默认情况下，这个工具在默认日志位置搜索Greenplum数据库的Master日志。
+          例如，要显示Master日志文件的最后三行：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">$ gplogfilter -n 3
+</pre>
+
+        </div>
+
+        <p class="p">要同时搜索所有Segment的日志文件，可以通过<samp class="ph codeph">gpssh</samp>工具来运行<samp class="ph codeph">gplogfilter</samp>。
+          例如，要显示每个Segment日志文件的最后三行：
+          </p>
+
+        <div class="p">
+          <pre class="pre codeblock">$ gpssh -f seg_host_file
+</pre>
+
+        </div>
+
+        <pre class="pre codeblock">=&gt; source /usr/local/greenplum-db/greenplum_path.sh
+=&gt; gplogfilter -n 3 /gpdata/gp*/pg_log/gpdb*.log</pre>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic31">
+    <h2 class="title topictitle2">使用gp_toolkit</h2>
+
+    <div class="body">
+      <p class="p">使用Greenplum数据库的管理方案<em class="ph i">gp_toolkit</em>来查询系统目录、日志文件和操作系统环境以得到系统状态信息。
+        gp_toolkit方案包含一些可以用SQL命令访问的视图。<em class="ph i">gp_toolkit</em>方案对所有数据库用户都可以访问。一些对象
+        要求超级用户权限。用与下面类似的命令把<em class="ph i">gp_toolkit</em>方案增加到用户的方案搜索路径中：
+      </p>
+
+      <pre class="pre codeblock">=&gt; ALTER ROLE myrole SET search_path TO myschema,gp_toolkit;</pre>
+
+      <p class="p">有关可用的管理方案视图及其用法的描述，请见
+          <cite class="cite">Greenplum Database Reference Guide</cite>.</p>
+
+    </div>
+
+  </div>
+
+    <div class="topic nested1" id="topic_pyh_sqg_kp">
+      <h2 class="title topictitle2">SQL标准错误代码</h2>
+
+      <div class="body">
+        <p class="p">下面的表格列出了所有定义好的错误代码。有些没有被用到，但是在SQL标准中有定义。其中也显示了错误分类。
+          对于每一种错误分类都有一个标准错误代码，它的最后三个字符为000。这种代码只用于落入该分类却没有更详细
+          代码的错误情况。</p>
+
+        <p class="p">每种错误代码的PL/pgSQL情况名称与该表中显示的短语相同，但是把空格替换成下划线。例如，代码22012
+          （DIVISION BY ZERO）的情况名称是DIVISION_BY_ZERO。情况名称不区分大小写。</p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 与error截然不同，PL/pgSQL不识别warning、condition names，warning、error和
+          condition names的分类分别为00、01和02。
+         </div>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic_pyh_sqg_kp__table_m1k_sqg_kp" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">Table 3. SQL代码</span></caption>
+            
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="12.698412698412701%" id="d56234e1683">错误代码</th>
+
+                <th class="entry" valign="top" width="39.682539682539684%" id="d56234e1686">含义</th>
+
+                <th class="entry" valign="top" width="47.61904761904762%" id="d56234e1689">常量</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 00 </strong>— Successful Completion</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">00000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SUCCESSFUL COMPLETION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">successful_completion</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">Class 01 — Warning</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">01000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">WARNING</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">warning</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0100C</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DYNAMIC RESULT SETS RETURNED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">dynamic_result_sets_returned</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">01008</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">IMPLICIT ZERO BIT PADDING</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">implicit_zero_bit_padding</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">01003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NULL VALUE ELIMINATED IN SET FUNCTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">null_value_eliminated_in_set_function</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">01007</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">PRIVILEGE NOT GRANTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">privilege_not_granted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">01006</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">PRIVILEGE NOT REVOKED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">privilege_not_revoked</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">01004</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">STRING DATA RIGHT TRUNCATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">string_data_right_truncation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">01P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DEPRECATED FEATURE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">deprecated_feature</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 02</strong> — No Data (this is also a
+                  warning class per the SQL standard)</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">02000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NO DATA</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">no_data</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">02001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NO ADDITIONAL DYNAMIC RESULT SETS RETURNED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">no_additional_dynamic_result_sets_returned</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 03</strong> — SQL Statement Not Yet
+                  Complete</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">03000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SQL STATEMENT NOT YET COMPLETE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">sql_statement_not_yet_complete</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 08</strong> — Connection Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">08000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CONNECTION EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">connection_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">08003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CONNECTION DOES NOT EXIST</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">connection_does_not_exist</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">08006</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CONNECTION FAILURE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">connection_failure</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">08001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SQLCLIENT UNABLE TO ESTABLISH SQLCONNECTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">sqlclient_unable_to_establish_sqlconnection</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">08004</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SQLSERVER REJECTED ESTABLISHMENT OF SQLCONNECTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">sqlserver_rejected_establishment_of_sqlconnection</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">08007</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TRANSACTION RESOLUTION UNKNOWN</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">transaction_resolution_unknown</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">08P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">PROTOCOL VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">protocol_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 09</strong> — Triggered Action
+                  Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">09000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TRIGGERED ACTION EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">triggered_action_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 0A</strong> — Feature Not Supported</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0A000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">FEATURE NOT SUPPORTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">feature_not_supported</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 0B</strong> — Invalid Transaction
+                  Initiation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0B000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID TRANSACTION INITIATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_transaction_initiation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 0F</strong> — Locator Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0F000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">LOCATOR EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">locator_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0F001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID LOCATOR SPECIFICATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_locator_specification</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 0L</strong> — Invalid Grantor</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0L000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID GRANTOR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_grantor</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0LP01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID GRANT OPERATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_grant_operation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 0P</strong> — Invalid Role
+                  Specification</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">0P000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID ROLE SPECIFICATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_role_specification</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 21</strong> — Cardinality Violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">21000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CARDINALITY VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">cardinality_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 22</strong> — Data Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DATA EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">data_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2202E</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">ARRAY SUBSCRIPT ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">array_subscript_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22021</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CHARACTER NOT IN REPERTOIRE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">character_not_in_repertoire</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22008</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DATETIME FIELD OVERFLOW</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">datetime_field_overflow</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22012</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DIVISION BY ZERO</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">division_by_zero</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22005</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">ERROR IN ASSIGNMENT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">error_in_assignment</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2200B</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">ESCAPE CHARACTER CONFLICT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">escape_character_conflict</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22022</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INDICATOR OVERFLOW</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">indicator_overflow</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22015</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INTERVAL FIELD OVERFLOW</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">interval_field_overflow</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2201E</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID ARGUMENT FOR LOGARITHM</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_argument_for_logarithm</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2201F</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID ARGUMENT FOR POWER FUNCTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_argument_for_power_function</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2201G</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID ARGUMENT FOR WIDTH BUCKET FUNCTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_argument_for_width_bucket_function</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22018</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID CHARACTER VALUE FOR CAST</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_character_value_for_cast</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22007</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID DATETIME FORMAT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_datetime_format</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22019</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID ESCAPE CHARACTER</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_escape_character</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2200D</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID ESCAPE OCTET</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_escape_octet</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22025</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID ESCAPE SEQUENCE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_escape_sequence</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22P06</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NONSTANDARD USE OF ESCAPE CHARACTER</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">nonstandard_use_of_escape_character</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22010</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID INDICATOR PARAMETER VALUE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_indicator_parameter_value</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22020</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID LIMIT VALUE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_limit_value</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22023</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID PARAMETER VALUE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_parameter_value</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2201B</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID REGULAR EXPRESSION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_regular_expression</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22009</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID TIME ZONE DISPLACEMENT VALUE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_time_zone_displacement_value</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2200C</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID USE OF ESCAPE CHARACTER</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_use_of_escape_character</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2200G</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">MOST SPECIFIC TYPE MISMATCH</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">most_specific_type_mismatch</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22004</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NULL VALUE NOT ALLOWED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">null_value_not_allowed</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22002</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NULL VALUE NO INDICATOR PARAMETER</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">null_value_no_indicator_parameter</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NUMERIC VALUE OUT OF RANGE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">numeric_value_out_of_range</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22026</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">STRING DATA LENGTH MISMATCH</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">string_data_length_mismatch</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">STRING DATA RIGHT TRUNCATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">string_data_right_truncation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22011</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SUBSTRING ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">substring_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22027</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TRIM ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">trim_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22024</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNTERMINATED C STRING</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">unterminated_c_string</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2200F</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">ZERO LENGTH CHARACTER STRING</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">zero_length_character_string</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">FLOATING POINT EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">floating_point_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22P02</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID TEXT REPRESENTATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_text_representation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22P03</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID BINARY REPRESENTATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_binary_representation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22P04</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">BAD COPY FILE FORMAT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">bad_copy_file_format</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">22P05</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNTRANSLATABLE CHARACTER</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">untranslatable_character</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 23</strong> — Integrity Constraint
+                  Violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">23000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INTEGRITY CONSTRAINT VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">integrity_constraint_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">23001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">RESTRICT VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">restrict_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">23502</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NOT NULL VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">not_null_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">23503</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">FOREIGN KEY VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">foreign_key_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">23505</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNIQUE VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">unique_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">23514</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CHECK VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">check_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 24</strong> — Invalid Cursor State</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">24000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID CURSOR STATE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_cursor_state</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 25</strong> — Invalid Transaction
+                  State</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID TRANSACTION STATE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_transaction_state</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">ACTIVE SQL TRANSACTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">active_sql_transaction</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25002</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">BRANCH TRANSACTION ALREADY ACTIVE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">branch_transaction_already_active</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25008</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">HELD CURSOR REQUIRES SAME ISOLATION LEVEL</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">held_cursor_requires_same_isolation_level</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INAPPROPRIATE ACCESS MODE FOR BRANCH TRANSACTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">inappropriate_access_mode_for_branch_transaction</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25004</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INAPPROPRIATE ISOLATION LEVEL FOR BRANCH TRANSACTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">inappropriate_isolation_level_for_branch_transaction</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25005</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NO ACTIVE SQL TRANSACTION FOR BRANCH TRANSACTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">no_active_sql_transaction_for_branch_transaction</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25006</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">READ ONLY SQL TRANSACTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">read_only_sql_transaction</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25007</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SCHEMA AND DATA STATEMENT MIXING NOT SUPPORTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">schema_and_data_statement_mixing_not_supported</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NO ACTIVE SQL TRANSACTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">no_active_sql_transaction</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">25P02</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">IN FAILED SQL TRANSACTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">in_failed_sql_transaction</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 26</strong> — Invalid SQL Statement
+                  Name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">26000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID SQL STATEMENT NAME</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_sql_statement_name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 27</strong> — Triggered Data Change
+                  Violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">27000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TRIGGERED DATA CHANGE VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">triggered_data_change_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 28</strong> — Invalid Authorization
+                  Specification</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">28000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID AUTHORIZATION SPECIFICATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_authorization_specification</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 2B</strong> — Dependent Privilege
+                  Descriptors Still Exist</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2B000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DEPENDENT PRIVILEGE DESCRIPTORS STILL EXIST</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">dependent_privilege_descriptors_still_exist</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2BP01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DEPENDENT OBJECTS STILL EXIST</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">dependent_objects_still_exist</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 2D</strong> — Invalid Transaction
+                  Termination</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2D000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID TRANSACTION TERMINATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_transaction_termination</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 2F</strong> — SQL Routine Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2F000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SQL ROUTINE EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">sql_routine_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2F005</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">FUNCTION EXECUTED NO RETURN STATEMENT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">function_executed_no_return_statement</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2F002</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">MODIFYING SQL DATA NOT PERMITTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">modifying_sql_data_not_permitted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2F003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">PROHIBITED SQL STATEMENT ATTEMPTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">prohibited_sql_statement_attempted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">2F004</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">READING SQL DATA NOT PERMITTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">reading_sql_data_not_permitted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 34</strong> — Invalid Cursor Name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">34000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID CURSOR NAME</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_cursor_name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 38</strong> — External Routine
+                  Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">38000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">EXTERNAL ROUTINE EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">external_routine_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">38001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CONTAINING SQL NOT PERMITTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">containing_sql_not_permitted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">38002</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">MODIFYING SQL DATA NOT PERMITTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">modifying_sql_data_not_permitted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">38003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">PROHIBITED SQL STATEMENT ATTEMPTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">prohibited_sql_statement_attempted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">38004</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">READING SQL DATA NOT PERMITTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">reading_sql_data_not_permitted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 39</strong> — External Routine Invocation
+                  Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">39000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">EXTERNAL ROUTINE INVOCATION EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">external_routine_invocation_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">39001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID SQLSTATE RETURNED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_sqlstate_returned</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">39004</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NULL VALUE NOT ALLOWED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">null_value_not_allowed</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">39P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TRIGGER PROTOCOL VIOLATED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">trigger_protocol_violated</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">39P02</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SRF PROTOCOL VIOLATED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">srf_protocol_violated</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 3B</strong> — Savepoint Exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">3B000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SAVEPOINT EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">savepoint_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">3B001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID SAVEPOINT SPECIFICATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_savepoint_specification</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 3D</strong> — Invalid Catalog Name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">3D000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID CATALOG NAME</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_catalog_name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 3F</strong> — Invalid Schema Name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">3F000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID SCHEMA NAME</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_schema_name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 40</strong> — Transaction Rollback</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">40000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TRANSACTION ROLLBACK</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">transaction_rollback</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">40002</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TRANSACTION INTEGRITY CONSTRAINT VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">transaction_integrity_constraint_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">40001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SERIALIZATION FAILURE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">serialization_failure</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">40003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">STATEMENT COMPLETION UNKNOWN</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">statement_completion_unknown</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">40P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DEADLOCK DETECTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">deadlock_detected</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 42</strong> — Syntax Error or Access Rule
+                  Violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SYNTAX ERROR OR ACCESS RULE VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">syntax_error_or_access_rule_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42601</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">SYNTAX ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">syntax_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42501</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INSUFFICIENT PRIVILEGE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">insufficient_privilege</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42846</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CANNOT COERCE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">cannot_coerce</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42803</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">GROUPING ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">grouping_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42830</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID FOREIGN KEY</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_foreign_key</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42602</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID NAME</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42622</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NAME TOO LONG</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">name_too_long</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42939</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">RESERVED NAME</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">reserved_name</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42804</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DATATYPE MISMATCH</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">datatype_mismatch</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P18</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INDETERMINATE DATATYPE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">indeterminate_datatype</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42809</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">WRONG OBJECT TYPE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">wrong_object_type</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42703</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNDEFINED COLUMN</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">undefined_column</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42883</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNDEFINED FUNCTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">undefined_function</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNDEFINED TABLE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">undefined_table</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P02</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNDEFINED PARAMETER</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">undefined_parameter</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42704</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNDEFINED OBJECT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">undefined_object</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42701</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE COLUMN</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_column</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P03</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE CURSOR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_cursor</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P04</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE DATABASE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_database</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42723</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE FUNCTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_function</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P05</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE PREPARED STATEMENT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_prepared_statement</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P06</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE SCHEMA</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_schema</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P07</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE TABLE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_table</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42712</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE ALIAS</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_alias</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42710</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE OBJECT</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_object</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42702</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">AMBIGUOUS COLUMN</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">ambiguous_column</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42725</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">AMBIGUOUS FUNCTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">ambiguous_function</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P08</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">AMBIGUOUS PARAMETER</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">ambiguous_parameter</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P09</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">AMBIGUOUS ALIAS</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">ambiguous_alias</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P10</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID COLUMN REFERENCE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_column_reference</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42611</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID COLUMN DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_column_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P11</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID CURSOR DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_cursor_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P12</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID DATABASE DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_database_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P13</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID FUNCTION DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_function_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P14</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID PREPARED STATEMENT DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_prepared_statement_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P15</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID SCHEMA DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_schema_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P16</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID TABLE DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_table_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">42P17</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INVALID OBJECT DEFINITION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">invalid_object_definition</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 44</strong> — WITH CHECK OPTION
+                  Violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">44000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">WITH CHECK OPTION VIOLATION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">with_check_option_violation</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 53</strong> — Insufficient Resources</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">53000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INSUFFICIENT RESOURCES</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">insufficient_resources</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">53100</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DISK FULL</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">disk_full</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">53200</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">OUT OF MEMORY</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">out_of_memory</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">53300</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TOO MANY CONNECTIONS</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">too_many_connections</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 54</strong> — Program Limit Exceeded</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">54000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">PROGRAM LIMIT EXCEEDED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">program_limit_exceeded</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">54001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">STATEMENT TOO COMPLEX</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">statement_too_complex</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">54011</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TOO MANY COLUMNS</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">too_many_columns</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">54023</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TOO MANY ARGUMENTS</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">too_many_arguments</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 55</strong> — Object Not In Prerequisite
+                  State</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">55000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">OBJECT NOT IN PREREQUISITE STATE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">object_not_in_prerequisite_state</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">55006</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">OBJECT IN USE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">object_in_use</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">55P02</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CANT CHANGE RUNTIME PARAM</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">cant_change_runtime_param</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">55P03</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">LOCK NOT AVAILABLE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">lock_not_available</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 57</strong> — Operator Intervention</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">57000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">OPERATOR INTERVENTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">operator_intervention</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">57014</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">QUERY CANCELED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">query_canceled</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">57P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">ADMIN SHUTDOWN</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">admin_shutdown</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">57P02</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CRASH SHUTDOWN</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">crash_shutdown</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">57P03</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CANNOT CONNECT NOW</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">cannot_connect_now</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class 58</strong> — System Error (errors external
+                  to Greenplum Database )</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">58030</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">IO ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">io_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">58P01</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">UNDEFINED FILE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">undefined_file</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">58P02</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DUPLICATE FILE</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">duplicate_file</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">Class F0 — Configuration File Error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">F0000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">CONFIG FILE ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">config_file_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">F0001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">LOCK FILE EXISTS</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">lock_file_exists</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class P0</strong> — PL/pgSQL Error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">P0000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">PLPGSQL ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">plpgsql_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">P0001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">RAISE EXCEPTION</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">raise_exception</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">P0002</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">NO DATA FOUND</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">no_data_found</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">P0003</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">TOO MANY ROWS</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">too_many_rows</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" colspan="3" valign="top" headers="d56234e1683 d56234e1686 d56234e1689 ">
+<strong class="ph b">Class XX</strong> — Internal Error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">XX000</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INTERNAL ERROR</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">internal_error</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">XX001</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">DATA CORRUPTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">data_corrupted</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="12.698412698412701%" headers="d56234e1683 ">XX002</td>
+
+                <td class="entry" valign="top" width="39.682539682539684%" headers="d56234e1686 ">INDEX CORRUPTED</td>
+
+                <td class="entry" valign="top" width="47.61904761904762%" headers="d56234e1689 ">index_corrupted</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+      </div>
+
+    </div>
+
+  
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

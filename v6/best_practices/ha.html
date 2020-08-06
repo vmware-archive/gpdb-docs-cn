@@ -1,0 +1,714 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      高可用性 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_best_practices x6-0_best_practices_ha has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/intro.html">Greenplum数据库最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/resgroups.html">采用资源组管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/workloads.html">采用资源队列管理内存和资源</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/bloat.html">管理数据库膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/tuning_queries.html">SQL查询调优</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    高可用性
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">高可用性</h1>
+
+  <p class="shortdesc">当用户启用并且正确地配置Greenplum高可用特性时，Greenplum数据库支持高度可用的、容错的数据库服务。
+    要保证达到要求的服务等级，每个组件都必须有一个备用组件以保证在它失效时及时顶上。</p>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="intro.html">Greenplum数据库最佳实践</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" id="topic_vrb_sxc_54">
+    <h2 class="title topictitle2">磁盘存储</h2>
+
+    <div class="body">
+      <p class="p">源于Greenplum数据库的非共享MPP架构，每台master和segment主机都有它们自己独立的内存和磁盘存储空间，
+        每个master和segment实例都有它们自己独立的数据目录。为了兼顾可靠性和高性能，Pivotal推荐采用8到24块
+        磁盘的硬件RAID存储解决方案。当采用RAID5或RAID6时，大量的磁盘会提升I/O吞吐量，因为条带会增加并行的
+        磁盘I/O。有一个失效磁盘时，RAID控制器能够继续工作，因为它在每个磁盘上都保存了校验数据，这样它能够重构
+        阵列中任何失效磁盘上的数据。如果配置了热备盘（或者配置了能够用新磁盘替代故障磁盘的操作器），控制器能够
+        自动重建故障磁盘。</p>
+
+      <p class="p">在RAID1模式下，实际上就是镜像一组磁盘，因此如果出现某块磁盘故障，替代磁盘立即可用，并且性能与出现磁盘
+        故障之前无二。在RAID5模式下，故障磁盘上的每一个数据I/O都必须从剩余活动磁盘上重建出来，直到故障磁盘重建
+        完成，因此会出现一段时间的性能下降。如果磁盘数据重建期间，Greenplum数据库master和segment配置了镜像
+        实例，您可以将任何受到影响的Greenplum数据库实例切换为它们的镜像以保证性能最优。</p>
+
+      <p class="p">RAID磁盘阵列仍然可能会出现单点故障，例如整个RAID卷故障。在硬件级别上，可以通过RAID控制器提供的镜像功
+        能或操作系统提供的镜像功能来防范磁盘阵列故障。</p>
+
+      <p class="p">定期监控每台主机的可用磁盘空间是很重要的。可以通过查询<samp class="ph codeph">gptoolkit</samp>模式下的外部表
+        <samp class="ph codeph">gp_disk_free</samp>来查看segment节点的磁盘可用空间。该视图会运行Linux命令<samp class="ph codeph">df</samp>。
+        在执行占用大量磁盘空间的操作（例如copy大表）前要确保检查可用磁盘空间。</p>
+
+      <p class="p">详见<em class="ph i">Greenplum数据库参考指南</em>中的<samp class="ph codeph">gp_toolkit.gp_disk_free</samp>部分。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">最佳实践</h3>
+        
+        <ul class="ul" id="topic_vrb_sxc_54__ul_ry5_syr_s4">
+          <li class="li">使用带有8到24个磁盘的硬件RAID存储方案。</li>
+
+          <li class="li">使用RAID 1、5或6，这样磁盘阵列能容忍一个故障磁盘。</li>
+
+          <li class="li">在磁盘阵列中配置一个热备盘以允许在检测到磁盘失效时自动开始重建。</li>
+
+          <li class="li">通过镜像RAID磁盘组防止整个磁盘阵列的故障和重建期间的性能衰退。</li>
+
+          <li class="li">定期监控磁盘利用率并且在需要时增加额外的磁盘空间。</li>
+
+          <li class="li">监控segment数据倾斜以确保所有segment节点的数据均匀分布、空间合理利用。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_b5s_txc_54">
+    <h2 class="title topictitle2">Master镜像</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库的master实例是客户端访问系统的唯一入口。master实例存储全局系统目录，也就是存储有关
+        数据库实例的元数据的一系列系统表，但是它不存储用户数据。如果未配置镜像的master实例故障或不可访问，会
+        直接导致Greenplum数据库离线，不能正常提供服务。因此，必须配置备用master实例以防止主master故障。</p>
+
+      <p class="p">Master镜像使用两个进程使镜像实例与master同步，一个sender位于活动master主机上，一个receiver位于
+        镜像主机上。随着客户端操作的变化数据被应用到master系统目录上，活动master会将预写日志（WAL）以流复制
+        的方式应用到备用master节点，以保证每一个应用到master实例的事务也同时应用到了备用master上。</p>
+
+      <p class="p">镜像是一个<em class="ph i">温备</em>。如果主master失效，要切换到备用master需要管理员用户在备用主机上运行
+        <samp class="ph codeph">gpactivatestandby</samp>工具，这样它才会开始接受客户端连接。客户端此时必须重新连接到新
+        master，该客户端在主master故障时未提交的事务都会丢失。</p>
+
+      <p class="p">更多信息请见<em class="ph i">Greenplum数据库管理员指南</em>中的“启用高可用特性”。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">最佳实践</h3>
+        
+        <ul class="ul" id="topic_b5s_txc_54__ul_gpj_lzr_s4">
+          <li class="li">设置一个备用master实例—<em class="ph i">镜像</em>—在主master故障时接手工作。</li>
+
+          <li class="li">备用实例可以位于主实例同一或者不同主机上，但是最佳实践是把它放在不同于主master的不同主机上，这样
+            可以防止主机故障。</li>
+
+          <li class="li">规划好当故障发生时如何把客户端切换到新的master实例，例如通过更新DNS中的master地址。</li>
+
+          <li class="li">设置监控，当主Master故障时在系统监控应用中发送通知或者通过邮件通知。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_cnm_vxc_54">
+    <h2 class="title topictitle2">Segment镜像</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库的每一个segment实例都在master实例的协调下存储和管理数据库数据的一部分。如果任何未配置
+        镜像的segment故障，数据库可能不得不被关闭然后恢复，并且在最近备份之后发生的事务可能会丢失。因此，镜像
+        segment是高可用方案的一个不可或缺的元素</p>
+
+      <div class="p">Segment镜像是主segment的热备。Greenplum数据库会检测到segment何时不可用并且自动激活其镜像。在正常操作
+        期间，当主segment实例活动时，数据以两种方式从主segment复制到镜像segment：<ul class="ul" id="topic_cnm_vxc_54__ul_aqq_fhv_t4">
+          <li class="li">
+            <p class="p">在事务被提交之前，事务提交日志被从主segment复制到镜像segment。这会确保当镜像被激活时，主segment
+              上最后一个成功的事务所作的更改会出现在镜像上。当镜像被激活时，日志中的事务会被应用到镜像中的表上。
+            </p>
+
+          </li>
+
+          <li class="li">
+            <p class="p">第二种，segment镜像使用物理文件复制来更新堆表。Greenplum服务器在磁盘上以打包了元组的固定尺寸块
+              的形式存储表数据。为了优化磁盘I/O，块被缓冲在内存中，直到缓存被填满并且一些块必须被挤出去为新更新
+              的块腾出空间。当块被从缓存中挤出时，它会被写入到磁盘并且通过网络复制到镜像。因为缓冲机制，镜像上的
+              表更新可能落后于主segment。不过，由于事务日志也被复制，镜像会与主segment保持一致。如果镜像被激活，
+              激活过程会用事务提交日志中未应用的更改更新表。</p>
+
+          </li>
+
+        </ul>
+</div>
+
+      <p class="p">当活动的主segment不能访问其镜像时，复制会停止并且主segment的状态会改为“Change Tracking”。主segment
+        会把没有被复制到镜像的更改保存在一个系统表中，等到镜像重新在线时这些更改会被复制到镜像。</p>
+
+      <p class="p">Master会自动检测segment故障并且激活镜像。故障时正在进行的事务会使用新的主segment重新开始。根据镜像被
+        部署在主机上的方式，数据库系统可能会不平衡直到原始的主segment被恢复。例如，如果每台segment主机有四个主
+        segment和四个镜像segment，并且在一台主机上有一个镜像segment被激活，那台主机将有五个活动的主segment。
+        查询直到最后一个Segment完成其工作才算结束，因此性能可能会退化直至原始的主segment被恢复使得系统恢复平衡。</p>
+
+      <p class="p">当Greenplum数据库运行时，管理员通过运行<samp class="ph codeph">gprecoverseg</samp>工具执行恢复。这个工具会定位
+        故障的segment、验证它们是否有效并且与当前活动的segment对比事务状态以确定segment离线期间发生的更改。
+        <samp class="ph codeph">gprecoverseg</samp>会与活动segment同步更改过的数据库文件并且将该segment重新拉回到在线
+        状态。</p>
+
+      <p class="p">在故障期间，有必要在segment主机上保留足够的内存和CPU资源，以允许承担了主segment觉得的镜像实例能提供
+        对应的活动负载。<a class="xref" href="workloads.html#topic_hhc_z5w_r4__section_r52_rbl_zt">为Greenplum数据库配置内存</a>中提供的配置
+        segment主机内存的公式包括一个因子，它代表故障期间任一主机上的最大主segment数量。segment主机上的镜像
+        布置会影响这一因子以及系统在故障时将如何应对。Segment镜像选项的讨论请见<a class="xref" href="#topic_ngz_qf4_tt">Segment镜像配置</a>。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">最佳实践</h3>
+        
+        <ul class="ul" id="topic_cnm_vxc_54__ul_e5w_3ds_s4">
+          <li class="li">为所有segment设置镜像。</li>
+
+          <li class="li">将主segment及其镜像放置在不同主机上以防止主机失效。</li>
+
+          <li class="li">镜像可以放在一组单独的主机上或者主segment所在的主机上。</li>
+
+          <li class="li">设置监控，当主segment故障时在系统监控应用中发送通知或者通过邮件通知。</li>
+
+          <li class="li">即使恢复失效的segment，使用<samp class="ph codeph">gprecoverseg</samp>工具来恢复冗余并且让系统回到最佳的
+            平衡状态。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_tlk_zw4_1s">
+    <h2 class="title topictitle2">双集群</h2>
+
+    <div class="body">
+      <p class="p">对于一些用例，可以通过维护两个存储同样数据的Greenplum数据库集群提供额外层次的冗余。实现双集群的决定
+        应该考虑到业务需求。</p>
+
+      <p class="p">在双集群配置中为了保持数据同步，有两种推荐方法。第一种方法被称作双ETL。ETL（抽取、转换和装载）是常见
+        的清理、转换、验证并且将数据装载到数据仓库中的常见数据仓库处理。通过双ETL，ETL处理会被以并行的方式执行
+        两次，每个集群上一次，并且每一次都会做验证。双ETL提供了一个存有相同数据的备用集群。它还提供了在两个集群
+        上查询数据的能力，并使得处理吞吐量翻倍。应用可以根据需要利用两个集群，还要确保ETL在两边都成功并且被验证。</p>
+
+      <p class="p">维护双集群的第二种机制是备份和恢复。数据在主集群上被备份，然后备份被复制到第二个集群并且在其上恢复。
+        备份和恢复机制比双ETL的延迟更高，但是需要开发的应用逻辑更少。对于按每天或者更低频率进行数据修改和ETL的
+        用例，备份和恢复是理想的方案。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">最佳实践</h3>
+        
+        <ul class="ul" id="topic_tlk_zw4_1s__ul_m41_y1p_1s">
+          <li class="li">为了提供额外级别的冗余和额外的查询处理吞吐量，可以考虑双集群配置。</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_mc5_k1p_1s">
+    <h2 class="title topictitle2">备份和恢复</h2>
+
+    <div class="body">
+      <p class="p">推荐为Greenplum数据库进行备份，除非数据库中的数据可以很容易并且很干净地从源数据再生。备份可以防止操作
+        错误、软件错误或者硬件错误。</p>
+
+      <p class="p"><samp class="ph codeph">gpbackup</samp>工具在segment之间并行地做备份，因此随着集群的硬件尺寸增长备份的尺度也会放大。
+        </p>
+
+      <p class="p">备份策略必须考虑备份将被写到什么地方以及它们将被存放在哪里。备份可以放置在本地集群的磁盘上，但是它们不应该
+        被永久存放在那里。如果数据库及其备份在同一种存储上，它们可能会同时丢失。备份还占据数据库存储或者操作所需的
+        空间。在执行本地备份后，备份文件应该被拷贝到一个安全的、集群外的位置。</p>
+
+      <p class="p">另一种策略是直接备份到一个NFS挂载存储上。如果集群中的每台主机都有一个NFS挂载，备份可以被直接写到NFS存储上。
+        推荐使用一种可扩展的NFS方案以确保备份不会受到NFS设备的IO吞吐瓶颈限制。Dell EMC Isilon是这类方案的一个例子，
+        并且可以与Greenplum集群一同扩展。</p>
+
+      <p class="p">最后，通过本地API集成，Greenplum数据库可以把备份直接流式传送到Dell EMC Data Domain或者Veritas NetBackup
+        企业级备份平台。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">最佳实践</h3>
+        
+        <div class="p">
+          <ul class="ul" id="topic_mc5_k1p_1s__ul_nry_scl_b1b">
+            <li dir="ltr" class="li">
+              <p dir="ltr" class="p">定期备份Greenplum数据库，除非能很容易地从源数据恢复数据。</p>
+
+            </li>
+
+            <li dir="ltr" class="li">
+              <p dir="ltr" class="p">使用<samp class="ph codeph">gpbackup</samp>备份您想要备份的模式和表。更多信息请见<a class="xref" href="https://gpdb.docs.pivotal.io/latest/utility_guide/admin_utilities/gpbackup.html" target="_blank">gpbackup</a><cite class="cite">Greenplum数据库工具参考指南</cite>中
+                的对应部分。</p>
+
+            </li>
+
+            <li dir="ltr" class="li">
+              <p dir="ltr" class="p"><samp class="ph codeph">gpbackup</samp>在要备份的表上放置SHARED ACCESS锁。拥有很少表的备份在选择恢复
+                模式和表时更有效，因为<samp class="ph codeph">gprestore</samp>可以搜索整个数据库。</p>
+
+            </li>
+
+            <li dir="ltr" class="li">如果备份被保存在本地存储，当备份完成后将备份文件移动到一个安全且非集群存储的位置。备份文件和
+              数据库文件存储在一起很容易一起丢失。</li>
+
+            <li dir="ltr" class="li">
+              <p dir="ltr" class="p">如果备份被保存到NFS挂在存储上，请选用可扩展的NFS解决方案来防止IO瓶颈，例如Dell EMC Isilon。</p>
+
+            </li>
+
+            
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_wlw_wxc_54">
+    <h2 class="title topictitle2">检测故障的master和segment实例</h2>
+
+    <div class="body">
+      <p class="p">即使系统已经检测到故障并为故障组件激活了它的备用节点，从系统故障中恢复回来仍然要求有系统管理员的干预。
+        在任何一种情况下，故障组件都必须被替换或恢复，以保证系统处于完全冗余状态。在故障组件被恢复之前，当前活动
+        组件会处于缺少备份状态，并且系统也并没有在最优的状态下运行。由于这些原因，及时执行恢复操作是必要的。
+        持续的系统监控和自动故障告警会通过SNMP和email确保管理员注意到系统故障并且采取行动。</p>
+
+      <p class="p">Greenplum数据库服务器的<samp class="ph codeph">ftsprobe</samp>子进程负责故障检测。每隔一段时间，<samp class="ph codeph">ftsprobe</samp>
+        会连接到所有的segment并且扫描所有segment和数据库进程，这个时间间隔可以用<samp class="ph codeph">gp_fts_probe_interval</samp>
+        配置参数设置。如果<samp class="ph codeph">ftsprobe</samp>无法连接到一个segment，它会在Greenplum数据库系统目录中
+        把该segment标记为“down”。在管理员运行<samp class="ph codeph">gprecoverseg</samp>恢复工具之前，该segment都会保持
+        down的状态。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">最佳实践</h3>
+        
+        <ul class="ul" id="topic_wlw_wxc_54__ul_b4h_rxl_v4">
+          <li class="li">运行<samp class="ph codeph">gpstate</samp>工具查看Greenplum系统的总体状态。</li>
+
+        </ul>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">附加信息</h3>
+<em class="ph i">Greenplum数据库管理员指南</em>:
+          <ul class="ul" id="topic_wlw_wxc_54__ul_wff_k1m_v4">
+            <li class="li">监控Greenplum系统</li>
+
+            <li class="li">恢复故障的Segment</li>
+
+          </ul>
+<div class="p">
+<em class="ph i">Greenplum数据库工具指南</em>:<ul class="ul" id="topic_wlw_wxc_54__ul_fk2_hyl_v4">
+            <li class="li">
+<samp class="ph codeph">gpstate</samp>—查看Greenplum系统的状态</li>
+
+            <li class="li">
+<samp class="ph codeph">gprecoverseg</samp>—恢复故障的Segment</li>
+
+            <li class="li">
+<samp class="ph codeph">gpactivatestandby</samp>—让备用master变成当前活动master
+              </li>
+
+          </ul>
+</div>
+<p class="p"><a class="xref" href="http://tools.ietf.org/html/rfc1697" target="_blank">RDBMS MIB规范</a></p>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" id="topic_ngz_qf4_tt">
+    <h2 class="title topictitle2">Segment镜像配置</h2>
+
+    <div class="body">
+      <p class="p">Segment镜像允许数据库查询在主Segment故障或者不可用时转移到备份segment上。Pivotal要求在其支持的
+        Greenplum数据库生产环境中必须配置镜像。</p>
+
+      <p class="p">为了确保高可用，主segment及其镜像必须位于不同主机上。Greenplum数据库系统中的每一台主机都有相同数量
+        的主segment和镜像segment。多宿主主机应该在每个接口上有相同数量的主segment和镜像segment。这能确保
+        所有主segment运行时，segment主机和网络资源的负载均衡，并且提供最多的资源承担查询处理。</p>
+
+      <p class="p">当segment变得不可用时，它位于另一台主机上的镜像segment会变成活动的主segment继续处理请求。主机上的
+        额外负载会导致倾斜以及性能下降，但是最起码可以保证系统继续可用。数据库查询会等待系统中所有segment都
+        返回结果后结束，所以当台主机上将镜像提升为主segment和在系统中每台机器都增加一个segment实例是相同的
+        效果。</p>
+
+      <p class="p">在故障场景下，每台主机上替代故障segment的镜像实例不超过一个时，整个数据库系统的性能下降最小。如果多个
+        segment或主机故障，性能下降的影响受那台唤起镜像实例最多的机器影响。将一台主机的镜像散布在其余的主机上
+        可以最小化任意单主机故障时的性能下降。</p>
+
+      <p class="p">也有必要考虑集群对多主机故障的容忍能力，以及通过增加主机来扩展集群时如何维护镜像配置。没有一种镜像配置
+        是放之四海而皆准的解决方案。</p>
+
+      <p class="p">您可以采用两种镜像标准配置方式中的任意一种来在主机上配置镜像方式，也可以设计您自己的镜像配置方案。</p>
+
+      <div class="p">两种标准的镜像配置方式分别是<em class="ph i">group mirroring</em>和<em class="ph i">spread mirroring</em>：
+        <ul class="ul" id="topic_ngz_qf4_tt__ul_uwr_gkv_tt">
+          <li class="li">
+<strong class="ph b">Group mirroring</strong> — 每台主机镜像另外机器的主segment。这是
+            <samp class="ph codeph"><a class="xref" href="../utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a></samp>和<samp class="ph codeph">gpaddmirrors</samp>的默认选项。</li>
+
+          <li class="li">
+<strong class="ph b">Spread mirroring</strong> — 镜像分散分布在另外的机器上。这要求集群中的主机数量多于每台主机上的
+            segment实例数量。</li>
+
+        </ul>
+</div>
+
+      <p class="p">您可以设计一个客户镜像配置文件然后使用Greenplum工具<samp class="ph codeph"><a class="xref" href="../utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a></samp>或
+          <a class="xref" href="../utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>进行
+        配置。</p>
+
+      <p class="p"><em class="ph i">Block mirroring</em>一种自定义镜像配置，它把集群中的主机划分成相等尺寸的块并且在块内的主机上均匀
+        地分布镜像。如果一个主segment故障，其在同一个块的另一主机上的镜像会变成活动的主segment。如果一台segment
+        主机故障，在该块中其他每一台主机上的镜像segment都会变成活动segment。</p>
+
+      <p class="p">以下部分比较group, spread, 和block mirroring镜像配置。</p>
+
+      <div class="section">
+<h3 class="title sectiontitle">Group Mirroring</h3>
+        
+        <p class="p">Group mirroring是最容易设置的镜像配置，并且是Greenplum的默认镜像配置。组镜像的扩展代价最低，因为
+          可以通过增加仅仅两台主机来完成扩展。在扩展之后无需移动镜像来维持镜像配置的一致性。
+          </p>
+
+        <p class="p">下面的图显示了一个在四台主机上带有八个主segment的group mirroring配置。</p>
+
+        <p class="p">
+          <img class="image" id="topic_ngz_qf4_tt__image_igx_wds_wt" src="./graphics/group-mirrors.png">
+        </p>
+
+        <p class="p">除非同一个segment实例的主segment和镜像都出现故障，最多可以有一半的主机故障并且集群将继续运行，只要
+          资源（CPU、内存和IO）足以满足需求。</p>
+
+        <p class="p">任何主机故障将会让性能退化一半以上，因为具有镜像的主机将承担两倍的活动主segment。如果用户的资源利用
+          通常会超过50%，用户将不得不调整其负载，直至故障主机被恢复或者替换。如果用户通常的资源利用低于50%，则
+          集群会继续以退化的性能水平运行，直至故障被修复。</p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">Spread Mirroring</h3>
+        
+        <p class="p">通过spread mirroring，每台主机的主要Segment的镜像被散布在若干台主机上，涉及到的主机数量与每台主机上
+          segment数量相同。在集群初始化时设置spread mirroring很容易，但是要求集群中的主机数至少为每台主机上的
+          segment数加一。</p>
+
+        <p class="p">下面的图展示了一个在四台主机上有三个主segment的集群的spread mirroring配置。</p>
+
+        <p class="p">
+          <img class="image" id="topic_ngz_qf4_tt__image_src_r2s_wt" src="./graphics/spread-mirrors.png">
+        </p>
+
+        <p class="p">扩展使用spread mirroring的集群要求更多的规划并且可能会花费更多时间。用户必须要么增加一组数量等于每台
+          主机上主segment数加一的主机，要么在group mirroring配置中增加两个节点并且在扩展完成后移动镜像来重建
+          spread mirror配置。
+          </p>
+
+        <p class="p">对于单主机故障，spread mirroring的性能影响最小，因为每台主机的镜像都散布在多台主机上。负载的增加是
+          1/<em class="ph i">Nth</em>，其中<em class="ph i">N</em>是每台主机上主segment的数量。如果两台以上主机同时故障，spread mirroring
+          是最有可能遭受到灾难性故障的配置方案。
+          </p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">Block Mirroring</h3>
+        
+        <p class="p">对于block mirroring，节点被划分成块，例如具有四台或者八台主机的块，而每台主机上segment的镜像被放置在
+          块中的其他主机上。根据块中主机的数量以及每台主机上主segment的数量，每台主机会为其他每一台主机的segment
+          维护超过一个镜像。
+           </p>
+
+        <p class="p">下面的图展示了单block mirroring配置，块中有四台主机，每台主机有八个主segment：
+          </p>
+
+        <p class="p">
+          <img class="image" id="topic_ngz_qf4_tt__image_uy3_dfs_wt" src="./graphics/block-mirrors-4x8.png">
+        </p>
+
+        <p class="p">如果有八台主机，则额外增加的一个四主机块中有32至63号主segment的镜像，其设置也是同样的模式。
+          </p>
+
+        <p class="p">使用block mirroring的集群很容易扩展，因为每一个块都是一个自包含的主镜像组。集群可以通过增加一个或者多个
+          块来扩展。扩展之后无需移动镜像来维持镜像设置的一致。只要故障的主机处于不同的块中，这种配置就能够容忍多主机
+          故障。
+         </p>
+
+        <p class="p">因为块中的每台主机都有块中其他每台主机的多个镜像实例，对于主机故障block mirroring的性能影响比spread
+          mirroring更大，但比group mirroring影响要小。预期的性能影响随着块尺寸和每节点主segment数变化。和group
+          mirroring类似，如果资源可用，性能将会受到负面的影响，但是集群仍将可用。如果资源不足以容纳增加的负载，用户
+          必须降低负载直至故障节点被替换。
+         </p>
+
+      </div>
+
+      <div class="section">
+<h3 class="title sectiontitle">实现Block Mirroring</h3>
+        
+        <p class="p">在用户设置或者扩展集群时，block mirroring并非Greenplum数据库提供的一种自动选项。要使用block mirroring，
+          用户必须创建自己的配置。</p>
+
+        <p class="p">对于一个新的Greenplum系统，用户可以把集群初始化为没有镜像，然后用一个自定义镜像配置文件运行
+          <samp class="ph codeph">gpaddmirrors -i <var class="keyword varname">mirror_config_file</var></samp>来为每一个块创建镜像。
+          在用户运行<samp class="ph codeph">gpaddmirrors</samp>之前，用户必须为镜像segment创建文件系统位置。详见<cite class="cite">Greenplum
+            数据库管理工具指南</cite>中的<samp class="ph codeph">gpaddmirrors</samp>参考页。</p>
+
+        <p class="p">如果用户扩展一个有block mirroring的系统或者用户想要在扩展集群时实现block mirroring，推荐用户先用默认的
+          grouping mirror配置完成扩展，然后使用<samp class="ph codeph">gpmovemirrors</samp>工具把镜像移到块配置中。</p>
+
+        <p class="p">要在使用不同镜像方案的现有系统中实现block mirroring，用户必须首先根据其块配置确定每个镜像的位置，然后确定
+          哪些现有的镜像必须被重定位。按照下列步骤：
+         </p>
+
+        <ol class="ol" id="topic_ngz_qf4_tt__ol_qqn_nly_5t">
+          <li class="li">运行下列查询来查找主segment和镜像segment的当前位置：
+              <pre class="pre codeblock">SELECT dbid, content, role, port, hostname, datadir FROM gp_segment_configuration WHERE content &gt; -1 ;</pre>
+<p class="p">The
+                <samp class="ph codeph">gp_segment_configuration</samp>系统目录表包含当前的segment配置。
+                 </p>
+</li>
+
+          <li class="li">用当前镜像位置和想要的block mirroring位置创建一个列表，然后从中移除已经在正确主机上的镜像。
+            </li>
+
+          <li class="li">用列表中必须要移动的每一个项（镜像）为<samp class="ph codeph">gpmovemirrors</samp>工具创建一个输入文件。
+            <div class="p">
+<samp class="ph codeph">gpmovemirrors</samp>输入文件的格式如下： 
+              <pre class="pre codeblock"><var class="keyword varname">contentID</var>:<var class="keyword varname">address</var>:<var class="keyword varname">port</var>:<var class="keyword varname">data_dir</var> <var class="keyword varname">new_address</var>:<var class="keyword varname">port</var>:<var class="keyword varname">data_dir</var></pre>
+</div>
+Where
+              <var class="keyword varname">contentID</var> 是segment实例的contentID，
+              <var class="keyword varname">address</var>是对应主机的主机名或IP地址，
+              <var class="keyword varname">port</var>是通信端口，<samp class="ph codeph">data_dir</samp>是segment实例的数据目录<div class="p">
+                下面的<samp class="ph codeph">gpmovemirrors</samp>输入文件定义了三个需要移动的镜像segment。
+              <pre class="pre codeblock">1:sdw2:50001:/data2/mirror/gpseg1 sdw3:50001:/data/mirror/gpseg1
+2:sdw2:50001:/data2/mirror/gpseg2 sdw4:50001:/data/mirror/gpseg2
+3:sdw3:50001:/data2/mirror/gpseg3 sdw1:50001:/data/mirror/gpseg3
+</pre>
+</div>
+</li>
+
+          <li class="li">用以下命令运行<samp class="ph codeph">gpmovemirrors</samp>：
+            <pre class="pre codeblock">gpmovemirrors -i <var class="keyword varname">mirror_config_file</var></pre>
+</li>
+
+        </ol>
+
+        <p class="p"><samp class="ph codeph">gpmovemirrors</samp>工具会验证该输入文件、调用<samp class="ph codeph">gp_recoverseg</samp>
+          来重定位每一个指定的镜像，并且移除原始的镜像。它会创建一个撤销配置文件，该文件可以被用作
+          <samp class="ph codeph">gpmovemirrors</samp>的输入来撤销所作的更改。撤销文件和输入文件同名，但会增加后缀
+          <samp class="ph codeph">_backout_<var class="keyword varname">timestamp</var></samp>。
+         </p>
+
+        <p class="p">关于<samp class="ph codeph">gpmovemirrors</samp>工具的完整信息请见<cite class="cite">Greenplum数据库管理工具参考</cite>。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

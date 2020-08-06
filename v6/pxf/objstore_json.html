@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      从对象存储中读取JSON数据 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_pxf x6-0_pxf_objstore_json has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">  Doc Index</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/homenav.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li><a href="/6-0/pxf/overview_pxf.html" format="markdown">Greenplum平台扩展框架(PXF)</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/intro_pxf.html" format="markdown">PXF介绍</a>
+        <ul>
+          <li><a href="/6-0/pxf/filter_push.html" format="markdown">PXF谓词下推</a></li>
+          <li><a href="/6-0/pxf/col_project.html" format="markdown">PXF列投影</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <span>PXF管理手册</span>
+        <ul>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/instcfg_pxf.html" format="markdown">配置PXF</a>
+            <ul>
+              <li><a href="/6-0/pxf/about_pxf_dir.html" format="markdown">PXF安装和配置目录</a></li>
+              <li><a href="/6-0/pxf/install_java.html" format="markdown">为PXF安装JAVA环境</a></li>
+              <li><a href="/6-0/pxf/init_pxf.html" format="markdown">初始化PXF</a></li>
+              <li><a href="/6-0/pxf/cfg_server.html" format="markdown">配置PXF服务器</a></li>
+              <li class="has_submenu">
+                <a href="/6-0/pxf/client_instcfg.html" format="markdown">配置PXF HADOOP连接器（可选）</a>
+                <ul>
+                  <li>
+                    <a href="/6-0/pxf/pxfuserimpers.html">配置用户模拟和代理</a>
+                  </li>
+                  <li>
+                    <a href="/6-0/pxf/pxf_kerbhdfs.html" format="markdown">为安全HDFS配置PXF</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/6-0/pxf/s3_objstore_cfg.html" format="markdown">配置Minio和S3对象存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/objstore_cfg.html" format="markdown">配置Azure和Google云端存储的连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/jdbc_cfg.html" format="markdown">配置JDBC连接器（可选）</a> </li>
+              <li><a href="/6-0/pxf/cfghostport.html" format="markdown">配置PXF客户端主机和端口(可选)</a> </li>
+            </ul>
+          </lie>
+          <li><a href="/6-0/pxf/upgrade_pxf.html" format="markdown">升级PXF</a></li>
+          <li><a href="/6-0/pxf/cfginitstart_pxf.html" format="markdown">PXF的启动、停止和重启</a></li>
+          <li><a href="/6-0/pxf/using_pxf.html" format="markdown">授权用户访问PXF</a></li>
+          <li><a href="/6-0/pxf/reg_jar_depend.html" format="markdown">注册PXF的jar依赖</a></li>
+          <li><a href="/6-0/pxf/monitor_pxf.html" format="markdown">监控PXF</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_hdfs.html" format="markdown">使用PXF访问hadoop</a>
+        <ul>
+          <li><a href="/6-0/pxf/hdfs_text.html" format="markdown">读写文本数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/hdfs_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/hive_pxf.html" format="markdown">读取Hive表数据</a></li>
+          <li><a href="/6-0/pxf/hbase_pxf.html" format="markdown">读取HBase表数据</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/access_objstore.html" format="markdown">使用PXF访问Azure，Google云端存储，Minio和S3对象存储</a>
+        <ul>
+          <li><a href="/6-0/pxf/access_s3.html" format="markdown">About Accessing the S3 Object Store</a></li>
+          <li><a href="/6-0/pxf/objstore_text.html" format="markdown">读取和写入文本数据</a></li>
+          <li><a href="/6-0/pxf/objstore_avro.html" format="markdown">读取Avro数据</a></li>
+          <li><a href="/6-0/pxf/objstore_json.html" format="markdown">读取JSON数据</a></li>
+          <li><a href="/6-0/pxf/objstore_parquet.html" format="markdown">读写Parquet数据</a></li>
+          <li><a href="/6-0/pxf/objstore_seqfile.html" format="markdown">读写SequenceFile数据</a></li>
+          <li><a href="/6-0/pxf/objstore_fileasrow.html" format="markdown">将多行文本文件读入单个表行</a></li>
+          <li><a href="/6-0/pxf/read_s3_s3select.html" format="markdown">使用S3 Select从S3读取CSV和Parquet数据</a></li>
+        </ul>
+      </li>
+      <li><a href="/6-0/pxf/jdbc_pxf.html" format="markdown">使用PXF访问SQL数据库（JDBC）</a></li>
+      <li><a href="/6-0/pxf/troubleshooting_pxf.html" format="markdown">PXF故障排除</a></li>
+      <li class="has_submenu">
+        <a href="/6-0/pxf/ref/pxf-ref.html" format="markdown">PXF实用程序手册</a>
+        <ul>
+          <li><a href="/6-0/pxf/ref/pxf-cluster.html" format="markdown">pxf cluster</a></li>
+          <li><a href="/6-0/pxf/ref/pxf.html" format="markdown">pxf</a></li>
+        </ul>
+      </li>
+      <!--li class="has_submenu">
+        <a href="/6-0/pxf/sdk/dev_overview.html" format="markdown">Using the PXF Java SDK</a>
+        <ul>
+          <li>
+            <a href="/6-0/pxf/sdk/dev_concepts.html" format="markdown">PXF Developer Concepts</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/pxfapi.html" format="markdown">Introducing the PXF API</a>
+          </li>
+          <li>
+            <a href="/6-0/pxf/sdk/build_conn.html" format="markdown">Building a Connector</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/6-0/pxf/sdk/deploy_conn.html" format="markdown">Deploying a Connector</a>
+            <ul>
+              <li>
+            <a href="/6-0/pxf/sdk/deploy_profile.html" format="markdown">Deploying a Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li-->
+      <li>
+         <a href="/6-0/admin_guide/external/pxf-overview.html" format="dita" scope="peer">Back to the Administrator Guide</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    从对象存储中读取JSON数据
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#prereq">&#20808;&#20915;&#26465;&#20214;</a></li>
+<li><a href="#avro_work">&#20351;&#29992;JSON&#25968;&#25454;</a></li>
+<li><a href="#json_cet">&#21019;&#24314;&#22806;&#37096;&#34920;</a></li>
+<li><a href="#example">&#31034;&#20363;</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>PXF 对象存储连接器支持读取JSON格式数据。 本节描述如何使用PXF访问对象存储中的JSON数据，包括如何创建和查询引用对象存储中JSON文件的外部表。</p>
+
+<p><strong>注意</strong>: 从对象存储访问JSON数据和访问HDFS中的JSON数据非常相似。 本主题标识了读取对象存储中JSON数据所需的特定信息，并在通用信息的位置链接到 <a href="/6-0/pxf/hdfs_json.html">PXF HDFS JSON 文档</a> 。</p>
+
+<h2 id="先决条件"><a id="prereq"></a>先决条件</h2>
+
+<p>在您尝试从对象存储中读取数据前，确保已满足PXF 对象存储<a href="/6-0/pxf/access_objstore.html#objstore_prereq">先决条件</a> 。</p>
+
+<h2 id="使用json数据"><a id="avro_work"></a>使用JSON数据</h2>
+
+<p>有关基于JSON文本的数据交换格式的说明，请参阅PXF HDFS JSON文档中的 <a href="/6-0/pxf/hdfs_json.html#hdfsjson_work">使用JSON数据</a>。</p>
+
+<h2 id="创建外部表"><a id="json_cet"></a>创建外部表</h2>
+
+<p>使用 <code>&lt;objstore&gt;:json</code> 配置文件读取对象存储中的JSON格式文件。 PXF 支持以下 <code>&lt;objstore&gt;</code> 配置前缀:</p>
+
+<table><thead>
+<tr>
+<th>对象存储</th>
+<th>配置前缀</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Azure Blob Storage</td>
+<td>wasbs</td>
+</tr>
+<tr>
+<td>Azure Data Lake</td>
+<td>adl</td>
+</tr>
+<tr>
+<td>Google Cloud Storage</td>
+<td>gs</td>
+</tr>
+<tr>
+<td>Minio</td>
+<td>s3</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>s3</td>
+</tr>
+</tbody></table>
+
+<p>以下语法创建一个引用JSON格式文件的Greenplum数据库可读外部表：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span>
+    <span class="p">(</span> <span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">data_type</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="k">LIKE</span> <span class="o">&lt;</span><span class="n">other_table</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="k">LOCATION</span> <span class="p">(</span><span class="s1">'pxf://&lt;path-to-file&gt;?PROFILE=&lt;objstore&gt;:json[&amp;SERVER=&lt;server_name&gt;][&amp;&lt;custom-option&gt;=&lt;value&gt;[...]]'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="p">);</span>
+</code></pre>
+
+<p><a href="/6-0/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>命令中使用的特定关键字和值见下表中描述。</p>
+
+<table><thead>
+<tr>
+<th>关键字</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;path&#8209;to&#8209;file&gt;</td>
+<td>对象存储中文件或目录的绝对路径</td>
+</tr>
+<tr>
+<td>PROFILE=&lt;objstore&gt;:json</td>
+<td><code>PROFILE</code> 必须指定为特定的对象存储。 例如： <code>s3:json</code> 。</td>
+</tr>
+<tr>
+<td>SERVER=&lt;server_name&gt;</td>
+<td>PXF用于访问数据的命名服务器配置。可选的; 如果未指定，PXF将使用<code>default</code>服务器。</td>
+</tr>
+<tr>
+<td>&lt;custom&#8209;option&gt;=&lt;value&gt;</td>
+<td>JSON 支持的名为 <code>IDENTIFIER</code> 的自定义选项描述见 <a href="/6-0/pxf/hdfs_json.html#customopts">PXF HDFS JSON 文档</a> 。 </td>
+</tr>
+<tr>
+<td>FORMAT &lsquo;CUSTOM&rsquo;</td>
+<td>在<code>&lt;objstore&gt;:json</code> 配置文件中使用 <code>FORMAT</code> <code>&#39;CUSTOM&#39;</code> 。 <code>CUSTOM</code> <code>FORMAT</code> 要求您指定为 <code>(FORMATTER=&#39;pxfwritable_import&#39;)</code>。</td>
+</tr>
+</tbody></table>
+
+<p>如果要访问S3对象存储，则可以如<a href="/6-0/pxf/access_objstore.html#s3_override">使用DDL覆盖S3服务器配置</a>中所述直接在 <code>CREATE EXTERNAL TABLE</code> 命令的自定义选项中提供S3凭据。</p>
+
+<h2 id="示例"><a id="example"></a>示例</h2>
+
+<p>有关JSON示例，请参阅PXF HDFS JSON 文档中的 <a href="/6-0/pxf/hdfs_json.html#jsontohdfs">将样本JSON数据加载到HDFS</a> 以及 <a href="/6-0/pxf/hdfs_json.html#jsonexample1">示例：读取单行记录的JSON文件</a> 。 在对象存储中运行示例，必要的修改如下：</p>
+
+<ul>
+<li><p>将文件复制到对象存储而不是HDFS。 例如，将文件复制到S3：</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>aws s3 cp /tmp/singleline.json s3://BUCKET/pxf_examples/
+<span class="gp">$ </span>aws s3 cp /tmp/multiline.json s3://BUCKET/pxf_examples/
+</code></pre></li>
+<li><p>使用上述的 <code>CREATE EXTERNAL TABLE</code> 语法和 <code>LOCATION</code> 关键字及设置。例如， 假设您的服务名为 <code>s3srvcfg</code> ：</p>
+<pre class="highlight sql"><code><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">TABLE</span> <span class="n">singleline_json_s3</span><span class="p">(</span>
+  <span class="n">created_at</span> <span class="n">TEXT</span><span class="p">,</span>
+  <span class="n">id_str</span> <span class="n">TEXT</span><span class="p">,</span>
+  <span class="nv">"user.id"</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="nv">"user.location"</span> <span class="n">TEXT</span><span class="p">,</span>
+  <span class="nv">"coordinates.values[0]"</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="nv">"coordinates.values[1]"</span> <span class="n">INTEGER</span>
+<span class="p">)</span>
+  <span class="k">LOCATION</span><span class="p">(</span><span class="s1">'pxf://BUCKET/pxf_examples/singleline.json?PROFILE=s3:json&amp;SERVER=s3srvcfg'</span><span class="p">)</span>
+<span class="n">FORMAT</span> <span class="s1">'CUSTOM'</span> <span class="p">(</span><span class="n">FORMATTER</span><span class="o">=</span><span class="s1">'pxfwritable_import'</span><span class="p">);</span>
+</code></pre></li>
+</ul>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

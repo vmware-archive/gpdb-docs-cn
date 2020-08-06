@@ -1,0 +1,724 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpaddmirrors |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpaddmirrors has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpaddmirrors
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    
+    <h1 class="title topictitle1">gpaddmirrors</h1>
+
+    <div class="body">
+        <p class="p">将镜像Segment添加到最初没有配置镜像的Greenplum数据库系统。</p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock"><strong class="ph b">gpaddmirrors</strong> [<strong class="ph b">-p</strong> <var class="keyword varname">port_offset</var>] [<strong class="ph b">-m</strong> <var class="keyword varname">datadir_config_file </var>[<strong class="ph b">-a</strong>]] [<strong class="ph b">-s</strong>] 
+                [<strong class="ph b">-d</strong> <var class="keyword varname">master_data_directory</var>] [<strong class="ph b">-B</strong> <var class="keyword varname">parallel_processes</var>] [<strong class="ph b">-l</strong> <var class="keyword varname">logfile_directory</var>]
+                [<strong class="ph b">-v</strong>]
+                
+                <strong class="ph b">gpaddmirrors</strong> <strong class="ph b">-i</strong> <var class="keyword varname">mirror_config_file</var> [<strong class="ph b">-a</strong>] [<strong class="ph b">-d</strong> <var class="keyword varname">master_data_directory</var>]
+                [<strong class="ph b">-B</strong> <var class="keyword varname">parallel_processes</var>] [<strong class="ph b">-l</strong> <var class="keyword varname">logfile_directory</var>] [<strong class="ph b">-v</strong>]
+                
+                <strong class="ph b">gpaddmirrors</strong> <strong class="ph b">-o</strong> <var class="keyword varname">output_sample_mirror_config</var> [<strong class="ph b">-s</strong>] [<strong class="ph b">-m</strong> <var class="keyword varname">datadir_config_file</var>]
+                
+                <strong class="ph b">gpaddmirrors</strong> <strong class="ph b">-?</strong> 
+                
+                <strong class="ph b">gpaddmirrors</strong> <strong class="ph b">--version</strong></pre>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p"><samp class="ph codeph">gpaddmirrors</samp>工具为初始仅配置了主Segment实例的现有Greenplum数据库系统配置镜像
+                Segment实例。该工具创建镜像实例并开始主Segment实例和镜像Segment实例之间的在线复制进程。一旦所有
+                的镜像与其主Segment同步好，用户的Greenplum数据库系统就建立了完全的数据冗余。
+            </p>
+
+            <div class="note important">
+<span class="importanttitle">Important:</span> 在在线复制进程中，Greenplum数据库应处于静止状态，负载和其他查询不应该运行。</div>
+
+            <p class="p">默认情况下，该工具将提示用户输入将创建镜像Segment数据目录的文件系统位置。如果用户不想被提示，
+                可以使用<samp class="ph codeph">-m</samp>选项传递包含文件系统位置的文件。</p>
+
+            <p class="p">镜像位置和端口必须与用户的主Segment数据位置和端口不同。如果用户创建了额外的文件空间，则还将提示用户
+                为每个文件空间提供镜像位置。
+            </p>
+
+            <p class="p">该工具使用预定义的命名习惯在指定位置中为每个镜像Segment实例创建唯一的数据目录。必须为镜像Segment
+                实例声明与主Segment实例相同数量的文件系统位置。如果用户希望在同一位置创建镜像数据目录，可以多次
+                指定同样的目录名称，或者可以为每个镜像输入不同的数据位置。对于文件系统位置，请输入绝对路径。例如：
+            </p>
+
+            <pre class="pre codeblock">Enter mirror segment data directory location 1 of 2 &gt; /gpdb/mirror
+                Enter mirror segment data directory location 2 of 2 &gt; /gpdb/mirror</pre>
+
+            <p class="p">或</p>
+
+            <pre class="pre codeblock">Enter mirror segment data directory location 1 of 2 &gt; /gpdb/m1
+                Enter mirror segment data directory location 2 of 2 &gt; /gpdb/m2</pre>
+
+            <p class="p">还有，用户可以运行<samp class="ph codeph">gpaddmirrors</samp>工具，并使用<samp class="ph codeph">-i</samp>选项提供详细的
+                配置文件。如果用户希望镜像Segment位于完全不同于主Segment的主机集合上，这非常有用。镜像配置文件的
+                格式是：
+            </p>
+
+            <pre class="pre codeblock">mirror<var class="keyword varname">&lt;row_id&gt;</var>=<var class="keyword varname">&lt;contentID&gt;</var>:<var class="keyword varname">&lt;address&gt;</var>:<var class="keyword varname">&lt;port&gt;</var>:<var class="keyword varname">&lt;data_dir&gt;</var></pre>
+
+            <p class="p">此处<samp class="ph codeph">row_id</samp>是文件中的行号，<var class="keyword varname">contentID</var>是segment实例的content_id,
+                <var class="keyword varname">address</var>是segment所在的主机名或IP地址，<var class="keyword varname">port</var>是交互端口，
+                <samp class="ph codeph">data_dir</samp>是segment实例数据目录。</p>
+
+            <div class="p">例如：
+                <pre class="pre codeblock">mirror0=0:sdw1-1:60000:/gpdata/mir1/gp0
+                    mirror1=1:sdw1-1:60001:/gpdata/mir2/gp1</pre>
+</div>
+
+            <p class="p"><samp class="ph codeph">gp_segment_configuration</samp>系统目录表可以帮助用户确定当前的主Segment配置，
+                以便用户可以规划镜像Segment配置。例如，运行以下的查询：</p>
+
+            <pre class="pre codeblock">=# SELECT dbid, content, address as host_address, port, datadir 
+                   FROM gp_segment_configuration
+                   ORDER BY dbid;</pre>
+
+            <p class="p">如果在后补的镜像主机上创建镜像，则新的镜像Segment主机必须预先安装Greenplum数据库软件，并且被配置为
+                与现有的主Segment主机完全相同。</p>
+
+            <p class="p">用户必须确保运行<samp class="ph codeph">gpaddmirrors</samp>的用户（<samp class="ph codeph">gpadmin</samp>用户）有权在指定
+                的数据目录位置写入。用户可能想要在Segment主机上创建这些目录并且在运行<samp class="ph codeph">gpaddmirrors</samp>
+                之前将这些目录的拥有者改为（<samp class="ph codeph">chown</samp>）适当的用户。
+            </p>
+
+            <div class="note note">
+<span class="notetitle">Note:</span> 该工具在系统内部采用SSH连接执行各项操作任务。在大型Greenplum集群、云部署或每台主机部署了大量的
+                segment实例时，可能会遇到超过主机最大授权连接数限制的情况。此时需要考虑更新SSH配置参数<samp class="ph codeph">MaxStartups</samp>
+                以提高该限制。更多关于SSH配置的选项，请参考您的Linux分发版的SSH文档。</div>
+
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+            
+            <dl class="dl parml">
+                
+                    <dt class="dt pt dlterm">-a（不提示）</dt>
+
+                    <dd class="dd pd">以静默模式运行 - 不提示输入信息。如果使用这一选项，必须使用-m或-i提供一个配置文件。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-B <var class="keyword varname">parallel_processes</var>
+</dt>
+
+                    <dd class="dd pd">并行启动的镜像设置进程的数量。如果未指定，则该工具将启动最多10个并行进程，具体取决于需要
+                        设置多少个镜像Segment实例。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-d <var class="keyword varname">master_data_directory</var>
+</dt>
+
+                    <dd class="dd pd">主数据目录。如果没有指定，将使用为<samp class="ph codeph">$MASTER_DATA_DIRECTORY</samp>设置的值。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-i <var class="keyword varname">mirror_config_file</var>
+</dt>
+
+                    <dd class="dd pd">一个配置文件，每个要创建的镜像Segment对应一行。用户必须为系统中的每个主Segment都在该
+                        文件中列出一个镜像Segment。该文件格式如下（如<samp class="ph codeph">gp_segment_configuration</samp>
+                        目录表中的每个属性）：
+                    </dd>
+
+                    <dd class="dd pd">
+                        <pre class="pre codeblock">mirror<var class="keyword varname">&lt;row_id&gt;</var>=<var class="keyword varname">&lt;contentID&gt;</var>:<var class="keyword varname">&lt;address&gt;</var>:<var class="keyword varname">&lt;port&gt;</var>:<var class="keyword varname">&lt;data_dir&gt;</var></pre>
+
+                    </dd>
+
+                    <dd class="dd pd">
+                        <p class="p">此处<samp class="ph codeph">row_id</samp>是文件中的行号，<var class="keyword varname">contentID</var>是segment实例的content_id,
+                            <var class="keyword varname">address</var>是segment所在的主机名或IP地址，<var class="keyword varname">port</var>是交互端口，
+                            <samp class="ph codeph">data_dir</samp>是segment实例数据目录。</p>
+
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-l <var class="keyword varname">logfile_directory</var>
+</dt>
+
+                    <dd class="dd pd">用来写日志的目录，默认为<samp class="ph codeph">~/gpAdminLogs</samp>。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-m <var class="keyword varname">datadir_config_file</var>
+</dt>
+
+                    <dd class="dd pd">包含将创建镜像数据目录的文件系统位置列表的配置文件。如果未提供，该工具将提示用户输入位置。
+                        文件中的每一行都指定一个镜像数据目录位置。例如：
+                    </dd>
+
+                    <dd class="dd pd">
+                        <pre class="pre codeblock">/gpdata/m1
+                            /gpdata/m2
+                            /gpdata/m3
+                            /gpdata/m4</pre>
+
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-o <var class="keyword varname">output_sample_mirror_config</var>
+</dt>
+
+                    <dd class="dd pd">如果用户不确定如何布置<samp class="ph codeph">-i</samp>选项使用的镜像配置文件，用户使用这一选项运行
+                        <samp class="ph codeph">gpaddmirrors</samp>来生成一个基于主Segment配置的镜像配置文件示例。该工具
+                        将提示用户输入用户的镜像Segment数据目录位置（除非用户使用<samp class="ph codeph">-m</samp>在一个文件
+                        中提供了这些位置）。然后，用户可以编辑此文件根据需要将主机名更改为后补的镜像主机。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-p <var class="keyword varname">port_offset</var>
+</dt>
+
+                    <dd class="dd pd">
+                        可选。这个数字被用于计算用于镜像Segment的数据库端口和复制端口。默认偏移量为1000。
+                        镜像端口分配计算如下：</dd>
+
+                    <dd class="dd pd">主机端口 + 偏移量 = 镜像数据库端口</dd>
+
+                    <dd class="dd pd">例如，如果主Segment的端口为50001，则默认情况下，其镜像将使用数据库端口51001。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-s（散布镜像）</dt>
+
+                    <dd class="dd pd">在可用主机上散布镜像Segment。默认情况下，将把一组镜像Segment集合在一起放在不同于其
+                        主Segment集合的后补主机上。镜像散布将把每个镜像放置在Greenplum数据库阵列中的不同主机上。
+                        只有在阵列中有足够数量的主机（主机数大于每个主机的Segment实例数）时，才允许使用散布镜像方式。
+                    </dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-v（详细模式）</dt>
+
+                    <dd class="dd pd">将日志记录输出设置为详细。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">--version（显示工具版本）</dt>
+
+                    <dd class="dd pd">显示该工具的版本。</dd>
+
+                
+                
+                    <dt class="dt pt dlterm">-? (help)</dt>
+
+                    <dd class="dd pd">显示在线帮助。</dd>
+
+                
+            </dl>
+
+        </div>
+
+        <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">示例</h2>
+            
+            <p class="p">使用和主要数据相同的一组主机向现有的Greenplum数据库系统添加镜像。通过在当前主Segment端口号上加上
+                100来计算镜像数据库端口和复制端口：
+            </p>
+
+            <pre class="pre codeblock">$ gpaddmirrors -p 100</pre>
+
+            <p class="p">使用和主要数据不同的一组主机向现有的Greenplum数据库系统添加镜像：</p>
+
+            <pre class="pre codeblock">$ gpaddmirrors -i mirror_config_file</pre>
+
+            <p class="p">其中<samp class="ph codeph">mirror_config_file</samp>看起来像这样：
+            </p>
+
+            <pre class="pre codeblock">mirror0=0:sdw1-1:52001:/gpdata/mir1/gp0
+                mirror1=1:sdw1-2:52002:/gpdata/mir2/gp1
+                mirror2=2:sdw2-1:52001:/gpdata/mir1/gp2
+                mirror3=3:sdw2-2:52002:/gpdata/mir2/gp3</pre>
+
+            <p class="p">使用gpaddmirrors -o输出一个要使用的镜像配置文件样例：
+            </p>
+
+            <pre class="pre codeblock">$ gpaddmirrors -o /home/gpadmin/sample_mirror_config</pre>
+
+        </div>
+
+        <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">另见</h2>
+            
+            <p class="p"><samp class="ph codeph"><a class="xref" href="gpinitsystem.html#topic1">gpinitsystem</a></samp>,
+                <samp class="ph codeph"><a class="xref" href="gpinitstandby.html#topic1">gpinitstandby</a></samp>, <samp class="ph codeph"><a class="xref" href="gpactivatestandby.html#topic1">gpactivatestandby</a></samp></p>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

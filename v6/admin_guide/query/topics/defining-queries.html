@@ -1,0 +1,2428 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      定义查询 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_query x6-0_admin_guide_query_topics x6-0_admin_guide_query_topics_defining-queries has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    定义查询
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    <h1 class="title topictitle1">定义查询</h1>
+
+    
+    <div class="body">
+<p class="shortdesc">Greenplum数据库基于PostgreSQL的SQL标准实现。</p>
+
+        <p class="p">这个主题描述如何在Greenplum数据库中构造SQL查询。</p>
+
+        <ul class="ul">
+            <li class="li" id="defining-queries__in143747">
+                <a class="xref" href="#topic3">SQL词汇</a>
+            </li>
+
+            <li class="li" id="defining-queries__in143755">
+                <a class="xref" href="#topic4">SQL值表达式</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="../../query/topics/query.html" title="本主题提供在Greenplum数据库中使用SQL的信息。">查询数据</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic3">
+        <h2 class="title topictitle2">SQL词汇</h2>
+
+        <div class="body">
+            <p class="p">SQL是一种访问数据库的标准语言。该语言由数据存储、检索、分析、查看、操纵等元素组成。使用者可以使用SQL命令来构造Greenplum数据库引擎能够理解的查询和命令。命令由以正确语法顺序排列的合法符号序列构成，最后以分号(<samp class="ph codeph">;</samp>)终结。
+            </p>
+
+            <p class="p">更多有关<a class="xref" href="../../../ref_guide/sql_commands/sql_ref.html">SQL命令参考</a>。</p>
+
+            <p class="p">Greenplum数据库使用PostgreSQL的结构和语法，但有一些不同。更多有关PostgreSQL中的SQL规则和概念的信息，请见PostgreSQL文档中的“SQL语法”。</p>
+
+        </div>
+
+    </div>
+
+    <div class="topic nested1" xml:lang="en" lang="en" id="topic4">
+        <h2 class="title topictitle2">SQL值表达式</h2>
+
+        <div class="body">
+            <p class="p">SQL值表达式由一个或者多个值、符号、操作符、SQL函数及数据组成。值表达式会比较数据或者执行计算并且返回一个值作为结果。计算包括逻辑的、数学的和集合操作。
+                </p>
+
+            <p class="p">下列都是值表达式:</p>
+
+            <ul class="ul">
+                <li class="li" id="topic4__in199821">一个聚集表达式</li>
+
+                <li class="li" id="topic4__in199865">一个数组构造器</li>
+
+                <li class="li" id="topic4__in199876">一个列引用</li>
+
+                <li class="li" id="topic4__in199883">一个常量或者字面值</li>
+
+                <li class="li" id="topic4__in143969">一个相关子查询</li>
+
+                <li class="li" id="topic4__in199893">一个域选择表达式</li>
+
+                <li class="li" id="topic4__in199900">一个函数调用</li>
+
+                <li class="li" id="topic4__in205284">
+<samp class="ph codeph">INSERT</samp><span class="ph">或者
+                            <samp class="ph codeph">UPDATE</samp></span>中的一个新列值</li>
+
+                <li class="li" id="topic4__in205286">一个操作符调用列引用</li>
+
+                <li class="li" id="topic4__in144037">函数定义或者预备语句中的一个位置参数引用</li>
+
+                <li class="li" id="topic4__in144106">一个行构造器</li>
+
+                <li class="li" id="topic4__in199915">一个标量子查询</li>
+
+                <li class="li" id="topic4__in205305">
+<samp class="ph codeph">WHERE</samp>子句中的一个搜索条件</li>
+
+                <li class="li" id="topic4__in205332">
+<samp class="ph codeph">SELECT</samp> 命令的一个目标列表</li>
+
+                <li class="li" id="topic4__in199922">一个类型造型</li>
+
+                <li class="li" id="topic4__in199929">圆括号中的一个值表达式，可用于分组子表达式以及覆盖优先级</li>
+
+                <li class="li" id="topic4__in199936">一个窗口表达式</li>
+
+            </ul>
+
+            <p class="p">函数和操作符等SQL结构是表达式，但它们不遵循任何一般语法规则。更多有关这些结构的信息，请见使用函数和操作符 <a class="xref" href="functions-operators.html#topic26" title="用户定义和内置函数和运算符的说明。">使用函数和操作符</a>。</p>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic5">
+            <h3 class="title topictitle3">列引用</h3>
+
+            <div class="body">
+                <p class="p">列引用的形式是：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock"><em class="ph i">correlation</em>.<em class="ph i">columnname</em></pre>
+
+                </div>
+
+                <p class="p">这里, <samp class="ph codeph">correlation</samp>是一个FROM子句中定义的表的名字（可能有SCHEMA名限定）或者别名，或者是关键词NEW和OLD中的一个。NEW和OLD只能出现在重写规则中，但可以在任何SQL语句中使用其他关系名称。如果列名在该查询的所有表中都唯一，可以省略掉表引用的"correlation."部分。
+                    </p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic6">
+            <h3 class="title topictitle3">位置参数</h3>
+
+            <div class="body">
+                <p class="p">位置参数是SQL语句或者函数的参数，但使用它们在参数序列中的位置来引用。例如，$1引用第一个参数，$2是第二个参数，以此类推。位置参数的值从SQL语句的外部设置或者在SQL函数被调用时提供。一些客户端库支持在SQL命令之外单独指定数据值，在这种情况下参数引用的是线外数据值。参数引用的形式是：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">$number</pre>
+
+                </div>
+
+                <p class="p">例如：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">CREATE FUNCTION dept(text) RETURNS dept
+    AS $$ SELECT * FROM dept WHERE name = $1 $$
+    LANGUAGE SQL;</pre>
+
+                </div>
+
+                <p class="p">这里，只要该函数被调用，<samp class="ph codeph">$1</samp>就引用第一个函数参数的值。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic7">
+            <h3 class="title topictitle3">下标</h3>
+
+            <div class="body">
+                <p class="p">如果一个表达式得到的是一个数组类型的值，可以按照下面的方式抽取该数组值中的一个特定元素：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock"><em class="ph i">expression</em>[<em class="ph i">subscript</em>]
+</pre>
+
+                </div>
+
+                <p class="p">可以按下面的方式（包括方括号）抽取多个相邻的元素，它们被称为一个数组切片：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock"><em class="ph i">expression</em>[<em class="ph i">lower_subscript</em>:<em class="ph i">upper_subscript</em>]
+</pre>
+
+                </div>
+
+                <p class="p">每一个下标都是一个表达式且得到一个整数值。</p>
+
+                <p class="p">数组表达式通常必须放在圆括号内，但当被指定下标的表达式是一个列引用或者位置参数时可以省略圆括号。当原始数组是多维时可以串接多个下标。例如（包括圆括号）：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">mytable.arraycolumn[4]</pre>
+
+                    <pre class="pre codeblock">mytable.two_d_column[17][34]</pre>
+
+                    <pre class="pre codeblock">$1[10:42]</pre>
+
+                    <pre class="pre codeblock">(arrayfunction(a,b))[42]</pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic8">
+            <h3 class="title topictitle3">域选择</h3>
+
+            <div class="body">
+                <p class="p">如果一个表达式得到一个组合类型（行类型）的值，可以按照下面的方式抽取该行的一个特定域：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock"><em class="ph i">expression</em>.<em class="ph i">fieldname</em></pre>
+
+                </div>
+
+                <p class="p">行表达式通常必须放在圆括号中，但当要从中选择的表达式是一个表引用或者位置参数时可以省略这些圆括号。例如：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">mytable.mycolumn
+</pre>
+
+                    <pre class="pre codeblock">$1.somecolumn
+</pre>
+
+                    <pre class="pre codeblock">(rowfunction(a,b)).col3
+</pre>
+
+                </div>
+
+                <p class="p">被限定的列引用是域选择语法的一种特殊情况。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic9">
+            <h3 class="title topictitle3">操作符调用</h3>
+
+            <div class="body">
+                <p class="p">操作符调用有下列可能的语法：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock"><em class="ph i">expression operator expression</em>(binary infix operator)</pre>
+
+                    <pre class="pre codeblock"><em class="ph i">operator expression</em>(unary prefix operator)</pre>
+
+                    <pre class="pre codeblock"><em class="ph i">expression operator</em>(unary postfix operator)</pre>
+
+                </div>
+
+                <p class="p">其中<em class="ph i">operator</em>是一个操作符符号、关键词<samp class="ph codeph">AND</samp>, <samp class="ph codeph">OR</samp>,或<samp class="ph codeph">NOT</samp>之一，还可以是下面形式的限定操作符名：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">OPERATOR(<em class="ph i">schema</em>.<em class="ph i">operatorname</em>)</pre>
+
+                </div>
+
+                <p class="p">可用的操作符以及它们是一元的还是二元的取决于系统或者用户定义的操作符。更多有关内建操作符的信息请见 <a class="xref" href="functions-operators.html#topic29">内建函数和操作符</a>.</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic10">
+            <h3 class="title topictitle3">函数调用</h3>
+
+            <div class="body">
+                <p class="p">函数调用的语法是一个函数名（可能由一个模式名限定），后面跟着圆括号中的参数：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock"><em class="ph i">function</em> ([<em class="ph i">expression</em> [, <em class="ph i">expression</em> ... ]])</pre>
+
+                </div>
+
+                <p class="p">例如，下面的函数调用计算2的平方根：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">sqrt(2)</pre>
+
+                </div>
+
+                <p class="p">见<a class="xref" href="../../../ref_guide/function-summary.html#topic1">内建函数</a>。用户也可以增加自定义函数。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic11">
+            <h3 class="title topictitle3">聚集表达式</h3>
+
+            <div class="body">
+                <p class="p">聚集表达式在一个查询选择的行上应用一个聚集函数。聚集函数在一组值之上执行一次计算并且返回一个单一值，例如这一组值的总和或者平均。聚集表达式的语法是下列之一：</p>
+
+                <ul class="ul">
+                    <li class="li" id="topic11__in144858">
+<samp class="ph codeph"><em class="ph i">aggregate_name</em>(<em class="ph i">expression</em> [ , ... ]
+                            )</samp> — 在所有输入行上操作，预期的结果值非空。 <samp class="ph codeph">ALL</samp> 是默认。</li>
+
+                    <li class="li" id="topic11__in144859">
+<samp class="ph codeph"><em class="ph i">aggregate_name</em>(ALL <em class="ph i">expression</em> [ , ... ]
+                            )</samp> — 和第一种形式相同，因为
+                            <samp class="ph codeph">ALL</samp> 是默认</li>
+
+                    <li class="li" id="topic11__in144860">
+<samp class="ph codeph"><em class="ph i">aggregate_name</em>(DISTINCT <em class="ph i">expression</em> [ ,
+                            ... ] )</samp> — 输入行的所有可区分非空值上操作。</li>
+
+                    <li class="li" id="topic11__in144861">
+<samp class="ph codeph"><em class="ph i">aggregate_name</em>(*)</samp> —  在所有值为空以及非空的行上操作。通常这种形式对于 <samp class="ph codeph">count(*)</samp>聚集函数最有用。</li>
+
+                </ul>
+
+                <p class="p">其中 <em class="ph i">aggregate_name</em> 是一个之前定义的聚集（可能有模式名限定）而expression是任何不包含聚集表达式的值表达式。</p>
+
+                <p class="p">例如, <samp class="ph codeph">count(*)</samp> 会得到输入行的总数，<samp class="ph codeph">count(f1)</samp>得到输入行中<samp class="ph codeph">f1</samp>为非空的数量，而<samp class="ph codeph">count(distinct
+                    f1)</samp>会得到<samp class="ph codeph">f1</samp>中可区分非空值的数量。
+                       </p>
+
+                <p class="p">预定义的聚集函数,可见<a class="xref" href="functions-operators.html#topic29">内建函数和操作符</a>. 用户也可以增加自定义聚集函数。</p>
+
+                <p class="p">Greenplum函数提供<samp class="ph codeph">MEDIAN</samp>聚集函数，它返回<samp class="ph codeph">PERCENTILE_CONT</samp>结果和逆分布函数的特殊聚集表达式的第50个百分位数：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">PERCENTILE_CONT(_percentage_) WITHIN GROUP (ORDER BY _expression_)
+</pre>
+
+                    <pre class="pre codeblock">PERCENTILE_DISC(_percentage_) WITHIN GROUP (ORDER BY _expression_)
+</pre>
+
+                </div>
+
+                <p class="p">当前只能将这两个表达式与关键词WITHIN GROUP一起使用。</p>
+
+            </div>
+
+            <div class="topic nested3" xml:lang="en" lang="en" id="topic12">
+                <h4 class="title topictitle4">聚集函数的限制</h4>
+
+                <div class="body">
+                    <p class="p">下面是聚集表达式的当前限制：</p>
+
+                    <ul class="ul">
+                        <li class="li" id="topic12__in199103">Greenplum数据库不支持下列关键词：ALL、DISTINCT、FILTER和OVER。详见 <a class="xref" href="functions-operators.html#topic31__in2073121">Table 5</a>  </li>
+
+                        <li class="li" id="topic12__in199105">聚集表达式只能出现在SELECT命令的结果列表或者HAVING子句中。在其他子句（例如WHERE）中不允许聚集表达式，因为那些子句逻辑上会在聚集形式的结果之前计算。这种限制适用于该聚集所属的查询级别。</li>
+
+                        <li class="li" id="topic12__in200910">当聚集表达式出现在子查询中时，该聚集通常在子查询的行之上计算。如果该聚集的参数只包含外层变量，该聚集属于最近的那个外层并且在那个外层查询的行上计算。
+                            该查询表达式总的来说是其出现的子查询的外部引用，并且该聚集表达式在那个子查询的任何一次计算中都像一个常量。请参考<a class="xref" href="#topic15">标量子查询</a> and <a class="xref" href="functions-operators.html#topic29__in204913">Table 3</a>.</li>
+
+                        <li class="li" id="topic12__in200915">Greenplum数据库不支持有多个输入表达式的DISTINCT。</li>
+
+                        <li class="li" id="topic12__in2009151">Greenplum数据库不支持指定聚合函数作为另一个聚合函数的参数。</li>
+
+                        <li class="li" id="topic12__in2009152">Greenplum数据库不支持指定窗口函数作为聚合函数的参数。</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic13">
+            <h3 class="title topictitle3">窗口表达式</h3>
+
+            <div class="body">
+                <p class="p">窗口表达式允许应用开发者更容易地使用标准SQL命令构造复杂的在线分析处理（OLAP）查询。
+                    例如，通过窗口查询，用户可以在多个区间上计算移动平均或者总和、在选择的列值改变时重置聚集和排名以及用简单的术语表达合比。</p>
+
+                <p class="p">窗口表达式表示将一个<em class="ph i">窗口函数</em>应用到一个<em class="ph i">窗口帧</em>，后者在一个特殊的OVER()子句中定义。窗口分区是一个行的集合，这些行被集合起来应用一个窗口函数。这与使用聚合函数和<samp class="ph codeph">GROUP BY</samp>子句可以完成的计算类型相当。和聚集函数（为每个行分组返回一个结果值）不同，窗口函数为每一行返回一个结果值，但是该结果值是针对一个特定窗口分区中的行计算得来。
+                    如果没有指定分区，窗口函数会在完整的中间结果集上计算。</p>
+
+                <p class="p">Greenplum数据库不支持将窗口函数制定为另一个窗口函数的参数。</p>
+
+                <p class="p">窗口表达式的语法是：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock"><em class="ph i">window_function</em> ( [<em class="ph i">expression</em> [, ...]] ) OVER ( <em class="ph i">window_specification</em> )</pre>
+
+                </div>
+
+                <p class="p">其中<em class="ph i"><samp class="ph codeph">window_function</samp></em>window_function是列在
+                        <a class="xref" href="functions-operators.html#topic30__in164369">Table 4</a>中的函数之一，<em class="ph i"><samp class="ph codeph">expression</samp></em>是任何不含窗口表达式的值表达式，而<em class="ph i"><samp class="ph codeph">window_specification</samp></em>是：</p>
+
+                <div class="p">
+<pre class="pre codeblock">[<em class="ph i">window_name</em>]
+[PARTITION BY <em class="ph i">expression </em>[, ...]]
+[[ORDER BY <em class="ph i">expression</em> [ASC | DESC | USING <em class="ph i">operator</em>] [NULLS {FIRST | LAST}] [, ...]
+    [{RANGE | ROWS} 
+       { UNBOUNDED PRECEDING
+       | <em class="ph i">expression</em> PRECEDING
+       | CURRENT ROW
+       | BETWEEN <em class="ph i">window_frame_bound</em> AND <em class="ph i">window_frame_bound</em> }]]</pre>
+ 
+                    其中<samp class="ph codeph"><em class="ph i">window_frame_bound</em></samp>可以是下列之一：
+                    <pre class="pre codeblock">    UNBOUNDED PRECEDING
+    <em class="ph i">expression</em> PRECEDING
+    CURRENT ROW
+    <em class="ph i">expression</em> FOLLOWING
+    UNBOUNDED FOLLOWING</pre>
+</div>
+
+                <p class="p">窗口只能出现在<samp class="ph codeph">SELECT</samp> 命令的选择列表中。例如：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT count(*) OVER(PARTITION BY customer_id), * FROM sales;
+</pre>
+
+                </div>
+
+                <p class="p">在窗口表达式中，一个窗口函数调用必须紧跟<samp class="ph codeph">OVER</samp> 子句。OVER子句使得窗口函数与其他聚集或者报表函数相区别。OVER子句定义窗口函数要应用于其上的window_specification。</p>
+
+                <p class="p">窗口说明具有下列特点：</p>
+
+                <ul class="ul">
+                    <li class="li" id="topic13__in166168"> <samp class="ph codeph">PARTITION BY</samp> 子句定义窗口函数要应用于其上的窗口分区。如果省略，整个结果集会被当做一个分区。</li>
+
+                    <li class="li" id="topic13__in167327"> <samp class="ph codeph">ORDER BY</samp> 子句定义在窗口分区内用来排序行的表达式。
+                        窗口说明的ORDER BY子句是独立的并且与一个常规查询表达式的<samp class="ph codeph">ORDER BY</samp> 子句不同。
+                        计算排名的窗口函数会要求<samp class="ph codeph">ORDER BY</samp> 子句，因为它要确定排名值的排名程度。
+                        对于OLAP聚集，使用窗口帧（<samp class="ph codeph">ROWS</samp>和<samp class="ph codeph">RANGE</samp> 子句）也要求ORDER BY子句。
+                      </li>
+
+                </ul>
+
+                <div class="note note">
+<span class="notetitle">Note:</span> 没有一致排序的数据类型列（如 <samp class="ph codeph">time</samp>）并不适合在窗口说明的ORDER BY子句中使用。 <samp class="ph codeph">time</samp>（不管有没有指定的时区）缺少一种一致的排序，因为加法和减法无法得到预期的效果。例如，下面的式子并不总是为真：<samp class="ph codeph">x::time &lt; x::time + '2
+                    hour'::interval</samp>
+</div>
+
+                <ul class="ul" id="topic13__ul_im5_14q_2gb">
+                    <li class="li" id="topic13__in167503"> <samp class="ph codeph">ROWS</samp> 或者 <samp class="ph codeph">RANGE</samp> 子句为聚集（非排名）窗口函数定义窗口帧。一个窗口帧在一个窗口分区内定义一个行集合。当一个窗口帧被定义时，窗口函数会在这个移动帧的内容上计算，而不是在整个窗口分区的固定内容上计算。
+                        窗口帧可以是基于行的（<samp class="ph codeph">ROWS</samp>）或者基于值的（<samp class="ph codeph">RANGE</samp>）。</li>
+
+                </ul>
+
+            </div>
+
+            <div class="topic nested3" id="topic_qck_12r_2gb">
+                <h4 class="title topictitle4">窗口例子</h4>
+
+                <div class="body">
+                    <p class="p">以下示例演示如何使用带有分区和窗口框架的窗口函数</p>
+
+                    <div class="section">
+<h5 class="title sectiontitle">例1 –分区上的聚合窗口函数</h5>
+                        
+                        <p class="p">在<samp class="ph codeph">OVER</samp>子句用<samp class="ph codeph">PARTITION BY</samp>将行进行分组或分区，在相同值的分组内使用指定表达式。 </p>
+
+                        <div class="p">此例子比较员工工资和部门平均工资：<pre class="pre codeblock">SELECT depname, empno, salary, avg(salary) OVER(PARTITION BY depname)
+FROM empsalary;
+  depname  | empno | salary |          avg          
+-----------+-------+--------+-----------------------
+ develop   |     9 |   4500 | 5020.0000000000000000
+ develop   |    10 |   5200 | 5020.0000000000000000
+ develop   |    11 |   5200 | 5020.0000000000000000
+ develop   |     7 |   4200 | 5020.0000000000000000
+ develop   |     8 |   6000 | 5020.0000000000000000
+ personnel |     5 |   3500 | 3700.0000000000000000
+ personnel |     2 |   3900 | 3700.0000000000000000
+ sales     |     1 |   5000 | 4866.6666666666666667
+ sales     |     3 |   4800 | 4866.6666666666666667
+ sales     |     4 |   4800 | 4866.6666666666666667
+(10 rows)
+</pre>
+</div>
+
+                        <p class="p">前三个输出列来自表<samp class="ph codeph">empsalary</samp>，表中每一行都有一个输出行。第四列计算具有相同的 <samp class="ph codeph">depname</samp>值的平均数。
+                           相同的 <samp class="ph codeph">depname</samp>行组成一个分区，在这个例子中有三个分区。
+                                <samp class="ph codeph">avg</samp>函数与常规的聚合函数<samp class="ph codeph">avg</samp>相同, 但是
+                                <samp class="ph codeph">OVER</samp>子句使它被用作一个窗口函数。</p>
+
+                        <div class="p">你可以把窗口的命名放在<samp class="ph codeph">WINDOW</samp>
+                            子句中，在select中引用. 这个例子相当于之前的查询:<pre class="pre codeblock">SELECT depname, empno, salary, avg(salary) OVER(mywindow)
+FROM empsalary
+WINDOW mywindow AS (PARTITION BY depname);</pre>
+</div>
+
+                        <p class="p">当select列表中有多个使用相同功能的窗口函数时，定义一个命名的窗口比较有用。</p>
+
+                    </div>
+
+                    <div class="section">
+<h5 class="title sectiontitle">例2 – 使用ORDER BY子句对窗口函数进行排序</h5>
+                        
+                        <p class="p"> 在<samp class="ph codeph">OVER</samp>子句中的<samp class="ph codeph">ORDER BY</samp> ，控制窗口函数处理行的顺序。
+                            窗口函数的<samp class="ph codeph">ORDER BY</samp> 列表不必匹配查询的输出顺序。
+                            这个例子使用 <samp class="ph codeph">rank()</samp> 窗口函数来排序部门内的员工工资：</p>
+
+                        <pre class="pre codeblock">SELECT depname, empno, salary,
+    rank() OVER (PARTITION BY depname ORDER BY salary DESC)
+FROM empsalary;
+  depname  | empno | salary | rank 
+-----------+-------+--------+------
+ develop   |     8 |   6000 |    1
+ develop   |    11 |   5200 |    2
+ develop   |    10 |   5200 |    2
+ develop   |     9 |   4500 |    4
+ develop   |     7 |   4200 |    5
+ personnel |     2 |   3900 |    1
+ personnel |     5 |   3500 |    2
+ sales     |     1 |   5000 |    1
+ sales     |     4 |   4800 |    2
+ sales     |     3 |   4800 |    2
+(10 rows)</pre>
+
+                    </div>
+
+                    <div class="section">
+<h5 class="title sectiontitle">例3 – 行窗口帧的具体函数</h5>
+                        
+                        <p class="p">A <samp class="ph codeph">RANGE</samp> 或 <samp class="ph codeph">ROWS</samp>子句定义窗口函数计算的窗口帧(一个分区内的多个行)。
+                           <samp class="ph codeph">ROWS</samp>指定要处理的物理行，例如从分区开始到当前行之间的所有行。 </p>
+
+                        <p class="p">此例按部门计算员工工资的连续总额。使用 <samp class="ph codeph">sum()</samp> 函数计算分区开始到当前行的总行数：</p>
+
+                        <pre class="pre codeblock">SELECT depname, empno, salary,
+    sum(salary) OVER (PARTITION BY depname ORDER BY salary
+        ROWS between UNBOUNDED PRECEDING AND CURRENT ROW)
+FROM empsalary ORDER BY depname, sum;
+  depname  | empno | salary |  sum  
+-----------+-------+--------+-------
+ develop   |     7 |   4200 |  4200
+ develop   |     9 |   4500 |  8700
+ develop   |    11 |   5200 | 13900
+ develop   |    10 |   5200 | 19100
+ develop   |     8 |   6000 | 25100
+ personnel |     5 |   3500 |  3500
+ personnel |     2 |   3900 |  7400
+ sales     |     4 |   4800 |  4800
+ sales     |     3 |   4800 |  9600
+ sales     |     1 |   5000 | 14600
+(10 rows)</pre>
+
+                    </div>
+
+                    <div class="section">
+<h5 class="title sectiontitle">例4 – Range窗口帧的聚合函数</h5>
+                        
+                        <p class="p"><samp class="ph codeph">RANGE</samp> 指定<samp class="ph codeph">OVER</samp>子句中基于<samp class="ph codeph">ORDER BY</samp> 表达式的逻辑值。这个例子展示了
+                                <samp class="ph codeph">ROWS</samp>和<samp class="ph codeph">RANGE</samp>的不同。窗口帧包含小于或等于当前行的所有行的工资值。
+                            与之前的例子不同，相同工资的员工，总和是相同的，包括所有这些员工的工资。 </p>
+
+                        <pre class="pre codeblock">SELECT depname, empno, salary,
+    sum(salary) OVER (PARTITION BY depname ORDER BY salary
+        RANGE between UNBOUNDED PRECEDING AND CURRENT ROW)
+FROM empsalary ORDER BY depname, sum;
+  depname  | empno | salary |  sum  
+-----------+-------+--------+-------
+ develop   |     7 |   4200 |  4200
+ develop   |     9 |   4500 |  8700
+ develop   |    11 |   5200 | 19100
+ develop   |    10 |   5200 | 19100
+ develop   |     8 |   6000 | 25100
+ personnel |     5 |   3500 |  3500
+ personnel |     2 |   3900 |  7400
+ sales     |     4 |   4800 |  9600
+ sales     |     3 |   4800 |  9600
+ sales     |     1 |   5000 | 14600
+(10 rows)</pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic14">
+            <h3 class="title topictitle3">类型转换</h3>
+
+            <div class="body">
+                <p class="p">类型转换指定从一种数据类型到另一种数据类型的转换。应用到已知类型的值表达式是运行时的类型转换。仅当定义了适当的类型转换时才成功。
+                    这个不同于与带有常量的强制转换，应用于字符串文本的强制转换
+                    表示类型对文本常量值的初始赋值，因此如果字符串文字的内容是可接受的数据类型的输入语法，则该转换对任何类型都成功 。</p>
+
+                <div class="p">Greenplum数据库支持三种类型的值表达式转换：
+                        <ul class="ul" id="topic14__ul_f4w_svt_rdb">
+                        <li class="li">
+<p class="p"><em class="ph i">显示转换</em> - 当显式指定两种数据类型时的强制转换。Greenplum数据库接受两种等效的类型造型语法：</p>
+
+                                <pre class="pre codeblock">CAST ( expression AS type )
+expression::type</pre>
+
+                            <p class="p">The <samp class="ph codeph">CAST</samp>语法符合SQL，带<samp class="ph codeph">::</samp>的语法是PostgreSQL的一种历史用法。
+                           </p>
+</li>
+
+                        <li class="li">
+<em class="ph i">赋值转换</em> - 当被赋值给一个表列时，Greenplum数据库会进行隐式转换。例如，<samp class="ph codeph"><a class="xref" href="../../../ref_guide/sql_commands/CREATE_CAST.html">，CREATE
+                                    CAST</a></samp> 命令在使用<samp class="ph codeph">AS
+                            ASSIGNMENT</samp> 子句，在赋值语句中创建转换被隐式使用。这个例子赋值转换，假定
+                                <samp class="ph codeph">tbl1.f1</samp> 是一个<samp class="ph codeph">text</samp>列，
+                             <samp class="ph codeph">INSERT</samp>命令被允许，因为值从<samp class="ph codeph">integer</samp> 隐式转换为<samp class="ph codeph">text</samp> 。
+                            <pre class="pre codeblock">INSERT INTO tbl1 (f1) VALUES (42);</pre>
+</li>
+
+                        <li class="li">
+<em class="ph i">隐式转换</em> - Greenplum数据库在赋值或表达式中隐式进行转换。例如，<samp class="ph codeph">CREATE
+                                CAST</samp> 命令在 <samp class="ph codeph">AS IMPLICIT</samp> 子句中创建一个隐式转换 , 在赋值和表达式中隐式进行转换。
+                            这个例子隐式转换，假定<samp class="ph codeph">tbl1.c1</samp> 是一个 <samp class="ph codeph">int</samp>列。
+                            对于谓词中的计算,  <samp class="ph codeph">c1</samp>从 <samp class="ph codeph">int</samp>隐式转换为<samp class="ph codeph">decimal</samp>。
+                    <pre class="pre codeblock">SELECT * FROM tbl1 WHERE tbl1.c2 = (4.3 + tbl1.c1) ;</pre>
+</li>
+
+                    </ul>
+</div>
+
+                <p class="p">
+                    如果值表达式必须生成的类型没有歧义（例如，当它被分配给表列时），则通常可以省略显式类型转换；
+                    系统会自动应用类型转换。
+                    Greenplum数据库系统只会自动应用在系统目录中标记为"OK to apply implicitly"的转换。
+                    必须使用显式强制转换语法调用其他强制转换，以防止在用户不知情的情况下应用意外的转换。</p>
+
+                <p class="p">可以通过<samp class="ph codeph">psql</samp> meta命令<samp class="ph codeph">\dC</samp>显示强制转换信息。CAST信息存储在目录表<samp class="ph codeph">pg_cast</samp>中，类型信息存储在目录表<samp class="ph codeph">pg_cast</samp>中。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic15">
+            <h3 class="title topictitle3">标量子查询</h3>
+
+            <div class="body">
+                <p class="p">标量子查询是一个圆括号中的<samp class="ph codeph">SELECT</samp>查询，它返回正好一行一列。
+                    不要将返回多行或者多列的<samp class="ph codeph">SELECT</samp>查询用作一个标量子查询。
+                    该查询会运行并且把返回的值用在外围的值表达式中。相关标量子查询包含对于外层查询块的引用。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic16">
+            <h3 class="title topictitle3">相关子查询</h3>
+
+            <div class="body">
+                <p class="p">相关子查询（CSQ）是一个<samp class="ph codeph">SELECT</samp>查询，其<samp class="ph codeph">WHERE</samp>子句或者目标列表包含对于外层子句的引用。
+                    CSQ能有效地根据另一个查询的结果来表达结果。
+                    Greenplum数据库支持相关子查询，为很多现有的应用提供了兼容性。
+                    CSQ可以是一个标量或者表子查询，这取决于它返回一行还是多行。Greenplum数据库不支持跨级关联的相关子查询。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic17">
+            <h3 class="title topictitle3">相关子查询例子</h3>
+
+            <div class="topic nested3" xml:lang="en" lang="en" id="topic18">
+                <h4 class="title topictitle4">例1 – 标量相关子查询</h4>
+
+                <div class="body">
+                    <pre class="pre codeblock">SELECT * FROM t1 WHERE t1.x 
+            &gt; (SELECT MAX(t2.x) FROM t2 WHERE t2.y = t1.y);
+</pre>
+
+                </div>
+
+            </div>
+
+            <div class="topic nested3" xml:lang="en" lang="en" id="topic19">
+                <h4 class="title topictitle4">例2 – 相关EXISTS子查询</h4>
+
+                <div class="body">
+                    <pre class="pre codeblock">SELECT * FROM t1 WHERE 
+EXISTS (SELECT 1 FROM t2 WHERE t2.x = t1.x);
+</pre>
+
+                    <p class="p">Greenplum数据库使用下列方法之一运行CSQ：</p>
+
+                    <ul class="ul">
+                        <li class="li" id="topic19__in197793">解除CSQ的嵌套变成连接操作 – 这种方法最高效，并且Greenplum数据库会以这种方法运行大多数CSQ，包括来自TPC-H基准的查询。</li>
+
+                        <li class="li" id="topic19__in197800">在外层查询的每一行上运行CSQ – 这种方法相对低效，Greenplum数据库会用这种方法来运行含有在SELECT列表中或者由OR条件连接的CSQ的查询。</li>
+
+                    </ul>
+
+                    <p class="p">下面的例子展示了如何重写这些类型的查询来改进性能。</p>
+
+                </div>
+
+            </div>
+
+            <div class="topic nested3" xml:lang="en" lang="en" id="topic20">
+                <h4 class="title topictitle4">例3 - 选择列表中的CSQ</h4>
+
+                <div class="body">
+                    <p class="p">
+                        <em class="ph i">原始查询</em>
+                    </p>
+
+                    <pre class="pre codeblock">SELECT T1.a,
+      (SELECT COUNT(DISTINCT T2.z) FROM t2 WHERE t1.x = t2.y) dt2 
+FROM t1;</pre>
+
+                    <p class="p">重写这一查询，让它先执行与<samp class="ph codeph">t1</samp>的内连接，然后再执行与<samp class="ph codeph">t1</samp>的左连接。这种重写只适用于相关条件中的等值连接。</p>
+
+                    <p class="p">
+                        <em class="ph i">重写查询</em>
+                    </p>
+
+                    <pre class="pre codeblock">SELECT t1.a, dt2 FROM t1 
+       LEFT JOIN 
+        (SELECT t2.y AS csq_y, COUNT(DISTINCT t2.z) AS dt2 
+              FROM t1, t2 WHERE t1.x = t2.y 
+              GROUP BY t1.x) 
+       ON (t1.x = csq_y);
+</pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic21">
+            <h3 class="title topictitle3">例4 - 由OR子句连接的CSQ</h3>
+
+            <div class="body">
+                <p class="p">
+                    <em class="ph i">原始查询</em>
+                </p>
+
+                <pre class="pre codeblock">SELECT * FROM t1 
+WHERE 
+x &gt; (SELECT COUNT(*) FROM t2 WHERE t1.x = t2.x) 
+OR x &lt; (SELECT COUNT(*) FROM t3 WHERE t1.y = t3.y)
+</pre>
+
+                <p class="p">重写这一查询，把它根据OR条件分解成两个部分，然后联合起来。</p>
+
+                <p class="p">
+                    <em class="ph i">重写查询</em>
+                </p>
+
+                <pre class="pre codeblock">SELECT * FROM t1 
+WHERE x &gt; (SELECT count(*) FROM t2 WHERE t1.x = t2.x) 
+UNION 
+SELECT * FROM t1 
+WHERE x &lt; (SELECT count(*) FROM t3 WHERE t1.y = t3.y)
+</pre>
+
+                <p class="p">要查看查询计划，使用<samp class="ph codeph">EXPLAIN SELECT</samp>或者<samp class="ph codeph">EXPLAIN ANALYZE SELECT</samp>。
+                    查询计划中的子计划节点表示该查询将在外层查询的每一行上运行，并且该查询是重写的候选。
+                    更多有关这些语句的信息，请见 <a class="xref" href="query-profiling.html#topic39" title="检查性能不好的查询的查询计划,来确定可能的性能调优机会。">查询分析</a>.</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic23">
+            <h3 class="title topictitle3">数组构造器</h3>
+
+            <div class="body">
+                <p class="p">数组构造器是一个从其成员元素的值构造一个数组值的表达式。简单的数组构造器由关键词 <samp class="ph codeph">ARRAY</samp>、一个左方括号<samp class="ph codeph">[</samp>、一个或多个由逗号分隔的表达式（用于数组元素值）以及一个右方括号<samp class="ph codeph">]</samp>组成。例如，</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT ARRAY[1,2,3+4];
+  array
+---------
+ {1,2,7}
+</pre>
+
+                </div>
+
+                <p class="p">数组元素类型是其成员表达式的共同类型，采用和<samp class="ph codeph">UNION</samp>或者<samp class="ph codeph">CASE</samp>结构相同的规则确定。</p>
+
+                <p class="p">可以通过嵌套数组构造器构建多维数组值。
+                    在内层构造器中，可以省略关键词<samp class="ph codeph">ARRAY</samp>。例如，下面的两个<samp class="ph codeph">SELECT</samp>语句产生相同的结果:</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT ARRAY[ARRAY[1,2], ARRAY[3,4]];
+SELECT ARRAY[[1,2],[3,4]];
+     array
+---------------
+ {{1,2},{3,4}}
+</pre>
+
+                </div>
+
+                <p class="p">由于多维数组必须是矩形，同一层次上的内层构造器必须产生同维的子数组。</p>
+
+                <p class="p">多维数组构造器元素不限于一个子<samp class="ph codeph">ARRAY</samp>结构，它们可以是任何产生正确种类数组的东西。例如：</p>
+
+                <pre class="pre codeblock">CREATE TABLE arr(f1 int[], f2 int[]);
+INSERT INTO arr VALUES (ARRAY[[1,2],[3,4]], 
+ARRAY[[5,6],[7,8]]);
+SELECT ARRAY[f1, f2, '{{9,10},{11,12}}'::int[]] FROM arr;
+                     array
+------------------------------------------------
+ {{{1,2},{3,4}},{{5,6},{7,8}},{{9,10},{11,12}}}
+</pre>
+
+                <p class="p">可以从子查询的结果构造数组。数组构造器写成关键词<samp class="ph codeph">ARRAY</samp>后面跟上圆括号中的一个子查询。例如：</p>
+
+                <pre class="pre codeblock">SELECT ARRAY(SELECT oid FROM pg_proc WHERE proname LIKE 'bytea%');
+                          ?column?
+-----------------------------------------------------------
+ {2011,1954,1948,1952,1951,1244,1950,2005,1949,1953,2006,31}
+</pre>
+
+                <p class="p">子查询必须返回单列。作为结果的一维数组中每一个元素对应于子查询结果中的每一行，元素类型匹配子查询的输出列。
+                    用<samp class="ph codeph">ARRAY</samp>构建的数组值的下标总是从<samp class="ph codeph">1</samp>开始。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic24">
+            <h3 class="title topictitle3">行构造器</h3>
+
+            <div class="body">
+                <p class="p">行构造器是一个从其成员域的值构建一个行值（也被称为组合值）的表达式。例如，</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT ROW(1,2.5,'this is a test');
+</pre>
+
+                </div>
+
+                <p class="p">行构造器的语法是<samp class="ph codeph">rowvalue.*</samp>，当在SELECT列表的顶层使用语法<samp class="ph codeph">.*</samp>时，它会扩展成该行值的元素的列表。
+                    例如，如果表t有列<samp class="ph codeph">f1</samp>和<samp class="ph codeph">f2</samp>，下列查询是相同的：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT ROW(t.*, 42) FROM t;
+SELECT ROW(t.f1, t.f2, 42) FROM t;
+</pre>
+
+                </div>
+
+                <p class="p">默认情况下，<samp class="ph codeph">ROW</samp>表达式创建的值是一种匿名记录类型。如果有必要，它可以被造型成一种命名的组合类型 — 一个表的行类型或者用<samp class="ph codeph">CREATE TYPE AS</samp>创建的一种组合类型。
+                    为了避免歧义，必要时可以对该值进行显式转换。例如：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">CREATE TABLE mytable(f1 int, f2 float, f3 text);
+CREATE FUNCTION getf1(mytable) RETURNS int AS 'SELECT $1.f1' 
+LANGUAGE SQL;
+</pre>
+
+                </div>
+
+                <p class="p">在下面的查询中，不需要对值转换，因为只有一种<samp class="ph codeph">getf1()</samp>函数，所以没有歧义：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT getf1(ROW(1,2.5,'this is a test'));
+ getf1
+-------
+     1
+CREATE TYPE myrowtype AS (f1 int, f2 text, f3 numeric);
+CREATE FUNCTION getf1(myrowtype) RETURNS int AS 'SELECT 
+$1.f1' LANGUAGE SQL;
+</pre>
+
+                </div>
+
+                <p class="p">现在我们需要一次转换来指示要调用哪个函数：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT getf1(ROW(1,2.5,'this is a test'));
+ERROR:  function getf1(record) is not unique
+</pre>
+
+                    <pre class="pre codeblock">SELECT getf1(ROW(1,2.5,'this is a test')::mytable);
+ getf1
+-------
+     1
+SELECT getf1(CAST(ROW(11,'this is a test',2.5) AS 
+myrowtype));
+ getf1
+-------
+    11
+</pre>
+
+                </div>
+
+                <p class="p">可以使用行构造器来构建组合值，该值可以被存储在组合类型表列或者被传递给接受组合类型参数的函数。</p>
+
+            </div>
+
+        </div>
+
+        <div class="topic nested2" xml:lang="en" lang="en" id="topic25">
+            <h3 class="title topictitle3">表达式计算规则</h3>
+
+            <div class="body">
+                <p class="p">子表达式的计算顺序未被定义。一个操作符或者函数的输入不必从左向右或者按照任何其他固定顺序计算。</p>
+
+                <p class="p">如果通过仅计算表达式的一部分就能确定该表达式的结果，那么其他子表达式可能完全不被计算。例如，在下面的表达式中：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT true OR somefunc();
+</pre>
+
+                </div>
+
+                <p class="p"><samp class="ph codeph">somefunc()</samp> 可能根本不会被调用。在下面的额表达式中也是如此：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT somefunc() OR true;
+</pre>
+
+                </div>
+
+                <p class="p">这和某些编程语言中的布尔操作符实施的从左向右的计算顺序不同。</p>
+
+                <p class="p">不要把有副作用的函数用在复杂表达式中，尤其是在WHERE和HAVING子句中，因为在形成执行计划时会广泛地预处理那些子句。
+                    那些子句中的布尔表达式（<samp class="ph codeph">AND</samp>/<samp class="ph codeph">OR</samp>/<samp class="ph codeph">NOT</samp>组合）可能会被以布尔代数法允许的任何方式重新组织。</p>
+
+                <p class="p">要强制计算顺序，可使用 <samp class="ph codeph">CASE</samp>结构。下面的例子是一种在 <samp class="ph codeph">WHERE</samp>子句中避免除零的不可靠的方法：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT ... WHERE x &lt;&gt; 0 AND y/x &gt; 1.5;
+</pre>
+
+                </div>
+
+                <p class="p">下面的例子展示了一种可靠的计算顺序：</p>
+
+                <div class="p">
+                    <pre class="pre codeblock">SELECT ... WHERE CASE WHEN x &lt;&gt; 0 THEN y/x &gt; 1.5 ELSE false 
+END;
+</pre>
+
+                </div>
+
+                <p class="p">这种<samp class="ph codeph">CASE</samp>结构的用法会使得优化器无法进行优化尝试，因此只有在必要时才使用它。</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

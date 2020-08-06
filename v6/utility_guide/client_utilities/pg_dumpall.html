@@ -1,0 +1,914 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      pg_dumpall |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_client_utilities x6-0_utility_guide_client_utilities_pg_dumpall has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    pg_dumpall
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+    <h1 class="title topictitle1">pg_dumpall</h1>
+
+    <div class="body">
+        <p class="p" id="topic1__client_util_desc">将Greenplum数据库系统中的所有数据库提取到单个脚本文件或其他归档文件中。
+            </p>
+
+        <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+            
+            <pre class="pre codeblock" id="topic1__client_util_synopsis"><strong class="ph b">pg_dumpall</strong> [<var class="keyword varname">connection-option</var> ...] [<var class="keyword varname">dump_option</var> ...]
+
+<strong class="ph b">pg_dumpall</strong> <strong class="ph b">-? | --help</strong>
+
+<strong class="ph b">pg_dumpall</strong> <strong class="ph b">-V | --version</strong></pre>
+
+        </div>
+
+        <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+            
+            <p class="p"><samp class="ph codeph">pg_dumpall</samp>是一个标准的PostgreSQL工具，
+                用于备份Greenplum数据库（或PostgreSQL）实例中的所有数据库，Greenplum数据库也支持该实用程序。
+                它创建一个（非并行）转储文件。
+                <span class="ph">对于Greenplum数据库的常规备份，最好使用Greenplum数据库备份工具<samp class="ph codeph"><a class="xref" href="../admin_utilities/gpbackup.html#topic1">gpbackup</a></samp>以获得最佳性能。
+                </span></p>
+
+            <p class="p"><samp class="ph codeph">pg_dumpall</samp>创建一个包含SQL命令的脚本文件，
+                该命令可用作<samp class="ph codeph"><a class="xref" href="psql.html#topic1">psql</a></samp>还原数据库的输入。
+                它通过为每个数据库调用<samp class="ph codeph"><a class="xref" href="pg_dump.html#topic1">pg_dump</a></samp>来做到这一点。
+                <samp class="ph codeph">pg_dumpall</samp>还转储所有数据库通用的全局对象。
+                （<samp class="ph codeph">pg_dump</samp>不会保存这些对象。）
+                当前包括有关数据库用户和组的信息，以及整体上适用于数据库的访问权限。
+                </p>
+
+            <p class="p">由于<samp class="ph codeph">pg_dumpall</samp>从所有数据库读取表，因此您很可能必须以数据库超级用户身份连接才能产生完整的转储。
+                另外，您将需要超级用户特权才能执行保存的脚本，以便被允许添加用户和组以及创建数据库。
+                </p>
+
+            <p class="p">SQL脚本将被写入标准输出。
+                使用<samp class="ph codeph">[-f | --file]</samp>选项或shell运算符将其重定向到文件中。
+                </p>
+
+            <p class="p"><samp class="ph codeph">pg_dumpall</samp>需要多次连接到Greenplum数据库master服务器（每个数据库一次）。
+                如果您使用密码验证，则很可能每次都要求输入密码。
+                在这种情况下，使用<samp class="ph codeph">~/.pgpass</samp>文件很方便。
+                </p>
+
+            <div class="note note">
+<span class="notetitle">Note:</span> <samp class="ph codeph">--ignore-version</samp>选项已弃用，在以后的版本中将被删除。
+                </div>
+
+        </div>
+
+        <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+            
+            <div class="sectiondiv">
+                <strong class="ph b">转储选项</strong>
+                <dl class="dl parml">
+                    
+                        <dt class="dt pt dlterm">-a | --data-only</dt>
+
+                        <dd class="dd pd">仅转储数据，而不转储模式（数据定义）。
+                            此选项仅对纯文本格式有意义。
+                            对于归档格式，可以在调用<samp class="ph codeph"><a class="xref" href="pg_restore.html#topic1">pg_restore</a></samp>时指定该选项。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-c | --clean</dt>
+
+                        <dd class="dd pd">在创建数据库对象（用于创建它们的命令）之前，输出用于清理（删除）数据库对象的命令。
+                            此选项仅对纯文本格式有意义。
+                            对于归档格式，可以在调用<samp class="ph codeph"><a class="xref" href="pg_restore.html#topic1">pg_restore</a></samp>时指定该选项。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-f <var class="keyword varname">filename</var> | --file=<var class="keyword varname">filename</var>
+</dt>
+
+                        <dd class="dd pd">将输出发送到指定文件。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-g | --globals-only</dt>
+
+                        <dd class="dd pd">仅转储全局对象（角色和表空间），而不转储数据库。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-i | --ignore-version</dt>
+
+                        <dd class="dd pd">
+<div class="note note">
+<span class="notetitle">Note:</span> 此选项已被弃用，并将在以后的版本中删除。</div>
+
+                            忽略<samp class="ph codeph"><a class="xref" href="pg_dump.html#topic1">pg_dump</a></samp>和数据库服务器之间的版本不匹配。
+                            <samp class="ph codeph">pg_dump</samp>可以从运行早期版本的Greenplum数据库（或PostgreSQL）的服务器中转储，但是可能不再支持非常旧的版本。
+                            如果您需要覆盖版本检查，请使用此选项。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-o | --oids</dt>
+
+                        <dd class="dd pd">转储对象标识符（OID）作为每个表的数据的一部分。
+                            对于要还原到Greenplum数据库中的文件，建议不要使用此选项。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-O | --no-owner</dt>
+
+                        <dd class="dd pd">不要输出命令来设置对象的所有权以匹配原始数据库。
+                            默认情况下，<samp class="ph codeph"><a class="xref" href="pg_dump.html#topic1">pg_dump</a></samp>发出<samp class="ph codeph">ALTER OWNER</samp>或<samp class="ph codeph">SET SESSION AUTHORIZATION</samp>语句来设置创建的数据库对象的所有权。
+                            除非由超级用户（或拥有脚本中所有对象的同一用户）启动脚本，否则运行脚本时这些语句将失败。
+                            要使脚本可以被任何用户恢复，但将赋予该用户所有对象的所有权，请指定<samp class="ph codeph">-O</samp>。
+                            此选项仅对纯文本格式有意义。
+                            对于归档格式，可以在调用<samp class="ph codeph"><a class="xref" href="pg_restore.html#topic1">pg_restore</a></samp>时指定该选项。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-r | --roles-only</dt>
+
+                        <dd class="dd pd">仅转储角色，而不是数据库或表空间。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-s | --schema-only</dt>
+
+                        <dd class="dd pd">仅转储对象定义（模式），而不转储数据。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-S <var class="keyword varname">username</var> | --superuser=<var class="keyword varname">username</var>
+</dt>
+
+                        <dd class="dd pd">指定禁用触发器时要使用的超级用户名。
+                            仅在使用<samp class="ph codeph">--disable-triggers</samp>时才有意义。
+                            最好不要这样做，而是以超级用户身份启动生成的脚本。
+                            <div class="note note">
+<span class="notetitle">Note:</span> Greenplum数据库不支持用户定义的触发器。</div>
+</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-t | --tablespaces-only</dt>
+
+                        <dd class="dd pd">仅转储表空间，而不是数据库或角色。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-v | --verbose</dt>
+
+                        <dd class="dd pd">指定详细模式。
+                            这将导致<samp class="ph codeph"><a class="xref" href="pg_dump.html#topic1">pg_dump</a></samp>向转储文件输出详细的对象注释和开始/停止时间，并向标准错误输出消息。
+                            </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm">-V | --version</dt>
+
+                      <dd class="dd pd">打印<samp class="ph codeph">pg_dumpall</samp>版本并退出。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-x | --no-privileges | --no-acl</dt>
+
+                        <dd class="dd pd">防止转储访问权限（<samp class="ph codeph">GRANT/REVOKE</samp>命令）。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--binary-upgrade</dt>
+
+                        <dd class="dd pd">此选项供就地升级工具使用。
+                            不建议或不支持将其用于其他目的。
+                            该选项的行为在将来的版本中可能会更改，恕不另行通知。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--column-inserts | --attribute-inserts</dt>
+
+                        <dd class="dd pd">将数据转储为带有显式列名（<samp class="ph codeph">INSERT INTO <var class="keyword varname">table</var> (<var class="keyword varname">column</var>, ...) VALUES ...</samp>）的<samp class="ph codeph">INSERT</samp>命令。
+                            这会使恢复非常缓慢。
+                            它主要用于制作可以装入非基于PostgreSQL的数据库的转储。
+                            同样，由于此选项为每一行生成一个单独的命令，因此在重新加载行时发生错误只会导致该行丢失，而不是整个表内容丢失。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--disable-dollar-quoting</dt>
+
+                        <dd class="dd pd">此选项禁止对函数体使用美元引号，并强制使用SQL标准字符串语法对其进行引用。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--disable-triggers</dt>
+
+                        <dd class="dd pd">仅当创建仅数据转储时，此选项才相关。
+                            它指示<samp class="ph codeph">pg_dumpall</samp>包含一些命令，以在重新加载数据时临时禁用目标表上的触发器。
+                            如果不想在数据重装期间调用的表上有触发器，请使用此选项。
+                            为<samp class="ph codeph">--disable-triggers</samp>发出的命令必须以超级用户身份执行。
+                            因此，您还应该使用<samp class="ph codeph">-S</samp>指定超级用户名，或者最好小心地以超级用户身份启动生成的脚本。
+                            此选项仅对纯文本格式有意义。
+                            对于归档格式，可以在调用<samp class="ph codeph"><a class="xref" href="pg_restore.html#topic1">pg_restore</a></samp>时指定该选项。
+                            <div class="note note">
+<span class="notetitle">Note:</span> Greenplum数据库不支持用户定义的触发器。</div>
+
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--inserts</dt>
+
+                        <dd class="dd pd">将数据转储为<samp class="ph codeph">INSERT</samp>命令（而不是<samp class="ph codeph">COPY</samp>）。
+                            这会使恢复非常缓慢。
+                            它主要用于制作可以装入非基于PostgreSQL的数据库的转储。
+                            但是，由于此选项为每一行生成一个单独的命令，因此在重新加载行时发生错误只会导致该行丢失，而不是整个表内容丢失。
+                            请注意，如果您重新排列了列顺序，则还原可能会完全失败。
+                            <samp class="ph codeph">--column-inserts</samp>选项可以安全地防止列顺序更改，尽管速度更慢。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--lock-wait-timeout=<var class="keyword varname">timeout</var>
+</dt>
+
+                        <dd class="dd pd">不要在转储开始时一直等待获取共享表锁。
+                            相反，如果无法在指定的<var class="keyword varname">timeout</var>时间内锁定表，则失败。
+                            可以使用<samp class="ph codeph">SET statement_timeout</samp>接受的任何格式指定超时。
+                            允许的值因要从中转储的服务器版本而异，但所有Greenplum数据库版本均接受整数毫秒。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--no-security-labels</dt>
+
+                        <dd class="dd pd">不要转储安全标签。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--no-tablespaces</dt>
+
+                        <dd class="dd pd">不输出命令以选择表空间。
+                            使用此选项，将在还原期间的默认表空间中创建所有对象。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--no-unlogged-table-data</dt>
+
+                        <dd class="dd pd">不要转储未记录表的内容。
+                            此选项对是否转储表定义（模式）没有影响。
+                            它仅禁止转储表数据。
+                            从备用服务器转储时，始终排除未记录表中的数据。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--quote-all-identifiers</dt>
+
+                        <dd class="dd pd">强制给所有标识符加上引号。
+                            当从Greenplum数据库主版本不同于<samp class="ph codeph">pg_dumpall</samp>的中转储数据库时，
+                            或者打算将输出加载到其他主版本的服务器中时，建议使用此选项。
+                            默认情况下，<samp class="ph codeph">pg_dumpall</samp>仅为在其主版本中为保留字的标识符加引号。
+                            在处理其他版本的保留字可能略有不同的服务器时，有时会导致兼容性问题。
+                            使用<samp class="ph codeph">--quote-all-identifiers</samp>可以防止此类问题，但代价是难以阅读的转储脚本。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--resource-queues</dt>
+
+                        <dd class="dd pd">转储资源队列定义。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--resource-groups</dt>
+
+                        <dd class="dd pd">转储资源组定义。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--use-set-session-authorization</dt>
+
+                        <dd class="dd pd">输出SQL标准的<samp class="ph codeph">SET SESSION AUTHORIZATION</samp>命令而不是<samp class="ph codeph">ALTER OWNER</samp>命令来确定对象所有权。
+                            这使转储更加符合标准，但是依赖转储中对象的历史记录，可能无法正确还原。
+                            使用<samp class="ph codeph">SET SESSION AUTHORIZATION</samp>进行的转储将需要超级用户权限才能正确还原，而<samp class="ph codeph">ALTER OWNER</samp>则需要较少的权限。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--gp-syntax</dt>
+
+                        <dd class="dd pd">使用<samp class="ph codeph">--gp-syntax</samp>在<samp class="ph codeph">CREATE TABLE</samp>语句中转储Greenplum数据库语法。
+                            这允许转储Greenplum数据库表的分发策略（<samp class="ph codeph">DISTRIBUTED BY</samp>或<samp class="ph codeph">DISTRIBUTED RANDOMLY</samp>子句），
+                            这对于还原到其他Greenplum数据库系统很有用。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--no-gp-syntax</dt>
+
+                        <dd class="dd pd">不要在<samp class="ph codeph">CREATE TABLE</samp>语句中输出表分配子句。
+                            </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm">-? | --help</dt>
+
+                      <dd class="dd pd">显示有关<samp class="ph codeph">pg_dumpall</samp>命令行参数的帮助，然后退出。</dd>
+
+                    
+                </dl>
+
+            </div>
+            <div class="sectiondiv">
+                <strong class="ph b">连接选项</strong>
+                <dl class="dl parml">
+                    
+                        <dt class="dt pt dlterm">-d <var class="keyword varname">connstr</var> | --dbname=<var class="keyword varname">connstr</var>
+</dt>
+
+                        <dd class="dd pd">指定用于连接到服务器的参数，作为连接字符串。
+                            有关更多信息，请参见PostgreSQL文档中的<a class="xref" href="https://www.postgresql.org/docs/9.4/libpq-connect.html#LIBPQ-CONNSTRING" target="_blank">连接字符串</a>。
+                            </dd>
+
+                        <dd class="dd pd">为了与其他客户端应用程序保持一致，该选项称为<samp class="ph codeph">--dbname</samp>，
+                            但是由于<samp class="ph codeph">pg_dumpall</samp>需要连接到许多数据库，因此连接字符串中的数据库名称将被忽略。
+                            使用<samp class="ph codeph">-l</samp>选项可指定用于转储全局对象并发现应转储其他数据库的数据库的名称。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-h <var class="keyword varname">host</var> | --host=<var class="keyword varname">host</var>
+</dt>
+
+                        <dd class="dd pd">运行Greenplum数据库master数据库服务器的计算机的主机名。
+                            如果未指定，则从环境变量<samp class="ph codeph">PGHOST</samp>读取或默认为localhost。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-l <var class="keyword varname">dbname</var> | --database=<var class="keyword varname">dbname</var>
+</dt>
+
+                        <dd class="dd pd">指定要在其中连接以转储全局对象的数据库的名称。
+                            如果未指定，则使用<samp class="ph codeph">postgres</samp>数据库。
+                            如果<samp class="ph codeph">postgres</samp>数据库不存在，则使用<samp class="ph codeph">template1</samp>数据库。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-p <var class="keyword varname">port</var> | --port=<var class="keyword varname">port</var>
+</dt>
+
+                        <dd class="dd pd">Greenplum master数据库服务器正在侦听连接的TCP端口。
+                            如果未指定，则从环境变量<samp class="ph codeph">PGPORT</samp>读取或默认为5432。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-U <var class="keyword varname">username</var> | --username=<var class="keyword varname">username</var>
+</dt>
+
+                        <dd class="dd pd">要用作连接的数据库角色名称。
+                            如果未指定，则从环境变量<samp class="ph codeph">PGUSER</samp>读取或默认为当前系统角色名称。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-w | --no-password</dt>
+
+                        <dd class="dd pd">不发出密码提示。
+                            如果服务器要求密码验证，而其他方式（例如<samp class="ph codeph">.pgpass</samp>文件）无法使用密码，则连接尝试将失败。
+                            此选项在没有用户输入密码的批处理作业和脚本中很有用。
+                            </dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">-W | --password</dt>
+
+                        <dd class="dd pd">强制输入密码提示。</dd>
+
+                    
+                    
+                        <dt class="dt pt dlterm">--role=<var class="keyword varname">rolename</var>
+</dt>
+
+                        <dd class="dd pd">指定用于创建转储的角色名称。
+                            此选项使<samp class="ph codeph">pg_dumpall</samp>在连接到数据库后发出<samp class="ph codeph">SET ROLE <var class="keyword varname">rolename</var></samp>命令。
+                            当通过身份验证的用户（由<samp class="ph codeph">-U</samp>指定）缺少<samp class="ph codeph">pg_dumpall</samp>所需的特权，但可以切换到具有所需权限的角色时，此功能很有用。
+                            某些安装有禁止直接以超级用户身份登录的策略，并且使用此选项可以在不违反策略的情况下进行转储。
+                            </dd>
+
+                    
+                </dl>
+
+            </div>
+        </div>
+
+        <div class="section" id="topic1__section7">
+<h2 class="title sectiontitle">注解</h2>
+            
+            <p class="p">由于<samp class="ph codeph">pg_dumpall</samp>在内部调用<samp class="ph codeph"><a class="xref" href="pg_dump.html#topic1">pg_dump</a></samp>，
+                因此某些诊断消息将引用<samp class="ph codeph">pg_dump</samp>。
+                </p>
+
+            <p class="p">恢复后，明智的做法是在每个数据库上运行<samp class="ph codeph">ANALYZE</samp>，以便查询优化器可以得到有用的统计信息。
+                您也可以运行<samp class="ph codeph">vacuumdb -a -z</samp>分析所有数据库。
+                </p>
+
+            <p class="p"><samp class="ph codeph">pg_dumpall</samp>要求所有需要的表空间目录在还原之前都存在。
+                否则，对于非默认位置的数据库，数据库创建将失败。
+                </p>
+
+        </div>
+
+        <div class="section" id="topic1__section8">
+<h2 class="title sectiontitle">示例</h2>
+            
+            <p class="p">转储所有数据库：</p>
+
+            <pre class="pre codeblock">pg_dumpall &gt; db.out</pre>
+
+            <p class="p">要从此文件重新加载数据库，可以使用：</p>
+
+            <pre class="pre codeblock">psql template1 -f db.out</pre>
+
+            <p class="p">仅转储全局对象（包括资源队列）：</p>
+
+            <pre class="pre codeblock">pg_dumpall -g --resource-queues</pre>
+
+        </div>
+
+        <div class="section" id="topic1__section9">
+<h2 class="title sectiontitle">另见</h2>
+            
+            <p class="p">
+                <samp class="ph codeph">
+                    <a class="xref" href="pg_dump.html#topic1">pg_dump</a>
+                </samp>
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

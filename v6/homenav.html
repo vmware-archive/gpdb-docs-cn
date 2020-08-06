@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      关于此文档 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_common x6-0_common_gpdb-features has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">文档索引</a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a href="/6-0/common/gpdb-features.html">Greenplum数据库&reg; 6.0文档</a>
+      </li>
+      <li>
+         <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+      </li>
+      <li>
+        <a href="/6-0/security-guide/topics/preface.html">安全性配置指南</a>
+      </li>
+      <li>
+        <a href="/6-0/best_practices/intro.html">最佳实践指南</a>
+      </li>
+      <li>
+         <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+      </li>
+      <li>
+         <a href="/6-0/ref_guide/ref_guide.html">参考指南</a>
+      </li>
+      <li>
+         <a href="/6-0/pxf/overview_pxf.html">Greenplum平台扩展框架(PXF)</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" >
+    关于此文档
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<p>Greenplum数据库文档的源代码在Greenplum数据库和Pivotal Greenplum数据库。
+Pivotal Greenplum数据库的某些特性未在开源Greenplum数据库代码，但在Greenplum数据库文档中进行了描述。</p>
+
+<p>通常，术语“Pivotal Greenplum数据库”是指Pivotal的商业支持版本的Greenplum数据库，在描述仅商业Greenplum数据库软件支持的特性时在本文档中使用。
+术语“ Greenplum数据库”是指开源Greenplum数据库和Pivotal Greenplum数据库中都可用的特性。</p>
+
+<p>在包含主要特性文档的部分中提到了仅Pivotal Greenplum数据库支持的特性。</p>
+
+<p>以下是Pivotal Greenplum数据库特性，这些特性在开源Greenplum数据库中不受支持，但在本文档中可能会记录或引用。</p>
+
+<ul>
+<li><p>开源Greenplum数据库存储库中不包含用于生成Pivotal Greenplum数据库二进制安装程序包的代码。</p></li>
+<li><p>Greenplum数据库不包括EMC DD Boost集成。
+仅当在Greenplum主机上将Data Domain系统作为NFS共享挂载时，才支持备份到EMC Data Domain设备。</p></li>
+<li><p>Greenplum数据库不包括Symantec NetBackup集成。</p></li>
+<li><p>QuickpZ压缩方法在Greenplum数据库中不可用。
+在<codeph>CREATE TABLE [AS]</codeph>操作中指定QuickLZ <codeph>compresstype</codeph>值时将被忽略，但它将在随后的对该表的<codeph>INSERT</codeph>或<codeph>SELECT</codeph>操作中引起错误。</p></li>
+<li><p>仅Pivotal Greenplum数据库支持不推荐使用的<codeph>gpcheck</codeph>管理工具及其替代<codeph>gpsupport</codeph>。</p></li>
+<li><p>要将Greenplum平台扩展框架（PXF）与开源Greenplum数据库一起使用，必须分别构建和安装PXF服务器软件。
+请参阅Greenplum数据库和PXF存储库中的PXF README文件中的构建说明。</p></li>
+<li><p>本文档中有关联系Pivotal技术支持的建议仅适用于Pivotal Greenplum数据库客户。</p></li>
+</ul>
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

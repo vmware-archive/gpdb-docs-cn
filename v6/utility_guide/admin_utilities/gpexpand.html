@@ -1,0 +1,752 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpexpand |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpexpand has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpexpand
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">gpexpand</h1>
+
+  <div class="body">
+    <p class="p">在阵列中的新主机上扩展现有的Greenplum数据库。</p>
+
+    <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock"><strong class="ph b">gpexpand</strong> [{<strong class="ph b">-f</strong>|<strong class="ph b">--hosts-file</strong>} <var class="keyword varname">hosts_file</var>]
+                | {<strong class="ph b">-i</strong>|<strong class="ph b">--input</strong>} <var class="keyword varname">input_file</var> [<strong class="ph b">-B</strong> <var class="keyword varname">batch_size</var>]
+                | [{<strong class="ph b">-d</strong> | <strong class="ph b">--duration</strong>} <var class="keyword varname">hh:mm:ss</var> | {<strong class="ph b">-e</strong>|<strong class="ph b">--end</strong>} '<var class="keyword varname">YYYY-MM-DD hh:mm:ss</var>'] 
+        [<strong class="ph b">-a</strong>|<strong class="ph b">-analyze</strong>] 
+                  [<strong class="ph b">-n </strong> <var class="keyword varname">parallel_processes</var>]
+                | {<strong class="ph b">-r</strong>|<strong class="ph b">--rollback</strong>}
+                | {<strong class="ph b">-c</strong>|<strong class="ph b">--clean</strong>}
+        [<strong class="ph b">-v</strong>|<strong class="ph b">--verbose</strong>] [<strong class="ph b">-s</strong>|<strong class="ph b">--silent</strong>]
+        [{<strong class="ph b">-t</strong>|<strong class="ph b">--tardir</strong>} <var class="keyword varname">directory </var>]
+        [<strong class="ph b">-S</strong>|<strong class="ph b">--simple-progress </strong>]
+        
+        <strong class="ph b">gpexpand -?</strong> | <strong class="ph b">-h</strong> | <strong class="ph b">--help</strong> 
+        
+        <strong class="ph b">gpexpand --version</strong></pre>
+
+    </div>
+
+    <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">先决条件</h2>
+      
+      <ul class="ul">
+        <li class="li" id="topic1__kt137989">用户作为Greenplum数据库超级用户（<samp class="ph codeph">gpadmin</samp>）登录。
+        </li>
+
+        <li class="li" id="topic1__kt136978">新的Segment主机已被根据现有的Segment主机安装和配置。这包括：
+          <ul class="ul" id="topic1__ul_att_m1q_n4">
+            <li class="li" id="topic1__kt138636">配置硬件和操作系统</li>
+
+            <li class="li" id="topic1__kt138640">安装Greenplum软件</li>
+
+            <li class="li" id="topic1__kt138641">创建<samp class="ph codeph">gpadmin</samp>用户帐户</li>
+
+            <li class="li" id="topic1__kt138642">交换SSH密钥</li>
+
+          </ul>
+</li>
+
+        <li class="li" id="topic1__kt137052">用户的Segment主机上有足够的磁盘空间来临时保存最大表的副本。</li>
+
+        <li class="li">重新分布数据时，Greenplum数据库必须以生产模式运行。Greenplum数据库不能是受限模式或
+          Master模式。不能指定<samp class="ph codeph">gpstart</samp>的选项<samp class="ph codeph">-R</samp>或者<samp class="ph codeph">-m</samp>
+          启动Greenplum数据库。
+        </li>
+      
+      </ul>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 当<samp class="ph codeph">gpexpand</samp>正在执行segment初始化是，以下工具不能被运行。
+        <ul class="ul" id="topic1__ul_c3w_wdp_lgb">
+          <li class="li"><samp class="ph codeph">gpbackup</samp></li>
+
+          <li class="li"><samp class="ph codeph">gpcheck</samp></li>
+
+          <li class="li"><samp class="ph codeph">gpcheckcat</samp></li>
+
+          <li class="li"><samp class="ph codeph">gpconfig</samp></li>
+
+          <li class="li"><samp class="ph codeph">gppkg</samp></li>
+
+          <li class="li"><samp class="ph codeph">gprestore</samp></li>
+
+        </ul>
+</div>
+
+      <p class="p">有关扩展Greenplum系统的更多信息，请见<cite class="cite">Greenplum数据库管理员手册</cite>的<a class="xref" href="../../admin_guide/expand/expand-main.html">扩展Greenplum
+        数据库系统</a>。</p>
+
+    </div>
+
+    <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p"><samp class="ph codeph">gpexpand</samp>工具分两个阶段执行系统扩展：Segment初始化和表重新分布。
+      </p>
+
+      <p class="p">在初始化阶段，<samp class="ph codeph">gpexpand</samp>用一个输入文件运行，该文件指定新Segment的数据目录、
+        <var class="keyword varname">dbid</var>值和其他特征。用户可以手动创建输入文件，也可以在交互式对话中
+        按照提示进行操作。
+      </p>
+
+      <p class="p">如果用户选择使用交互式对话创建输入文件，则可以选择指定包含扩展主机列表的文件。在提示输入信息时，
+        如果用户的平台或命令shell限制可键入的主机名列表的长度，则可能不得不用<samp class="ph codeph">-f</samp>指定主机。
+      </p>
+
+      <p class="p">除了初始化Segment，初始化阶段还执行这些操作：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic1__kt138259">创建扩展模式<em class="ph i">gpexpand</em>以存储扩展操作的状态，包括表的详细状态。
+        </li>
+
+      </ul>
+
+      <p class="p">在表数据重分布阶段，<samp class="ph codeph">gpexpand</samp>会重分布表的数据，使数据在新旧segment
+        实例之间平衡。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 数据重新分布应该在低峰（相对高峰期）时段进行。重新分布可以在很长时间内分批次进行。</div>
+
+      <p class="p">要开始重分布阶段，可以通过运行<samp class="ph codeph">gpexpand</samp>并指定<samp class="ph codeph">-d</samp>（运行时间周期）
+        或<samp class="ph codeph">-e</samp>（结束时间）选项，或者不指定任何选项。如果客户指定了结束时间或运行周期，工具会在
+        扩展模式下重分布表，直到达到设定的结束时间或执行周期。如果没指定任何选项，工具会继续处理直到扩展模式的表
+        全部完成重分布。每张表都会通过<samp class="ph codeph">ALTER TABLE</samp>命令来在所有的节点包括新增加的segment实例
+        上进行重分布，并设置表的分布策略为其原始策略。如果<samp class="ph codeph">gpexpand</samp>完成所有表的重分布，它会
+        显示成功信息并退出。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 该工具在系统内部采用SSH连接执行各项操作任务。在大型Greenplum集群、云部署或每台主机部署了大量的
+        segment实例时，可能会遇到超过主机最大授权连接数限制的情况。此时需要考虑更新SSH配置参数<samp class="ph codeph">MaxStartups</samp>
+        以提高该限制。更多关于SSH配置的选项，请参考您的Linux分发版的SSH文档。</div>
+
+    </div>
+
+    <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">选项</h2>
+      
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">-a | --analyze</dt>
+
+          <dd class="dd pd">在扩展后运行<samp class="ph codeph">ANALYZE</samp>更新表的统计信息，默认是不运行<samp class="ph codeph">ANALYZE</samp>。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-B <var class="keyword varname">batch_size</var>
+</dt>
+
+          <dd class="dd pd">在暂停一秒钟之前发送给给定主机的远程命令的批量大小。默认值是<samp class="ph codeph">16</samp>，
+            有效值是1-128。</dd>
+
+          <dd class="dd pd">
+<samp class="ph codeph">gpexpand</samp>工具会发出许多设置命令，这些命令可能会超出主机的已验证
+            连接的最大阈值（由SSH守护进程配置中的<samp class="ph codeph">MaxStartups</samp>定义）。该一秒钟
+            的暂停允许在<samp class="ph codeph">gpexpand</samp>发出更多命令之前完成认证。
+          </dd>
+
+          <dd class="dd pd">默认值通常不需要改变。但是，如果<samp class="ph codeph">gpexpand</samp>由于连接错误
+            （例如<samp class="ph codeph">'ssh_exchange_identification: Connection closed by
+              remote host.'</samp>）而失败，则可能需要减少命令的最大数量。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-c | --clean</dt>
+
+          <dd class="dd pd">删除扩展模式。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-d | --duration <var class="keyword varname">hh:mm:ss</var>
+</dt>
+
+          <dd class="dd pd">扩展会话的持续时间。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-e | --end '<var class="keyword varname">YYYY-MM-DD hh:mm:ss</var>'</dt>
+
+          <dd class="dd pd">扩展会话的结束日期及时间。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-f | --hosts-file <var class="keyword varname">filename</var>
+</dt>
+
+          <dd class="dd pd">指定包含用于系统扩展的新主机列表的文件的名称。文件的每一行都必须包含一个主机名。
+          </dd>
+
+          <dd class="dd pd">该文件可以包含指定或不指定网络接口的主机名。<samp class="ph codeph">gpexpand</samp>工具处理这两种情况，
+            如果原始节点配置了多个网络接口，则将接口号添加到主机名的末尾。
+            <div class="note note">
+<span class="notetitle">Note:</span> Greenplum数据库Segment主机的命名习惯是<samp class="ph codeph">sdwN</samp>，其中<samp class="ph codeph">sdw</samp>
+              是前缀并且<samp class="ph codeph">N</samp>是数字。例如，<samp class="ph codeph">sdw1</samp>、<samp class="ph codeph">sdw2</samp>等等。
+              对于具有多个接口的主机，约定是在主机名后面添加破折号（<samp class="ph codeph">-</samp>）和数字。例如<samp class="ph codeph">sdw1-1</samp>
+              和<samp class="ph codeph">sdw1-2</samp>是主机<samp class="ph codeph">sdw1</samp>的两个接口名称。
+            </div>
+</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-i | --input <var class="keyword varname">input_file</var>
+</dt>
+
+          <dd class="dd pd">指定扩展配置文件的名称，其中为每个要添加的Segment包含一行，格式为：</dd>
+
+          <dd class="dd pd">
+            <var class="keyword varname">hostname:address:port:datadir:dbid:content:preferred_role</var>
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-n <var class="keyword varname">parallel_processes</var>
+</dt>
+
+          <dd class="dd pd">要同时重新分布的表的数量。有效值是1 - 96。</dd>
+
+          <dd class="dd pd">每个表重新分布过程都需要两个数据库连接：一个用于更改表，另一个用于在扩展方案中更新表的状态。
+            在增加<samp class="ph codeph">-n</samp>之前，检查服务器配置参数<samp class="ph codeph">max_connections</samp>的当前值，
+            并确保不超过最大连接限制。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-r | --rollback</dt>
+
+          <dd class="dd pd">回滚失败的扩展设置操作。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-s | --silent</dt>
+
+          <dd class="dd pd">以静默模式运行。在警告时，不提示确认就可继续。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-S | --simple-progress</dt>
+
+          <dd class="dd pd">如果指定，<samp class="ph codeph">gpexpand</samp>工具仅在Greenplum数据库表
+            <em class="ph i">gpexpand.expansion_progress</em>中记录最少的进度信息。该工具不在表
+            <em class="ph i">gpexpand.status_detail</em>中记录关系大小信息和状态信息。</dd>
+
+          <dd class="dd pd">指定此选项可通过减少写入<em class="ph i">gpexpand</em>表的进度信息量来提高性能。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">[-t | --tardir] <var class="keyword varname">directory</var>
+</dt>
+
+          <dd class="dd pd">Segment主机上一个目录的完全限定<var class="keyword varname">directory</var>，<samp class="ph codeph">gpexpand</samp>
+            工具会在其中拷贝一个临时的tar文件。该文件包含用于创建Segment实例的Greenplum数据库文件。
+            默认目录是用户主目录。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">-v | --verbose</dt>
+
+          <dd class="dd pd">详细调试输出。使用此选项，该工具将输出用于扩展数据库的所有DDL和DML。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--version</dt>
+
+          <dd class="dd pd">显示工具的版本号并退出。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">-? | -h | --help</dt>
+
+          <dd class="dd pd">显示在线帮助。</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">示例</h2>
+      
+      <p class="p">使用输入文件运行<samp class="ph codeph">gpexpand</samp>以初始化新Segment，并在postgres数据库中创建扩展模式：
+      </p>
+
+      <pre class="pre codeblock">$ gpexpand -i input_file</pre>
+
+      <p class="p">运行<samp class="ph codeph">gpexpand</samp>最长持续60小时，以将表重新分布给新的Segment：
+      </p>
+
+      <pre class="pre codeblock">$ gpexpand -d 60:00:00</pre>
+
+    </div>
+
+    <div class="section" id="topic1__section7">
+<h2 class="title sectiontitle">另见</h2>
+      
+      <p class="p">
+        <samp class="ph codeph"><cite class="cite">Greenplum数据库管理员手册</cite>中的<a class="xref" href="gpssh-exkeys.html#topic1">gpssh-exkeys</a></samp><a class="xref" href="../../admin_guide/expand/expand-main.html">扩展Greenplum系统</a>
+        。</p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

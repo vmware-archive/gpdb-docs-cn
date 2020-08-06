@@ -1,0 +1,2625 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      用资源组进行工作负载管理 |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_admin_guide x6-0_admin_guide_workload_mgmt_resgroups has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/versioning.html">关于Greenplum数据库发布版本号</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-system-level.html">设置系统级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-database-level.html">设置数据库级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-at-the-role-level.html">设置角色级别参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-setting-parameters-in-a-session.html">设置会话级别参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/compression.html">启用压缩</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用和数据持久化特征</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测故障的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检测故障Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-checking-the-log-files.html">检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复故障Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment故障中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复故障的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html">使用gpbackup和gprestore并行备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_vh5_1hd_tbb">需求和限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_x3s_lqj_tbb">备份或还原中包含的对象</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qgj_b3d_tbb">执行基本备份和还原操作</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_et4_b5d_tbb">过滤备份或恢复的内容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_qwd_d5d_tbb">配置邮件通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup.html#topic_xnj_b4c_tbb">理解备份文件</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html">使用gpbackup和gprestore创建增量备份</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_kvf_mkr_t2b">关于增量备份集</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-gpbackup-incremental.html#topic_btr_xfr_t2b">使用增量备份</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html">将gpbackup和gprestore与BoostFS一起使用</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_zp4_mvv_bdb">安装BoostFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-boostfs.html#topic_t4z_tvv_bdb">使用BoostFS备份和恢复</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugins.html">使用gpbackup存储插件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/backup-s3-plugin.html">使用带有gpbackup和gprestore的S3存储插件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/managing/backup-plugin-api.html">备份&#x2F;恢复存储插件API（Beta版）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_data.html">backup_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/backup_file.html">backup_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_backup.html">cleanup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/cleanup_plugin_for_restore.html">cleanup_plugin_for_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/plugin_api_version.html">plugin_api_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_data.html">restore_data</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/restore_file.html">restore_file</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_backup.html">setup_plugin_for_backup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/plugin_api/setup_plugin_for_restore.html">setup_plugin_for_restore</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/expand/expand-main.html">扩容Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-overview.html">系统扩容概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-planning.html">规划Greenplum系统扩容</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-nodes.html">准备并增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-initialize.html">初始化新节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/expand/expand-rm-schema.html">移除扩容Schema</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/monitoring/monitoring.html">Recommended Monitoring and Maintenance Tasks</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partIII.html">管理Greenplum数据库访问</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-lin-client.html">为Linux客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/kerberos-win-client.html">为Windows客户端进行Kerberos配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/roles_privs.html">管理角色与权限</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-schema.html">创建和管理SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/distribution.html">分布与倾斜</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/dml.html">插入, 更新, 和删除数据 </a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-root-partition.html">收集根分区统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA改变的行为</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/CTE-query.html">WITH查询（公用表表达式）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/textsearch/full-text-search.html">使用全文搜索</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/intro.html">关于全文搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/tables-indexes.html">在数据库表中搜索文本</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/controlling.html">控制文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/features.html">文本搜索附加功能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/parsers.html">文本搜索解析器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/dictionaries.html">文本搜索词典</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/configuration.html">文本搜索配置示例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/testing.html">测试和调试文本搜索</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/gist-gin.html">文本搜索的GiST和GIN索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/psql-support.html">psql支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/textsearch/limitations.html">限制</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/query/topics/query-profiling.html">查询分析</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-working-with-file-based-ext-tables.html">使用外部数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-external-tables.html">定义外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-pxf-protocol.html">pxf:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-s3-protocol.html">s3:&#x2F;&#x2F; 协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-creating-and-using-web-external-tables.html">创建和使用外部Web表</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-creating-external-tables---examples.html">Examples for Creating External Tables</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">Example 1—Single gpfdist instance on single-NIC machine</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-2-multiple-gpfdist-instances.html">Example 2—Multiple gpfdist instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-3-multiple-gpfdists-instances.html">Example 3—Multiple gpfdists instances </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-4-single-gpfdist-instance-with-error-logging.html">Example 4—Single gpfdist instance with error logging</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">Example 5—TEXT Format on a Hadoop Distributed File Server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-6-multiple-files-in-csv-format-with-header-rows.html">Example 6—Multiple files in CSV format with header rows</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-7-readable-web-external-table-with-script.html">Example 7—Readable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-8-writable-external-table-with-gpfdist.html">Example 8—Writable External Table with gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-9-writable-external-web-table-with-script.html">Example 9—Writable External Web Table with Script</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">Example 10—Readable and Writable External Tables with XML Transformations</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/external/g-foreign.html">使用外部表访问外部数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-devel-fdw.html">写一个外部数据的包装器</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-using-a-custom-protocol.html">使用一种自定协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限 </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/external/pxf-overview.html">使用PXF访问外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/transforming-xml-data.html">使用gpfdist和gpload转换外部数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-example-2-hadoop-file-server.html">例 2—Hadoop文件系统(pxf)</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例 </a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/partV.html">性能管理</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_intro.html">管理性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/wlmgmt_intro.html">Greenplum数据库内存总览</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/admin_guide/wlmgmt.html">管理资源</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt_resgroups.html">用资源组进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/workload_mgmt.html">使用资源队列</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    用资源组进行工作负载管理
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">用资源组进行工作负载管理</h1>
+
+  <div class="body">
+    <p class="p">用户可以使用资源组在Greenplum数据库中设置和实施CPU，内存和并发事务限制。定义资源组后，可以将该组分配给一个或多个Greenplum数据库角色，或分配给外部组件（如PL /Container），以便控制这些角色或组件使用的资源。</p>
+
+    <p class="p">当用户将资源组分配到角色（基于角色的资源组），用户定义该组的资源限制应用于所有的该组的所有角色。例如，对于一个资源组的内存限制标识了该组所有Greenplum数据库用户提交的运行事务的最大内存使用量。</p>
+
+    <p class="p">同样，将资源组分配给外部组件时，组限制将应用于组件的所有正在运行的实例。 例如，如果为PL/Container外部组件创建资源组，则为组定义的内存限制将指定为其分配组的每个PL/Container运行时的所有正在运行的实例的最大内存使用量。</p>
+
+    <p class="p">该章节包含以下小节</p>
+
+    <ul class="ul" id="topic1__ul_wjf_1wy_sp">
+      <li class="li" id="topic1__im168064">
+        <a class="xref" href="#topic8339intro">理解角色和组件资源组</a>
+      </li>
+
+      <li class="li" id="topic1__im168064x">
+        <a class="xref" href="#topic8339introattrlim">资源组的参数和限制</a><ul class="ul">
+          <li class="li" id="topic1__im16806az">
+            <a class="xref" href="#topic8339777">内存审计器</a>
+          </li>
+
+          <li class="li" id="topic1__im16806a">
+            <a class="xref" href="#topic8339717179">事务并行限制</a>
+          </li>
+
+          <li class="li" id="topic1__im16806b">
+            <a class="xref" href="#topic833971717">CPU限制</a>
+          </li>
+
+          <li class="li" id="topic1__im16806c">
+            <a class="xref" href="#topic8339717">内存限制</a>
+          </li>
+
+        </ul>
+</li>
+
+      
+      <li class="li" id="topic1__im16806d">
+        <a class="xref" href="#topic71717999">使用资源组</a>
+        <ul class="ul" id="topic1__ul_wjf_1wy_spXX">
+          <li class="li" id="topic1__im16806e">
+            <a class="xref" href="#topic8">启用资源组</a>
+          </li>
+
+          <li class="li" id="topic1__im16806f">
+            <a class="xref" href="#topic10">创建资源组</a>
+          </li>
+
+          <li class="li" id="topic1__im16806g">
+            <a class="xref" href="#topic17">将资源组分配给角色</a>
+          </li>
+
+          <li class="li" id="topic1__im16806h">
+            <a class="xref" href="#topic22">监视资源组状态</a>
+          </li>
+
+        </ul>
+</li>
+
+      <li class="li">
+        <a class="xref" href="#topic777999">资源组常见问题解答</a>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>Parent topic:</strong> <a class="link" href="wlmgmt.html" title="Greenplum数据为用户提供了根据业务需求对查询进行排序以及提供资源的功能， 该功能的主要目的是为了防止在资源不可用时仍然发起查询的行为。">管理资源</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic8339intro">
+    <h2 class="title topictitle2">理解角色和组件资源组</h2>
+
+    <div class="body">
+      <p class="p">Greenplum数据库支持两类型型的资源组：管理角色资源的组，以及管理外部组件（如PL/Container）资源的组。</p>
+
+      <p class="p">资源组的最常见应用程序是管理不同角色可以在Greenplum数据库群集中并发执行的活动查询的数量。 用户还可以管理Greenplum为每个查询分配的CPU和内存资源量。</p>
+
+      <p class="p">角色的资源组使用Linux控制组（cgroup）进行CPU资源管理。Greenplum数据库使用称为<samp class="ph codeph">vmtracker</samp>的内存审计器在内部为这些资源组跟踪虚拟内存。</p>
+
+      <p class="p">当用户执行查询时，Greenplum数据库会根据为资源组定义的一组限制来评估查询。如果尚未达到组的资源限制并且查询不会导致组超过并发事务限制，Greenplum数据库会立即执行查询。如果不满足这些条件，Greenplum数据库会对查询进行排队。例如，如果已达到资源组的最大并发事务数，则后续查询将排队，并且必须等待其他查询在运行之前完成。当资源组的并发和内存限制被更改为足够大的值时，Greenplum数据库也可以执行挂起的查询。</p>
+
+      <p class="p">在角色的资源组中，事务以先进先出的方式进行评估。 Greenplum数据库定期评估系统的活动工作负载，根据需要重新分配资源和启动/排队作业。</p>
+
+      <p class="p">用户还可以使用资源组来管理外部组件（如PL/Container）的CPU和内存资源。 外部组件的资源组使用Linux cgroup来管理组件的总CPU和总内存资源。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> Greenplum数据库的容器化部署（例如Greenplum for Kubernetes）可能会创建一组嵌套的cgroup，以管理主机系统资源。 嵌套cgroup会影响Greenplum数据库资源组对CPU百分比，CPU核心和内存的限制（Greenplum数据库外部组件除外）。 Greenplum数据库资源组系统资源限制基于父组的配额。
+		  <p class="p">例如，Greenplum数据库在cgroup演示中运行，Greenplum Database cgroup嵌套在cgroup演示中。 如果cgroup演示配置CPU限制为系统CPU资源的60％且Greenplum数据库资源组CPU限制设置为90％，则主机系统CPU资源的Greenplum数据库限制为54％（0.6 x 0.9）。</p>
+<p class="p">嵌套的cgroup不会影响Greenplum数据库外部组件（如PL/Container）的内存限制。 仅当用于管理Greenplum数据库资源的cgroup未嵌套时，才能管理外部组件的内存限制，cgroup配置为顶级cgroup。</p>
+<p class="p">有关配置cgroup以供资源组使用的信息，请参阅<a class="xref" href="#topic71717999">使用资源组</a>.</p>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic8339introattrlim">
+    <h2 class="title topictitle2">资源组的参数和限制</h2>
+
+    <div class="body">
+      <p class="p">当用户创建一个资源组时，请注意以下几点：</p>
+
+      <ul class="ul">
+        <li class="li">通过识别该组存储器是如何审核指定资源组的类型。</li>
+
+        <li class="li">提供一组限制，用于确定组可用的CPU和内存资源量。</li>
+
+      </ul>
+
+      <p class="p">资源组的参数和限制：</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic8339introattrlim__resgroup_limit_descriptions" class="table" frame="border" border="1" rules="all">
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="50%" id="d112996e203">限制类型</th>
+
+              <th class="entry" valign="top" width="50%" id="d112996e206">描述</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112996e203 ">MEMORY_AUDITOR</td>
+
+              <td class="entry" valign="top" width="50%" headers="d112996e206 ">用于资源组的内存审计器。 如果要将资源组分配给角色，则需要<samp class="ph codeph">vmtracker</samp>缺省值）。 指定<samp class="ph codeph">cgroup</samp>以将资源组分配给外部组件。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112996e203 ">CONCURRENCY</td>
+
+              <td class="entry" valign="top" width="50%" headers="d112996e206 ">资源组中允许的最大并发事务数，包括活动和空闲事务。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112996e203 ">CPU_RATE_LIMIT</td>
+
+              <td class="entry" valign="top" width="50%" headers="d112996e206 ">此资源组可用的CPU资源百分比。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112996e203 ">CPUSET</td>
+
+              <td class="entry" valign="top" width="50%" headers="d112996e206 ">为该资源组保留的CPU核心数</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112996e203 ">MEMORY_LIMIT</td>
+
+              <td class="entry" valign="top" width="50%" headers="d112996e206 ">该资源组可用的内存资源百分比。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112996e203 ">MEMORY_SHARED_QUOTA</td>
+
+              <td class="entry" valign="top" width="50%" headers="d112996e206 ">提交到该资源组的事务之间共享的内存资源百分比</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="50%" headers="d112996e203 ">MEMORY_SPILL_RATIO</td>
+
+              <td class="entry" valign="top" width="50%" headers="d112996e206 ">内存密集型事务的内存使用阈值。当事务达到此阈值时，它将溢出到磁盘。</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 不对<samp class="ph codeph">SET</samp>，<samp class="ph codeph">RESET</samp>和<samp class="ph codeph">SHOW</samp>命令强制执行资源限制。</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic8339777">
+    <h2 class="title topictitle2">内存审计器</h2>
+
+    <div class="body">
+      <p class="p"><samp class="ph codeph">MEMORY_AUDITOR</samp>属性通过标识组的内存审计器来指定资源组的类型。 指定<samp class="ph codeph">vmtracker</samp><samp class="ph codeph">MEMORY_AUDITOR</samp>的资源组标识角色的资源组。 指定<samp class="ph codeph">cgroup</samp><samp class="ph codeph">MEMORY_AUDITOR</samp>的资源组标识外部组件的资源组。</p>
+
+      <p class="p">默认的<samp class="ph codeph">MEMORY_AUDITOR</samp>是<samp class="ph codeph">vmtracker</samp>。</p>
+
+      <p class="p">用户为资源组指定的<samp class="ph codeph">MEMORY_AUDITOR</samp>确定Greenplum数据库是否以及如何使用限制属性来管理CPU和内存资源：</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic8339777__resgroup_limit_descriptions" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="33.33333333333333%" id="d112996e352">限制类型</th>
+
+              <th class="entry" valign="top" width="33.33333333333333%" id="d112996e355">角色资源组</th>
+
+              <th class="entry" valign="top" width="33.33333333333333%" id="d112996e358">外部组件资源组</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e352 ">CONCURRENCY</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e355 ">是</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e358 ">否；必须为零（0）。</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e352 ">CPU_RATE_LIMIT</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e355 ">是</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e358 ">是</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e352 ">CPUSET</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e355 ">是</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e358 ">是</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e352 ">MEMORY_LIMIT</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e355 ">是</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e358 ">Yes</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e352 ">MEMORY_SHARED_QUOTA</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e355 ">是</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e358 ">视组件决定</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e352 ">MEMORY_SPILL_RATIO</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e355 ">是</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e358 ">视组件决定</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic8339717179">
+    <h2 class="title topictitle2">事务并行限制</h2>
+
+    <div class="body">
+      <div class="p">
+<samp class="ph codeph">CONCURRENCY</samp>限制控制角色资源组允许的最大并发事务数。
+        <div class="note note">
+<span class="notetitle">Note:</span> <samp class="ph codeph">CONCURRENCY</samp>限制不适用于外部组件的资源组，对于此类组必须设置为零（0）。</div>
+</div>
+
+      <p class="p">角色的每个资源组在逻辑上被划分为等于<samp class="ph codeph">CONCURRENCY</samp>限制的固定数量的槽。 Greenplum数据库为这些插槽分配相等，固定百分比的内存资源。</p>
+
+      <p class="p">角色资源组的默认<samp class="ph codeph">CONCURRENCY</samp>限制值为20。</p>
+
+      <p class="p">Greenplum数据库将资源组达到<samp class="ph codeph">CONCURRENCY</samp>限制后提交的任何事务排队。 当正在运行的事务完成时，如果存在足够的内存资源，Greenplum Database将排队并执行最早的排队事务。</p>
+
+      <p class="p">用户可以设置服务器配置参数<samp class="ph codeph"><a class="xref" href="../ref_guide/config_params/guc-list.html#gp_resource_group_bypass">gp_resource_group_bypass</a></samp>来绕过资源组的并行限制。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic833971717">
+    <h2 class="title topictitle2">CPU限制</h2>
+
+    <div class="body">
+      <p class="p">通过将特定CPU核心分配给组，或通过标识要分配给组的分段CPU资源的百分比，可以配置要为段主机上的资源组保留的CPU资源份额。 Greenplum数据库使用<samp class="ph codeph">CPUSET</samp>和<samp class="ph codeph">CPU_RATE_LIMIT</samp>资源组限制来标识CPU资源分配模式。 配置资源组时，必须仅指定其中一个限制。</p>
+
+      <p class="p">用户可以在Greenplum数据库群集中同时使用两种CPU资源分配模式。 用户还可以在运行时更改资源组的CPU资源分配模式。</p>
+
+      <p class="p"><samp class="ph codeph"><a class="xref" href="../ref_guide/config_params/guc-list.html#gp_resource_group_cpu_limit">gp_resource_group_cpu_limit</a></samp>服务器配置参数标识要分配给每个Greenplum数据库段主机上的资源组的系统CPU资源的最大百分比。 无论为组配置的CPU分配模式如何，此限制都将控制段主机上所有资源组的最大CPU使用率。 剩余的未预留CPU资源用于OS内核和Greenplum数据库辅助守护进程。 默认的<samp class="ph codeph">gp_resource_group_cpu_limit</samp>值为.9（90％）。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 如果用户在Greenplum数据库群集节点上运行其他工作负载，则默认的<samp class="ph codeph">gp_resource_group_cpu_limit</samp>值可能不会留下足够的CPU资源，因此请务必相应地调整此服务器配置参数。</div>
+
+      <div class="note warning">
+<span class="warningtitle">Warning:</span> 避免将<samp class="ph codeph">gp_resource_group_cpu_limit</samp>设置为高于.9的值。 这样做可能会导致高工作负载查询接近所有CPU资源，可能使Greenplum数据库辅助进程匮乏。</div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="cpuset">
+      <h3 class="title topictitle3">按核心数分配CPU资源</h3>
+
+      <div class="body">
+        <p class="p">用户可以使用<samp class="ph codeph">CPUSET</samp>属性标识要为资源组保留的CPU核心。 用户指定的CPU核心必须在系统中可用，并且不能与为其他资源组保留的任何CPU核心重叠。 （尽管Greenplum数据库使用用户专门为该组分配给资源组的核心，但请注意，系统中的非Greenplum进程也可以使用这些CPU核心。）</p>
+
+        <p class="p">配置<samp class="ph codeph">CPUSET</samp>时，请指定以逗号分隔的单核数字或数字间隔列表。必须将核心数字/间隔用单引号括起来，例如“1,3-4”。</p>
+
+        <div class="p">将CPU核心分配给<samp class="ph codeph">CPUSET</samp>组时，请考虑以下事项：<ul class="ul">
+            <li class="li">使用<samp class="ph codeph">CPUSET</samp>创建的资源组仅使用指定的核心。如果组中没有正在运行的查询，则保留的核心处于空闲状态，并且其他资源组中的查询无法使用这些核心。 请考虑最小化<samp class="ph codeph">CPUSET</samp>组的数量以避免浪费系统CPU资源。</li>
+
+            <li class="li">CPU核心0未分配：在以下情况下，CPU核心0用作回退机制：<ul class="ul">
+                <li class="li">
+<samp class="ph codeph">admin_group</samp>和<samp class="ph codeph">default_group</samp>至少需要一个CPU核心。 保留所有CPU内核后，Greenplum Database会将CPU内核0分配给这些默认组。 在这种情况下，用户为其分配CPU核心0的资源组与<samp class="ph codeph">admin_group</samp>和<samp class="ph codeph">default_group</samp>共享核心。</li>
+
+                <li class="li">如果通过一个节点替换重新启动Greenplum数据库集群，并且节点没有足够的内核来为所有<samp class="ph codeph">CPUSET</samp>资源组提供服务，则会自动为这些组分配CPU核心0以避免系统启动失败。</li>
+
+              </ul>
+</li>
+
+            <li class="li">将核心分配给资源组时，请使用尽可能少的核心编号。 如果替换Greenplum数据库节点并且新节点的CPU核心数少于原始节点，或者备份数据库并希望在具有较少CPU核心的节点的群集上还原它，则操作可能会失败。 例如，如果用户的Greenplum数据库群集有16个核心，则分配核心1-7是最佳选择。 如果创建资源组并将CPU核心9分配给该组，则数据库还原到8核心节点将失败。</li>
+
+          </ul>
+</div>
+
+        <p class="p">使用<samp class="ph codeph">CPUSET</samp>配置的资源组在CPU资源上具有更高的优先级。 在段主机上配置了<samp class="ph codeph">CPUSET</samp>的所有资源组的最大CPU资源使用百分比是保留的CPU核心数除以所有CPU核心数乘以100。</p>
+
+        <p class="p">为资源组配置<samp class="ph codeph">CPUSET</samp>时，Greenplum数据库会禁用组的<samp class="ph codeph">CPU_RATE_LIMIT</samp>并将值设置为-1。</p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 在为Greenplum数据库群集启用基于资源组的资源管理<em class="ph i">后</em>，必须为资源组配置<samp class="ph codeph">CPUSET</samp>。</div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="cpu_rate_limit">
+      <h3 class="title topictitle3">按百分比分配CPU资源</h3>
+
+      <div class="body">
+        <p class="p">Greenplum数据库节点CPU百分比在Greenplum节点上的每个段之间平均分配。 使用<samp class="ph codeph">CPU_RATE_LIMIT</samp>配置的每个资源组都保留用于资源管理的段CPU的指定百分比。</p>
+
+        <p class="p">用户可以为资源组指定的最小<samp class="ph codeph">CPU_RATE_LIMIT</samp>百分比为1，最大值为100。</p>
+
+        <p class="p">在Greenplum数据库群集中定义的所有资源组指定的<samp class="ph codeph">CPU_RATE_LIMIT</samp>的总和不得超过100。</p>
+
+        <div class="p">使用<samp class="ph codeph">CPU_RATE_LIMIT</samp>在段主机上配置的所有资源组的最大CPU资源使用量是以下值中的最小值：<ul class="ul">
+            <li class="li">非保留CPU核心数除以所有CPU核心数乘以100，和</li>
+
+            <li class="li">
+<samp class="ph codeph">gp_resource_group_cpu_limit</samp>值。</li>
+
+          </ul>
+</div>
+
+        <p class="p">配置有<samp class="ph codeph">CPU_RATE_LIMIT</samp>的资源组的CPU资源分配是弹性的，因为Greenplum数据库可以将空闲资源组的CPU资源分配给更繁忙的资源组。在这种情况下，当该资源组接下来变为活动时，CPU资源被重新分配给先前空闲的资源组。如果多个资源组繁忙，则根据其<samp class="ph codeph">CPU_RATE_LIMIT</samp>的比率为它们分配任何空闲资源组的CPU资源。例如，使用<samp class="ph codeph">CPU_RATE_LIMIT</samp>为40创建的资源组将分配两倍于使用<samp class="ph codeph">CPU_RATE_LIMIT</samp> 为20创建的资源组的额外CPU资源。</p>
+
+        <p class="p">为资源组配置<samp class="ph codeph">CPU_RATE_LIMIT</samp>时，Greenplum数据库会禁用组的<samp class="ph codeph">CPUSET</samp>并将值设置为-1。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic8339717">
+    <h2 class="title topictitle2">内存限制</h2>
+
+    <div class="body">
+      <p class="p">启用资源组后，将在Greenplum数据库节点，段和资源组级别管理内存使用情况。用户还可以使用角色资源组在事务级别管理内存。</p>
+
+      <p class="p"><samp class="ph codeph"><a class="xref" href="../ref_guide/config_params/guc-list.html#gp_resource_group_memory_limit">gp_resource_group_memory_limit</a></samp>服务器配置参数标识要分配给每个Greenplum数据库段主机上的资源组的系统内存资源的最大百分比。默认的<samp class="ph codeph">gp_resource_group_memory_limit</samp>值为.7（70％）。</p>
+
+      <p class="p">Greenplum数据库节点上可用的内存资源在节点上的每个段之间进一步平均分配。当基于资源组的资源管理处于活动状态时，分配给段主机上每个段的内存量是Greenplum数据库可用的内存乘以<samp class="ph codeph">gp_resource_group_memory_limit</samp>服务器配置参数，并除以主机上活动主段的数量：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">
+rg_perseg_mem = ((RAM * (vm.overcommit_ratio / 100) + SWAP) * gp_resource_group_memory_limit) / num_active_primary_segments</pre>
+
+      </div>
+
+      <p class="p">每个资源组保留用于资源管理的段内存的百分比。用户可以通过在创建资源组时指定的<samp class="ph codeph">MEMORY_LIMIT</samp>值来标识此百分比。用户可以为资源组指定的最小<samp class="ph codeph">MEMORY_LIMIT</samp>百分比为1，最大值为100。</p>
+
+      <p class="p">在Greenplum数据库群集中定义的所有资源组指定的<samp class="ph codeph">MEMORY_LIMIT</samp>总和不得超过100。</p>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="mem_roles">
+      <h3 class="title topictitle3">于角色的资源组的附加内存限制</h3>
+
+      <div class="body">
+        <p class="p">资源组为角色保留的内存进一步分为固定和共享组件。创建资源组时指定的<samp class="ph codeph">MEMORY_SHARED_QUOTA</samp>值标识可在当前运行的事务之间共享的预留资源组内存的百分比。此记忆按先到先得的原则分配。正在运行的事务可以使用<samp class="ph codeph">MEMORY_SHARED_QUOTA</samp>中的任何一个，一些或全部。</p>
+
+        <p class="p">用户可以指定的最小<samp class="ph codeph">MEMORY_SHARED_QUOTA</samp>为0，最大值为100.默认<samp class="ph codeph">MEMORY_SHARED_QUOTA</samp>为20。</p>
+
+        <div class="p">如前所述，<samp class="ph codeph">CONCURRENCY</samp>标识角色资源组中允许的最大并发运行事务数。由资源组保留的固定存储器被分成<samp class="ph codeph">CONCURRENCY</samp>个事务槽数。每个插槽分配一个固定的，相等数量的资源组内存。Greenplum数据库会保证每个事务的固定内存。<div class="fig fignone" id="mem_roles__fig_py5_1sl_wlrg">
+<span class="figcap">Figure 1. 资源组内存分配</span>
+            
+            <br><div class="imageleft"><img class="image imageleft" id="mem_roles__image_iqn_dsl_wlrg" src="graphics/resgroupmem.png" height="918" width="1188"></div>
+<br>
+          </div>
+</div>
+
+        <p class="p">当查询的内存使用量超过固定的每事务内存使用量时，Greenplum数据库会将可用的资源组共享内存分配给查询。特定事务槽可用的最大资源组内存量是事务的固定内存和完整资源组共享内存分配的总和。</p>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic833glob">
+        <h4 class="title topictitle4">全局共享内存</h4>
+
+        <div class="body">
+          <p class="p">为所有资源组（包括默认<samp class="ph codeph">admin_group</samp>和<samp class="ph codeph">default_group</samp>组）配置的<samp class="ph codeph">MEMORY_LIMIT</samp>的总和标识预留资源组内存的百分比。如果此总和小于100，则Greenplum数据库会将任何未预留的内存分配给资源组全局共享内存池。</p>
+
+          <p class="p">资源组全局共享内存仅适用于使用<samp class="ph codeph">vmtracker</samp>内存审计器配置的资源组。</p>
+
+          <p class="p">在可用时，Greenplum数据库在首次分配插槽和资源组共享内存后为事务分配全局共享内存。Greenplum数据库以先到先得的方式为事务分配资源组全局共享内存。</p>
+
+          <div class="note note">
+<span class="notetitle">Note:</span> Greenplum数据库跟踪但不主动监视资源组中的事务内存使用情况。如果资源组的内存使用量超过其固定内存分配，则在满足以下<em class="ph i">所有</em>条件时，资源组中的事务将失败：<ul class="ul">
+              <li class="li">没有可用的资源组共享内存。</li>
+
+              <li class="li">没有可用的全局共享内存。</li>
+
+              <li class="li">该事务请求额外的内存。</li>
+
+            </ul>
+</div>
+
+          <p class="p">当用户为全局共享内存池保留一些未分配的内存（例如，10-20％）时，Greenplum数据库会更有效地使用资源组内存。全局共享内存的可用性还有助于缓解内存消耗或不可预测的查询失败。</p>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic833sp">
+        <h4 class="title topictitle4">查询运算符内存</h4>
+
+        <div class="body">
+          <p class="p">大多数查询运算符都是非内存密集型的; 也就是说，在处理过程中，Greenplum数据库可以将其数据保存在已分配的内存中。当内存密集型查询运算符（如连接和排序）处理的数据多于可以保存在内存中的数据时，数据会溢出到磁盘。</p>
+
+          <p class="p"><samp class="ph codeph"><a class="xref" href="../ref_guide/config_params/guc-list.html#gp_resgroup_memory_policy">gp_resgroup_memory_policy</a></samp>服务器配置参数控制所有查询运算符的内存分配和分配算法。Greenplum数据库支持<samp class="ph codeph">eager-free</samp>（默认）和资源组的<samp class="ph codeph">自动</samp>内存策略。当用户指定自动策略时，Greenplum数据库使用资源组内存限制在查询运算符之间分配内存，为非内存密集型运算符分配固定大小的内存，其余为内存密集型运算符。当<samp class="ph codeph">eager_free</samp>策略到位时，Greenplum数据库通过在稍后的查询阶段将已完成处理的运算符释放的内存重新分配给运算符，从而更好地在运算符之间分配内存。</p>
+
+          <p class="p"><samp class="ph codeph">MEMORY_SPILL_RATIO</samp>标识事务中内存密集型运算符的内存使用阈值。达到此阈值时，事务将溢出到磁盘。Greenplum数据库使用<samp class="ph codeph">MEMORY_SPILL_RATIO</samp>来确定要分配给事务的初始内存。</p>
+
+          <p class="p">可以为资源组指定的最小<samp class="ph codeph">MEMORY_SPILL_RATIO</samp>百分比为0.最大值为100.默认<samp class="ph codeph">MEMORY_SPILL_RATIO</samp>为20。	</p>
+
+          <p class="p">在为角色创建资源组时定义<samp class="ph codeph">MEMORY_SPILL_RATIO</samp>，用户可以使用<samp class="ph codeph"><a class="xref" href="../ref_guide/config_params/guc-list.html#memory_spill_ratio">memory_spill_ratio</a></samp>服务器配置参数在会话级别基于每个查询选择性地设置此限制。</p>
+
+          <div class="section" xml:lang="en" lang="en" id="topic833sp__topic833low">
+<h5 class="title sectiontitle">memory_spill_ratio和低内存查询</h5>
+            
+            <div class="p">	低<samp class="ph codeph">memory_spill_ratio</samp>设置（例如，在0-2％范围内）已被证明可以提高具有低内存要求的查询的性能。使用<samp class="ph codeph">memory_spill_ratio</samp>服务器配置参数可以基于每个查询覆盖该设置。例如：
+              <pre class="pre codeblock">SET memory_spill_ratio=0;</pre>
+</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic833cons">
+      <h3 class="title topictitle3">其他内存注意事项</h3>
+
+      <div class="body">
+        <p class="p">角色的资源组跟踪通过<samp class="ph codeph">palloc()</samp>函数分配的所有Greenplum数据库内存。使用Linux<samp class="ph codeph">palloc()</samp>函数分配的内存不受这些资源组的管理。要确保角色的资源组准确跟踪内存使用情况，请避免使用<samp class="ph codeph">malloc()</samp>在自定义Greenplum数据库用户定义函数中分配大量内存。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic71717999">
+    <h2 class="title topictitle2">使用资源组</h2>
+
+    <div class="body">
+      <div class="note important">
+<span class="importanttitle">Important:</span> 在RedHat 6.x和CentOS 6.x系统上启用基于资源组的工作负载管理时，已观察到显着的Greenplum数据库性能下降。此问题是由Linux cgroup内核错误引起的。这个内核错误已在CentOS 7.x和Red Hat 7.x系统中修复。<p class="p">如果用户使用RedHat 6并且资源组的性能对于用户的用例是可接受的，请将用户的内核升级到版本2.6.32-696或更高版本，以便从cgroups实现的其他修复程序中受益。</p>
+</div>
+
+      <div class="section" xml:lang="en" lang="en" id="topic71717999__topic833">
+<h3 class="title sectiontitle">条件</h3>
+        
+        <p class="p">Greenplum数据库资源组使用Linux控制组（cgroup）来管理CPU资源。Greenplum数据库还使用cgroup来管理外部组件的资源组的内存。使用cgroups，Greenplum将Greenplum进程的CPU和外部组件内存使用与节点上的其他进程隔离开来。这允许Greenplum在每个资源组的基础上支持CPU和外部组件内存使用限制。</p>
+
+        <p class="p">有关cgroup的详细信息，请参阅Linux发行版的控制组文档。</p>
+
+        <p class="p">在Greenplum数据库群集中的每个节点上完成以下任务，以设置用于资源组的cgroup：</p>
+
+        <ol class="ol">
+          <li class="li">如果用户在Greenplum数据库群集节点上运行SuSE 11+操作系统，则必须在每个节点上启用交换记帐并重新启动Greenplum数据库群集。<samp class="ph codeph">swapaccount</samp>内核引导参数控制SuSE 11+系统上的交换记帐设置。设置此引导参数后，必须重新引导系统。有关详细信息，请参阅SuSE 11发行说明中的​​<a class="xref" href="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/11-SP2/#fate-310471" target="_blank">Cgroup交换控制</a>讨论。用户必须是超级用户或具有<samp class="ph codeph">sudo</samp>访问权限才能配置内核引导参数和重新引导系统。</li>
+
+          <li class="li">创建Greenplum数据库cgroups配置文件<samp class="ph codeph">/etc/cgconfig.d/gpdb.conf</samp>。用户必须是超级用户或具有<samp class="ph codeph">sudo</samp>访问权限才能创建此文件：
+            <pre class="pre codeblock">sudo vi /etc/cgconfig.d/gpdb.conf</pre>
+
+          </li>
+
+          <li class="li">将以下配置信息添加到
+              <samp class="ph codeph">/etc/cgconfig.d/gpdb.conf</samp>: <pre class="pre codeblock">group gpdb {
+     perm {
+         task {
+             uid = gpadmin;
+             gid = gpadmin;
+         }
+         admin {
+             uid = gpadmin;
+             gid = gpadmin;
+         }
+     }
+     cpu {
+     }
+     cpuacct {
+     }
+     cpuset {
+     }
+     memory {
+     }
+} </pre>
+
+            <p class="p">此内容配置由<samp class="ph codeph">gpadmin</samp>用户管理的CPU，CPU计算，CPU核心集和内存控制组。Greenplum数据库仅将内存控制组用于使用<samp class="ph codeph">cgroup</samp><samp class="ph codeph">MEMORY_AUDITOR</samp>创建的资源组。</p>
+
+          </li>
+
+          <li class="li">如果尚未安装并正在运行，请安装Control Groups操作系统软件包，并在每个Greenplum Database节点上启动cgroups服务。用户运行以执行这些任务的命令将根据节点上安装的操作系统而有所不同。用户必须是超级用户或具有<samp class="ph codeph">sudo</samp>访问权限才能运行这些命令：<ul class="ul">
+              <li class="li"> Redhat/CentOS 7.x 系统：
+                <pre class="pre codeblock">sudo yum install libcgroup-tools
+sudo cgconfigparser -l /etc/cgconfig.d/gpdb.conf </pre>
+
+              </li>
+
+              <li class="li"> Redhat/CentOS 6.x systems:
+                <pre class="pre codeblock">sudo yum install libcgroup
+sudo service cgconfig start </pre>
+
+              </li>
+
+              <li class="li"> SuSE 11+ systems:
+                <pre class="pre codeblock">sudo zypper install libcgroup-tools
+sudo cgconfigparser -l /etc/cgconfig.d/gpdb.conf </pre>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+          <li class="li">标识节点的<samp class="ph codeph">cgroup</samp>目录安装点：
+              <pre class="pre codeblock">grep cgroup /proc/mounts</pre>
+
+			  <p class="p">第一行输出标识<samp class="ph codeph">cgroup</samp>挂载点。</p>
+
+          </li>
+
+          <li class="li">通过运行以下命令验证是否正确设置了Greenplum Database cgroups配置。将&lt;cgroup_mount_point&gt; 替换为用户在上一步中标识的安装点：
+			  <pre class="pre codeblock">ls -l &lt;cgroup_mount_point&gt;/cpu/gpdb
+ls -l &lt;cgroup_mount_point&gt;/cpuacct/gpdb
+ls -l &lt;cgroup_mount_point&gt;/cpuset/gpdb
+ls -l &lt;cgroup_mount_point&gt;/memory/gpdb</pre>
+
+            <p class="p">如果这些目录存在且由<samp class="ph codeph">gpadmin:gpadmin</samp>拥有，则用户已成功为Greenplum数据库CPU资源管理配置了cgroup。</p>
+
+          </li>
+
+          <li class="li">要在系统重新启动时自动重新创建Greenplum数据库所需的cgroup层次结构和参数，请将系统配置为启用Linux cgroup服务守护程序<samp class="ph codeph">cgconfig.service</samp>（Redhat / CentOS 7.x和SuSE 11+）或<samp class="ph codeph">cgconfig</samp>（Redhat / CentOS 6.x） ）节点启动时。例如，在首选服务自动启动工具中配置以下cgroup服务命令之一：<ul class="ul">
+              <li class="li"> Redhat/CentOS 7.x 和 SuSE11+ 系统：
+                <pre class="pre codeblock">sudo systemctl enable cgconfig.service</pre>
+
+              </li>
+
+              <li class="li"> Redhat/CentOS 6.x systems: <pre class="pre codeblock">sudo chkconfig cgconfig on</pre>
+</li>
+
+            </ul>
+
+            <p class="p">用户可以选择其他方法来重新创建Greenplum数据库资源组cgroup层次结构。</p>
+
+          </li>
+
+        </ol>
+
+      </div>
+
+      <div class="section" xml:lang="en" lang="en" id="topic71717999__topic8339191">
+<h3 class="title sectiontitle">程序</h3>
+        
+        <p class="p">要在Greenplum数据库群集中使用资源组，用户需要：</p>
+
+        <ol class="ol">
+          <li class="li">
+<a class="xref" href="#topic8">为Greenplum数据库群集启用资源组</a>。</li>
+
+          <li class="li">
+<a class="xref" href="#topic10">创建资源组</a>。</li>
+
+          <li class="li">
+<a class="xref" href="#topic17">将资源组分配给一个或多个角色</a>。</li>
+
+          <li class="li">
+<a class="xref" href="#topic22">使用资源管理系统视图来监视和管理资源组</a>。</li>
+
+        </ol>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic8">
+    <h2 class="title topictitle2">启用资源组</h2>
+
+    <div class="body">
+      <p class="p">安装Greenplum Database时，默认情况下会启用资源队列。要使用资源组而不是资源队列，必须设置<samp class="ph codeph"><a class="xref" href="../ref_guide/config_params/guc-list.html#gp_resource_manager">gp_resource_manager</a></samp>服务器配置参数。	</p>
+
+      <ol class="ol" id="topic8__ol_ec5_4dy_wq">
+        <li class="li">将<samp class="ph codeph">gp_resource_manager</samp>服务器配置参数设置为值<samp class="ph codeph">"group"</samp>：
+          <pre class="pre codeblock">gpconfig -s gp_resource_manager
+gpconfig -c gp_resource_manager -v "group"
+</pre>
+
+        </li>
+
+        <li class="li">重启Greenplum 数据库： <pre class="pre codeblock">gpstop
+gpstart
+</pre>
+
+        </li>
+
+      </ol>
+
+      <p class="p">启用后，角色提交的任何事务都将定向到分配给该角色的资源组，并受该资源组的并发，内存和CPU限制的约束。同样，外部组件的CPU和内存使用量由为分配给组件的资源组配置的CPU和内存限制控制。</p>
+
+      <p class="p">Greenplum数据库为名为<samp class="ph codeph">admin_group</samp>和<samp class="ph codeph">default_group</samp>的角色创建两个默认资源组。启用资源组时，将为未明确分配资源组的任何角色分配角色功能的默认组。<samp class="ph codeph">SUPERUSER</samp>角色分配了<samp class="ph codeph">admin_group</samp>，非管理员角色分配了名为<samp class="ph codeph">default_group</samp>的组。</p>
+
+      <p class="p">使用以下资源限制创建默认资源组<samp class="ph codeph">admin_group</samp>和<samp class="ph codeph">default_group</samp>：</p>
+
+      
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic8__default_resgroup_limits" class="table" frame="border" border="1" rules="all">
+          
+          
+          
+          <thead class="thead" align="left">
+            <tr class="row">
+              <th class="entry" valign="top" width="33.33333333333333%" id="d112996e1208">限制类型</th>
+
+              <th class="entry" valign="top" width="33.33333333333333%" id="d112996e1211">admin_group</th>
+
+              <th class="entry" valign="top" width="33.33333333333333%" id="d112996e1214">default_group</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1208 ">CONCURRENCY</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1211 ">10</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1214 ">20</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1208 ">CPU_RATE_LIMIT</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1211 ">10</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1214 ">30</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1208 ">CPUSET</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1211 ">-1</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1214 ">-1</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1208 ">MEMORY_LIMIT</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1211 ">10</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1214 ">30</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1208 ">MEMORY_SHARED_QUOTA</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1211 ">50</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1214 ">50</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1208 ">MEMORY_SPILL_RATIO</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1211 ">20</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1214 ">20</td>
+
+            </tr>
+
+            <tr class="row">
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1208 ">MEMORY_AUDITOR</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1211 ">vmtracker</td>
+
+              <td class="entry" valign="top" width="33.33333333333333%" headers="d112996e1214 ">vmtracker</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      <p class="p">请记住，默认资源组admin_group和default_group的<samp class="ph codeph">CPU_RATE_LIMIT</samp>和<samp class="ph codeph">MEMORY_LIMIT</samp>值对分段主机上的总百分比有贡献。在创建Greenplum数据库部署并将新资源组添加到Greenplum数据库部署时，用户可能会发现需要为<samp class="ph codeph">admin_group</samp>和/或<samp class="ph codeph">default_group</samp>调整这些限制。</p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic10">
+    <h2 class="title topictitle2">创建资源组</h2>
+
+    <div class="body">
+      <p class="p"><em class="ph i">为角色创建资源组时</em>可以提供名称，CPU资源分配模式和内存限制。用户可以选择提供并发事务限制和内存共享配额和溢出比率。使用<samp class="ph codeph"><a class="xref" href="../ref_guide/sql_commands/CREATE_RESOURCE_GROUP.html#topic1">CREATE RESOURCE GROUP</a></samp>命令创建新资源组。</p>
+
+      <p class="p" id="topic10__iz152723">为角色创建资源组时，必须提供<samp class="ph codeph">CPU_RATE_LIMIT</samp>或<samp class="ph codeph">CPUSET</samp>和<samp class="ph codeph">MEMORY_LIMIT</samp>限制值。这些限制标识要分配给此资源组的Greenplum数据库资源的百分比。例如，要创建名为<em class="ph i">rgroup1</em>的资源组，其CPU限制为20，内存限制为25：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# CREATE RESOURCE GROUP <em class="ph i">rgroup1</em> WITH (CPU_RATE_LIMIT=20, MEMORY_LIMIT=25);
+</pre>
+
+      </div>
+
+      <p class="p">CPU限制为20由<samp class="ph codeph">rgroup1</samp>分配到的每个角色共享。同样，内存限制为25由<samp class="ph codeph">rgroup1</samp>分配到的每个角色共享。<samp class="ph codeph">rgroup1</samp>使用默认的<samp class="ph codeph">MEMORY_AUDITOR</samp><samp class="ph codeph">vmtracker</samp>和默认的<samp class="ph codeph">CONCURRENCY</samp>设置为20。</p>
+
+      <p class="p" id="topic10__iz1527231"><em class="ph i">为外部组件创建资源组时</em>，必须提供<samp class="ph codeph">CPU_RATE_LIMIT</samp>或<samp class="ph codeph">CPUSET</samp>和<samp class="ph codeph">MEMORY_LIMIT</samp>限制值。用户还必须提供<samp class="ph codeph">MEMORY_AUDITOR</samp>并将<samp class="ph codeph">CONCURRENCY</samp>显式设置为零（0）。例如，要创建名为<em class="ph i">rgroup_extcomp</em>的资源组，请为其保留CPU核心1并指定内存限制为15：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# CREATE RESOURCE GROUP <em class="ph i">rgroup_extcomp</em> WITH (MEMORY_AUDITOR=cgroup, CONCURRENCY=0,
+     CPUSET='1', MEMORY_LIMIT=15);
+</pre>
+
+      </div>
+
+      <p class="p">The <samp class="ph codeph"><a class="xref" href="../ref_guide/sql_commands/ALTER_RESOURCE_GROUP.html#topic1">ALTER RESOURCE GROUP</a></samp> 命令更新资源组的限制。要更改资源组的限制，请指定组所需的新值。例如：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# ALTER RESOURCE GROUP <em class="ph i">rg_role_light</em> SET CONCURRENCY 7;
+=# ALTER RESOURCE GROUP <em class="ph i">exec</em> SET MEMORY_LIMIT 25;
+=# ALTER RESOURCE GROUP <em class="ph i">rgroup1</em> SET CPUSET '2,4';
+</pre>
+
+      </div>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 用户无法将<samp class="ph codeph">admin_group</samp>的<samp class="ph codeph">CONCURRENCY</samp>值设置或更改为零（0）。</div>
+
+      <p class="p"><samp class="ph codeph"><a class="xref" href="../ref_guide/sql_commands/DROP_RESOURCE_GROUP.html#topic1">DROP RESOURCE GROUP</a></samp>命令会删除资源组。要删除角色的资源组，不能将该组分配给任何角色，也不能在资源组中激活或等待任何事务。删除正在运行的实例的外部组件的资源组会导致正在运行的实例。</p>
+
+      <p class="p">删除资源组：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# DROP RESOURCE GROUP <em class="ph i">exec</em>; </pre>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic17">
+    <h2 class="title topictitle2">将资源组分配给角色</h2>
+
+    <div class="body">
+      <p class="p" id="topic17__iz172211">使用默认<samp class="ph codeph">MEMORY_AUDITOR</samp><samp class="ph codeph">vmtracker</samp>创建资源组时，该组可用于分配给一个或多个角色（用户）。使用<samp class="ph codeph"><a class="xref" href="../ref_guide/sql_commands/CREATE_ROLE.html#topic1">CREATE ROLE</a></samp>或<samp class="ph codeph"><a class="xref" href="../ref_guide/sql_commands/ALTER_ROLE.html#topic1">ALTER ROLE</a></samp>命令的<samp class="ph codeph">RESOURCE GROUP</samp>子句将资源组分配给数据库角色。如果未为角色指定资源组，则会为角色分配角色功能的默认组。<samp class="ph codeph">SUPERUSER</samp>角色分配了<samp class="ph codeph">admin_group</samp>，非管理员角色分配了名为<samp class="ph codeph">default_group</samp>的组。</p>
+
+      <p class="p">使用<samp class="ph codeph">ALTER ROLE</samp>或<samp class="ph codeph">CREATE ROLE</samp>命令将资源组分配给角色。例如：	</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# ALTER ROLE <em class="ph i">bill</em> RESOURCE GROUP <em class="ph i">rg_light</em>;
+=# CREATE ROLE <em class="ph i">mary</em> RESOURCE GROUP <em class="ph i">exec</em>;
+</pre>
+
+      </div>
+
+      <p class="p">用户可以将资源组分配给一个或多个角色。如果已定义角色层次结构，则将资源组分配给父角色不会向下传播到该角色组的成员。</p>
+
+      <div class="note note">
+<span class="notetitle">Note:</span> 用户无法将为外部组件创建的资源组分配给角色。</div>
+
+      <p class="p">如果要从角色中删除资源组分配并将角色分配为默认组，请将角色的组名称分配更改为<samp class="ph codeph">NONE</samp>。例如：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">=# ALTER ROLE <em class="ph i">mary</em> RESOURCE GROUP NONE;
+</pre>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic22">
+    <h2 class="title topictitle2">监视资源组状态</h2>
+
+    <div class="body">
+      <p class="p">监视资源组和查询的状态可能涉及以下任务：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic22__iz153669">
+          <a class="xref" href="#topic221">查看资源组限制</a>
+        </li>
+
+        <li class="li" id="topic22__iz153670">
+          <a class="xref" href="#topic23">查看资源组查询状态和CPU/内存使用情况</a>
+        </li>
+
+        <li class="li" id="topic22__iz153671">
+          <a class="xref" href="#topic25">查看分配给角色的资源组</a>
+        </li>
+
+        <li class="li" id="topic22__iz15367125">
+          <a class="xref" href="#topic252525">查看资源组的运行和待定查询</a>
+        </li>
+
+        <li class="li" id="topic22__iz153679">
+          <a class="xref" href="#topic27">取消资源组中的正在运行或已排队的事务</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic221">
+      <h3 class="title topictitle3">查看资源组限制</h3>
+
+      <div class="body">
+        <p class="p">The <samp class="ph codeph"><a class="xref" href="../ref_guide/system_catalogs/gp_resgroup_config.html">gp_resgroup_config</a></samp>
+          <samp class="ph codeph">gp_toolkit</samp>系统视图显示资源组的当前和建议限制。当用户更改限制时，建议的限制与当前限制不同，但不能立即应用新值。如果要查看所有资源组的限制：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM gp_toolkit.gp_resgroup_config;
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic23">
+      <h3 class="title topictitle3">查看资源组查询状态和CPU/内存使用情况</h3>
+
+      <div class="body">
+        <p class="p"><samp class="ph codeph"><a class="xref" href="../ref_guide/gp_toolkit.html#topic31x">gp_resgroup_status</a></samp>
+          <samp class="ph codeph">gp_toolkit</samp>系统视图可以查看资源组的状态和活动。该视图显示正在运行和排队的事务数。它还显示资源组的实时CPU和内存使用情况。要查看此信息：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM gp_toolkit.gp_resgroup_status;
+</pre>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic23a">
+        <h4 class="title topictitle4">查看每个主机的资源组CPU/内存使用情况</h4>
+
+        <div class="body">
+          <p class="p">通过<samp class="ph codeph"><a class="xref" href="../ref_guide/gp_toolkit.html#perhost">gp_resgroup_status_per_host</a></samp>
+          <samp class="ph codeph">gp_toolkit</samp>系统视图，用户可以基于每个主机查看资源组的实时CPU和内存使用情况。要查看此信息：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM gp_toolkit.gp_resgroup_status_per_host;
+</pre>
+
+        </div>
+
+        </div>
+
+      </div>
+
+      <div class="topic nested3" xml:lang="en" lang="en" id="topic23b">
+        <h4 class="title topictitle4">查看每个段的资源组CPU/内存使用情况</h4>
+
+        <div class="body">
+          <p class="p">通过<samp class="ph codeph"><a class="xref" href="../ref_guide/gp_toolkit.html#perseg">gp_resgroup_status_per_segment</a></samp>
+          <samp class="ph codeph">gp_toolkit</samp>系统视图，用户可以按每个段，每个主机查看资源组的实时CPU和内存使用情况。要查看此信息：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT * FROM gp_toolkit.gp_resgroup_status_per_segment;
+</pre>
+
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic25">
+      <h3 class="title topictitle3">查看分配给角色的资源组</h3>
+
+      <div class="body">
+        <p class="p">要查看资源组到角色分配，请对
+              <samp class="ph codeph"><a class="xref" href="../ref_guide/system_catalogs/pg_roles.html">pg_roles</a></samp> 和 <samp class="ph codeph"><a class="xref" href="../ref_guide/system_catalogs/pg_resgroup.html">pg_resgroup</a></samp>系统目录表执行以下查询：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT rolname, rsgname FROM pg_roles, pg_resgroup
+     WHERE pg_roles.rolresgroup=pg_resgroup.oid;
+</pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic252525">
+      <h3 class="title topictitle3">查看资源组的运行和待定查询</h3>
+
+      <div class="body">
+        <p class="p">要查看资源组的运行查询，挂起的查询以及挂起的查询排队的时间，请检查<samp class="ph codeph"><a class="xref" href="../ref_guide/system_catalogs/pg_stat_activity.html">pg_stat_activity</a></samp>系统目录表：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT current_query, waiting, rsgname, rsgqueueduration 
+     FROM pg_stat_activity;
+</pre>
+
+        </div>
+
+        <p class="p">
+          <samp class="ph codeph">pg_stat_activity</samp>显示有关启动查询的用户/角色的信息。使用外部组件（如PL/Container）的查询由两部分组成：在Greenplum数据库中运行的查询运算符和在PL/Container实例中运行的UDF。Greenplum数据库处理分配给发起查询的角色的资源组下的查询运算符。在PL/Container实例中运行的UDF在分配给PL/Container运行时的资源组下运行。后者没有在<samp class="ph codeph">pg_stat_activity</samp>中表示; Greenplum数据库无法深入了解PL/Container等外部组件如何在运行实例中管理内存。</p>
+
+      </div>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic27">
+      <h3 class="title topictitle3">取消资源组中的正在运行或已排队的事务</h3>
+
+      <div class="body">
+        <p class="p">在某些情况下，用户可能希望取消资源组中的正在运行或排队的事务。例如，用户可能希望删除在资源组队列中等待但尚未执行的查询。或者，用户可能希望停止执行时间太长的正在运行的查询，或者在事务中处于空闲状态并占用其他用户所需的资源组事务插槽的查询。</p>
+
+        <p class="p">要取消正在运行或排队的事务，必须首先确定与事务关联的进程ID（pid）。获得进程ID后，可以调用<samp class="ph codeph">pg_cancel_backend()</samp>来结束该进程，如下所示。</p>
+
+        <p class="p">例如，要查看与当前活动或在所有资源组中等待的所有语句关联的进程信息，请运行以下查询。如果查询未返回任何结果，则任何资源组中都没有正在运行或排队的事务。</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT rolname, g.rsgname, procpid, waiting, current_query, datname 
+     FROM pg_roles, gp_toolkit.gp_resgroup_status g, pg_stat_activity 
+     WHERE pg_roles.rolresgroup=g.groupid
+        AND pg_stat_activity.usename=pg_roles.rolname;
+</pre>
+
+        </div>
+
+        <p class="p">示例部分查询输出：</p>
+
+        <pre class="pre codeblock"> rolname | rsgname  | procpid | waiting |     current_query     | datname 
+---------+----------+---------+---------+-----------------------+---------
+  sammy  | rg_light |  31861  |    f    | &lt;IDLE&gt; in transaction | testdb
+  billy  | rg_light |  31905  |    t    | SELECT * FROM topten; | testdb</pre>
+
+        <p class="p">使用此输出来标识要取消的事务的进程ID（<samp class="ph codeph">procpid</samp>），然后取消该进程。例如，要取消上面示例输出中标识的待处理查询：</p>
+
+        <div class="p">
+          <pre class="pre codeblock">=# SELECT pg_cancel_backend(31905);</pre>
+
+        </div>
+
+        <p class="p">用户可以在<samp class="ph codeph">pg_cancel_backend()</samp>的第二个参数中提供可选消息，以向用户指示进程被取消的原因。</p>
+
+        <div class="note note">
+<span class="notetitle">Note:</span> 
+          <p class="p">不要使用操作系统<samp class="ph codeph">KILL</samp>命令取消任何Greenplum数据库进程。</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic777999">
+    <h2 class="title topictitle2">资源组常见问题解答</h2>
+
+    <div class="body">
+      <div class="section" xml:lang="en" lang="en" id="topic777999__topic791">
+<h3 class="title sectiontitle">CPU</h3>
+        
+        <ul class="ul">
+          <li class="li">
+<strong class="ph b">为什么CPU使用率低于为资源组配置的<samp class="ph codeph">CPU_RATE_LIMIT</samp>？</strong>
+            <p class="p">当资源组中运行的查询和片数较少时，您可能会遇到这种情况，并且这些进程未使用系统上的所有核心。</p>
+</li>
+
+          <li class="li">
+<strong class="ph b">为什么资源组的CPU使用率高于配置的<samp class="ph codeph">CPU_RATE_LIMIT</samp>？</strong>
+            <div class="p">在下列情况下可能会发生这种情况：<ul class="ul">
+                <li class="li">当其他资源组空闲时，资源组可以使用比其<samp class="ph codeph">CPU_RATE_LIMIT</samp>更多的CPU。在这种情况下，Greenplum数据库将空闲资源组的CPU资源分配给更繁忙的资源组。此资源组功能称为CPU突发。</li>
+
+                <li class="li">操作系统CPU调度程序可能导致CPU使用率出现峰值，然后下降。如果您认为可能发生这种情况，请计算给定时间段内的平均CPU使用率（例如，5秒），并使用该平均值来确定CPU使用率是否高于配置的限制。</li>
+
+              </ul>
+</div>
+</li>
+
+        </ul>
+
+        <p class="p"></p>
+
+      </div>
+
+      <div class="section" xml:lang="en" lang="en" id="topic777999__topic795">
+<h3 class="title sectiontitle">内存</h3>
+        
+        <ul class="ul">
+          <li class="li">
+<strong class="ph b">为什么我的查询返回“内存不足”错误？</strong>
+            <p class="p">在资源组中提交的事务失败并在内存使用超过其固定内存分配时退出，不存在可用资源组共享内存，并且事务请求更多内存。</p>
+</li>
+
+          <li class="li">
+<strong class="ph b">为什么我的查询返回“达到内存限制”错误？</strong>
+            <p class="p">当您使用<samp class="ph codeph">ALTER RESOURCE GROUP</samp>更改资源组的内存和/或并发限制时，Greenplum数据库会自动将事务和组内存调整为新设置。如果您最近更改了资源组属性并且当前正在运行的查询不再有足够的可用内存，则可能会出现“内存不足”错误。</p>
+</li>
+
+          <li class="li">
+<strong class="ph b">为什么我的资源组的实际内存使用量超过为该组配置的数量？</strong>
+            <p class="p">当从组中运行的一个或多个查询从全局共享内存池分配内存时，资源组的实际内存使用量可能超过配置的量。（如果没有可用的全局共享内存，查询将失败，并且不会影响其他资源组的内存资源。）</p>
+<div class="p">当全局共享内存可用时，当事务溢出到磁盘时，内存使用量也可能超过配置的量。Greenplum数据库语句在开始溢出到磁盘时继续请求内存，因为：<ul class="ul">
+                <li class="li">溢出到磁盘需要额外的内存才能工作。</li>
+
+                <li class="li">其他运营商可能会继续请求内存。</li>
+
+              </ul>
+ 泄漏情况下内存使用量增加;当全局共享内存可用时，资源组最终可能最多使用其配置的组内存限制的200-300％。</div>
+</li>
+
+        </ul>
+
+      </div>
+
+      <div class="section" xml:lang="en" lang="en" id="topic777999__topic797">
+<h3 class="title sectiontitle">并发</h3>
+        
+        <ul class="ul">
+          <li class="li">
+<strong class="ph b">为什么运行事务的数量低于为资源组配置的<samp class="ph codeph">CONCURRENCY</samp>限制？</strong>
+            <p class="p">Greenplum数据库在运行事务之前考虑内存可用性，如果没有足够的内存可供服务，它将对事务进行排队。如果使用<samp class="ph codeph">ALTER RESOURCE GROUP</samp>增加资源组的<samp class="ph codeph">CONCURRENCY</samp>限制但不调整内存限制，则当前正在运行的事务可能会占用该组的所有分配的内存资源。处于此状态时，Greenplum数据库会对资源组中的后续事务进行排队。</p>
+</li>
+
+          <li class="li">
+<strong class="ph b">为什么资源组中正在运行的事务数高于配置的<samp class="ph codeph">CONCURRENCY</samp>限制？	</strong>
+            <p class="p">资源组可能正在运行<samp class="ph codeph">SET</samp>和<samp class="ph codeph">SHOW</samp>命令，这些命令会绕过资源组事务检查。</p>
+</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

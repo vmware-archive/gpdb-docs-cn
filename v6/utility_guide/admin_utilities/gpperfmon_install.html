@@ -1,0 +1,799 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      gpperfmon_install |
+    Greenplum Database Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="x6-0 x6-0_utility_guide x6-0_utility_guide_admin_utilities x6-0_utility_guide_admin_utilities_gpperfmon_install has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum Database Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="https://greenplum.org">Back to Greenplum Database</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../../6-0/homenav.html">Greenplum数据库® 6.0文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpbackup.html">gpbackup</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpmovemirrors.html">gpmovemirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gprestore.html">gprestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer.html">pgbouncer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-ini.html">pgbouncer.ini</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/admin_utilities/pgbouncer-admin.html">pgbouncer-admin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf.html">pxf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/../pxf/ref/pxf-cluster.html">pxf cluster</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/6-0/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/6-0/utility_guide/contrib-programs.html">附加程序</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgupgrade.html">pg_upgrade</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="https://www.postgresql.org/docs/9.4/pgxlogdump.html">pg_xlogdump</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    gpperfmon_install
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">gpperfmon_install</h1>
+
+  <div class="body">
+    <p class="p">安装Greenplum Command Center使用的<samp class="ph codeph">gpperfmon</samp>数据库，
+      并可选择启用数据收集代理。</p>
+
+    <div class="section" id="topic1__section2">
+<h2 class="title sectiontitle">概要</h2>
+      
+      <pre class="pre codeblock"><strong class="ph b">gpperfmon_install --port <var class="keyword varname">gpdb_port</var> </strong>
+              [<strong class="ph b">--enable</strong> <strong class="ph b">--password</strong> <var class="keyword varname">gpmon_password</var> [<strong class="ph b">--pgpass</strong> <var class="keyword varname">path_to_file</var>]]
+              [<strong class="ph b">--verbose</strong>]
+        
+        <strong class="ph b">gpperfmon_install</strong> <strong class="ph b">--help</strong> | <strong class="ph b">-h</strong> | <strong class="ph b">-?</strong></pre>
+
+    </div>
+
+    <div class="section" id="topic1__section3">
+<h2 class="title sectiontitle">描述</h2>
+      
+      <p class="p"><samp class="ph codeph">gpperfmon_install</samp>工具自动执行启用数据收集代理程序所需的步骤。
+        用户必须是Greenplum数据库系统用户（<samp class="ph codeph">gpadmin</samp>）才能运行此工具。
+        <samp class="ph codeph">--port</samp>选项是必须的。使用<samp class="ph codeph">--enable</samp>选项时，
+        还需要<samp class="ph codeph">--password</samp>选项。使用<samp class="ph codeph">--port</samp>选项来
+        提供Greenplum数据库的Master实例的端口。如果使用<samp class="ph codeph">--enable</samp>选项，
+        必须在工具完成后重新启动Greenplum数据库。</p>
+
+      <p class="p">在没有<samp class="ph codeph">--enable</samp>选项时，此工具只创建<samp class="ph codeph">gpperfmon</samp>
+        数据库（用于存储由数据收集代理收集的系统度量的数据库）。在使用<samp class="ph codeph">--enable</samp>
+        选项运行时，该工具还会运行启用性能监视器数据收集代理所需的以下附加任务：</p>
+
+      <ol class="ol">
+        <li class="li" id="topic1__ou143278">在Greenplum数据库中创建<samp class="ph codeph">gpmon</samp>超级用户角色。 
+          数据收集代理需要连接到数据库并写入数据。<samp class="ph codeph">gpmon</samp>超级用户角色默认
+          使用MD5加密口令认证。 使用<samp class="ph codeph">--password</samp>选项来设置<samp class="ph codeph">gpmon</samp>
+          超级用户的口令。</li>
+
+        <li class="li" id="topic1__ou143437">更新<samp class="ph codeph">$MASTER_DATA_DIRECTORY/pg_hba.conf</samp>文件。
+          该工具将这些行添加到基于主机的认证文件（<samp class="ph codeph">pg_hba.conf</samp>）中：
+          <pre class="pre codeblock">local      gpperfmon     gpmon                 md5
+            host       all           gpmon  127.0.0.1/28   md5
+            host       all           gpmon  ::1/128        md5</pre>
+
+          <p class="p">第二和第三行的<samp class="ph codeph">host</samp>项，让<samp class="ph codeph">gpmon</samp>能访问
+            所有Greenplum数据库。</p>
+
+          <div class="note note">
+<span class="notetitle">Note:</span> 可能有必要在运行<samp class="ph codeph">gpperfmon_install</samp>工具以限制
+            <samp class="ph codeph">gpmon</samp>角色访问数据库或更改身份验证方法之后再编辑
+            <samp class="ph codeph">pg_hba.conf</samp>文件中的行。运行<samp class="ph codeph">gpstop -u</samp>重新加载
+            Greenplum数据库的pg_hba.conf文件。<ul class="ul" id="topic1__ul_ffm_ysw_k5">
+              <li class="li">要将<samp class="ph codeph">gpmon</samp>的访问限制为仅访问<samp class="ph codeph">gpperfmon</samp>数据库，
+                编辑<samp class="ph codeph">pg_hba.conf</samp>文件中<samp class="ph codeph">host</samp>项。对于
+                <samp class="ph codeph">gpmon</samp>用户，将第二个字段从<samp class="ph codeph">all</samp>更改为
+                <samp class="ph codeph">gpperfmon</samp>：
+                <pre class="pre codeblock">local      gpperfmon     gpmon                  md5
+                  host       <strong class="ph b">gpperfmon</strong>     gpmon    127.0.0.1/28  md5
+                  host       <strong class="ph b">gpperfmon</strong>     gpmon    ::1/128       md5</pre>
+</li>
+
+              <li class="li">
+                <div class="p">
+<samp class="ph codeph">gpperfmon_install</samp>工具采用默认的MD5认证方法。Greenplum数据库可以
+                  选择性地配置为使用SHA-256哈希算法来计算保存在系统目录中的口令哈希值。这与MD5认证方法
+                  不兼容，MD5认证方法在系统目录中需要MD5哈希或明文口令。
+                  因此，如果在数据库中启用了SHA-256哈希算法，则必须在运行<samp class="ph codeph">gpperfmon_install</samp>
+                  工具后编辑<samp class="ph codeph">pg_hba.conf</samp>文件。对于<samp class="ph codeph">host</samp>项，将
+                  <samp class="ph codeph">gpmon</samp>角色的身份认证从<samp class="ph codeph">md5</samp>改为
+                  <samp class="ph codeph">password</samp>：
+                  <pre class="pre codeblock">local      gpperfmon     gpmon                 md5 
+                    host       all           gpmon  127.0.0.1/28   <strong class="ph b">password</strong>
+                    host       all           gpmon  ::1/128        <strong class="ph b">password</strong></pre>
+</div>
+
+                <p class="p"><samp class="ph codeph">password</samp>认证方法提交用户的明文口令进行验证，不应在不可信的网络上使用。
+                  请参阅<em class="ph i">Greenplum数据库管理员指南</em>中的“保护Greenplum数据库中的密码”。</p>
+
+              </li>
+
+            </ul>
+</div>
+</li>
+
+        <li class="li" id="topic1__ou143384">更新口令文件(<samp class="ph codeph">.pgpass</samp>)。为了允许数据收集代理作为
+          <samp class="ph codeph">gpmon</samp>角色进行连接而无需口令提示，用户必须拥有一个包含<samp class="ph codeph">gpmon</samp>
+          用户项的口令文件。该工具将以下项添加到用户的口令文件（如果该文件不存在，该工具将创建它）：
+          <pre class="pre codeblock">*:5432:gpperfmon:gpmon:<var class="keyword varname">gpmon_password</var></pre>
+ 
+          如果用户的口令文件不在默认位置(<samp class="ph codeph">~/.pgpass</samp>)，使用<samp class="ph codeph">--pgpass</samp>
+          选项指定文件位置。</li>
+
+        <li class="li" id="topic1__ou140687">设置Greenplum Command Center的服务器配置参数。数据收集代理必须启用
+          以下参数才能开始收集数据。该工具在Greenplum数据库的<samp class="ph codeph">postgresql.conf</samp>
+          配置文件中设置以下参数：
+          <ul class="ul" id="topic1__ul_wrp_dtx_wr">
+            <li class="li">
+<samp class="ph codeph">gp_enable_gpperfmon=on</samp> (在集群中所有的<samp class="ph codeph">postgresql.conf</samp>
+              文件中)</li>
+
+            <li class="li">
+<samp class="ph codeph">gpperfmon_port=8888</samp> (在集群中所有的<samp class="ph codeph">postgresql.conf</samp>文件中) </li>
+
+            <li class="li">
+<samp class="ph codeph">gp_external_enable_exec=on</samp> (在Master的
+              <samp class="ph codeph">postgresql.conf</samp>文件中)</li>
+
+          </ul>
+
+          <p class="p">数据收集代理可以通过在<samp class="ph codeph">gpperfmon.conf</samp>配置文件中设置参数进行配置。
+            参阅<a class="xref" href="#topic1__section_p51_bxc_wz">数据收集代理配置</a>获取更多详细信息。</p>
+</li>
+
+      </ol>
+
+    </div>
+
+    <div class="section" id="topic1__section4">
+<h2 class="title sectiontitle">选项</h2>
+      
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm">--enable</dt>
+
+          <dd class="dd pd">除了创建<samp class="ph codeph">gpperfmon</samp>数据库外，还执行启用数据收集代理所需的附加步骤。
+            指定<samp class="ph codeph">--enable</samp>时，工具还将创建并配置<samp class="ph codeph">gpmon</samp>超级用户帐户，
+            并在<samp class="ph codeph">postgresql.conf</samp>文件中设置Command Center服务器配置参数。
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm">--password <var class="keyword varname">gpmon_password</var>
+</dt>
+
+          <dd class="dd pd">如果必须指定了<samp class="ph codeph">--enable</samp>。设置<samp class="ph codeph">gpmon</samp>超级用户的口令。
+            如果未指定<samp class="ph codeph">--enable</samp>则不允许使用。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--port <var class="keyword varname">gpdb_port</var>
+</dt>
+
+          <dd class="dd pd">必需。指定Greenplum数据库Master的连接端口。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--pgpass <var class="keyword varname">path_to_file</var>
+</dt>
+
+          <dd class="dd pd">在<samp class="ph codeph">--enable</samp>选项被指定时可选。如果口令文件不在<samp class="ph codeph">~/.pgpass</samp>
+            的默认位置，则这个选项指定口令文件的位置。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--verbose</dt>
+
+          <dd class="dd pd">将日志记录级别设置为详细。</dd>
+
+        
+        
+          <dt class="dt pt dlterm">--help | -h | -?</dt>
+
+          <dd class="dd pd">显示在线帮助。</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section" id="topic1__section_p51_bxc_wz">
+<h2 class="title sectiontitle">数据收集代理配置</h2>
+      
+      <p class="p"><samp class="ph codeph">$MASTER_DATA_DIRECTORY/gpperfmon/conf/gpperfmon.conf</samp>文件存储数据收集代理的配置
+        参数。要使这些选项的配置更改生效，必须保存<samp class="ph codeph">gpperfmon.conf</samp>然后重新启动Greenplum数据库
+        服务器（<samp class="ph codeph">gpstop -r</samp>)。</p>
+
+      <p class="p"><samp class="ph codeph">gpperfmon.conf</samp>文件包含以下配置参数。</p>
+
+      <table cellpadding="4" cellspacing="0" summary="" id="topic1__simpletable_xhc_qtc_wz" border="1" class="simpletable">
+<tr class="sthead">
+          <th valign="bottom" align="left" id="d17058e421" class="stentry">参数</th>
+
+          <th valign="bottom" align="left" id="d17058e424" class="stentry">描述</th>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">log_location</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">指定gpperfmon日志文件的目录位置。默认是<samp class="ph codeph">$MASTER_DATA_DIRECTORY/gpperfmon/logs</samp>。
+          </td>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">min_query_time</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">
+            <p class="p">指定统计信息收集的最短查询运行时间（秒）。所有运行时间超过此值的查询都将记录在<samp class="ph codeph">queries_history</samp>
+              表中。对于运行时间较短的查询，不收集历史数据。默认为20秒。</p>
+
+            <p class="p">如果用户知道要为所有查询收集数据，则可以将此参数设置为较低值。但是，如果将最小查询运行时间设置为零，
+              即使对于Greenplum Command Center运行的大量查询也会收集数据，从而创建大量可能无用的数据。</p>
+
+          </td>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">max_log_size</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">
+            <p class="p">这个参数不包含在<samp class="ph codeph">gpperfmon.conf</samp>中，但是它可能被添加到这个文件中。</p>
+
+            <p class="p">为防止日志文件增长过大，可以将<samp class="ph codeph">max_log_size</samp>参数添加到<samp class="ph codeph">gpperfmon.conf</samp>
+              中。该参数的值以字节为单位。例如：</p>
+
+            <pre class="pre codeblock">max_log_size = 10485760</pre>
+
+            <p class="p">使用此设置，日志文件将在系统转到新的日志文件之前增长到10MB。</p>
+
+          </td>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">partition_age</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">gperfmon统计数据将被保留的月数。它的默认值是0，这意味着我们不会丢失任何数据。</td>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">quantum</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">指定所有Segment上的数据收集代理更新之间的时间（以秒为单位）。有效值为10、15、20、30和60。
+            缺省值为15秒。
+            <p class="p">如果用户偏好较低粒度的性能视图，或者想要收集和分析系统度量的最小量，请选择较高的quantum。
+              要更频繁地收集数据，请选择一个较低的值。</p>
+</td>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">harvest_interval</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">数据捕获时间段，以秒为单位。一次数据捕获会将<samp class="ph codeph">gpperfmon</samp>外部表
+            （<samp class="ph codeph">_tail</samp>）的近期数据移动到对应的历史文件。默认为120。最小值为30。
+          </td>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">ignore_qexec_packet</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">（弃用）。设置为true时，数据收集代理不会收集<samp class="ph codeph">gpperfmon</samp>数据库的
+            <samp class="ph codeph">queries_*</samp>表中的性能数据：
+            <samp class="ph codeph">rows_out</samp>、<samp class="ph codeph">cpu_elapsed</samp>、<samp class="ph codeph">cpu_currpct</samp>、
+            <samp class="ph codeph">skew_cpu</samp>和<samp class="ph codeph">skew_rows</samp>
+            缺省设置true可以减少<samp class="ph codeph">gpmmon</samp>进程所消耗的内存量。如果用户需要这些额外的性能数据，
+            请将此参数设置为false。
+          </td>
+
+        </tr>
+<tr class="strow">
+          <td valign="top" headers="d17058e421" class="stentry">smdw_aliases</td>
+
+          <td valign="top" headers="d17058e424" class="stentry">此参数允许用户为后备Master指定额外的主机名。例如，如果后备Master有两个NIC，则可以输入：
+            <pre class="pre codeblock">smdw_aliases=smdw-1,smdw-2</pre>
+
+            <p class="p">如果Greenplum Command Center失去与后备Master的连接，则这个可选的容错参数非常有用。
+              它不会持续重试连接到主机smdw，而是尝试连接到基于NIC的别名<samp class="ph codeph">smdw-1</samp>或
+              <samp class="ph codeph">smdw-2</samp>。这确保了Command Center控制台可以持续调查和监控后备Master。
+            </p>
+</td>
+
+        </tr>
+</table>
+
+    </div>
+
+    <div class="section">
+<h2 class="title sectiontitle">注解</h2>
+      
+      <p class="p"><samp class="ph codeph">gpperfmon</samp>数据库和Greenplum Command Center需要<samp class="ph codeph">gpmon</samp>角色。
+        在创建<samp class="ph codeph">gpperfmon</samp>数据库和<samp class="ph codeph">gpmon</samp>角色后，用户可以更改
+        <samp class="ph codeph">gpmon</samp>角色的口令并更新Greenplum Command Center信息用来连接到<samp class="ph codeph">gpperfmon</samp>
+        数据库：
+      </p>
+
+      <ol class="ol" id="topic1__ol_wss_knp_wr">
+        <li class="li">以超级用户身份登录到Greenplum数据库，并使用<samp class="ph codeph">ALTER ROLE</samp>命令更改
+          <samp class="ph codeph">gpmon</samp>的口令。
+          <pre class="pre codeblock"># ALTER ROLE gpmon WITH PASSWORD '<var class="keyword varname">new_password</var>' ;</pre>
+</li>
+
+        <li class="li">更新Greenplum Command Center使用的<samp class="ph codeph">.pgpass</samp>文件中的口令。默认文件位置是<samp class="ph codeph">gpadmin</samp>
+          的主目录（<samp class="ph codeph">~/.pgpass</samp>）。<samp class="ph codeph">.pgpass</samp>文件包含一行<samp class="ph codeph">gpmon</samp>口令。
+          <pre class="pre codeblock">*:5432:gpperfmon:gpmon:<var class="keyword varname">new_password</var></pre>
+</li>
+
+        <li class="li">使用Command Center的<samp class="ph codeph">gpcmdr</samp>工具重新启动Greenplum Command Center。
+          <pre class="pre codeblock">$ gpcmdr --restart</pre>
+</li>
+
+      </ol>
+
+      <p class="p">gpperfmon监控系统在启动后需要一些初始化。监控信息在几分钟后出现，
+        而不是在安装和启动gpperfmon系统之后立即出现。
+      </p>
+
+    </div>
+
+    <div class="section" id="topic1__section5">
+<h2 class="title sectiontitle">示例</h2>
+      
+      <p class="p">只创建<samp class="ph codeph">gpperfmon</samp>数据库：
+      </p>
+
+      <pre class="pre codeblock">$ su - gpadmin
+        $ gpperfmon_install --port 5432</pre>
+
+      <p class="p">创建<samp class="ph codeph">gpperfmon</samp>数据库，创建<samp class="ph codeph">gpmon</samp>超级用户，
+        并启用数据收集代理：</p>
+
+      <pre class="pre codeblock">$ su - gpadmin
+        $ gpperfmon_install --enable --password changeme --port 5432
+        $ gpstop -r</pre>
+
+    </div>
+
+    <div class="section" id="topic1__section6">
+<h2 class="title sectiontitle">另见</h2>
+      
+      <p class="p">
+        <samp class="ph codeph">
+          <a class="xref" href="gpstop.html#topic1">gpstop</a>
+        </samp>
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>
